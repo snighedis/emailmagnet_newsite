@@ -39,9 +39,9 @@ describe("Dentoku Dev site hierarchy", () => {
       featured: true,
       href: "/emailmagnet",
     });
-    expect(productPortfolio.slice(1).every((product) => product.description.includes("Placeholder"))).toBe(
-      true,
-    );
+    expect(productPortfolio.slice(1).every((product) => product.status === "coming-soon")).toBe(true);
+    expect(JSON.stringify(productPortfolio).toLowerCase()).not.toContain("placeholder");
+    expect(JSON.stringify(productPortfolio).toLowerCase()).not.toContain("to be finalized");
   });
 
   it("models the current free and pro pricing structure without invented plans", () => {

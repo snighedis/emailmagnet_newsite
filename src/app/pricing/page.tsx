@@ -26,8 +26,8 @@ export default function PricingPage() {
             <PricingCards plans={pricingPlans} />
           </div>
           <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-6 text-slate-600">
-            Pricing and limits are based on the current EmailMagnet site. Placeholder: add tax,
-            refund, and billing policy details when available.
+            Pricing and limits are based on the current EmailMagnet product offer. Billing details
+            are shown during checkout.
           </p>
         </div>
       </section>

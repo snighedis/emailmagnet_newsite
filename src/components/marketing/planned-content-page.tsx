@@ -2,14 +2,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-type PlaceholderPageProps = {
+type PlannedContentPageProps = {
   eyebrow: string;
   title: string;
   description: string;
   items: string[];
 };
 
-export function PlaceholderPage({ eyebrow, title, description, items }: PlaceholderPageProps) {
+export function PlannedContentPage({ eyebrow, title, description, items }: PlannedContentPageProps) {
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-4xl px-4">

@@ -6,14 +6,14 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Docs",
   description:
-    "EmailMagnet documentation hub placeholder for installation, exporting, autosave, bulk extraction, and responsible use.",
+    "EmailMagnet documentation hub for installation, exporting, autosave, bulk extraction, and responsible use.",
   path: "/docs",
 });
 
 const docs = [
   ["getting-started", "Getting started", "Install EmailMagnet and understand the basic extraction workflow."],
-  ["exporting-emails", "Exporting emails", "Placeholder documentation for CSV and TXT export workflows."],
-  ["responsible-use", "Responsible use", "Guidance placeholder for compliance-minded email extraction."],
+  ["exporting-emails", "Exporting emails", "Documentation for CSV and TXT export workflows."],
+  ["responsible-use", "Responsible use", "Guidance for compliance-minded email extraction."],
 ];
 
 export default function DocsPage() {

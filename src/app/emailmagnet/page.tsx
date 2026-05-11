@@ -15,7 +15,6 @@ import {
   faqItems,
   heroHighlights,
   howItWorks,
-  placeholderProofPoints,
   pricingPlans,
   trustCues,
   valueProps,
@@ -77,7 +76,7 @@ export default function EmailMagnetPage() {
               ))}
             </ul>
             <div className="inline-flex rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm">
-              Available for Chrome - install link placeholder until the final store URL is added
+              Available for Chrome workflows
             </div>
           </div>
           <ProductVisual />
@@ -147,9 +146,9 @@ export default function EmailMagnetPage() {
       <section className="bg-[#f3fbfa] py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            eyebrow="Trust roadmap"
-            title="Built for clear, maintainable product trust"
-            description="The site includes clean placeholders for future proof points without inventing testimonials, logos, metrics, or claims."
+            eyebrow="Trust"
+            title="Clear ownership, responsible use, and support"
+            description="EmailMagnet is presented as a Dentoku Dev product with clear support paths and practical guidance instead of unsupported claims."
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_1fr]">
             <div className="grid gap-5">
@@ -167,14 +166,15 @@ export default function EmailMagnetPage() {
                 </div>
               ))}
             </div>
-            <div className="rounded-xl border border-dashed border-slate-300 bg-white p-6">
-              <h3 className="text-xl font-semibold text-slate-950">Placeholder slots</h3>
-              <p className="mt-2 leading-7 text-slate-600">
-                These are intentionally marked for later editing so the site stays honest until real
-                proof is available.
+            <div className="rounded-xl border border-teal-100 bg-white p-6">
+              <h3 className="text-xl font-semibold text-slate-950">Responsible use note</h3>
+              <p className="mt-3 leading-8 text-slate-600">
+                EmailMagnet helps extract email addresses from website content, but users remain
+                responsible for following privacy, anti-spam, and outreach laws such as GDPR and
+                CAN-SPAM where applicable.
               </p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {placeholderProofPoints.map((item) => (
+                {["Privacy and Terms pages", "Security overview", "Email support", "FAQ guidance"].map((item) => (
                   <div key={item} className="rounded-md bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">
                     {item}
                   </div>

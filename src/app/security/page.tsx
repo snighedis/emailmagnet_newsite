@@ -6,14 +6,14 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Security",
   description:
-    "EmailMagnet security overview with privacy-minded data handling notes and placeholders for future security details.",
+    "EmailMagnet security overview with privacy-minded data handling notes for browser-based email extraction workflows.",
   path: "/security",
 });
 
 const securityItems = [
   {
     title: "Data handling summary",
-    copy: "EmailMagnet is designed around browser-based email extraction from website content. Placeholder: add exact storage, retention, and processing details after product review.",
+    copy: "EmailMagnet is designed around browser-based email extraction from website content. Keep extracted data handling aligned with the product documentation and applicable privacy rules.",
   },
   {
     title: "Privacy-minded workflow",
@@ -21,7 +21,7 @@ const securityItems = [
   },
   {
     title: "Future security details",
-    copy: "Placeholder slots are reserved for extension permissions, encryption details, subprocessors, vulnerability reporting, and audit notes.",
+    copy: "Extension permissions, retention details, subprocessors, vulnerability reporting, and audit notes should be kept current as the product evolves.",
   },
 ];
 

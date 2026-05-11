@@ -49,6 +49,7 @@ export type ProductItem = {
   href: string;
   category: string;
   description: string;
+  status: "live" | "coming-soon";
   featured?: boolean;
 };
 
@@ -103,25 +104,29 @@ export const productPortfolio: ProductItem[] = [
     href: "/emailmagnet",
     category: "Chrome Extension",
     description: "Chrome extension for finding and extracting emails while browsing.",
+    status: "live",
     featured: true,
   },
   {
     name: "ClickPilot AI",
     href: "/clickpilot-ai",
-    category: "Product placeholder",
-    description: "Placeholder description: one-line product positioning to be finalized.",
+    category: "Coming soon",
+    description: "A Dentoku Dev product page reserved for a future AI-assisted workflow tool.",
+    status: "coming-soon",
   },
   {
     name: "Volume Control PRO",
     href: "/volume-control-pro",
-    category: "Product placeholder",
-    description: "Placeholder description: one-line product positioning to be finalized.",
+    category: "Coming soon",
+    description: "A Dentoku Dev product page reserved for a future browser productivity tool.",
+    status: "coming-soon",
   },
   {
     name: "Countdown321",
     href: "/countdown321",
-    category: "Product placeholder",
-    description: "Placeholder description: one-line product positioning to be finalized.",
+    category: "Coming soon",
+    description: "A Dentoku Dev product page reserved for a future lightweight timing tool.",
+    status: "coming-soon",
   },
 ];
 
@@ -295,15 +300,6 @@ export const companyTrustCues: FeatureItem[] = [
       "Each product gets a dedicated route, metadata, internal links, and schema so humans and answer engines can understand it.",
     icon: Globe2,
   },
-];
-
-export const placeholderProofPoints = [
-  "Customer logos placeholder",
-  "Product screenshots placeholder",
-  "Testimonials placeholder",
-  "Release notes placeholder",
-  "Case studies placeholder",
-  "Usage statistics placeholder",
 ];
 
 export const contentHubs = [

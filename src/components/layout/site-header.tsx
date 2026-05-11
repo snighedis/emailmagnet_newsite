@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Star, X } from "lucide-react";
+import { ArrowRight, Menu, Star, X } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,34 +29,53 @@ function Logo() {
 }
 
 function ProductsMenu() {
+  const featured = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
+  const upcoming = productPortfolio.filter((product) => !product.featured);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="rounded-md px-2 py-2 text-sm font-medium text-slate-700 outline-none transition hover:text-slate-950 focus-visible:ring-2 focus-visible:ring-[#ff5c35]">
         Products
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-[520px] rounded-xl border-slate-200 p-3 shadow-xl">
-        <DropdownMenuLabel className="px-3 py-2 text-xs uppercase tracking-wide text-slate-500">
-          Dentoku Dev portfolio
-        </DropdownMenuLabel>
-        <div className="grid gap-2">
-          {productPortfolio.map((product) => (
+      <DropdownMenuContent align="start" className="w-[680px] rounded-xl border-slate-200 p-4 shadow-xl">
+        <div className="grid gap-4 md:grid-cols-[1.1fr_1fr]">
+          <Link
+            href={featured.href}
+            className="rounded-xl bg-[#213343] p-5 text-white outline-none transition hover:bg-[#192938] focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
+          >
+            <div className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-teal-100">
+              <Star className="h-3 w-3" />
+              Featured product
+            </div>
+            <h2 className="mt-4 text-2xl font-semibold">{featured.name}</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-200">{featured.description}</p>
+            <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
+              View product page
+              <ArrowRight className="h-4 w-4" />
+            </span>
+          </Link>
+          <div>
+            <DropdownMenuLabel className="px-2 pb-3 text-xs uppercase tracking-wide text-slate-500">
+              Product portfolio
+            </DropdownMenuLabel>
+            <div className="grid gap-2">
+              {upcoming.map((product) => (
             <Link
               key={product.name}
               href={product.href}
-              className="rounded-lg p-3 outline-none transition hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
+                  className="rounded-lg border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
             >
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-slate-950">{product.name}</span>
-                {product.featured ? (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-[#ff5c35]/10 px-2 py-0.5 text-xs font-semibold text-[#c43618]">
-                    <Star className="h-3 w-3" />
-                    Featured
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-1 text-sm leading-6 text-slate-600">{product.description}</p>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-semibold text-slate-950">{product.name}</span>
+                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600">
+                      Coming soon
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm leading-6 text-slate-600">{product.description}</p>
             </Link>
-          ))}
+              ))}
+            </div>
+          </div>
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

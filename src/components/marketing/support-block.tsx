@@ -14,11 +14,11 @@ export function SupportBlock() {
           </div>
           <h2 className="text-3xl font-semibold tracking-normal md:text-5xl">Need support?</h2>
           <p className="text-lg leading-8 text-slate-200">
-            Contact EmailMagnet support for product questions, billing help, or placeholder
-            documentation requests.
+            Contact EmailMagnet support for product questions, billing help, or documentation
+            requests.
           </p>
           <p className="text-base text-slate-300">
-            Response expectation placeholder: add support hours or SLA when available.
+            Support details are handled by email while the product documentation expands.
           </p>
         </div>
         <Button asChild size="lg" className="rounded-md bg-white text-[#213343] hover:bg-slate-100">

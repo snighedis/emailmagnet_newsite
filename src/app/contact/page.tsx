@@ -34,7 +34,7 @@ export default function ContactPage() {
             <h2 className="text-2xl font-semibold text-slate-950">Need support?</h2>
             <p className="text-lg text-slate-600">{siteConfig.supportEmail}</p>
             <p className="text-sm text-slate-500">
-              Response expectation placeholder: add support hours or SLA when available.
+              Support details are handled by email while the product documentation expands.
             </p>
             <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
               <Link href={`mailto:${siteConfig.supportEmail}`}>Email support</Link>

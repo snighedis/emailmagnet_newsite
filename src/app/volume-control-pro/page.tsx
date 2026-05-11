@@ -1,4 +1,4 @@
-import { ProductPlaceholder } from "@/components/marketing/product-placeholder";
+import { ComingSoonProduct } from "@/components/marketing/coming-soon-product";
 import { productPortfolio } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
@@ -7,10 +7,10 @@ const product = productPortfolio.find((item) => item.name === "Volume Control PR
 export const metadata = createMetadata({
   title: "Volume Control PRO",
   description:
-    "Volume Control PRO is a Dentoku Dev product page placeholder for finalized product details.",
+    "Volume Control PRO is a coming soon Dentoku Dev product page.",
   path: "/volume-control-pro",
 });
 
 export default function VolumeControlProPage() {
-  return <ProductPlaceholder product={product} />;
+  return <ComingSoonProduct product={product} />;
 }

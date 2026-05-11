@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock3 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -109,7 +109,7 @@ export default function Home() {
                     className={product.featured ? "mt-6 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]" : "mt-6 rounded-md"}
                   >
                     <Link href={product.href}>
-                      {product.featured ? "View product page" : "View placeholder page"}
+                      {product.featured ? "View product page" : "View status page"}
                     </Link>
                   </Button>
                 </CardContent>
@@ -160,6 +160,32 @@ export default function Home() {
             <Button asChild className="mt-6 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
               <Link href={emailMagnetConfig.href}>Go to EmailMagnet</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f3fbfa] py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <SectionHeading
+            eyebrow="Portfolio status"
+            title="Live product first, future products clearly marked"
+            description="Dentoku Dev keeps future product routes in the architecture without presenting unfinished products as launched."
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {productPortfolio
+              .filter((product) => product.status === "coming-soon")
+              .map((product) => (
+                <div key={product.href} className="rounded-xl border border-teal-100 bg-white p-6">
+                  <div className="flex items-center justify-between gap-4">
+                    <h2 className="text-xl font-semibold text-slate-950">{product.name}</h2>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+                      <Clock3 className="h-3 w-3" />
+                      Coming soon
+                    </span>
+                  </div>
+                  <p className="mt-3 leading-7 text-slate-600">{product.description}</p>
+                </div>
+              ))}
           </div>
         </div>
       </section>

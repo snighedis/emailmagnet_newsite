@@ -9,7 +9,7 @@ const docs: Record<string, { title: string; description: string; body: string[] 
   },
   "exporting-emails": {
     title: "Exporting emails",
-    description: "Placeholder documentation for CSV and TXT exports in EmailMagnet.",
+    description: "Documentation for CSV and TXT exports in EmailMagnet.",
     body: ["Free plan: export up to 100 emails at once.", "PRO plan: unlimited export size.", "Supported export formats: CSV and TXT."],
   },
   "responsible-use": {

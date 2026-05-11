@@ -1,4 +1,4 @@
-import { PlaceholderPage } from "@/components/marketing/placeholder-page";
+import { PlannedContentPage } from "@/components/marketing/planned-content-page";
 import { createMetadata } from "@/lib/metadata";
 
 type ComparePageProps = {
@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: ComparePageProps) {
   const { competitor } = await params;
   return createMetadata({
     title: `EmailMagnet vs ${competitor.replaceAll("-", " ")}`,
-    description: `Comparison placeholder for EmailMagnet and ${competitor.replaceAll("-", " ")} with factual, citation-friendly sections.`,
+    description: `Comparison page for EmailMagnet and ${competitor.replaceAll("-", " ")} with factual, citation-friendly sections.`,
     path: `/compare/${competitor}`,
   });
 }
@@ -18,15 +18,15 @@ export default async function ComparePage({ params }: ComparePageProps) {
   const { competitor } = await params;
   const label = competitor.replaceAll("-", " ");
   return (
-    <PlaceholderPage
+    <PlannedContentPage
       eyebrow="Comparison"
       title={`EmailMagnet vs ${label}`}
-      description="This comparison page is structured for future factual content without unsupported claims about competitors."
+      description="This comparison page is structured for factual content without unsupported claims about competitors."
       items={[
-        "What EmailMagnet does placeholder",
-        `What ${label} represents placeholder`,
-        "Best-fit workflow comparison placeholder",
-        "Pricing and export differences placeholder",
+        "What EmailMagnet does",
+        `What ${label} represents`,
+        "Best-fit workflow comparison",
+        "Pricing and export differences",
       ]}
     />
   );
