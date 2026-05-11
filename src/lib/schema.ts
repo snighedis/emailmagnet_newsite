@@ -1,6 +1,6 @@
 import type { BlogPost } from "@/content/blog";
 import type { FaqItem } from "@/data/site";
-import { pricingPlans, siteConfig } from "@/data/site";
+import { emailMagnetConfig, pricingPlans, siteConfig } from "@/data/site";
 
 const base = siteConfig.url;
 
@@ -36,15 +36,21 @@ export function buildSoftwareSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: siteConfig.name,
+    name: emailMagnetConfig.name,
     applicationCategory: "BrowserApplication",
     operatingSystem: "Chrome",
-    description: siteConfig.description,
+    description: emailMagnetConfig.description,
+    url: `${base}${emailMagnetConfig.href}`,
+    isPartOf: {
+      "@type": "Organization",
+      name: siteConfig.companyName,
+      url: base,
+    },
     offers: {
       "@type": "Offer",
       price: proPlan?.price.replace("$", "") ?? "19",
       priceCurrency: "USD",
-      url: siteConfig.primaryCta.href,
+      url: emailMagnetConfig.primaryCta.href,
       category: "Lifetime access",
     },
     publisher: {

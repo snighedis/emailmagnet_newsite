@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "About",
   description:
-    "EmailMagnet is a Chrome Extension by Dentoku Dev that helps users find and extract emails from websites while browsing.",
+    "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software products.",
   path: "/about",
 });
 
@@ -16,16 +16,16 @@ export default function AboutPage() {
       <div className="mx-auto max-w-5xl px-4">
         <SectionHeading
           as="h1"
-          eyebrow="About EmailMagnet"
-          title="A practical Chrome Extension for faster email discovery"
+          eyebrow="About Dentoku Dev"
+          title="A product studio for focused software tools"
           description={siteConfig.description}
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {[
-            ["What it is", "EmailMagnet is a Chrome Extension for finding and extracting email addresses from websites while browsing."],
-            ["Who it is for", "It is for users who research websites, prepare contact lists, or want to reduce repetitive email copy-paste work."],
-            ["Problem it solves", "Manual email collection is slow and repetitive. EmailMagnet shortens the workflow into a browser-based extraction step."],
-            ["Why it exists", "Dentoku Dev builds browser tools that remove friction from daily work and repetitive web workflows."],
+            ["What it is", "Dentoku Dev is the parent company and product studio behind focused software products including EmailMagnet."],
+            ["What we build", "The portfolio structure supports Chrome extensions, Shopify apps, and future product pages under one company brand."],
+            ["How products are organized", "Each product gets a dedicated route, metadata, schema, and content cluster so the product entity is clear."],
+            ["Why it exists", "Dentoku Dev builds practical tools that remove friction from daily browser, business, and commerce workflows."],
           ].map(([title, copy]) => (
             <Card key={title} className="rounded-xl border-slate-200 shadow-sm">
               <CardContent className="p-6">

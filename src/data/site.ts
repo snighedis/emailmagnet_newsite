@@ -4,6 +4,7 @@ import {
   Download,
   FileDown,
   Globe2,
+  Layers3,
   MailCheck,
   MousePointerClick,
   Puzzle,
@@ -43,14 +44,42 @@ export type FeatureItem = {
   icon: LucideIcon;
 };
 
+export type ProductItem = {
+  name: string;
+  href: string;
+  category: string;
+  description: string;
+  featured?: boolean;
+};
+
 export const siteConfig = {
-  name: "EmailMagnet",
+  name: "Dentoku Dev",
   companyName: "Dentoku Dev",
   url: "https://www.dentokudev.com",
   description:
-    "EmailMagnet helps users find and extract emails from websites quickly while browsing, saving time and eliminating manual copy-paste work.",
+    "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software products for practical business workflows.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
+  primaryCta: {
+    label: "View products",
+    href: "#products",
+  },
+  secondaryCta: {
+    label: "Contact Dentoku Dev",
+    href: "/contact",
+  },
+  social: {
+    linkedin: "https://www.linkedin.com/company/dentoku-dev/",
+    x: "https://x.com/dentokudev",
+  },
+};
+
+export const emailMagnetConfig = {
+  name: "EmailMagnet",
+  parentBrand: "Dentoku Dev",
+  href: "/emailmagnet",
+  description:
+    "EmailMagnet helps users find and extract emails from websites quickly while browsing, saving time and eliminating manual copy-paste work.",
   primaryCta: {
     label: "Unlock PRO for $19",
     href: "https://buy.stripe.com/9B6eV64rk7iE64R68vgw006",
@@ -59,24 +88,50 @@ export const siteConfig = {
     label: "Start for free",
     href: "https://chromewebstore.google.com/",
   },
-  social: {
-    linkedin: "https://www.linkedin.com/company/dentoku-dev/",
-    x: "https://x.com/dentokudev",
-  },
 };
 
 export const mainNav: NavItem[] = [
-  { label: "Pricing", href: "/pricing" },
-  { label: "FAQ", href: "/faq" },
+  { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Security", href: "/security" },
   { label: "Contact", href: "/contact" },
 ];
 
+export const productPortfolio: ProductItem[] = [
+  {
+    name: "EmailMagnet",
+    href: "/emailmagnet",
+    category: "Chrome Extension",
+    description: "Chrome extension for finding and extracting emails while browsing.",
+    featured: true,
+  },
+  {
+    name: "ClickPilot AI",
+    href: "/clickpilot-ai",
+    category: "Product placeholder",
+    description: "Placeholder description: one-line product positioning to be finalized.",
+  },
+  {
+    name: "Volume Control PRO",
+    href: "/volume-control-pro",
+    category: "Product placeholder",
+    description: "Placeholder description: one-line product positioning to be finalized.",
+  },
+  {
+    name: "Countdown321",
+    href: "/countdown321",
+    category: "Product placeholder",
+    description: "Placeholder description: one-line product positioning to be finalized.",
+  },
+];
+
 export const footerNav = {
-  Product: [
-    { label: "Pricing", href: "/pricing" },
-    { label: "FAQ", href: "/faq" },
+  Products: productPortfolio.map((product) => ({
+    label: product.name,
+    href: product.href,
+  })),
+  Resources: [
+    { label: "Blog", href: "/blog" },
     { label: "Security", href: "/security" },
     { label: "Docs", href: "/docs" },
   ],
@@ -106,7 +161,7 @@ export const pricingPlans: PricingPlan[] = [
     ],
     cta: {
       label: "Continue Free",
-      href: siteConfig.secondaryCta.href,
+      href: emailMagnetConfig.secondaryCta.href,
     },
   },
   {
@@ -123,7 +178,7 @@ export const pricingPlans: PricingPlan[] = [
       "CSV, TXT export.",
       "Priority email support.",
     ],
-    cta: siteConfig.primaryCta,
+    cta: emailMagnetConfig.primaryCta,
     featured: true,
   },
 ];
@@ -202,9 +257,9 @@ export const howItWorks = [
 
 export const trustCues: FeatureItem[] = [
   {
-    title: "Clear data handling",
+    title: "Clear product ownership",
     description:
-      "Security and privacy pages explain how EmailMagnet is intended to handle user workflows.",
+      "Dentoku Dev is the parent company, and each product page explains the product relationship directly.",
     icon: ShieldCheck,
   },
   {
@@ -221,6 +276,27 @@ export const trustCues: FeatureItem[] = [
   },
 ];
 
+export const companyTrustCues: FeatureItem[] = [
+  {
+    title: "Focused product studio",
+    description:
+      "Dentoku Dev builds small, practical software products with direct positioning and maintainable product pages.",
+    icon: Layers3,
+  },
+  {
+    title: "Chrome and commerce workflows",
+    description:
+      "The portfolio structure supports Chrome extensions, Shopify apps, and future focused tools under one company brand.",
+    icon: Puzzle,
+  },
+  {
+    title: "SEO-ready product entities",
+    description:
+      "Each product gets a dedicated route, metadata, internal links, and schema so humans and answer engines can understand it.",
+    icon: Globe2,
+  },
+];
+
 export const placeholderProofPoints = [
   "Customer logos placeholder",
   "Product screenshots placeholder",
@@ -233,7 +309,7 @@ export const placeholderProofPoints = [
 export const contentHubs = [
   {
     title: "Use cases",
-    href: "/use-cases/sales-prospecting",
+    href: "/use-cases/emailmagnet-sales-prospecting",
     description: "Workflow pages for prospecting, research, recruiting, and small-business outreach.",
   },
   {
@@ -248,7 +324,7 @@ export const contentHubs = [
   },
   {
     title: "Integrations",
-    href: "/integrations/chrome",
+    href: "/integrations/emailmagnet-chrome",
     description: "Integration pages starting with Chrome and export workflows.",
   },
 ];

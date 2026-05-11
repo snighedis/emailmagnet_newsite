@@ -1,16 +1,47 @@
 import { describe, expect, it } from "vitest";
 
 import { blogPosts } from "@/content/blog";
-import { faqItems, pricingPlans, siteConfig } from "@/data/site";
-import { buildArticleSchema, buildFaqSchema, buildSoftwareSchema } from "@/lib/schema";
+import {
+  emailMagnetConfig,
+  faqItems,
+  pricingPlans,
+  productPortfolio,
+  siteConfig,
+} from "@/data/site";
+import {
+  buildArticleSchema,
+  buildFaqSchema,
+  buildOrganizationSchema,
+  buildSoftwareSchema,
+} from "@/lib/schema";
 
-describe("EmailMagnet site content", () => {
-  it("keeps canonical product positioning and support details explicit", () => {
-    expect(siteConfig.name).toBe("EmailMagnet");
-    expect(siteConfig.description).toContain("find and extract emails");
+describe("Dentoku Dev site hierarchy", () => {
+  it("models Dentoku Dev as the parent company and EmailMagnet as a product", () => {
+    expect(siteConfig.name).toBe("Dentoku Dev");
+    expect(siteConfig.description).toContain("product studio");
+    expect(emailMagnetConfig.name).toBe("EmailMagnet");
+    expect(emailMagnetConfig.parentBrand).toBe("Dentoku Dev");
+    expect(emailMagnetConfig.href).toBe("/emailmagnet");
+    expect(emailMagnetConfig.description).toContain("find and extract emails");
     expect(siteConfig.supportEmail).toBe("support@dentokudev.com");
-    expect(siteConfig.primaryCta.href).toContain("buy.stripe.com");
-    expect(siteConfig.secondaryCta.href).toContain("chromewebstore.google.com");
+    expect(emailMagnetConfig.primaryCta.href).toContain("buy.stripe.com");
+    expect(emailMagnetConfig.secondaryCta.href).toContain("chromewebstore.google.com");
+  });
+
+  it("populates a scalable Products menu with the required portfolio entries", () => {
+    expect(productPortfolio.map((product) => product.name)).toEqual([
+      "EmailMagnet",
+      "ClickPilot AI",
+      "Volume Control PRO",
+      "Countdown321",
+    ]);
+    expect(productPortfolio[0]).toMatchObject({
+      featured: true,
+      href: "/emailmagnet",
+    });
+    expect(productPortfolio.slice(1).every((product) => product.description.includes("Placeholder"))).toBe(
+      true,
+    );
   });
 
   it("models the current free and pro pricing structure without invented plans", () => {
@@ -31,11 +62,20 @@ describe("EmailMagnet site content", () => {
   });
 });
 
-describe("EmailMagnet structured data", () => {
+describe("Dentoku Dev structured data", () => {
+  it("generates Organization schema for the Dentoku Dev homepage", () => {
+    expect(buildOrganizationSchema()).toMatchObject({
+      "@type": "Organization",
+      name: "Dentoku Dev",
+      url: "https://www.dentokudev.com",
+    });
+  });
+
   it("generates SoftwareApplication and FAQ schema from visible site content", () => {
     expect(buildSoftwareSchema()).toMatchObject({
       "@type": "SoftwareApplication",
       name: "EmailMagnet",
+      isPartOf: expect.objectContaining({ name: "Dentoku Dev" }),
       applicationCategory: "BrowserApplication",
       offers: expect.objectContaining({ price: "19" }),
     });

@@ -5,7 +5,6 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/data/site";
 import {
   buildOrganizationSchema,
-  buildSoftwareSchema,
   buildWebsiteSchema,
 } from "@/lib/schema";
 import { JsonLd } from "@/components/marketing/json-ld";
@@ -24,15 +23,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "EmailMagnet | Find emails in seconds. Pay once. Use forever.",
-    template: "%s | EmailMagnet",
+    default: "Dentoku Dev | Product studio for focused software tools",
+    template: "%s | Dentoku Dev",
   },
   description: siteConfig.description,
   alternates: {
     canonical: siteConfig.url,
   },
   openGraph: {
-    title: "EmailMagnet | Find emails in seconds. Pay once. Use forever.",
+    title: "Dentoku Dev | Product studio for focused software tools",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EmailMagnet | Find emails in seconds. Pay once. Use forever.",
+    title: "Dentoku Dev | Product studio for focused software tools",
     description: siteConfig.description,
   },
 };
@@ -58,7 +57,6 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={buildOrganizationSchema()} />
         <JsonLd data={buildWebsiteSchema()} />
-        <JsonLd data={buildSoftwareSchema()} />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

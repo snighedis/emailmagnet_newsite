@@ -8,9 +8,9 @@ export function SiteFooter() {
         <div className="space-y-4">
           <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
             <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[#ff5c35] text-lg font-bold text-white">
-              E
+              D
             </span>
-            <span>EmailMagnet</span>
+            <span>Dentoku Dev</span>
           </Link>
           <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
           <p className="text-sm text-slate-500">Need support? {siteConfig.supportEmail}</p>

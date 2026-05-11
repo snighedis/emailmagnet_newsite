@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/content/blog";
-import { siteConfig } from "@/data/site";
+import { productPortfolio, siteConfig } from "@/data/site";
 
 const routes = [
   "",
+  "/emailmagnet",
   "/pricing",
   "/faq",
   "/contact",
@@ -18,8 +19,8 @@ const routes = [
   "/docs/responsible-use",
   "/glossary/email-extraction",
   "/compare/manual-email-copying",
-  "/use-cases/sales-prospecting",
-  "/integrations/chrome",
+  "/use-cases/emailmagnet-sales-prospecting",
+  "/integrations/emailmagnet-chrome",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -28,10 +29,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}${route}`,
     lastModified: now,
   }));
+  const productRoutes = productPortfolio
+    .filter((product) => !routes.includes(product.href))
+    .map((product) => ({
+      url: `${siteConfig.url}${product.href}`,
+      lastModified: now,
+    }));
   const blogRoutes = blogPosts.map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.updated),
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  return [...staticRoutes, ...productRoutes, ...blogRoutes];
 }
