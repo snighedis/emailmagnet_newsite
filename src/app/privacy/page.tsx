@@ -1,4 +1,6 @@
+import { JsonLd } from "@/components/marketing/json-ld";
 import { createMetadata } from "@/lib/metadata";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Privacy Policy",
@@ -9,13 +11,20 @@ export const metadata = createMetadata({
 
 export default function PrivacyPage() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-20">
-      <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">Legal</p>
-      <h1 className="mt-3 text-4xl font-semibold text-slate-950">Privacy Policy</h1>
-      <p className="mt-6 leading-8 text-slate-600">
-        Effective date: May 12, 2026. This Privacy Policy explains how Dentoku Dev handles
-        personal data when you use the EmailMagnet website, support channels, and checkout flow.
-      </p>
+    <>
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Dentoku Dev", href: "/" },
+          { name: "Privacy Policy", href: "/privacy" },
+        ])}
+      />
+      <article className="mx-auto max-w-3xl px-4 py-20">
+        <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">Legal</p>
+        <h1 className="mt-3 text-4xl font-semibold text-slate-950">Privacy Policy</h1>
+        <p className="mt-6 leading-8 text-slate-600">
+          Effective date: May 12, 2026. This Privacy Policy explains how Dentoku Dev handles
+          personal data when you use the EmailMagnet website, support channels, and checkout flow.
+        </p>
       <h2 className="mt-10 text-2xl font-semibold text-slate-950">Who controls your data</h2>
       <p className="mt-3 leading-8 text-slate-600">
         Dentoku Dev is the data controller for personal data processed through this website and
@@ -68,6 +77,7 @@ export default function PrivacyPage() {
       <p className="mt-3 leading-8 text-slate-600">
         Privacy requests and questions: support@dentokudev.com
       </p>
-    </article>
+      </article>
+    </>
   );
 }

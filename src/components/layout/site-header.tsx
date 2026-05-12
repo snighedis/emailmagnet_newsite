@@ -3,6 +3,7 @@
 import { ArrowRight, Menu, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -18,9 +19,9 @@ import {
 } from "@/components/ui/sheet";
 import { emailMagnetConfig, mainNav, productPortfolio, siteConfig } from "@/data/site";
 
-function Logo() {
+function Logo({ onClick }: { onClick?: () => void } = {}) {
   return (
-    <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
+    <Link href="/" onClick={onClick} className="flex items-center gap-2 font-semibold text-slate-950">
       <Image
         src={siteConfig.logo}
         alt="Dentoku Dev logo"
@@ -35,11 +36,12 @@ function Logo() {
 }
 
 function ProductsMenu() {
+  const [open, setOpen] = useState(false);
   const featured = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
   const upcoming = productPortfolio.filter((product) => !product.featured);
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger className="rounded-md px-2 py-2 text-sm font-medium text-slate-700 outline-none transition hover:text-slate-950 focus-visible:ring-2 focus-visible:ring-[#ff5c35]">
         Products
       </DropdownMenuTrigger>
@@ -47,6 +49,7 @@ function ProductsMenu() {
         <div className="grid gap-4 md:grid-cols-[1.1fr_1fr]">
           <Link
             href={featured.href}
+            onClick={() => setOpen(false)}
             className="rounded-xl bg-[#213343] p-5 text-white outline-none transition hover:bg-[#192938] focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
           >
             <div className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-teal-100">
@@ -80,6 +83,7 @@ function ProductsMenu() {
                 <Link
                   key={product.name}
                   href={product.href}
+                  onClick={() => setOpen(false)}
                   className="rounded-lg border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
                 >
                   <div className="flex items-center justify-between gap-3">
@@ -109,6 +113,8 @@ function ProductsMenu() {
 }
 
 export function SiteHeader() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4">
@@ -135,7 +141,7 @@ export function SiteHeader() {
             <Link href={emailMagnetConfig.href}>EmailMagnet</Link>
           </Button>
         </div>
-        <Sheet>
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
             <Button variant="outline" size="icon" aria-label="Open navigation">
               <Menu className="h-5 w-5" />
@@ -144,32 +150,45 @@ export function SiteHeader() {
           <SheetContent side="right" className="w-80">
             <SheetTitle className="sr-only">Dentoku Dev navigation</SheetTitle>
             <div className="mt-8 space-y-6 px-2">
-              <Logo />
+              <Logo onClick={() => setMobileOpen(false)} />
               <nav className="grid gap-4 text-base font-medium">
                 <div className="space-y-3">
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Products
                   </p>
                   {productPortfolio.map((product) => (
-                    <Link key={product.href} href={product.href} className="block">
+                    <Link
+                      key={product.href}
+                      href={product.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block"
+                    >
                       {product.name}
                     </Link>
                   ))}
                 </div>
                 {mainNav.map((item) => (
-                  <Link key={item.href} href={item.href}>
+                  <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
                     {item.label}
                   </Link>
                 ))}
-                <Link href={siteConfig.social.linkedin}>LinkedIn</Link>
-                <Link href={siteConfig.social.x}>X/Twitter</Link>
+                <Link href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)}>
+                  LinkedIn
+                </Link>
+                <Link href={siteConfig.social.x} onClick={() => setMobileOpen(false)}>
+                  X/Twitter
+                </Link>
               </nav>
               <div className="grid gap-3">
                 <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
-                  <Link href={emailMagnetConfig.href}>EmailMagnet</Link>
+                  <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
+                    EmailMagnet
+                  </Link>
                 </Button>
                 <Button asChild variant="outline" className="rounded-md">
-                  <Link href={siteConfig.secondaryCta.href}>Contact</Link>
+                  <Link href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)}>
+                    Contact
+                  </Link>
                 </Button>
               </div>
             </div>

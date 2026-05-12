@@ -1,9 +1,3 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import type { FaqItem } from "@/data/site";
 
 type FaqListProps = {
@@ -12,17 +6,13 @@ type FaqListProps = {
 
 export function FaqList({ items }: FaqListProps) {
   return (
-    <Accordion type="single" collapsible className="w-full">
-      {items.map((item, index) => (
-        <AccordionItem key={item.question} value={`item-${index}`}>
-          <AccordionTrigger className="text-left text-lg font-semibold text-slate-950">
-            {item.question}
-          </AccordionTrigger>
-          <AccordionContent className="text-base leading-7 text-slate-600">
-            {item.answer}
-          </AccordionContent>
-        </AccordionItem>
+    <dl className="w-full divide-y divide-slate-200">
+      {items.map((item) => (
+        <div key={item.question} className="py-6 first:pt-0 last:pb-0">
+          <dt className="text-lg font-semibold text-slate-950">{item.question}</dt>
+          <dd className="mt-3 text-base leading-7 text-slate-600">{item.answer}</dd>
+        </div>
       ))}
-    </Accordion>
+    </dl>
   );
 }

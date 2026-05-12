@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildContactPointSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildContactPointSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Contact",
@@ -19,6 +19,12 @@ export default function ContactPage() {
   return (
     <section className="bg-[#fff7f2] py-20">
       <JsonLd data={buildContactPointSchema()} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Dentoku Dev", href: "/" },
+          { name: "Contact", href: "/contact" },
+        ])}
+      />
       <div className="mx-auto max-w-4xl px-4">
         <SectionHeading
           as="h1"

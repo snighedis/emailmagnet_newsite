@@ -1,4 +1,6 @@
+import { JsonLd } from "@/components/marketing/json-ld";
 import { createMetadata } from "@/lib/metadata";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Terms of Service",
@@ -9,13 +11,20 @@ export const metadata = createMetadata({
 
 export default function TermsPage() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-20">
-      <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">Legal</p>
-      <h1 className="mt-3 text-4xl font-semibold text-slate-950">Terms of Service</h1>
-      <p className="mt-6 leading-8 text-slate-600">
-        Effective date: May 12, 2026. These Terms of Service govern your access to and use of
-        EmailMagnet and related Dentoku Dev services.
-      </p>
+    <>
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Dentoku Dev", href: "/" },
+          { name: "Terms of Service", href: "/terms" },
+        ])}
+      />
+      <article className="mx-auto max-w-3xl px-4 py-20">
+        <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">Legal</p>
+        <h1 className="mt-3 text-4xl font-semibold text-slate-950">Terms of Service</h1>
+        <p className="mt-6 leading-8 text-slate-600">
+          Effective date: May 12, 2026. These Terms of Service govern your access to and use of
+          EmailMagnet and related Dentoku Dev services.
+        </p>
       <h2 className="mt-10 text-2xl font-semibold text-slate-950">1. Eligibility and acceptance</h2>
       <p className="mt-3 leading-8 text-slate-600">
         By using EmailMagnet, you confirm that you have legal capacity to enter this agreement and
@@ -73,6 +82,7 @@ export default function TermsPage() {
       <p className="mt-3 leading-8 text-slate-600">
         Questions about these terms: support@dentokudev.com
       </p>
-    </article>
+      </article>
+    </>
   );
 }
