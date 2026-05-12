@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, Clock3 } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,7 +8,6 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import {
   companyTrustCues,
-  contentHubs,
   emailMagnetConfig,
   productPortfolio,
   siteConfig,
@@ -25,16 +25,15 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:py-28 lg:grid-cols-[1fr_0.85fr] lg:items-center">
           <div className="space-y-8">
             <Badge className="rounded-full bg-white px-4 py-2 text-[#213343] shadow-sm">
-              Product studio for focused software tools
+              Software studio by Dentoku Dev
             </Badge>
             <div className="space-y-6">
               <h1 className="max-w-4xl text-5xl font-semibold tracking-normal text-balance text-[#213343] md:text-7xl">
-                Dentoku Dev builds practical products for browser and business workflows.
+                We build focused software tools for real-world workflows.
               </h1>
               <p className="max-w-2xl text-xl leading-9 text-slate-700">
-                Dentoku Dev is a software product studio publishing Chrome extensions, Shopify apps,
-                and lightweight tools. Each product has its own clear page, support path, and
-                discoverable product identity.
+                Dentoku Dev develops Chrome extensions, Shopify apps, and lightweight productivity
+                tools designed to remove repetitive work and help teams execute faster.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -49,7 +48,7 @@ export default function Home() {
               </Button>
             </div>
             <ul className="grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
-              {["Parent company: Dentoku Dev", "Featured product: EmailMagnet", "Future-ready product pages"].map(
+              {["Built and maintained by Dentoku Dev", "Clear pricing and support", "Focused tools, no unnecessary complexity"].map(
                 (item) => (
                   <li key={item} className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-teal-600" />
@@ -61,10 +60,28 @@ export default function Home() {
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-200/80">
             <div className="rounded-xl bg-[#213343] p-6 text-white">
-              <p className="text-sm font-semibold uppercase tracking-wide text-teal-200">
-                Featured product
-              </p>
-              <h2 className="mt-4 text-4xl font-semibold">{featuredProduct.name}</h2>
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-sm font-semibold uppercase tracking-wide text-teal-200">
+                  Featured product
+                </p>
+                <Image
+                  src={emailMagnetConfig.icon}
+                  alt="EmailMagnet icon"
+                  width={48}
+                  height={48}
+                  className="h-10 w-10 rounded-lg bg-white/10 object-contain p-2"
+                />
+              </div>
+              <div className="mt-5 rounded-lg bg-white p-4">
+                <Image
+                  src={emailMagnetConfig.logo}
+                  alt="EmailMagnet logo"
+                  width={640}
+                  height={360}
+                  className="h-auto w-full"
+                  priority
+                />
+              </div>
               <p className="mt-4 leading-8 text-slate-200">{featuredProduct.description}</p>
               <Button asChild className="mt-6 rounded-md bg-white text-[#213343] hover:bg-slate-100">
                 <Link href={featuredProduct.href}>Open {featuredProduct.name}</Link>
@@ -90,8 +107,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Products"
-            title="A portfolio built around clear product entities"
-            description="Dentoku Dev separates the company homepage from product-specific pages so each tool can be explained, discovered, and cited accurately."
+            title="Products built by Dentoku Dev"
+            description="Explore our product portfolio with dedicated pages, clear positioning, and direct support."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {productPortfolio.map((product) => (
@@ -101,7 +118,16 @@ export default function Home() {
               >
                 <CardContent className="flex h-full flex-col p-6">
                   <p className="text-sm font-semibold text-[#c43618]">{product.category}</p>
-                  <h2 className="mt-3 text-2xl font-semibold text-slate-950">{product.name}</h2>
+                  <div className="mt-3 flex items-center gap-3">
+                    <Image
+                      src={product.icon}
+                      alt={`${product.name} icon`}
+                      width={48}
+                      height={48}
+                      className="h-12 w-12 rounded-xl bg-slate-50 object-contain p-3"
+                    />
+                    <h2 className="text-2xl font-semibold text-slate-950">{product.name}</h2>
+                  </div>
                   <p className="mt-3 flex-1 leading-7 text-slate-600">{product.description}</p>
                   <Button
                     asChild
@@ -109,7 +135,7 @@ export default function Home() {
                     className={product.featured ? "mt-6 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]" : "mt-6 rounded-md"}
                   >
                     <Link href={product.href}>
-                      {product.featured ? "View product page" : "View status page"}
+                      {product.featured ? "View product page" : "Open product page"}
                     </Link>
                   </Button>
                 </CardContent>
@@ -122,9 +148,9 @@ export default function Home() {
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            eyebrow="What we build"
-            title="Focused tools with direct ownership and support"
-            description="The company-level site introduces Dentoku Dev, while product routes like /emailmagnet handle conversion, product education, pricing, FAQs, and product schema."
+            eyebrow="How we work"
+            title="Small products, strong execution"
+            description="We focus on practical software with clear scope, fast iteration, and long-term maintainability."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {companyTrustCues.map((item) => (
@@ -146,19 +172,18 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.9fr_1fr]">
           <SectionHeading
             align="left"
-            eyebrow="Entity clarity"
-            title="Dentoku Dev is the company. EmailMagnet is one product."
-            description="This structure helps users, search engines, and AI answer engines distinguish parent brand, product pages, and future portfolio additions."
+            eyebrow="Featured product"
+            title="EmailMagnet by Dentoku Dev"
+            description="EmailMagnet helps teams find and extract emails while browsing, with a simple Free plan and a one-time PRO upgrade."
           />
           <div className="rounded-xl border border-slate-200 bg-[#fff7f2] p-6">
-            <h2 className="text-2xl font-semibold text-slate-950">EmailMagnet product definition</h2>
+            <h2 className="text-2xl font-semibold text-slate-950">What you can do with EmailMagnet</h2>
             <p className="mt-4 leading-8 text-slate-700">
-              EmailMagnet is a Chrome Extension made by Dentoku Dev. It helps users find and
-              extract emails from websites while browsing, with Free and PRO/lifetime access
-              options.
+              Find visible email addresses from website pages, export results in CSV or TXT, and
+              speed up prospecting or research workflows without manual copy-paste.
             </p>
             <Button asChild className="mt-6 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
-              <Link href={emailMagnetConfig.href}>Go to EmailMagnet</Link>
+              <Link href={emailMagnetConfig.href}>Explore EmailMagnet</Link>
             </Button>
           </div>
         </div>
@@ -167,47 +192,24 @@ export default function Home() {
       <section className="bg-[#f3fbfa] py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            eyebrow="Portfolio status"
-            title="Live product first, future products clearly marked"
-            description="Dentoku Dev keeps future product routes in the architecture without presenting unfinished products as launched."
+            eyebrow="More products"
+            title="Other tools in the Dentoku Dev portfolio"
+            description="Each product addresses a specific use case and ships with its own dedicated product page."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {productPortfolio
-              .filter((product) => product.status === "coming-soon")
+              .filter((product) => !product.featured)
               .map((product) => (
                 <div key={product.href} className="rounded-xl border border-teal-100 bg-white p-6">
                   <div className="flex items-center justify-between gap-4">
                     <h2 className="text-xl font-semibold text-slate-950">{product.name}</h2>
                     <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
-                      <Clock3 className="h-3 w-3" />
-                      Coming soon
+                      {product.category}
                     </span>
                   </div>
                   <p className="mt-3 leading-7 text-slate-600">{product.description}</p>
                 </div>
               ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionHeading
-            eyebrow="Content system"
-            title="Built for product education and AI discoverability"
-            description="Blog, docs, use cases, glossary, comparisons, and integrations support company-level and product-level authority."
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {contentHubs.map((hub) => (
-              <Link
-                key={hub.href}
-                href={hub.href}
-                className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-              >
-                <h2 className="text-lg font-semibold text-slate-950">{hub.title}</h2>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{hub.description}</p>
-              </Link>
-            ))}
           </div>
         </div>
       </section>
@@ -218,7 +220,7 @@ export default function Home() {
             <p className="text-sm font-semibold uppercase tracking-wide text-teal-200">Contact</p>
             <h2 className="mt-3 text-4xl font-semibold">Talk to Dentoku Dev</h2>
             <p className="mt-4 text-lg leading-8 text-slate-200">
-              Contact the studio for product support, billing questions, or future product details.
+              Contact the studio for product support, billing questions, or portfolio details.
             </p>
           </div>
           <Button asChild size="lg" className="rounded-md bg-white text-[#213343] hover:bg-slate-100">

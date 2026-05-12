@@ -1,4 +1,6 @@
-import { CheckCircle2, Download, Mail, Search, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Download, Search, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { emailMagnetConfig } from "@/data/site";
 
 export function ProductVisual() {
   const emails = ["hello@company.com", "sales@studio.dev", "contact@site.io"];
@@ -19,7 +21,7 @@ export function ProductVisual() {
             <span className="h-3 w-3 rounded-full bg-[#06d6a0]" />
             <div className="ml-3 flex h-8 flex-1 items-center gap-2 rounded-md bg-white px-3 text-xs text-slate-500">
               <Search className="h-3.5 w-3.5" />
-              example-site.com/contact
+              directory.globaltech.com/contacts
             </div>
           </div>
           <div className="grid gap-4 p-4 md:grid-cols-[1fr_240px]">
@@ -36,11 +38,23 @@ export function ProductVisual() {
             <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-semibold text-slate-950">EmailMagnet</p>
+                  <Image
+                    src={emailMagnetConfig.logo}
+                    alt="EmailMagnet logo"
+                    width={220}
+                    height={124}
+                    className="h-8 w-auto"
+                  />
                   <p className="text-xs text-slate-500">3 emails found</p>
                 </div>
                 <div className="rounded-full bg-[#ff5c35]/10 p-2 text-[#c43618]">
-                  <Mail className="h-5 w-5" />
+                  <Image
+                    src={emailMagnetConfig.icon}
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 object-contain"
+                  />
                 </div>
               </div>
               <div className="mt-4 space-y-2">

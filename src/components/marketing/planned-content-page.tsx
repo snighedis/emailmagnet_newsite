@@ -18,16 +18,17 @@ export function PlannedContentPage({ eyebrow, title, description, items }: Plann
           {title}
         </h1>
         <p className="mt-6 text-xl leading-9 text-slate-600">{description}</p>
-        <div className="mt-10 grid gap-3">
+        <h2 className="mt-10 text-2xl font-semibold text-slate-950">What this page covers</h2>
+        <div className="mt-4 grid gap-3">
           {items.map((item) => (
-            <div key={item} className="rounded-md border border-dashed border-slate-300 bg-slate-50 p-4 text-slate-700">
+            <div key={item} className="rounded-md border border-slate-200 bg-slate-50 p-4 text-slate-700">
               {item}
             </div>
           ))}
         </div>
         <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
           <Link href="/pricing">
-            View EmailMagnet pricing
+            Explore EmailMagnet pricing
             <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>

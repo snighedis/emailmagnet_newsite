@@ -1,22 +1,21 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { NewsletterSignup } from "@/components/marketing/newsletter-signup";
 import { PricingCards } from "@/components/marketing/pricing-cards";
-import { ProductVisual } from "@/components/marketing/product-visual";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { SupportBlock } from "@/components/marketing/support-block";
 import {
-  contentHubs,
   emailMagnetConfig,
   faqItems,
   heroHighlights,
   howItWorks,
   pricingPlans,
-  trustCues,
   valueProps,
 } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
@@ -41,9 +40,16 @@ export default function EmailMagnetPage() {
         ])}
       />
       <section className="overflow-hidden bg-[#fff7f2]">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:py-28 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <div className="space-y-8">
-            <Badge className="rounded-full bg-white px-4 py-2 text-[#213343] shadow-sm">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="relative z-10 max-w-2xl space-y-8">
+            <Badge className="gap-2 rounded-full bg-white px-4 py-2 text-[#213343] shadow-sm">
+              <Image
+                src={emailMagnetConfig.icon}
+                alt="EmailMagnet icon"
+                width={18}
+                height={18}
+                className="h-4.5 w-4.5 object-contain"
+              />
               A Dentoku Dev product · Chrome Extension
             </Badge>
             <div className="space-y-6">
@@ -75,18 +81,25 @@ export default function EmailMagnetPage() {
                 </li>
               ))}
             </ul>
-            <div className="inline-flex rounded-md border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm">
-              Available for Chrome workflows
-            </div>
           </div>
-          <ProductVisual />
+          <div className="relative min-w-0 lg:-mr-24">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-20 bg-gradient-to-r from-[#fff7f2] to-transparent lg:block" />
+            <Image
+              src="/brand/emailmagnet-01.png"
+              alt="EmailMagnet Chrome extension interface"
+              width={1600}
+              height={1000}
+              className="h-auto w-full"
+              priority
+            />
+          </div>
         </div>
       </section>
 
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            eyebrow="Value proposition"
+            eyebrow="Why EmailMagnet"
             title="Stop copying emails manually"
             description="EmailMagnet finds and extracts emails for you while you browse. No scraping tools. No complexity."
           />
@@ -102,6 +115,15 @@ export default function EmailMagnetPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
+            <Image
+              src="/brand/emailmagnet-02.png"
+              alt="EmailMagnet extension extracting emails from a company directory page"
+              width={2000}
+              height={1848}
+              className="h-auto w-full"
+            />
           </div>
         </div>
       </section>
@@ -146,41 +168,12 @@ export default function EmailMagnetPage() {
       <section className="bg-[#f3fbfa] py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
-            eyebrow="Trust"
-            title="Clear ownership, responsible use, and support"
-            description="EmailMagnet is presented as a Dentoku Dev product with clear support paths and practical guidance instead of unsupported claims."
+            eyebrow="Newsletter"
+            title="Stay updated on EmailMagnet"
+            description="Subscribe to receive product updates, workflow improvements, and release announcements."
           />
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_1fr]">
-            <div className="grid gap-5">
-              {trustCues.map((item) => (
-                <div key={item.title} className="rounded-xl border border-teal-100 bg-white p-6">
-                  <div className="flex gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-teal-50 text-teal-700">
-                      <item.icon className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-slate-950">{item.title}</h3>
-                      <p className="mt-2 leading-7 text-slate-600">{item.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="rounded-xl border border-teal-100 bg-white p-6">
-              <h3 className="text-xl font-semibold text-slate-950">Responsible use note</h3>
-              <p className="mt-3 leading-8 text-slate-600">
-                EmailMagnet helps extract email addresses from website content, but users remain
-                responsible for following privacy, anti-spam, and outreach laws such as GDPR and
-                CAN-SPAM where applicable.
-              </p>
-              <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {["Privacy and Terms pages", "Security overview", "Email support", "FAQ guidance"].map((item) => (
-                  <div key={item} className="rounded-md bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="mt-12">
+            <NewsletterSignup />
           </div>
         </div>
       </section>
@@ -194,28 +187,6 @@ export default function EmailMagnetPage() {
             description="Answer-first content for users, Google AI Overviews, and other answer engines."
           />
           <FaqList items={faqItems.slice(0, 6)} />
-        </div>
-      </section>
-
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionHeading
-            eyebrow="AI discoverability"
-            title="Structured for future content growth"
-            description="EmailMagnet has a content hub architecture for use cases, glossary terms, comparisons, integrations, and education."
-          />
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {contentHubs.map((hub) => (
-              <Link
-                key={hub.href}
-                href={hub.href}
-                className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-slate-950">{hub.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-600">{hub.description}</p>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 

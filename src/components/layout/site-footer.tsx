@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { footerNav, siteConfig } from "@/data/site";
 
 export function SiteFooter() {
@@ -7,13 +8,17 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div className="space-y-4">
           <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[#ff5c35] text-lg font-bold text-white">
-              D
-            </span>
+            <Image
+              src={siteConfig.logo}
+              alt="Dentoku Dev logo"
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-md object-cover"
+            />
             <span>Dentoku Dev</span>
           </Link>
           <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
-          <p className="text-sm text-slate-500">Need support? {siteConfig.supportEmail}</p>
+          <p className="text-sm text-slate-500">Support: {siteConfig.supportEmail}</p>
         </div>
         {Object.entries(footerNav).map(([label, items]) => (
           <div key={label}>
@@ -32,7 +37,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-slate-200 py-6">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <p>© Copyright 2026. All rights reserved.</p>
+          <p>© 2026 Dentoku Dev. All rights reserved.</p>
           <p>{siteConfig.companyName}, {siteConfig.location}</p>
         </div>
       </div>

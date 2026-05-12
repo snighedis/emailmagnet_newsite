@@ -11,7 +11,6 @@ const routes = [
   "/about",
   "/privacy",
   "/terms",
-  "/security",
   "/blog",
   "/docs",
   "/docs/getting-started",

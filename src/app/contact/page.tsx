@@ -11,7 +11,7 @@ import { buildContactPointSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact EmailMagnet support for product questions, billing help, and Chrome Extension support.",
+    "Contact EmailMagnet support for product questions, billing requests, and account help.",
   path: "/contact",
 });
 
@@ -23,8 +23,8 @@ export default function ContactPage() {
         <SectionHeading
           as="h1"
           eyebrow="Contact"
-          title="Email Us"
-          description="Need support? Contact EmailMagnet by email for product questions, billing help, or account support."
+          title="Talk to support"
+          description="Reach EmailMagnet support by email for product questions, billing requests, or account help."
         />
         <Card className="mt-12 rounded-xl border-slate-200 bg-white shadow-sm">
           <CardContent className="space-y-6 p-8 text-center">
@@ -33,9 +33,7 @@ export default function ContactPage() {
             </div>
             <h2 className="text-2xl font-semibold text-slate-950">Need support?</h2>
             <p className="text-lg text-slate-600">{siteConfig.supportEmail}</p>
-            <p className="text-sm text-slate-500">
-              Support details are handled by email while the product documentation expands.
-            </p>
+            <p className="text-sm text-slate-500">Typical response time is within one business day.</p>
             <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
               <Link href={`mailto:${siteConfig.supportEmail}`}>Email support</Link>
             </Button>

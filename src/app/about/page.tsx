@@ -23,8 +23,8 @@ export default function AboutPage() {
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {[
             ["What it is", "Dentoku Dev is the parent company and product studio behind focused software products including EmailMagnet."],
-            ["What we build", "The portfolio structure supports Chrome extensions, Shopify apps, and future product pages under one company brand."],
-            ["How products are organized", "Each product gets a dedicated route, metadata, schema, and content cluster so the product entity is clear."],
+            ["What we build", "The portfolio includes Chrome extensions, Shopify apps, and focused software tools under one company brand."],
+            ["How products are organized", "Each product has its own route, metadata, schema, and support path so users can understand it immediately."],
             ["Why it exists", "Dentoku Dev builds practical tools that remove friction from daily browser, business, and commerce workflows."],
           ].map(([title, copy]) => (
             <Card key={title} className="rounded-xl border-slate-200 shadow-sm">

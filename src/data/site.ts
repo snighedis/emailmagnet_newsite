@@ -49,7 +49,8 @@ export type ProductItem = {
   href: string;
   category: string;
   description: string;
-  status: "live" | "coming-soon";
+  icon: string;
+  externalUrl?: string;
   featured?: boolean;
 };
 
@@ -57,8 +58,9 @@ export const siteConfig = {
   name: "Dentoku Dev",
   companyName: "Dentoku Dev",
   url: "https://www.dentokudev.com",
+  logo: "/brand/dentoku-logo.jpg",
   description:
-    "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software products for practical business workflows.",
+    "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software for practical business workflows.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
@@ -79,22 +81,24 @@ export const emailMagnetConfig = {
   name: "EmailMagnet",
   parentBrand: "Dentoku Dev",
   href: "/emailmagnet",
+  icon: "/brand/emailmagnet-icon.png",
+  logo: "/brand/emailmagnet-logo-wide.png",
+  cover: "/brand/emailmagnet-cover.png",
   description:
-    "EmailMagnet helps users find and extract emails from websites quickly while browsing, saving time and eliminating manual copy-paste work.",
+    "EmailMagnet helps users find and extract emails from websites while browsing, so teams can move faster and skip manual copy-paste work.",
   primaryCta: {
     label: "Unlock PRO for $19",
     href: "https://buy.stripe.com/9B6eV64rk7iE64R68vgw006",
   },
   secondaryCta: {
     label: "Start for free",
-    href: "https://chromewebstore.google.com/",
+    href: "https://chromewebstore.google.com/detail/emailmagnet-email-extract/gnlnbefnecaoocmamafbnefjepbeppli",
   },
 };
 
 export const mainNav: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Security", href: "/security" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -104,29 +108,31 @@ export const productPortfolio: ProductItem[] = [
     href: "/emailmagnet",
     category: "Chrome Extension",
     description: "Chrome extension for finding and extracting emails while browsing.",
-    status: "live",
+    icon: "/brand/emailmagnet-icon.png",
     featured: true,
   },
   {
     name: "ClickPilot AI",
     href: "/clickpilot-ai",
-    category: "Coming soon",
-    description: "A Dentoku Dev product page reserved for a future AI-assisted workflow tool.",
-    status: "coming-soon",
+    category: "Chrome Extension",
+    description:
+      "AI writing assistant for Chrome with fix, rewrite, summarize, translate, and custom shortcut actions inside text fields.",
+    icon: "/brand/clickpilot-ai-icon.png",
   },
   {
     name: "Volume Control PRO",
     href: "/volume-control-pro",
-    category: "Coming soon",
-    description: "A Dentoku Dev product page reserved for a future browser productivity tool.",
-    status: "coming-soon",
+    category: "Chrome Extension",
+    description: "Audio booster for Chrome tabs with up to 600% amplification and per-site volume memory.",
+    icon: "/brand/volume-control-pro-icon.png",
   },
   {
     name: "Countdown321",
     href: "/countdown321",
-    category: "Coming soon",
-    description: "A Dentoku Dev product page reserved for a future lightweight timing tool.",
-    status: "coming-soon",
+    category: "Shopify app",
+    description: "Shopify app for countdown and time-based storefront messaging.",
+    icon: "/brand/countdown321-icon.png",
+    externalUrl: "https://apps.shopify.com/countdown321",
   },
 ];
 
@@ -137,14 +143,13 @@ export const footerNav = {
   })),
   Resources: [
     { label: "Blog", href: "/blog" },
-    { label: "Security", href: "/security" },
     { label: "Docs", href: "/docs" },
   ],
   Company: [
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "LinkedIn", href: siteConfig.social.linkedin },
-    { label: "Twitter/X", href: siteConfig.social.x },
+    { label: "X/Twitter", href: siteConfig.social.x },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
@@ -156,7 +161,7 @@ export const pricingPlans: PricingPlan[] = [
   {
     name: "Free plan",
     price: "free",
-    description: "A simple way to try EmailMagnet while browsing.",
+    description: "Start with core extraction and export tools at no cost.",
     features: [
       "200 emails per month.",
       "Export up to 100 emails at once.",
@@ -173,7 +178,7 @@ export const pricingPlans: PricingPlan[] = [
     name: "PRO plan",
     eyebrow: "Early adopter",
     price: "$19",
-    description: "Pay once - Lifetime access",
+    description: "One payment. Lifetime access.",
     features: [
       "Unlimited email extraction.",
       "Unlimited export size.",
@@ -223,21 +228,21 @@ export const faqItems: FaqItem[] = [
 
 export const valueProps: FeatureItem[] = [
   {
-    title: "Find emails while you browse",
+    title: "Capture emails while you browse",
     description:
-      "EmailMagnet detects email addresses from website content so you do not need to scan pages manually.",
+      "EmailMagnet detects email addresses directly from page content, so manual scanning is no longer part of the workflow.",
     icon: MailCheck,
   },
   {
-    title: "Export in practical formats",
+    title: "Export in formats teams already use",
     description:
-      "Save extracted emails as CSV or TXT for follow-up workflows, research lists, and outreach preparation.",
+      "Save extracted emails as CSV or TXT for follow-up, list building, and handoff to the next step.",
     icon: FileDown,
   },
   {
-    title: "Pay once for PRO",
+    title: "Upgrade once, keep PRO forever",
     description:
-      "The PRO plan uses lifetime access positioning: one $19 payment and no monthly subscription.",
+      "PRO is a one-time $19 purchase with lifetime access and no recurring subscription.",
     icon: BadgeCheck,
   },
 ];
@@ -245,17 +250,17 @@ export const valueProps: FeatureItem[] = [
 export const howItWorks = [
   {
     title: "Install the extension",
-    description: "Add EmailMagnet to Chrome and keep it available while you browse.",
+    description: "Add EmailMagnet to Chrome and keep it ready in your browser toolbar.",
     icon: Puzzle,
   },
   {
     title: "Browse any website",
-    description: "Open the pages you already research, prospect, or review.",
+    description: "Open the pages you already review for research, prospecting, or outreach.",
     icon: Globe2,
   },
   {
     title: "Extract and export",
-    description: "Collect detected emails in one click and export them instantly.",
+    description: "Collect detected emails in one click, then export instantly.",
     icon: Download,
   },
 ];
@@ -264,19 +269,19 @@ export const trustCues: FeatureItem[] = [
   {
     title: "Clear product ownership",
     description:
-      "Dentoku Dev is the parent company, and each product page explains the product relationship directly.",
+      "Dentoku Dev is the parent company, and every product page states that relationship clearly.",
     icon: ShieldCheck,
   },
   {
     title: "Chrome-first workflow",
     description:
-      "EmailMagnet is designed for users who live in the browser and need a lighter workflow than external scraping tools.",
+      "EmailMagnet is designed for teams that work inside Chrome and want a lighter alternative to complex scraping setups.",
     icon: MousePointerClick,
   },
   {
     title: "Fast extraction flow",
     description:
-      "The product focuses on turning visible website email discovery into a short, repeatable action.",
+      "The product turns visible website email discovery into a short, repeatable action.",
     icon: Zap,
   },
 ];
@@ -285,13 +290,13 @@ export const companyTrustCues: FeatureItem[] = [
   {
     title: "Focused product studio",
     description:
-      "Dentoku Dev builds small, practical software products with direct positioning and maintainable product pages.",
+      "Dentoku Dev builds practical software products with direct positioning and maintainable product pages.",
     icon: Layers3,
   },
   {
     title: "Chrome and commerce workflows",
     description:
-      "The portfolio structure supports Chrome extensions, Shopify apps, and future focused tools under one company brand.",
+      "The portfolio structure supports Chrome extensions, Shopify apps, and focused software tools under one company brand.",
     icon: Puzzle,
   },
   {
@@ -306,7 +311,7 @@ export const contentHubs = [
   {
     title: "Use cases",
     href: "/use-cases/emailmagnet-sales-prospecting",
-    description: "Workflow pages for prospecting, research, recruiting, and small-business outreach.",
+    description: "Practical workflows for prospecting, research, recruiting, and small-business outreach.",
   },
   {
     title: "Glossary",
@@ -316,7 +321,7 @@ export const contentHubs = [
   {
     title: "Comparisons",
     href: "/compare/manual-email-copying",
-    description: "Citation-friendly comparison pages for manual workflows and heavier scraping tools.",
+    description: "Clear comparison pages for manual workflows and heavier scraping tools.",
   },
   {
     title: "Integrations",
@@ -326,8 +331,8 @@ export const contentHubs = [
 ];
 
 export const heroHighlights = [
-  "Extract emails from any website in one click.",
-  "$19 lifetime - no subscription.",
+  "Extract emails from websites in one click.",
+  "$19 lifetime, no subscription.",
   "CSV and TXT export.",
 ];
 

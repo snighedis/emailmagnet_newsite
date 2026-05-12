@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: IntegrationPageProps) {
   const { integration } = await params;
   return createMetadata({
     title: `Integration: ${integration.replaceAll("-", " ")}`,
-    description: `EmailMagnet integration page for ${integration.replaceAll("-", " ")} and export workflows.`,
+    description: `EmailMagnet integration guide for ${integration.replaceAll("-", " ")} and export workflows.`,
     path: `/integrations/${integration}`,
   });
 }
@@ -21,12 +21,12 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
     <PlannedContentPage
       eyebrow="Integration"
       title={`EmailMagnet and ${label}`}
-      description={`This integration page is reserved for current and future details about EmailMagnet with ${label}.`}
+      description={`How EmailMagnet fits into ${label} workflows and export handoffs.`}
       items={[
-        "Current integration status",
-        "Setup steps",
-        "Export workflow",
-        "Related docs and FAQ links",
+        "How the integration workflow works",
+        "Setup requirements and key steps",
+        "Export handoff patterns",
+        "Related docs, FAQ, and support links",
       ]}
     />
   );

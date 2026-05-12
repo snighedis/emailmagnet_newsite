@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import { blogPosts } from "@/content/blog";
 import {
   emailMagnetConfig,
+  footerNav,
   faqItems,
   pricingPlans,
   productPortfolio,
@@ -18,8 +19,12 @@ import {
 describe("Dentoku Dev site hierarchy", () => {
   it("models Dentoku Dev as the parent company and EmailMagnet as a product", () => {
     expect(siteConfig.name).toBe("Dentoku Dev");
+    expect(siteConfig.logo).toBe("/brand/dentoku-logo.jpg");
     expect(siteConfig.description).toContain("product studio");
     expect(emailMagnetConfig.name).toBe("EmailMagnet");
+    expect(emailMagnetConfig.icon).toBe("/brand/emailmagnet-icon.png");
+    expect(emailMagnetConfig.logo).toBe("/brand/emailmagnet-logo-wide.png");
+    expect(emailMagnetConfig.cover).toBe("/brand/emailmagnet-cover.png");
     expect(emailMagnetConfig.parentBrand).toBe("Dentoku Dev");
     expect(emailMagnetConfig.href).toBe("/emailmagnet");
     expect(emailMagnetConfig.description).toContain("find and extract emails");
@@ -36,12 +41,42 @@ describe("Dentoku Dev site hierarchy", () => {
       "Countdown321",
     ]);
     expect(productPortfolio[0]).toMatchObject({
+      category: "Chrome Extension",
       featured: true,
       href: "/emailmagnet",
+      icon: "/brand/emailmagnet-icon.png",
     });
-    expect(productPortfolio.slice(1).every((product) => product.status === "coming-soon")).toBe(true);
-    expect(JSON.stringify(productPortfolio).toLowerCase()).not.toContain("placeholder");
-    expect(JSON.stringify(productPortfolio).toLowerCase()).not.toContain("to be finalized");
+    expect(productPortfolio[1]).toMatchObject({
+      category: "Chrome Extension",
+      href: "/clickpilot-ai",
+    });
+    expect(productPortfolio[2]).toMatchObject({
+      category: "Chrome Extension",
+      href: "/volume-control-pro",
+    });
+    expect(productPortfolio[3]).toMatchObject({
+      category: "Shopify app",
+      externalUrl: "https://apps.shopify.com/countdown321",
+      href: "/countdown321",
+    });
+    expect(productPortfolio.map((product) => product.icon)).toEqual([
+      "/brand/emailmagnet-icon.png",
+      "/brand/clickpilot-ai-icon.png",
+      "/brand/volume-control-pro-icon.png",
+      "/brand/countdown321-icon.png",
+    ]);
+    const portfolioCopy = JSON.stringify(productPortfolio).toLowerCase();
+    for (const forbidden of ["placeholder", "to be finalized", "coming soon", "future"]) {
+      expect(portfolioCopy).not.toContain(forbidden);
+    }
+  });
+
+  it("uses production-safe social labels", () => {
+    const footerLabels = Object.values(footerNav).flat().map((item) => item.label);
+    expect(footerLabels).toContain("X/Twitter");
+    expect(footerLabels).not.toContain("Twitter/X");
+    expect(footerLabels).not.toContain("Twitter");
+    expect(footerLabels).not.toContain("X");
   });
 
   it("models the current free and pro pricing structure without invented plans", () => {

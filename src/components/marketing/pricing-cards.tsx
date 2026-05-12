@@ -17,7 +17,7 @@ export function PricingCards({ plans }: PricingCardsProps) {
         <Card
           key={plan.name}
           className={cn(
-            "relative rounded-xl border-slate-200 bg-white shadow-sm",
+            "relative flex h-full flex-col rounded-xl border-slate-200 bg-white shadow-sm",
             plan.featured && "border-[#ff5c35] shadow-xl shadow-orange-100",
           )}
         >
@@ -38,8 +38,8 @@ export function PricingCards({ plans }: PricingCardsProps) {
             </div>
             <p className="min-h-12 text-base leading-7 text-slate-600">{plan.description}</p>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <ul className="space-y-3">
+          <CardContent className="flex flex-1 flex-col space-y-6">
+            <ul className="flex-1 space-y-3">
               {plan.features.map((feature) => (
                 <li key={feature} className="flex gap-3 text-sm leading-6 text-slate-700">
                   <Check className="mt-1 h-4 w-4 shrink-0 text-teal-600" />

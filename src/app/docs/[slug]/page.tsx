@@ -4,18 +4,30 @@ import { createMetadata } from "@/lib/metadata";
 const docs: Record<string, { title: string; description: string; body: string[] }> = {
   "getting-started": {
     title: "Getting started with EmailMagnet",
-    description: "Install EmailMagnet, browse a website, and extract emails in one click.",
-    body: ["Install the Chrome Extension.", "Open a website you need to review.", "Use EmailMagnet to detect emails and export the result."],
+    description: "Install EmailMagnet, open a page, and export results in minutes.",
+    body: [
+      "Install the EmailMagnet Chrome extension.",
+      "Open the website pages you already review.",
+      "Run extraction and export the results as CSV or TXT.",
+    ],
   },
   "exporting-emails": {
     title: "Exporting emails",
-    description: "Documentation for CSV and TXT exports in EmailMagnet.",
-    body: ["Free plan: export up to 100 emails at once.", "PRO plan: unlimited export size.", "Supported export formats: CSV and TXT."],
+    description: "Export workflows for CSV and TXT in EmailMagnet.",
+    body: [
+      "Free plan: export up to 100 emails at once.",
+      "PRO plan: unlimited export size.",
+      "Supported formats: CSV and TXT.",
+    ],
   },
   "responsible-use": {
     title: "Responsible use",
     description: "Use EmailMagnet in compliance with privacy and anti-spam rules.",
-    body: ["Respect applicable laws such as GDPR and CAN-SPAM.", "Avoid abusive outreach.", "Keep records clean and relevant."],
+    body: [
+      "Follow applicable laws such as GDPR and CAN-SPAM.",
+      "Contact people with legitimate, relevant intent.",
+      "Keep records accurate and remove outdated entries.",
+    ],
   },
 };
 

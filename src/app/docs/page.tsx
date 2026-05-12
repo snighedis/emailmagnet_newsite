@@ -11,9 +11,9 @@ export const metadata = createMetadata({
 });
 
 const docs = [
-  ["getting-started", "Getting started", "Install EmailMagnet and understand the basic extraction workflow."],
-  ["exporting-emails", "Exporting emails", "Documentation for CSV and TXT export workflows."],
-  ["responsible-use", "Responsible use", "Guidance for compliance-minded email extraction."],
+  ["getting-started", "Getting started", "Install EmailMagnet and run your first extraction workflow."],
+  ["exporting-emails", "Exporting emails", "Export clean results in CSV or TXT with confidence."],
+  ["responsible-use", "Responsible use", "Use EmailMagnet in a compliant and responsible outreach process."],
 ];
 
 export default function DocsPage() {
@@ -24,7 +24,7 @@ export default function DocsPage() {
           as="h1"
           eyebrow="Docs"
           title="EmailMagnet documentation"
-          description="A scalable documentation structure is ready for installation guides, export help, and product education."
+          description="Clear guides for setup, exports, and responsible usage."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {docs.map(([slug, title, description]) => (

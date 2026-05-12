@@ -1,6 +1,7 @@
 "use client";
 
-import { ArrowRight, Menu, Star, X } from "lucide-react";
+import { ArrowRight, Menu, Star } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,9 +21,14 @@ import { emailMagnetConfig, mainNav, productPortfolio, siteConfig } from "@/data
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
-      <span className="flex h-9 w-9 items-center justify-center rounded-md bg-[#ff5c35] text-lg font-bold text-white">
-        D
-      </span>
+      <Image
+        src={siteConfig.logo}
+        alt="Dentoku Dev logo"
+        width={36}
+        height={36}
+        className="h-9 w-9 rounded-md object-cover"
+        priority
+      />
       <span>Dentoku Dev</span>
     </Link>
   );
@@ -47,7 +53,18 @@ function ProductsMenu() {
               <Star className="h-3 w-3" />
               Featured product
             </div>
-            <h2 className="mt-4 text-2xl font-semibold">{featured.name}</h2>
+            <div className="mt-4 flex items-center gap-3">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
+                <Image
+                  src={featured.icon}
+                  alt="EmailMagnet icon"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                />
+              </span>
+              <h2 className="text-2xl font-semibold">{featured.name}</h2>
+            </div>
             <p className="mt-3 text-sm leading-6 text-slate-200">{featured.description}</p>
             <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
               View product page
@@ -60,19 +77,28 @@ function ProductsMenu() {
             </DropdownMenuLabel>
             <div className="grid gap-2">
               {upcoming.map((product) => (
-            <Link
-              key={product.name}
-              href={product.href}
+                <Link
+                  key={product.name}
+                  href={product.href}
                   className="rounded-lg border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
-            >
+                >
                   <div className="flex items-center justify-between gap-3">
-                    <span className="font-semibold text-slate-950">{product.name}</span>
+                    <div className="flex min-w-0 items-center gap-3">
+                      <Image
+                        src={product.icon}
+                        alt={`${product.name} icon`}
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 shrink-0 rounded-lg bg-slate-50 object-contain p-1.5"
+                      />
+                      <span className="font-semibold text-slate-950">{product.name}</span>
+                    </div>
                     <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600">
-                      Coming soon
+                      {product.category}
                     </span>
                   </div>
                   <p className="mt-1 text-sm leading-6 text-slate-600">{product.description}</p>
-            </Link>
+                </Link>
               ))}
             </div>
           </div>
@@ -97,8 +123,8 @@ export function SiteHeader() {
           <Link href={siteConfig.social.linkedin} className="hover:text-slate-950">
             LinkedIn
           </Link>
-          <Link href={siteConfig.social.x} aria-label="Dentoku Dev on X">
-            <X className="h-4 w-4" />
+          <Link href={siteConfig.social.x} className="hover:text-slate-950">
+            X/Twitter
           </Link>
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
@@ -136,7 +162,7 @@ export function SiteHeader() {
                   </Link>
                 ))}
                 <Link href={siteConfig.social.linkedin}>LinkedIn</Link>
-                <Link href={siteConfig.social.x}>Twitter/X</Link>
+                <Link href={siteConfig.social.x}>X/Twitter</Link>
               </nav>
               <div className="grid gap-3">
                 <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">

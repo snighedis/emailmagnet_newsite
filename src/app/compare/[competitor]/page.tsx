@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: ComparePageProps) {
   const { competitor } = await params;
   return createMetadata({
     title: `EmailMagnet vs ${competitor.replaceAll("-", " ")}`,
-    description: `Comparison page for EmailMagnet and ${competitor.replaceAll("-", " ")} with factual, citation-friendly sections.`,
+    description: `Practical comparison of EmailMagnet and ${competitor.replaceAll("-", " ")} for workflow fit, effort, and export outcomes.`,
     path: `/compare/${competitor}`,
   });
 }
@@ -21,12 +21,12 @@ export default async function ComparePage({ params }: ComparePageProps) {
     <PlannedContentPage
       eyebrow="Comparison"
       title={`EmailMagnet vs ${label}`}
-      description="This comparison page is structured for factual content without unsupported claims about competitors."
+      description="A clear side-by-side view focused on workflow fit, output quality, and operational effort."
       items={[
-        "What EmailMagnet does",
-        `What ${label} represents`,
-        "Best-fit workflow comparison",
-        "Pricing and export differences",
+        "What EmailMagnet does best",
+        `Where ${label} is commonly used`,
+        "Workflow speed and setup complexity",
+        "Pricing model and export differences",
       ]}
     />
   );

@@ -17,9 +17,7 @@ export function SupportBlock() {
             Contact EmailMagnet support for product questions, billing help, or documentation
             requests.
           </p>
-          <p className="text-base text-slate-300">
-            Support details are handled by email while the product documentation expands.
-          </p>
+          <p className="text-base text-slate-300">Typical response time is within one business day.</p>
         </div>
         <Button asChild size="lg" className="rounded-md bg-white text-[#213343] hover:bg-slate-100">
           <Link href={`mailto:${siteConfig.supportEmail}`}>

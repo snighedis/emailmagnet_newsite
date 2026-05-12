@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: UseCasePageProps) {
   const useCase = resolved["use-case"];
   return createMetadata({
     title: `Use case: ${useCase.replaceAll("-", " ")}`,
-    description: `EmailMagnet use case page for ${useCase.replaceAll("-", " ")} workflows.`,
+    description: `Practical EmailMagnet workflow for ${useCase.replaceAll("-", " ")} use cases.`,
     path: `/use-cases/${useCase}`,
   });
 }
@@ -22,12 +22,12 @@ export default async function UseCasePage({ params }: UseCasePageProps) {
     <PlannedContentPage
       eyebrow="Use case"
       title={`Email extraction for ${label}`}
-      description={`This use-case page is ready for a practical EmailMagnet workflow focused on ${label}.`}
+      description={`A practical EmailMagnet workflow for teams focused on ${label}.`}
       items={[
-        "Who this workflow is for",
-        "Step-by-step process",
-        "Recommended Free vs PRO plan",
-        "Responsible outreach reminder",
+        "Who this workflow is designed for",
+        "Step-by-step process from browsing to export",
+        "Free and PRO fit by workload level",
+        "Responsible outreach and compliance checklist",
       ]}
     />
   );

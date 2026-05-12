@@ -43,7 +43,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <article className="bg-white py-20">
+    <article className="bg-white py-16 md:py-24">
       <JsonLd data={buildArticleSchema(post)} />
       <JsonLd
         data={buildBreadcrumbSchema([
@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className="mt-5 text-sm font-medium text-slate-500">
           {post.author} · {post.readingTime} · Published {post.date} · Last updated {post.updated}
         </p>
-        <div className="prose prose-slate mt-12 max-w-none prose-headings:tracking-normal prose-a:text-[#c43618] prose-li:marker:text-[#ff5c35]">
+        <div className="blog-article mt-14">
           <MDXRemote source={post.body} />
         </div>
       </div>
