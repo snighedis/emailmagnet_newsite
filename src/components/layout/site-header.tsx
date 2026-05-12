@@ -3,7 +3,7 @@
 import { ArrowRight, Menu, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -37,19 +37,35 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
 
 function ProductsMenu() {
   const [open, setOpen] = useState(false);
+  const skipReturnFocusRef = useRef(false);
   const featured = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
   const upcoming = productPortfolio.filter((product) => !product.featured);
+  const closeAfterNavigation = () => {
+    skipReturnFocusRef.current = true;
+    setOpen(false);
+  };
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger className="rounded-md px-2 py-2 text-sm font-medium text-slate-700 outline-none transition hover:text-slate-950 focus-visible:ring-2 focus-visible:ring-[#ff5c35]">
         Products
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-[680px] rounded-xl border-slate-200 p-4 shadow-xl">
+      <DropdownMenuContent
+        align="start"
+        onCloseAutoFocus={(event) => {
+          if (!skipReturnFocusRef.current) {
+            return;
+          }
+
+          event.preventDefault();
+          skipReturnFocusRef.current = false;
+        }}
+        className="w-[680px] rounded-xl border-slate-200 p-4 shadow-xl"
+      >
         <div className="grid gap-4 md:grid-cols-[1.1fr_1fr]">
           <Link
             href={featured.href}
-            onClick={() => setOpen(false)}
+            onClick={closeAfterNavigation}
             className="rounded-xl bg-[#213343] p-5 text-white outline-none transition hover:bg-[#192938] focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
           >
             <div className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-teal-100">
@@ -83,7 +99,7 @@ function ProductsMenu() {
                 <Link
                   key={product.name}
                   href={product.href}
-                  onClick={() => setOpen(false)}
+                  onClick={closeAfterNavigation}
                   className="rounded-lg border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
                 >
                   <div className="flex items-center justify-between gap-3">
