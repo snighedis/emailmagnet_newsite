@@ -5,7 +5,7 @@ import { footerNav, siteConfig } from "@/data/site";
 export function SiteFooter() {
   return (
     <footer className="border-t border-slate-200 bg-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-[1.4fr_repeat(4,1fr)]">
         <div className="space-y-4">
           <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
             <Image
@@ -18,7 +18,12 @@ export function SiteFooter() {
             <span>Dentoku Dev</span>
           </Link>
           <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
-          <p className="text-sm text-slate-500">Support: {siteConfig.supportEmail}</p>
+          <p className="text-sm text-slate-500">
+            Support:{" "}
+            <Link href={`mailto:${siteConfig.supportEmail}`} className="hover:text-slate-950">
+              {siteConfig.supportEmail}
+            </Link>
+          </p>
         </div>
         {Object.entries(footerNav).map(([label, items]) => (
           <div key={label}>
@@ -36,8 +41,8 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="border-t border-slate-200 py-6">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 Dentoku Dev. All rights reserved.</p>
+        <div className="mx-auto grid max-w-7xl gap-2 px-4 text-sm text-slate-500 md:grid-cols-[1.4fr_repeat(4,1fr)]">
+          <p className="md:col-span-4">© 2026 Dentoku Dev. All rights reserved.</p>
           <p>{siteConfig.companyName}, {siteConfig.location}</p>
         </div>
       </div>

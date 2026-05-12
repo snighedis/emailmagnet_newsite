@@ -8,19 +8,19 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import {
   companyTrustCues,
+  dentokuFrameworks,
   emailMagnetConfig,
   productPortfolio,
   siteConfig,
 } from "@/data/site";
-import { buildOrganizationSchema, buildWebsiteSchema } from "@/lib/schema";
+import { buildItemListSchema } from "@/lib/schema";
 
 export default function Home() {
   const featuredProduct = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
 
   return (
     <>
-      <JsonLd data={buildOrganizationSchema()} />
-      <JsonLd data={buildWebsiteSchema()} />
+      <JsonLd data={buildItemListSchema("Dentoku Dev software products", productPortfolio)} />
       <section className="overflow-hidden bg-[#fff7f2]">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:py-28 lg:grid-cols-[1fr_0.85fr] lg:items-center">
           <div className="space-y-8">
@@ -29,11 +29,12 @@ export default function Home() {
             </Badge>
             <div className="space-y-6">
               <h1 className="max-w-4xl text-5xl font-semibold tracking-normal text-balance text-[#213343] md:text-7xl">
-                We build focused software tools for real-world workflows.
+                Dentoku Dev builds Chrome extensions, Shopify apps, and lightweight productivity software.
               </h1>
               <p className="max-w-2xl text-xl leading-9 text-slate-700">
-                Dentoku Dev develops Chrome extensions, Shopify apps, and lightweight productivity
-                tools designed to remove repetitive work and help teams execute faster.
+                Dentoku Dev is a software development studio behind EmailMagnet, ClickPilot AI,
+                Volume Control PRO, and Countdown321. We build focused tools for browser,
+                ecommerce, and business productivity workflows.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -48,7 +49,7 @@ export default function Home() {
               </Button>
             </div>
             <ul className="grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
-              {["Built and maintained by Dentoku Dev", "Clear pricing and support", "Focused tools, no unnecessary complexity"].map(
+              {["Chrome extensions", "Shopify apps", "Focused business utilities"].map(
                 (item) => (
                   <li key={item} className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-teal-600" />
@@ -142,6 +143,31 @@ export default function Home() {
               </Card>
             ))}
           </div>
+          <div className="mt-12 overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-left text-sm">
+              <caption className="sr-only">Dentoku Dev product portfolio</caption>
+              <thead className="bg-slate-50 text-slate-950">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Product</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Category</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Primary use case</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 bg-white text-slate-700">
+                {productPortfolio.map((product) => (
+                  <tr key={product.href}>
+                    <th scope="row" className="px-4 py-4 font-semibold text-slate-950">
+                      <Link className="hover:text-[#c43618]" href={product.href}>
+                        {product.name}
+                      </Link>
+                    </th>
+                    <td className="px-4 py-4">{product.category}</td>
+                    <td className="px-4 py-4">{product.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -185,6 +211,33 @@ export default function Home() {
             <Button asChild className="mt-6 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
               <Link href={emailMagnetConfig.href}>Explore EmailMagnet</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <SectionHeading
+            eyebrow="Methodology"
+            title="How Dentoku Dev turns repeated workflows into software products"
+            description="These internal frameworks make each product easier to explain, document, and connect to a specific user intent."
+          />
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {dentokuFrameworks.map((framework) => (
+              <Card key={framework.name} className="rounded-xl border-slate-200 bg-white shadow-sm">
+                <CardContent className="p-6">
+                  <h2 className="text-2xl font-semibold text-slate-950">{framework.name}</h2>
+                  <p className="mt-3 leading-7 text-slate-600">{framework.description}</p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {framework.steps.map((step) => (
+                      <li key={step} className="rounded-full bg-teal-50 px-3 py-1 text-sm font-medium text-teal-800">
+                        {step}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

@@ -290,7 +290,7 @@ export const companyTrustCues: FeatureItem[] = [
   {
     title: "Focused product studio",
     description:
-      "Dentoku Dev builds practical software products with direct positioning and maintainable product pages.",
+      "Dentoku Dev builds practical software products for browser, commerce, and productivity workflows.",
     icon: Layers3,
   },
   {
@@ -300,10 +300,37 @@ export const companyTrustCues: FeatureItem[] = [
     icon: Puzzle,
   },
   {
-    title: "SEO-ready product entities",
+    title: "Clear product pages",
     description:
-      "Each product gets a dedicated route, metadata, internal links, and schema so humans and answer engines can understand it.",
+      "Each product gets a dedicated page with direct positioning, support paths, and practical documentation.",
     icon: Globe2,
+  },
+];
+
+export const dentokuFrameworks = [
+  {
+    name: "Focused Tool Method",
+    description:
+      "Dentoku Dev builds small, clear software products around one painful workflow before expanding features.",
+    steps: ["Define the repeated task", "Ship the shortest useful workflow", "Document the product entity"],
+  },
+  {
+    name: "BROWSE Framework",
+    description:
+      "EmailMagnet turns browser-based email discovery into a repeatable extraction workflow.",
+    steps: ["Browse", "Recognize", "Organize", "Work the list", "Save", "Export"],
+  },
+  {
+    name: "CLEAR Contact Workflow",
+    description:
+      "A responsible-use checklist for turning extracted contacts into qualified outreach lists.",
+    steps: ["Context", "Lawful purpose", "Evaluate", "Audit trail", "Respect opt-outs"],
+  },
+  {
+    name: "TIMER Framework",
+    description:
+      "Countdown321 helps Shopify stores structure urgency messages around a clear campaign moment.",
+    steps: ["Timing", "Incentive", "Message", "Event", "Result"],
   },
 ];
 

@@ -2,7 +2,11 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { FaqList } from "@/components/marketing/faq-list";
+import { JsonLd } from "@/components/marketing/json-ld";
+import { productPortfolio } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
+import { buildBreadcrumbSchema, buildFaqSchema, buildProductSoftwareSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Volume Control PRO",
@@ -12,6 +16,24 @@ export const metadata = createMetadata({
 });
 
 export default function VolumeControlProPage() {
+  const product = productPortfolio.find((item) => item.name === "Volume Control PRO")!;
+  const faqs = [
+    {
+      question: "What is Volume Control PRO?",
+      answer:
+        "Volume Control PRO is a Dentoku Dev Chrome extension for boosting tab audio, adjusting low-volume browser content, and remembering volume settings by site.",
+    },
+    {
+      question: "What does 600% volume boost mean?",
+      answer:
+        "The product is positioned as a Chrome tab volume amplifier that can raise quiet browser audio above the default level, up to the limit described in the Chrome Web Store listing.",
+    },
+    {
+      question: "Who should use Volume Control PRO?",
+      answer:
+        "Volume Control PRO is useful for people who watch low-volume videos, attend browser-based calls, listen to webinars, or switch between sites with inconsistent audio levels.",
+    },
+  ];
   const keyFeatures = [
     "Boost tab volume up to 600% for quiet videos, meetings, and streams.",
     "One-click audio amplification directly from the extension popup.",
@@ -44,6 +66,14 @@ export default function VolumeControlProPage() {
 
   return (
     <>
+      <JsonLd data={buildProductSoftwareSchema(product)} />
+      <JsonLd data={buildFaqSchema(faqs)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Dentoku Dev", href: "/" },
+          { name: "Volume Control PRO", href: "/volume-control-pro" },
+        ])}
+      />
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-4">
           <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">
@@ -53,9 +83,17 @@ export default function VolumeControlProPage() {
             Volume Control PRO
           </h1>
           <p className="mt-6 max-w-4xl text-xl leading-9 text-slate-600">
-            Audio booster and volume amplifier for Chrome tabs. Volume Control PRO helps you fix
-            low sound quickly across videos, calls, and streaming pages.
+            Volume Control PRO is a Chrome extension by Dentoku Dev for boosting tab audio up to
+            600%, adjusting quiet browser content, and remembering volume preferences by site.
           </p>
+          <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
+            <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>
+            <p className="mt-2 leading-7 text-slate-700">
+              Use Volume Control PRO when the search intent is “Chrome volume booster,” “increase
+              tab volume,” or “volume amplifier for Chrome.” It focuses on faster audio control
+              without changing system-wide settings.
+            </p>
+          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
               <Link href="https://chromewebstore.google.com/detail/volume-control-pro-600%-s/bjjpdehblihhfdfcoonadnnfmkblmogf">
@@ -98,6 +136,26 @@ export default function VolumeControlProPage() {
               </CardContent>
             </Card>
           </div>
+          <div className="mt-12 overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-50 text-slate-950">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Use case</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Problem</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Volume Control PRO fit</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-700">
+                {useCases.map((item) => (
+                  <tr key={item}>
+                    <td className="px-4 py-4">{item}</td>
+                    <td className="px-4 py-4">Browser audio is too quiet or inconsistent.</td>
+                    <td className="px-4 py-4">Boost the active tab and keep site-specific control.</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -120,6 +178,16 @@ export default function VolumeControlProPage() {
           <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
             <Link href="/">Back to Dentoku Dev</Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">FAQ</p>
+            <h2 className="mt-3 text-3xl font-semibold text-slate-950">Volume Control PRO FAQ</h2>
+          </div>
+          <FaqList items={faqs} />
         </div>
       </section>
     </>

@@ -40,8 +40,8 @@ export default function EmailMagnetPage() {
         ])}
       />
       <section className="overflow-hidden bg-[#fff7f2]">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="relative z-10 max-w-2xl space-y-8">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-28 lg:grid-cols-1">
+          <div className="relative z-10 order-1 max-w-2xl space-y-8 lg:mx-auto lg:max-w-4xl">
             <Badge className="gap-2 rounded-full bg-white px-4 py-2 text-[#213343] shadow-sm">
               <Image
                 src={emailMagnetConfig.icon}
@@ -54,12 +54,19 @@ export default function EmailMagnetPage() {
             </Badge>
             <div className="space-y-6">
               <h1 className="max-w-4xl text-5xl font-semibold tracking-normal text-balance text-[#213343] md:text-7xl">
-                Find emails in seconds. Pay once. Use forever.
+                EmailMagnet is a Chrome email extractor for finding emails while browsing.
               </h1>
               <p className="max-w-2xl text-xl leading-9 text-slate-700">
                 EmailMagnet is made by Dentoku Dev. It helps users extract emails from websites in
                 one click, save time, skip manual work, and export instantly. $19 lifetime - no
                 subscription.
+              </p>
+            </div>
+            <div className="rounded-xl border border-teal-100 bg-white/80 p-5">
+              <h2 className="text-lg font-semibold text-[#213343]">Quick answer</h2>
+              <p className="mt-2 leading-7 text-slate-700">
+                Use EmailMagnet when you need a browser-based email extractor that detects visible
+                website emails, supports CSV and TXT export, and avoids a monthly subscription.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -82,13 +89,12 @@ export default function EmailMagnetPage() {
               ))}
             </ul>
           </div>
-          <div className="relative min-w-0 lg:-mr-24">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-20 bg-gradient-to-r from-[#fff7f2] to-transparent lg:block" />
+          <div className="relative order-2 min-w-0 lg:-mx-16 xl:-mx-28">
             <Image
-              src="/brand/emailmagnet-01.png"
+              src="/brand/emailmagnet-hero-new.png"
               alt="EmailMagnet Chrome extension interface"
-              width={1600}
-              height={1000}
+              width={1210}
+              height={757}
               className="h-auto w-full"
               priority
             />
@@ -118,10 +124,10 @@ export default function EmailMagnetPage() {
           </div>
           <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
             <Image
-              src="/brand/emailmagnet-02.png"
+              src="/brand/emailmagnet-directory-showcase.png"
               alt="EmailMagnet extension extracting emails from a company directory page"
-              width={2000}
-              height={1848}
+              width={1254}
+              height={1254}
               className="h-auto w-full"
             />
           </div>
@@ -162,6 +168,71 @@ export default function EmailMagnetPage() {
           <div className="mt-12">
             <PricingCards plans={pricingPlans} />
           </div>
+          <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <table className="w-full text-left text-sm">
+              <caption className="sr-only">EmailMagnet Free vs PRO comparison</caption>
+              <thead className="bg-slate-50 text-slate-950">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Feature</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Free</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">PRO</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td className="px-4 py-4 font-medium text-slate-950">Monthly extraction</td>
+                  <td className="px-4 py-4">200 emails per month</td>
+                  <td className="px-4 py-4">Unlimited email extraction</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4 font-medium text-slate-950">Export size</td>
+                  <td className="px-4 py-4">Up to 100 emails at once</td>
+                  <td className="px-4 py-4">Unlimited export size</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4 font-medium text-slate-950">Formats</td>
+                  <td className="px-4 py-4">CSV and TXT</td>
+                  <td className="px-4 py-4">CSV and TXT</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4 font-medium text-slate-950">Advanced workflow</td>
+                  <td className="px-4 py-4">Basic extraction</td>
+                  <td className="px-4 py-4">Autosave, bulk extraction, faster processing</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4 font-medium text-slate-950">Price</td>
+                  <td className="px-4 py-4">Free</td>
+                  <td className="px-4 py-4">$19 lifetime</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-5xl px-4">
+          <SectionHeading
+            eyebrow="Walkthrough"
+            title="How EmailMagnet works in one browser session"
+            description="A short walkthrough-style summary for users who want to understand the product before installing it."
+          />
+          <div className="mt-10 rounded-xl border border-slate-200 bg-white p-6">
+            <h2 className="text-2xl font-semibold text-slate-950">Transcript summary</h2>
+            <p className="mt-4 leading-8 text-slate-600">
+              EmailMagnet is a Chrome extension that extracts emails from websites while you
+              browse. Install the extension, open a public page with contact information, run
+              extraction, review the detected emails, and export the final list as CSV or TXT.
+              Free is best for light usage. PRO is best for recurring extraction, autosave, bulk
+              workflows, and unlimited exports.
+            </p>
+            <ol className="mt-6 list-decimal space-y-2 pl-5 text-slate-700">
+              <li>Install EmailMagnet from the Chrome Web Store.</li>
+              <li>Open a website page with relevant public contact information.</li>
+              <li>Extract detected emails and review the list.</li>
+              <li>Export as CSV or TXT for qualification and follow-up.</li>
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -184,7 +255,7 @@ export default function EmailMagnetPage() {
             align="left"
             eyebrow="FAQ"
             title="Frequently asked questions"
-            description="Answer-first content for users, Google AI Overviews, and other answer engines."
+            description="Direct answers about EmailMagnet, pricing, exports, and responsible use."
           />
           <FaqList items={faqItems.slice(0, 6)} />
         </div>

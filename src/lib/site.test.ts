@@ -12,8 +12,12 @@ import {
 import {
   buildArticleSchema,
   buildFaqSchema,
+  buildHowToSchema,
+  buildItemListSchema,
   buildOrganizationSchema,
+  buildProductSoftwareSchema,
   buildSoftwareSchema,
+  buildVideoSchema,
 } from "@/lib/schema";
 
 describe("Dentoku Dev site hierarchy", () => {
@@ -122,6 +126,49 @@ describe("Dentoku Dev structured data", () => {
           name: "How does EmailMagnet work?",
         }),
       ]),
+    });
+  });
+
+  it("generates product, list, how-to, and video schemas for AEO pages", () => {
+    expect(buildProductSoftwareSchema(productPortfolio[1])).toMatchObject({
+      "@type": "SoftwareApplication",
+      name: "ClickPilot AI",
+      operatingSystem: "Chrome",
+      publisher: expect.objectContaining({ name: "Dentoku Dev" }),
+    });
+
+    expect(buildItemListSchema("Dentoku Dev products", productPortfolio)).toMatchObject({
+      "@type": "ItemList",
+      itemListElement: expect.arrayContaining([
+        expect.objectContaining({ name: "EmailMagnet", position: 1 }),
+      ]),
+    });
+
+    expect(
+      buildHowToSchema({
+        name: "How to extract emails with EmailMagnet",
+        description: "Install, browse, extract, and export.",
+        path: "/docs/getting-started",
+        steps: ["Install EmailMagnet", "Open a website", "Export results"],
+      }),
+    ).toMatchObject({
+      "@type": "HowTo",
+      step: expect.arrayContaining([
+        expect.objectContaining({ "@type": "HowToStep", position: 1 }),
+      ]),
+    });
+
+    expect(
+      buildVideoSchema({
+        name: "EmailMagnet demo",
+        description: "Demo video.",
+        thumbnailUrl: "/brand/emailmagnet-01.png",
+        uploadDate: "2026-05-12",
+        embedUrl: "https://www.youtube.com/embed/example",
+      }),
+    ).toMatchObject({
+      "@type": "VideoObject",
+      publisher: expect.objectContaining({ name: "Dentoku Dev" }),
     });
   });
 

@@ -2,7 +2,11 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { JsonLd } from "@/components/marketing/json-ld";
+import { FaqList } from "@/components/marketing/faq-list";
+import { productPortfolio } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
+import { buildBreadcrumbSchema, buildFaqSchema, buildProductSoftwareSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "ClickPilot AI",
@@ -12,6 +16,24 @@ export const metadata = createMetadata({
 });
 
 export default function ClickPilotAiPage() {
+  const product = productPortfolio.find((item) => item.name === "ClickPilot AI")!;
+  const faqs = [
+    {
+      question: "What is ClickPilot AI?",
+      answer:
+        "ClickPilot AI is a Chrome extension by Dentoku Dev that helps users fix, rewrite, summarize, translate, and transform text directly inside browser fields.",
+    },
+    {
+      question: "Where does ClickPilot AI work best?",
+      answer:
+        "ClickPilot AI works best in browser-based writing workflows such as email, social posts, support replies, internal notes, and web editors where switching tabs slows the user down.",
+    },
+    {
+      question: "Is ClickPilot AI a Chrome extension?",
+      answer:
+        "Yes. ClickPilot AI is positioned as a Chrome extension for AI-assisted writing directly inside browser workflows.",
+    },
+  ];
   const capabilities = [
     "Fix grammar and clarity directly inside website text fields.",
     "Rewrite selected text in different tones and structures.",
@@ -44,6 +66,14 @@ export default function ClickPilotAiPage() {
 
   return (
     <>
+      <JsonLd data={buildProductSoftwareSchema(product)} />
+      <JsonLd data={buildFaqSchema(faqs)} />
+      <JsonLd
+        data={buildBreadcrumbSchema([
+          { name: "Dentoku Dev", href: "/" },
+          { name: "ClickPilot AI", href: "/clickpilot-ai" },
+        ])}
+      />
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-4">
           <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">
@@ -53,9 +83,18 @@ export default function ClickPilotAiPage() {
             ClickPilot AI
           </h1>
           <p className="mt-6 max-w-4xl text-xl leading-9 text-slate-600">
-            AI writing assistant for Chrome that works directly where you type. ClickPilot AI helps
-            you fix, rewrite, summarize, and translate text without copy-paste or tab switching.
+            ClickPilot AI is a Chrome extension by Dentoku Dev for AI-assisted writing inside
+            browser text fields. It helps users fix, rewrite, summarize, translate, and run custom
+            shortcuts without copy-paste or tab switching.
           </p>
+          <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
+            <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>
+            <p className="mt-2 leading-7 text-slate-700">
+              Use ClickPilot AI when the search intent is “AI writing assistant Chrome extension”
+              or “rewrite text inside browser fields.” The product connects AI text actions to the
+              web apps where writing already happens.
+            </p>
+          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
@@ -98,6 +137,34 @@ export default function ClickPilotAiPage() {
               </CardContent>
             </Card>
           </div>
+          <div className="mt-12 overflow-hidden rounded-xl border border-slate-200">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-50 text-slate-950">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Intent</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">ClickPilot AI action</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Best-fit workflow</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td className="px-4 py-4">Improve rough text</td>
+                  <td className="px-4 py-4">Fix and rewrite</td>
+                  <td className="px-4 py-4">Emails, replies, posts, and notes</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4">Understand long text</td>
+                  <td className="px-4 py-4">Summarize</td>
+                  <td className="px-4 py-4">Research, support, and review workflows</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4">Move across languages</td>
+                  <td className="px-4 py-4">Translate</td>
+                  <td className="px-4 py-4">International browser-based writing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
@@ -120,6 +187,16 @@ export default function ClickPilotAiPage() {
           <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
             <Link href="/">Back to Dentoku Dev</Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="bg-white py-20">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">FAQ</p>
+            <h2 className="mt-3 text-3xl font-semibold text-slate-950">ClickPilot AI FAQ</h2>
+          </div>
+          <FaqList items={faqs} />
         </div>
       </section>
     </>

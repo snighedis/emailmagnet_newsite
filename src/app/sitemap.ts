@@ -20,6 +20,13 @@ const routes = [
   "/compare/manual-email-copying",
   "/use-cases/emailmagnet-sales-prospecting",
   "/integrations/emailmagnet-chrome",
+  "/emailmagnet/chrome-email-extractor",
+  "/emailmagnet/free-email-extractor",
+  "/emailmagnet/email-extractor-vs-scraper",
+  "/clickpilot-ai/ai-writing-assistant-chrome-extension",
+  "/volume-control-pro/chrome-volume-booster-600",
+  "/countdown321/shopify-countdown-timer-app",
+  "/countdown321/shopify-urgency-app",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
