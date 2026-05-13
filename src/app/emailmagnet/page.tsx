@@ -93,8 +93,8 @@ export default function EmailMagnetPage() {
             <Image
               src="/brand/emailmagnet-hero-new.png"
               alt="EmailMagnet Chrome extension interface"
-              width={1586}
-              height={992}
+              width={1361}
+              height={852}
               className="h-auto w-full"
               priority
             />

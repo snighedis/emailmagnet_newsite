@@ -29,7 +29,7 @@ Dentoku Dev is a software development studio based in Milan, Italy. It builds fo
 ## FAQ and help
 - FAQ: https://www.dentokudev.com/faq
 - Pricing: https://www.dentokudev.com/pricing
-- AI / Help / Overview alias: https://www.dentokudev.com/ai-help-overview redirects to https://www.dentokudev.com/overview
+- AI-readable overview: https://www.dentokudev.com/overview
 - Responsible email extraction guide: https://www.dentokudev.com/docs/responsible-use
 - Chrome email extractor page: https://www.dentokudev.com/emailmagnet/chrome-email-extractor
 
