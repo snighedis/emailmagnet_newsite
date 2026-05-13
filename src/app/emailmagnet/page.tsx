@@ -257,7 +257,34 @@ export default function EmailMagnetPage() {
             title="Frequently asked questions"
             description="Direct answers about EmailMagnet, pricing, exports, and responsible use."
           />
-          <FaqList items={faqItems.slice(0, 6)} />
+          <div className="space-y-6">
+            <FaqList items={faqItems.slice(0, 6)} />
+            <nav aria-label="EmailMagnet related help pages" className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+              <h2 className="text-lg font-semibold text-slate-950">Related help pages</h2>
+              <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/getting-started">
+                    Install and use EmailMagnet
+                  </Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/exporting-emails">
+                    Export emails as CSV or TXT
+                  </Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/pricing">
+                    Compare Free and PRO pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/overview">
+                    Dentoku Dev product overview
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </section>
 

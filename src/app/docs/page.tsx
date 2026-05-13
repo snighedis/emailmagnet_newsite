@@ -86,6 +86,20 @@ export default function DocsPage() {
             <li>Read exporting emails before moving contacts into another tool.</li>
             <li>Review responsible use before outreach, recruiting, or sales follow-up.</li>
           </ol>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
+            <Link className="text-[#c43618] hover:underline" href="/emailmagnet">
+              EmailMagnet product page
+            </Link>
+            <Link className="text-[#c43618] hover:underline" href="/faq">
+              EmailMagnet FAQ
+            </Link>
+            <Link className="text-[#c43618] hover:underline" href="/pricing">
+              EmailMagnet pricing
+            </Link>
+            <Link className="text-[#c43618] hover:underline" href="/contact">
+              Contact support
+            </Link>
+          </div>
         </section>
       </div>
     </section>

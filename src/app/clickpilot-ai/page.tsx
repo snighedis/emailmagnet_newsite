@@ -187,6 +187,31 @@ export default function ClickPilotAiPage() {
           <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
             <Link href="/">Back to Dentoku Dev</Link>
           </Button>
+          <nav aria-label="ClickPilot AI related Dentoku Dev pages" className="mt-10 rounded-xl border border-slate-200 bg-white p-5">
+            <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
+            <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+              <li>
+                <Link className="font-medium text-[#c43618] hover:underline" href="/overview">
+                  Dentoku Dev product overview
+                </Link>
+              </li>
+              <li>
+                <Link className="font-medium text-[#c43618] hover:underline" href="/faq">
+                  EmailMagnet and Dentoku Dev FAQ
+                </Link>
+              </li>
+              <li>
+                <Link className="font-medium text-[#c43618] hover:underline" href="/blog">
+                  Browser productivity articles
+                </Link>
+              </li>
+              <li>
+                <Link className="font-medium text-[#c43618] hover:underline" href="/contact">
+                  Contact Dentoku Dev support
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </section>
 

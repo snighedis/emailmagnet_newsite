@@ -10,6 +10,7 @@ type MetadataInput = {
 export function createMetadata({ title, description, path = "/" }: MetadataInput): Metadata {
   const canonical = new URL(path, siteConfig.url).toString();
   const fullTitle = title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`;
+  const image = new URL(siteConfig.socialImage, siteConfig.url).toString();
 
   return {
     title,
@@ -23,11 +24,20 @@ export function createMetadata({ title, description, path = "/" }: MetadataInput
       url: canonical,
       siteName: siteConfig.name,
       type: "website",
+      images: [
+        {
+          url: image,
+          width: 1920,
+          height: 1080,
+          alt: "Dentoku Dev and EmailMagnet product preview",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
+      images: [image],
     },
   };
 }

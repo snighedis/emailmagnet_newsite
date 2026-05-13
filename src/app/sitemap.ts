@@ -7,6 +7,7 @@ const routes = [
   "/emailmagnet",
   "/pricing",
   "/faq",
+  "/overview",
   "/contact",
   "/about",
   "/privacy",

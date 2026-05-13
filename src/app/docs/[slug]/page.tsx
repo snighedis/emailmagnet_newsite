@@ -174,6 +174,31 @@ export default async function DocPage({ params }: DocPageProps) {
           </Link>
         </p>
       ) : null}
+      <nav aria-label="Documentation related pages" className="mt-12 rounded-xl border border-slate-200 bg-slate-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-950">Related EmailMagnet resources</h2>
+        <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+          <li>
+            <Link className="font-medium text-[#c43618] hover:underline" href="/emailmagnet">
+              EmailMagnet product page
+            </Link>
+          </li>
+          <li>
+            <Link className="font-medium text-[#c43618] hover:underline" href="/docs">
+              All EmailMagnet docs
+            </Link>
+          </li>
+          <li>
+            <Link className="font-medium text-[#c43618] hover:underline" href="/faq">
+              EmailMagnet FAQ
+            </Link>
+          </li>
+          <li>
+            <Link className="font-medium text-[#c43618] hover:underline" href="/contact">
+              Contact Dentoku Dev support
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </article>
   );
 }

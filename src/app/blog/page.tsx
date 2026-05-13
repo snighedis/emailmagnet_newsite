@@ -20,8 +20,25 @@ export default function BlogPage() {
           as="h1"
           eyebrow="Blog"
           title="Email extraction guides and product education"
-          description="MDX-powered content designed for tutorials, use cases, comparisons, and practical workflow pages."
+          description="Practical articles about EmailMagnet, email extraction workflows, responsible use, and browser-based productivity."
         />
+        <nav aria-label="Blog related resources" className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-slate-50 p-5 text-center">
+          <h2 className="text-lg font-semibold text-slate-950">Start with the main resources</h2>
+          <div className="mt-3 flex flex-wrap justify-center gap-4 text-sm font-medium">
+            <Link className="text-[#c43618] hover:underline" href="/emailmagnet">
+              EmailMagnet product page
+            </Link>
+            <Link className="text-[#c43618] hover:underline" href="/docs">
+              EmailMagnet docs
+            </Link>
+            <Link className="text-[#c43618] hover:underline" href="/faq">
+              FAQ
+            </Link>
+            <Link className="text-[#c43618] hover:underline" href="/overview">
+              Dentoku Dev overview
+            </Link>
+          </div>
+        </nav>
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {blogPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`}>

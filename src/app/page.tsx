@@ -32,9 +32,9 @@ export default function Home() {
                 Dentoku Dev builds Chrome extensions, Shopify apps, and lightweight productivity software.
               </h1>
               <p className="max-w-2xl text-xl leading-9 text-slate-700">
-                Dentoku Dev is a software development studio behind EmailMagnet, ClickPilot AI,
-                Volume Control PRO, and Countdown321. We build focused tools for browser,
-                ecommerce, and business productivity workflows.
+                Dentoku Dev is a software development studio for founders, small teams, ecommerce
+                operators, and browser-based workers who need focused tools that remove repetitive
+                manual work without heavy platforms or monthly software overhead.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -47,9 +47,16 @@ export default function Home() {
               <Button asChild size="lg" variant="outline" className="rounded-md bg-white">
                 <Link href="/contact">Contact Dentoku Dev</Link>
               </Button>
+              <Button asChild size="lg" variant="ghost" className="rounded-md">
+                <Link href="/overview">Read AI overview</Link>
+              </Button>
             </div>
             <ul className="grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
-              {["Chrome extensions", "Shopify apps", "Focused business utilities"].map(
+              {[
+                "Email extraction and browser productivity",
+                "Shopify urgency and storefront workflows",
+                "Simple tools with clear support paths",
+              ].map(
                 (item) => (
                   <li key={item} className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-teal-600" />
@@ -208,9 +215,17 @@ export default function Home() {
               Find visible email addresses from website pages, export results in CSV or TXT, and
               speed up prospecting or research workflows without manual copy-paste.
             </p>
-            <Button asChild className="mt-6 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
-              <Link href={emailMagnetConfig.href}>Explore EmailMagnet</Link>
-            </Button>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+                <Link href={emailMagnetConfig.href}>Explore EmailMagnet</Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-md bg-white">
+                <Link href="/docs/getting-started">Read EmailMagnet docs</Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-md bg-white">
+                <Link href="/faq">Read EmailMagnet FAQ</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -261,6 +276,12 @@ export default function Home() {
                     </span>
                   </div>
                   <p className="mt-3 leading-7 text-slate-600">{product.description}</p>
+                  <Link
+                    href={product.href}
+                    className="mt-5 inline-flex text-sm font-semibold text-[#c43618] hover:underline"
+                  >
+                    View {product.name} page
+                  </Link>
                 </div>
               ))}
           </div>
@@ -275,6 +296,17 @@ export default function Home() {
             <p className="mt-4 text-lg leading-8 text-slate-200">
               Contact the studio for product support, billing questions, or portfolio details.
             </p>
+            <div className="mt-5 flex flex-wrap gap-4 text-sm font-medium text-slate-200">
+              <Link href="/overview" className="hover:text-white hover:underline">
+                AI / Help / Overview
+              </Link>
+              <Link href="/docs" className="hover:text-white hover:underline">
+                Documentation
+              </Link>
+              <Link href="/faq" className="hover:text-white hover:underline">
+                FAQ
+              </Link>
+            </div>
           </div>
           <Button asChild size="lg" className="rounded-md bg-white text-[#213343] hover:bg-slate-100">
             <Link href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</Link>

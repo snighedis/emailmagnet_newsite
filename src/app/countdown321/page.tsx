@@ -154,6 +154,31 @@ export default function Countdown321Page() {
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">FAQ</p>
             <h2 className="mt-3 text-3xl font-semibold text-slate-950">Countdown321 FAQ</h2>
+            <nav aria-label="Countdown321 related Dentoku Dev pages" className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
+              <h3 className="text-lg font-semibold text-slate-950">Related pages</h3>
+              <ul className="mt-3 space-y-2 text-sm text-slate-700">
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/overview">
+                    Dentoku Dev product overview
+                  </Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/countdown321/shopify-countdown-timer-app">
+                    Shopify countdown timer guide
+                  </Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/countdown321/shopify-urgency-app">
+                    Shopify urgency app guide
+                  </Link>
+                </li>
+                <li>
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/contact">
+                    Contact Dentoku Dev support
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
           <FaqList items={faqs} />
         </div>

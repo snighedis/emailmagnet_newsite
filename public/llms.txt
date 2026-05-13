@@ -1,0 +1,37 @@
+# Dentoku Dev
+
+## Site description
+Dentoku Dev is a software development studio based in Milan, Italy. It builds focused Chrome extensions, Shopify apps, and lightweight productivity software for practical browser, ecommerce, and business workflows.
+
+## Key pages
+- Home: https://www.dentokudev.com/
+- AI / Help / Overview: https://www.dentokudev.com/overview
+- About: https://www.dentokudev.com/about
+- Contact and support: https://www.dentokudev.com/contact
+- Blog: https://www.dentokudev.com/blog
+
+## Product pages
+- EmailMagnet: https://www.dentokudev.com/emailmagnet
+  Chrome extension for finding and extracting emails from websites while browsing.
+- ClickPilot AI: https://www.dentokudev.com/clickpilot-ai
+  Chrome extension for fixing, rewriting, summarizing, translating, and transforming text inside browser fields.
+- Volume Control PRO: https://www.dentokudev.com/volume-control-pro
+  Chrome extension for boosting tab audio up to 600% and managing browser volume by site.
+- Countdown321: https://www.dentokudev.com/countdown321
+  Shopify app for countdown timers and time-based storefront urgency messages.
+
+## EmailMagnet documentation
+- Docs hub: https://www.dentokudev.com/docs
+- Getting started: https://www.dentokudev.com/docs/getting-started
+- Exporting emails: https://www.dentokudev.com/docs/exporting-emails
+- Responsible use: https://www.dentokudev.com/docs/responsible-use
+
+## FAQ and help
+- FAQ: https://www.dentokudev.com/faq
+- Pricing: https://www.dentokudev.com/pricing
+- Responsible email extraction guide: https://www.dentokudev.com/docs/responsible-use
+- Chrome email extractor page: https://www.dentokudev.com/emailmagnet/chrome-email-extractor
+
+## Support contact
+- Email: support@dentokudev.com
+- Use the same email for product support, billing questions, documentation requests, and general business inquiries.
