@@ -210,32 +210,6 @@ export default function EmailMagnetPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <SectionHeading
-            eyebrow="Walkthrough"
-            title="How EmailMagnet works in one browser session"
-            description="A short walkthrough-style summary for users who want to understand the product before installing it."
-          />
-          <div className="mt-10 rounded-xl border border-slate-200 bg-white p-6">
-            <h2 className="text-2xl font-semibold text-slate-950">Transcript summary</h2>
-            <p className="mt-4 leading-8 text-slate-600">
-              EmailMagnet is a Chrome extension that extracts emails from websites while you
-              browse. Install the extension, open a public page with contact information, run
-              extraction, review the detected emails, and export the final list as CSV or TXT.
-              Free is best for light usage. PRO is best for recurring extraction, autosave, bulk
-              workflows, and unlimited exports.
-            </p>
-            <ol className="mt-6 list-decimal space-y-2 pl-5 text-slate-700">
-              <li>Install EmailMagnet from the Chrome Web Store.</li>
-              <li>Open a website page with relevant public contact information.</li>
-              <li>Extract detected emails and review the list.</li>
-              <li>Export as CSV or TXT for qualification and follow-up.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
-
       <section className="bg-[#f3fbfa] py-20">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading

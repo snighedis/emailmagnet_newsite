@@ -27,8 +27,8 @@ export function createMetadata({ title, description, path = "/" }: MetadataInput
       images: [
         {
           url: image,
-          width: 1920,
-          height: 1080,
+          width: 1200,
+          height: 630,
           alt: "Dentoku Dev software studio preview",
         },
       ],

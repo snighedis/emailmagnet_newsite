@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.socialImage,
-        width: 1920,
-        height: 1080,
+        width: 1200,
+        height: 630,
         alt: "Dentoku Dev software studio preview",
       },
     ],
