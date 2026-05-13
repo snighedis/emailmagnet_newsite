@@ -268,14 +268,14 @@ export default function Home() {
             {productPortfolio
               .filter((product) => !product.featured)
               .map((product) => (
-                <div key={product.href} className="rounded-xl border border-teal-100 bg-white p-6">
+                <div key={product.href} className="flex h-full flex-col rounded-xl border border-teal-100 bg-white p-6">
                   <div className="flex items-center justify-between gap-4">
                     <h2 className="text-xl font-semibold text-slate-950">{product.name}</h2>
                     <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
                       {product.category}
                     </span>
                   </div>
-                  <p className="mt-3 leading-7 text-slate-600">{product.description}</p>
+                  <p className="mt-3 flex-1 leading-7 text-slate-600">{product.description}</p>
                   <Link
                     href={product.href}
                     className="mt-5 inline-flex text-sm font-semibold text-[#c43618] hover:underline"
