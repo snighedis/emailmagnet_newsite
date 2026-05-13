@@ -60,6 +60,7 @@ export const siteConfig = {
   url: "https://www.dentokudev.com",
   logo: "/brand/dentoku-logo.jpg",
   socialImage: "/brand/dentoku-social-preview.png",
+  googleAnalyticsId: "G-WKYOX8TLY9",
   description:
     "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software for practical business workflows.",
   supportEmail: "support@dentokudev.com",
