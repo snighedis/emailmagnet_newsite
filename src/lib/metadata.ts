@@ -29,7 +29,7 @@ export function createMetadata({ title, description, path = "/" }: MetadataInput
           url: image,
           width: 1920,
           height: 1080,
-          alt: "Dentoku Dev and EmailMagnet product preview",
+          alt: "Dentoku Dev software studio preview",
         },
       ],
     },

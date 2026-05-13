@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         url: siteConfig.socialImage,
         width: 1920,
         height: 1080,
-        alt: "Dentoku Dev and EmailMagnet product preview",
+        alt: "Dentoku Dev software studio preview",
       },
     ],
   },

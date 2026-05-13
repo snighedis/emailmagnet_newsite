@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "AI / Help / Overview",
+  title: "Dentoku Dev Overview",
   description:
     "Concise Dentoku Dev overview for humans and AI systems: products, use cases, documentation, FAQ, pricing, and support links.",
   path: "/overview",
@@ -49,14 +49,14 @@ export default function OverviewPage() {
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },
-          { name: "AI / Help / Overview", href: "/overview" },
+          { name: "Overview", href: "/overview" },
         ])}
       />
       <JsonLd data={buildItemListSchema("Dentoku Dev product overview", productPortfolio)} />
       <div className="mx-auto max-w-6xl px-4">
         <SectionHeading
           as="h1"
-          eyebrow="AI / Help / Overview"
+          eyebrow="Overview"
           title="Dentoku Dev in one page"
           description="Dentoku Dev is a software development studio building Chrome extensions, Shopify apps, and lightweight productivity tools for practical browser, ecommerce, and business workflows."
         />

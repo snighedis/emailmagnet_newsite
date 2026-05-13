@@ -34,7 +34,7 @@ export default function Home() {
               <p className="max-w-2xl text-xl leading-9 text-slate-700">
                 Dentoku Dev is a software development studio for founders, small teams, ecommerce
                 operators, and browser-based workers who need focused tools that remove repetitive
-                manual work without heavy platforms or monthly software overhead.
+                manual work.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -48,7 +48,7 @@ export default function Home() {
                 <Link href="/contact">Contact Dentoku Dev</Link>
               </Button>
               <Button asChild size="lg" variant="ghost" className="rounded-md">
-                <Link href="/overview">Read AI overview</Link>
+                <Link href="/overview">Read overview</Link>
               </Button>
             </div>
             <ul className="grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
@@ -298,7 +298,7 @@ export default function Home() {
             </p>
             <div className="mt-5 flex flex-wrap gap-4 text-sm font-medium text-slate-200">
               <Link href="/overview" className="hover:text-white hover:underline">
-                AI / Help / Overview
+                Dentoku Dev overview
               </Link>
               <Link href="/docs" className="hover:text-white hover:underline">
                 Documentation

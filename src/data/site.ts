@@ -59,7 +59,7 @@ export const siteConfig = {
   companyName: "Dentoku Dev",
   url: "https://www.dentokudev.com",
   logo: "/brand/dentoku-logo.jpg",
-  socialImage: "/brand/emailmagnet-cover.png",
+  socialImage: "/brand/dentoku-social-preview.png",
   description:
     "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software for practical business workflows.",
   supportEmail: "support@dentokudev.com",
@@ -100,7 +100,6 @@ export const emailMagnetConfig = {
 export const mainNav: NavItem[] = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const productPortfolio: ProductItem[] = [
@@ -143,7 +142,7 @@ export const footerNav = {
     href: product.href,
   })),
   Resources: [
-    { label: "AI overview", href: "/overview" },
+    { label: "Overview", href: "/overview" },
     { label: "Blog", href: "/blog" },
     { label: "Docs", href: "/docs" },
     { label: "FAQ", href: "/faq" },
