@@ -32,7 +32,7 @@ export function PricingCards({ plans }: PricingCardsProps) {
               <span className="text-5xl font-semibold tracking-normal text-slate-950">
                 {plan.price}
               </span>
-              {plan.featured ? (
+              {plan.price.startsWith("$") ? (
                 <span className="pb-2 text-sm font-medium text-slate-500">lifetime</span>
               ) : null}
             </div>
