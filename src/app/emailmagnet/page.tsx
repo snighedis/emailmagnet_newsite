@@ -16,15 +16,16 @@ import {
   heroHighlights,
   howItWorks,
   pricingPlans,
+  socialProof,
   valueProps,
 } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildFaqSchema, buildSoftwareSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "EmailMagnet",
+  title: "EmailMagnet - Chrome Email Extractor for Faster Prospecting",
   description:
-    "EmailMagnet is a Chrome Extension by Dentoku Dev for finding and extracting emails from websites while browsing, with Free and PRO lifetime access options.",
+    "Extract emails while browsing with EmailMagnet Chrome extension. Start free with 200 emails/month. Export to CSV/TXT. Upgrade to PRO for unlimited extraction at $19 lifetime.",
   path: "/emailmagnet",
 });
 
@@ -54,30 +55,37 @@ export default function EmailMagnetPage() {
             </Badge>
             <div className="space-y-6">
               <h1 className="max-w-4xl text-5xl font-semibold tracking-normal text-balance text-[#213343] md:text-7xl">
-                EmailMagnet is a Chrome email extractor for finding emails while browsing.
+                Find and export emails faster from any website
               </h1>
               <p className="max-w-2xl text-xl leading-9 text-slate-700">
-                EmailMagnet is made by Dentoku Dev. It helps users extract emails from websites in
-                one click, save time, skip manual work, and export instantly. $19 lifetime - no
-                subscription.
+                Stop copying emails manually. EmailMagnet detects email addresses while you browse, then exports them instantly as CSV or TXT. Start free with 200 emails per month.
               </p>
             </div>
-            <div className="rounded-xl border border-teal-100 bg-white/80 p-5">
-              <h2 className="text-lg font-semibold text-[#213343]">Quick answer</h2>
-              <p className="mt-2 leading-7 text-slate-700">
-                Use EmailMagnet when you need a browser-based email extractor that detects visible
-                website emails, supports CSV and TXT export, and avoids a monthly subscription.
-              </p>
+            <div className="rounded-xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-6 shadow-md">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500">
+                  <CheckCircle2 className="h-5 w-5 text-white" />
+                </div>
+                <h2 className="text-lg font-semibold text-emerald-900">{socialProof.trustedBy}</h2>
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                {socialProof.stats.map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <div className="text-lg font-bold text-emerald-700">{stat.value}</div>
+                    <div className="text-sm text-emerald-600">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
-                <Link href={emailMagnetConfig.primaryCta.href}>
-                  Unlock PRO for $19
+                <Link href={emailMagnetConfig.secondaryCta.href}>
+                  Start Free
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-md bg-white">
-                <Link href="#how-it-works">See how it works</Link>
+                <Link href={emailMagnetConfig.primaryCta.href}>Upgrade to PRO ($19)</Link>
               </Button>
             </div>
             <ul className="grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
@@ -106,8 +114,8 @@ export default function EmailMagnetPage() {
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="Why EmailMagnet"
-            title="Stop copying emails manually"
-            description="EmailMagnet finds and extracts emails for you while you browse. No scraping tools. No complexity."
+            title="Turn browsing into email prospecting"
+            description="Extract emails automatically from company directories, contact pages, and team listings. No more manual copy-paste."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {valueProps.map((item) => (
@@ -138,8 +146,8 @@ export default function EmailMagnetPage() {
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading
             eyebrow="How it works"
-            title="A three-step extraction workflow"
-            description="EmailMagnet keeps the process short: install the extension, browse websites, then extract and export emails."
+            title="Three steps to faster email extraction"
+            description="Install once, then extract emails instantly from any website while you browse. No setup, no complexity."
           />
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {howItWorks.map((step, index) => (
@@ -162,8 +170,8 @@ export default function EmailMagnetPage() {
         <div className="mx-auto max-w-6xl px-4">
           <SectionHeading
             eyebrow="Pricing"
-            title="Pay once. Extract forever."
-            description="No monthly fees. Start finding emails in seconds."
+            title="Start free, upgrade when ready"
+            description="Begin with our free plan. Upgrade to PRO for unlimited extraction when you need more."
           />
           <div className="mt-12">
             <PricingCards plans={pricingPlans} />
@@ -210,26 +218,13 @@ export default function EmailMagnetPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3fbfa] py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionHeading
-            eyebrow="Newsletter"
-            title="Stay updated on EmailMagnet"
-            description="Subscribe to receive product updates, workflow improvements, and release announcements."
-          />
-          <div className="mt-12">
-            <NewsletterSignup />
-          </div>
-        </div>
-      </section>
-
       <section className="bg-white py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
           <SectionHeading
             align="left"
             eyebrow="FAQ"
-            title="Frequently asked questions"
-            description="Direct answers about EmailMagnet, pricing, exports, and responsible use."
+            title="EmailMagnet questions and answers"
+            description="Everything you need to know about EmailMagnet: features, pricing, legal use, and getting started."
           />
           <div className="space-y-6">
             <FaqList items={faqItems.slice(0, 6)} />
@@ -258,6 +253,19 @@ export default function EmailMagnetPage() {
                 </li>
               </ul>
             </nav>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#f3fbfa] py-20">
+        <div className="mx-auto max-w-7xl px-4">
+          <SectionHeading
+            eyebrow="Newsletter"
+            title="Stay updated on EmailMagnet"
+            description="Subscribe to receive product updates, workflow improvements, and release announcements."
+          />
+          <div className="mt-12">
+            <NewsletterSignup />
           </div>
         </div>
       </section>

@@ -43,28 +43,54 @@ export function buildWebsiteSchema() {
 }
 
 export function buildSoftwareSchema() {
-  const proPlan = pricingPlans.find((plan) => plan.featured);
+  const proPlan = pricingPlans.find((plan) => plan.name === "PRO plan");
+  const freePlan = pricingPlans.find((plan) => plan.name === "Free plan");
 
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: emailMagnetConfig.name,
     applicationCategory: "BrowserApplication",
+    applicationSubCategory: "Chrome Extension",
     operatingSystem: "Chrome",
-    description: emailMagnetConfig.description,
+    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan available with 200 emails/month. PRO plan offers unlimited extraction for $19 lifetime.",
+    keywords: "email extractor, Chrome extension, email finder, lead generation, prospecting, CSV export, browser email extraction",
     url: `${base}${emailMagnetConfig.href}`,
+    downloadUrl: emailMagnetConfig.secondaryCta.href,
     isPartOf: {
       "@type": "Organization",
       name: siteConfig.companyName,
       url: base,
     },
-    offers: {
-      "@type": "Offer",
-      price: proPlan?.price.replace("$", "") ?? "19",
-      priceCurrency: "USD",
-      url: emailMagnetConfig.primaryCta.href,
-      category: "Lifetime access",
-    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: freePlan?.name ?? "Free Plan",
+        price: "0",
+        priceCurrency: "USD",
+        url: emailMagnetConfig.secondaryCta.href,
+        category: "Free Plan",
+        description: "200 emails per month, export up to 100 emails at once"
+      },
+      {
+        "@type": "Offer",
+        name: proPlan?.name ?? "PRO Plan",
+        price: proPlan?.price.replace("$", "") ?? "19",
+        priceCurrency: "USD",
+        url: emailMagnetConfig.primaryCta.href,
+        category: "Lifetime access",
+        description: "Unlimited email extraction, unlimited export size, autosave, bulk extraction"
+      }
+    ],
+    featureList: [
+      "Extract emails while browsing",
+      "CSV and TXT export",
+      "One-click email collection",
+      "Company directory support",
+      "Contact page email detection",
+      "Bulk extraction (PRO)",
+      "Autosave functionality (PRO)"
+    ],
     publisher: {
       "@type": "Organization",
       name: siteConfig.companyName,

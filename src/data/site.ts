@@ -163,36 +163,37 @@ export const footerNav = {
 export const pricingPlans: PricingPlan[] = [
   {
     name: "Free plan",
-    price: "free",
-    description: "Start with core extraction and export tools at no cost.",
+    price: "Free",
+    eyebrow: "Perfect to get started",
+    description: "Start extracting emails immediately at no cost. Upgrade when you need more.",
     features: [
-      "200 emails per month.",
-      "Export up to 100 emails at once.",
-      "Basic email extraction only.",
-      "CSV, TXT export.",
-      "Email support.",
+      "200 emails per month",
+      "Export up to 100 emails at once",
+      "One-click email extraction",
+      "CSV and TXT export",
+      "Email support",
     ],
     cta: {
-      label: "Continue Free",
+      label: "Start Free",
       href: emailMagnetConfig.secondaryCta.href,
     },
+    featured: true,
   },
   {
     name: "PRO plan",
-    eyebrow: "Early adopter",
+    eyebrow: "For power users",
     price: "$19",
-    description: "One payment. Lifetime access.",
+    description: "One payment. Lifetime access. No subscription.",
     features: [
-      "Unlimited email extraction.",
-      "Unlimited export size.",
-      "AUTOSAVE while browsing.",
-      "AUTOMATION: Bulk extraction (1,000+ URLs).",
-      "Faster processing.",
-      "CSV, TXT export.",
-      "Priority email support.",
+      "Unlimited email extraction",
+      "Unlimited export size",
+      "AUTOSAVE while browsing",
+      "AUTOMATION: Bulk extraction (1,000+ URLs)",
+      "Faster processing speed",
+      "CSV and TXT export",
+      "Priority email support",
     ],
     cta: emailMagnetConfig.primaryCta,
-    featured: true,
   },
 ];
 
@@ -200,70 +201,70 @@ export const faqItems: FaqItem[] = [
   {
     question: "How does EmailMagnet work?",
     answer:
-      "EmailMagnet is a Chrome Extension that works while you browse. Open a website as usual, click the extension, and EmailMagnet detects email addresses from the page so you can save or export them.",
+      "EmailMagnet is a Chrome Extension that detects email addresses while you browse. Visit any website, click the extension icon, and EmailMagnet instantly finds all visible email addresses. You can then export them as CSV or TXT files with one click.",
   },
   {
-    question: "How reliable is EmailMagnet?",
+    question: "Is there a free version?",
     answer:
-      "EmailMagnet finds emails directly from real website content. If an email is visible or accessible on the page, EmailMagnet will usually detect it instantly.",
+      "Yes. EmailMagnet offers a free plan with 200 email extractions per month and exports up to 100 emails at once. This includes CSV/TXT export and email support. Perfect for trying the tool and light usage.",
   },
   {
-    question: "Is email extraction legal?",
+    question: "What does the PRO version include?",
     answer:
-      "Email extraction can be legal when it complies with privacy and anti-spam rules such as GDPR and CAN-SPAM. Use extracted emails responsibly, follow applicable laws, and avoid unsolicited or abusive outreach.",
+      "PRO ($19 lifetime) includes unlimited email extraction, unlimited export size, autosave while browsing, bulk extraction for 1,000+ URLs, faster processing, and priority support. No monthly subscription.",
   },
   {
-    question: "What are the free version restrictions?",
+    question: "Is email extraction legal and ethical?",
     answer:
-      "The free version includes 200 emails per month, export up to 100 emails at once, basic email extraction, CSV/TXT export, and email support. PRO removes export limits and adds autosave, bulk extraction, faster processing, and priority support.",
+      "Email extraction from publicly visible websites can be legal when done responsibly. Follow applicable privacy laws (GDPR, CAN-SPAM), only extract publicly displayed emails, use them for legitimate purposes, and respect opt-out requests. EmailMagnet is designed for responsible prospecting and research.",
   },
   {
-    question: "Does EmailMagnet require a scraping tool?",
+    question: "What websites work with EmailMagnet?",
     answer:
-      "No. EmailMagnet is built as a Chrome Extension for browsing workflows. It helps extract emails from websites without requiring a separate scraping setup.",
+      "EmailMagnet works on any website that displays email addresses, including company contact pages, team directories, about pages, and business listings. It detects emails from visible page content, not hidden or protected sources.",
   },
   {
-    question: "Can I pay monthly?",
+    question: "How do I export the emails?",
     answer:
-      "EmailMagnet PRO is positioned as lifetime access for a one-time $19 payment. There is no monthly subscription on the current pricing structure.",
+      "After extracting emails, click the export button in the EmailMagnet popup. Choose CSV for spreadsheet compatibility or TXT for plain text. Files download instantly to your computer and work with most CRMs and outreach tools.",
   },
 ];
 
 export const valueProps: FeatureItem[] = [
   {
-    title: "Capture emails while you browse",
+    title: "Stop manual copy-paste forever",
     description:
-      "EmailMagnet detects email addresses directly from page content, so manual scanning is no longer part of the workflow.",
+      "EmailMagnet detects email addresses automatically from page content. No more tedious manual scanning and copying.",
     icon: MailCheck,
   },
   {
-    title: "Export in formats teams already use",
+    title: "Export ready-to-use contact lists",
     description:
-      "Save extracted emails as CSV or TXT for follow-up, list building, and handoff to the next step.",
+      "Save extracted emails as CSV or TXT files that work with your CRM, outreach tools, and follow-up workflows.",
     icon: FileDown,
   },
   {
-    title: "Upgrade once, keep PRO forever",
+    title: "Start free, upgrade when ready",
     description:
-      "PRO is a one-time $19 purchase with lifetime access and no recurring subscription.",
+      "Begin with 200 emails/month at no cost. Upgrade to PRO for unlimited extraction at just $19 lifetime.",
     icon: BadgeCheck,
   },
 ];
 
 export const howItWorks = [
   {
-    title: "Install the extension",
-    description: "Add EmailMagnet to Chrome and keep it ready in your browser toolbar.",
+    title: "Install and start instantly",
+    description: "Add EmailMagnet to Chrome in seconds. No setup, no configuration needed.",
     icon: Puzzle,
   },
   {
-    title: "Browse any website",
-    description: "Open the pages you already review for research, prospecting, or outreach.",
+    title: "Browse websites as usual",
+    description: "Visit company directories, contact pages, or any site with emails. EmailMagnet works in the background.",
     icon: Globe2,
   },
   {
-    title: "Extract and export",
-    description: "Collect detected emails in one click, then export instantly.",
+    title: "Extract and export instantly",
+    description: "Click once to capture all emails. Export to CSV or TXT for your CRM, outreach tools, or follow-up.",
     icon: Download,
   },
 ];
@@ -362,8 +363,17 @@ export const contentHubs = [
 
 export const heroHighlights = [
   "Extract emails from websites in one click.",
-  "$19 lifetime, no subscription.",
-  "CSV and TXT export.",
+  "Free plan available with 200 emails/month.",
+  "CSV and TXT export included.",
 ];
+
+export const socialProof = {
+  trustedBy: "Join professionals who extract smarter",
+  stats: [
+    { label: "Install time", value: "30 seconds" },
+    { label: "Learning curve", value: "Zero setup" },
+    { label: "Export speed", value: "Instant CSV" },
+  ],
+};
 
 export const accentIcon = Sparkles;
