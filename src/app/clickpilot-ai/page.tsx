@@ -69,6 +69,11 @@ export default function ClickPilotAiPage() {
       title: "Run custom AI shortcuts",
       description: "Create your own prompts for repeated tasks and workflows.",
       icon: "⚡"
+    },
+    {
+      title: "Smart templates & automation",
+      description: "Coming soon: Pre-built templates and automated workflows for common writing scenarios.",
+      icon: "🚀"
     }
   ];
 
@@ -145,7 +150,6 @@ export default function ClickPilotAiPage() {
               muted 
               playsInline
               className="w-full h-auto"
-              poster="/brand/clickpilot-ai-icon.png"
             >
               <source src="/clickpilot-ai-demo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -286,14 +290,29 @@ export default function ClickPilotAiPage() {
             With one click, you can:
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {features.slice(0, 5).map((feature) => (
-              <Card key={feature.title} className="rounded-xl border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+            {features.map((feature, index) => (
+              <Card 
+                key={feature.title} 
+                className={`rounded-xl shadow-sm hover:shadow-md transition-shadow ${
+                  index === features.length - 1 
+                    ? 'border-orange-200 bg-gradient-to-br from-orange-50 to-red-50' 
+                    : 'border-slate-200'
+                }`}
+              >
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">{feature.icon}</span>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-950">{feature.title}</h3>
-                      <p className="mt-2 text-slate-600">{feature.description}</p>
+                      <h3 className={`text-lg font-semibold ${
+                        index === features.length - 1 ? 'text-orange-800' : 'text-slate-950'
+                      }`}>
+                        {feature.title}
+                      </h3>
+                      <p className={`mt-2 ${
+                        index === features.length - 1 ? 'text-orange-700' : 'text-slate-600'
+                      }`}>
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -366,48 +385,52 @@ export default function ClickPilotAiPage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 mt-6">
+          <div className="grid md:grid-cols-2 gap-8 mt-6 items-stretch">
             {/* FREE Plan */}
-            <Card className="rounded-2xl border-slate-200 shadow-sm p-8">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-semibold text-slate-950 mb-2">Free</h3>
-                <p className="text-slate-600">Perfect to get started</p>
-              </div>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Core AI actions</span>
+            <div className="relative flex">
+              <Card className="rounded-2xl border-slate-200 shadow-sm p-8 flex flex-col w-full">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-semibold text-slate-950 mb-2">Free</h3>
+                  <p className="text-slate-600">Perfect to get started</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Fix, rewrite, translate, summarize</span>
+                
+                <div className="space-y-4 flex-1">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
+                    <span className="text-slate-700">Core AI actions</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
+                    <span className="text-slate-700">Fix, rewrite, translate, summarize</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
+                    <span className="text-slate-700">Works on most websites</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-600" />
+                    <span className="text-slate-700">Requires OpenAI API key</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Works on most websites</span>
+                
+                <div className="mt-8">
+                  <Button asChild variant="outline" className="w-full rounded-md">
+                    <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
+                      Install Free Version
+                    </Link>
+                  </Button>
                 </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Requires OpenAI API key</span>
-                </div>
-              </div>
-              
-              <Button asChild variant="outline" className="w-full rounded-md">
-                <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                  Install Free Version
-                </Link>
-              </Button>
-            </Card>
+              </Card>
+            </div>
             
-            {/* PRO Plan - Wrapper with margin to accommodate badge */}
-            <div className="relative">
+            {/* PRO Plan */}
+            <div className="relative flex">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
                 <span className="bg-[#ff5c35] text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
                   Most Popular
                 </span>
               </div>
-              <Card className="rounded-2xl border-[#ff5c35] border-2 shadow-lg p-8 bg-gradient-to-br from-white to-orange-50">
+              <Card className="rounded-2xl border-[#ff5c35] border-2 shadow-lg p-8 bg-gradient-to-br from-white to-orange-50 flex flex-col w-full">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-slate-950 mb-2">
                     <span className="text-[#ff5c35]">Lifetime</span> ($19)
@@ -415,7 +438,7 @@ export default function ClickPilotAiPage() {
                   <p className="text-slate-600">One-time payment, lifetime access</p>
                 </div>
                 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-4 flex-1">
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
                     <span className="text-slate-700">Lifetime Pro license</span>
@@ -438,16 +461,18 @@ export default function ClickPilotAiPage() {
                   </div>
                 </div>
                 
-                <Button asChild className="w-full rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] font-semibold">
-                  <Link href="https://dentoku.gumroad.com/l/clickpilotAI">
-                    Get Lifetime PRO
-                    <ArrowRight className="h-4 w-4 ml-2" />
-                  </Link>
-                </Button>
-                
-                <p className="text-center text-slate-500 text-sm mt-4">
-                  One-time payment • Lifetime access • 30-day guarantee
-                </p>
+                <div className="mt-8">
+                  <Button asChild className="w-full rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] font-semibold">
+                    <Link href="https://dentoku.gumroad.com/l/clickpilotAI">
+                      Get Lifetime PRO
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Link>
+                  </Button>
+                  
+                  <p className="text-center text-slate-500 text-sm mt-4">
+                    One-time payment • Lifetime access • 30-day guarantee
+                  </p>
+                </div>
               </Card>
             </div>
           </div>
