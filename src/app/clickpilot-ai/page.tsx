@@ -19,67 +19,94 @@ export default function ClickPilotAiPage() {
   const product = productPortfolio.find((item) => item.name === "ClickPilot AI")!;
   const faqs = [
     {
-      question: "Does this slow down my browser?",
+      question: "Do I need my own OpenAI API key?",
       answer:
-        "No. ClickPilot AI activates only when you need it and uses minimal resources. It won't affect your browsing speed or performance.",
-    },
-    {
-      question: "Do you store my writing?",
-      answer:
-        "Never. All text processing happens locally or through encrypted channels. We can't see what you write, and your content never leaves your control.",
+        "Yes, ClickPilot AI uses your own OpenAI API key (BYOK - Bring Your Own Key). API usage costs are separate and paid directly to OpenAI.",
     },
     {
       question: "How is this different from ChatGPT?",
       answer:
-        "ChatGPT requires tab switching and copy-paste, breaking your workflow. ClickPilot AI works instantly inside any text field you're already using - Gmail, LinkedIn, Slack, anywhere.",
-    },
-    {
-      question: "What if I don't like it?",
-      answer:
-        "Uninstall anytime with one click in Chrome's extension manager. No account deletion or cancellation process needed. The free version has no commitments.",
+        "ChatGPT requires tab switching and copy-paste, breaking your workflow. ClickPilot AI works directly inside websites like Gmail, LinkedIn, and X/Twitter. Plus, it includes Custom AI Shortcuts for repeatable tasks.",
     },
     {
       question: "Does it work on all websites?",
       answer:
-        "ClickPilot AI works on virtually any website including Gmail, LinkedIn, Notion, Slack, Twitter, and most text editors. Only specialized editors like Google Docs have limited support due to their unique architecture.",
+        "ClickPilot AI works on Gmail, LinkedIn, X/Twitter, Notion, and most websites with text fields. Some platforms like Google Docs may have limited support.",
+    },
+    {
+      question: "What's included in the $19 lifetime license?",
+      answer:
+        "You get a lifetime Pro license with full access to all Pro features, unlimited usage on the extension side, Custom AI Shortcuts, and no monthly subscription fees.",
+    },
+    {
+      question: "How do I activate the Pro features?",
+      answer:
+        "After purchasing on Gumroad, you'll receive a license key by email. Simply paste the key in ClickPilot AI to unlock all Pro features.",
     },
   ];
-  const useCases = [
+  const features = [
     {
-      title: "Professional emails in 5 seconds",
-      description: "Transform casual drafts into polished, professional messages that get results.",
-      icon: "📧"
+      title: "Fix grammar and clarity",
+      description: "Instantly improve your writing without leaving the text field.",
+      icon: "✏️"
     },
     {
-      title: "LinkedIn posts that get engagement", 
-      description: "Turn your thoughts into compelling posts that your network actually wants to read.",
-      icon: "💼"
+      title: "Rewrite in different tones/styles",
+      description: "Transform your message to match the right tone for any situation.",
+      icon: "🔄"
     },
     {
-      title: "Support replies that solve problems",
-      description: "Rewrite technical responses to be clear, helpful, and customer-friendly.",
-      icon: "🎯"
-    },
-    {
-      title: "Notes that make sense later",
-      description: "Clean up messy meeting notes and ideas into organized, actionable content.",
+      title: "Summarize long text",
+      description: "Get concise summaries of lengthy content in seconds.",
       icon: "📝"
+    },
+    {
+      title: "Translate content",
+      description: "Break language barriers with instant translations.",
+      icon: "🌍"
+    },
+    {
+      title: "Run custom AI shortcuts",
+      description: "Create your own prompts for repeated tasks and workflows.",
+      icon: "⚡"
+    }
+  ];
+
+  const whereItWorks = [
+    {
+      name: "Gmail",
+      description: "Write professional emails with AI assistance"
+    },
+    {
+      name: "LinkedIn", 
+      description: "Create engaging posts and messages"
+    },
+    {
+      name: "X / Twitter",
+      description: "Craft compelling tweets and replies"
+    },
+    {
+      name: "Notion",
+      description: "Improve your notes and documentation"
+    },
+    {
+      name: "Most websites",
+      description: "Works in any text field across the web"
     }
   ];
 
   const workflow = [
     {
-      title: "Open a supported text field",
-      description:
-        "Use ClickPilot AI while writing in tools like Gmail, LinkedIn, Notion, and most website editors.",
+      title: "Purchase on Gumroad",
+      description: "Get your ClickPilot AI Lifetime license for $19",
     },
     {
-      title: "Choose the action you need",
-      description: "Run fix, rewrite, summarize, translate, or your own custom shortcut.",
+      title: "Receive license key by email",
+      description: "You'll get your activation key delivered instantly",
     },
     {
-      title: "Review and apply",
-      description: "Edit the result if needed, then apply it without leaving the page.",
+      title: "Paste key in ClickPilot AI",
+      description: "Open the extension and enter your key to unlock Pro features",
     },
   ];
 
@@ -102,13 +129,13 @@ export default function ClickPilotAiPage() {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-4 text-center">
           <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">
-            Chrome Extension • Free to Install
+            Chrome AI Writing Assistant
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl">
-            Stop Copy-Pasting Text Between Tabs
+            Write better anywhere, directly in your browser
           </h1>
           <p className="mt-6 text-xl leading-8 text-slate-600 max-w-3xl mx-auto">
-            Fix grammar, rewrite content, and translate text directly in Gmail, LinkedIn, and virtually any website. No more switching tabs or breaking your workflow.
+            ClickPilot AI works inside the websites you already use. No copy-paste, no extra tabs, no workflow breaks.
           </p>
           
           <div className="mt-8 rounded-xl overflow-hidden shadow-2xl border border-slate-200 max-w-4xl mx-auto">
@@ -238,7 +265,7 @@ export default function ClickPilotAiPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span>Choose: Fix, Rewrite, or Translate</span>
+                  <span>Choose: Fix, Rewrite, Summarize, or Translate</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -256,17 +283,17 @@ export default function ClickPilotAiPage() {
         <div className="mx-auto max-w-6xl px-4">
           
           <h2 className="text-3xl font-bold text-center text-slate-950 mb-12">
-            Perfect for These Common Writing Tasks
+            With one click, you can:
           </h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {useCases.map((useCase) => (
-              <Card key={useCase.title} className="rounded-xl border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {features.slice(0, 5).map((feature) => (
+              <Card key={feature.title} className="rounded-xl border-slate-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">{useCase.icon}</span>
+                    <span className="text-2xl">{feature.icon}</span>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-950">{useCase.title}</h3>
-                      <p className="mt-2 text-slate-600">{useCase.description}</p>
+                      <h3 className="text-lg font-semibold text-slate-950">{feature.title}</h3>
+                      <p className="mt-2 text-slate-600">{feature.description}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -278,7 +305,7 @@ export default function ClickPilotAiPage() {
           <div className="mt-16 text-center">
             <div className="bg-white rounded-2xl border border-slate-200 p-8 max-w-3xl mx-auto">
               <h3 className="text-2xl font-bold text-slate-950 mb-4">Ready to Write Better, Faster?</h3>
-              <p className="text-slate-600 mb-6">Join thousands of professionals who've eliminated copy-paste from their writing workflow.</p>
+              <p className="text-slate-600 mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
               <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] px-8 py-4 text-lg font-semibold">
                 <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                   Add to Chrome - It's Free
@@ -293,6 +320,37 @@ export default function ClickPilotAiPage() {
         </div>
       </section>
 
+      {/* Where it works */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-950 mb-4">
+              Where it works
+            </h2>
+            <p className="text-lg text-slate-600">
+              ClickPilot AI integrates seamlessly with your favorite platforms
+            </p>
+          </div>
+          
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {whereItWorks.map((platform) => (
+              <Card key={platform.name} className="rounded-xl border-slate-200 shadow-sm">
+                <CardContent className="p-6 text-center">
+                  <h3 className="text-lg font-semibold text-slate-950 mb-2">{platform.name}</h3>
+                  <p className="text-slate-600">{platform.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-sm text-slate-500">
+              Note: Some platforms like Google Docs may have limited support
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* PRO Features - Clean Design */}
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-5xl px-4">
@@ -301,10 +359,10 @@ export default function ClickPilotAiPage() {
               Upgrade Available
             </p>
             <h2 className="text-3xl font-bold text-slate-950 mb-4">
-              Need More? Unlock Unlimited Usage
+              ClickPilot AI Lifetime
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Love ClickPilot AI? Upgrade to PRO for unlimited daily actions and advanced features.
+              Upgrade to ClickPilot AI Lifetime and bring AI writing into your daily workflow.
             </p>
           </div>
           
@@ -319,19 +377,19 @@ export default function ClickPilotAiPage() {
               <div className="space-y-4 mb-8">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">10 AI actions per day</span>
+                  <span className="text-slate-700">Core AI actions</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Fix, rewrite, translate</span>
+                  <span className="text-slate-700">Fix, rewrite, translate, summarize</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Works on any website</span>
+                  <span className="text-slate-700">Works on most websites</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  <span className="text-slate-700">Privacy protected</span>
+                  <span className="text-slate-700">Requires OpenAI API key</span>
                 </div>
               </div>
               
@@ -352,31 +410,31 @@ export default function ClickPilotAiPage() {
               <Card className="rounded-2xl border-[#ff5c35] border-2 shadow-lg p-8 bg-gradient-to-br from-white to-orange-50">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-semibold text-slate-950 mb-2">
-                    PRO <span className="text-[#ff5c35]">Lifetime</span>
+                    <span className="text-[#ff5c35]">Lifetime</span> ($19)
                   </h3>
-                  <p className="text-slate-600">Unlimited professional experience</p>
+                  <p className="text-slate-600">One-time payment, lifetime access</p>
                 </div>
                 
                 <div className="space-y-4 mb-8">
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700"><strong>Unlimited</strong> AI actions per day</span>
+                    <span className="text-slate-700">Lifetime Pro license</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Advanced custom shortcuts</span>
+                    <span className="text-slate-700">Full access to all Pro features</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Priority email support</span>
+                    <span className="text-slate-700">Unlimited usage on extension side</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">All future updates included</span>
+                    <span className="text-slate-700">Custom AI shortcuts</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Advanced AI models access</span>
+                    <span className="text-slate-700">No monthly subscription</span>
                   </div>
                 </div>
                 
@@ -417,7 +475,7 @@ export default function ClickPilotAiPage() {
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-6xl px-4">
           <h2 className="text-3xl font-semibold tracking-normal text-slate-950 md:text-4xl">
-            How ClickPilot AI works
+            How activation works
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {workflow.map((step, index) => (
@@ -429,6 +487,46 @@ export default function ClickPilotAiPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          {/* Requirements */}
+          <div className="mt-16 bg-white rounded-2xl border border-slate-200 p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-slate-950 mb-6 text-center">Requirements</h3>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">🌐</span>
+                </div>
+                <h4 className="font-semibold text-slate-950">Google Chrome</h4>
+                <p className="text-sm text-slate-600 mt-1">Browser required</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">🧩</span>
+                </div>
+                <h4 className="font-semibold text-slate-950">Extension installed</h4>
+                <p className="text-sm text-slate-600 mt-1">Free from Chrome Web Store</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">🔑</span>
+                </div>
+                <h4 className="font-semibold text-slate-950">OpenAI API key</h4>
+                <p className="text-sm text-slate-600 mt-1">Your own key (BYOK)</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">💳</span>
+                </div>
+                <h4 className="font-semibold text-slate-950">API usage costs</h4>
+                <p className="text-sm text-slate-600 mt-1">Not included in license</p>
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <p className="text-sm text-slate-500">
+                API usage costs are separate and paid directly to OpenAI
+              </p>
+            </div>
           </div>
           
           {/* Final CTA */}
