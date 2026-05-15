@@ -154,7 +154,9 @@ export function SiteHeader() {
             <Link href={siteConfig.secondaryCta.href}>Contact</Link>
           </Button>
           <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
-            <Link href={emailMagnetConfig.href}>EmailMagnet</Link>
+            <Link href={emailMagnetConfig.href}>
+              <span className="font-bold">Get EmailMagnet</span> It's free
+            </Link>
           </Button>
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -196,9 +198,9 @@ export function SiteHeader() {
                 </Link>
               </nav>
               <div className="grid gap-3">
-                <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
-                  <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
-                    EmailMagnet
+                <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] w-full">
+                  <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)} className="text-center">
+                    <span className="font-bold">Get EmailMagnet</span>
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="rounded-md">
