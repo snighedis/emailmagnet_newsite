@@ -27,7 +27,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Dentoku Dev software studio",
+    default: "Dentoku Dev Chrome and Shopify Apps",
     template: "%s | Dentoku",
   },
   description: siteConfig.description,

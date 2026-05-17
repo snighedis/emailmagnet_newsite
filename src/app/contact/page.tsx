@@ -9,7 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildContactPointSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "Contact",
+  title: "Contact Dentoku Dev Support",
   description:
     "Contact Dentoku Dev for EmailMagnet support, product questions, partnership requests, billing help, privacy questions, and software feedback.",
   path: "/contact",

@@ -2,7 +2,7 @@ import { MoneyPage } from "@/components/marketing/money-page";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "Shopify Urgency App",
+  title: "Shopify Urgency App for Countdown321",
   description:
     "Countdown321 helps Shopify merchants communicate urgency with countdown timers, campaign deadlines, launch messages, and clear time-based storefront prompts.",
   path: "/countdown321/shopify-urgency-app",

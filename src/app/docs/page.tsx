@@ -6,7 +6,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "Docs",
+  title: "EmailMagnet Documentation",
   description:
     "Use the EmailMagnet documentation hub to install the Chrome extension, run your first extraction, export CSV or TXT files, and work responsibly.",
   path: "/docs",

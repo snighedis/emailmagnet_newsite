@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "Volume Control PRO",
+  title: "Volume Control PRO Chrome Booster",
   description:
     "Volume Control PRO is a Dentoku Dev Chrome extension for boosting tab audio up to 600%, with one-click amplification and per-site volume memory.",
   path: "/volume-control-pro",

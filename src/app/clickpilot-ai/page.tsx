@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "ClickPilot AI",
+  title: "ClickPilot AI Chrome Writing Assistant",
   description:
     "ClickPilot AI is a Dentoku Dev Chrome extension that improves writing in-browser with fix, rewrite, summarize, translate, and custom shortcut actions.",
   path: "/clickpilot-ai",

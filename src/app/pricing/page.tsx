@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "Pricing",
+  title: "EmailMagnet Pricing Plans",
   description:
     "EmailMagnet pricing includes a Free plan and a PRO plan with $19 lifetime access, unlimited extraction, autosave, bulk extraction, and priority support.",
   path: "/pricing",

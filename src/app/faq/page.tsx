@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "FAQ",
+  title: "EmailMagnet FAQ and Support",
   description:
     "Answers to common EmailMagnet questions about how it works, reliability, legality, free plan restrictions, and lifetime PRO access.",
   path: "/faq",

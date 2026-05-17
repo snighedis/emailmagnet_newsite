@@ -7,7 +7,7 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "About",
+  title: "About Dentoku Dev Products",
   description:
     "Learn about Dentoku Dev, the product studio behind EmailMagnet, ClickPilot AI, Volume Control PRO, and focused software for browser workflows.",
   path: "/about",

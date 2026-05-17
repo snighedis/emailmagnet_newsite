@@ -46,7 +46,7 @@ const docs: Record<
     },
   },
   "exporting-emails": {
-    title: "Exporting emails",
+    title: "Exporting Emails with EmailMagnet",
     description:
       "Learn when to export EmailMagnet results as CSV or TXT, how to review addresses first, and how to prepare cleaner lists for spreadsheets or CRM handoff.",
     answer:
@@ -72,7 +72,7 @@ const docs: Record<
     ],
   },
   "responsible-use": {
-    title: "Responsible use",
+    title: "Responsible Email Extraction Guide",
     description:
       "Use EmailMagnet responsibly by documenting source context, qualifying emails before outreach, respecting opt-outs, and following privacy and anti-spam rules.",
     answer:
