@@ -214,6 +214,7 @@ export function buildHowToSchema(input: {
       "@type": "HowToStep",
       position: index + 1,
       name: step,
+      text: step,
     })),
   };
 }

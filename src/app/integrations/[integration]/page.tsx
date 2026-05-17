@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: IntegrationPageProps) {
   }
   return createMetadata({
     title: `EmailMagnet and ${page.label}`,
-    description: `EmailMagnet integration guide for ${page.label} and export workflows.`,
+    description: `Learn how EmailMagnet works inside ${page.label} to extract visible emails from browser pages and hand off reviewed contacts through CSV or TXT exports.`,
     path: `/integrations/${integration}`,
   });
 }

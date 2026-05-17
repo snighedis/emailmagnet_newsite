@@ -5,7 +5,7 @@ import { buildBreadcrumbSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Terms of Service",
   description:
-    "EmailMagnet Terms of Service covering account use, billing, acceptable behavior, and legal responsibilities.",
+    "Review the EmailMagnet terms of service covering product access, billing, acceptable use, responsible extraction, limitations, and legal responsibilities.",
   path: "/terms",
 });
 

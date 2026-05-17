@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: UseCasePageProps) {
   }
   return createMetadata({
     title: `EmailMagnet for ${page.label}`,
-    description: `Practical EmailMagnet workflow for ${page.label} use cases.`,
+    description: `Use EmailMagnet for ${page.label} by extracting visible website emails, qualifying source context, exporting clean lists, and preparing outreach.`,
     path: `/use-cases/${useCase}`,
   });
 }

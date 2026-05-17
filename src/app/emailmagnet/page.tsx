@@ -20,20 +20,18 @@ import {
   valueProps,
 } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema, buildFaqSchema, buildSoftwareSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "EmailMagnet - Chrome Email Extractor for Faster Prospecting",
+  title: "EmailMagnet Chrome Email Extractor",
   description:
-    "Extract emails while browsing with EmailMagnet Chrome extension. Start free with 200 emails/month. Export to CSV/TXT. Upgrade to PRO for unlimited extraction at $19 lifetime.",
+    "Extract emails while browsing with EmailMagnet for Chrome, then export clean CSV or TXT lists. Start free with 200 emails/month and upgrade to PRO when needed.",
   path: "/emailmagnet",
 });
 
 export default function EmailMagnetPage() {
   return (
     <>
-      <JsonLd data={buildFaqSchema(faqItems.slice(0, 4))} />
-      <JsonLd data={buildSoftwareSchema()} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },

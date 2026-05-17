@@ -11,7 +11,7 @@ import { buildBreadcrumbSchema, buildContactPointSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Contact",
   description:
-    "Contact Dentoku Dev for product support, general questions, partnerships, billing requests, and product feedback.",
+    "Contact Dentoku Dev for EmailMagnet support, product questions, partnership requests, billing help, privacy questions, and software feedback.",
   path: "/contact",
 });
 

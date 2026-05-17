@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Blog",
   description:
-    "EmailMagnet blog with product education, email extraction workflows, use cases, and AI-discoverable guides.",
+    "Read Dentoku Dev articles about EmailMagnet, email extraction workflows, responsible outreach, Chrome extension use cases, and product updates.",
   path: "/blog",
 });
 

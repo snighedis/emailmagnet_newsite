@@ -155,7 +155,7 @@ export function SiteHeader() {
           </Button>
           <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
             <Link href={emailMagnetConfig.href}>
-              <span className="font-bold">Get EmailMagnet</span> It's free
+              <span className="font-bold">Get EmailMagnet</span> It&apos;s free
             </Link>
           </Button>
         </div>

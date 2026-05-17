@@ -3,7 +3,8 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "Email Extractor vs Scraper",
-  description: "Compare EmailMagnet browser-based email extraction with heavier scraping workflows.",
+  description:
+    "Compare browser-based email extraction with heavier scraping workflows, including setup effort, source context, list review, exports, and responsible use.",
   path: "/emailmagnet/email-extractor-vs-scraper",
 });
 

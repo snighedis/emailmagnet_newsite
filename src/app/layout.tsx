@@ -27,15 +27,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Dentoku Dev | Chrome extensions, Shopify apps, and productivity software",
-    template: "%s | Dentoku Dev",
+    default: "Dentoku Dev software studio",
+    template: "%s | Dentoku",
   },
   description: siteConfig.description,
   alternates: {
     canonical: siteConfig.url,
   },
   openGraph: {
-    title: "Dentoku Dev | Chrome extensions, Shopify apps, and productivity software",
+    title: "Dentoku Dev software studio",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dentoku Dev | Chrome extensions, Shopify apps, and productivity software",
+    title: "Dentoku Dev software studio",
     description: siteConfig.description,
     images: [siteConfig.socialImage],
   },

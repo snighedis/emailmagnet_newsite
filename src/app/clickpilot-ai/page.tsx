@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { FaqList } from "@/components/marketing/faq-list";
-import { productPortfolio } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema, buildFaqSchema, buildProductSoftwareSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "ClickPilot AI",
@@ -16,7 +15,6 @@ export const metadata = createMetadata({
 });
 
 export default function ClickPilotAiPage() {
-  const product = productPortfolio.find((item) => item.name === "ClickPilot AI")!;
   const faqs = [
     {
       question: "Do I need my own OpenAI API key?",
@@ -115,16 +113,8 @@ export default function ClickPilotAiPage() {
     },
   ];
 
-  const planSummary = [
-    "Free plan with limited daily actions and core writing tools.",
-    "PRO plan with unlimited usage and all features unlocked.",
-    "One-time lifetime option available on Gumroad according to the store listing.",
-  ];
-
   return (
     <>
-      <JsonLd data={buildProductSoftwareSchema(product)} />
-      <JsonLd data={buildFaqSchema(faqs)} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },
@@ -159,7 +149,7 @@ export default function ClickPilotAiPage() {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] px-8 py-4 text-lg font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                Add to Chrome - It's Free
+                Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </Button>
@@ -327,7 +317,7 @@ export default function ClickPilotAiPage() {
               <p className="text-slate-600 mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
               <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] px-8 py-4 text-lg font-semibold">
                 <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                  Add to Chrome - It's Free
+                  Add to Chrome - It&apos;s Free
                   <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
               </Button>
@@ -558,7 +548,7 @@ export default function ClickPilotAiPage() {
           <div className="mt-16 text-center">
             <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] px-8 py-4 text-lg font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                Add to Chrome - It's Free
+                Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </Button>

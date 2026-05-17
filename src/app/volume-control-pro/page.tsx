@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { productPortfolio } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema, buildFaqSchema, buildProductSoftwareSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Volume Control PRO",
@@ -16,7 +15,6 @@ export const metadata = createMetadata({
 });
 
 export default function VolumeControlProPage() {
-  const product = productPortfolio.find((item) => item.name === "Volume Control PRO")!;
   const faqs = [
     {
       question: "What is Volume Control PRO?",
@@ -66,8 +64,6 @@ export default function VolumeControlProPage() {
 
   return (
     <>
-      <JsonLd data={buildProductSoftwareSchema(product)} />
-      <JsonLd data={buildFaqSchema(faqs)} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },

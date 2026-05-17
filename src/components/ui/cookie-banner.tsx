@@ -9,11 +9,12 @@ export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const hasConsent = localStorage.getItem("cookie-consent");
-    if (!hasConsent) {
-      setIsVisible(true);
-    }
+    const frame = requestAnimationFrame(() => {
+      const hasConsent = localStorage.getItem("cookie-consent");
+      setIsVisible(!hasConsent);
+    });
+
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const handleAccept = () => {
