@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: ComparePageProps) {
   }
   return createMetadata({
     title: `EmailMagnet vs ${comparison.label}`,
-    description: `Practical comparison of EmailMagnet and ${comparison.label} for workflow fit, effort, and export outcomes.`,
+    description: `Compare EmailMagnet with ${comparison.label} for speed, workflow effort, data quality, CSV and TXT exports, and when manual collection still makes sense.`,
     path: `/compare/${competitor}`,
   });
 }

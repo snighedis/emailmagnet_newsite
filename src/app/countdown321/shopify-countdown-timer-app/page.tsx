@@ -3,7 +3,8 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "Shopify Countdown Timer App",
-  description: "Countdown321 is a Shopify countdown timer app for time-based storefront messages and urgency campaigns.",
+  description:
+    "Countdown321 is a Shopify countdown timer app for storefront launches, limited-time promotions, urgency banners, and time-based ecommerce campaign messages.",
   path: "/countdown321/shopify-countdown-timer-app",
 });
 

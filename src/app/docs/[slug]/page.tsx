@@ -17,7 +17,8 @@ const docs: Record<
 > = {
   "getting-started": {
     title: "Getting started with EmailMagnet",
-    description: "Install EmailMagnet, open a page, and export results in minutes.",
+    description:
+      "Install EmailMagnet in Chrome, open a relevant website, extract visible emails, review results, and export your first contact list in minutes.",
     answer:
       "EmailMagnet is a Chrome extension for extracting emails while browsing. Install it from the Chrome Web Store, open a website, run extraction, then export the detected emails as CSV or TXT.",
     steps: [
@@ -46,7 +47,8 @@ const docs: Record<
   },
   "exporting-emails": {
     title: "Exporting emails",
-    description: "Export workflows for CSV and TXT in EmailMagnet.",
+    description:
+      "Learn when to export EmailMagnet results as CSV or TXT, how to review addresses first, and how to prepare cleaner lists for spreadsheets or CRM handoff.",
     answer:
       "EmailMagnet exports detected website emails as CSV or TXT so the list can move into spreadsheets, CRM preparation, research notes, or follow-up workflows.",
     steps: [
@@ -71,7 +73,8 @@ const docs: Record<
   },
   "responsible-use": {
     title: "Responsible use",
-    description: "Use EmailMagnet in compliance with privacy and anti-spam rules.",
+    description:
+      "Use EmailMagnet responsibly by documenting source context, qualifying emails before outreach, respecting opt-outs, and following privacy and anti-spam rules.",
     answer:
       "EmailMagnet helps collect emails, but users are responsible for lawful purpose, relevant outreach, opt-out handling, and compliance with privacy and anti-spam rules.",
     steps: [

@@ -3,7 +3,8 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "AI Writing Assistant Chrome Extension",
-  description: "ClickPilot AI is a Chrome extension for fixing, rewriting, summarizing, and translating text inside browser fields.",
+  description:
+    "ClickPilot AI is a Chrome writing assistant for fixing, rewriting, summarizing, translating, and running custom AI shortcuts in browser text fields.",
   path: "/clickpilot-ai/ai-writing-assistant-chrome-extension",
 });
 

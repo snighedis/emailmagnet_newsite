@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: GlossaryPageProps) {
   }
   return createMetadata({
     title: `What is ${page.label}?`,
-    description: `Plain-language definition of ${page.label} in EmailMagnet workflows.`,
+    description: `Plain-language definition of ${page.label} for EmailMagnet users, including browser-based extraction, list review, and responsible outreach workflows.`,
     path: `/glossary/${term}`,
   });
 }

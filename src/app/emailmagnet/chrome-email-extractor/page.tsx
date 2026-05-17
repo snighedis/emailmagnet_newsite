@@ -3,7 +3,8 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "Chrome Email Extractor",
-  description: "EmailMagnet is a Chrome email extractor for finding emails from websites while browsing and exporting them as CSV or TXT.",
+  description:
+    "Use EmailMagnet as a Chrome email extractor to find visible website emails while browsing, review the results, and export clean CSV or TXT contact lists.",
   path: "/emailmagnet/chrome-email-extractor",
 });
 

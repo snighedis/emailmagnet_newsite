@@ -8,7 +8,7 @@ import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Docs",
   description:
-    "EmailMagnet documentation hub for installation, exporting, autosave, bulk extraction, and responsible use.",
+    "Use the EmailMagnet documentation hub to install the Chrome extension, run your first extraction, export CSV or TXT files, and work responsibly.",
   path: "/docs",
 });
 
@@ -16,19 +16,19 @@ const docs = [
   {
     slug: "getting-started",
     title: "Getting started",
-    description: "Install EmailMagnet and run your first extraction workflow.",
+    description: "Install EmailMagnet in Chrome, open a relevant website, extract visible emails, and export your first clean contact list in minutes.",
     bestFor: "New users who want to understand the basic browser workflow.",
   },
   {
     slug: "exporting-emails",
     title: "Exporting emails",
-    description: "Export clean results in CSV or TXT with confidence.",
+    description: "Choose CSV or TXT exports in EmailMagnet, review detected addresses, and prepare cleaner contact lists for spreadsheets or handoff.",
     bestFor: "Users preparing spreadsheets, CRM imports, or lightweight email lists.",
   },
   {
     slug: "responsible-use",
     title: "Responsible use",
-    description: "Use EmailMagnet in a compliant and responsible outreach process.",
+    description: "Use EmailMagnet responsibly by checking source context, qualifying addresses, respecting privacy rules, and avoiding automatic outreach.",
     bestFor: "Teams that need source context, qualification, and responsible contact handling.",
   },
 ];

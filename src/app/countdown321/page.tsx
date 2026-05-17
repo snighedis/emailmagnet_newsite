@@ -4,11 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { productPortfolio } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema, buildFaqSchema, buildProductSoftwareSchema } from "@/lib/schema";
-
-const product = productPortfolio.find((item) => item.name === "Countdown321")!;
+import { buildBreadcrumbSchema } from "@/lib/schema";
 
 const useCases = [
   "Limited-time sales campaigns",
@@ -45,8 +42,6 @@ export const metadata = createMetadata({
 export default function Countdown321Page() {
   return (
     <>
-      <JsonLd data={buildProductSoftwareSchema(product)} />
-      <JsonLd data={buildFaqSchema(faqs)} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },

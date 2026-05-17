@@ -3,7 +3,8 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "Chrome Volume Booster up to 600%",
-  description: "Volume Control PRO is a Chrome volume booster for increasing quiet tab audio up to 600%.",
+  description:
+    "Volume Control PRO is a Chrome volume booster for raising quiet tab audio up to 600%, adjusting browser sound, and remembering site-level volume settings.",
   path: "/volume-control-pro/chrome-volume-booster-600",
 });
 

@@ -5,7 +5,7 @@ import { buildBreadcrumbSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Privacy Policy",
   description:
-    "EmailMagnet Privacy Policy covering data categories, lawful use, retention, user rights, and contact information.",
+    "Read the EmailMagnet privacy policy for data categories, browser extension handling, retention, user rights, responsible use, and support contact details.",
   path: "/privacy",
 });
 
