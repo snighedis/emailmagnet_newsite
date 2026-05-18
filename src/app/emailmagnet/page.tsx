@@ -272,6 +272,14 @@ export default function EmailMagnetPage() {
                   </thead>
                   <tbody className="divide-y divide-slate-200 text-slate-700">
                     <tr>
+                      <td className="px-4 py-4 font-medium text-slate-950">Store locator pages</td>
+                      <td className="px-4 py-4">
+                        Often the highest-leverage fit: one page can list many branches, retailers,
+                        dealers, or local contacts, so EmailMagnet can turn a long manual review into
+                        a fast export for qualification.
+                      </td>
+                    </tr>
+                    <tr>
                       <td className="px-4 py-4 font-medium text-slate-950">Company contact pages</td>
                       <td className="px-4 py-4">The source context usually explains why the address is public.</td>
                     </tr>
@@ -291,29 +299,19 @@ export default function EmailMagnetPage() {
                 </table>
               </div>
             </div>
-            <div className="grid gap-5">
-              <figure className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+              <figure className="mx-auto max-w-sm overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-2xl shadow-slate-200/80">
                 <Image
-                  src="/brand/emailmagnet-01.png"
-                  alt="EmailMagnet extension panel showing detected emails and export actions"
-                  width={1411}
-                  height={1411}
+                  src="/brand/emailmagnet-popup.png"
+                  alt="EmailMagnet popup showing 22 detected emails with TXT, CSV, select, and copy actions"
+                  width={628}
+                  height={1117}
                   className="h-auto w-full"
                 />
-                <figcaption className="border-t border-slate-200 px-4 py-3 text-sm text-slate-600">
-                  Detect visible emails on the page and review the list before export.
-                </figcaption>
-              </figure>
-              <figure className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-                <Image
-                  src="/brand/emailmagnet-02.png"
-                  alt="EmailMagnet export workflow for saving extracted emails"
-                  width={1411}
-                  height={1411}
-                  className="h-auto w-full"
-                />
-                <figcaption className="border-t border-slate-200 px-4 py-3 text-sm text-slate-600">
-                  Export CSV or TXT for spreadsheet cleanup, CRM import, or internal review.
+                <figcaption className="border-t border-slate-200 px-4 py-4 text-sm leading-6 text-slate-600">
+                  The popup shows detected emails, confidence labels, filtering, and export actions
+                  in the same place. This is especially useful on store locator and directory pages
+                  where dozens of public contacts can appear across one research session.
                 </figcaption>
               </figure>
             </div>
