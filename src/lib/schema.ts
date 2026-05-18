@@ -46,12 +46,11 @@ export function buildWebsiteSchema() {
 export function buildFounderSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
+    "@type": "AboutPage",
     name: founderConfig.name,
-    jobTitle: founderConfig.role,
     description: founderConfig.description,
     url: `${base}${founderConfig.href}`,
-    worksFor: {
+    about: {
       "@type": "Organization",
       name: siteConfig.companyName,
       url: base,
@@ -205,9 +204,9 @@ export function buildArticleSchema(post: BlogPost) {
     datePublished: post.date,
     dateModified: post.updated,
     author: {
-      "@type": "Person",
-      name: founderConfig.name,
-      url: `${base}${founderConfig.href}`,
+      "@type": "Organization",
+      name: siteConfig.companyName,
+      url: base,
     },
     publisher: {
       "@type": "Organization",

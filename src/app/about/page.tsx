@@ -41,7 +41,7 @@ export default function AboutPage() {
             <p className="mt-4 leading-8 text-slate-700">
               The studio is founded and maintained by{" "}
               <Link href={founderConfig.href} className="font-semibold text-[#c43618] hover:underline">
-                {founderConfig.name}
+                the Dentoku Dev founder
               </Link>
               , with product support handled through Dentoku Dev.
             </p>

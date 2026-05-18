@@ -67,15 +67,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className="mt-6 text-xl leading-9 text-slate-600">{post.description}</p>
         <p className="mt-5 text-sm font-medium text-slate-500">
           <Link href={founderConfig.href} className="hover:text-[#c43618] hover:underline">
-            {founderConfig.name}
+            Dentoku Dev editorial team
           </Link>{" "}
           · {post.readingTime} · Published {post.date} · Last updated {post.updated}
         </p>
         <aside className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
           <h2 className="text-lg font-semibold text-slate-950">Author context</h2>
           <p className="mt-2 leading-7 text-slate-600">
-            This guide is maintained by {founderConfig.name}, founder of Dentoku Dev, the studio
-            behind EmailMagnet and other focused browser and productivity tools.
+            This guide is maintained by the Dentoku Dev editorial team, the studio behind
+            EmailMagnet and other focused browser and productivity tools.
           </p>
         </aside>
         <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">

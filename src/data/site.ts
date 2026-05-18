@@ -80,12 +80,12 @@ export const siteConfig = {
 };
 
 export const founderConfig = {
-  name: "Nicola Orlandi",
-  role: "Founder and builder of Dentoku Dev",
+  name: "Dentoku Dev founder",
+  role: "Founder-led product studio",
   href: "/founder",
   location: "Milan, Italy",
   description:
-    "Nicola Orlandi builds and maintains Dentoku Dev products across Chrome extensions, Shopify apps, AI writing tools, and focused productivity software.",
+    "Dentoku Dev is a founder-led software studio building Chrome extensions, Shopify apps, AI writing tools, and focused productivity software.",
   focusAreas: [
     "Chrome extension workflows",
     "Shopify storefront tools",

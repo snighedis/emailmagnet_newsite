@@ -8,9 +8,9 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildFounderSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
-  title: "Nicola Orlandi Founder of Dentoku Dev",
+  title: "Dentoku Dev Founder Led Studio",
   description:
-    "Learn about Nicola Orlandi, founder of Dentoku Dev and builder of EmailMagnet, ClickPilot AI, Countdown321, and focused software tools.",
+    "Learn about the founder-led Dentoku Dev studio behind EmailMagnet, ClickPilot AI, Countdown321, and focused software tools.",
   path: founderConfig.href,
 });
 
@@ -56,9 +56,9 @@ export default function FounderPage() {
           <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
             <h2 className="text-lg font-semibold text-slate-950">Short answer</h2>
             <p className="mt-2 leading-8 text-slate-700">
-              {founderConfig.name} is the founder behind Dentoku Dev, a small software studio based
-              in {founderConfig.location}. The studio builds focused products for browser,
-              ecommerce, AI writing, and practical business workflows.
+              Dentoku Dev is a founder-led software studio based in {founderConfig.location}. The
+              studio builds focused products for browser, ecommerce, AI writing, and practical
+              business workflows without exposing a public founder profile.
             </p>
           </div>
 

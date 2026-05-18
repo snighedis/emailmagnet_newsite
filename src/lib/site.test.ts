@@ -112,12 +112,12 @@ describe("Dentoku Dev structured data", () => {
     });
   });
 
-  it("generates Person schema for the Dentoku Dev founder", () => {
+  it("generates a founder page schema without exposing a personal name", () => {
     expect(buildFounderSchema()).toMatchObject({
-      "@type": "Person",
+      "@type": "AboutPage",
       name: founderConfig.name,
       url: "https://www.dentokudev.com/founder",
-      worksFor: expect.objectContaining({ name: "Dentoku Dev" }),
+      about: expect.objectContaining({ name: "Dentoku Dev" }),
     });
   });
 
@@ -191,9 +191,9 @@ describe("Dentoku Dev structured data", () => {
       "@type": "Article",
       headline: post.title,
       author: expect.objectContaining({
-        "@type": "Person",
-        name: founderConfig.name,
-        url: "https://www.dentokudev.com/founder",
+        "@type": "Organization",
+        name: "Dentoku Dev",
+        url: "https://www.dentokudev.com",
       }),
     });
   });
