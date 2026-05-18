@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/emailmagnet/chrome-extension",
+        destination: "/emailmagnet/chrome-email-extractor",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
