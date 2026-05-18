@@ -33,7 +33,7 @@ describe("Dentoku Dev site hierarchy", () => {
     expect(emailMagnetConfig.cover).toBe("/brand/emailmagnet-cover.png");
     expect(emailMagnetConfig.parentBrand).toBe("Dentoku Dev");
     expect(emailMagnetConfig.href).toBe("/emailmagnet");
-    expect(emailMagnetConfig.description).toContain("find and extract emails");
+    expect(emailMagnetConfig.description).toContain("public business emails");
     expect(siteConfig.supportEmail).toBe("support@dentokudev.com");
     expect(emailMagnetConfig.primaryCta.href).toContain("buy.stripe.com");
     expect(emailMagnetConfig.secondaryCta.href).toContain("chromewebstore.google.com");
@@ -90,8 +90,8 @@ describe("Dentoku Dev site hierarchy", () => {
     expect(pricingPlans.map((plan) => plan.name)).toEqual(["Free plan", "PRO plan"]);
     expect(pricingPlans[0].features).toContain("200 emails per month.");
     expect(pricingPlans[1].price).toBe("$19");
-    expect(pricingPlans[1].features).toContain("AUTOSAVE while browsing.");
-    expect(pricingPlans[1].features).toContain("AUTOMATION: Bulk extraction (1,000+ URLs).");
+    expect(pricingPlans[1].features).toContain("Autosave while browsing.");
+    expect(pricingPlans[1].features).toContain("Bulk extraction for reviewed URL lists.");
   });
 
   it("includes required FAQ answers for users and AI answer engines", () => {
