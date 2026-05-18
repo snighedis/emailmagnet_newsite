@@ -266,7 +266,7 @@ export default function EmailMagnetPage() {
                   <caption className="sr-only">Best EmailMagnet source pages and review steps</caption>
                   <thead className="bg-slate-50 text-slate-950">
                     <tr>
-                      <th scope="col" className="px-4 py-3 font-semibold">Source page</th>
+                      <th scope="col" className="w-[30%] px-4 py-3 font-semibold lg:w-[34%]">Source page</th>
                       <th scope="col" className="px-4 py-3 font-semibold">Why it works</th>
                     </tr>
                   </thead>
@@ -300,7 +300,7 @@ export default function EmailMagnetPage() {
               </div>
             </div>
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-              <figure className="mx-auto max-w-sm overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-2xl shadow-slate-200/80">
+              <figure className="mx-auto max-w-sm overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/80">
                 <Image
                   src="/brand/emailmagnet-popup.png"
                   alt="EmailMagnet popup showing 22 detected emails with TXT, CSV, select, and copy actions"
@@ -308,11 +308,6 @@ export default function EmailMagnetPage() {
                   height={1117}
                   className="h-auto w-full"
                 />
-                <figcaption className="border-t border-slate-200 px-4 py-4 text-sm leading-6 text-slate-600">
-                  The popup shows detected emails, confidence labels, filtering, and export actions
-                  in the same place. This is especially useful on store locator and directory pages
-                  where dozens of public contacts can appear across one research session.
-                </figcaption>
               </figure>
             </div>
           </div>
