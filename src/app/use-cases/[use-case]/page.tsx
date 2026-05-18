@@ -10,11 +10,23 @@ const useCases = {
     sections: [
       {
         title: "Best-fit prospecting sources",
-        body: "Use EmailMagnet on public company pages, partner directories, event listings, vendor pages, and contact pages where source context is clear.",
+        body: "Use EmailMagnet on public company pages, partner directories, event listings, vendor pages, and contact pages where source context is clear. These sources are easier to qualify because the page explains why the contact exists and how it relates to the business.",
       },
       {
         title: "Qualification before outreach",
-        body: "Extracted contacts should be filtered by role, source relevance, confidence level, and outreach purpose before any message is sent.",
+        body: "Extracted contacts should be filtered by role, source relevance, confidence level, and outreach purpose before any message is sent. A smaller list with clear source context usually performs better than a larger list with unclear intent.",
+      },
+      {
+        title: "Practical sales workflow",
+        body: "A simple prospecting workflow is: review a relevant website, extract visible emails, export CSV, add source URL and company notes, remove poor-fit contacts, then write outreach based on the source context. EmailMagnet helps with the extraction step; it does not replace qualification.",
+      },
+      {
+        title: "Free vs PRO fit",
+        body: "The Free plan is enough for occasional research and small lists. PRO makes sense when prospecting is recurring, exports exceed the free limits, or bulk extraction and autosave remove repeated manual work.",
+      },
+      {
+        title: "Responsible outreach guardrails",
+        body: "Sales teams should keep an opt-out process, avoid messaging unrelated contacts, and document why each list was collected. This protects deliverability, brand reputation, and compliance posture.",
       },
     ],
   },

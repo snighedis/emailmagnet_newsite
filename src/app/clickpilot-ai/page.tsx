@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -237,10 +238,12 @@ export default function ClickPilotAiPage() {
             
             <div className="bg-green-50 border border-green-200 rounded-xl p-6">
               <div className="flex items-center gap-3 mb-4">
-                <img 
-                  src="/clickpilot-ai-logo.png" 
-                  alt="ClickPilot AI" 
-                  className="w-8 h-8 rounded-lg"
+                <Image
+                  src="/clickpilot-ai-logo.png"
+                  alt="ClickPilot AI logo"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-lg"
                 />
                 <h3 className="text-xl font-semibold text-green-800">✅ With ClickPilot AI</h3>
               </div>

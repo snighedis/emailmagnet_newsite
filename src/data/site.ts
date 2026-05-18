@@ -79,6 +79,21 @@ export const siteConfig = {
   },
 };
 
+export const founderConfig = {
+  name: "Nicola Orlandi",
+  role: "Founder and builder of Dentoku Dev",
+  href: "/founder",
+  location: "Milan, Italy",
+  description:
+    "Nicola Orlandi builds and maintains Dentoku Dev products across Chrome extensions, Shopify apps, AI writing tools, and focused productivity software.",
+  focusAreas: [
+    "Chrome extension workflows",
+    "Shopify storefront tools",
+    "AI-assisted browser productivity",
+    "Small SaaS and indie software products",
+  ],
+};
+
 export const emailMagnetConfig = {
   name: "EmailMagnet",
   parentBrand: "Dentoku Dev",
@@ -166,6 +181,7 @@ export const footerNav = {
   ],
   Company: [
     { label: "About", href: "/about" },
+    { label: "Founder", href: founderConfig.href },
     { label: "Contact", href: "/contact" },
     { label: "LinkedIn", href: siteConfig.social.linkedin },
     { label: "X/Twitter", href: siteConfig.social.x },
@@ -183,11 +199,11 @@ export const pricingPlans: PricingPlan[] = [
     eyebrow: "Perfect to get started",
     description: "Start extracting emails immediately at no cost. Upgrade when you need more.",
     features: [
-      "200 emails per month",
-      "Export up to 100 emails at once",
-      "One-click email extraction",
-      "CSV and TXT export",
-      "Email support",
+      "200 emails per month.",
+      "Export up to 100 emails at once.",
+      "One-click email extraction.",
+      "CSV and TXT export.",
+      "Email support.",
     ],
     cta: {
       label: "Start Free",
@@ -201,13 +217,13 @@ export const pricingPlans: PricingPlan[] = [
     price: "$19",
     description: "One payment. Lifetime access. No subscription.",
     features: [
-      "Unlimited email extraction",
-      "Unlimited export size",
-      "AUTOSAVE while browsing",
-      "AUTOMATION: Bulk extraction (1,000+ URLs)",
-      "Faster processing speed",
-      "CSV and TXT export",
-      "Priority email support",
+      "Unlimited email extraction.",
+      "Unlimited export size.",
+      "AUTOSAVE while browsing.",
+      "AUTOMATION: Bulk extraction (1,000+ URLs).",
+      "Faster processing speed.",
+      "CSV and TXT export.",
+      "Priority email support.",
     ],
     cta: emailMagnetConfig.primaryCta,
   },
@@ -220,7 +236,12 @@ export const faqItems: FaqItem[] = [
       "EmailMagnet is a Chrome Extension that detects email addresses while you browse. Visit any website, click the extension icon, and EmailMagnet instantly finds all visible email addresses. You can then export them as CSV or TXT files with one click.",
   },
   {
-    question: "Is there a free version?",
+    question: "How reliable is EmailMagnet?",
+    answer:
+      "EmailMagnet is designed for visible email detection on pages you are already reviewing in Chrome. Results depend on how the website displays contact information, so users should always review extracted addresses before exporting or using them.",
+  },
+  {
+    question: "What are the free version restrictions?",
     answer:
       "Yes. EmailMagnet offers a free plan with 200 email extractions per month and exports up to 100 emails at once. This includes CSV/TXT export and email support. Perfect for trying the tool and light usage.",
   },
@@ -230,7 +251,7 @@ export const faqItems: FaqItem[] = [
       "PRO ($19 lifetime) includes unlimited email extraction, unlimited export size, autosave while browsing, bulk extraction for 1,000+ URLs, faster processing, and priority support. No monthly subscription.",
   },
   {
-    question: "Is email extraction legal and ethical?",
+    question: "Is email extraction legal?",
     answer:
       "Email extraction from publicly visible websites can be legal when done responsibly. Follow applicable privacy laws (GDPR, CAN-SPAM), only extract publicly displayed emails, use them for legitimate purposes, and respect opt-out requests. EmailMagnet is designed for responsible prospecting and research.",
   },

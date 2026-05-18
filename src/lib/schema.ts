@@ -2,6 +2,7 @@ import type { BlogPost } from "@/content/blog";
 import type { FaqItem } from "@/data/site";
 import {
   emailMagnetConfig,
+  founderConfig,
   pricingPlans,
   productPortfolio,
   siteConfig,
@@ -39,6 +40,28 @@ export function buildWebsiteSchema() {
     name: siteConfig.name,
     url: base,
     description: siteConfig.description,
+  };
+}
+
+export function buildFounderSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: founderConfig.name,
+    jobTitle: founderConfig.role,
+    description: founderConfig.description,
+    url: `${base}${founderConfig.href}`,
+    worksFor: {
+      "@type": "Organization",
+      name: siteConfig.companyName,
+      url: base,
+    },
+    knowsAbout: founderConfig.focusAreas,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Milan",
+      addressCountry: "IT",
+    },
   };
 }
 
@@ -182,8 +205,9 @@ export function buildArticleSchema(post: BlogPost) {
     datePublished: post.date,
     dateModified: post.updated,
     author: {
-      "@type": "Organization",
-      name: post.author,
+      "@type": "Person",
+      name: founderConfig.name,
+      url: `${base}${founderConfig.href}`,
     },
     publisher: {
       "@type": "Organization",

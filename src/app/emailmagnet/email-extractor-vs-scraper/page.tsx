@@ -25,6 +25,24 @@ export default function EmailExtractorVsScraperPage() {
         { intent: "browser email extractor", fit: "EmailMagnet", page: "/emailmagnet" },
         { intent: "responsible email extraction", fit: "Compliance workflow", page: "/docs/responsible-use" },
       ]}
+      sections={[
+        {
+          title: "Browser extraction",
+          body: "Browser extraction is best when a person is already reviewing pages and wants to capture visible addresses faster. It keeps human judgment close to the source, which helps with qualification, context, and responsible use.",
+        },
+        {
+          title: "Traditional scraping",
+          body: "A scraper is better when the job is clearly defined at scale, permissions are understood, and the team has a process for deduplication, validation, rate limits, source records, and compliance review. That setup is heavier than most small research sessions need.",
+        },
+        {
+          title: "Operational risk",
+          body: "The risk with scraping is not only technical. Large automatic jobs can collect low-context records quickly, which creates cleanup, deliverability, and compliance problems. Browser extraction keeps volume closer to the pages a user has actually inspected.",
+        },
+        {
+          title: "Decision rule",
+          body: "Choose EmailMagnet when the work starts in Chrome and the goal is a clean export from pages you can see. Choose a scraper only when the scope, permission model, review process, and data handling rules are clear before collection begins.",
+        },
+      ]}
       ctaHref="/emailmagnet"
       ctaLabel="Use EmailMagnet"
     />

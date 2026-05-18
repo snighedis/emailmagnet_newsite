@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
-import { productPortfolio, siteConfig } from "@/data/site";
+import { founderConfig, productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
 
@@ -37,6 +37,13 @@ export default function AboutPage() {
               Dentoku Dev is the product studio behind EmailMagnet, ClickPilot AI, Volume Control
               PRO, and Countdown321. The studio builds small, practical software products for
               browser, ecommerce, and business workflows.
+            </p>
+            <p className="mt-4 leading-8 text-slate-700">
+              The studio is founded and maintained by{" "}
+              <Link href={founderConfig.href} className="font-semibold text-[#c43618] hover:underline">
+                {founderConfig.name}
+              </Link>
+              , with product support handled through Dentoku Dev.
             </p>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-2">

@@ -137,6 +137,62 @@ export default function EmailMagnetPage() {
               className="h-auto w-full"
             />
           </div>
+          <div className="mt-12 grid gap-5 lg:grid-cols-2">
+            <div className="space-y-5">
+              <h2 className="text-3xl font-semibold text-slate-950">Where EmailMagnet fits best</h2>
+              <p className="leading-8 text-slate-600">
+                EmailMagnet is most useful when a person is already reviewing websites and needs to
+                capture visible contact emails without turning the task into a scraping project.
+                It is built for browser-first research, not hidden data extraction or automatic
+                outreach.
+              </p>
+              <div className="overflow-hidden rounded-xl border border-slate-200">
+                <table className="w-full text-left text-sm">
+                  <caption className="sr-only">Best EmailMagnet source pages and review steps</caption>
+                  <thead className="bg-slate-50 text-slate-950">
+                    <tr>
+                      <th scope="col" className="px-4 py-3 font-semibold">Source page</th>
+                      <th scope="col" className="px-4 py-3 font-semibold">Why it works</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200 text-slate-700">
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-slate-950">Company contact pages</td>
+                      <td className="px-4 py-4">The source context usually explains why the address is public.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-slate-950">Team and directory pages</td>
+                      <td className="px-4 py-4">Useful for role-based review before any outreach decision.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-slate-950">Partner or vendor lists</td>
+                      <td className="px-4 py-4">Good fit when each contact can be tied to a specific business reason.</td>
+                    </tr>
+                    <tr>
+                      <td className="px-4 py-4 font-medium text-slate-950">Event and exhibitor pages</td>
+                      <td className="px-4 py-4">Works well when the next step is spreadsheet cleanup and qualification.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="grid gap-5">
+              <Image
+                src="/brand/emailmagnet-01.png"
+                alt="EmailMagnet extension panel showing detected emails and export actions"
+                width={1411}
+                height={1411}
+                className="h-auto w-full rounded-xl border border-slate-200 bg-white"
+              />
+              <Image
+                src="/brand/emailmagnet-02.png"
+                alt="EmailMagnet export workflow for saving extracted emails"
+                width={1411}
+                height={1411}
+                className="h-auto w-full rounded-xl border border-slate-200 bg-white"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

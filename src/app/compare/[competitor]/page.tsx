@@ -10,11 +10,23 @@ const comparisons = {
     sections: [
       {
         title: "When manual copying works",
-        body: "Manual copying is acceptable for one or two contacts, especially when no export or repeat workflow is needed.",
+        body: "Manual copying is acceptable for one or two contacts, especially when no export or repeat workflow is needed. It can also be the right choice when the page has sensitive context that requires careful reading before any address is saved.",
       },
       {
         title: "When EmailMagnet is the better fit",
-        body: "EmailMagnet is better when the user is reviewing directories, contact pages, partner pages, or public profiles and needs a repeatable browser-based extraction workflow.",
+        body: "EmailMagnet is better when the user is reviewing directories, contact pages, partner pages, or public profiles and needs a repeatable browser-based extraction workflow. The advantage is not just speed; it is consistency, cleaner exports, and fewer copy-paste mistakes across a research session.",
+      },
+      {
+        title: "Workflow difference",
+        body: "Manual copying mixes discovery, selection, formatting, and list management into one fragile task. EmailMagnet separates those jobs: browse the page, detect visible emails, review the result, then export the list as CSV or TXT for qualification.",
+      },
+      {
+        title: "Data quality tradeoff",
+        body: "Neither workflow decides whether a contact should receive a message. Manual copying gives maximum control but becomes inconsistent at scale. EmailMagnet creates a cleaner starting list, but the user still needs to remove irrelevant addresses and document source context.",
+      },
+      {
+        title: "Best decision rule",
+        body: "Use manual copying for isolated addresses. Use EmailMagnet when you are reviewing multiple pages, repeating the same research task, building a spreadsheet, or handing contacts to another person for review.",
       },
     ],
   },

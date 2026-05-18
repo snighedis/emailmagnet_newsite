@@ -4,6 +4,7 @@ import { blogPosts } from "@/content/blog";
 import {
   emailMagnetConfig,
   footerNav,
+  founderConfig,
   faqItems,
   pricingPlans,
   productPortfolio,
@@ -12,6 +13,7 @@ import {
 import {
   buildArticleSchema,
   buildFaqSchema,
+  buildFounderSchema,
   buildHowToSchema,
   buildItemListSchema,
   buildOrganizationSchema,
@@ -110,13 +112,24 @@ describe("Dentoku Dev structured data", () => {
     });
   });
 
+  it("generates Person schema for the Dentoku Dev founder", () => {
+    expect(buildFounderSchema()).toMatchObject({
+      "@type": "Person",
+      name: founderConfig.name,
+      url: "https://www.dentokudev.com/founder",
+      worksFor: expect.objectContaining({ name: "Dentoku Dev" }),
+    });
+  });
+
   it("generates SoftwareApplication and FAQ schema from visible site content", () => {
     expect(buildSoftwareSchema()).toMatchObject({
       "@type": "SoftwareApplication",
       name: "EmailMagnet",
       isPartOf: expect.objectContaining({ name: "Dentoku Dev" }),
       applicationCategory: "BrowserApplication",
-      offers: expect.objectContaining({ price: "19" }),
+      offers: expect.arrayContaining([
+        expect.objectContaining({ price: "19", priceCurrency: "USD" }),
+      ]),
     });
 
     expect(buildFaqSchema(faqItems)).toMatchObject({
@@ -177,7 +190,11 @@ describe("Dentoku Dev structured data", () => {
     expect(buildArticleSchema(post)).toMatchObject({
       "@type": "Article",
       headline: post.title,
-      author: expect.objectContaining({ name: post.author }),
+      author: expect.objectContaining({
+        "@type": "Person",
+        name: founderConfig.name,
+        url: "https://www.dentokudev.com/founder",
+      }),
     });
   });
 });

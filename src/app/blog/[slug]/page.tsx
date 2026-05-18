@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Badge } from "@/components/ui/badge";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { blogPosts, getBlogPost } from "@/content/blog";
-import { siteConfig } from "@/data/site";
+import { founderConfig, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/schema";
 
@@ -66,8 +66,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </h1>
         <p className="mt-6 text-xl leading-9 text-slate-600">{post.description}</p>
         <p className="mt-5 text-sm font-medium text-slate-500">
-          {post.author} · {post.readingTime} · Published {post.date} · Last updated {post.updated}
+          <Link href={founderConfig.href} className="hover:text-[#c43618] hover:underline">
+            {founderConfig.name}
+          </Link>{" "}
+          · {post.readingTime} · Published {post.date} · Last updated {post.updated}
         </p>
+        <aside className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
+          <h2 className="text-lg font-semibold text-slate-950">Author context</h2>
+          <p className="mt-2 leading-7 text-slate-600">
+            This guide is maintained by {founderConfig.name}, founder of Dentoku Dev, the studio
+            behind EmailMagnet and other focused browser and productivity tools.
+          </p>
+        </aside>
         <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
           <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>
           <p className="mt-2 leading-7 text-slate-700">{post.description}</p>

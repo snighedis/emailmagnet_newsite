@@ -8,6 +8,7 @@ type MoneyPageProps = {
   answer: string;
   bullets: string[];
   table: Array<{ intent: string; fit: string; page: string }>;
+  sections?: Array<{ title: string; body: string }>;
   ctaHref: string;
   ctaLabel: string;
 };
@@ -18,6 +19,7 @@ export function MoneyPage({
   answer,
   bullets,
   table,
+  sections = [],
   ctaHref,
   ctaLabel,
 }: MoneyPageProps) {
@@ -61,6 +63,16 @@ export function MoneyPage({
             </tbody>
           </table>
         </div>
+        {sections.length ? (
+          <div className="mt-12 grid gap-8 md:grid-cols-2">
+            {sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="text-2xl font-semibold text-slate-950">{section.title}</h2>
+                <p className="mt-3 leading-8 text-slate-600">{section.body}</p>
+              </section>
+            ))}
+          </div>
+        ) : null}
         <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
           <Link href={ctaHref}>
             {ctaLabel}

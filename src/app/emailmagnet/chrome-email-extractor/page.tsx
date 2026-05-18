@@ -25,6 +25,24 @@ export default function ChromeEmailExtractorPage() {
         { intent: "extract emails from websites", fit: "Browser-based extraction workflow", page: "/docs/getting-started" },
         { intent: "CSV email export", fit: "Export workflow", page: "/docs/exporting-emails" },
       ]}
+      sections={[
+        {
+          title: "What makes a Chrome extractor different",
+          body: "A Chrome email extractor works inside the browsing session instead of asking the user to upload URLs into a separate crawler. That matters when source context is important: the user can inspect the page, understand why the email appears, then extract and export only when the page is relevant.",
+        },
+        {
+          title: "When it is the right tool",
+          body: "EmailMagnet fits prospecting, recruiting research, vendor research, event list review, and small business directory work. It is less appropriate for hidden data, automated scraping at scale, or outreach workflows where nobody reviews the source page.",
+        },
+        {
+          title: "Export workflow",
+          body: "After extraction, CSV is best for spreadsheets, deduplication, CRM preparation, and adding columns such as source URL or confidence level. TXT is better for quick checks and plain lists.",
+        },
+        {
+          title: "Responsible use",
+          body: "The extension helps detect visible email addresses, but the user still owns qualification and compliance. Lists should be reviewed for relevance, source context, opt-out handling, and lawful purpose before messages are sent.",
+        },
+      ]}
       ctaHref="/emailmagnet"
       ctaLabel="Open EmailMagnet"
     />

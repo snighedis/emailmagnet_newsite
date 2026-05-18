@@ -29,15 +29,15 @@ const docs: Record<
     details: [
       {
         title: "Start from a page with clear context",
-        body: "Use public contact pages, directories, team pages, or event listings where the source context explains why an email address appears.",
+        body: "Use public contact pages, directories, team pages, or event listings where the source context explains why an email address appears. A source with clear context makes the exported list easier to qualify later because you can connect each address to a company, role, event, or business reason.",
       },
       {
         title: "Extract before organizing",
-        body: "Let EmailMagnet collect detected emails first, then review, qualify, and export the final list.",
+        body: "Let EmailMagnet collect detected emails first, then review, qualify, and export the final list. Separating extraction from qualification keeps the browser workflow fast while still leaving room for human judgment before outreach.",
       },
       {
         title: "Use exports as a handoff step",
-        body: "CSV works well for spreadsheets and CRM prep. TXT works well when you need a clean lightweight list.",
+        body: "CSV works well for spreadsheets, CRM preparation, deduplication, and team review. TXT works well when you need a clean lightweight list for manual processing, internal notes, or a quick check before importing contacts elsewhere.",
       },
     ],
     citation: {
@@ -59,15 +59,15 @@ const docs: Record<
     details: [
       {
         title: "Choose CSV for structured work",
-        body: "Use CSV when the next step is sorting, filtering, deduplication, or handoff to a spreadsheet or CRM import workflow.",
+        body: "Use CSV when the next step is sorting, filtering, deduplication, or handoff to a spreadsheet or CRM import workflow. A structured export is easier to enrich with company name, source URL, role, confidence score, and outreach reason.",
       },
       {
         title: "Choose TXT for lightweight lists",
-        body: "Use TXT when you need a simple line-by-line list for quick review or manual processing.",
+        body: "Use TXT when you need a simple line-by-line list for quick review or manual processing. TXT is useful for internal notes, fast cleanup, and cases where the next tool expects a plain list rather than spreadsheet columns.",
       },
       {
         title: "Review before outreach",
-        body: "Exports should be qualified before messages are sent. Remove duplicates, irrelevant contacts, and outdated records.",
+        body: "Exports should be qualified before messages are sent. Remove duplicates, irrelevant contacts, outdated records, malformed addresses, and contacts that do not match the reason you collected the list in the first place.",
       },
     ],
   },
@@ -85,15 +85,15 @@ const docs: Record<
     details: [
       {
         title: "Document source context",
-        body: "Keep the source URL, extraction date, and reason for collecting each list so your team can explain where contacts came from.",
+        body: "Keep the source URL, extraction date, and reason for collecting each list so your team can explain where contacts came from. This is especially important when the list is handed to another person, uploaded to a CRM, or revisited weeks after the original research session.",
       },
       {
         title: "Filter before sending",
-        body: "Do not turn raw extraction into automatic outreach. Review fit, remove low-confidence contacts, and respect opt-out requests.",
+        body: "Do not turn raw extraction into automatic outreach. Review fit, remove low-confidence contacts, exclude irrelevant personal addresses, and respect opt-out requests. The safest workflow treats extraction as research input, not as permission to message every detected address.",
       },
       {
         title: "Use official compliance references",
-        body: "Privacy and anti-spam requirements vary by jurisdiction. Use official sources and legal advice when workflows involve regulated data.",
+        body: "Privacy and anti-spam requirements vary by jurisdiction. Use official sources and legal advice when workflows involve regulated data, cross-border campaigns, personal data, or recurring outreach lists.",
       },
     ],
     citation: {
