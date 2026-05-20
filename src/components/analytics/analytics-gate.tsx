@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ChatbaseWidget } from "@/components/analytics/chatbase-widget";
 
 type AnalyticsGateProps = {
   gaId: string;
@@ -42,6 +43,7 @@ export function AnalyticsGate({ gaId }: AnalyticsGateProps) {
       <Analytics />
       <SpeedInsights />
       <GoogleAnalytics gaId={gaId} />
+      <ChatbaseWidget />
     </>
   );
 }
