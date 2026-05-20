@@ -5,12 +5,20 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const consentKey = "cookie-consent";
+const consentEvent = "cookie-consent-change";
+
+function updateConsent(value: "accepted" | "rejected") {
+  localStorage.setItem(consentKey, value);
+  window.dispatchEvent(new Event(consentEvent));
+}
+
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      const hasConsent = localStorage.getItem("cookie-consent");
+      const hasConsent = localStorage.getItem(consentKey);
       setIsVisible(!hasConsent);
     });
 
@@ -18,18 +26,17 @@ export function CookieBanner() {
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
+    updateConsent("accepted");
     setIsVisible(false);
-    // Enable analytics cookies here if needed
   };
 
   const handleReject = () => {
-    localStorage.setItem("cookie-consent", "rejected");
+    updateConsent("rejected");
     setIsVisible(false);
-    // Disable analytics cookies here if needed
   };
 
   const handleClose = () => {
+    updateConsent("rejected");
     setIsVisible(false);
   };
 
@@ -41,7 +48,7 @@ export function CookieBanner() {
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
             <p className="text-sm leading-5 text-slate-700">
-              We use cookies to improve your experience. You can opt out of certain cookies.{" "}
+              We use analytics only if you allow it. Rejecting keeps analytics disabled.{" "}
               <Link
                 href="/privacy"
                 className="font-medium text-[#c43618] hover:underline"

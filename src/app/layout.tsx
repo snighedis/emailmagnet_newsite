@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { AnalyticsGate } from "@/components/analytics/analytics-gate";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -74,9 +72,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <CookieBanner />
-        <Analytics />
-        <SpeedInsights />
-        <GoogleAnalytics gaId={siteConfig.googleAnalyticsId} />
+        <AnalyticsGate gaId={siteConfig.googleAnalyticsId} />
       </body>
     </html>
   );
