@@ -169,33 +169,39 @@ export function SiteHeader() {
             <SheetTitle className="sr-only">Dentoku Dev navigation</SheetTitle>
             <div className="mt-8 space-y-6 px-2">
               <Logo onClick={() => setMobileOpen(false)} />
-              <nav className="grid gap-4 text-base font-medium">
-                <div className="space-y-3">
+              <nav className="grid gap-5 text-base font-medium">
+                <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
                     Products
                   </p>
-                  {productPortfolio.map((product) => (
-                    <Link
-                      key={product.href}
-                      href={product.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="block"
-                    >
-                      {product.name}
-                    </Link>
-                  ))}
+                  <div className="mt-3 space-y-3">
+                    {productPortfolio.map((product) => (
+                      <Link
+                        key={product.href}
+                        href={product.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block"
+                      >
+                        {product.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                {mainNav.map((item) => (
-                  <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
-                    {item.label}
-                  </Link>
-                ))}
-                <Link href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)}>
-                  LinkedIn
-                </Link>
-                <Link href={siteConfig.social.x} onClick={() => setMobileOpen(false)}>
-                  X/Twitter
-                </Link>
+                <div className="border-t border-slate-200 pt-4">
+                  <div className="grid gap-4">
+                    {mainNav.map((item) => (
+                      <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
+                        {item.label}
+                      </Link>
+                    ))}
+                    <Link href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)}>
+                      LinkedIn
+                    </Link>
+                    <Link href={siteConfig.social.x} onClick={() => setMobileOpen(false)}>
+                      X/Twitter
+                    </Link>
+                  </div>
+                </div>
               </nav>
               <div className="grid gap-3">
                 <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] w-full">

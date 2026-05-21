@@ -18,12 +18,6 @@ export function SiteFooter() {
             <span>Dentoku Dev</span>
           </Link>
           <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
-          <p className="text-sm text-slate-500">
-            Support:{" "}
-            <Link href={`mailto:${siteConfig.supportEmail}`} className="hover:text-slate-950">
-              {siteConfig.supportEmail}
-            </Link>
-          </p>
         </div>
         {Object.entries(footerNav).map(([label, items]) => (
           <div key={label}>
