@@ -186,9 +186,9 @@ export default function Home() {
               </h2>
             </div>
             <p className="text-lg leading-8 text-slate-700">
-              The naming is different across products, but the operating model stays stable:
-              identify repeated manual work, define the shortest useful workflow, then document the
-              result clearly.
+              Each framework below shows how we translate a messy workflow into a clear sequence:
+              isolate the recurring task, reduce unnecessary steps, and ship a process users can run
+              reliably every day.
             </p>
           </div>
 

@@ -61,8 +61,7 @@ export const siteConfig = {
   logo: "/brand/dentoku-logo.jpg",
   socialImage: "/brand/dentoku-social-preview.png",
   googleAnalyticsId: "G-WKYOX8TLY9",
-  description:
-    "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and lightweight software for practical business workflows.",
+  description: "Focused software for real operational workflows.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
