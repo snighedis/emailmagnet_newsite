@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 type ContactMailtoFormProps = {
-  supportEmail: string;
+  supportEmail?: string;
 };
 
 type FormState = {
@@ -45,9 +45,12 @@ function looksLikeEmail(value: string): boolean {
 }
 
 export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
+  void supportEmail;
+
   const [form, setForm] = useState<FormState>(defaultState);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const canSubmit = useMemo(() => {
     return (
@@ -64,7 +67,7 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!canSubmit) {
@@ -74,25 +77,38 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
     }
 
     setError("");
-    setSuccess("Your email app has been opened with a pre-filled message.");
+    setSuccess("");
+    setIsSubmitting(true);
 
-    const subject = `Dentoku Dev contact request${form.product ? ` - ${form.product}` : ""}`;
-    const body = [
-      `First name: ${form.firstName.trim()}`,
-      `Last name: ${form.lastName.trim()}`,
-      `Email: ${form.email.trim()}`,
-      `Product: ${form.product || "General inquiry"}`,
-      "",
-      "Message:",
-      form.message.trim(),
-    ].join("\n");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email,
+          product: form.product || "General inquiry",
+          message: form.message,
+          website: "",
+        }),
+      });
 
-    const mailtoUrl =
-      `mailto:${supportEmail}` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+      if (!response.ok) {
+        setError(data?.message || "Unable to send your request right now.");
+        return;
+      }
 
-    window.location.href = mailtoUrl;
+      setSuccess("Message sent successfully. Our team will get back to you soon.");
+      setForm(defaultState);
+    } catch {
+      setError("Connection error. Please try again in a moment.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -185,6 +201,7 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
           className="min-h-32 rounded-sm border-slate-400 bg-white px-4 py-3 text-base"
         />
       </label>
+      <input type="text" name="website" autoComplete="off" tabIndex={-1} className="hidden" />
 
       <p className="mt-6 text-base font-semibold leading-7 text-slate-900">
         By submitting this form, you confirm that you have read and accepted the Privacy Policy.
@@ -203,9 +220,10 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
         <Button
           type="submit"
           size="lg"
+          disabled={isSubmitting}
           className="h-16 rounded-md bg-[#244f9e] px-8 text-lg text-white hover:bg-[#1e4386]"
         >
-          Send message
+          {isSubmitting ? "Sending..." : "Send message"}
         </Button>
       </div>
     </form>

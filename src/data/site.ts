@@ -61,7 +61,7 @@ export const siteConfig = {
   logo: "/brand/dentoku-logo.jpg",
   socialImage: "/brand/dentoku-social-preview.png",
   googleAnalyticsId: "G-WKYOX8TLY9",
-  description: "Focused software for real operational workflows.",
+  description: "A product studio for real operational workflows.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
