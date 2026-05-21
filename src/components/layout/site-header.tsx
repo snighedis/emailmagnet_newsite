@@ -30,7 +30,7 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
         className="h-10 w-10 rounded-md object-cover lg:h-9 lg:w-9"
         priority
       />
-      <span className="text-[1.85rem] leading-none lg:text-base">Dentoku Dev</span>
+      <span className="text-[1.65rem] leading-none lg:text-base">Dentoku Dev</span>
     </Link>
   );
 }

@@ -104,15 +104,15 @@ export default function EmailMagnetPage() {
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-18 md:py-22 lg:grid-cols-[1fr_0.95fr] lg:items-start">
           <div className="space-y-7 lg:contents">
             <div className="space-y-7 lg:col-start-1 lg:row-start-1">
-              <Badge className="w-fit gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white">
+              <Badge className="h-auto max-w-full justify-start gap-2 whitespace-normal rounded-full border border-white/20 bg-white/10 px-4 py-2 text-left text-[0.7rem] leading-5 text-white sm:w-fit sm:text-xs">
                 <Image
                   src={emailMagnetConfig.icon}
                   alt="EmailMagnet icon"
                   width={18}
                   height={18}
-                  className="h-[18px] w-[18px] object-contain"
+                  className="h-[18px] w-[18px] shrink-0 object-contain"
                 />
-                Chosen by 2,000+ professionals, sales teams, and businesses
+                <span>Chosen by 2,000+ professionals, sales teams, and businesses</span>
               </Badge>
 
               <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
