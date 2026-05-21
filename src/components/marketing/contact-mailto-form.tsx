@@ -221,7 +221,7 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="h-16 rounded-md bg-[#244f9e] px-8 text-lg text-white hover:bg-[#1e4386]"
+          className="h-14 rounded-md bg-[#ff5c35] px-8 text-lg text-white hover:bg-[#df4320]"
         >
           {isSubmitting ? "Sending..." : "Send message"}
         </Button>

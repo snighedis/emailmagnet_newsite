@@ -21,16 +21,16 @@ import { emailMagnetConfig, mainNav, productPortfolio, siteConfig } from "@/data
 
 function Logo({ onClick }: { onClick?: () => void } = {}) {
   return (
-    <Link href="/" onClick={onClick} className="flex items-center gap-2 font-semibold text-slate-950">
+    <Link href="/" onClick={onClick} className="flex items-center gap-3 font-semibold text-slate-950 lg:gap-2">
       <Image
         src={siteConfig.logo}
         alt="Dentoku Dev logo"
         width={36}
         height={36}
-        className="h-9 w-9 rounded-md object-cover"
+        className="h-11 w-11 rounded-md object-cover lg:h-9 lg:w-9"
         priority
       />
-      <span>Dentoku Dev</span>
+      <span className="text-[2rem] leading-none lg:text-base">Dentoku Dev</span>
     </Link>
   );
 }
@@ -133,7 +133,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4">
+      <div className="mx-auto flex h-22 max-w-7xl items-center justify-between px-4 lg:h-18">
         <Logo />
         <nav className="hidden items-center gap-7 text-sm font-medium text-slate-700 lg:flex">
           <ProductsMenu />
@@ -161,8 +161,8 @@ export function SiteHeader() {
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="outline" size="icon" aria-label="Open navigation">
-              <Menu className="h-5 w-5" />
+            <Button variant="outline" size="icon" aria-label="Open navigation" className="h-14 w-14 rounded-2xl">
+              <Menu className="h-7 w-7" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-80">

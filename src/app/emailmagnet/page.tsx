@@ -112,7 +112,7 @@ export default function EmailMagnetPage() {
                   height={18}
                   className="h-[18px] w-[18px] object-contain"
                 />
-                Dentoku Dev product · Chrome extension
+                Chosen by 2,000+ professionals, sales teams, and businesses
               </Badge>
 
               <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
