@@ -21,16 +21,16 @@ import { emailMagnetConfig, mainNav, productPortfolio, siteConfig } from "@/data
 
 function Logo({ onClick }: { onClick?: () => void } = {}) {
   return (
-    <Link href="/" onClick={onClick} className="flex items-center gap-3 font-semibold text-slate-950 lg:gap-2">
+    <Link href="/" onClick={onClick} className="flex items-center gap-2.5 font-semibold text-slate-950 lg:gap-2">
       <Image
         src={siteConfig.logo}
         alt="Dentoku Dev logo"
         width={36}
         height={36}
-        className="h-11 w-11 rounded-md object-cover lg:h-9 lg:w-9"
+        className="h-10 w-10 rounded-md object-cover lg:h-9 lg:w-9"
         priority
       />
-      <span className="text-[2rem] leading-none lg:text-base">Dentoku Dev</span>
+      <span className="text-[1.85rem] leading-none lg:text-base">Dentoku Dev</span>
     </Link>
   );
 }
