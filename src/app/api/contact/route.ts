@@ -13,6 +13,13 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function buildTicketId(): string {
+  const now = new Date();
+  const year = now.getUTCFullYear();
+  const seed = `${now.getTime().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+  return `DD-${year}-${seed}`.toUpperCase();
+}
+
 export async function POST(request: Request) {
   const loopsEndpoint = process.env.LOOPS_CONTACT_FORM_ENDPOINT;
   if (!loopsEndpoint) {
@@ -38,6 +45,8 @@ export async function POST(request: Request) {
   const email = (payload.email ?? "").trim();
   const product = (payload.product ?? "General inquiry").trim();
   const message = (payload.message ?? "").trim();
+  const nowIso = new Date().toISOString();
+  const ticketId = buildTicketId();
 
   if (!firstName || !lastName || !email || !message) {
     return NextResponse.json(
@@ -65,6 +74,14 @@ export async function POST(request: Request) {
     source: "Website contact form",
     userGroup: "Contact requests",
     notes,
+    ticketStatus: "new",
+    ticketPriority: "normal",
+    ticketSource: "website-contact-form",
+    lastContactReason: product,
+    lastInboundMessage: message,
+    lastInboundAt: nowIso,
+    ticketId,
+    ticketOwner: "",
   });
 
   try {
