@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -78,6 +79,16 @@ export default function Countdown321Page() {
               urgency app,” or “countdown timer for ecommerce campaigns.” It gives merchants a
               focused way to show time-sensitive messages without custom storefront development.
             </p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+            <Image
+              src="/brand/countdown321-hero.png"
+              alt="Countdown321 timer styles preview"
+              width={1600}
+              height={900}
+              className="h-auto w-full"
+              priority
+            />
           </div>
         </div>
       </section>
