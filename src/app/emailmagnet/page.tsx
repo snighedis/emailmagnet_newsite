@@ -101,28 +101,30 @@ export default function EmailMagnetPage() {
         <div className="pointer-events-none absolute left-[-7rem] top-[-6rem] h-72 w-72 rounded-full bg-[#ff5c35]/30 blur-3xl" />
         <div className="pointer-events-none absolute right-[-8rem] top-12 h-80 w-80 rounded-full bg-[#2dd4bf]/20 blur-3xl" />
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-18 md:py-22 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <div className="space-y-7">
-            <Badge className="w-fit gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white">
-              <Image
-                src={emailMagnetConfig.icon}
-                alt="EmailMagnet icon"
-                width={18}
-                height={18}
-                className="h-[18px] w-[18px] object-contain"
-              />
-              Dentoku Dev product · Chrome extension
-            </Badge>
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-18 md:py-22 lg:grid-cols-[1fr_0.95fr] lg:items-start">
+          <div className="space-y-7 lg:contents">
+            <div className="space-y-7 lg:col-start-1 lg:row-start-1">
+              <Badge className="w-fit gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-white">
+                <Image
+                  src={emailMagnetConfig.icon}
+                  alt="EmailMagnet icon"
+                  width={18}
+                  height={18}
+                  className="h-[18px] w-[18px] object-contain"
+                />
+                Dentoku Dev product · Chrome extension
+              </Badge>
 
-            <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
-              Capture visible business emails while you research in Chrome
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-200 md:text-xl">
-              EmailMagnet helps researchers, recruiters, founders, and agencies collect public
-              contact emails, review results quickly, and export clean lists as CSV or TXT.
-            </p>
+              <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
+                Capture visible business emails while you research in Chrome
+              </h1>
+              <p className="max-w-2xl text-lg leading-8 text-slate-200 md:text-xl">
+                EmailMagnet helps researchers, recruiters, founders, and agencies collect public
+                contact emails, review results quickly, and export clean lists as CSV or TXT.
+              </p>
+            </div>
 
-            <div className="hero-trust-panel grid min-h-[92px] gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-sm text-slate-100 sm:grid-cols-2">
+            <div className="hero-trust-panel grid min-h-[92px] gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-sm text-slate-100 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
               {trustSignals.map((signal) => (
                 <div key={signal} className="flex items-start gap-2">
                   <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
@@ -131,7 +133,7 @@ export default function EmailMagnetPage() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row lg:col-start-1 lg:row-start-3">
               <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
                 <Link href={emailMagnetConfig.secondaryCta.href}>
                   Add to Chrome for free
@@ -148,7 +150,7 @@ export default function EmailMagnetPage() {
               </Button>
             </div>
 
-            <ul className="grid gap-2 text-sm font-medium text-slate-200 sm:grid-cols-3">
+            <ul className="grid gap-2 text-sm font-medium text-slate-200 sm:grid-cols-3 lg:col-start-1 lg:row-start-4">
               {heroHighlights.map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
@@ -158,8 +160,8 @@ export default function EmailMagnetPage() {
             </ul>
           </div>
 
-          <div className="grid gap-4 lg:gap-[67.5px]">
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
+          <div className="grid gap-4 lg:contents">
+            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 lg:col-start-2 lg:row-start-1">
               <Image
                 src="/brand/emailmagnet-hero-new.png"
                 alt="EmailMagnet Chrome extension interface"
@@ -169,7 +171,7 @@ export default function EmailMagnetPage() {
                 priority
               />
             </div>
-            <div className="hero-stats-panel grid min-h-[92px] grid-cols-3 items-center gap-3 rounded-xl border border-white/15 bg-white/5 p-4 text-center">
+            <div className="hero-stats-panel grid min-h-[92px] grid-cols-3 items-center gap-3 rounded-xl border border-white/15 bg-white/5 p-4 text-center lg:col-start-2 lg:row-start-2">
               {socialProof.stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="text-lg font-semibold text-white">{stat.value}</p>
