@@ -262,7 +262,7 @@ export default function EmailMagnetPage() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-slate-200">
-            <div className="grid grid-cols-2 bg-slate-100 text-sm font-semibold uppercase tracking-wide text-slate-700">
+            <div className="hidden grid-cols-2 bg-slate-100 text-sm font-semibold uppercase tracking-wide text-slate-700 md:grid">
               <div className="px-4 py-3">Manual workflow</div>
               <div className="px-4 py-3">With EmailMagnet</div>
             </div>
@@ -271,11 +271,21 @@ export default function EmailMagnetPage() {
                 <div key={row.manual} className="grid gap-0 text-sm leading-6 md:grid-cols-2">
                   <div className="flex gap-3 bg-slate-50 px-4 py-4 text-slate-600">
                     <XCircle className="mt-1 h-4 w-4 shrink-0 text-[#c43618]" />
-                    <span>{row.manual}</span>
+                    <div>
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500 md:hidden">
+                        Manual workflow
+                      </p>
+                      <span>{row.manual}</span>
+                    </div>
                   </div>
                   <div className="flex gap-3 px-4 py-4 text-slate-800">
                     <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#0f766e]" />
-                    <span>{row.emailMagnet}</span>
+                    <div>
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500 md:hidden">
+                        With EmailMagnet
+                      </p>
+                      <span>{row.emailMagnet}</span>
+                    </div>
                   </div>
                 </div>
               ))}
