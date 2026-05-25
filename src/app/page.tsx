@@ -13,6 +13,13 @@ import {
 } from "@/data/site";
 import { buildItemListSchema } from "@/lib/schema";
 
+const relatedProductLinks: Record<string, Array<{ label: string; href: string }>> = {
+  "/countdown321": [
+    { label: "Shopify countdown timer guide", href: "/countdown321/shopify-countdown-timer-app" },
+    { label: "Shopify urgency app guide", href: "/countdown321/shopify-urgency-app" },
+  ],
+};
+
 export default function Home() {
   const featuredProduct = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
   const secondaryProducts = productPortfolio.filter((product) => product.href !== featuredProduct.href);
@@ -132,6 +139,15 @@ export default function Home() {
                   <p className="text-sm font-semibold text-[#c43618]">{product.category}</p>
                   <h3 className="mt-1 text-2xl font-semibold text-slate-950">{product.name}</h3>
                   <p className="mt-2 max-w-2xl leading-7 text-slate-600">{product.description}</p>
+                  {relatedProductLinks[product.href] ? (
+                    <div className="mt-3 flex flex-wrap gap-3 text-sm font-medium">
+                      {relatedProductLinks[product.href].map((link) => (
+                        <Link key={link.href} href={link.href} className="text-[#c43618] hover:underline">
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
                 <Button
                   asChild

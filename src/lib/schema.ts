@@ -54,12 +54,12 @@ export function buildFounderSchema() {
       "@type": "Organization",
       name: siteConfig.companyName,
       url: base,
-    },
-    knowsAbout: founderConfig.focusAreas,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Milan",
-      addressCountry: "IT",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Milan",
+        addressCountry: "IT",
+      },
+      knowsAbout: founderConfig.focusAreas,
     },
   };
 }
@@ -271,9 +271,19 @@ export function buildVideoSchema(input: {
 export function buildContactPointSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "ContactPoint",
-    contactType: "customer support",
-    email: siteConfig.supportEmail,
-    availableLanguage: ["en"],
+    "@type": "ContactPage",
+    name: "Contact Dentoku Dev Support",
+    url: `${base}/contact`,
+    about: {
+      "@type": "Organization",
+      name: siteConfig.companyName,
+      url: base,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: siteConfig.supportEmail,
+        availableLanguage: ["en"],
+      },
+    },
   };
 }

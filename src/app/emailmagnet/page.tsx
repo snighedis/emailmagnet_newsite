@@ -18,6 +18,7 @@ import { PricingCards } from "@/components/marketing/pricing-cards";
 import { SupportBlock } from "@/components/marketing/support-block";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { blogPosts } from "@/content/blog";
 import {
   emailMagnetConfig,
   faqItems,
@@ -418,7 +419,7 @@ export default function EmailMagnetPage() {
           <div className="space-y-6">
             <FaqList items={faqItems.slice(0, 6)} />
             <nav aria-label="EmailMagnet related help pages" className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <h3 className="text-lg font-semibold text-slate-950">Related help pages</h3>
+              <h3 className="text-lg font-semibold text-slate-950">Related help pages and guides</h3>
               <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
                 <li>
                   <Link className="font-medium text-[#c43618] hover:underline" href="/docs/getting-started">
@@ -440,6 +441,13 @@ export default function EmailMagnetPage() {
                     Dentoku Dev product overview
                   </Link>
                 </li>
+                {blogPosts.map((post) => (
+                  <li key={post.slug}>
+                    <Link className="font-medium text-[#c43618] hover:underline" href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
