@@ -36,16 +36,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: route === "" ? 1 : route === "/blog" ? 0.9 : 0.8,
   }));
   const productRoutes = productPortfolio
     .filter((product) => !routes.includes(product.href))
     .map((product) => ({
       url: `${siteConfig.url}${product.href}`,
       lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
     }));
   const blogRoutes = blogPosts.map((post) => ({
     url: `${siteConfig.url}/blog/${post.slug}`,
     lastModified: new Date(post.updated),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }));
 
   return [...staticRoutes, ...productRoutes, ...blogRoutes];

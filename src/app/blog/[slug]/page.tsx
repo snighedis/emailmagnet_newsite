@@ -12,6 +12,14 @@ type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+function toIsoDate(value: string) {
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    return undefined;
+  }
+  return parsed.toISOString();
+}
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
@@ -28,11 +36,29 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     });
   }
 
-  return createMetadata({
+  const pageMetadata = createMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
   });
+
+  const publishedTime = toIsoDate(post.date);
+  const modifiedTime = toIsoDate(post.updated) ?? publishedTime;
+
+  return {
+    ...pageMetadata,
+    keywords: post.tags,
+    category: "Blog",
+    authors: [{ name: "Dentoku Dev editorial team", url: `${siteConfig.url}${founderConfig.href}` }],
+    openGraph: {
+      ...pageMetadata.openGraph,
+      type: "article",
+      publishedTime,
+      modifiedTime,
+      tags: post.tags,
+      authors: ["Dentoku Dev editorial team"],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

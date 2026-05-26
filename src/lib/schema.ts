@@ -194,15 +194,19 @@ export function buildBreadcrumbSchema(items: Array<{ name: string; href: string 
 }
 
 export function buildArticleSchema(post: BlogPost) {
+  const publishedTime = new Date(post.date);
+  const modifiedTime = new Date(post.updated);
+
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
     image: post.featuredImage ? `${base}${post.featuredImage}` : `${base}${siteConfig.logo}`,
     keywords: post.tags,
-    datePublished: post.date,
-    dateModified: post.updated,
+    datePublished: Number.isNaN(publishedTime.getTime()) ? post.date : publishedTime.toISOString(),
+    dateModified: Number.isNaN(modifiedTime.getTime()) ? post.updated : modifiedTime.toISOString(),
+    articleSection: post.tags,
     author: {
       "@type": "Organization",
       name: siteConfig.companyName,

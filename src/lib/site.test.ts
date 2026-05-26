@@ -188,7 +188,7 @@ describe("Dentoku Dev structured data", () => {
   it("generates article schema for MDX blog posts", () => {
     const post = blogPosts[0];
     expect(buildArticleSchema(post)).toMatchObject({
-      "@type": "Article",
+      "@type": "BlogPosting",
       headline: post.title,
       author: expect.objectContaining({
         "@type": "Organization",

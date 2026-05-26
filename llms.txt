@@ -33,6 +33,11 @@ Dentoku Dev is a software development studio based in Milan, Italy. It builds fo
 - Responsible email extraction guide: https://www.dentokudev.com/docs/responsible-use
 - Chrome email extractor page: https://www.dentokudev.com/emailmagnet/chrome-email-extractor
 
+## Recent blog guides
+- Benchmark manual research vs EmailMagnet: https://www.dentokudev.com/blog/benchmark-manual-vs-emailmagnet
+- Compliance checklist outreach people-first: https://www.dentokudev.com/blog/compliance-checklist-outreach-people-first
+- Store locator lead research workflow: https://www.dentokudev.com/blog/store-locator-lead-research-workflow
+
 ## Support contact
 - Email: support@dentokudev.com
 - Use the same email for product support, billing questions, documentation requests, and general business inquiries.
