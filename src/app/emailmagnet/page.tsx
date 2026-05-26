@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { NewsletterSignup } from "@/components/marketing/newsletter-signup";
+import { NewsletterSignupLazy } from "@/components/marketing/newsletter-signup-lazy";
 import { PricingCards } from "@/components/marketing/pricing-cards";
 import { SupportBlock } from "@/components/marketing/support-block";
 import { Badge } from "@/components/ui/badge";
@@ -422,28 +422,28 @@ export default function EmailMagnetPage() {
               <h3 className="text-lg font-semibold text-slate-950">Related help pages and guides</h3>
               <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/getting-started">
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/getting-started" prefetch={false}>
                     Install and use EmailMagnet
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/exporting-emails">
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/exporting-emails" prefetch={false}>
                     Export emails as CSV or TXT
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/pricing">
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/pricing" prefetch={false}>
                     Compare Free and PRO pricing
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/overview">
+                  <Link className="font-medium text-[#c43618] hover:underline" href="/overview" prefetch={false}>
                     Dentoku Dev product overview
                   </Link>
                 </li>
                 {blogPosts.map((post) => (
                   <li key={post.slug}>
-                    <Link className="font-medium text-[#c43618] hover:underline" href={`/blog/${post.slug}`}>
+                    <Link className="font-medium text-[#c43618] hover:underline" href={`/blog/${post.slug}`} prefetch={false}>
                       {post.title}
                     </Link>
                   </li>
@@ -463,7 +463,7 @@ export default function EmailMagnetPage() {
             </h2>
           </div>
           <div className="mt-10">
-            <NewsletterSignup />
+            <NewsletterSignupLazy />
           </div>
         </div>
       </section>

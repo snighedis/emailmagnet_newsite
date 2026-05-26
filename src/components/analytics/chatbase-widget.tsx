@@ -1,43 +1,87 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect } from "react";
 
 const chatbaseId = "sLs3DFoAAUCy_fCjkUnPp";
 
-export function ChatbaseWidget() {
-  return (
-    <Script id="chatbase-widget" strategy="afterInteractive">
-      {`
-        (function(){
-          if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-            window.chatbase = (...arguments) => {
-              if(!window.chatbase.q){ window.chatbase.q = [] }
-              window.chatbase.q.push(arguments)
-            };
-            window.chatbase = new Proxy(window.chatbase, {
-              get(target, prop){
-                if(prop === "q"){ return target.q }
-                return (...args) => target(prop, ...args)
-              }
-            })
-          }
-          const onLoad = function(){
-            if(document.getElementById("${chatbaseId}")) return;
+type ChatbaseFn = ((...args: unknown[]) => void) & {
+  q?: unknown[][];
+};
 
-            const script = document.createElement("script");
-            script.src = "https://www.chatbase.co/embed.min.js";
-            script.id = "${chatbaseId}";
-            script.domain = "www.chatbase.co";
-            document.body.appendChild(script)
-          };
-          if(document.readyState === "complete"){
-            onLoad()
-          } else {
-            window.addEventListener("load", onLoad)
-          }
-        })();
-      `}
-    </Script>
-  );
+declare global {
+  interface Window {
+    chatbase?: ChatbaseFn;
+  }
 }
 
+export function ChatbaseWidget() {
+  useEffect(() => {
+    let canceled = false;
+
+    const initChatbaseQueue = () => {
+      if (window.chatbase) return;
+
+      const queue: ChatbaseFn = Object.assign(
+        (...arguments_: unknown[]) => {
+          queue.q?.push(arguments_ as unknown[]);
+        },
+        { q: [] as unknown[][] },
+      );
+
+      window.chatbase = new Proxy(queue, {
+        get(target, prop) {
+          if (prop === "q") return target.q;
+          return (...args: unknown[]) => target(prop, ...args);
+        },
+      }) as ChatbaseFn;
+    };
+
+    const appendScript = () => {
+      if (canceled) return;
+      if (document.getElementById(chatbaseId)) return;
+
+      const script = document.createElement("script");
+      script.src = "https://www.chatbase.co/embed.min.js";
+      script.id = chatbaseId;
+      script.setAttribute("data-domain", "www.chatbase.co");
+      document.body.appendChild(script);
+    };
+
+    const loadDeferred = () => {
+      initChatbaseQueue();
+      const win = window as unknown as {
+        requestIdleCallback?: (
+          callback: IdleRequestCallback,
+          options?: IdleRequestOptions,
+        ) => number;
+      };
+      const requestIdleCallbackFn = win.requestIdleCallback;
+
+      if (typeof requestIdleCallbackFn === "function") {
+        requestIdleCallbackFn(appendScript, { timeout: 3000 });
+        return;
+      }
+      setTimeout(appendScript, 1200);
+    };
+
+    const triggerLoad = () => {
+      window.removeEventListener("pointerdown", triggerLoad);
+      window.removeEventListener("keydown", triggerLoad);
+      window.removeEventListener("scroll", triggerLoad);
+      loadDeferred();
+    };
+
+    window.addEventListener("pointerdown", triggerLoad, { once: true, passive: true });
+    window.addEventListener("keydown", triggerLoad, { once: true, passive: true });
+    window.addEventListener("scroll", triggerLoad, { once: true, passive: true });
+
+    return () => {
+      canceled = true;
+      window.removeEventListener("pointerdown", triggerLoad);
+      window.removeEventListener("keydown", triggerLoad);
+      window.removeEventListener("scroll", triggerLoad);
+    };
+  }, []);
+
+  return null;
+}
