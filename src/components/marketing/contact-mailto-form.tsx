@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Script from "next/script";
+import { useEffect, useMemo, useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +23,9 @@ type FormState = {
   email: string;
   product: string;
   message: string;
+  website: string;
+  company: string;
+  turnstileToken: string;
 };
 
 const defaultState: FormState = {
@@ -30,6 +34,9 @@ const defaultState: FormState = {
   email: "",
   product: "",
   message: "",
+  website: "",
+  company: "",
+  turnstileToken: "",
 };
 
 const productOptions = [
@@ -40,6 +47,13 @@ const productOptions = [
   "General inquiry",
 ] as const;
 
+declare global {
+  interface Window {
+    onContactTurnstileSuccess?: (token: string) => void;
+    onContactTurnstileExpired?: () => void;
+  }
+}
+
 function looksLikeEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
@@ -47,19 +61,36 @@ function looksLikeEmail(value: string): boolean {
 export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
   void supportEmail;
 
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [form, setForm] = useState<FormState>(defaultState);
+  const [formStartedAt] = useState<number>(() => Date.now());
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    window.onContactTurnstileSuccess = (token: string) => {
+      setForm((prev) => ({ ...prev, turnstileToken: token }));
+    };
+    window.onContactTurnstileExpired = () => {
+      setForm((prev) => ({ ...prev, turnstileToken: "" }));
+    };
+
+    return () => {
+      delete window.onContactTurnstileSuccess;
+      delete window.onContactTurnstileExpired;
+    };
+  }, []);
 
   const canSubmit = useMemo(() => {
     return (
       form.firstName.trim().length > 0 &&
       form.lastName.trim().length > 0 &&
       looksLikeEmail(form.email) &&
-      form.message.trim().length > 0
+      form.message.trim().length > 0 &&
+      (!turnstileSiteKey || form.turnstileToken.trim().length > 0)
     );
-  }, [form]);
+  }, [form, turnstileSiteKey]);
 
   function updateField<K extends keyof FormState>(field: K, value: FormState[K]) {
     if (error) setError("");
@@ -72,7 +103,7 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
 
     if (!canSubmit) {
       setSuccess("");
-      setError("Fill first name, last name, a valid email, and message before sending.");
+      setError("Fill first name, last name, a valid email, message, and security check before sending.");
       return;
     }
 
@@ -92,7 +123,11 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
           email: form.email,
           product: form.product || "General inquiry",
           message: form.message,
-          website: "",
+          website: form.website,
+          company: form.company,
+          formStartedAt,
+          submittedAt: Date.now(),
+          turnstileToken: form.turnstileToken,
         }),
       });
 
@@ -201,7 +236,46 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
           className="min-h-32 rounded-sm border-slate-400 bg-white px-4 py-3 text-base"
         />
       </label>
-      <input type="text" name="website" autoComplete="off" tabIndex={-1} className="hidden" />
+      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          name="website"
+          autoComplete="off"
+          tabIndex={-1}
+          value={form.website}
+          onChange={(event) => updateField("website", event.target.value)}
+        />
+      </div>
+      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="company">Company</label>
+        <input
+          id="company"
+          type="text"
+          name="company"
+          autoComplete="organization"
+          tabIndex={-1}
+          value={form.company}
+          onChange={(event) => updateField("company", event.target.value)}
+        />
+      </div>
+
+      {turnstileSiteKey ? (
+        <div className="mt-6">
+          <Script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            strategy="afterInteractive"
+          />
+          <div
+            className="cf-turnstile"
+            data-sitekey={turnstileSiteKey}
+            data-callback="onContactTurnstileSuccess"
+            data-expired-callback="onContactTurnstileExpired"
+            data-theme="light"
+          />
+        </div>
+      ) : null}
 
       <p className="mt-6 text-base font-semibold leading-7 text-slate-900">
         By submitting this form, you confirm that you have read and accepted the Privacy Policy.
