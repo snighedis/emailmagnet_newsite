@@ -72,7 +72,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <CookieBanner />
-        <AnalyticsGate gaId={siteConfig.googleAnalyticsId} />
+        <AnalyticsGate gaId={siteConfig.googleAnalyticsId} adsId={siteConfig.googleAdsId} />
       </body>
     </html>
   );

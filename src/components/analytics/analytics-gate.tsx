@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -8,7 +8,16 @@ import { ChatbaseWidget } from "@/components/analytics/chatbase-widget";
 
 type AnalyticsGateProps = {
   gaId: string;
+  adsId?: string;
 };
+
+type GtagFn = (...args: unknown[]) => void;
+
+declare global {
+  interface Window {
+    gtag?: GtagFn;
+  }
+}
 
 const consentKey = "cookie-consent";
 const consentEvent = "cookie-consent-change";
@@ -29,12 +38,21 @@ function subscribeToConsentChanges(onStoreChange: () => void) {
   };
 }
 
-export function AnalyticsGate({ gaId }: AnalyticsGateProps) {
+export function AnalyticsGate({ gaId, adsId }: AnalyticsGateProps) {
   const hasConsent = useSyncExternalStore(
     subscribeToConsentChanges,
     hasAnalyticsConsent,
     () => false,
   );
+  const hasConfiguredAdsRef = useRef(false);
+
+  useEffect(() => {
+    if (!hasConsent || !adsId || hasConfiguredAdsRef.current) return;
+    if (typeof window.gtag !== "function") return;
+
+    window.gtag("config", adsId);
+    hasConfiguredAdsRef.current = true;
+  }, [hasConsent, adsId]);
 
   if (!hasConsent) return null;
 
