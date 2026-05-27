@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { FaqList } from "@/components/marketing/faq-list";
+import { PricingCards } from "@/components/marketing/pricing-cards";
+import type { PricingPlan } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
@@ -111,6 +113,43 @@ export default function ClickPilotAiPage() {
     {
       title: "Paste key in ClickPilot AI",
       description: "Open the extension and enter your key to unlock Pro features",
+    },
+  ];
+
+  const clickPilotPricingPlans: PricingPlan[] = [
+    {
+      name: "Free plan",
+      price: "Free",
+      eyebrow: "Perfect to get started",
+      description: "Use core AI writing actions in Chrome before upgrading to recurring workflows.",
+      features: [
+        "Core AI actions.",
+        "Fix, rewrite, translate, and summarize.",
+        "Works on most websites with text fields.",
+        "Requires your own OpenAI API key.",
+      ],
+      cta: {
+        label: "Install Free Version",
+        href: "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
+      },
+      featured: true,
+    },
+    {
+      name: "PRO plan",
+      eyebrow: "For recurring writing",
+      price: "$19",
+      description: "One payment for full ClickPilot AI access, custom shortcuts, and lifetime use.",
+      features: [
+        "Lifetime Pro license.",
+        "Full access to all Pro features.",
+        "Unlimited usage on the extension side.",
+        "Custom AI shortcuts.",
+        "No monthly subscription.",
+      ],
+      cta: {
+        label: "Get Lifetime PRO",
+        href: "https://dentoku.gumroad.com/l/clickpilotAI",
+      },
     },
   ];
 
@@ -363,9 +402,8 @@ export default function ClickPilotAiPage() {
         </div>
       </section>
 
-      {/* PRO Features - Clean Design */}
       <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-5xl px-4">
+        <div className="mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618] mb-3">
               Upgrade Available
@@ -377,115 +415,9 @@ export default function ClickPilotAiPage() {
               Upgrade to ClickPilot AI Lifetime and bring AI writing into your daily workflow.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mt-6 items-stretch">
-            {/* FREE Plan */}
-            <div className="relative flex">
-              <Card className="rounded-2xl border-slate-200 shadow-sm p-8 flex flex-col w-full">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-semibold text-slate-950 mb-2">Free</h3>
-                  <p className="text-slate-600">Perfect to get started</p>
-                </div>
-                
-                <div className="space-y-4 flex-1">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    <span className="text-slate-700">Core AI actions</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    <span className="text-slate-700">Fix, rewrite, translate, summarize</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    <span className="text-slate-700">Works on most websites</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-green-600" />
-                    <span className="text-slate-700">Requires OpenAI API key</span>
-                  </div>
-                </div>
-                
-                <div className="mt-8">
-                  <Button asChild variant="outline" className="w-full rounded-md">
-                    <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                      Install Free Version
-                    </Link>
-                  </Button>
-                </div>
-              </Card>
-            </div>
-            
-            {/* PRO Plan */}
-            <div className="relative flex">
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                <span className="bg-[#ff5c35] text-white px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                  Most Popular
-                </span>
-              </div>
-              <Card className="rounded-2xl border-[#ff5c35] border-2 shadow-lg p-8 bg-gradient-to-br from-white to-orange-50 flex flex-col w-full">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-semibold text-slate-950 mb-2">
-                    <span className="text-[#ff5c35]">Lifetime</span> ($19)
-                  </h3>
-                  <p className="text-slate-600">One-time payment, lifetime access</p>
-                </div>
-                
-                <div className="space-y-4 flex-1">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Lifetime Pro license</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Full access to all Pro features</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Unlimited usage on extension side</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">Custom AI shortcuts</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#ff5c35]" />
-                    <span className="text-slate-700">No monthly subscription</span>
-                  </div>
-                </div>
-                
-                <div className="mt-8">
-                  <Button asChild className="w-full rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] font-semibold">
-                    <Link href="https://dentoku.gumroad.com/l/clickpilotAI">
-                      Get Lifetime PRO
-                      <ArrowRight className="h-4 w-4 ml-2" />
-                    </Link>
-                  </Button>
-                  
-                  <p className="text-center text-slate-500 text-sm mt-4">
-                    One-time payment • Lifetime access • 30-day guarantee
-                  </p>
-                </div>
-              </Card>
-            </div>
-          </div>
-          
-          {/* Trust indicators */}
-          <div className="mt-12 text-center">
-            <div className="flex items-center justify-center gap-6 text-slate-500 text-sm flex-wrap">
-              <span className="flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
-                Secure payment via Gumroad
-              </span>
-              <span className="flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
-                Instant delivery
-              </span>
-              <span className="flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
-                No subscription
-              </span>
-            </div>
+
+          <div className="mt-10">
+            <PricingCards plans={clickPilotPricingPlans} />
           </div>
         </div>
       </section>

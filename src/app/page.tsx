@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { DelayedAutoplayVideo } from "@/components/marketing/delayed-autoplay-video";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -73,13 +74,10 @@ export default function Home() {
             <div className="rounded-xl bg-[#132333] p-5 text-white">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-200">Featured now</p>
               <div className="mt-4 rounded-lg bg-white p-4">
-                <Image
-                  src={emailMagnetConfig.logo}
-                  alt="EmailMagnet logo"
-                  width={640}
-                  height={360}
-                  className="h-auto w-full"
-                  priority
+                <DelayedAutoplayVideo
+                  src="/brand/emailmagnet-logo-animation.mp4"
+                  ariaLabel="Animated EmailMagnet logo"
+                  className="h-auto w-full rounded-md"
                 />
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-200">{featuredProduct.description}</p>
