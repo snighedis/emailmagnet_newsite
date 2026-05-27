@@ -32,7 +32,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-28 top-10 h-72 w-72 rounded-full bg-[#ff5c35]/20 blur-3xl" />
         <div className="pointer-events-none absolute bottom-0 left-[-8rem] h-80 w-80 rounded-full bg-[#213343]/10 blur-3xl" />
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div className="space-y-7">
             <Badge className="rounded-full border border-[#213343]/10 bg-white px-4 py-2 text-[#213343]">
               Dentoku Dev · founder-led product studio
@@ -201,11 +201,6 @@ export default function Home() {
                 Internal frameworks that keep products practical
               </h2>
             </div>
-            <p className="text-lg leading-8 text-slate-700">
-              Each framework below shows how we translate a messy workflow into a clear sequence:
-              isolate the recurring task, reduce unnecessary steps, and ship a process users can run
-              reliably every day.
-            </p>
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
