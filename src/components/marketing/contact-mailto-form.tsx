@@ -270,6 +270,7 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
           <div
             className="cf-turnstile"
             data-sitekey={turnstileSiteKey}
+            data-size="invisible"
             data-callback="onContactTurnstileSuccess"
             data-expired-callback="onContactTurnstileExpired"
             data-theme="light"
