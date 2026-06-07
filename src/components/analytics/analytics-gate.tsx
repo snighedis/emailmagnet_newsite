@@ -54,6 +54,46 @@ export function AnalyticsGate({ gaId, adsId }: AnalyticsGateProps) {
     hasConfiguredAdsRef.current = true;
   }, [hasConsent, adsId]);
 
+  // Global outbound click tracking for GA4 micro-conversions
+  useEffect(() => {
+    if (!hasConsent) return;
+
+    const handleOutboundClick = (event: MouseEvent) => {
+      if (typeof window.gtag !== "function") return;
+
+      const target = event.target as HTMLElement;
+      const anchor = target.closest("a");
+      if (!anchor) return;
+
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+
+      // Track Chrome Web Store clicks
+      if (href.includes("chromewebstore.google.com")) {
+        window.gtag("event", "click_chrome_store", {
+          event_category: "engagement",
+          event_label: href,
+          value: 1.0,
+        });
+      }
+
+      // Track Stripe purchase clicks
+      if (href.includes("buy.stripe.com")) {
+        window.gtag("event", "click_stripe_checkout", {
+          event_category: "conversion",
+          event_label: href,
+          value: 19.0,
+          currency: "USD",
+        });
+      }
+    };
+
+    document.addEventListener("click", handleOutboundClick);
+    return () => {
+      document.removeEventListener("click", handleOutboundClick);
+    };
+  }, [hasConsent]);
+
   if (!hasConsent) return null;
 
   return (
