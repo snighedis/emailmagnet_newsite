@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
+import { ArrowRight } from "@/components/ui/icons";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
@@ -9,6 +9,7 @@ import { TrustBar } from "@/components/marketing/trust-bar";
 import { StatStrip } from "@/components/marketing/stat-strip";
 import { FeatureCard } from "@/components/marketing/feature-card";
 import { CtaBand } from "@/components/marketing/cta-band";
+import { RotatingWords } from "@/components/marketing/rotating-words";
 import { Button } from "@/components/ui/button";
 import {
   companyTrustCues,
@@ -26,12 +27,6 @@ const relatedProductLinks: Record<string, Array<{ label: string; href: string }>
   ],
 };
 
-const heroHighlights = [
-  "Chrome-first extraction and productivity",
-  "Shopify campaign and urgency tooling",
-  "Clear docs, support, and upgrade paths",
-];
-
 const spotlightStats = [
   { value: "2,000+", label: "Professionals, sales teams, and businesses" },
   { value: "200 / mo", label: "Free captures on the EmailMagnet free plan" },
@@ -39,33 +34,38 @@ const spotlightStats = [
 ];
 
 export default function Home() {
-  const featuredProduct = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
-
   return (
     <>
       <JsonLd data={buildItemListSchema("Dentoku Dev software products", productPortfolio)} />
 
       {/* Hero */}
-      <Section variant="gradient" containerClassName="relative" spacing="loose">
+      <section className="bg-ink relative isolate flex min-h-[620px] items-center overflow-hidden text-white md:min-h-[720px]">
         <div
-          className="bg-brand/20 pointer-events-none absolute -top-10 -right-24 h-72 w-72 rounded-full blur-3xl"
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/brand/dentokudev-hero-image.jpg')" }}
           aria-hidden
         />
+        <div className="bg-ink/10 absolute inset-0" aria-hidden />
         <div
-          className="bg-ink/10 pointer-events-none absolute -bottom-24 -left-32 h-80 w-80 rounded-full blur-3xl"
+          className="from-ink/85 via-ink/40 absolute inset-0 bg-gradient-to-r to-transparent"
           aria-hidden
         />
-        <div className="relative grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <div className="space-y-7">
-            <span className="bg-brand-soft text-eyebrow ring-brand/15 inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold ring-1">
-              Dentoku Dev · founder-led product studio
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 md:py-28">
+          <div className="max-w-2xl space-y-7">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
+              <span className="bg-brand h-1.5 w-1.5 rounded-full" aria-hidden />
+              One studio, focused tools
             </span>
-            <h1 className="text-ink max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
-              Browser-first software for teams that do real operational work
+            <h1 className="text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
+              <span className="block">Browser-first software for</span>
+              <RotatingWords
+                words={["sales teams", "recruiters", "founders", "agencies"]}
+                className="text-brand"
+              />
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-700 md:text-xl">
-              We build focused tools for repetitive workflows — Chrome extensions, Shopify
-              utilities, and compact products that ship quickly and stay understandable.
+            <p className="max-w-xl text-lg leading-8 text-white md:text-xl">
+              Focused Chrome extensions and Shopify tools for the repetitive work behind sales,
+              recruiting, and growth — capture emails, write faster, add urgency, and ship the list.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">
@@ -74,42 +74,23 @@ export default function Home() {
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="xl" variant="outline" className="border-slate-300 bg-white/70">
+              <Button
+                asChild
+                size="xl"
+                variant="outline"
+                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
+              >
                 <Link href="/overview">Read overview</Link>
               </Button>
             </div>
             <TrustBar
+              tone="ink"
               highlight="Chosen by 2,000+ professionals, sales teams, and businesses"
               items={["Free plan — no credit card"]}
             />
           </div>
-
-          <div className="relative">
-            <BrowserFrame
-              src="/brand/emailmagnet-hero-new.png"
-              alt="EmailMagnet extension interface"
-              url="EmailMagnet · capture visible business emails"
-              priority
-            />
-            <div className="shadow-soft-lg absolute -bottom-6 -left-4 hidden rounded-2xl border border-slate-100 bg-white p-4 sm:block">
-              <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
-                Featured
-              </p>
-              <p className="mt-1 font-semibold text-slate-950">{featuredProduct.name}</p>
-              <p className="mt-0.5 text-sm text-slate-500">Free plan available</p>
-            </div>
-          </div>
         </div>
-
-        <ul className="relative mt-12 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-3">
-          {heroHighlights.map((item) => (
-            <li key={item} className="flex items-start gap-2">
-              <CheckCircle2 className="text-accent-teal mt-0.5 h-4 w-4 shrink-0" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </Section>
+      </section>
 
       {/* Portfolio */}
       <Section id="products" variant="default">
