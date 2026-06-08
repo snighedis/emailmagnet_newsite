@@ -177,6 +177,7 @@ export default function EmailMagnetPage() {
               alt="EmailMagnet Chrome extension interface"
               url="EmailMagnet · capture visible business emails"
               priority
+              className="lg:-translate-y-16"
             />
             <div className="grid grid-cols-3 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-center">
               {socialProof.stats.map((stat) => (

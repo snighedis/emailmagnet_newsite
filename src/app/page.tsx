@@ -114,7 +114,7 @@ export default function Home() {
             >
               {product.featured ? (
                 <span className="bg-brand-soft text-eyebrow absolute top-6 right-6 z-10 rounded-full px-3 py-1 text-xs font-semibold">
-                  Flagship
+                  Featured product
                 </span>
               ) : null}
               <Image

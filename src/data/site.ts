@@ -177,8 +177,6 @@ export const footerNav = {
     { label: "About", href: "/about" },
     { label: "Founder", href: founderConfig.href },
     { label: "Contact", href: "/contact" },
-    { label: "LinkedIn", href: siteConfig.social.linkedin },
-    { label: "X/Twitter", href: siteConfig.social.x },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

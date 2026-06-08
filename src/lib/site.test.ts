@@ -78,11 +78,14 @@ describe("Dentoku Dev site hierarchy", () => {
   });
 
   it("uses production-safe social labels", () => {
+    // Social links live as icons (LinkedIn / X) in the footer brand block and the
+    // header nav, not as footerNav text links — so footerNav must not carry a
+    // mislabeled social entry.
     const footerLabels = Object.values(footerNav).flat().map((item) => item.label);
-    expect(footerLabels).toContain("X/Twitter");
     expect(footerLabels).not.toContain("Twitter/X");
     expect(footerLabels).not.toContain("Twitter");
     expect(footerLabels).not.toContain("X");
+    expect(footerLabels).not.toContain("LinkedIn");
   });
 
   it("models the current free and pro pricing structure without invented plans", () => {
