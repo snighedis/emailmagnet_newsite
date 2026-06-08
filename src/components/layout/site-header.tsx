@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Menu, Star } from "lucide-react";
+import { ArrowRight, Menu, Star } from "@/components/ui/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -21,16 +21,22 @@ import { emailMagnetConfig, mainNav, productPortfolio, siteConfig } from "@/data
 
 function Logo({ onClick }: { onClick?: () => void } = {}) {
   return (
-    <Link href="/" onClick={onClick} className="flex items-center gap-2.5 font-semibold text-slate-950 lg:gap-2">
+    <Link
+      href="/"
+      onClick={onClick}
+      className="flex items-center gap-2.5 font-semibold text-slate-950 lg:gap-2"
+    >
       <Image
         src={siteConfig.logo}
         alt="Dentoku Dev logo"
         width={36}
         height={36}
-        className="h-10 w-10 rounded-md object-cover lg:h-9 lg:w-9"
+        className="h-10 w-10 rounded-lg object-cover lg:h-9 lg:w-9"
         priority
       />
-      <span className="text-[1.65rem] leading-none lg:text-base">Dentoku Dev</span>
+      <span className="text-[1.65rem] leading-none tracking-[-0.01em] lg:text-lg">
+        Dentoku Dev
+      </span>
     </Link>
   );
 }
@@ -47,7 +53,7 @@ function ProductsMenu() {
 
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
-      <DropdownMenuTrigger className="cursor-pointer rounded-md px-2 py-2 text-sm font-medium text-slate-700 outline-none transition hover:text-slate-950 focus-visible:ring-2 focus-visible:ring-[#ff5c35]">
+      <DropdownMenuTrigger className="focus-visible:ring-brand cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-700 outline-none transition hover:bg-slate-100 hover:text-slate-950 aria-expanded:bg-slate-100 aria-expanded:text-slate-950 focus-visible:ring-2">
         Products
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -60,13 +66,13 @@ function ProductsMenu() {
           event.preventDefault();
           skipReturnFocusRef.current = false;
         }}
-        className="w-[680px] rounded-xl border-slate-200 p-4 shadow-xl"
+        className="shadow-soft-lg w-[680px] rounded-2xl border-slate-200 p-4"
       >
         <div className="grid gap-4 md:grid-cols-[1.1fr_1fr]">
           <Link
             href={featured.href}
             onClick={closeAfterNavigation}
-            className="rounded-xl bg-[#213343] p-5 text-white outline-none transition hover:bg-[#192938] focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
+            className="bg-ink hover:bg-ink-soft focus-visible:ring-brand group rounded-2xl p-5 text-white outline-none transition focus-visible:ring-2"
           >
             <div className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-teal-100">
               <Star className="h-3 w-3" />
@@ -84,14 +90,14 @@ function ProductsMenu() {
               </span>
               <h2 className="text-2xl font-semibold">{featured.name}</h2>
             </div>
-            <p className="mt-3 text-sm leading-6 text-slate-200">{featured.description}</p>
+            <p className="text-ink-muted mt-3 text-sm leading-6">{featured.description}</p>
             <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
               View product page
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </span>
           </Link>
           <div>
-            <DropdownMenuLabel className="px-2 pb-3 text-xs uppercase tracking-wide text-slate-500">
+            <DropdownMenuLabel className="px-2 pb-3 text-xs tracking-wide text-slate-500 uppercase">
               Product portfolio
             </DropdownMenuLabel>
             <div className="grid gap-2">
@@ -100,7 +106,7 @@ function ProductsMenu() {
                   key={product.name}
                   href={product.href}
                   onClick={closeAfterNavigation}
-                  className="rounded-lg border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2 focus-visible:ring-[#ff5c35]"
+                  className="focus-visible:ring-brand rounded-xl border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <div className="flex min-w-0 items-center gap-3">
@@ -132,37 +138,47 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex h-22 max-w-7xl items-center justify-between px-4 lg:h-18">
+    <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-18">
         <Logo />
-        <nav className="hidden items-center gap-7 text-sm font-medium text-slate-700 lg:flex">
+        <nav className="hidden items-center gap-1 text-sm font-medium text-slate-700 lg:flex">
           <ProductsMenu />
           {mainNav.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-slate-950">
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-lg px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
+            >
               {item.label}
             </Link>
           ))}
-          <Link href={siteConfig.social.linkedin} className="hover:text-slate-950">
+          <Link
+            href={siteConfig.social.linkedin}
+            className="rounded-lg px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
+          >
             LinkedIn
           </Link>
-          <Link href={siteConfig.social.x} className="hover:text-slate-950">
+          <Link
+            href={siteConfig.social.x}
+            className="rounded-lg px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
+          >
             X/Twitter
           </Link>
         </nav>
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <Button asChild variant="ghost">
             <Link href={siteConfig.secondaryCta.href}>Contact</Link>
           </Button>
-          <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+          <Button asChild className="font-semibold">
             <Link href={emailMagnetConfig.href}>
-              <span className="font-bold">Get EmailMagnet</span> It&apos;s free
+              Get EmailMagnet — free
             </Link>
           </Button>
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="outline" size="icon" aria-label="Open navigation" className="h-14 w-14 rounded-2xl">
-              <Menu className="h-7 w-7" />
+            <Button variant="outline" size="icon" aria-label="Open navigation" className="h-12 w-12 rounded-xl">
+              <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
@@ -170,8 +186,8 @@ export function SiteHeader() {
             <div className="mt-8 space-y-6 px-2">
               <Logo onClick={() => setMobileOpen(false)} />
               <nav className="grid gap-5 text-base font-medium">
-                <div className="rounded-lg border border-slate-200 bg-slate-50/70 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+                  <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
                     Products
                   </p>
                   <div className="mt-3 space-y-3">
@@ -204,12 +220,12 @@ export function SiteHeader() {
                 </div>
               </nav>
               <div className="grid gap-3">
-                <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320] w-full">
+                <Button asChild size="lg" className="w-full font-semibold">
                   <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)} className="text-center">
-                    <span className="font-bold">Get EmailMagnet</span>
+                    Get EmailMagnet — free
                   </Link>
                 </Button>
-                <Button asChild variant="outline" className="rounded-md">
+                <Button asChild size="lg" variant="outline" className="w-full">
                   <Link href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)}>
                     Contact
                   </Link>

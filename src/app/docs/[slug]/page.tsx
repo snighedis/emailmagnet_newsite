@@ -146,7 +146,7 @@ export default async function DocPage({ params }: DocPageProps) {
           steps: doc.steps,
         })}
       />
-      <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">Docs</p>
+      <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Docs</p>
       <h1 className="mt-3 text-4xl font-semibold text-slate-950">{doc.title}</h1>
       <p className="mt-5 text-xl leading-8 text-slate-600">{doc.description}</p>
       <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
@@ -172,7 +172,7 @@ export default async function DocPage({ params }: DocPageProps) {
       {doc.citation ? (
         <p className="mt-10 text-sm leading-6 text-slate-500">
           Official reference:{" "}
-          <Link className="font-medium text-[#c43618] underline-offset-4 hover:underline" href={doc.citation.href}>
+          <Link className="font-medium text-eyebrow underline-offset-4 hover:underline" href={doc.citation.href}>
             {doc.citation.label}
           </Link>
         </p>
@@ -181,22 +181,22 @@ export default async function DocPage({ params }: DocPageProps) {
         <h2 className="text-lg font-semibold text-slate-950">Related EmailMagnet resources</h2>
         <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
           <li>
-            <Link className="font-medium text-[#c43618] hover:underline" href="/emailmagnet">
+            <Link className="font-medium text-eyebrow hover:underline" href="/emailmagnet">
               EmailMagnet product page
             </Link>
           </li>
           <li>
-            <Link className="font-medium text-[#c43618] hover:underline" href="/docs">
+            <Link className="font-medium text-eyebrow hover:underline" href="/docs">
               All EmailMagnet docs
             </Link>
           </li>
           <li>
-            <Link className="font-medium text-[#c43618] hover:underline" href="/faq">
+            <Link className="font-medium text-eyebrow hover:underline" href="/faq">
               EmailMagnet FAQ
             </Link>
           </li>
           <li>
-            <Link className="font-medium text-[#c43618] hover:underline" href="/contact">
+            <Link className="font-medium text-eyebrow hover:underline" href="/contact">
               Contact Dentoku Dev support
             </Link>
           </li>

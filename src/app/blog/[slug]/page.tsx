@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </h1>
         <p className="mt-6 text-xl leading-9 text-slate-600">{post.description}</p>
         <p className="mt-5 text-sm font-medium text-slate-500">
-          <Link href={founderConfig.href} className="hover:text-[#c43618] hover:underline">
+          <Link href={founderConfig.href} className="hover:text-eyebrow hover:underline">
             Dentoku Dev editorial team
           </Link>{" "}
           · {post.readingTime} · Published {post.date} · Last updated {post.updated}
@@ -112,22 +112,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
           <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
             <li>
-              <Link className="font-medium text-[#c43618] hover:underline" href="/emailmagnet">
+              <Link className="font-medium text-eyebrow hover:underline" href="/emailmagnet">
                 EmailMagnet Chrome email extractor
               </Link>
             </li>
             <li>
-              <Link className="font-medium text-[#c43618] hover:underline" href="/pricing">
+              <Link className="font-medium text-eyebrow hover:underline" href="/pricing">
                 EmailMagnet Free vs PRO pricing
               </Link>
             </li>
             <li>
-              <Link className="font-medium text-[#c43618] hover:underline" href="/docs/getting-started">
+              <Link className="font-medium text-eyebrow hover:underline" href="/docs/getting-started">
                 How to extract emails with EmailMagnet
               </Link>
             </li>
             <li>
-              <Link className="font-medium text-[#c43618] hover:underline" href="/docs/responsible-use">
+              <Link className="font-medium text-eyebrow hover:underline" href="/docs/responsible-use">
                 Responsible email extraction guide
               </Link>
             </li>
@@ -141,12 +141,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <h2 className="text-lg font-semibold text-slate-950">Official references</h2>
             <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
               <li>
-                <Link className="font-medium text-[#c43618] hover:underline" href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business">
+                <Link className="font-medium text-eyebrow hover:underline" href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business">
                   FTC CAN-SPAM Act compliance guide
                 </Link>
               </li>
               <li>
-                <Link className="font-medium text-[#c43618] hover:underline" href="https://commission.europa.eu/law/law-topic/data-protection/rules-business-and-organisations/legal-grounds-processing-data_en">
+                <Link className="font-medium text-eyebrow hover:underline" href="https://commission.europa.eu/law/law-topic/data-protection/rules-business-and-organisations/legal-grounds-processing-data_en">
                   European Commission GDPR legal grounds for processing data
                 </Link>
               </li>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
+  Briefcase,
   CheckCircle2,
   ClipboardCheck,
   FileSpreadsheet,
@@ -10,11 +11,13 @@ import {
   ShieldCheck,
   UsersRound,
   XCircle,
-} from "lucide-react";
+} from "@/components/ui/icons";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { NewsletterSignupLazy } from "@/components/marketing/newsletter-signup-lazy";
 import { PricingCards } from "@/components/marketing/pricing-cards";
+import { Section } from "@/components/marketing/section";
+import { BrowserFrame } from "@/components/marketing/browser-frame";
 import { SupportBlock } from "@/components/marketing/support-block";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -35,14 +38,17 @@ const audienceCards = [
   {
     title: "Sales researchers",
     description: "Build prospecting lists from company pages, partner directories, and local branch indexes.",
+    icon: Search,
   },
   {
     title: "Recruiting operators",
     description: "Collect visible role/team emails while reviewing employers, portfolios, and hiring pages.",
+    icon: UsersRound,
   },
   {
     title: "Founders and agencies",
     description: "Turn repeated market research into a structured list without maintaining a scraping stack.",
+    icon: Briefcase,
   },
 ];
 
@@ -98,34 +104,38 @@ export default function EmailMagnetPage() {
         ])}
       />
 
-      <section className="relative overflow-hidden bg-[#10263a] text-white">
-        <div className="pointer-events-none absolute left-[-7rem] top-[-6rem] h-72 w-72 rounded-full bg-[#ff5c35]/30 blur-3xl" />
-        <div className="pointer-events-none absolute right-[-8rem] top-12 h-80 w-80 rounded-full bg-[#2dd4bf]/20 blur-3xl" />
+      <Section variant="ink" containerClassName="relative">
+        <div
+          className="bg-brand/30 pointer-events-none absolute top-[-6rem] left-[-7rem] h-72 w-72 rounded-full blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="bg-accent-teal/20 pointer-events-none absolute top-12 right-[-8rem] h-80 w-80 rounded-full blur-3xl"
+          aria-hidden
+        />
 
-        <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-18 md:py-22 lg:grid-cols-[1fr_0.95fr] lg:items-start">
-          <div className="space-y-7 lg:contents">
-            <div className="space-y-7 lg:col-start-1 lg:row-start-1">
-              <Badge className="h-auto max-w-full justify-start gap-2 whitespace-normal rounded-full border border-white/20 bg-white/10 px-4 py-2 text-left text-[0.7rem] leading-5 text-white sm:w-fit sm:text-xs">
-                <Image
-                  src={emailMagnetConfig.icon}
-                  alt="EmailMagnet icon"
-                  width={18}
-                  height={18}
-                  className="h-[18px] w-[18px] shrink-0 object-contain"
-                />
-                <span>Chosen by 2,000+ professionals, sales teams, and businesses</span>
-              </Badge>
+        <div className="relative grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
+          <div className="space-y-7">
+            <Badge className="h-auto max-w-full justify-start gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-left text-[0.7rem] leading-5 whitespace-normal text-white sm:w-fit sm:text-xs">
+              <Image
+                src={emailMagnetConfig.icon}
+                alt="EmailMagnet icon"
+                width={18}
+                height={18}
+                className="h-[18px] w-[18px] shrink-0 object-contain"
+              />
+              <span>Chosen by 2,000+ professionals, sales teams, and businesses</span>
+            </Badge>
 
-              <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
-                Capture visible business emails while you research in Chrome
-              </h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-200 md:text-xl">
-                EmailMagnet helps researchers, recruiters, founders, and agencies collect public
-                contact emails, review results quickly, and export clean lists as CSV or TXT.
-              </p>
-            </div>
+            <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
+              Capture visible business emails while you research in Chrome
+            </h1>
+            <p className="text-ink-muted max-w-2xl text-lg leading-8 md:text-xl">
+              EmailMagnet helps researchers, recruiters, founders, and agencies collect public
+              contact emails, review results quickly, and export clean lists as CSV or TXT.
+            </p>
 
-            <div className="hero-trust-panel grid min-h-[92px] gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-sm text-slate-100 sm:grid-cols-2 lg:col-start-1 lg:row-start-2">
+            <div className="grid gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-sm text-slate-100 sm:grid-cols-2">
               {trustSignals.map((signal) => (
                 <div key={signal} className="flex items-start gap-2">
                   <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
@@ -134,8 +144,8 @@ export default function EmailMagnetPage() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row lg:col-start-1 lg:row-start-3">
-              <Button asChild size="lg" className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="xl" className="font-semibold">
                 <Link href={emailMagnetConfig.secondaryCta.href}>
                   Add to Chrome for free
                   <ArrowRight className="h-4 w-4" />
@@ -143,15 +153,15 @@ export default function EmailMagnetPage() {
               </Button>
               <Button
                 asChild
-                size="lg"
+                size="xl"
                 variant="outline"
-                className="rounded-md border-white/30 bg-transparent text-white hover:bg-white/10"
+                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
                 <Link href="#pricing">See PRO workflow</Link>
               </Button>
             </div>
 
-            <ul className="grid gap-2 text-sm font-medium text-slate-200 sm:grid-cols-3 lg:col-start-1 lg:row-start-4">
+            <ul className="grid gap-2 text-sm font-medium text-slate-200 sm:grid-cols-3">
               {heroHighlights.map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
@@ -161,36 +171,32 @@ export default function EmailMagnetPage() {
             </ul>
           </div>
 
-          <div className="grid gap-4 lg:contents">
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-4 lg:col-start-2 lg:row-start-1">
-              <Image
-                src="/brand/emailmagnet-hero-new.png"
-                alt="EmailMagnet Chrome extension interface"
-                width={1361}
-                height={852}
-                className="h-auto w-full rounded-xl"
-                priority
-              />
-            </div>
-            <div className="hero-stats-panel grid min-h-[92px] grid-cols-3 items-center gap-3 rounded-xl border border-white/15 bg-white/5 p-4 text-center lg:col-start-2 lg:row-start-2">
+          <div className="space-y-4">
+            <BrowserFrame
+              src="/brand/emailmagnet-hero-new.png"
+              alt="EmailMagnet Chrome extension interface"
+              url="EmailMagnet · capture visible business emails"
+              priority
+            />
+            <div className="grid grid-cols-3 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-center">
               {socialProof.stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-lg font-semibold text-white">{stat.value}</p>
-                  <p className="text-xs uppercase tracking-wide text-slate-300">{stat.label}</p>
+                  <p className="text-2xl font-semibold text-white">{stat.value}</p>
+                  <p className="text-xs tracking-wide text-slate-300 uppercase">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      <section className="bg-[#f8fbff] py-18 md:py-20">
+      <section className="bg-surface-blue py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-6 lg:grid-cols-3">
             {audienceCards.map((audience, index) => (
               <article key={audience.title} className="rounded-2xl border border-slate-200 bg-white p-6">
                 <div className="mb-6 flex items-center justify-between">
-                  <UsersRound className="h-6 w-6 text-[#c43618]" />
+                  <audience.icon className="h-6 w-6 text-eyebrow" />
                   <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">0{index + 1}</span>
                 </div>
                 <h2 className="text-2xl font-semibold text-slate-950">{audience.title}</h2>
@@ -252,8 +258,8 @@ export default function EmailMagnetPage() {
       <section className="bg-white py-18 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c43618]">Before and after</p>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-[#132333] md:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">Before and after</p>
+            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Replace the fragile part of lead research
             </h2>
             <p className="text-lg leading-8 text-slate-700">
@@ -271,7 +277,7 @@ export default function EmailMagnetPage() {
               {workflowComparison.map((row) => (
                 <div key={row.manual} className="grid gap-0 text-sm leading-6 md:grid-cols-2">
                   <div className="flex gap-3 bg-slate-50 px-4 py-4 text-slate-600">
-                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-[#c43618]" />
+                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-eyebrow" />
                     <div>
                       <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500 md:hidden">
                         Manual workflow
@@ -280,7 +286,7 @@ export default function EmailMagnetPage() {
                     </div>
                   </div>
                   <div className="flex gap-3 px-4 py-4 text-slate-800">
-                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[#0f766e]" />
+                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent-teal" />
                     <div>
                       <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500 md:hidden">
                         With EmailMagnet
@@ -295,7 +301,7 @@ export default function EmailMagnetPage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-[#10263a] py-18 text-white md:py-20">
+      <section id="how-it-works" className="bg-ink py-18 text-white md:py-20">
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-3xl space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-200">How it works</p>
@@ -322,8 +328,8 @@ export default function EmailMagnetPage() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c43618]">Pricing</p>
-              <h2 className="text-4xl font-semibold tracking-[-0.02em] text-[#132333] md:text-5xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">Pricing</p>
+              <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
                 Start free, upgrade when research becomes recurring
               </h2>
               <p className="text-lg leading-8 text-slate-700">
@@ -356,7 +362,7 @@ export default function EmailMagnetPage() {
         </div>
       </section>
 
-      <section className="bg-[#f8fbff] py-18 md:py-20">
+      <section className="bg-surface-blue py-18 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
             <div className="flex items-center gap-3">
@@ -372,7 +378,7 @@ export default function EmailMagnetPage() {
               {valueProps.map((item) => (
                 <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                   <div className="flex items-center gap-2">
-                    <item.icon className="h-4 w-4 text-[#c43618]" />
+                    <item.icon className="h-4 w-4 text-eyebrow" />
                     <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
                   </div>
                   <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
@@ -383,13 +389,13 @@ export default function EmailMagnetPage() {
 
           <aside className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
             <div className="flex items-center gap-3">
-              <XCircle className="h-6 w-6 text-[#c43618]" />
+              <XCircle className="h-6 w-6 text-eyebrow" />
               <h2 className="text-2xl font-semibold text-slate-950">What EmailMagnet is not for</h2>
             </div>
             <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-700">
               {notFor.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <XCircle className="mt-1 h-4 w-4 shrink-0 text-[#c43618]" />
+                  <XCircle className="mt-1 h-4 w-4 shrink-0 text-eyebrow" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -407,8 +413,8 @@ export default function EmailMagnetPage() {
       <section className="bg-white py-18 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c43618]">FAQ</p>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-[#132333] md:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">FAQ</p>
+            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Questions before rollout
             </h2>
             <p className="text-lg leading-8 text-slate-700">
@@ -422,28 +428,28 @@ export default function EmailMagnetPage() {
               <h3 className="text-lg font-semibold text-slate-950">Related help pages and guides</h3>
               <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/getting-started" prefetch={false}>
+                  <Link className="font-medium text-eyebrow hover:underline" href="/docs/getting-started" prefetch={false}>
                     Install and use EmailMagnet
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/docs/exporting-emails" prefetch={false}>
+                  <Link className="font-medium text-eyebrow hover:underline" href="/docs/exporting-emails" prefetch={false}>
                     Export emails as CSV or TXT
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/pricing" prefetch={false}>
+                  <Link className="font-medium text-eyebrow hover:underline" href="/pricing" prefetch={false}>
                     Compare Free and PRO pricing
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/overview" prefetch={false}>
+                  <Link className="font-medium text-eyebrow hover:underline" href="/overview" prefetch={false}>
                     Dentoku Dev product overview
                   </Link>
                 </li>
                 {blogPosts.map((post) => (
                   <li key={post.slug}>
-                    <Link className="font-medium text-[#c43618] hover:underline" href={`/blog/${post.slug}`} prefetch={false}>
+                    <Link className="font-medium text-eyebrow hover:underline" href={`/blog/${post.slug}`} prefetch={false}>
                       {post.title}
                     </Link>
                   </li>
@@ -454,11 +460,11 @@ export default function EmailMagnetPage() {
         </div>
       </section>
 
-      <section className="bg-[#ecf9f7] py-18 md:py-20">
+      <section className="bg-surface-mint py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-3xl space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#c43618]">Newsletter</p>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-[#132333] md:text-5xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">Newsletter</p>
+            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Stay updated on EmailMagnet improvements
             </h2>
           </div>

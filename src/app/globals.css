@@ -39,6 +39,19 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-foreground: var(--ink-foreground);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent-teal: var(--teal);
+  --color-eyebrow: var(--eyebrow);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-peach: var(--surface-peach);
+  --color-surface-blue: var(--surface-blue);
+  --color-surface-mint: var(--surface-mint);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -72,7 +85,23 @@
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
+  --radius: 0.875rem;
+
+  /* Brand & semantic tokens (warm HubSpot-style palette) */
+  --brand: oklch(0.68 0.21 35); /* vivid orange ≈ #ff5c35 */
+  --brand-strong: oklch(0.6 0.2 33); /* hover ≈ #df4320 */
+  --brand-soft: oklch(0.96 0.028 45); /* tinted surface ≈ #fff5f1 */
+  --ink: oklch(0.24 0.035 248); /* deep navy ≈ #132333 */
+  --ink-soft: oklch(0.29 0.04 245); /* lifted navy ≈ #213343 */
+  --ink-foreground: oklch(0.985 0 0); /* text on ink */
+  --ink-muted: oklch(0.83 0.02 240); /* muted text on ink ≈ slate-200/300 */
+  --teal: oklch(0.52 0.08 192); /* trust/check accent ≈ #0f766e */
+  --eyebrow: oklch(0.52 0.17 38); /* rust eyebrow label ≈ #c43618 */
+  --surface-soft: oklch(0.985 0.006 70); /* warm off-white */
+  --surface-peach: oklch(0.975 0.018 52); /* ≈ #fff7f2 */
+  --surface-blue: oklch(0.975 0.012 240); /* ≈ #f4f9ff */
+  --surface-mint: oklch(0.97 0.028 178); /* ≈ #ecf9f7 */
+
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -130,9 +159,26 @@
   }
 }
 
+@layer components {
+  /* Soft, slightly tinted shadows for the HubSpot-style elevation system */
+  .shadow-soft {
+    box-shadow:
+      0 1px 2px -1px oklch(0.24 0.035 248 / 0.08),
+      0 12px 32px -12px oklch(0.24 0.035 248 / 0.18);
+  }
+  .shadow-soft-lg {
+    box-shadow:
+      0 2px 4px -2px oklch(0.24 0.035 248 / 0.1),
+      0 28px 64px -20px oklch(0.24 0.035 248 / 0.28);
+  }
+  .shadow-brand {
+    box-shadow: 0 16px 40px -14px oklch(0.68 0.21 35 / 0.45);
+  }
+}
+
 ::selection {
-  background: #ffbcac;
-  color: #213343;
+  background: oklch(0.85 0.09 45);
+  color: var(--ink);
 }
 
 @keyframes choreographed-rise {
@@ -236,13 +282,13 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article li::marker {
-  color: #ff5c35;
+  color: var(--brand);
   font-weight: 700;
 }
 
 .blog-article blockquote {
-  border-left: 4px solid #ff5c35;
-  color: #213343;
+  border-left: 4px solid var(--brand);
+  color: var(--ink-soft);
   font-size: 1.35rem;
   font-weight: 550;
   line-height: 1.55;
@@ -257,7 +303,7 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article a {
-  color: #c43618;
+  color: var(--eyebrow);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;

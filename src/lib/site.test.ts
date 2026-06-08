@@ -28,7 +28,7 @@ describe("Dentoku Dev site hierarchy", () => {
     expect(siteConfig.logo).toBe("/brand/dentoku-logo.jpg");
     expect(siteConfig.description).toContain("product studio");
     expect(emailMagnetConfig.name).toBe("EmailMagnet");
-    expect(emailMagnetConfig.icon).toBe("/brand/emailmagnet-icon.png");
+    expect(emailMagnetConfig.icon).toBe("/brand/emailmagnet-icon-padded.png");
     expect(emailMagnetConfig.logo).toBe("/brand/emailmagnet-logo-wide.png");
     expect(emailMagnetConfig.cover).toBe("/brand/emailmagnet-cover.png");
     expect(emailMagnetConfig.parentBrand).toBe("Dentoku Dev");
@@ -50,7 +50,7 @@ describe("Dentoku Dev site hierarchy", () => {
       category: "Chrome Extension",
       featured: true,
       href: "/emailmagnet",
-      icon: "/brand/emailmagnet-icon.png",
+      icon: "/brand/emailmagnet-icon-padded.png",
     });
     expect(productPortfolio[1]).toMatchObject({
       category: "Chrome Extension",
@@ -66,7 +66,7 @@ describe("Dentoku Dev site hierarchy", () => {
       href: "/countdown321",
     });
     expect(productPortfolio.map((product) => product.icon)).toEqual([
-      "/brand/emailmagnet-icon.png",
+      "/brand/emailmagnet-icon-padded.png",
       "/brand/clickpilot-ai-icon.png",
       "/brand/volume-control-pro-icon.png",
       "/brand/countdown321-icon.png",

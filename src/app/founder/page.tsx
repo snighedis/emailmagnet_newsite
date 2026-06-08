@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BadgeCheck, Code2, ExternalLink, Layers3, MailCheck } from "lucide-react";
+import { BadgeCheck, Code2, ExternalLink, Layers3, MailCheck } from "@/components/ui/icons";
 import { Card, CardContent } from "@/components/ui/card";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
@@ -88,9 +88,9 @@ export default function FounderPage() {
                 <Link
                   key={product.href}
                   href={product.href}
-                  className="rounded-xl border border-slate-200 p-5 transition hover:border-[#ff5c35] hover:bg-slate-50"
+                  className="rounded-xl border border-slate-200 p-5 transition hover:border-brand hover:bg-slate-50"
                 >
-                  <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">
                     {product.category}
                   </p>
                   <h3 className="mt-2 text-xl font-semibold text-slate-950">{product.name}</h3>
@@ -111,7 +111,7 @@ export default function FounderPage() {
                 </p>
                 <Link
                   href={`mailto:${siteConfig.supportEmail}`}
-                  className="mt-4 inline-flex items-center gap-2 font-semibold text-[#c43618] hover:underline"
+                  className="mt-4 inline-flex items-center gap-2 font-semibold text-eyebrow hover:underline"
                 >
                   {siteConfig.supportEmail}
                   <ExternalLink className="h-4 w-4" />

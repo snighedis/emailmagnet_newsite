@@ -87,16 +87,16 @@ export default function DocsPage() {
             <li>Review responsible use before outreach, recruiting, or sales follow-up.</li>
           </ol>
           <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium">
-            <Link className="text-[#c43618] hover:underline" href="/emailmagnet">
+            <Link className="text-eyebrow hover:underline" href="/emailmagnet">
               EmailMagnet product page
             </Link>
-            <Link className="text-[#c43618] hover:underline" href="/faq">
+            <Link className="text-eyebrow hover:underline" href="/faq">
               EmailMagnet FAQ
             </Link>
-            <Link className="text-[#c43618] hover:underline" href="/pricing">
+            <Link className="text-eyebrow hover:underline" href="/pricing">
               EmailMagnet pricing
             </Link>
-            <Link className="text-[#c43618] hover:underline" href="/contact">
+            <Link className="text-eyebrow hover:underline" href="/contact">
               Contact support
             </Link>
           </div>

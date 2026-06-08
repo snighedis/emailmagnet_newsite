@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 
 export default function ContactPage() {
   return (
-    <section className="bg-[#fff7f2] px-4 py-10 md:py-14">
+    <section className="bg-surface-peach px-4 py-10 md:py-14">
       <JsonLd data={buildContactPointSchema()} />
       <JsonLd
         data={buildBreadcrumbSchema([
@@ -22,7 +22,7 @@ export default function ContactPage() {
         ])}
       />
 
-      <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-10 rounded-lg bg-[#fff7f2] px-6 py-12 md:px-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-14">
+      <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-10 rounded-lg bg-surface-peach px-6 py-12 md:px-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-14">
         <div className="max-w-xl">
           <span className="inline-flex rounded-sm border border-slate-300 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
             Contact us

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaqList } from "@/components/marketing/faq-list";
@@ -72,7 +72,7 @@ export default function VolumeControlProPage() {
       />
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">
+          <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">
             Dentoku Dev portfolio
           </p>
           <h1 className="mt-3 text-5xl font-semibold tracking-normal text-balance text-slate-950">
@@ -91,7 +91,7 @@ export default function VolumeControlProPage() {
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+            <Button asChild className="rounded-md bg-brand text-white hover:bg-brand-strong">
               <Link href="https://chromewebstore.google.com/detail/volume-control-pro-600%-s/bjjpdehblihhfdfcoonadnnfmkblmogf">
                 Open on Chrome Web Store
                 <ArrowRight className="h-4 w-4" />
@@ -171,29 +171,29 @@ export default function VolumeControlProPage() {
               </Card>
             ))}
           </div>
-          <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+          <Button asChild className="mt-10 rounded-md bg-brand text-white hover:bg-brand-strong">
             <Link href="/">Back to Dentoku Dev</Link>
           </Button>
           <nav aria-label="Volume Control PRO related Dentoku Dev pages" className="mt-10 rounded-xl border border-slate-200 bg-white p-5">
             <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
             <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
               <li>
-                <Link className="font-medium text-[#c43618] hover:underline" href="/overview">
+                <Link className="font-medium text-eyebrow hover:underline" href="/overview">
                   Dentoku Dev product overview
                 </Link>
               </li>
               <li>
-                <Link className="font-medium text-[#c43618] hover:underline" href="/faq">
+                <Link className="font-medium text-eyebrow hover:underline" href="/faq">
                   Product and support FAQ
                 </Link>
               </li>
               <li>
-                <Link className="font-medium text-[#c43618] hover:underline" href="/blog">
+                <Link className="font-medium text-eyebrow hover:underline" href="/blog">
                   Browser productivity articles
                 </Link>
               </li>
               <li>
-                <Link className="font-medium text-[#c43618] hover:underline" href="/contact">
+                <Link className="font-medium text-eyebrow hover:underline" href="/contact">
                   Contact Dentoku Dev support
                 </Link>
               </li>
@@ -205,7 +205,7 @@ export default function VolumeControlProPage() {
       <section className="bg-white py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">FAQ</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">FAQ</p>
             <h2 className="mt-3 text-3xl font-semibold text-slate-950">Volume Control PRO FAQ</h2>
           </div>
           <FaqList items={faqs} />

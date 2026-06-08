@@ -43,22 +43,22 @@ export default function FaqPage() {
             <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
             <ul className="mt-3 space-y-2 text-sm text-slate-600">
               <li>
-                <Link href="/emailmagnet" className="font-medium text-[#c43618] hover:underline">
+                <Link href="/emailmagnet" className="font-medium text-eyebrow hover:underline">
                   EmailMagnet product page
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="font-medium text-[#c43618] hover:underline">
+                <Link href="/pricing" className="font-medium text-eyebrow hover:underline">
                   EmailMagnet pricing
                 </Link>
               </li>
               <li>
-                <Link href="/docs/responsible-use" className="font-medium text-[#c43618] hover:underline">
+                <Link href="/docs/responsible-use" className="font-medium text-eyebrow hover:underline">
                   Responsible use guide
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="font-medium text-[#c43618] hover:underline">
+                <Link href="/contact" className="font-medium text-eyebrow hover:underline">
                   Contact Dentoku Dev
                 </Link>
               </li>

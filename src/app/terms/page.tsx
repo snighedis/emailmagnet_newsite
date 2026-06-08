@@ -19,7 +19,7 @@ export default function TermsPage() {
         ])}
       />
       <article className="mx-auto max-w-3xl px-4 py-20">
-        <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">Legal</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Terms of Service</h1>
         <p className="mt-6 leading-8 text-slate-600">
           Effective date: May 12, 2026. These Terms of Service govern your access to and use of

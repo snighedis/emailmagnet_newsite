@@ -40,7 +40,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-4 leading-8 text-slate-700">
               The studio is founded and maintained by{" "}
-              <Link href={founderConfig.href} className="font-semibold text-[#c43618] hover:underline">
+              <Link href={founderConfig.href} className="font-semibold text-eyebrow hover:underline">
                 the Dentoku Dev founder
               </Link>
               , with product support handled through Dentoku Dev.
@@ -94,7 +94,7 @@ export default function AboutPage() {
                   {productPortfolio.map((product) => (
                     <tr key={product.href}>
                       <th scope="row" className="px-4 py-4 font-semibold text-slate-950">
-                        <Link href={product.href} className="hover:text-[#c43618]">
+                        <Link href={product.href} className="hover:text-eyebrow">
                           {product.name}
                         </Link>
                       </th>

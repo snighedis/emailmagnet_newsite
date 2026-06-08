@@ -79,7 +79,7 @@ export function NewsletterSignup() {
       {state === "idle" || state === "loading" ? (
         <form onSubmit={onSubmit} className="mt-6 flex w-full flex-col gap-3 sm:flex-row">
           <input
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-[#ff5c35] focus:ring-2 focus:ring-[#ff5c35]/20"
+            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-brand/20"
             placeholder="you@example.com"
             required
             type="email"
@@ -90,7 +90,7 @@ export function NewsletterSignup() {
           />
           <button
             type="submit"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-[#ec6744] px-4 text-sm font-medium text-white shadow-sm transition hover:bg-[#df5430] disabled:cursor-not-allowed disabled:opacity-80"
+            className="inline-flex h-10 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-white shadow-sm transition hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-80"
             disabled={state === "loading"}
           >
             {state === "loading" ? "Please wait..." : "Subscribe"}

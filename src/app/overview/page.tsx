@@ -84,7 +84,7 @@ export default function OverviewPage() {
               {productPortfolio.map((product) => (
                 <tr key={product.href}>
                   <th scope="row" className="px-4 py-4 font-semibold text-slate-950">
-                    <Link href={product.href} className="hover:text-[#c43618] hover:underline">
+                    <Link href={product.href} className="hover:text-eyebrow hover:underline">
                       {product.name}
                     </Link>
                   </th>
@@ -113,7 +113,7 @@ export default function OverviewPage() {
               <ul className="mt-5 space-y-3 leading-7 text-slate-700">
                 {helpLinks.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="font-semibold text-[#c43618] hover:underline">
+                    <Link href={item.href} className="font-semibold text-eyebrow hover:underline">
                       {item.title}
                     </Link>
                     <span className="block text-sm text-slate-600">{item.description}</span>
@@ -124,7 +124,7 @@ export default function OverviewPage() {
           </Card>
         </div>
 
-        <section className="mt-12 rounded-xl border border-slate-200 bg-[#fff7f2] p-6">
+        <section className="mt-12 rounded-xl border border-slate-200 bg-surface-peach p-6">
           <h2 className="text-2xl font-semibold text-slate-950">Featured product: EmailMagnet</h2>
           <p className="mt-3 leading-8 text-slate-700">
             EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from
@@ -132,13 +132,13 @@ export default function OverviewPage() {
             a PRO plan with lifetime access.
           </p>
           <div className="mt-5 flex flex-wrap gap-4 text-sm font-medium">
-            <Link className="text-[#c43618] hover:underline" href={emailMagnetConfig.href}>
+            <Link className="text-eyebrow hover:underline" href={emailMagnetConfig.href}>
               EmailMagnet product page
             </Link>
-            <Link className="text-[#c43618] hover:underline" href="/docs/getting-started">
+            <Link className="text-eyebrow hover:underline" href="/docs/getting-started">
               Getting started guide
             </Link>
-            <Link className="text-[#c43618] hover:underline" href="/pricing">
+            <Link className="text-eyebrow hover:underline" href="/pricing">
               Free vs PRO pricing
             </Link>
           </div>

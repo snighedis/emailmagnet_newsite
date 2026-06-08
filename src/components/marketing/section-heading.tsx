@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { Eyebrow } from "./eyebrow";
 
 type SectionHeadingProps = {
   eyebrow?: string;
@@ -7,7 +7,9 @@ type SectionHeadingProps = {
   description?: string;
   align?: "left" | "center";
   as?: "h1" | "h2";
+  tone?: "light" | "ink";
   className?: string;
+  descriptionClassName?: string;
 };
 
 export function SectionHeading({
@@ -16,28 +18,49 @@ export function SectionHeading({
   description,
   align = "center",
   as = "h2",
+  tone = "light",
   className,
+  descriptionClassName,
 }: SectionHeadingProps) {
   const Heading = as;
+  const isInk = tone === "ink";
+  const isHero = as === "h1";
 
   return (
     <div
       className={cn(
-        "mx-auto max-w-3xl space-y-4",
-        align === "center" ? "text-center" : "mx-0 text-left",
+        "max-w-3xl space-y-4",
+        align === "center" ? "mx-auto text-center" : "text-left",
         className,
       )}
     >
       {eyebrow ? (
-        <Badge variant="secondary" className="rounded-full px-3 py-1 text-sm">
+        <Eyebrow
+          tone={isInk ? "ink" : "brand"}
+          className={align === "center" ? "inline-block" : undefined}
+        >
           {eyebrow}
-        </Badge>
+        </Eyebrow>
       ) : null}
-      <Heading className="text-3xl font-semibold tracking-normal text-balance text-slate-950 md:text-5xl">
+      <Heading
+        className={cn(
+          "font-semibold tracking-[-0.02em] text-balance",
+          isHero ? "text-4xl md:text-6xl" : "text-3xl md:text-5xl",
+          isInk ? "text-white" : "text-ink",
+        )}
+      >
         {title}
       </Heading>
       {description ? (
-        <p className="text-lg leading-8 text-slate-600 md:text-xl">{description}</p>
+        <p
+          className={cn(
+            "text-lg leading-8 md:text-xl",
+            isInk ? "text-ink-muted" : "text-slate-600",
+            descriptionClassName,
+          )}
+        >
+          {description}
+        </p>
       ) : null}
     </div>
   );

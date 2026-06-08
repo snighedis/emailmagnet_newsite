@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { X } from "lucide-react";
+import { X } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 
 const consentKey = "cookie-consent";
@@ -51,7 +51,7 @@ export function CookieBanner() {
               We use analytics only if you allow it. Rejecting keeps analytics disabled.{" "}
               <Link
                 href="/privacy"
-                className="font-medium text-[#c43618] hover:underline"
+                className="font-medium text-eyebrow hover:underline"
               >
                 Find out more in our privacy policy
               </Link>
@@ -61,7 +61,7 @@ export function CookieBanner() {
               <Button
                 onClick={handleAccept}
                 size="sm"
-                className="bg-[#ff5c35] hover:bg-[#df4320] text-white"
+                className="bg-brand hover:bg-brand-strong text-white"
               >
                 Continue
               </Button>

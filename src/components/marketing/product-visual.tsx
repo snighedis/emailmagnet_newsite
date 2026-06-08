@@ -1,4 +1,4 @@
-import { CheckCircle2, Download, Search, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Download, Search, ShieldCheck } from "@/components/ui/icons";
 import Image from "next/image";
 import { emailMagnetConfig } from "@/data/site";
 
@@ -47,7 +47,7 @@ export function ProductVisual() {
                   />
                   <p className="text-xs text-slate-500">3 emails found</p>
                 </div>
-                <div className="rounded-full bg-[#ff5c35]/10 p-2 text-[#c43618]">
+                <div className="rounded-full bg-brand/10 p-2 text-eyebrow">
                   <Image
                     src={emailMagnetConfig.icon}
                     alt=""
@@ -68,7 +68,7 @@ export function ProductVisual() {
                   </div>
                 ))}
               </div>
-              <button className="mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-md bg-[#ff5c35] text-sm font-semibold text-white">
+              <button className="mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-md bg-brand text-sm font-semibold text-white">
                 <Download className="h-4 w-4" />
                 Export CSV
               </button>

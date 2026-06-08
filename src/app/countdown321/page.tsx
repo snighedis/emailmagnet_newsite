@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaqList } from "@/components/marketing/faq-list";
@@ -51,7 +51,7 @@ export default function Countdown321Page() {
       />
       <section className="bg-white py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">
+          <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">
             Dentoku Dev portfolio
           </p>
           <h1 className="mt-3 text-5xl font-semibold tracking-normal text-balance text-slate-950">
@@ -62,7 +62,7 @@ export default function Countdown321Page() {
             time-based storefront messages to promotions, launches, and sales campaigns.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild className="rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+            <Button asChild className="rounded-md bg-brand text-white hover:bg-brand-strong">
               <Link href="https://apps.shopify.com/countdown321">
                 View on Shopify App Store
                 <ArrowRight className="h-4 w-4" />
@@ -158,28 +158,28 @@ export default function Countdown321Page() {
       <section className="bg-white py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">FAQ</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">FAQ</p>
             <h2 className="mt-3 text-3xl font-semibold text-slate-950">Countdown321 FAQ</h2>
             <nav aria-label="Countdown321 related Dentoku Dev pages" className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
               <h3 className="text-lg font-semibold text-slate-950">Related pages</h3>
               <ul className="mt-3 space-y-2 text-sm text-slate-700">
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/overview">
+                  <Link className="font-medium text-eyebrow hover:underline" href="/overview">
                     Dentoku Dev product overview
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/countdown321/shopify-countdown-timer-app">
+                  <Link className="font-medium text-eyebrow hover:underline" href="/countdown321/shopify-countdown-timer-app">
                     Shopify countdown timer guide
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/countdown321/shopify-urgency-app">
+                  <Link className="font-medium text-eyebrow hover:underline" href="/countdown321/shopify-urgency-app">
                     Shopify urgency app guide
                   </Link>
                 </li>
                 <li>
-                  <Link className="font-medium text-[#c43618] hover:underline" href="/contact">
+                  <Link className="font-medium text-eyebrow hover:underline" href="/contact">
                     Contact Dentoku Dev support
                   </Link>
                 </li>

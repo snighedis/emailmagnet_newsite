@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 
 type PlannedContentPageProps = {
@@ -22,7 +22,7 @@ export function PlannedContentPage({
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-4xl px-4">
-        <p className="text-sm font-semibold uppercase tracking-wide text-[#c43618]">{eyebrow}</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">{eyebrow}</p>
         <h1 className="mt-3 text-4xl font-semibold tracking-normal text-balance text-slate-950 md:text-6xl">
           {title}
         </h1>
@@ -51,7 +51,7 @@ export function PlannedContentPage({
             ))}
           </div>
         ) : null}
-        <Button asChild className="mt-10 rounded-md bg-[#ff5c35] text-white hover:bg-[#df4320]">
+        <Button asChild className="mt-10 rounded-md bg-brand text-white hover:bg-brand-strong">
           <Link href="/pricing">
             Explore EmailMagnet pricing
             <ArrowRight className="h-4 w-4" />

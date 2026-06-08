@@ -1,4 +1,4 @@
-import type { LucideIcon } from "lucide-react";
+import type { IconType } from "@/components/ui/icons";
 import {
   BadgeCheck,
   Download,
@@ -11,7 +11,7 @@ import {
   ShieldCheck,
   Sparkles,
   Zap,
-} from "lucide-react";
+} from "@/components/ui/icons";
 
 export type NavItem = {
   label: string;
@@ -41,7 +41,7 @@ export type FaqItem = {
 export type FeatureItem = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: IconType;
 };
 
 export type ProductItem = {
@@ -99,7 +99,7 @@ export const emailMagnetConfig = {
   name: "EmailMagnet",
   parentBrand: "Dentoku Dev",
   href: "/emailmagnet",
-  icon: "/brand/emailmagnet-icon.png",
+  icon: "/brand/emailmagnet-icon-padded.png",
   logo: "/brand/emailmagnet-logo-wide.png",
   cover: "/brand/emailmagnet-cover.png",
   description:
@@ -125,7 +125,7 @@ export const productPortfolio: ProductItem[] = [
     href: "/emailmagnet",
     category: "Chrome Extension",
     description: "Chrome extension for finding and extracting emails while browsing.",
-    icon: "/brand/emailmagnet-icon.png",
+    icon: "/brand/emailmagnet-icon-padded.png",
     featured: true,
   },
   {

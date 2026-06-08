@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { useEffect, useMemo, useState } from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -296,7 +296,7 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="h-14 rounded-md bg-[#ff5c35] px-8 text-lg text-white hover:bg-[#df4320]"
+          className="h-14 rounded-md bg-brand px-8 text-lg text-white hover:bg-brand-strong"
         >
           {isSubmitting ? "Sending..." : "Send message"}
         </Button>
