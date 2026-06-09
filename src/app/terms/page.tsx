@@ -82,9 +82,10 @@ export default function TermsPage() {
           4. Pricing, Billing, and Taxes
         </h2>
         <p className="mt-3 leading-8 text-slate-600">
-          All prices are displayed in EUR and are inclusive of Italian VAT (IVA) where
-          applicable to the transaction. The applicable total, including any taxes, is shown
-          before you confirm purchase. EmailMagnet PRO is processed by Stripe, Inc.;
+          Prices are displayed in USD unless otherwise indicated at checkout. Italian VAT (IVA)
+          or other applicable taxes may be added by the payment processor depending on your
+          billing location. The applicable total, including any taxes, is shown before you
+          confirm purchase. EmailMagnet PRO is processed by Stripe, Inc.;
           ClickPilotAI is processed by Gumroad, Inc. By completing checkout you also accept
           the terms and privacy policy of the applicable payment processor.
         </p>
