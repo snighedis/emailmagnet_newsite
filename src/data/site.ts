@@ -63,7 +63,7 @@ export const siteConfig = {
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",
   description:
-    "Dentoku Dev is a product studio building focused Chrome extensions, Shopify apps, and practical software tools for real operational workflows.",
+    "Four Chrome tools. One workflow each. Zero subscriptions — ever. EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321 — built for sales teams who can't afford to waste time on the list.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
@@ -340,9 +340,9 @@ export const companyTrustCues: FeatureItem[] = [
     icon: Globe2,
   },
   {
-    title: "No subscriptions, no lock-in",
+    title: "Buy once. Keep forever. Full stop.",
     description:
-      "Paid plans are a one-time purchase you keep for good, never a subscription. And every product page is upfront about exactly what the tool won't do.",
+      "No renewal emails. No price hikes. No lock-in. The tools you pay for today are yours for good. And every product page is upfront about exactly what the tool won't do.",
     icon: ShieldCheck,
   },
 ];

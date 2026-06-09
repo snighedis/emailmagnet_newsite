@@ -41,7 +41,7 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Dentoku Dev Chrome and Shopify Apps",
+    default: "Dentoku Dev — Browser Tools for Sales Teams",
     template: "%s | Dentoku",
   },
   description: siteConfig.description,

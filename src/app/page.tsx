@@ -53,7 +53,7 @@ export default function Home() {
           <div className="max-w-2xl space-y-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
               <span className="bg-brand h-1.5 w-1.5 rounded-full" aria-hidden />
-              One studio, focused tools
+              Chosen by 2,000+ sales reps, recruiters, and growth teams.
             </span>
             <h1 className="text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
               <span className="block">Browser-first software</span>
@@ -66,8 +66,9 @@ export default function Home() {
               </span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-white md:text-xl">
-              Focused Chrome extensions and Shopify tools for the repetitive work behind sales,
-              recruiting, and growth. Capture emails, write faster, add urgency, and ship the list.
+              Four Chrome extensions. One workflow each. Zero subscriptions — ever. EmailMagnet,
+              ClickPilot AI, Volume Control PRO, Countdown321. Built for the pros who ship the list
+              while others copy-paste.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">
@@ -85,11 +86,7 @@ export default function Home() {
                 <Link href="/overview">Read overview</Link>
               </Button>
             </div>
-            <TrustBar
-              tone="ink"
-              highlight="Chosen by 2,000+ professionals, sales teams, and businesses"
-              items={["Free plan, no credit card"]}
-            />
+            <TrustBar tone="ink" items={["Free plan, no credit card"]} />
           </div>
         </div>
       </section>
@@ -100,7 +97,7 @@ export default function Home() {
           <div className="max-w-3xl space-y-3">
             <Eyebrow>Portfolio</Eyebrow>
             <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-              Four products, each built around one repeated task
+              Four tools. One painful task each. Nothing more.
             </h2>
           </div>
           <Link className="text-eyebrow text-sm font-semibold hover:underline" href="/contact">
@@ -160,11 +157,12 @@ export default function Home() {
           <div className="space-y-4">
             <Eyebrow tone="ink">Studio method</Eyebrow>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
-              Small scope, fast delivery, clear ownership
+              One tool. One workflow. One promise.
             </h2>
             <p className="text-ink-muted text-lg leading-8">
-              We keep each product legible: one workflow, one promise, one support path, one page
-              that explains what it does.
+              We build tools that do one thing precisely. Not ten things adequately. Every product
+              ships with a single support path, a single page, and a single answer to the question:
+              what does this actually do?
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -221,8 +219,9 @@ export default function Home() {
               EmailMagnet, the flagship Chrome workflow
             </h2>
             <p className="text-lg leading-8 text-slate-700">
-              Capture visible public business emails while browsing, review the list, and export to
-              CSV or TXT for qualification. Free plan available, PRO is a one-time upgrade.
+              Every page you visit is a prospecting opportunity. EmailMagnet turns your browser
+              into a list-building machine — no API, no scraper, no manual copy-paste. Find the
+              email. Export the list. Work it. Free plan available, PRO is a one-time upgrade.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className="font-semibold">
@@ -249,7 +248,7 @@ export default function Home() {
 
       <CtaBand
         eyebrow="Contact"
-        title="Talk with Dentoku Dev about product support and portfolio fit"
+        title="One workflow still costing you time? Talk to us."
         description="Reach out for support, billing questions, or details on the current roadmap across our browser and ecommerce products."
         primary={{ label: "Get in touch", href: "/contact" }}
         secondary={{ label: "View products", href: "#products" }}
