@@ -31,8 +31,9 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
         alt="Dentoku Dev logo"
         width={36}
         height={36}
-        className="h-10 w-10 rounded-lg object-cover lg:h-9 lg:w-9"
+        className="h-10 w-10 object-contain lg:h-9 lg:w-9"
         priority
+        unoptimized
       />
       <span className="font-brand uppercase text-[1.2rem] leading-none tracking-normal lg:text-[1.35rem]">
         Dentoku Dev

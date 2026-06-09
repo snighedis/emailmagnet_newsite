@@ -32,7 +32,8 @@ export function SiteFooter() {
                 alt="Dentoku Dev logo"
                 width={36}
                 height={36}
-                className="h-9 w-9 rounded-lg object-cover"
+                className="h-9 w-9 object-contain"
+                unoptimized
               />
               <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
             </Link>
