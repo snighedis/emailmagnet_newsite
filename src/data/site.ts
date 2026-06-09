@@ -338,6 +338,12 @@ export const companyTrustCues: FeatureItem[] = [
       "Each product gets a dedicated page with direct positioning, support paths, and practical documentation.",
     icon: Globe2,
   },
+  {
+    title: "No subscriptions, no lock-in",
+    description:
+      "Paid plans are a one-time purchase you keep for good, never a subscription. And every product page is upfront about exactly what the tool won't do.",
+    icon: ShieldCheck,
+  },
 ];
 
 export const dentokuFrameworks = [

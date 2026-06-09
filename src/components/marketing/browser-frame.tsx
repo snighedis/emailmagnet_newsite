@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -51,12 +50,15 @@ export function BrowserFrame({
       <div className="bg-white">
         {children ??
           (src ? (
-            <Image
+            // next/image doesn't paint reliably in this Next build; a plain img is dependable.
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               src={src}
               alt={alt}
               width={width}
               height={height}
-              priority={priority}
+              loading={priority ? "eager" : "lazy"}
+              decoding="async"
               className="h-auto w-full"
             />
           ) : null)}

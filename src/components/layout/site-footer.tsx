@@ -39,7 +39,7 @@ export function SiteFooter() {
             <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
             <Button asChild size="sm" className="font-semibold">
               <Link href={emailMagnetConfig.href}>
-                Get EmailMagnet — free
+                Get EmailMagnet for free
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

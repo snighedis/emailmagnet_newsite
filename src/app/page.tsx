@@ -16,7 +16,6 @@ import {
   dentokuFrameworks,
   emailMagnetConfig,
   productPortfolio,
-  siteConfig,
 } from "@/data/site";
 import { buildItemListSchema } from "@/lib/schema";
 
@@ -30,7 +29,7 @@ const relatedProductLinks: Record<string, Array<{ label: string; href: string }>
 const spotlightStats = [
   { value: "2,000+", label: "Professionals, sales teams, and businesses" },
   { value: "200 / mo", label: "Free captures on the EmailMagnet free plan" },
-  { value: "One-time", label: "Lifetime PRO upgrade — no subscription" },
+  { value: "One-time", label: "Lifetime PRO upgrade, no subscription" },
 ];
 
 export default function Home() {
@@ -57,15 +56,18 @@ export default function Home() {
               One studio, focused tools
             </span>
             <h1 className="text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
-              <span className="block">Browser-first software for</span>
-              <RotatingWords
-                words={["sales teams", "recruiters", "founders", "agencies"]}
-                className="text-brand"
-              />
+              <span className="block">Browser-first software</span>
+              <span className="block">
+                for{" "}
+                <RotatingWords
+                  words={["sales teams", "recruiters", "founders", "agencies"]}
+                  className="text-brand"
+                />
+              </span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-white md:text-xl">
               Focused Chrome extensions and Shopify tools for the repetitive work behind sales,
-              recruiting, and growth — capture emails, write faster, add urgency, and ship the list.
+              recruiting, and growth. Capture emails, write faster, add urgency, and ship the list.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">
@@ -86,7 +88,7 @@ export default function Home() {
             <TrustBar
               tone="ink"
               highlight="Chosen by 2,000+ professionals, sales teams, and businesses"
-              items={["Free plan — no credit card"]}
+              items={["Free plan, no credit card"]}
             />
           </div>
         </div>
@@ -249,7 +251,7 @@ export default function Home() {
         eyebrow="Contact"
         title="Talk with Dentoku Dev about product support and portfolio fit"
         description="Reach out for support, billing questions, or details on the current roadmap across our browser and ecommerce products."
-        primary={{ label: siteConfig.supportEmail, href: `mailto:${siteConfig.supportEmail}` }}
+        primary={{ label: "Get in touch", href: "/contact" }}
         secondary={{ label: "View products", href: "#products" }}
       />
     </>

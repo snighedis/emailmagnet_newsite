@@ -17,7 +17,6 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { NewsletterSignupLazy } from "@/components/marketing/newsletter-signup-lazy";
 import { PricingCards } from "@/components/marketing/pricing-cards";
 import { Section } from "@/components/marketing/section";
-import { BrowserFrame } from "@/components/marketing/browser-frame";
 import { SupportBlock } from "@/components/marketing/support-block";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,7 +25,6 @@ import {
   emailMagnetConfig,
   faqItems,
   heroHighlights,
-  howItWorks,
   pricingPlans,
   socialProof,
   valueProps,
@@ -135,15 +133,6 @@ export default function EmailMagnetPage() {
               contact emails, review results quickly, and export clean lists as CSV or TXT.
             </p>
 
-            <div className="grid gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-sm text-slate-100 sm:grid-cols-2">
-              {trustSignals.map((signal) => (
-                <div key={signal} className="flex items-start gap-2">
-                  <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
-                  <span>{signal}</span>
-                </div>
-              ))}
-            </div>
-
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">
                 <Link href={emailMagnetConfig.secondaryCta.href}>
@@ -171,22 +160,35 @@ export default function EmailMagnetPage() {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <BrowserFrame
-              src="/brand/emailmagnet-hero-new.png"
-              alt="EmailMagnet Chrome extension interface"
-              url="EmailMagnet · capture visible business emails"
-              priority
-              className="lg:-translate-y-16"
-            />
-            <div className="grid grid-cols-3 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-center">
-              {socialProof.stats.map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-2xl font-semibold text-white">{stat.value}</p>
-                  <p className="text-xs tracking-wide text-slate-300 uppercase">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/emailmagnet_04.png"
+            alt="EmailMagnet PRO popup showing captured business emails over a map"
+            width={1696}
+            height={1400}
+            loading="eager"
+            decoding="async"
+            className="shadow-soft-lg w-full rounded-2xl ring-1 ring-white/10"
+          />
+        </div>
+
+        {/* Trust signals + key stats — one aligned credibility row */}
+        <div className="relative mt-10 grid items-stretch gap-6 lg:grid-cols-[1fr_0.95fr]">
+          <div className="grid gap-3 rounded-2xl border border-white/15 bg-white/5 p-5 text-sm text-slate-100 sm:grid-cols-2">
+            {trustSignals.map((signal) => (
+              <div key={signal} className="flex items-start gap-2">
+                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
+                <span>{signal}</span>
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-3 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-5 text-center">
+            {socialProof.stats.map((stat) => (
+              <div key={stat.label}>
+                <p className="text-2xl font-semibold text-white">{stat.value}</p>
+                <p className="text-xs tracking-wide text-slate-300 uppercase">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Section>
@@ -302,26 +304,59 @@ export default function EmailMagnetPage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-ink py-18 text-white md:py-20">
+      <section id="by-the-numbers" className="bg-ink py-18 text-white md:py-20">
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-3xl space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-teal-200">How it works</p>
+            <p className="text-sm font-semibold tracking-[0.15em] text-teal-200 uppercase">The math</p>
             <h2 className="text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
-              Three steps from page review to export
+              Hours of copy-paste, gone in a click
             </h2>
+            <p className="text-ink-muted text-lg leading-8 md:max-w-2xl">
+              EmailMagnet collapses the slowest part of lead research — finding addresses,
+              copying them one by one, formatting them into a usable list. The math is
+              brutal in your favor.
+            </p>
           </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {howItWorks.map((step, index) => (
-              <article key={step.title} className="rounded-2xl border border-white/15 bg-white/5 p-6">
-                <div className="mb-6 flex items-center justify-between">
-                  <step.icon className="h-6 w-6 text-teal-200" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-300">0{index + 1}</span>
-                </div>
-                <h3 className="text-2xl font-semibold">{step.title}</h3>
-                <p className="mt-3 leading-7 text-slate-200">{step.description}</p>
-              </article>
-            ))}
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
+              <p className="text-5xl font-semibold tracking-[-0.02em] text-white md:text-6xl">~20 sec</p>
+              <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
+                Saved per address
+              </p>
+              <p className="mt-4 text-base leading-6 text-slate-200">
+                Manual: spot the address, copy, switch tab, paste, format. EmailMagnet
+                surfaces every visible email on the page in one pass — no tab switching, no
+                cleanup.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
+              <p className="text-5xl font-semibold tracking-[-0.02em] text-white md:text-6xl">
+                <span aria-hidden>8 → 1</span>
+                <span className="sr-only">eight to one</span>
+              </p>
+              <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
+                Steps per page
+              </p>
+              <p className="mt-4 text-base leading-6 text-slate-200">
+                Open page → select → copy → new tab → paste → format → review → save. We
+                replace the whole loop with one extraction action and a single export.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
+              <p className="text-5xl font-semibold tracking-[-0.02em] text-white md:text-6xl">$19</p>
+              <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
+                Lifetime, not monthly
+              </p>
+              <p className="mt-4 text-base leading-6 text-slate-200">
+                One-time payment for PRO. Compare with the $30–$99 per seat per month most
+                lead-gen tools ask for — and that&apos;s before the data add-ons.
+              </p>
+            </div>
           </div>
+          <p className="text-ink-muted mt-8 max-w-3xl text-sm leading-6">
+            Time figures based on the manual copy-paste workflow we replaced internally.
+            Your mileage will depend on the source pages and how clean your review pass is.
+          </p>
         </div>
       </section>
 

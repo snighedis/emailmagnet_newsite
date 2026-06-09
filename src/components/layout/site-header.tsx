@@ -171,7 +171,7 @@ export function SiteHeader() {
           </Button>
           <Button asChild className="font-semibold">
             <Link href={emailMagnetConfig.href}>
-              Get EmailMagnet — free
+              Get EmailMagnet for free
             </Link>
           </Button>
         </div>
@@ -222,7 +222,7 @@ export function SiteHeader() {
               <div className="grid gap-3">
                 <Button asChild size="lg" className="w-full font-semibold">
                   <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)} className="text-center">
-                    Get EmailMagnet — free
+                    Get EmailMagnet for free
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="w-full">

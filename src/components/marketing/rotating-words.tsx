@@ -36,7 +36,7 @@ export function RotatingWords({ words, interval = 2200, className }: RotatingWor
   const longest = words.reduce((a, b) => (b.length > a.length ? b : a), "");
 
   return (
-    <span className={cn("relative block", className)}>
+    <span className={cn("relative inline-block align-bottom", className)}>
       {/* Invisible sizer reserves width + line height to prevent layout shift */}
       <span className="invisible" aria-hidden>
         {longest}
