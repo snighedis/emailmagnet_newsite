@@ -13,6 +13,7 @@ const routes = [
   "/founder",
   "/privacy",
   "/terms",
+  "/cookies",
   "/blog",
   "/docs",
   "/docs/getting-started",

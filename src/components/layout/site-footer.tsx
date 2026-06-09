@@ -34,7 +34,7 @@ export function SiteFooter() {
                 height={36}
                 className="h-9 w-9 rounded-lg object-cover"
               />
-              <span className="text-lg tracking-[-0.01em]">Dentoku Dev</span>
+              <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
             </Link>
             <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
             <Button asChild size="sm" className="font-semibold">

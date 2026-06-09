@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Spectral } from "next/font/google";
+import { Fira_Sans_Condensed, Geist, Geist_Mono, Spectral } from "next/font/google";
 import { AnalyticsGate } from "@/components/analytics/analytics-gate";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -20,6 +20,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const firaSansCondensed = Fira_Sans_Condensed({
+  variable: "--font-fira-condensed",
+  subsets: ["latin"],
+  weight: ["600"],
+  display: "swap",
 });
 
 // Spectral — SIL Open Font License 1.1 (commercial use + self-hosting allowed).
@@ -72,7 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spectral.variable} h-full`}
+      className={`${geistSans.variable} ${geistMono.variable} ${spectral.variable} ${firaSansCondensed.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={buildOrganizationSchema()} />

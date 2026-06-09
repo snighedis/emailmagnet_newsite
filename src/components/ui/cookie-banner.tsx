@@ -50,10 +50,10 @@ export function CookieBanner() {
             <p className="text-sm leading-5 text-slate-700">
               We use analytics only if you allow it. Rejecting keeps analytics disabled.{" "}
               <Link
-                href="/privacy"
+                href="/cookies"
                 className="font-medium text-eyebrow hover:underline"
               >
-                Find out more in our privacy policy
+                Find out more in our cookie policy
               </Link>
               .
             </p>
