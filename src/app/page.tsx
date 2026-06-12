@@ -35,6 +35,14 @@ const spotlightStats = [
 export default function Home() {
   return (
     <>
+      {/* Preload the hero background — it's set via CSS background-image, which the
+          preload scanner can't discover, so this makes it the prioritized LCP fetch. */}
+      <link
+        rel="preload"
+        as="image"
+        href="/brand/dentokudev-hero-image.jpg"
+        fetchPriority="high"
+      />
       <JsonLd data={buildItemListSchema("Dentoku Dev software products", productPortfolio)} />
 
       {/* Hero */}

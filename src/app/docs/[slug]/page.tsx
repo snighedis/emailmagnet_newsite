@@ -9,6 +9,8 @@ const docs: Record<
   {
     title: string;
     description: string;
+    datePublished: string;
+    dateModified: string;
     answer: string;
     steps: string[];
     details: Array<{ title: string; body: string }>;
@@ -17,6 +19,8 @@ const docs: Record<
 > = {
   "getting-started": {
     title: "Getting started with EmailMagnet",
+    datePublished: "2026-05-11",
+    dateModified: "2026-06-08",
     description:
       "Install EmailMagnet in Chrome, open a relevant website, extract visible emails, review results, and export your first contact list in minutes.",
     answer:
@@ -47,6 +51,8 @@ const docs: Record<
   },
   "exporting-emails": {
     title: "Exporting Emails with EmailMagnet",
+    datePublished: "2026-05-11",
+    dateModified: "2026-06-08",
     description:
       "Learn when to export EmailMagnet results as CSV or TXT, how to review addresses first, and how to prepare cleaner lists for spreadsheets or CRM handoff.",
     answer:
@@ -73,6 +79,8 @@ const docs: Record<
   },
   "responsible-use": {
     title: "Responsible Email Extraction Guide",
+    datePublished: "2026-05-11",
+    dateModified: "2026-06-08",
     description:
       "Use EmailMagnet responsibly by documenting source context, qualifying emails before outreach, respecting opt-outs, and following privacy and anti-spam rules.",
     answer:
@@ -148,6 +156,9 @@ export default async function DocPage({ params }: DocPageProps) {
       />
       <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Docs</p>
       <h1 className="mt-3 text-4xl font-semibold text-slate-950">{doc.title}</h1>
+      <p className="mt-4 text-sm font-medium text-slate-500">
+        Published {doc.datePublished} · Last updated {doc.dateModified}
+      </p>
       <p className="mt-5 text-xl leading-8 text-slate-600">{doc.description}</p>
       <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
         <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>

@@ -4,6 +4,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { Badge } from "@/components/ui/badge";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { blogPosts, getBlogPost } from "@/content/blog";
+import { defaultAuthor } from "@/data/authors";
 import { founderConfig, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/schema";
@@ -49,14 +50,14 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     ...pageMetadata,
     keywords: post.tags,
     category: "Blog",
-    authors: [{ name: "Dentoku Dev editorial team", url: `${siteConfig.url}${founderConfig.href}` }],
+    authors: [{ name: defaultAuthor.name, url: defaultAuthor.url }],
     openGraph: {
       ...pageMetadata.openGraph,
       type: "article",
       publishedTime,
       modifiedTime,
       tags: post.tags,
-      authors: ["Dentoku Dev editorial team"],
+      authors: [defaultAuthor.name],
     },
   };
 }
@@ -93,16 +94,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className="mt-6 text-xl leading-9 text-slate-600">{post.description}</p>
         <p className="mt-5 text-sm font-medium text-slate-500">
           <Link href={founderConfig.href} className="hover:text-eyebrow hover:underline">
-            Dentoku Dev editorial team
+            {defaultAuthor.name}, {defaultAuthor.role}
           </Link>{" "}
           · {post.readingTime} · Published {post.date} · Last updated {post.updated}
         </p>
         <aside className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5">
-          <h2 className="text-lg font-semibold text-slate-950">Author context</h2>
-          <p className="mt-2 leading-7 text-slate-600">
-            This guide is maintained by the Dentoku Dev editorial team, the studio behind
-            EmailMagnet and other focused browser and productivity tools.
-          </p>
+          <h2 className="text-lg font-semibold text-slate-950">About the author</h2>
+          <p className="mt-2 leading-7 text-slate-600">{defaultAuthor.bio}</p>
         </aside>
         <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
           <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>

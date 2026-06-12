@@ -48,6 +48,24 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.url,
   },
+  // Single source of truth for crawl/snippet directives — all routes inherit
+  // this via Next's metadata merge, so createMetadata() must NOT redefine it.
+  // max-snippet/-image-preview/-video-preview let Search + AI features surface
+  // full text and large media previews.
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Dentoku Dev software studio",
     description: siteConfig.description,

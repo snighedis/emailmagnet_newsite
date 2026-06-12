@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { siteConfig } from "@/data/site";
+import { defaultAuthor } from "@/data/authors";
 import { blogPosts } from "@/content/blog";
 import { createMetadata } from "@/lib/metadata";
 
@@ -59,7 +60,8 @@ export default function BlogPage() {
                       <p className="mt-3 leading-7 text-slate-600">{post.description}</p>
                     </div>
                     <p className="text-sm font-medium text-slate-500">
-                      {post.author} · {post.readingTime} · Last updated {post.updated}
+                      {defaultAuthor.name} · {post.readingTime} · Published {post.date} · Last updated{" "}
+                      {post.updated}
                     </p>
                   </CardContent>
                 </Card>

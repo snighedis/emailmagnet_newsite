@@ -36,7 +36,7 @@ function readBlogPost(slug: string): BlogPost {
     description: String(data.description),
     date: String(data.date),
     updated: String(data.updated ?? data.date),
-    author: String(data.author ?? "Dentoku Dev"),
+    author: String(data.author ?? "Nicola Orlandi"),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     featuredImage: data.featuredImage ? String(data.featuredImage) : undefined,
     readingTime: readingTime(content).text,

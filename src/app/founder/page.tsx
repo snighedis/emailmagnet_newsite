@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { founderConfig, productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema, buildFounderSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildFounderSchema, buildPersonSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "Dentoku Dev Founder Led Studio",
@@ -39,6 +39,7 @@ export default function FounderPage() {
   return (
     <>
       <JsonLd data={buildFounderSchema()} />
+      <JsonLd data={buildPersonSchema()} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: siteConfig.name, href: "/" },
@@ -56,9 +57,11 @@ export default function FounderPage() {
           <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
             <h2 className="text-lg font-semibold text-slate-950">Short answer</h2>
             <p className="mt-2 leading-8 text-slate-700">
-              Dentoku Dev is a founder-led software studio based in {founderConfig.location}. The
-              studio builds focused products for browser, ecommerce, AI writing, and practical
-              business workflows without exposing a public founder profile.
+              Dentoku Dev is a founder-led software studio based in {founderConfig.location}, run by
+              {" "}
+              {founderConfig.name}, {founderConfig.role}. He designs, builds, ships, and supports
+              every product in the portfolio — focused tools for browser, ecommerce, AI writing, and
+              practical business workflows.
             </p>
           </div>
 

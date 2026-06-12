@@ -7,6 +7,7 @@ import {
   productPortfolio,
   siteConfig,
 } from "@/data/site";
+import { type Author, defaultAuthor } from "@/data/authors";
 
 const base = siteConfig.url;
 
@@ -60,6 +61,24 @@ export function buildFounderSchema() {
         addressCountry: "IT",
       },
       knowsAbout: founderConfig.focusAreas,
+    },
+  };
+}
+
+export function buildPersonSchema(author: Author = defaultAuthor) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: author.name,
+    jobTitle: author.role,
+    description: author.bio,
+    url: author.url,
+    ...(author.image ? { image: `${base}${author.image}` } : {}),
+    sameAs: author.sameAs,
+    worksFor: {
+      "@type": "Organization",
+      name: siteConfig.companyName,
+      url: base,
     },
   };
 }
@@ -208,9 +227,16 @@ export function buildArticleSchema(post: BlogPost) {
     dateModified: Number.isNaN(modifiedTime.getTime()) ? post.updated : modifiedTime.toISOString(),
     articleSection: post.tags,
     author: {
-      "@type": "Organization",
-      name: siteConfig.companyName,
-      url: base,
+      "@type": "Person",
+      name: defaultAuthor.name,
+      jobTitle: defaultAuthor.role,
+      url: defaultAuthor.url,
+      ...(defaultAuthor.image ? { image: `${base}${defaultAuthor.image}` } : {}),
+      worksFor: {
+        "@type": "Organization",
+        name: siteConfig.companyName,
+        url: base,
+      },
     },
     publisher: {
       "@type": "Organization",

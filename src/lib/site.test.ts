@@ -17,6 +17,7 @@ import {
   buildHowToSchema,
   buildItemListSchema,
   buildOrganizationSchema,
+  buildPersonSchema,
   buildProductSoftwareSchema,
   buildSoftwareSchema,
   buildVideoSchema,
@@ -188,16 +189,33 @@ describe("Dentoku Dev structured data", () => {
     });
   });
 
-  it("generates article schema for MDX blog posts", () => {
+  it("generates article schema for MDX blog posts with a named Person author", () => {
     const post = blogPosts[0];
     expect(buildArticleSchema(post)).toMatchObject({
       "@type": "BlogPosting",
       headline: post.title,
       author: expect.objectContaining({
+        "@type": "Person",
+        name: "Nicola Orlandi",
+        worksFor: expect.objectContaining({
+          "@type": "Organization",
+          name: "Dentoku Dev",
+        }),
+      }),
+      publisher: expect.objectContaining({
         "@type": "Organization",
         name: "Dentoku Dev",
-        url: "https://www.dentokudev.com",
       }),
+    });
+  });
+
+  it("generates Person schema for the named author", () => {
+    expect(buildPersonSchema()).toMatchObject({
+      "@type": "Person",
+      name: "Nicola Orlandi",
+      jobTitle: "CEO & Founder at Dentoku Dev",
+      url: "https://www.dentokudev.com/founder",
+      worksFor: expect.objectContaining({ name: "Dentoku Dev" }),
     });
   });
 });
