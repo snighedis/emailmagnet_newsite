@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { createMetadata } from "@/lib/metadata";
+import { formatDate } from "@/lib/dates";
 import { buildBreadcrumbSchema, buildHowToSchema } from "@/lib/schema";
 
 const docs: Record<
@@ -157,7 +158,8 @@ export default async function DocPage({ params }: DocPageProps) {
       <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Docs</p>
       <h1 className="mt-3 text-4xl font-semibold text-slate-950">{doc.title}</h1>
       <p className="mt-4 text-sm font-medium text-slate-500">
-        Published {doc.datePublished} · Last updated {doc.dateModified}
+        Published <time dateTime={doc.datePublished}>{formatDate(doc.datePublished)}</time> · Last
+        updated <time dateTime={doc.dateModified}>{formatDate(doc.dateModified)}</time>
       </p>
       <p className="mt-5 text-xl leading-8 text-slate-600">{doc.description}</p>
       <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
