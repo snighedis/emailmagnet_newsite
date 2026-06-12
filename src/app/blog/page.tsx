@@ -50,42 +50,70 @@ export default function BlogPage() {
           {featured ? (
             <Link
               href={`/blog/${featured.slug}`}
-              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block rounded-3xl border border-slate-200/70 p-8 transition hover:-translate-y-1 md:p-12"
+              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block overflow-hidden rounded-3xl border border-slate-200/70 transition hover:-translate-y-1"
             >
-              <p className="text-eyebrow text-xs font-semibold tracking-[0.16em] uppercase">
-                Latest article
-              </p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {featured.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="rounded-full">
-                    {tag}
-                  </Badge>
-                ))}
+              <div className="grid items-center lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="p-8 md:p-12">
+                  <p className="text-eyebrow text-xs font-semibold tracking-[0.16em] uppercase">
+                    Latest article
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {featured.tags.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="rounded-full">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                  <h2 className="mt-5 text-3xl font-semibold tracking-normal text-balance text-slate-950 group-hover:underline md:text-4xl">
+                    {featured.title}
+                  </h2>
+                  <p className="mt-4 text-lg leading-8 text-slate-600">{featured.description}</p>
+                  <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-slate-500">
+                    <span className="font-semibold text-slate-900">{defaultAuthor.name}</span>
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-slate-300" />
+                    <span>{featured.readingTime}</span>
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-slate-300" />
+                    <time dateTime={featured.date}>{formatDate(featured.date)}</time>
+                  </div>
+                  <span className="text-eyebrow mt-6 inline-flex items-center gap-1.5 text-sm font-semibold">
+                    Read article
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+                {featured.featuredImage ? (
+                  // next/image doesn't paint reliably in this Next build; a plain img is dependable.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={featured.featuredImage}
+                    alt={featured.featuredImageAlt ?? `Cover image for "${featured.title}"`}
+                    width={1600}
+                    height={900}
+                    loading="eager"
+                    decoding="async"
+                    className="hidden h-full max-h-[420px] w-full object-cover lg:block"
+                  />
+                ) : null}
               </div>
-              <h2 className="mt-5 max-w-3xl text-3xl font-semibold tracking-normal text-balance text-slate-950 group-hover:underline md:text-4xl">
-                {featured.title}
-              </h2>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
-                {featured.description}
-              </p>
-              <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-slate-500">
-                <span className="font-semibold text-slate-900">{defaultAuthor.name}</span>
-                <span aria-hidden className="h-1 w-1 rounded-full bg-slate-300" />
-                <span>{featured.readingTime}</span>
-                <span aria-hidden className="h-1 w-1 rounded-full bg-slate-300" />
-                <time dateTime={featured.date}>{formatDate(featured.date)}</time>
-              </div>
-              <span className="text-eyebrow mt-6 inline-flex items-center gap-1.5 text-sm font-semibold">
-                Read article
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
             </Link>
           ) : null}
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {rest.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <Card className="shadow-soft hover:shadow-soft-lg h-full rounded-2xl border-slate-200/80 transition hover:-translate-y-1">
+                <Card className="shadow-soft hover:shadow-soft-lg h-full overflow-hidden rounded-2xl border-slate-200/80 pt-0 transition hover:-translate-y-1">
+                  {post.featuredImage ? (
+                    // next/image doesn't paint reliably in this Next build; a plain img is dependable.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={post.featuredImage}
+                      alt={post.featuredImageAlt ?? `Cover image for "${post.title}"`}
+                      width={1600}
+                      height={800}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[2/1] w-full border-b border-slate-200/80 object-cover"
+                    />
+                  ) : null}
                   <CardContent className="flex h-full flex-col p-6">
                     <div className="flex flex-wrap gap-2">
                       {post.tags.slice(0, 3).map((tag) => (

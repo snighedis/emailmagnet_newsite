@@ -74,6 +74,16 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 
   const publishedTime = toIsoDate(post.date);
   const modifiedTime = toIsoDate(post.updated) ?? publishedTime;
+  const coverImages = post.featuredImage
+    ? [
+        {
+          url: `${siteConfig.url}${post.featuredImage}`,
+          width: 1600,
+          height: 900,
+          alt: post.featuredImageAlt ?? post.title,
+        },
+      ]
+    : undefined;
 
   return {
     ...pageMetadata,
@@ -87,7 +97,11 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       modifiedTime,
       tags: post.tags,
       authors: [defaultAuthor.name],
+      ...(coverImages ? { images: coverImages } : {}),
     },
+    ...(coverImages
+      ? { twitter: { ...pageMetadata.twitter, images: [coverImages[0].url] } }
+      : {}),
   };
 }
 
@@ -169,6 +183,23 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </header>
+
+      {/* Cover image */}
+      {post.featuredImage ? (
+        <div className="mx-auto max-w-4xl px-4 pt-10 md:pt-12">
+          {/* next/image doesn't paint reliably in this Next build; a plain img is dependable. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={post.featuredImage}
+            alt={post.featuredImageAlt ?? `Cover image for "${post.title}"`}
+            width={1600}
+            height={800}
+            fetchPriority="high"
+            decoding="async"
+            className="shadow-soft aspect-[2/1] w-full rounded-2xl border border-slate-200 object-cover"
+          />
+        </div>
+      ) : null}
 
       {/* Body + sidebar */}
       <div className="mx-auto max-w-6xl px-4 py-12 md:py-16 lg:grid lg:grid-cols-[minmax(0,1fr)_270px] lg:gap-16">

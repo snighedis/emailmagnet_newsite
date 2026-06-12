@@ -12,6 +12,7 @@ export type BlogPost = {
   author: string;
   tags: string[];
   featuredImage?: string;
+  featuredImageAlt?: string;
   readingTime: string;
   body: string;
 };
@@ -39,6 +40,7 @@ function readBlogPost(slug: string): BlogPost {
     author: String(data.author ?? "Nicola Orlandi"),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     featuredImage: data.featuredImage ? String(data.featuredImage) : undefined,
+    featuredImageAlt: data.featuredImageAlt ? String(data.featuredImageAlt) : undefined,
     readingTime: readingTime(content).text,
     body: content,
   };

@@ -1,80 +1,83 @@
 ---
-title: "Benchmark case study: ricerca lead manuale vs EmailMagnet"
-description: "Benchmark quantitativo e qualitativo tra copia-incolla manuale ed EmailMagnet su tempi, accuratezza, bounce rate, costi operativi e ROI mensile."
+title: "Benchmark: manual lead research vs EmailMagnet"
+description: "A transparent cost model comparing manual copy-paste lead collection with EmailMagnet: time per contact, error sources, and what the workflow really costs per month."
 date: "2026-05-26"
-updated: "2026-05-26"
+updated: "2026-06-12"
 author: "Nicola Orlandi"
 tags:
   - Benchmark
   - Lead research
   - Productivity
   - EmailMagnet
+featuredImage: "/blog/benchmark-manual-vs-emailmagnet.jpg"
+featuredImageAlt: "Laptop and printed bar charts comparing business metrics on a wooden desk"
 ---
 
-La lead generation basata sulla ricerca e l'estrazione di email è uno dei pilastri delle attività di outreach per sales representative, founder e merchant Shopify. Tuttavia, il metodo tradizionale di raccolta dati (copia e incolla manuale) rappresenta uno dei principali colli di bottiglia per l'efficienza aziendale.
+Lead generation built on finding and extracting emails is a pillar of outreach work for sales reps, founders, and Shopify merchants. The traditional collection method — manual copy-paste — is one of the biggest bottlenecks in that workflow.
 
-Questo benchmark mette a confronto in modo quantitativo e qualitativo il processo di **copia e incolla manuale** rispetto all'utilizzo dell'estensione Chrome **EmailMagnet** per l'estrazione di contatti da siti web e profili professionali.
+This article compares **manual copy-paste** against the **EmailMagnet** Chrome extension on the one step both methods share: getting a visible email address off a web page and into a usable list.
 
-## Scenario del benchmark
+> One honest note before the numbers: this is a transparent cost model based on the workflow steps, not a lab study. The per-step timings below are estimates — swap in your own rates and volumes and the math is easy to re-run.
 
-Per rendere i dati reali e confrontabili, abbiamo testato entrambi i metodi su un campione standardizzato:
+## The scenario we model
 
-- **Obiettivo**: estrarre ed elencare 100 lead qualificati (Nome, Cognome, Email Aziendale, Ruolo, URL del Sito Web, Fonte).
-- **Operatore**: 1 Sales Researcher di livello medio.
-- **Sorgenti**: pagine contatti web aziendali, blog post, pagine "Chi siamo", directory pubbliche e profili social/LinkedIn.
+- **Goal**: collect 100 qualified leads (name, business email, role, website URL, source page).
+- **Operator**: one mid-level sales researcher.
+- **Sources**: public company contact pages, blog posts, "About us" pages, public directories, and professional profiles.
 
-## 1. Analisi quantitativa: i numeri a confronto
+Both methods spend the same time *finding and reading* the source pages. The difference is what happens after you spot an address.
 
-| Metrica | Metodo manuale (copia e incolla) | Metodo EmailMagnet | Miglioramento % |
+## 1. The transcription step, side by side
+
+| Metric | Manual copy-paste | EmailMagnet | Difference |
 | :--- | :---: | :---: | :---: |
-| **Tempo totale per 100 lead** | 240 minuti (4 ore) | 18 minuti | **-92.5%** |
-| **Tempo medio per singolo lead** | 144 secondi | 10.8 secondi | **-92.5%** |
-| **Lead estratti all'ora (media)** | 25 lead | 333 lead | **+1232%** |
-| **Accuratezza del dato (errori di digitazione)** | 6% (6 lead con email/nomi troncati) | 0% (estrazione diretta da codice/API) | **Eliminazione errori** |
-| **Email non valide / Bounced** | 14% (nessuna verifica preventiva) | 3% (grazie al check sintattico/domain match) | **-78.5%** |
-| **Costo operatore (ipotizzando 20 euro/ora)** | 80.00 euro | 6.00 euro (tempo operatore) + costo licenza | **Abbattimento costi operativi** |
+| **Steps per address** | Spot it, select, copy, switch tab, paste, fix formatting | Detected on the page, captured in one click | Fewer context switches |
+| **Estimated time per address** | ~30 seconds | A few seconds, amortized across the page | **~20+ seconds saved per address** |
+| **Transcription overhead for 100 leads** | ~50 minutes | ~5–10 minutes of capture, review, and export | **Most of the copy-paste time removed** |
+| **Typos and truncated addresses** | Possible on every manual copy | Text is captured exactly as published on the page | Fewer silent errors |
 
-### Dettaglio del flusso temporale (secondi per lead)
+### Where the time actually goes
 
 ```text
-Metodo manuale:  [Ricerca 60s] [Copia/Incolla Campi 60s] [Validazione Visiva 24s] = 144s
-Metodo EmailMagnet: [Clic Magnet 4s] [Auto-riempimento 4s] [Export 2.8s] = 10.8s
+Manual:       [spot address] [select + copy] [switch tab] [paste] [fix formatting]  ≈ 30s each
+EmailMagnet:  [browse the page] [capture detected emails] [review + export once]    ≈ seconds each
 ```
 
-## 2. Analisi qualitativa e operativa
+## 2. Qualitative differences
 
-### A) Metodo manuale (copia e incolla)
+### A) Manual copy-paste
 
-1. **Fatica cognitiva**: l'operatore deve continuamente cambiare scheda nel browser, evidenziare testi, usare scorciatoie da tastiera (`Cmd+C` / `Cmd+V`) ed evitare di copiare spazi vuoti o formattazioni indesiderate.
-2. **Perdita di dati silenziosa**: spesso le email sono nascoste nel codice HTML o in formati non leggibili a prima vista (esempio: `info [at] company.com`). L'operatore umano tende a saltare questi lead difficili per risparmiare tempo.
-3. **Mancanza di standardizzazione**: i dati incollati in Excel/Google Sheets presentano spesso discrepanze di formattazione (font diversi, link attivi, maiuscole/minuscole errate) che richiedono pulizia successiva.
+1. **Cognitive fatigue**: constant tab switching, text highlighting, and keyboard shortcuts, while trying not to copy stray spaces or formatting.
+2. **Silent skipping**: when an address is awkward to select or formatted oddly, a tired operator tends to skip it to save time.
+3. **Inconsistent output**: data pasted into Excel or Google Sheets carries formatting noise — live links, mixed casing, stray characters — that needs cleanup later.
 
-### B) Metodo EmailMagnet
+### B) EmailMagnet
 
-1. **One-click detection**: EmailMagnet scansiona istantaneamente la pagina attiva (inclusi script in background e link mailto nascosti) e presenta le email strutturate in un pannello laterale pulito.
-2. **Auto-validazione**: l'estensione esegue una convalida sintattica in tempo reale prima del salvataggio, contrassegnando domini sospetti o indirizzi malformati.
-3. **Esportazione in 1 click**: possibilità di salvare direttamente in liste organizzate scaricabili in CSV o integrabili via webhook con CRM/tool di outreach (esempio: Lemlist, Instantly).
+1. **One-pass capture**: EmailMagnet detects the visible email addresses on the page you are browsing and collects them into one reviewable list.
+2. **Review before export**: you check the list while the source context is still fresh, instead of reconstructing it later.
+3. **One-click export**: download the reviewed list as CSV or TXT, ready for a spreadsheet, CRM import, or your outreach tool.
 
-## 3. Ritorno sull'investimento (ROI) su base mensile
+What EmailMagnet does **not** do: it does not bypass login walls, scrape hidden data, or send your outreach. It removes the copy-paste step on pages you can already see.
 
-Se consideriamo un team Growth Marketing o Sales Outreach che deve raccogliere **2.000 lead al mese**:
+## 3. What the workflow costs per month
 
-### Costo con metodo manuale
+Take a growth or sales team that collects **2,000 leads per month**, with a researcher costed at **$25/hour**.
 
-- **Tempo richiesto**: 80 ore di lavoro.
-- **Costo operatore (20 euro/ora)**: **1.600 euro**.
-- **Costo lead persi per bounce (14%)**: 280 lead inutilizzabili (perdita di potenziale fatturato e deterioramento della reputazione del dominio di invio).
+### Manual transcription cost
 
-### Costo con EmailMagnet
+- **Transcription overhead**: 2,000 × ~30 seconds ≈ **17 hours/month**.
+- **Cost**: ≈ **$425/month** — spent on copying text from one window to another.
 
-- **Tempo richiesto**: 6 ore di lavoro.
-- **Costo operatore (20 euro/ora)**: 120 euro.
-- **Costo licenza EmailMagnet**: ~30 euro/mese.
-- **Costo totale**: **150 euro**.
-- **Risparmio netto mensile**: **1.450 euro** e **74 ore di tempo risparmiate** da dedicare alla personalizzazione delle email e alla chiusura delle trattative.
+### EmailMagnet cost
 
-## Conclusioni
+- **Capture and export overhead**: roughly 1–2 hours/month at the same volume.
+- **Cost**: ≈ **$25–50/month** of operator time.
+- **Tool cost**: the Free plan covers 200 emails/month at $0. PRO is a **one-time $19 lifetime purchase** — not a subscription — so at this volume the tool cost after month one is zero.
 
-Il benchmark dimostra in modo inequivocabile che la raccolta manuale di lead non è scalabile per aziende SaaS o agenzie di lead generation moderne.
+**Net effect: roughly $350–400 of researcher time freed every month**, after a single $19 purchase — time better spent on qualifying leads, personalizing messages, and closing.
 
-L'adozione di **EmailMagnet** velocizza il processo del **92.5%**, migliora la pulizia del database, riduce il bounce rate e protegge la reputazione del dominio aziendale.
+## Conclusions
+
+Manual lead collection is not scalable for a modern SaaS team or lead-gen agency — not because any single copy-paste is slow, but because thousands of them are.
+
+EmailMagnet removes most of the transcription overhead, produces cleaner exports, and keeps the source context attached to your research. Run the model with your own numbers: the break-even on a $19 one-time purchase is usually measured in days, not months.
