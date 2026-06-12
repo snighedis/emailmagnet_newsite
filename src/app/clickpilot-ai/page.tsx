@@ -437,6 +437,15 @@ export default function ClickPilotAiPage() {
               Note: Some platforms like Google Docs may have limited support
             </p>
           </div>
+
+          <div className="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
+            <p className="mt-2 leading-7 text-slate-600">
+              ClickPilot AI is not a document editor or a content manager. It improves the text in
+              fields you are already writing in — fix, rewrite, summarize, translate — and hands
+              control straight back to you.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -539,6 +548,36 @@ export default function ClickPilotAiPage() {
             <h2 className="mt-3 text-3xl font-semibold text-slate-950">ClickPilot AI FAQ</h2>
           </div>
           <FaqList items={faqs} />
+        </div>
+      </section>
+
+      <section className="bg-white pb-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <nav aria-label="ClickPilot AI related Dentoku Dev pages" className="rounded-xl border border-slate-200 bg-white p-5">
+            <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
+            <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+              <li>
+                <Link className="font-medium text-eyebrow hover:underline" href="/overview">
+                  Dentoku Dev product overview
+                </Link>
+              </li>
+              <li>
+                <Link className="font-medium text-eyebrow hover:underline" href="/faq">
+                  Product and support FAQ
+                </Link>
+              </li>
+              <li>
+                <Link className="font-medium text-eyebrow hover:underline" href="/blog">
+                  Browser productivity articles
+                </Link>
+              </li>
+              <li>
+                <Link className="font-medium text-eyebrow hover:underline" href="/contact">
+                  Contact Dentoku Dev support
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </section>
     </>

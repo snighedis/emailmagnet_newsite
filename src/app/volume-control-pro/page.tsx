@@ -90,6 +90,14 @@ export default function VolumeControlProPage() {
               without changing system-wide settings.
             </p>
           </div>
+          <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
+            <p className="mt-2 leading-7 text-slate-600">
+              Volume Control PRO is not a system-wide equalizer or an audio recorder. It controls the
+              volume of browser tabs only — not other applications or your operating system’s master
+              volume.
+            </p>
+          </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild className="rounded-md bg-brand text-white hover:bg-brand-strong">
               <Link href="https://chromewebstore.google.com/detail/volume-control-pro-600%-s/bjjpdehblihhfdfcoonadnnfmkblmogf">

@@ -172,6 +172,16 @@ export default function Home() {
               ships with a single support path, a single page, and a single answer to the question:
               what does this actually do?
             </p>
+            <p className="text-ink-muted text-lg leading-8">
+              Every product is designed, built, and supported by{" "}
+              <Link
+                href="/founder"
+                className="font-semibold text-white underline-offset-4 hover:underline"
+              >
+                founder Nicola Orlandi
+              </Link>{" "}
+              — the person who ships the tool is the person who answers your support email.
+            </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {companyTrustCues.map((item) => (

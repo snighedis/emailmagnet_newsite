@@ -80,6 +80,13 @@ export default function Countdown321Page() {
               focused way to show time-sensitive messages without custom storefront development.
             </p>
           </div>
+          <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5">
+            <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
+            <p className="mt-2 leading-7 text-slate-600">
+              Countdown321 is not a full marketing-automation suite. It handles time-based countdowns
+              and urgency messages — not email campaigns, discount-code logic, or multi-step funnels.
+            </p>
+          </div>
           <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
             <Image
               src="/brand/countdown321-hero.png"
