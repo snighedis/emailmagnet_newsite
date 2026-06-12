@@ -63,7 +63,7 @@ export const siteConfig = {
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",
   description:
-    "Four Chrome tools. One workflow each. Zero subscriptions — ever. EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321 — built for sales teams who can't afford to waste time on the list.",
+    "Three Chrome extensions and one Shopify app. One workflow each. Chrome tools are pay-once, keep-forever — zero subscriptions. EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321 — built for sales teams who can't afford to waste time on the list.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
@@ -340,9 +340,9 @@ export const companyTrustCues: FeatureItem[] = [
     icon: Globe2,
   },
   {
-    title: "Buy once. Keep forever. Full stop.",
+    title: "Buy once, keep forever — on Chrome.",
     description:
-      "No renewal emails. No price hikes. No lock-in. The tools you pay for today are yours for good. And every product page is upfront about exactly what the tool won't do.",
+      "Every Chrome extension is a one-time purchase: no renewal emails, no price hikes, no lock-in. Countdown321, our Shopify app, follows Shopify's standard monthly app billing — stated plainly on its page. And every product page is upfront about exactly what the tool won't do.",
     icon: ShieldCheck,
   },
 ];

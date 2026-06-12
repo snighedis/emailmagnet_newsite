@@ -74,9 +74,10 @@ export default function Home() {
               </span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-white md:text-xl">
-              Four Chrome extensions. One workflow each. Zero subscriptions — ever. EmailMagnet,
-              ClickPilot AI, Volume Control PRO, Countdown321. Built for the pros who ship the list
-              while others copy-paste.
+              Three Chrome extensions, one Shopify app. One workflow each. Every Chrome extension
+              is pay-once, keep-forever — zero subscriptions. EmailMagnet, ClickPilot AI, Volume
+              Control PRO, Countdown321. Built for the pros who ship the list while others
+              copy-paste.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">

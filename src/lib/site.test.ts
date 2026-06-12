@@ -27,7 +27,9 @@ describe("Dentoku Dev site hierarchy", () => {
   it("models Dentoku Dev as the parent company and EmailMagnet as a product", () => {
     expect(siteConfig.name).toBe("Dentoku Dev");
     expect(siteConfig.logo).toBe("/brand/dentoku-dev-logo-128x128.png");
-    expect(siteConfig.description).toContain("Zero subscriptions");
+    expect(siteConfig.description).toContain("zero subscriptions");
+    // The subscription claim must stay scoped to Chrome tools — Countdown321 bills monthly.
+    expect(siteConfig.description).not.toMatch(/Zero subscriptions — ever/);
     expect(emailMagnetConfig.name).toBe("EmailMagnet");
     expect(emailMagnetConfig.icon).toBe("/brand/emailmagnet-icon-padded.png");
     expect(emailMagnetConfig.logo).toBe("/brand/emailmagnet-logo-wide.png");
