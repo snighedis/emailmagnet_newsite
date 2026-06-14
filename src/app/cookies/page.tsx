@@ -22,7 +22,7 @@ export default function CookiesPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Cookie Policy</h1>
         <p className="mt-6 leading-8 text-slate-600">
-          Last updated: June 9, 2026. This Cookie Policy explains what cookies and similar
+          Last updated: June 15, 2026. This Cookie Policy explains what cookies and similar
           technologies are used on dentokudev.com, why we use them, and how you can control
           them. It is issued in accordance with the EU ePrivacy Directive (2002/58/EC as amended
           by 2009/136/EC), the Italian implementing legislation (D.Lgs. 69/2012 and the Garante
@@ -49,7 +49,9 @@ export default function CookiesPage() {
         {/* 2. Categories */}
         <h2 className="mt-12 text-2xl font-semibold text-slate-950">2. Cookies We Use</h2>
         <p className="mt-3 leading-8 text-slate-600">
-          We use two categories of cookies:
+          We use three categories of cookies. Analytics and Marketing cookies require your prior
+          consent and are only set if you enable them in the cookie banner; you can accept or
+          reject each category independently, and change your mind at any time.
         </p>
 
         <h3 className="mt-8 text-lg font-semibold text-slate-950">
@@ -74,10 +76,11 @@ export default function CookiesPage() {
               <tr>
                 <td className="py-3 pr-4 font-mono text-xs">cookie-consent</td>
                 <td className="py-3 pr-4">
-                  Stores your cookie preference (accepted / rejected) so the banner does not
-                  reappear on every page load.
+                  Stores your per-category choice (analytics and marketing on/off), plus a version
+                  and timestamp, so the banner does not reappear on every page load and we can
+                  prove the consent given.
                 </td>
-                <td className="py-3">1 year</td>
+                <td className="py-3">6 months, then we ask again</td>
               </tr>
             </tbody>
           </table>
@@ -89,8 +92,11 @@ export default function CookiesPage() {
         <p className="mt-3 leading-8 text-slate-600">
           We use Google Analytics 4 to collect anonymised statistics about how visitors use this
           website (pages visited, session duration, traffic sources). This helps us improve the
-          site. These cookies are only set if you click "Continue" in the cookie banner. If you
-          click "Reject" or close the banner, no analytics cookies are placed.
+          site. These cookies are only set if you enable Analytics in the cookie banner (via
+          “Accept all” or by toggling Analytics on under “Manage preferences”). If you reject them
+          or close the banner, no analytics cookies are placed. We also use Vercel’s
+          privacy-friendly, cookieless analytics, which we likewise load only with your Analytics
+          consent.
         </p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-sm text-slate-600">
@@ -147,8 +153,42 @@ export default function CookiesPage() {
           .
         </p>
 
-        <p className="mt-6 leading-8 text-slate-600">
-          We do not use advertising, profiling, or third-party tracking cookies.
+        <h3 className="mt-8 text-lg font-semibold text-slate-950">
+          c) Marketing Cookies (consent required)
+        </h3>
+        <p className="mt-3 leading-8 text-slate-600">
+          We use Google Ads tags to measure conversions from our advertising campaigns (for
+          example, when a visit leads to installing an extension or starting a checkout). These
+          cookies are <strong>off by default</strong> and are only set if you enable Marketing in
+          the cookie banner. We do not sell your data, and we do not use it for cross-site
+          profiling beyond Google Ads conversion measurement.
+        </p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full text-sm text-slate-600">
+            <thead>
+              <tr className="border-b border-slate-200 text-left text-slate-900">
+                <th className="pb-3 pr-4 font-semibold">Name</th>
+                <th className="pb-3 pr-4 font-semibold">Provider</th>
+                <th className="pb-3 pr-4 font-semibold">Purpose</th>
+                <th className="pb-3 font-semibold">Duration</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              <tr>
+                <td className="py-3 pr-4 font-mono text-xs">_gcl_au</td>
+                <td className="py-3 pr-4">Google LLC</td>
+                <td className="py-3 pr-4">
+                  Used by Google Ads to store and track conversions attributed to ad clicks.
+                </td>
+                <td className="py-3">90 days</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-4 leading-8 text-slate-600">
+          If you do not enable Marketing cookies, no Google Ads tag is loaded. We do not use
+          profiling cookies for any purpose other than the advertising conversion measurement
+          described above.
         </p>
 
         {/* 3. How to manage */}
@@ -160,9 +200,11 @@ export default function CookiesPage() {
         </p>
         <ul className="mt-4 list-disc pl-6 space-y-3 leading-8 text-slate-600">
           <li>
-            <strong>Cookie banner.</strong> Clear your browser's local storage for this site
-            (see your browser's developer tools or privacy settings) and reload the page — the
-            consent banner will reappear and you can make a new choice.
+            <strong>Cookie preferences link.</strong> Click <strong>“Cookie preferences”</strong>{" "}
+            in the footer of any page. The consent panel reopens with your current choices, and you
+            can enable or disable Analytics and Marketing independently — withdrawing consent is as
+            easy as giving it. Turning a category off reloads the page so the related scripts stop
+            immediately.
           </li>
           <li>
             <strong>Browser settings.</strong> You can instruct your browser to refuse all or

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { emailMagnetConfig, footerNav, siteConfig } from "@/data/site";
+import { CookiePreferencesButton } from "@/components/ui/cookie-preferences-button";
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -80,9 +81,12 @@ export function SiteFooter() {
       <div className="border-t border-slate-200">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Dentoku Dev. All rights reserved.</p>
-          <p>
-            {siteConfig.companyName}, {siteConfig.location}
-          </p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <CookiePreferencesButton className="transition hover:text-slate-950" />
+            <span>
+              {siteConfig.companyName}, {siteConfig.location}
+            </span>
+          </div>
         </div>
       </div>
     </footer>
