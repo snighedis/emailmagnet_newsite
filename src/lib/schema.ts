@@ -140,7 +140,15 @@ export function buildSoftwareSchema() {
   };
 }
 
-export function buildProductSoftwareSchema(product = productPortfolio[0]) {
+/**
+ * SoftwareApplication schema for a portfolio product. Google's rich result
+ * requires one of offers/review/aggregateRating, so `offers` is mandatory —
+ * pass the product's real pricing (a free Offer, or an AggregateOffer range).
+ */
+export function buildProductSoftwareSchema(
+  product = productPortfolio[0],
+  offers: Record<string, unknown> | Array<Record<string, unknown>>,
+) {
   const isShopifyApp = product.category.toLowerCase().includes("shopify");
 
   return {
@@ -152,11 +160,7 @@ export function buildProductSoftwareSchema(product = productPortfolio[0]) {
     description: product.description,
     url: `${base}${product.href}`,
     sameAs: product.externalUrl ? [product.externalUrl] : undefined,
-    isPartOf: {
-      "@type": "Organization",
-      name: siteConfig.companyName,
-      url: base,
-    },
+    offers,
     publisher: {
       "@type": "Organization",
       name: siteConfig.companyName,

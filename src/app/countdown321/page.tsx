@@ -164,7 +164,17 @@ const countdownProduct = productPortfolio.find((product) => product.href === "/c
 export default function Countdown321Page() {
   return (
     <>
-      {countdownProduct ? <JsonLd data={buildProductSoftwareSchema(countdownProduct)} /> : null}
+      {countdownProduct ? (
+        <JsonLd
+          data={buildProductSoftwareSchema(countdownProduct, {
+            "@type": "AggregateOffer",
+            lowPrice: "0",
+            highPrice: "19.99",
+            priceCurrency: "USD",
+            offerCount: 4,
+          })}
+        />
+      ) : null}
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },

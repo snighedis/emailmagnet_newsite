@@ -160,7 +160,13 @@ export default function VolumeControlProPage() {
   return (
     <>
       {volumeControlProduct ? (
-        <JsonLd data={buildProductSoftwareSchema(volumeControlProduct)} />
+        <JsonLd
+          data={buildProductSoftwareSchema(volumeControlProduct, {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+          })}
+        />
       ) : null}
       <JsonLd
         data={buildBreadcrumbSchema([

@@ -150,7 +150,14 @@ describe("Dentoku Dev structured data", () => {
   });
 
   it("generates product, list, how-to, and video schemas for AEO pages", () => {
-    expect(buildProductSoftwareSchema(productPortfolio[1])).toMatchObject({
+    const productSchema = buildProductSoftwareSchema(productPortfolio[1], {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    });
+    // Google's SoftwareApplication rich result requires offers/review/rating.
+    expect(productSchema.offers).toMatchObject({ "@type": "Offer", price: "0" });
+    expect(productSchema).toMatchObject({
       "@type": "SoftwareApplication",
       name: "ClickPilot AI",
       operatingSystem: "Chrome",
