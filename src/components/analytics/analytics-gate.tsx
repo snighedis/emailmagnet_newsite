@@ -5,6 +5,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ChatbaseWidget } from "@/components/analytics/chatbase-widget";
+import { ChatbotDisclosure } from "@/components/analytics/chatbot-disclosure";
 import {
   getConsentSnapshot,
   getServerConsentSnapshot,
@@ -107,6 +108,7 @@ export function AnalyticsGate({ gaId, adsId }: AnalyticsGateProps) {
           <Analytics />
           <SpeedInsights />
           <ChatbaseWidget />
+          <ChatbotDisclosure />
         </>
       ) : null}
     </>

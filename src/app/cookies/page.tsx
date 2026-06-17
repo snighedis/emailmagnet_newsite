@@ -96,7 +96,13 @@ export default function CookiesPage() {
           “Accept all” or by toggling Analytics on under “Manage preferences”). If you reject them
           or close the banner, no analytics cookies are placed. We also use Vercel’s
           privacy-friendly, cookieless analytics, which we likewise load only with your Analytics
-          consent.
+          consent. Our optional AI support chat (Chatbase) is also loaded under this category and
+          may store local data in your browser to keep the chat session; it is an AI assistant, as
+          explained in our{" "}
+          <a href="/privacy" className="underline underline-offset-2">
+            Privacy Policy
+          </a>
+          .
         </p>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-sm text-slate-600">

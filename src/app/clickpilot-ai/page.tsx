@@ -258,6 +258,12 @@ export default function ClickPilotAiPage() {
               <Check className="h-4 w-4 text-accent-teal" /> No account required
             </span>
           </p>
+          <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-slate-500">
+            <strong className="font-semibold text-slate-600">AI transparency:</strong> ClickPilot AI
+            generates text using artificial intelligence (via your own OpenAI key). Outputs are
+            machine-generated and may be inaccurate or biased — review and edit them before you
+            send or publish.
+          </p>
         </div>
       </section>
 
