@@ -135,7 +135,7 @@ describe("Dentoku Dev structured data", () => {
       isPartOf: expect.objectContaining({ name: "Dentoku Dev" }),
       applicationCategory: "BusinessApplication",
       offers: expect.arrayContaining([
-        expect.objectContaining({ price: "19", priceCurrency: "USD" }),
+        expect.objectContaining({ price: 19, priceCurrency: "USD" }),
       ]),
     });
 
@@ -152,11 +152,11 @@ describe("Dentoku Dev structured data", () => {
   it("generates product, list, how-to, and video schemas for AEO pages", () => {
     const productSchema = buildProductSoftwareSchema(productPortfolio[1], {
       "@type": "Offer",
-      price: "0",
+      price: 0,
       priceCurrency: "USD",
     });
     // Google's SoftwareApplication rich result requires offers/review/rating.
-    expect(productSchema.offers).toMatchObject({ "@type": "Offer", price: "0" });
+    expect(productSchema.offers).toMatchObject({ "@type": "Offer", price: 0 });
     expect(productSchema).toMatchObject({
       "@type": "SoftwareApplication",
       name: "ClickPilot AI",

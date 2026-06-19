@@ -108,7 +108,7 @@ export function buildSoftwareSchema() {
       {
         "@type": "Offer",
         name: freePlan?.name ?? "Free Plan",
-        price: "0",
+        price: 0,
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.secondaryCta.href,
@@ -118,7 +118,7 @@ export function buildSoftwareSchema() {
       {
         "@type": "Offer",
         name: proPlan?.name ?? "PRO Plan",
-        price: proPlan?.price.replace("$", "") ?? "19",
+        price: Number(proPlan?.price.replace("$", "") ?? 19),
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.primaryCta.href,

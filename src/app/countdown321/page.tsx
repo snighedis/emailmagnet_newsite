@@ -166,40 +166,46 @@ export default function Countdown321Page() {
     <>
       {countdownProduct ? (
         <JsonLd
-          data={buildProductSoftwareSchema(countdownProduct, [
-            {
-              "@type": "Offer",
-              name: "Free Plan",
-              price: "0",
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
-              url: `${siteConfig.url}/countdown321`,
-            },
-            {
-              "@type": "Offer",
-              name: "Launch Plan",
-              price: "4.99",
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
-              url: `${siteConfig.url}/countdown321`,
-            },
-            {
-              "@type": "Offer",
-              name: "Grow Plan",
-              price: "7.99",
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
-              url: `${siteConfig.url}/countdown321`,
-            },
-            {
-              "@type": "Offer",
-              name: "Scale Plan",
-              price: "19.99",
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
-              url: `${siteConfig.url}/countdown321`,
-            },
-          ])}
+          data={buildProductSoftwareSchema(countdownProduct, {
+            "@type": "AggregateOffer",
+            lowPrice: 0,
+            highPrice: 19.99,
+            priceCurrency: "USD",
+            offers: [
+              {
+                "@type": "Offer",
+                name: "Free Plan",
+                price: 0,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `${siteConfig.url}/countdown321`,
+              },
+              {
+                "@type": "Offer",
+                name: "Launch Plan",
+                price: 4.99,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `${siteConfig.url}/countdown321`,
+              },
+              {
+                "@type": "Offer",
+                name: "Grow Plan",
+                price: 7.99,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `${siteConfig.url}/countdown321`,
+              },
+              {
+                "@type": "Offer",
+                name: "Scale Plan",
+                price: 19.99,
+                priceCurrency: "USD",
+                availability: "https://schema.org/InStock",
+                url: `${siteConfig.url}/countdown321`,
+              },
+            ],
+          })}
         />
       ) : null}
       <JsonLd
