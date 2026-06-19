@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Shopify Urgency App for Countdown321",
   description:
-    "Countdown321 helps Shopify merchants communicate urgency with countdown timers, campaign deadlines, launch messages, and clear time-based storefront prompts.",
+    "Countdown321 helps Shopify merchants build urgency with countdown timers, campaign deadlines, launch messages, and storefront prompts.",
   path: "/countdown321/shopify-urgency-app",
 });
 

@@ -5,7 +5,7 @@ import { buildBreadcrumbSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "Terms of Service – Dentoku Dev",
   description:
-    "Terms governing access to EmailMagnet and Dentoku Dev digital consulting services, including billing, acceptable use, right of withdrawal, and Italian governing law.",
+    "Terms governing access to EmailMagnet and Dentoku Dev services, including billing, acceptable use, right of withdrawal, and Italian governing law.",
   path: "/terms",
 });
 

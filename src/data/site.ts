@@ -63,7 +63,7 @@ export const siteConfig = {
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",
   description:
-    "Four focused tools. One workflow each. No bloat, no lock-in. EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321 — built for sales teams who can't afford to waste time on the list.",
+    "Four focused browser tools: EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321. Built for sales teams, founders, and ecommerce pros.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
