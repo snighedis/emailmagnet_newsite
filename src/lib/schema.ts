@@ -91,6 +91,7 @@ export function buildSoftwareSchema() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: emailMagnetConfig.name,
+    image: `${base}${emailMagnetConfig.icon}`,
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Chrome Extension",
     operatingSystem: "Windows, macOS, Linux, ChromeOS",
@@ -109,6 +110,7 @@ export function buildSoftwareSchema() {
         name: freePlan?.name ?? "Free Plan",
         price: "0",
         priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
         url: emailMagnetConfig.secondaryCta.href,
         category: "Free Plan",
         description: "200 emails per month, export up to 100 emails at once"
@@ -118,6 +120,7 @@ export function buildSoftwareSchema() {
         name: proPlan?.name ?? "PRO Plan",
         price: proPlan?.price.replace("$", "") ?? "19",
         priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
         url: emailMagnetConfig.primaryCta.href,
         category: "Lifetime access",
         description: "Unlimited email extraction, unlimited export size, autosave, bulk extraction"
@@ -155,6 +158,7 @@ export function buildProductSoftwareSchema(
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     name: product.name,
+    image: `${base}${product.icon}`,
     applicationCategory: isShopifyApp ? "BusinessApplication" : "UtilitiesApplication",
     operatingSystem: isShopifyApp ? "Web" : "Windows, macOS, Linux, ChromeOS",
     description: product.description,

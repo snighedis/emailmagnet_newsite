@@ -162,7 +162,7 @@ export default function EmailMagnetPage() {
 
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/brand/emailmagnet_04.png"
+            src="/brand/emailmagnet_04.webp"
             alt="EmailMagnet PRO popup showing captured business emails over a map"
             width={1696}
             height={1400}
@@ -211,7 +211,7 @@ export default function EmailMagnetPage() {
           <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
               <Image
-                src="/brand/emailmagnet-directory-showcase.png"
+                src="/brand/emailmagnet-directory-showcase.webp"
                 alt="EmailMagnet extracting visible emails from a directory page"
                 width={1411}
                 height={1411}

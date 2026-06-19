@@ -255,7 +255,7 @@ export default function Home() {
             <StatStrip stats={spotlightStats} className="border-t border-slate-200 pt-8" />
           </div>
           <BrowserFrame
-            src="/brand/emailmagnet-hero-new.png"
+            src="/brand/emailmagnet-hero-new.webp"
             alt="EmailMagnet extension interface"
             url="EmailMagnet · review and export captured emails"
             width={1361}

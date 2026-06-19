@@ -27,7 +27,7 @@ describe("Dentoku Dev site hierarchy", () => {
   it("models Dentoku Dev as the parent company and EmailMagnet as a product", () => {
     expect(siteConfig.name).toBe("Dentoku Dev");
     expect(siteConfig.logo).toBe("/brand/dentoku-dev-logo-128x128.png");
-    expect(siteConfig.description).toContain("Four focused tools");
+    expect(siteConfig.description).toContain("Four focused browser tools");
     // Countdown321 bills monthly via Shopify — portfolio-wide no-subscription
     // claims are off the table, generic or otherwise.
     expect(siteConfig.description).not.toMatch(/subscription/i);
@@ -133,7 +133,7 @@ describe("Dentoku Dev structured data", () => {
       "@type": "SoftwareApplication",
       name: "EmailMagnet",
       isPartOf: expect.objectContaining({ name: "Dentoku Dev" }),
-      applicationCategory: "BrowserApplication",
+      applicationCategory: "BusinessApplication",
       offers: expect.arrayContaining([
         expect.objectContaining({ price: "19", priceCurrency: "USD" }),
       ]),
@@ -160,7 +160,7 @@ describe("Dentoku Dev structured data", () => {
     expect(productSchema).toMatchObject({
       "@type": "SoftwareApplication",
       name: "ClickPilot AI",
-      operatingSystem: "Chrome",
+      operatingSystem: "Windows, macOS, Linux, ChromeOS",
       publisher: expect.objectContaining({ name: "Dentoku Dev" }),
     });
 
@@ -189,7 +189,7 @@ describe("Dentoku Dev structured data", () => {
       buildVideoSchema({
         name: "EmailMagnet demo",
         description: "Demo video.",
-        thumbnailUrl: "/brand/emailmagnet-01.png",
+        thumbnailUrl: "/brand/emailmagnet-01.webp",
         uploadDate: "2026-05-12",
         embedUrl: "https://www.youtube.com/embed/example",
       }),

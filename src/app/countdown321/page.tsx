@@ -20,7 +20,7 @@ import { CtaBand } from "@/components/marketing/cta-band";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { cn } from "@/lib/utils";
-import { productPortfolio } from "@/data/site";
+import { productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildProductSoftwareSchema } from "@/lib/schema";
 
@@ -166,13 +166,40 @@ export default function Countdown321Page() {
     <>
       {countdownProduct ? (
         <JsonLd
-          data={buildProductSoftwareSchema(countdownProduct, {
-            "@type": "AggregateOffer",
-            lowPrice: "0",
-            highPrice: "19.99",
-            priceCurrency: "USD",
-            offerCount: 4,
-          })}
+          data={buildProductSoftwareSchema(countdownProduct, [
+            {
+              "@type": "Offer",
+              name: "Free Plan",
+              price: "0",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.url}/countdown321`,
+            },
+            {
+              "@type": "Offer",
+              name: "Launch Plan",
+              price: "4.99",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.url}/countdown321`,
+            },
+            {
+              "@type": "Offer",
+              name: "Grow Plan",
+              price: "7.99",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.url}/countdown321`,
+            },
+            {
+              "@type": "Offer",
+              name: "Scale Plan",
+              price: "19.99",
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.url}/countdown321`,
+            },
+          ])}
         />
       ) : null}
       <JsonLd
@@ -224,7 +251,7 @@ export default function Countdown321Page() {
         </div>
         <div className="shadow-soft mt-12 overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
           <Image
-            src="/brand/countdown321-hero.png"
+            src="/brand/countdown321-hero.webp"
             alt="Countdown321 timer styles preview"
             width={1600}
             height={900}

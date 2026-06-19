@@ -18,7 +18,7 @@ import { StatStrip } from "@/components/marketing/stat-strip";
 import { CtaBand } from "@/components/marketing/cta-band";
 import { FaqList } from "@/components/marketing/faq-list";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { productPortfolio } from "@/data/site";
+import { productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildProductSoftwareSchema } from "@/lib/schema";
 
@@ -165,6 +165,8 @@ export default function VolumeControlProPage() {
             "@type": "Offer",
             price: "0",
             priceCurrency: "USD",
+            availability: "https://schema.org/InStock",
+            url: `${siteConfig.url}/volume-control-pro`,
           })}
         />
       ) : null}
