@@ -58,15 +58,11 @@ function looksLikeEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
 
-export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
-  void supportEmail;
-
+export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: ContactMailtoFormProps) {
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const [form, setForm] = useState<FormState>(defaultState);
-  const [formStartedAt] = useState<number>(() => Date.now());
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     window.onContactTurnstileSuccess = (token: string) => {
@@ -98,52 +94,37 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!canSubmit) {
       setSuccess("");
-      setError("Fill first name, last name, a valid email, message, and security check before sending.");
+      setError("Fill first name, last name, a valid email, and message before sending.");
       return;
     }
 
     setError("");
-    setSuccess("");
-    setIsSubmitting(true);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          product: form.product || "General inquiry",
-          message: form.message,
-          website: form.website,
-          company: form.company,
-          formStartedAt,
-          submittedAt: Date.now(),
-          turnstileToken: form.turnstileToken,
-        }),
-      });
+    // Open the visitor's email client with a pre-filled message to support.
+    // Reliable, no server/consent dependency, and keeps the full message intact.
+    const product = form.product || "General inquiry";
+    const subject = `[${product}] Contact from ${form.firstName} ${form.lastName}`;
+    const body = [
+      `Name: ${form.firstName} ${form.lastName}`,
+      `Email: ${form.email}`,
+      `Product: ${product}`,
+      "",
+      form.message,
+    ].join("\n");
 
-      const data = (await response.json().catch(() => null)) as { message?: string } | null;
-      if (!response.ok) {
-        setError(data?.message || "Unable to send your request right now.");
-        return;
-      }
+    window.location.href = `mailto:${supportEmail}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
 
-      setSuccess("Message sent successfully. Our team will get back to you soon.");
-      setForm(defaultState);
-    } catch {
-      setError("Connection error. Please try again in a moment.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    setSuccess(
+      `Your email app should open with the message ready to send. If it doesn't, email us directly at ${supportEmail}.`,
+    );
+    setForm(defaultState);
   }
 
   return (
@@ -295,10 +276,9 @@ export function ContactMailtoForm({ supportEmail }: ContactMailtoFormProps) {
         <Button
           type="submit"
           size="lg"
-          disabled={isSubmitting}
           className="h-14 rounded-md bg-brand px-8 text-lg text-white hover:bg-brand-strong"
         >
-          {isSubmitting ? "Sending..." : "Send message"}
+          Send message
         </Button>
       </div>
     </form>
