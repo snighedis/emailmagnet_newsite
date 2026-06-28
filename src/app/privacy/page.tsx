@@ -165,6 +165,12 @@ export default function PrivacyPage() {
             <strong>Email delivery</strong> — transactional email sent via a provider under a
             DPA; used only for licence delivery, support replies, and mandatory service notices.
           </li>
+          <li>
+            <strong>Newsletter &amp; email marketing</strong> — Loops, Inc. (USA); stores the email
+            address you submit through our newsletter and lead-magnet forms to send guides and
+            product updates, on the basis of your consent. Processed under SCCs; you can
+            unsubscribe at any time via the link in every email.
+          </li>
         </ul>
 
         <h3 className="mt-8 text-lg font-semibold text-slate-950">

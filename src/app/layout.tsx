@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fira_Sans_Condensed, Geist, Geist_Mono, Spectral } from "next/font/google";
 import { AnalyticsGate } from "@/components/analytics/analytics-gate";
 import { CookieBanner } from "@/components/ui/cookie-banner";
+import { ExitIntentModal } from "@/components/marketing/exit-intent-modal";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/data/site";
@@ -106,6 +107,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <CookieBanner />
+        <ExitIntentModal />
         <AnalyticsGate gaId={siteConfig.googleAnalyticsId} adsId={siteConfig.googleAdsId} />
       </body>
     </html>

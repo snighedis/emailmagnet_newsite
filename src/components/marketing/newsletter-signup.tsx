@@ -1,8 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { subscribeToLoops } from "@/lib/loops";
 
-const LOOPS_ENDPOINT = "https://app.loops.so/api/newsletter-form/cmo7cihgh00am0izdbmbm6u1b";
 const TIMESTAMP_KEY = "loops-form-timestamp";
 
 type FormState = "idle" | "loading" | "success" | "error";
@@ -27,41 +27,18 @@ export function NewsletterSignup() {
     setState("loading");
     setMessage("Oops! Something went wrong, please try again");
 
-    const formBody = new URLSearchParams({
-      userGroup: "",
-      mailingLists: "",
-      email,
-    });
+    const result = await subscribeToLoops(email);
 
-    try {
-      const response = await fetch(LOOPS_ENDPOINT, {
-        method: "POST",
-        body: formBody.toString(),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
-
-      if (response.ok) {
-        setState("success");
-        setEmail("");
-        return;
-      }
-
-      const data = (await response.json().catch(() => null)) as { message?: string } | null;
-      setState("error");
-      setMessage(data?.message || response.statusText || "Something went wrong");
-    } catch (error) {
-      const err = error as Error;
-      if (err.message === "Failed to fetch") {
-        setState("error");
-        setMessage("Too many signups, please try again in a little while");
-        return;
-      }
-      setState("error");
-      setMessage(err.message || "Oops! Something went wrong, please try again");
-      localStorage.setItem(TIMESTAMP_KEY, "");
+    if (result.ok) {
+      setState("success");
+      setEmail("");
+      return;
     }
+
+    setState("error");
+    setMessage(result.message || "Oops! Something went wrong, please try again");
+    // Allow an immediate retry after a transient failure.
+    localStorage.setItem(TIMESTAMP_KEY, "");
   }
 
   function onReset() {
