@@ -44,10 +44,11 @@ export function SiteFooter() {
               className="inline-flex w-fit items-center gap-1.5 rounded-[10px] border border-[#e7e3da] bg-white px-3.5 py-2 text-sm leading-none whitespace-nowrap"
             >
               <span className="font-medium text-[#78716c]">Built with</span>
-              {/* next/image doesn't paint reliably in this Next build; a plain img is dependable. */}
+              {/* Hosted by ShipVeryFast (CORS-open, full quality, auto-updating); plain
+                  img since next/image doesn't paint reliably in this build. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/brand/shipveryfast.png"
+                src="https://shipveryfast.dev/logo.png"
                 alt="ShipVeryFast"
                 width={17}
                 height={22}
