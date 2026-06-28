@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "@/components/ui/icons";
-import { Button } from "@/components/ui/button";
-import { emailMagnetConfig, footerNav, siteConfig } from "@/data/site";
+import { footerNav, siteConfig } from "@/data/site";
 import { CookiePreferencesButton } from "@/components/ui/cookie-preferences-button";
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -39,12 +37,27 @@ export function SiteFooter() {
               <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
             </Link>
             <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
-            <Button asChild size="sm" className="font-semibold">
-              <Link href={emailMagnetConfig.href}>
-                Get EmailMagnet for free
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
+            <a
+              href="https://shipveryfast.dev/?ref=dentokudev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-1.5 rounded-[10px] border border-[#e7e3da] bg-white px-3.5 py-2 text-sm leading-none whitespace-nowrap"
+            >
+              <span className="font-medium text-[#78716c]">Built with</span>
+              {/* next/image doesn't paint reliably in this Next build; a plain img is dependable. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/shipveryfast.png"
+                alt="ShipVeryFast"
+                width={17}
+                height={22}
+                className="block"
+                decoding="async"
+              />
+              <span className="font-bold tracking-[-0.2px] text-[#1c1917]">
+                Ship<span className="text-[#f45a1b]">Very</span>Fast
+              </span>
+            </a>
             <div className="flex items-center gap-2 pt-1">
               <Link
                 href={siteConfig.social.linkedin}
