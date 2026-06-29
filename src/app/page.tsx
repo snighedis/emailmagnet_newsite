@@ -9,13 +9,13 @@ import { TrustBar } from "@/components/marketing/trust-bar";
 import { StatStrip } from "@/components/marketing/stat-strip";
 import { FeatureCard } from "@/components/marketing/feature-card";
 import { CtaBand } from "@/components/marketing/cta-band";
-import { RotatingWords } from "@/components/marketing/rotating-words";
 import { Button } from "@/components/ui/button";
 import {
   companyTrustCues,
   dentokuFrameworks,
   emailMagnetConfig,
   productPortfolio,
+  siteConfig,
 } from "@/data/site";
 import { buildItemListSchema } from "@/lib/schema";
 
@@ -61,22 +61,20 @@ export default function Home() {
           <div className="max-w-2xl space-y-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
               <span className="bg-brand h-1.5 w-1.5 rounded-full" aria-hidden />
-              Built for sales reps, recruiters, and growth teams.
+              An independent software studio.
             </span>
             <h1 className="text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
-              <span className="block">Browser-first software</span>
+              <span className="block">Software that ships.</span>
               <span className="block">
-                for{" "}
-                <RotatingWords
-                  words={["sales teams", "recruiters", "founders", "agencies"]}
-                  className="text-brand"
-                />
+                Ours, and <span className="text-brand">yours.</span>
               </span>
             </h1>
             <p className="max-w-xl text-lg leading-8 text-white md:text-xl">
-              Four focused tools. One workflow each. No bloat, no lock-in. EmailMagnet, ClickPilot
-              AI, Volume Control PRO, Countdown321. Built for the pros who ship the list while
-              others copy-paste.
+              We design, build, and ship our own digital products.
+              <br />
+              And we bring the same craft to teams that want
+              <br />
+              software done properly.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">
@@ -91,9 +89,16 @@ export default function Home() {
                 variant="outline"
                 className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
-                <Link href="#products">Explore all products</Link>
+                <Link href={siteConfig.secondaryCta.href}>Work with us</Link>
               </Button>
             </div>
+            <Link
+              href="#products"
+              className="inline-flex w-fit items-center gap-1 text-sm font-semibold text-white/80 transition hover:text-white"
+            >
+              Explore all products
+              <ArrowRight className="h-4 w-4" />
+            </Link>
             <TrustBar
               tone="ink"
               rating={5.0}

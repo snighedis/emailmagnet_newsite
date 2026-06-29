@@ -44,6 +44,7 @@ const productOptions = [
   "ClickPilot AI",
   "Volume Control PRO",
   "Countdown321",
+  "A new project",
   "General inquiry",
 ] as const;
 
@@ -112,7 +113,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
     const body = [
       `Name: ${form.firstName} ${form.lastName}`,
       `Email: ${form.email}`,
-      `Product: ${product}`,
+      `Topic: ${product}`,
       "",
       form.message,
     ].join("\n");
@@ -171,7 +172,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
       </label>
 
       <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
-        Product
+        Topic
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
@@ -180,7 +181,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
               aria-haspopup="listbox"
             >
               <span className={form.product ? "text-slate-900" : "text-slate-500"}>
-                {form.product || "Select a product"}
+                {form.product || "Select a topic"}
               </span>
               <ChevronDown className="h-4 w-4 text-slate-500" />
             </button>
@@ -211,7 +212,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
         <Textarea
           required
           name="message"
-          placeholder="Tell us what you need help with."
+          placeholder="Tell us what you want to build, or what you need help with."
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
           className="min-h-32 rounded-sm border-slate-400 bg-white px-4 py-3 text-base"
