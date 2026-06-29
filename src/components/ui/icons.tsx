@@ -75,3 +75,23 @@ export const Key = makeIcon("key");
 export const CreditCard = makeIcon("credit-card");
 export const Clock = makeIcon("clock");
 export const Briefcase = makeIcon("briefcase");
+
+// Classic hamburger — three equal horizontal bars. The Pepicons "menu" glyph
+// renders as uneven, left-aligned lines, so the nav toggle uses this instead.
+export const MenuBars: IconType = ({ className, ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    strokeLinecap="round"
+    className={cn("size-4 shrink-0", className)}
+    role="img"
+    aria-hidden="true"
+    {...props}
+  >
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+);

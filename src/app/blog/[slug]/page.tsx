@@ -8,6 +8,7 @@ import { ArrowRight } from "@/components/ui/icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { LeadMagnetSignup } from "@/components/marketing/lead-magnet-signup";
 import { ReadingProgress } from "@/components/marketing/reading-progress";
 import { blogPosts, getBlogPost, type BlogPost } from "@/content/blog";
 import { defaultAuthor } from "@/data/authors";
@@ -233,6 +234,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               }}
             />
           </div>
+
+          {/* Top-of-funnel email capture — every article offers the lead magnet. */}
+          <LeadMagnetSignup />
 
           {post.tags.some((tag) => ["Compliance", "GDPR", "CAN-SPAM"].includes(tag)) ? (
             <aside className="mt-14 rounded-xl border border-slate-200 bg-slate-50 p-5">

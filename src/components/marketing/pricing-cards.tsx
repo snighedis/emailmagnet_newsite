@@ -10,22 +10,22 @@ type PricingCardsProps = {
 
 export function PricingCards({ plans }: PricingCardsProps) {
   return (
-    <div className="grid items-start gap-6 lg:grid-cols-2">
+    <div className="grid items-stretch gap-6 lg:grid-cols-2">
       {plans.map((plan) => (
         <div
           key={plan.name}
           className={cn(
-            "relative flex h-full flex-col rounded-3xl border bg-white p-8",
+            "relative flex h-full flex-col rounded-3xl border p-8",
             plan.featured
-              ? "border-brand/40 shadow-soft-lg ring-brand/10 ring-1"
-              : "shadow-soft border-slate-200/80",
+              ? "border-brand/40 shadow-soft-lg ring-brand/20 from-brand-soft/50 bg-gradient-to-b to-white ring-1"
+              : "shadow-soft border-slate-200/80 bg-white",
           )}
         >
           {plan.eyebrow ? (
             <span
               className={cn(
                 "absolute -top-3 right-8 rounded-full px-3 py-1 text-xs font-semibold",
-                plan.featured ? "bg-brand text-white" : "bg-slate-900 text-white",
+                plan.featured ? "bg-brand text-white" : "bg-slate-100 text-slate-600",
               )}
             >
               {plan.eyebrow}
@@ -38,11 +38,16 @@ export function PricingCards({ plans }: PricingCardsProps) {
               <span className="pb-2 text-sm font-medium text-slate-500">lifetime</span>
             ) : null}
           </div>
-          <p className="mt-3 min-h-12 text-base leading-7 text-slate-600">{plan.description}</p>
+          {/* Always reserved (even when empty) so the rows below align across cards. */}
+          <p className="mt-2 min-h-5 text-sm font-medium text-slate-500">{plan.priceNote}</p>
+          <p className="mt-3 min-h-14 text-base leading-7 text-slate-600">{plan.description}</p>
           <Button
             asChild
             size="xl"
-            className={cn("mt-6 w-full font-semibold", plan.featured ? "" : "")}
+            className={cn(
+              "mt-6 w-full font-semibold",
+              plan.featured ? "btn-sheen hover:-translate-y-0.5" : "",
+            )}
             variant={plan.featured ? "default" : "outline"}
           >
             <Link href={plan.cta.href}>{plan.cta.label}</Link>

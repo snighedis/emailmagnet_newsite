@@ -31,6 +31,8 @@ export type PricingPlan = {
   features: string[];
   cta: Cta;
   featured?: boolean;
+  /** Small value-anchor line under the price (e.g. "One-time payment."). */
+  priceNote?: string;
 };
 
 export type FaqItem = {
@@ -112,7 +114,32 @@ export const emailMagnetConfig = {
     label: "Start for free",
     href: "https://chromewebstore.google.com/detail/emailmagnet-email-extract/gnlnbefnecaoocmamafbnefjepbeppli",
   },
+  reviewsUrl:
+    "https://chromewebstore.google.com/detail/emailmagnet-email-extract/gnlnbefnecaoocmamafbnefjepbeppli/reviews",
 };
+
+// Verbatim Chrome Web Store reviews (5.0★). Keep these in sync with the listing
+// so every quote stays verifiable per the product-claims truthfulness rule.
+export const emailMagnetTestimonials = [
+  {
+    quote:
+      "Working in sales, this tool is excellent to gather prospect contacts. While simply surfing the web I am collecting contact data effortlessly.",
+    name: "Glenn Jacobs",
+  },
+  {
+    quote:
+      "EmailMagnet has become an essential tool in my digital toolkit. The way it collects emails while I browse has saved me precious time.",
+    name: "lucia nadalin",
+  },
+  {
+    quote: "I really like this extension, it's a very useful tool that saved me a lot of time!",
+    name: "Francesco Abenante",
+  },
+  {
+    quote: "What I was looking for. Intuitive, fast, effective!",
+    name: "Elena",
+  },
+];
 
 export const mainNav: NavItem[] = [
   { label: "About", href: "/about" },
@@ -202,13 +229,13 @@ export const pricingPlans: PricingPlan[] = [
       label: "Start Free",
       href: emailMagnetConfig.secondaryCta.href,
     },
-    featured: true,
   },
   {
     name: "PRO plan",
-    eyebrow: "For recurring research",
+    eyebrow: "Best value",
     price: "$19",
-    description: "One payment for teams that collect, review, and export contacts repeatedly.",
+    priceNote: "One-time payment. No subscription, ever.",
+    description: "Pay once, keep it for life. No subscription, no seats, no renewals.",
     features: [
       "Unlimited email extraction.",
       "Unlimited export size.",
@@ -218,7 +245,11 @@ export const pricingPlans: PricingPlan[] = [
       "CSV and TXT export.",
       "Priority email support.",
     ],
-    cta: emailMagnetConfig.primaryCta,
+    cta: {
+      label: "Get lifetime PRO",
+      href: emailMagnetConfig.primaryCta.href,
+    },
+    featured: true,
   },
 ];
 
@@ -342,7 +373,7 @@ export const companyTrustCues: FeatureItem[] = [
   {
     title: "Honest pricing, no lock-in.",
     description:
-      "No hidden fees, no price games, no cancellation hoops. Each product page states its exact pricing model upfront — and is just as upfront about what the tool won't do.",
+      "No hidden fees, no price games, no cancellation hoops. Each product page states its exact pricing model upfront, and is just as upfront about what the tool won't do.",
     icon: ShieldCheck,
   },
 ];
@@ -400,7 +431,7 @@ export const contentHubs = [
 export const heroHighlights = [
   "Built for public business contact research.",
   "CSV and TXT export for review workflows.",
-  "Free plan includes 200 emails/month.",
+  "Keeps the source page for every captured email.",
 ];
 
 export const socialProof = {

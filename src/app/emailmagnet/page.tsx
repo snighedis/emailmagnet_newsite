@@ -18,11 +18,14 @@ import { NewsletterSignupLazy } from "@/components/marketing/newsletter-signup-l
 import { PricingCards } from "@/components/marketing/pricing-cards";
 import { Section } from "@/components/marketing/section";
 import { SupportBlock } from "@/components/marketing/support-block";
+import { Testimonials } from "@/components/marketing/testimonials";
+import { TrustBar } from "@/components/marketing/trust-bar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "@/content/blog";
 import {
   emailMagnetConfig,
+  emailMagnetTestimonials,
   faqItems,
   heroHighlights,
   pricingPlans,
@@ -122,15 +125,15 @@ export default function EmailMagnetPage() {
                 height={18}
                 className="h-[18px] w-[18px] shrink-0 object-contain"
               />
-              <span>Chosen by 2,000+ professionals, sales teams, and businesses</span>
+              <span>Free Chrome extension. No setup, no API key.</span>
             </Badge>
 
             <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
-              Capture visible business emails while you research in Chrome
+              Every page you visit is a lead list
             </h1>
             <p className="text-ink-muted max-w-2xl text-lg leading-8 md:text-xl">
-              EmailMagnet helps researchers, recruiters, founders, and agencies collect public
-              contact emails, review results quickly, and export clean lists as CSV or TXT.
+              EmailMagnet is the Chrome extension that finds public business emails while you browse.
+              Review them, then export clean CSV or TXT lists in one click.
             </p>
 
             <div className="flex flex-col gap-3 sm:flex-row">
@@ -149,6 +152,13 @@ export default function EmailMagnetPage() {
                 <Link href="#pricing">See PRO workflow</Link>
               </Button>
             </div>
+
+            <TrustBar
+              tone="ink"
+              rating={5.0}
+              reviewLabel="Chrome Web Store"
+              items={["Free plan, no credit card"]}
+            />
 
             <ul className="grid gap-2 text-sm font-medium text-slate-200 sm:grid-cols-3">
               {heroHighlights.map((item) => (
@@ -312,7 +322,7 @@ export default function EmailMagnetPage() {
               Hours of copy-paste, gone in a click
             </h2>
             <p className="text-ink-muted text-lg leading-8 md:max-w-2xl">
-              EmailMagnet collapses the slowest part of lead research — finding addresses,
+              EmailMagnet collapses the slowest part of lead research: finding addresses,
               copying them one by one, formatting them into a usable list. The math is
               brutal in your favor.
             </p>
@@ -325,7 +335,7 @@ export default function EmailMagnetPage() {
               </p>
               <p className="mt-4 text-base leading-6 text-slate-200">
                 Manual: spot the address, copy, switch tab, paste, format. EmailMagnet
-                surfaces every visible email on the page in one pass — no tab switching, no
+                surfaces every visible email on the page in one pass. No tab switching, no
                 cleanup.
               </p>
             </div>
@@ -349,7 +359,7 @@ export default function EmailMagnetPage() {
               </p>
               <p className="mt-4 text-base leading-6 text-slate-200">
                 One-time payment for PRO. Compare with the $30–$99 per seat per month most
-                lead-gen tools ask for — and that&apos;s before the data add-ons.
+                lead-gen tools ask for, and that&apos;s before the data add-ons.
               </p>
             </div>
           </div>
@@ -357,6 +367,26 @@ export default function EmailMagnetPage() {
             Time figures based on the manual copy-paste workflow we replaced internally.
             Your mileage will depend on the source pages and how clean your review pass is.
           </p>
+        </div>
+      </section>
+
+      <section id="reviews" className="bg-surface-soft py-18 md:py-20">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="max-w-3xl space-y-3">
+            <p className="text-sm font-semibold tracking-[0.15em] text-eyebrow uppercase">Reviews</p>
+            <h2 className="text-ink text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
+              What early users say
+            </h2>
+            <p className="text-lg leading-8 text-slate-700">
+              A handful of reviews so far, straight from the Chrome Web Store. Every one is five
+              stars.
+            </p>
+          </div>
+          <Testimonials
+            className="mt-10"
+            items={emailMagnetTestimonials}
+            sourceHref={emailMagnetConfig.reviewsUrl}
+          />
         </div>
       </section>
 

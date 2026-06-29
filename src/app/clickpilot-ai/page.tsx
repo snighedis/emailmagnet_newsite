@@ -261,7 +261,7 @@ export default function ClickPilotAiPage() {
           <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-slate-500">
             <strong className="font-semibold text-slate-600">AI transparency:</strong> ClickPilot AI
             generates text using artificial intelligence (via your own OpenAI key). Outputs are
-            machine-generated and may be inaccurate or biased — review and edit them before you
+            machine-generated and may be inaccurate or biased. Review and edit them before you
             send or publish.
           </p>
         </div>
@@ -363,7 +363,7 @@ export default function ClickPilotAiPage() {
               ))}
             </ul>
             <div className="bg-accent-teal/10 text-accent-teal mt-7 flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">
-              <Zap className="h-4 w-4 shrink-0" /> Done in ~5 seconds — never lose focus
+              <Zap className="h-4 w-4 shrink-0" /> Done in ~5 seconds, never lose focus
             </div>
           </div>
         </div>
@@ -448,7 +448,7 @@ export default function ClickPilotAiPage() {
             <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
             <p className="mt-2 leading-7 text-slate-600">
               ClickPilot AI is not a document editor or a content manager. It improves the text in
-              fields you are already writing in — fix, rewrite, summarize, translate — and hands
+              fields you are already writing in (fix, rewrite, summarize, translate) and hands
               control straight back to you.
             </p>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Menu, Star } from "@/components/ui/icons";
+import { ArrowRight, MenuBars, Star } from "@/components/ui/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -170,7 +170,7 @@ export function SiteHeader() {
           <Button asChild variant="ghost">
             <Link href={siteConfig.secondaryCta.href}>Contact</Link>
           </Button>
-          <Button asChild className="font-semibold">
+          <Button asChild className="btn-sheen font-semibold hover:-translate-y-0.5">
             <Link href={emailMagnetConfig.href}>
               Get EmailMagnet for free
             </Link>
@@ -179,7 +179,7 @@ export function SiteHeader() {
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
             <Button variant="outline" size="icon" aria-label="Open navigation" className="h-12 w-12 rounded-xl">
-              <Menu className="h-6 w-6" />
+              <MenuBars className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
@@ -221,7 +221,7 @@ export function SiteHeader() {
                 </div>
               </nav>
               <div className="grid gap-3">
-                <Button asChild size="lg" className="w-full font-semibold">
+                <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-translate-y-0.5">
                   <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)} className="text-center">
                     Get EmailMagnet for free
                   </Link>

@@ -1,5 +1,22 @@
-import { Star } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
+
+/**
+ * Solid 5-point star. The shared icon set (Pepicons Pencil) only ships an
+ * outline star, which reads as an empty/zero rating — so ratings use this
+ * filled glyph instead. Color comes from `currentColor` via `text-*`.
+ */
+export function SolidStar({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={cn("h-4 w-4 shrink-0", className)}
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M12 2.5l2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 17.55l-5.9 3.11 1.13-6.57L2.45 9.44l6.6-.96L12 2.5z" />
+    </svg>
+  );
+}
 
 type TrustBarTone = "light" | "ink";
 
@@ -20,7 +37,7 @@ function Stars({ rating }: { rating: number }) {
     <span className="relative inline-flex" aria-hidden>
       <span className="flex">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 text-slate-300" />
+          <SolidStar key={i} className="text-slate-300" />
         ))}
       </span>
       <span
@@ -28,7 +45,7 @@ function Stars({ rating }: { rating: number }) {
         style={{ width: `${pct}%` }}
       >
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="fill-brand text-brand h-4 w-4 shrink-0" />
+          <SolidStar key={i} className="text-brand" />
         ))}
       </span>
     </span>

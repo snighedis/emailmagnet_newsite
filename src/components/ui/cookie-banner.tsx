@@ -159,7 +159,7 @@ export function CookieBanner() {
 
         {!isPreferences ? (
           <p className="mt-2 text-sm leading-6 text-slate-600">
-            We use strictly necessary cookies to run this site, and — only with your consent —
+            We use strictly necessary cookies to run this site, and, only with your consent,
             analytics and marketing cookies. You can accept, reject, or choose per category. Read
             our{" "}
             <Link href="/cookies" className="text-eyebrow font-medium hover:underline">

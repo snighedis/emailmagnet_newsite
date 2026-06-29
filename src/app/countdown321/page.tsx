@@ -37,7 +37,7 @@ const features = [
   {
     title: "Product page timers",
     description:
-      "Put a deadline right where the buying decision happens — on the product page itself.",
+      "Put a deadline right where the buying decision happens, on the product page itself.",
     icon: Clock,
   },
   {
@@ -61,13 +61,13 @@ const features = [
   {
     title: "Full styling control",
     description:
-      "Match your theme with color, font, background, and position controls — including mobile display.",
+      "Match your theme with color, font, background, and position controls, including mobile display.",
     icon: Pen,
   },
   {
     title: "Native Shopify publishing",
     description:
-      "Publishes through Theme App Extensions and App Embeds — no custom storefront code to maintain.",
+      "Publishes through Theme App Extensions and App Embeds. No custom storefront code to maintain.",
     icon: Puzzle,
   },
 ];
@@ -130,7 +130,7 @@ const faqs = [
   {
     question: "What is Countdown321?",
     answer:
-      "Countdown321 is a Shopify app by Dentoku Dev for adding product, landing, and bar countdown timers to storefront campaigns — fixed-date, recurring, or evergreen.",
+      "Countdown321 is a Shopify app by Dentoku Dev for adding product, landing, and bar countdown timers to storefront campaigns: fixed-date, recurring, or evergreen.",
   },
   {
     question: "Where can timers appear?",
@@ -223,7 +223,7 @@ export default function Countdown321Page() {
         </h1>
         <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-600">
           Add product, landing, and bar countdown timers to your Shopify store and launch urgency
-          campaigns in minutes — with fixed-date, recurring, or evergreen countdowns that match
+          campaigns in minutes, with fixed-date, recurring, or evergreen countdowns that match
           your theme.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -250,7 +250,7 @@ export default function Countdown321Page() {
             <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
             <p className="mt-2 leading-7 text-slate-600">
               Countdown321 is not a full marketing-automation suite. It handles time-based
-              countdowns and urgency messages — not email campaigns, discount-code logic, or
+              countdowns and urgency messages, not email campaigns, discount-code logic, or
               multi-step funnels.
             </p>
           </div>
@@ -373,7 +373,7 @@ export default function Countdown321Page() {
         </div>
         <p className="mt-8 max-w-3xl text-sm leading-6 text-slate-500">
           Honest note: unlike our Chrome extensions, which are one-time purchases, Countdown321
-          runs on Shopify’s recurring app billing — plans scale by monthly timer views. Prices are
+          runs on Shopify’s recurring app billing. Plans scale by monthly timer views. Prices are
           listed on the Shopify App Store and may change there first.
         </p>
       </Section>
@@ -428,7 +428,7 @@ export default function Countdown321Page() {
       <CtaBand
         eyebrow="Get started"
         title="Put a real deadline on your next campaign"
-        description="Install Countdown321 from the Shopify App Store — the Free plan covers your first timer, and paid plans include a 7-day trial."
+        description="Install Countdown321 from the Shopify App Store. The Free plan covers your first timer, and paid plans include a 7-day trial."
         primary={{ label: "View on Shopify App Store", href: shopifyStoreUrl }}
         secondary={{ label: "Contact support", href: "/contact" }}
       />

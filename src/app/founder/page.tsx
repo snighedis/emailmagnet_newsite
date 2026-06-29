@@ -60,7 +60,7 @@ export default function FounderPage() {
               Dentoku Dev is a founder-led software studio based in {founderConfig.location}, run by
               {" "}
               {founderConfig.name}, {founderConfig.role}. He designs, builds, ships, and supports
-              every product in the portfolio — focused tools for browser, ecommerce, AI writing, and
+              every product in the portfolio. Focused tools for browser, ecommerce, AI writing, and
               practical business workflows.
             </p>
           </div>

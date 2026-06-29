@@ -26,7 +26,7 @@ export const authors = {
     name: "Nicola Orlandi",
     role: "CEO & Founder at Dentoku Dev",
     url: `${siteConfig.url}/founder`,
-    bio: "I'm Nicola Orlandi, CEO and founder of Dentoku Dev. I design, build, ship, and support every tool in the studio myself — EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321 — so what you read here comes from actually making and maintaining these products, not from the outside looking in.",
+    bio: "I'm Nicola Orlandi, CEO and founder of Dentoku Dev. I design, build, ship, and support every tool in the studio myself (EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321), so what you read here comes from actually making and maintaining these products, not from the outside looking in.",
     // Default to the company profiles; replace with Nicola's personal LinkedIn/X when available.
     sameAs: [siteConfig.social.linkedin, siteConfig.social.x],
   },

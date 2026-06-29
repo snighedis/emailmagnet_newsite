@@ -33,7 +33,7 @@ export default function PrivacyPage() {
         <h2 className="mt-12 text-2xl font-semibold text-slate-950">1. Data Controller</h2>
         <p className="mt-3 leading-8 text-slate-600">
           The data controller is Dentoku Dev (Nicola Orlandi, sole trader / ditta individuale),
-          Via Bullona 8, 20154 Milano, Italy — P.IVA IT13625480960.
+          Via Bullona 8, 20154 Milano, Italy, P.IVA IT13625480960.
         </p>
         <p className="mt-3 leading-8 text-slate-600">
           Contact for data protection matters:{" "}
@@ -52,28 +52,28 @@ export default function PrivacyPage() {
         </p>
         <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
           <li>
-            <strong>Identity and contact data</strong> — name, email address, and (for consulting
+            <strong>Identity and contact data</strong>: name, email address, and (for consulting
             clients) company name, VAT number, billing address.
           </li>
           <li>
-            <strong>Transactional data</strong> — purchase records, licence keys, and invoices
+            <strong>Transactional data</strong>: purchase records, licence keys, and invoices
             related to EmailMagnet PRO or consulting engagements.
           </li>
           <li>
-            <strong>Payment data</strong> — processed by Stripe, Inc. (EmailMagnet PRO) and
+            <strong>Payment data</strong>: processed by Stripe, Inc. (EmailMagnet PRO) and
             Gumroad, Inc. (ClickPilotAI) on our behalf; we do not store full card numbers or
             bank account details.
           </li>
           <li>
-            <strong>Support and communications data</strong> — emails, messages, and attachments
+            <strong>Support and communications data</strong>: emails, messages, and attachments
             exchanged with our support address.
           </li>
           <li>
-            <strong>Technical and usage data</strong> — IP address, browser type, referral URL,
+            <strong>Technical and usage data</strong>: IP address, browser type, referral URL,
             and server access logs collected automatically when you visit our website.
           </li>
           <li>
-            <strong>Cookies and tracking data</strong> — as described in Section 7 below.
+            <strong>Cookies and tracking data</strong>: as described in Section 7 below.
           </li>
         </ul>
         <p className="mt-4 leading-8 text-slate-600">
@@ -144,29 +144,29 @@ export default function PrivacyPage() {
         </p>
         <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
           <li>
-            <strong>Payment processing</strong> — Stripe, Inc. (USA) for EmailMagnet PRO;
+            <strong>Payment processing</strong>: Stripe, Inc. (USA) for EmailMagnet PRO;
             Gumroad, Inc. (USA) for ClickPilotAI. Both process billing and payment data under
             their own privacy policies and the SCCs they have adopted as processors.
           </li>
           <li>
-            <strong>Cloud hosting and CDN</strong> — Vercel Inc. (USA); hosts the website and
+            <strong>Cloud hosting and CDN</strong>: Vercel Inc. (USA); hosts the website and
             API under SCCs.
           </li>
           <li>
-            <strong>Analytics</strong> — Google LLC (Google Analytics 4, USA); anonymised
+            <strong>Analytics</strong>: Google LLC (Google Analytics 4, USA); anonymised
             website usage statistics under SCCs and IP anonymisation.
           </li>
           <li>
-            <strong>AI support chat</strong> — Chatbase, Inc. (USA); powers the optional AI
+            <strong>AI support chat</strong>: Chatbase, Inc. (USA); powers the optional AI
             assistant chat widget. If you open the chat, the messages you send are processed to
             generate automated replies. Loaded only with your analytics consent, under SCCs.
           </li>
           <li>
-            <strong>Email delivery</strong> — transactional email sent via a provider under a
+            <strong>Email delivery</strong>: transactional email sent via a provider under a
             DPA; used only for licence delivery, support replies, and mandatory service notices.
           </li>
           <li>
-            <strong>Newsletter &amp; email marketing</strong> — Loops, Inc. (USA); stores the email
+            <strong>Newsletter &amp; email marketing</strong>: Loops, Inc. (USA); stores the email
             address you submit through our newsletter and lead-magnet forms to send guides and
             product updates, on the basis of your consent. Processed under SCCs; you can
             unsubscribe at any time via the link in every email.
@@ -212,23 +212,23 @@ export default function PrivacyPage() {
         <h2 className="mt-12 text-2xl font-semibold text-slate-950">6. Retention Periods</h2>
         <div className="mt-4 space-y-3 leading-8 text-slate-600">
           <p>
-            <strong>Purchase and billing records</strong> — 10 years from the date of the
+            <strong>Purchase and billing records</strong>: 10 years from the date of the
             transaction, as required by Italian fiscal law.
           </p>
           <p>
-            <strong>Support correspondence</strong> — retained until the support case is closed
+            <strong>Support correspondence</strong>: retained until the support case is closed
             and for a further 2 years for quality assurance; deleted thereafter unless a legal
             claim is pending.
           </p>
           <p>
-            <strong>Marketing consent records</strong> — until you withdraw consent, plus 1 year
+            <strong>Marketing consent records</strong>: until you withdraw consent, plus 1 year
             to demonstrate the consent was valid.
           </p>
           <p>
-            <strong>Website server logs</strong> — up to 90 days, then automatically purged.
+            <strong>Website server logs</strong>: up to 90 days, then automatically purged.
           </p>
           <p>
-            <strong>Consulting engagement records</strong> — 5 years from project completion,
+            <strong>Consulting engagement records</strong>: 5 years from project completion,
             unless a longer retention is necessary for legal disputes or contractual guarantees.
           </p>
         </div>
@@ -255,37 +255,37 @@ export default function PrivacyPage() {
         </p>
         <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
           <li>
-            <strong>Right of access (Art. 15)</strong> — obtain confirmation of whether we
+            <strong>Right of access (Art. 15)</strong>: obtain confirmation of whether we
             process your data and receive a copy.
           </li>
           <li>
-            <strong>Right to rectification (Art. 16)</strong> — request correction of inaccurate
+            <strong>Right to rectification (Art. 16)</strong>: request correction of inaccurate
             or incomplete data.
           </li>
           <li>
-            <strong>Right to erasure / "right to be forgotten" (Art. 17)</strong> — request
+            <strong>Right to erasure / "right to be forgotten" (Art. 17)</strong>: request
             deletion of your data where no legitimate retention basis remains.
           </li>
           <li>
-            <strong>Right to restriction (Art. 18)</strong> — request that processing be
+            <strong>Right to restriction (Art. 18)</strong>: request that processing be
             restricted in certain circumstances.
           </li>
           <li>
-            <strong>Right to data portability (Art. 20)</strong> — receive your data in a
+            <strong>Right to data portability (Art. 20)</strong>: receive your data in a
             structured, machine-readable format where processing is based on consent or
             contract.
           </li>
           <li>
-            <strong>Right to object (Art. 21)</strong> — object to processing based on
+            <strong>Right to object (Art. 21)</strong>: object to processing based on
             legitimate interests or to direct marketing at any time.
           </li>
           <li>
-            <strong>Right to withdraw consent (Art. 7(3))</strong> — where processing is based
+            <strong>Right to withdraw consent (Art. 7(3))</strong>: where processing is based
             on consent, withdraw it at any time without affecting the lawfulness of prior
             processing.
           </li>
           <li>
-            <strong>Rights related to automated decision-making (Art. 22)</strong> — we do not
+            <strong>Rights related to automated decision-making (Art. 22)</strong>: we do not
             make decisions with significant legal or similarly significant effects based solely
             on automated processing.
           </li>
@@ -303,7 +303,7 @@ export default function PrivacyPage() {
           If you believe your rights have not been upheld, you have the right to lodge a
           complaint with the Italian supervisory authority, the{" "}
           <strong>Garante per la protezione dei dati personali</strong>, Piazza di Monte Citorio
-          121, 00186 Roma — tel. +39 06 696771 —{" "}
+          121, 00186 Roma, tel. +39 06 696771,{" "}
           <a
             href="https://www.garanteprivacy.it"
             target="_blank"

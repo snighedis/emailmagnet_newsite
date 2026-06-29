@@ -126,7 +126,7 @@ export function ExitIntentModal() {
                 Your checklist is ready
               </Dialog.Title>
               <p className="mt-2 leading-7 text-slate-600">
-                Thanks for subscribing — grab your copy below and look out for new guides in your
+                Thanks for subscribing. Grab your copy below and look out for new guides in your
                 inbox.
               </p>
               <Button asChild size="lg" className="mt-6 w-full font-semibold">
@@ -142,12 +142,12 @@ export function ExitIntentModal() {
                 <Sparkles className="h-4 w-4" /> Free checklist
               </span>
               <Dialog.Title className="text-ink mt-3 text-3xl font-semibold tracking-[-0.01em] text-balance">
-                Before you go — grab the compliance checklist
+                Before you go, grab the compliance checklist
               </Dialog.Title>
               <p className="mt-3 leading-7 text-slate-600">
                 The GDPR &amp; CAN-SPAM checklist we use to turn raw email extraction into lists you
-                can actually send to. Get the PDF and join 2,000+ sales reps, recruiters, and growth
-                teams.
+                can actually send to. Get the PDF and join the sales reps, recruiters, and growth
+                teams who rate EmailMagnet 5.0★.
               </p>
 
               <form onSubmit={onSubmit} className="mt-6 space-y-3">

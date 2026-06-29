@@ -48,7 +48,7 @@ const features = [
   {
     title: "One slider, instant effect",
     description:
-      "Open the extension, adjust the slider, and hear the difference immediately — no settings pages.",
+      "Open the extension, adjust the slider, and hear the difference immediately. No settings pages.",
     icon: MousePointerClick,
   },
   {
@@ -133,7 +133,7 @@ const faqs = [
   {
     question: "Does it work on every website?",
     answer:
-      "It works very well on YouTube and most HTML5 media sites. Some protected web players — for example, certain Spotify Web playback scenarios — may have limited boost support due to browser restrictions.",
+      "It works very well on YouTube and most HTML5 media sites. Some protected web players (for example, certain Spotify Web playback scenarios) may have limited boost support due to browser restrictions.",
   },
   {
     question: "Does it collect my data?",
@@ -143,7 +143,7 @@ const faqs = [
   {
     question: "Is Volume Control PRO free?",
     answer:
-      "Yes — the extension is listed on the Chrome Web Store with no ads and no subscription. Install it and start boosting immediately.",
+      "Yes. The extension is listed on the Chrome Web Store with no ads and no subscription. Install it and start boosting immediately.",
   },
   {
     question: "Who should use Volume Control PRO?",
@@ -185,13 +185,13 @@ export default function VolumeControlProPage() {
         </h1>
         <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-600">
           Audio booster and volume amplifier for Chrome. Increase tab volume up to 600% for
-          videos, music, and calls — and fix low sound on the sites you already use, without
+          videos, music, and calls, and fix low sound on the sites you already use, without
           touching your system settings.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild size="lg" className="font-semibold">
             <Link href={chromeStoreUrl}>
-              Add to Chrome — free
+              Add to Chrome for free
               <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
@@ -213,7 +213,7 @@ export default function VolumeControlProPage() {
             <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
             <p className="mt-2 leading-7 text-slate-600">
               Volume Control PRO is not a system-wide equalizer or an audio recorder. It controls
-              the volume of browser tabs only — not other applications or your operating system’s
+              the volume of browser tabs only, not other applications or your operating system’s
               master volume.
             </p>
           </div>
@@ -225,7 +225,7 @@ export default function VolumeControlProPage() {
         <SectionHeading
           eyebrow="Features"
           title="Small extension, complete volume control"
-          description="Everything below comes from the Chrome Web Store listing — no more, no less."
+          description="Everything below comes from the Chrome Web Store listing. No more, no less."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
@@ -342,7 +342,7 @@ export default function VolumeControlProPage() {
       <CtaBand
         eyebrow="Get started"
         title="Stop straining to hear quiet tabs"
-        description="Install Volume Control PRO from the Chrome Web Store — free, no ads, no subscription — or reach out if you have a support question."
+        description="Install Volume Control PRO from the Chrome Web Store (free, no ads, no subscription), or reach out if you have a support question."
         primary={{ label: "Add to Chrome", href: chromeStoreUrl }}
         secondary={{ label: "Contact support", href: "/contact" }}
       />

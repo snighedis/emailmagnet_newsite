@@ -27,7 +27,7 @@ const relatedProductLinks: Record<string, Array<{ label: string; href: string }>
 };
 
 const spotlightStats = [
-  { value: "2,000+", label: "Professionals, sales teams, and businesses" },
+  { value: "5.0★", label: "EmailMagnet rating on the Chrome Web Store" },
   { value: "200 / mo", label: "Free captures on the EmailMagnet free plan" },
   { value: "One-time", label: "Lifetime PRO upgrade, no subscription" },
 ];
@@ -61,7 +61,7 @@ export default function Home() {
           <div className="max-w-2xl space-y-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
               <span className="bg-brand h-1.5 w-1.5 rounded-full" aria-hidden />
-              Chosen by 2,000+ sales reps, recruiters, and growth teams.
+              Built for sales reps, recruiters, and growth teams.
             </span>
             <h1 className="text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
               <span className="block">Browser-first software</span>
@@ -80,8 +80,8 @@ export default function Home() {
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild size="xl" className="font-semibold">
-                <Link href="#products">
-                  View products
+                <Link href={emailMagnetConfig.secondaryCta.href}>
+                  Add EmailMagnet to Chrome for free
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -91,10 +91,15 @@ export default function Home() {
                 variant="outline"
                 className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
               >
-                <Link href="/overview">Read overview</Link>
+                <Link href="#products">Explore all products</Link>
               </Button>
             </div>
-            <TrustBar tone="ink" items={["Free plan, no credit card"]} />
+            <TrustBar
+              tone="ink"
+              rating={5.0}
+              reviewLabel="Chrome Web Store"
+              items={["Free plan, no credit card"]}
+            />
           </div>
         </div>
       </section>
@@ -172,16 +177,6 @@ export default function Home() {
               ships with a single support path, a single page, and a single answer to the question:
               what does this actually do?
             </p>
-            <p className="text-ink-muted text-lg leading-8">
-              Every product is designed, built, and supported by{" "}
-              <Link
-                href="/founder"
-                className="font-semibold text-white underline-offset-4 hover:underline"
-              >
-                founder Nicola Orlandi
-              </Link>{" "}
-              — the person who ships the tool is the person who answers your support email.
-            </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {companyTrustCues.map((item) => (
@@ -238,7 +233,7 @@ export default function Home() {
             </h2>
             <p className="text-lg leading-8 text-slate-700">
               Every page you visit is a prospecting opportunity. EmailMagnet turns your browser
-              into a list-building machine — no API, no scraper, no manual copy-paste. Find the
+              into a list-building machine. No API, no scraper, no manual copy-paste. Find the
               email. Export the list. Work it. Free plan available, PRO is a one-time upgrade.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">

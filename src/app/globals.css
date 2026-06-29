@@ -445,3 +445,45 @@ main > section:nth-of-type(n + 5) {
 .blog-article a:hover {
   color: var(--brand-strong);
 }
+
+/* Button sheen: a diagonal light sweep on hover, inspired by the loops.so
+   "Get started" CTA. Works on any button; pairs with a subtle springy lift. */
+@keyframes btn-sheen {
+  from {
+    transform: translateX(-160%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(420%) skewX(-18deg);
+  }
+}
+
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 45%;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: translateX(-160%) skewX(-18deg);
+}
+
+.btn-sheen:hover::after {
+  animation: btn-sheen 0.85s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-sheen:hover::after {
+    animation: none;
+  }
+}

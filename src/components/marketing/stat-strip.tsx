@@ -9,7 +9,7 @@ type StatStripProps = {
 };
 
 /**
- * Row of headline metrics (e.g. "2,000+ users", "4.8★"). Reads as a definition
+ * Row of headline metrics (e.g. "5.0★", "200 / mo"). Reads as a definition
  * list for accessibility.
  */
 export function StatStrip({ stats, tone = "light", className }: StatStripProps) {

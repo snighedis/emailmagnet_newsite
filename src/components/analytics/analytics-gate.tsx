@@ -67,6 +67,24 @@ export function AnalyticsGate({ gaId, adsId }: AnalyticsGateProps) {
           currency: "USD",
         });
       }
+
+      // ClickPilot AI PRO checks out on Gumroad ($19 one-time).
+      if (href.includes("gumroad.com")) {
+        window.gtag("event", "click_gumroad_checkout", {
+          event_category: "conversion",
+          event_label: href,
+          value: 19.0,
+          currency: "USD",
+        });
+      }
+
+      // Countdown321 converts off-site on the Shopify App Store listing.
+      if (href.includes("apps.shopify.com")) {
+        window.gtag("event", "click_shopify_listing", {
+          event_category: "engagement",
+          event_label: href,
+        });
+      }
     };
 
     document.addEventListener("click", handleOutboundClick);

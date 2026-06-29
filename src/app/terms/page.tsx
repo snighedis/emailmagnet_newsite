@@ -24,7 +24,7 @@ export default function TermsPage() {
         <p className="mt-6 leading-8 text-slate-600">
           Last updated: June 9, 2026. These Terms of Service ("{`"Terms"`}") form a binding
           agreement between you ("{`"User"`}" or "{`"Client"`}") and Dentoku Dev (Nicola Orlandi,
-          sole trader / ditta individuale, Via Bullona 8, 20154 Milano, Italy — P.IVA
+          sole trader / ditta individuale, Via Bullona 8, 20154 Milano, Italy, P.IVA
           IT13625480960) ("{`"Dentoku Dev"`}",
           "{`"we"`}", or "{`"us"`}") and govern your access to and use of EmailMagnet, this website,
           and any digital consulting services we provide.
@@ -43,12 +43,12 @@ export default function TermsPage() {
         </p>
         <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
           <li>
-            <strong>Software products</strong> — currently EmailMagnet, a browser extension
+            <strong>Software products</strong>: currently EmailMagnet, a browser extension
             available in a free tier and a one-time purchase ("{`"PRO"`}") tier with lifetime
             access to the features described on the product page at time of purchase.
           </li>
           <li>
-            <strong>Digital consulting</strong> — strategy, implementation, and advisory services
+            <strong>Digital consulting</strong>: strategy, implementation, and advisory services
             for small and medium-sized businesses, delivered under a separate written engagement
             agreement or proposal ("{`"SOW"`}") accepted by both parties. Where a SOW conflicts
             with these Terms, the SOW prevails for that engagement.
@@ -90,7 +90,7 @@ export default function TermsPage() {
           the terms and privacy policy of the applicable payment processor.
         </p>
         <p className="mt-4 leading-8 text-slate-600">
-          <strong>EmailMagnet PRO — lifetime access.</strong> A one-time payment grants you a
+          <strong>EmailMagnet PRO: lifetime access.</strong> A one-time payment grants you a
           perpetual, non-exclusive, non-transferable licence to use EmailMagnet PRO features as
           they exist at time of purchase and as we continue to develop them. "{`"Lifetime"`}" means
           for as long as we operate EmailMagnet as a product; we will provide reasonable advance

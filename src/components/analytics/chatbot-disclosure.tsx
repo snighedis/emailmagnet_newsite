@@ -41,7 +41,7 @@ export function ChatbotDisclosure() {
         <p className="text-xs leading-5 text-slate-600">
           Our support chat is an{" "}
           <span className="font-semibold text-slate-900">AI assistant</span>. Replies are automated
-          and may be inaccurate — for anything important, email support@dentokudev.com.
+          and may be inaccurate. For anything important, email support@dentokudev.com.
         </p>
         <button
           type="button"

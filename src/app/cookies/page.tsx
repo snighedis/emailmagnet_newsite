@@ -40,8 +40,8 @@ export default function CookiesPage() {
         <h2 className="mt-12 text-2xl font-semibold text-slate-950">1. What Are Cookies</h2>
         <p className="mt-3 leading-8 text-slate-600">
           Cookies are small text files placed on your device when you visit a website. They allow
-          the site to remember information about your visit — such as your preferred language or
-          whether you have already given consent — and can make your next visit easier and the
+          the site to remember information about your visit (such as your preferred language or
+          whether you have already given consent) and can make your next visit easier and the
           site more useful to you. Similar technologies include local storage, session storage,
           and pixel tags; we refer to all of these collectively as "cookies" in this policy.
         </p>
@@ -208,7 +208,7 @@ export default function CookiesPage() {
           <li>
             <strong>Cookie preferences link.</strong> Click <strong>“Cookie preferences”</strong>{" "}
             in the footer of any page. The consent panel reopens with your current choices, and you
-            can enable or disable Analytics and Marketing independently — withdrawing consent is as
+            can enable or disable Analytics and Marketing independently. Withdrawing consent is as
             easy as giving it. Turning a category off reloads the page so the related scripts stop
             immediately.
           </li>
