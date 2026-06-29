@@ -17,7 +17,7 @@ export function PricingCards({ plans }: PricingCardsProps) {
           className={cn(
             "relative flex h-full flex-col rounded-3xl border p-8",
             plan.featured
-              ? "border-brand/40 shadow-soft-lg ring-brand/20 from-brand-soft/50 bg-gradient-to-b to-white ring-1"
+              ? "border-brand/50 shadow-soft-xl from-brand-soft/50 bg-gradient-to-b to-white"
               : "shadow-soft border-slate-200/80 bg-white",
           )}
         >

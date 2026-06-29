@@ -66,6 +66,10 @@ export const siteConfig = {
   googleAdsId: "AW-16653473127",
   description:
     "Four focused browser tools: EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321. Built for sales teams, founders, and ecommerce pros.",
+  // Footer-only positioning line. Kept separate from the SEO `description` so the
+  // meta keeps its product keywords while the footer speaks to the studio's range.
+  footerTagline:
+    "A software studio that ships its own products and provides digital and AI consulting.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {

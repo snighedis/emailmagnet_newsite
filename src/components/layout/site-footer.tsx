@@ -24,7 +24,7 @@ export function SiteFooter() {
     <footer className="bg-surface-soft border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 md:grid-cols-[1.5fr_repeat(4,1fr)]">
-          <div className="space-y-5">
+          <div>
             <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
               <Image
                 src={siteConfig.logo}
@@ -36,12 +36,12 @@ export function SiteFooter() {
               />
               <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
             </Link>
-            <p className="max-w-sm text-sm leading-6 text-slate-600">{siteConfig.description}</p>
+            <p className="mt-1 max-w-sm text-sm leading-6 text-slate-600">{siteConfig.footerTagline}</p>
             <a
               href="https://shipveryfast.dev/?ref=dentokudev"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit items-center gap-1.5 rounded-[10px] border border-[#e7e3da] bg-white px-3.5 py-2 text-sm leading-none whitespace-nowrap"
+              className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-[10px] border border-[#e7e3da] bg-white px-3.5 py-2 text-sm leading-none whitespace-nowrap"
             >
               <span className="font-medium text-[#78716c]">Built with</span>
               {/* Hosted by ShipVeryFast (CORS-open, full quality, auto-updating); plain
@@ -59,7 +59,7 @@ export function SiteFooter() {
                 Ship<span className="text-[#f45a1b]">Very</span>Fast
               </span>
             </a>
-            <div className="flex items-center gap-2 pt-1">
+            <div className="mt-6 flex items-center gap-2">
               <Link
                 href={siteConfig.social.linkedin}
                 aria-label="Dentoku Dev on LinkedIn"

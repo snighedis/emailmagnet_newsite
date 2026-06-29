@@ -184,6 +184,11 @@
   .shadow-brand {
     box-shadow: 0 16px 40px -14px oklch(0.68 0.21 35 / 0.45);
   }
+  .shadow-soft-xl {
+    box-shadow:
+      0 4px 8px -4px oklch(0.24 0.035 248 / 0.12),
+      0 40px 80px -24px oklch(0.24 0.035 248 / 0.34);
+  }
 }
 
 ::selection {
@@ -467,19 +472,19 @@ main > section:nth-of-type(n + 5) {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: 45%;
+  width: 55%;
   pointer-events: none;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.3),
     transparent
   );
   transform: translateX(-160%) skewX(-18deg);
 }
 
 .btn-sheen:hover::after {
-  animation: btn-sheen 0.85s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: btn-sheen 0.85s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
