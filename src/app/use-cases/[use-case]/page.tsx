@@ -76,6 +76,7 @@ export default async function UseCasePage({ params }: UseCasePageProps) {
         "Responsible outreach and compliance checklist",
       ]}
       sections={page.sections}
+      currentHref={`/use-cases/${resolved["use-case"]}`}
     />
   );
 }

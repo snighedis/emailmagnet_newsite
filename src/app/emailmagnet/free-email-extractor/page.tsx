@@ -45,6 +45,7 @@ export default function FreeEmailExtractorPage() {
       ]}
       ctaHref="/pricing"
       ctaLabel="Compare Free and PRO"
+      currentHref="/emailmagnet/free-email-extractor"
     />
   );
 }

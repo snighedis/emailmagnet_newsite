@@ -45,6 +45,7 @@ export default function ChromeEmailExtractorPage() {
       ]}
       ctaHref="/emailmagnet"
       ctaLabel="Open EmailMagnet"
+      currentHref="/emailmagnet/chrome-email-extractor"
     />
   );
 }

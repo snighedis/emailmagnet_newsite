@@ -203,6 +203,11 @@ export const footerNav = {
     { label: "Email extraction glossary", href: "/glossary/email-extraction" },
     { label: "ClickPilot AI writer", href: "/clickpilot-ai/ai-writing-assistant-chrome-extension" },
     { label: "Chrome volume booster", href: "/volume-control-pro/chrome-volume-booster-600" },
+    { label: "Getting started guide", href: "/docs/getting-started" },
+    { label: "Exporting emails", href: "/docs/exporting-emails" },
+    { label: "Responsible use", href: "/docs/responsible-use" },
+    { label: "Shopify countdown timer", href: "/countdown321/shopify-countdown-timer-app" },
+    { label: "Shopify urgency app", href: "/countdown321/shopify-urgency-app" },
   ],
   Company: [
     { label: "About", href: "/about" },
@@ -430,6 +435,20 @@ export const contentHubs = [
     href: "/integrations/emailmagnet-chrome",
     description: "Integration pages starting with Chrome and export workflows.",
   },
+];
+
+// Curated, high-value internal links shared by the content hubs (PlannedContentPage)
+// and product money pages (MoneyPage). Rendered as a "Related resources" block so
+// these deeper pages cross-link each other instead of sitting as crawl orphans.
+export const relatedResourceLinks: NavItem[] = [
+  { label: "EmailMagnet overview", href: "/overview" },
+  { label: "Sales prospecting use case", href: "/use-cases/emailmagnet-sales-prospecting" },
+  { label: "Email extraction glossary", href: "/glossary/email-extraction" },
+  { label: "Manual copying comparison", href: "/compare/manual-email-copying" },
+  { label: "Chrome integration", href: "/integrations/emailmagnet-chrome" },
+  { label: "Free email extractor", href: "/emailmagnet/free-email-extractor" },
+  { label: "Email extractor vs scraper", href: "/emailmagnet/email-extractor-vs-scraper" },
+  { label: "Getting started guide", href: "/docs/getting-started" },
 ];
 
 export const heroHighlights = [

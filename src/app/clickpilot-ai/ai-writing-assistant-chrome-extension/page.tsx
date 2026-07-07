@@ -27,6 +27,7 @@ export default function AiWritingAssistantChromeExtensionPage() {
       ]}
       ctaHref="/clickpilot-ai"
       ctaLabel="Open ClickPilot AI"
+      currentHref="/clickpilot-ai/ai-writing-assistant-chrome-extension"
     />
   );
 }

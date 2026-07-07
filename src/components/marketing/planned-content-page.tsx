@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
+import { RelatedResources } from "@/components/marketing/related-resources";
 
 type PlannedContentPageProps = {
   eyebrow: string;
@@ -9,6 +10,8 @@ type PlannedContentPageProps = {
   items: string[];
   answer?: string;
   sections?: Array<{ title: string; body: string }>;
+  /** This page's own path, so the related block never links back to itself. */
+  currentHref?: string;
 };
 
 export function PlannedContentPage({
@@ -18,6 +21,7 @@ export function PlannedContentPage({
   items,
   answer,
   sections = [],
+  currentHref,
 }: PlannedContentPageProps) {
   return (
     <section className="bg-white py-20">
@@ -51,6 +55,7 @@ export function PlannedContentPage({
             ))}
           </div>
         ) : null}
+        <RelatedResources currentHref={currentHref} className="mt-12" />
         <Button asChild className="mt-10 rounded-md bg-brand text-white hover:bg-brand-strong">
           <Link href="/pricing">
             Explore EmailMagnet pricing

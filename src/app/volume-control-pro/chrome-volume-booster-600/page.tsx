@@ -27,6 +27,7 @@ export default function ChromeVolumeBoosterPage() {
       ]}
       ctaHref="/volume-control-pro"
       ctaLabel="Open Volume Control PRO"
+      currentHref="/volume-control-pro/chrome-volume-booster-600"
     />
   );
 }

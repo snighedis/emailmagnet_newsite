@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
+import { RelatedResources } from "@/components/marketing/related-resources";
 
 type MoneyPageProps = {
   eyebrow: string;
@@ -13,6 +14,8 @@ type MoneyPageProps = {
   sections?: Array<{ title: string; body: string }>;
   ctaHref: string;
   ctaLabel: string;
+  /** This page's own path, so the related block never links back to itself. */
+  currentHref?: string;
 };
 
 export function MoneyPage({
@@ -24,6 +27,7 @@ export function MoneyPage({
   sections = [],
   ctaHref,
   ctaLabel,
+  currentHref,
 }: MoneyPageProps) {
   return (
     <Section variant="default" container="wide" containerClassName="max-w-5xl">
@@ -61,7 +65,11 @@ export function MoneyPage({
               <tr key={row.intent}>
                 <td className="px-4 py-4">{row.intent}</td>
                 <td className="px-4 py-4">{row.fit}</td>
-                <td className="px-4 py-4">{row.page}</td>
+                <td className="px-4 py-4">
+                  <Link href={row.page} className="text-eyebrow font-medium hover:underline">
+                    {row.page}
+                  </Link>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -77,6 +85,7 @@ export function MoneyPage({
           ))}
         </div>
       ) : null}
+      <RelatedResources currentHref={currentHref} className="mt-12" />
       <Button asChild size="lg" className="mt-10 font-semibold">
         <Link href={ctaHref}>
           {ctaLabel}

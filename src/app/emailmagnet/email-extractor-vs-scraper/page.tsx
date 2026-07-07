@@ -45,6 +45,7 @@ export default function EmailExtractorVsScraperPage() {
       ]}
       ctaHref="/emailmagnet"
       ctaLabel="Use EmailMagnet"
+      currentHref="/emailmagnet/email-extractor-vs-scraper"
     />
   );
 }

@@ -27,6 +27,7 @@ export default function ShopifyCountdownTimerAppPage() {
       ]}
       ctaHref="/countdown321"
       ctaLabel="Open Countdown321"
+      currentHref="/countdown321/shopify-countdown-timer-app"
     />
   );
 }

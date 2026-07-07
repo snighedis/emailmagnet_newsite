@@ -12,6 +12,7 @@ import { CtaBand } from "@/components/marketing/cta-band";
 import { Button } from "@/components/ui/button";
 import {
   companyTrustCues,
+  contentHubs,
   dentokuFrameworks,
   emailMagnetConfig,
   productPortfolio,
@@ -224,6 +225,31 @@ export default function Home() {
                 ))}
               </ul>
             </article>
+          ))}
+        </div>
+      </Section>
+
+      {/* Explore more */}
+      <Section variant="soft">
+        <div className="max-w-3xl">
+          <Eyebrow>Explore more</Eyebrow>
+          <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
+            Guides, comparisons, and workflows
+          </h2>
+          <p className="mt-4 text-lg leading-8 text-slate-600">
+            Deeper resources on email extraction: how it works, where it fits, and how it compares
+            to manual research.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {contentHubs.map((hub) => (
+            <FeatureCard
+              key={hub.href}
+              title={hub.title}
+              description={hub.description}
+              href={hub.href}
+              linkLabel="Explore"
+            />
           ))}
         </div>
       </Section>

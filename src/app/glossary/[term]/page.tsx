@@ -75,6 +75,7 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
         "Related docs, pricing, FAQ, and blog links",
       ]}
       sections={page.sections}
+      currentHref={`/glossary/${term}`}
     />
   );
 }

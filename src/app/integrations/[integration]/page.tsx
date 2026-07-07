@@ -63,6 +63,7 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
         "Related docs, FAQ, and support links",
       ]}
       sections={page.sections}
+      currentHref={`/integrations/${integration}`}
     />
   );
 }

@@ -75,6 +75,7 @@ export default async function ComparePage({ params }: ComparePageProps) {
         "Pricing model and export differences",
       ]}
       sections={comparison.sections}
+      currentHref={`/compare/${competitor}`}
     />
   );
 }
