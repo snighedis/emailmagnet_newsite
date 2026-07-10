@@ -49,6 +49,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Consolidated into email-extraction-compliance-checklist (merged content,
+        // stronger exact-match slug) to remove keyword cannibalization.
+        source: "/blog/compliance-checklist-outreach-people-first",
+        destination: "/blog/email-extraction-compliance-checklist",
+        permanent: true,
+      },
+      {
         source: "/docs/supported-websites",
         destination: "/docs/responsible-use",
         permanent: true,

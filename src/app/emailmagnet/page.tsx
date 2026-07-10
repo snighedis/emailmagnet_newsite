@@ -33,7 +33,7 @@ import {
   valueProps,
 } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildSoftwareSchema } from "@/lib/schema";
 
 const audienceCards = [
   {
@@ -98,6 +98,7 @@ export const metadata = createMetadata({
 export default function EmailMagnetPage() {
   return (
     <>
+      <JsonLd data={buildSoftwareSchema()} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },

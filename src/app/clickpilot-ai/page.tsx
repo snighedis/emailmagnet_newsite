@@ -23,9 +23,9 @@ import { Eyebrow } from "@/components/marketing/eyebrow";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { FaqList } from "@/components/marketing/faq-list";
 import { PricingCards } from "@/components/marketing/pricing-cards";
-import type { PricingPlan } from "@/data/site";
+import { productPortfolio, siteConfig, type PricingPlan } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildProductSoftwareSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "ClickPilot AI Chrome Writing Assistant",
@@ -33,6 +33,8 @@ export const metadata = createMetadata({
     "ClickPilot AI is a Dentoku Dev Chrome extension that improves writing in-browser with fix, rewrite, summarize, translate, and custom shortcut actions.",
   path: "/clickpilot-ai",
 });
+
+const clickPilotProduct = productPortfolio.find((product) => product.href === "/clickpilot-ai");
 
 export default function ClickPilotAiPage() {
   const faqs = [
@@ -211,6 +213,19 @@ export default function ClickPilotAiPage() {
 
   return (
     <>
+      {clickPilotProduct ? (
+        <JsonLd
+          data={buildProductSoftwareSchema(clickPilotProduct, {
+            "@type": "AggregateOffer",
+            lowPrice: 0,
+            highPrice: 19,
+            priceCurrency: "USD",
+            offerCount: 2,
+            availability: "https://schema.org/InStock",
+            url: `${siteConfig.url}/clickpilot-ai`,
+          })}
+        />
+      ) : null}
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },

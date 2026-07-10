@@ -1,14 +1,15 @@
 ---
 title: "Email extraction compliance checklist"
-description: "A practical EmailMagnet checklist for source context, lawful purpose, list quality, opt-outs, and GDPR or CAN-SPAM checks before outreach."
+description: "A practical EmailMagnet checklist for source context, lawful purpose, list quality, opt-outs, and GDPR, CAN-SPAM, and CCPA/CPRA checks before outreach."
 date: "2026-01-13"
-updated: "2026-06-12"
+updated: "2026-07-10"
 author: "Nicola Orlandi"
 tags:
   - Compliance
   - GDPR
   - CAN-SPAM
   - Email extraction
+  - Outreach
 featuredImage: "/blog/email-extraction-compliance-checklist.jpg"
 featuredImageAlt: "Hand with a pen reviewing printed charts next to a laptop and notebook"
 ---
@@ -19,7 +20,7 @@ Compliance is not a footer note. It is part of the workflow.
 
 > The safest email list is not the biggest one. It is the one with a clear source, a clear purpose, and a clear reason to contact each person.
 
-This checklist is a practical starting point for teams using browser-based extraction tools like EmailMagnet.
+This checklist is a practical starting point for teams using browser-based extraction tools like EmailMagnet. It balances commercial efficiency with the privacy frameworks that apply to outreach: GDPR in Europe, CAN-SPAM in the US, and CCPA/CPRA in California. A people-first approach is not just legal cover. It measurably improves reply rates and protects your sending domain's reputation.
 
 ## 1. Confirm the source context
 
@@ -32,11 +33,16 @@ Ask:
 - Does the page clearly restrict reuse?
 - Can we explain why this data was collected?
 
+Two habits make this concrete:
+
+- **Record the source URL** for every address and keep it alongside the export. It is your evidence that the data was publicly available, and it makes qualification easier later.
+- **Minimize the data** you collect. Keep only what you strictly need for personalization: name, role, company, and the URL of the relevant resource.
+
 If the source context is weak, the list will be weak too.
 
 ## 2. Define your lawful purpose
 
-Under privacy frameworks such as GDPR, you need a legitimate reason to process personal data.
+Under privacy frameworks such as GDPR, you need a legitimate reason to process personal data. The most common basis for B2B outreach is **legitimate interest (GDPR Art. 6.1.f)**, which requires a logical link between your proposal and the recipient's business activity.
 
 That reason should be specific. "We might use this later" is not enough.
 
@@ -47,7 +53,10 @@ Better examples:
 - recruiting research for a clearly related role;
 - partner discovery for a specific project.
 
-Write down the reason before the first outreach message is sent.
+Two guardrails keep this basis defensible:
+
+- **B2B targeting only.** Extract business or role addresses (for example `marketing@company.com`, `press@domain.com`, or a listed founder or editor). Avoid cold mailing personal B2C inboxes.
+- **Write down the reason** before the first outreach message is sent.
 
 ## 3. Filter before you contact
 
@@ -68,15 +77,15 @@ For CAN-SPAM and general trust, outreach should make the sender obvious.
 
 Each message should include:
 
-- who you are;
-- why you are contacting the recipient;
-- a truthful subject line;
-- a working opt-out path;
-- accurate sender information.
+- who you are, with your real name and your company's real name in the From field;
+- why you are contacting the recipient, including a short note on how you found the address;
+- a truthful subject line that reflects the actual content (no fake `RE:` or `Fwd:`);
+- a working opt-out path, either an unsubscribe link or a plain-text instruction;
+- your company's physical postal address in the footer (required by CAN-SPAM).
 
 Vague outreach creates risk even when the source data is public.
 
-## 5. Keep an audit trail
+## 5. Keep an audit trail and honor requests
 
 If a contact asks why they were added, your team should be able to answer.
 
@@ -88,13 +97,23 @@ Track:
 - opt-out requests;
 - list cleanup actions.
 
+Then act on what people ask for:
+
+- **Honor opt-out requests within 10 business days**, and immediately if you can.
+- **Maintain a Do-Not-Contact (DNC) list**: a global blocklist of domains and addresses that asked not to be contacted again.
+- **Respect the right to erasure (GDPR Art. 17)**: if a recipient requests deletion, remove their data from every record you hold.
+
 You do not need a complicated system. You need enough context to act responsibly.
 
 ## 6. Review retention regularly
 
-Old contact lists are risky because context expires.
+Old contact lists are risky because context expires, and regulations such as CCPA/CPRA reinforce the expectation that you do not keep data longer than needed.
 
 Set a review cadence. Remove records that no longer have a clear purpose. Update stale data. Delete lists that are no longer needed.
+
+## A privacy footer note you can adapt
+
+> Privacy note: this message is sent on the basis of legitimate professional (B2B) interest. We found your contact details publicly listed on [Site/Directory]. If you would rather not receive further collaboration proposals, or want your data removed, reply with the subject "Remove" or use the unsubscribe link.
 
 ## Final note
 

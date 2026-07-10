@@ -42,7 +42,7 @@ const spectral = Spectral({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Dentoku Dev: Browser Tools for Sales Teams",
+    default: "Dentoku Dev: Chrome Extensions and Shopify Apps",
     template: "%s | Dentoku",
   },
   description: siteConfig.description,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Dentoku Dev software studio",
+    title: "Dentoku Dev: Chrome Extensions and Shopify Apps",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dentoku Dev software studio",
+    title: "Dentoku Dev: Chrome Extensions and Shopify Apps",
     description: siteConfig.description,
     images: [siteConfig.socialImage],
   },

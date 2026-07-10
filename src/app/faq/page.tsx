@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/marketing/json-ld";
 import { SectionHeading } from "@/components/marketing/section-heading";
 import { faqItems } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildFaqSchema } from "@/lib/schema";
 
 export const metadata = createMetadata({
   title: "EmailMagnet FAQ and Support",
@@ -16,6 +16,7 @@ export const metadata = createMetadata({
 export default function FaqPage() {
   return (
     <section className="bg-white py-20">
+      <JsonLd data={buildFaqSchema(faqItems)} />
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },
