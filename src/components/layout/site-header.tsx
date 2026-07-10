@@ -184,7 +184,7 @@ export function SiteHeader() {
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
             <SheetTitle className="sr-only">Dentoku Dev navigation</SheetTitle>
-            <div className="mt-8 space-y-6 px-2">
+            <div className="mt-8 space-y-6 px-6">
               <Logo onClick={() => setMobileOpen(false)} />
               <nav className="grid gap-5 text-base font-medium">
                 <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
