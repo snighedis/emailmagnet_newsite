@@ -161,13 +161,17 @@ export default function VolumeControlProPage() {
     <>
       {volumeControlProduct ? (
         <JsonLd
-          data={buildProductSoftwareSchema(volumeControlProduct, {
-            "@type": "Offer",
-            price: 0,
-            priceCurrency: "USD",
-            availability: "https://schema.org/InStock",
-            url: `${siteConfig.url}/volume-control-pro`,
-          })}
+          data={buildProductSoftwareSchema(
+            volumeControlProduct,
+            {
+              "@type": "Offer",
+              price: 0,
+              priceCurrency: "USD",
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.url}/volume-control-pro`,
+            },
+            [chromeStoreUrl],
+          )}
         />
       ) : null}
       <JsonLd

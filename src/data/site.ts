@@ -120,6 +120,7 @@ export const emailMagnetConfig = {
   },
   reviewsUrl:
     "https://chromewebstore.google.com/detail/emailmagnet-email-extract/gnlnbefnecaoocmamafbnefjepbeppli/reviews",
+  productHuntUrl: "https://www.producthunt.com/products/emailmagnet",
 };
 
 // Verbatim Chrome Web Store reviews (5.0★). Keep these in sync with the listing
@@ -182,6 +183,21 @@ export const productPortfolio: ProductItem[] = [
     icon: "/brand/countdown321-icon.png",
     externalUrl: "https://apps.shopify.com/countdown321",
   },
+];
+
+// Owned brand properties, consolidated for the Organization `sameAs`. Linking the
+// studio to every store listing + profile it controls is the strongest on-site brand
+// entity signal: it helps Google connect "Dentoku Dev" and its products across the web
+// (brand SERP ownership + knowledge panel eligibility for the specific brand terms).
+export const brandProfiles: string[] = [
+  siteConfig.social.linkedin,
+  siteConfig.social.x,
+  emailMagnetConfig.secondaryCta.href, // EmailMagnet — Chrome Web Store
+  emailMagnetConfig.productHuntUrl, // EmailMagnet — Product Hunt
+  "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb", // ClickPilot AI — Chrome Web Store
+  "https://dentoku.gumroad.com/l/clickpilotAI", // ClickPilot AI — Gumroad
+  "https://chromewebstore.google.com/detail/volume-control-pro-600%-s/bjjpdehblihhfdfcoonadnnfmkblmogf", // Volume Control PRO — Chrome Web Store
+  "https://apps.shopify.com/countdown321", // Countdown321 — Shopify App Store
 ];
 
 export const footerNav = {

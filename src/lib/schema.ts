@@ -1,6 +1,7 @@
 import type { BlogPost } from "@/content/blog";
 import type { FaqItem } from "@/data/site";
 import {
+  brandProfiles,
   emailMagnetConfig,
   founderConfig,
   pricingPlans,
@@ -30,7 +31,7 @@ export function buildOrganizationSchema() {
       email: siteConfig.supportEmail,
       availableLanguage: ["en"],
     },
-    sameAs: [siteConfig.social.linkedin, siteConfig.social.x],
+    sameAs: brandProfiles,
   };
 }
 
@@ -99,6 +100,7 @@ export function buildSoftwareSchema() {
     keywords: "email extractor, Chrome extension, email finder, lead generation, prospecting, CSV export, browser email extraction",
     url: `${base}${emailMagnetConfig.href}`,
     downloadUrl: emailMagnetConfig.secondaryCta.href,
+    sameAs: [emailMagnetConfig.secondaryCta.href, emailMagnetConfig.productHuntUrl],
     isPartOf: {
       "@type": "Organization",
       name: siteConfig.companyName,
@@ -151,8 +153,10 @@ export function buildSoftwareSchema() {
 export function buildProductSoftwareSchema(
   product = productPortfolio[0],
   offers: Record<string, unknown> | Array<Record<string, unknown>>,
+  sameAs?: string[],
 ) {
   const isShopifyApp = product.category.toLowerCase().includes("shopify");
+  const resolvedSameAs = sameAs ?? (product.externalUrl ? [product.externalUrl] : undefined);
 
   return {
     "@context": "https://schema.org",
@@ -163,7 +167,7 @@ export function buildProductSoftwareSchema(
     operatingSystem: isShopifyApp ? "Web" : "Windows, macOS, Linux, ChromeOS",
     description: product.description,
     url: `${base}${product.href}`,
-    sameAs: product.externalUrl ? [product.externalUrl] : undefined,
+    sameAs: resolvedSameAs,
     offers,
     publisher: {
       "@type": "Organization",

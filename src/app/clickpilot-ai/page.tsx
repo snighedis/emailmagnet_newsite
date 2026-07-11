@@ -215,15 +215,22 @@ export default function ClickPilotAiPage() {
     <>
       {clickPilotProduct ? (
         <JsonLd
-          data={buildProductSoftwareSchema(clickPilotProduct, {
-            "@type": "AggregateOffer",
-            lowPrice: 0,
-            highPrice: 19,
-            priceCurrency: "USD",
-            offerCount: 2,
-            availability: "https://schema.org/InStock",
-            url: `${siteConfig.url}/clickpilot-ai`,
-          })}
+          data={buildProductSoftwareSchema(
+            clickPilotProduct,
+            {
+              "@type": "AggregateOffer",
+              lowPrice: 0,
+              highPrice: 19,
+              priceCurrency: "USD",
+              offerCount: 2,
+              availability: "https://schema.org/InStock",
+              url: `${siteConfig.url}/clickpilot-ai`,
+            },
+            [
+              "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
+              "https://dentoku.gumroad.com/l/clickpilotAI",
+            ],
+          )}
         />
       ) : null}
       <JsonLd
@@ -238,7 +245,7 @@ export default function ClickPilotAiPage() {
             Chrome AI Writing Assistant
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl">
-            Write better anywhere, directly in your browser
+            ClickPilot AI: write better anywhere, directly in your browser
           </h1>
           <p className="mt-6 text-xl leading-8 text-slate-600 max-w-3xl mx-auto">
             ClickPilot AI works inside the websites you already use. No copy-paste, no extra tabs, no workflow breaks.
