@@ -4,7 +4,7 @@ import { ArrowRight } from "@/components/ui/icons";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
-import { BrowserFrame } from "@/components/marketing/browser-frame";
+import { HeroVideo } from "@/components/marketing/hero-video";
 import { TrustBar } from "@/components/marketing/trust-bar";
 import { CtaBand } from "@/components/marketing/cta-band";
 import { FaqList } from "@/components/marketing/faq-list";
@@ -46,62 +46,38 @@ const exploreLinks = [
 export default function Home() {
   return (
     <>
-      {/* Preload the hero product screenshot: it's the LCP element. */}
-      <link rel="preload" as="image" href="/brand/emailmagnet-hero-new.webp" fetchPriority="high" />
+      {/* Preload the hero video poster: it's the LCP element. */}
+      <link rel="preload" as="image" href="/brand/homepage-hero-poster.jpg" fetchPriority="high" />
       <JsonLd data={buildItemListSchema("Dentoku Dev software products", productPortfolio)} />
 
-      {/* Hero: consulting-first promise, products as standing proof */}
-      <Section variant="gradient" spacing="loose" containerClassName="max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-          <div className="space-y-7">
-            <Eyebrow>{homeHero.eyebrow}</Eyebrow>
-            <h1 className="text-ink text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
-              {homeHero.titleLead} <span className="text-brand">{homeHero.titleAccent}</span>
-            </h1>
-            <p className="max-w-xl text-lg leading-8 text-slate-700 md:text-xl">
-              {homeHero.subhead}
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="xl" className="btn-sheen font-semibold hover:-translate-y-0.5">
-                <Link href={homeHero.primaryCta.href}>
-                  {homeHero.primaryCta.label}
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="xl" variant="outline">
-                <Link href={homeHero.secondaryCta.href}>{homeHero.secondaryCta.label}</Link>
-              </Button>
-            </div>
+      {/* Hero: consulting-first promise, products as standing proof.
+          Centered compact copy, then the video spans the full container width
+          as the protagonist (Apollo pattern). */}
+      <Section variant="gradient" containerClassName="max-w-7xl">
+        <div className="mx-auto max-w-3xl space-y-6 text-center">
+          <Eyebrow>{homeHero.eyebrow}</Eyebrow>
+          <h1 className="text-ink text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
+            {homeHero.titleLead} <span className="text-brand">{homeHero.titleAccent}</span>
+          </h1>
+          <p className="mx-auto max-w-xl text-lg leading-8 text-slate-700">{homeHero.subhead}</p>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
+            {/* The hero CTA pair is the only pill-shaped element on the site */}
+            <Button asChild size="xl" className="btn-sheen rounded-full font-semibold hover:-translate-y-0.5">
+              <Link href={homeHero.primaryCta.href}>
+                {homeHero.primaryCta.label}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild size="xl" variant="outline" className="rounded-full">
+              <Link href={homeHero.secondaryCta.href}>{homeHero.secondaryCta.label}</Link>
+            </Button>
+          </div>
+          <div className="flex justify-center">
             <TrustBar rating={5.0} reviewLabel="Chrome Web Store" items={[homeHero.trustNote]} />
           </div>
-          <div className="relative">
-            <BrowserFrame
-              src="/brand/emailmagnet-hero-new.webp"
-              alt="EmailMagnet, one of the four Dentoku Dev products, reviewing captured emails"
-              url="EmailMagnet · built and shipped by Dentoku Dev"
-              width={1361}
-              height={852}
-              priority
-            />
-            {/* The four shipped products, floating over the frame as proof chips */}
-            <div className="shadow-soft-lg absolute -bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-slate-200/80 bg-white py-2 pr-5 pl-3">
-              <span className="flex items-center gap-1.5">
-                {productPortfolio.map((product) => (
-                  <Image
-                    key={product.href}
-                    src={product.icon}
-                    alt={`${product.name} icon`}
-                    width={28}
-                    height={28}
-                    className="h-7 w-7 rounded-md border border-slate-200 bg-slate-50 object-contain p-1"
-                  />
-                ))}
-              </span>
-              <span className="text-xs font-semibold whitespace-nowrap text-slate-600">
-                4 products, shipped and live
-              </span>
-            </div>
-          </div>
+        </div>
+        <div className="mt-10">
+          <HeroVideo />
         </div>
       </Section>
 

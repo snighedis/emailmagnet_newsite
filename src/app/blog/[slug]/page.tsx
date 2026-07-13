@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </nav>
           <div className="mt-7 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="rounded-full">
+              <Badge key={tag} variant="secondary" className="rounded-md">
                 {tag}
               </Badge>
             ))}

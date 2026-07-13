@@ -277,7 +277,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
         <Button
           type="submit"
           size="lg"
-          className="h-14 rounded-md bg-brand px-8 text-lg text-white hover:bg-brand-strong"
+          className="h-14 bg-brand px-8 text-lg text-white hover:bg-brand-strong"
         >
           Send message
         </Button>

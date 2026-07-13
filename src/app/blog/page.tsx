@@ -59,7 +59,7 @@ export default function BlogPage() {
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {featured.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="rounded-full">
+                      <Badge key={tag} variant="secondary" className="rounded-md">
                         {tag}
                       </Badge>
                     ))}
@@ -117,7 +117,7 @@ export default function BlogPage() {
                   <CardContent className="flex h-full flex-col p-6">
                     <div className="flex flex-wrap gap-2">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="rounded-full">
+                        <Badge key={tag} variant="secondary" className="rounded-md">
                           {tag}
                         </Badge>
                       ))}

@@ -56,7 +56,7 @@ export function PlannedContentPage({
           </div>
         ) : null}
         <RelatedResources currentHref={currentHref} className="mt-12" />
-        <Button asChild className="mt-10 rounded-md bg-brand text-white hover:bg-brand-strong">
+        <Button asChild className="mt-10 bg-brand text-white hover:bg-brand-strong">
           <Link href="/pricing">
             Explore EmailMagnet pricing
             <ArrowRight className="h-4 w-4" />

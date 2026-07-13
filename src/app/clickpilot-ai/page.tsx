@@ -265,7 +265,7 @@ export default function ClickPilotAiPage() {
           </div>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button asChild size="lg" className="rounded-md bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
+            <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                 Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />
@@ -341,7 +341,7 @@ export default function ClickPilotAiPage() {
                 </span>
                 <h3 className="text-lg font-semibold text-slate-600">Without ClickPilot AI</h3>
               </div>
-              <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600">
+              <span className="rounded-md bg-red-50 px-3 py-1 text-xs font-semibold text-red-600">
                 8 steps
               </span>
             </div>
@@ -360,7 +360,7 @@ export default function ClickPilotAiPage() {
 
           {/* ClickPilot way — emphasized */}
           <div className="border-accent-teal/30 shadow-soft-lg ring-accent-teal/10 relative flex h-full flex-col rounded-3xl border bg-white p-7 ring-1 md:p-8">
-            <span className="bg-accent-teal absolute -top-3 right-7 rounded-full px-3 py-1 text-xs font-semibold text-white shadow-sm">
+            <span className="bg-accent-teal absolute -top-3 right-7 rounded-md px-3 py-1 text-xs font-semibold text-white shadow-sm">
               Recommended
             </span>
             <div className="flex items-center justify-between gap-3">
@@ -370,7 +370,7 @@ export default function ClickPilotAiPage() {
                 </span>
                 <h3 className="text-lg font-semibold text-slate-900">With ClickPilot AI</h3>
               </div>
-              <span className="bg-accent-teal/10 text-accent-teal rounded-full px-3 py-1 text-xs font-semibold">
+              <span className="bg-accent-teal/10 text-accent-teal rounded-md px-3 py-1 text-xs font-semibold">
                 4 steps
               </span>
             </div>
@@ -422,7 +422,7 @@ export default function ClickPilotAiPage() {
             <div className="bg-white rounded-2xl border border-slate-200 p-8 max-w-3xl mx-auto">
               <h3 className="text-2xl font-bold text-slate-950 mb-4">Ready to Write Better, Faster?</h3>
               <p className="text-slate-600 mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
-              <Button asChild size="lg" className="rounded-md bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
+              <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
                 <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                   Add to Chrome - It&apos;s Free
                   <ArrowRight className="h-5 w-5 ml-2" />
@@ -556,7 +556,7 @@ export default function ClickPilotAiPage() {
           
           {/* Final CTA */}
           <div className="mt-16 text-center">
-            <Button asChild size="lg" className="rounded-md bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
+            <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                 Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />

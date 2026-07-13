@@ -85,6 +85,23 @@ function ShowcaseMedia({ media, active }: { media: ServiceShowcaseMedia; active:
     );
   }
 
+  // Artwork that already contains its own browser window renders bare, with
+  // the same elevation and radius as the framed variants.
+  if (media.framed === false) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={media.src}
+        alt={media.alt}
+        width={media.width ?? 1280}
+        height={media.height ?? 800}
+        loading="lazy"
+        decoding="async"
+        className="shadow-soft-lg h-auto w-full rounded-2xl border border-black/[0.06]"
+      />
+    );
+  }
+
   return (
     <BrowserFrame
       src={media.src}
@@ -151,7 +168,7 @@ export function ServiceShowcase({ items }: ServiceShowcaseProps) {
               onClick={() => setActiveIndex(index)}
               onKeyDown={(event) => handleKeyDown(event, index)}
               className={cn(
-                "focus-visible:ring-brand cursor-pointer rounded-full px-4 py-2 text-sm font-semibold outline-none transition focus-visible:ring-2",
+                "focus-visible:ring-brand cursor-pointer rounded-md px-4 py-2 text-sm font-semibold outline-none transition focus-visible:ring-2",
                 isActive
                   ? "bg-ink text-white"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-950",

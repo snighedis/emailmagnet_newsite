@@ -498,18 +498,26 @@ export const socialProof = {
 // ---------------------------------------------------------------------------
 
 export const homeHero = {
-  eyebrow: "Independent software studio, Milan",
-  titleLead: "Custom software, built by people",
-  titleAccent: "who ship their own.",
+  eyebrow: "Not an agency. A Milan software studio.",
+  titleLead: "Custom software. AI where it counts.",
+  titleAccent: "Shipped.",
   subhead:
-    "We design and build AI-ready tools, browser extensions, and ecommerce apps for small and mid-sized businesses. Our four products are the proof.",
+    "Dentoku Dev is a Milan software studio building Chrome extensions, Shopify apps, and internal tools for small and mid-sized businesses. Try what we ship before you hire us.",
   primaryCta: { label: "Start your project", href: "/contact" },
   secondaryCta: { label: "See what we build", href: "/#services" },
   trustNote: "4 products live on public stores",
 };
 
 export type ServiceShowcaseMedia =
-  | { kind: "image"; src: string; alt: string; width?: number; height?: number }
+  | {
+      kind: "image";
+      src: string;
+      alt: string;
+      width?: number;
+      height?: number;
+      /** Set false when the artwork already contains its own browser window. */
+      framed?: boolean;
+    }
   | { kind: "video"; src: string }
   | { kind: "volume-demo" };
 
@@ -566,7 +574,14 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
       href: "/clickpilot-ai",
       note: "Built for ourselves. Live on the Chrome Web Store.",
     },
-    media: { kind: "video", src: "/clickpilot-ai-demo.mp4" },
+    media: {
+      kind: "image",
+      src: "/brand/clickpilot-ai-showcase.png",
+      alt: "ClickPilot AI action bar with Fix Grammar, Translate, and Explain easy over highlighted text in Chrome",
+      width: 1280,
+      height: 799,
+      framed: false,
+    },
   },
   {
     key: "ecommerce",

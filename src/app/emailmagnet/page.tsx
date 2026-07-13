@@ -118,7 +118,7 @@ export default function EmailMagnetPage() {
 
         <div className="relative grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
           <div className="space-y-7">
-            <Badge className="h-auto max-w-full justify-start gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-left text-[0.7rem] leading-5 whitespace-normal text-white sm:w-fit sm:text-xs">
+            <Badge className="h-auto max-w-full justify-start gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-left text-[0.7rem] leading-5 whitespace-normal text-white sm:w-fit sm:text-xs">
               <Image
                 src={emailMagnetConfig.icon}
                 alt="EmailMagnet icon"
@@ -467,7 +467,7 @@ export default function EmailMagnetPage() {
                 </li>
               ))}
             </ul>
-            <Button asChild variant="outline" className="mt-7 rounded-md">
+            <Button asChild variant="outline" className="mt-7">
               <Link href="/docs/responsible-use">
                 Read responsible use guide
                 <ArrowRight className="h-4 w-4" />

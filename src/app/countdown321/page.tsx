@@ -349,7 +349,7 @@ export default function Countdown321Page() {
               )}
             >
               {plan.featured ? (
-                <span className="bg-brand absolute -top-3 right-6 rounded-full px-3 py-1 text-xs font-semibold text-white">
+                <span className="bg-brand absolute -top-3 right-6 rounded-md px-3 py-1 text-xs font-semibold text-white">
                   Most popular
                 </span>
               ) : null}
