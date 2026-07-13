@@ -25,18 +25,20 @@ export default function ContactPage() {
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-10 rounded-lg bg-surface-peach px-6 py-12 md:px-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-14">
         <div className="max-w-xl">
           <span className="inline-flex rounded-sm border border-slate-300 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
-            Work with us
+            Start your project
           </span>
           <h1 className="mt-7 text-4xl font-semibold leading-tight tracking-normal text-slate-950 md:text-5xl">
-            Let&apos;s build something that ships.
+            Tell us what you want to build.
           </h1>
           <p className="mt-5 max-w-lg text-xl leading-8 text-slate-700">
-            Use our products, or build new ones with us.
-            <br />
-            Either way, you talk to the people who design,
-            <br />
-            build and ship the work.
+            Custom software, AI integration, or a question about our products. Either way, you
+            talk directly to the people who design, build, and ship the work.
           </p>
+          <ul className="mt-7 space-y-2.5 text-base leading-7 text-slate-600">
+            <li>1. You write a few lines about the project.</li>
+            <li>2. We set up a short call to scope it.</li>
+            <li>3. You get a written proposal: scope, cost, timeline.</li>
+          </ul>
         </div>
 
         <ContactMailtoForm supportEmail={siteConfig.supportEmail} />

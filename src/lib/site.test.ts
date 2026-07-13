@@ -27,7 +27,10 @@ describe("Dentoku Dev site hierarchy", () => {
   it("models Dentoku Dev as the parent company and EmailMagnet as a product", () => {
     expect(siteConfig.name).toBe("Dentoku Dev");
     expect(siteConfig.logo).toBe("/brand/dentoku-dev-logo-128x128.png");
-    expect(siteConfig.description).toContain("Four focused browser tools");
+    // Dual positioning: product studio + custom software for SMBs, with the
+    // shipped products as the standing proof.
+    expect(siteConfig.description).toContain("software studio");
+    expect(siteConfig.description).toContain("custom");
     // Countdown321 bills monthly via Shopify — portfolio-wide no-subscription
     // claims are off the table, generic or otherwise.
     expect(siteConfig.description).not.toMatch(/subscription/i);

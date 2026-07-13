@@ -17,7 +17,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { emailMagnetConfig, mainNav, productPortfolio, siteConfig } from "@/data/site";
+import { emailMagnetConfig, mainNav, productPortfolio, resourcesNav, siteConfig } from "@/data/site";
 
 function Logo({ onClick }: { onClick?: () => void } = {}) {
   return (
@@ -135,6 +135,32 @@ function ProductsMenu() {
   );
 }
 
+function ResourcesMenu() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger className="focus-visible:ring-brand cursor-pointer rounded-lg px-3 py-2 text-sm font-medium text-slate-700 outline-none transition hover:bg-slate-100 hover:text-slate-950 aria-expanded:bg-slate-100 aria-expanded:text-slate-950 focus-visible:ring-2">
+        Resources
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="shadow-soft-lg w-56 rounded-2xl border-slate-200 p-2">
+        <div className="grid gap-1">
+          {resourcesNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="focus-visible:ring-brand rounded-lg px-3 py-2 text-sm font-medium text-slate-700 outline-none transition hover:bg-slate-50 hover:text-slate-950 focus-visible:ring-2"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -153,27 +179,14 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href={siteConfig.social.linkedin}
-            className="rounded-lg px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
-          >
-            LinkedIn
-          </Link>
-          <Link
-            href={siteConfig.social.x}
-            className="rounded-lg px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
-          >
-            X/Twitter
-          </Link>
+          <ResourcesMenu />
         </nav>
         <div className="hidden items-center gap-2 lg:flex">
           <Button asChild variant="ghost">
-            <Link href={siteConfig.secondaryCta.href}>Contact</Link>
+            <Link href={emailMagnetConfig.href}>Get EmailMagnet</Link>
           </Button>
           <Button asChild className="btn-sheen font-semibold hover:-translate-y-0.5">
-            <Link href={emailMagnetConfig.href}>
-              Get EmailMagnet for free
-            </Link>
+            <Link href={siteConfig.secondaryCta.href}>Start your project</Link>
           </Button>
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
@@ -204,6 +217,23 @@ export function SiteHeader() {
                     ))}
                   </div>
                 </div>
+                <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+                  <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+                    Resources
+                  </p>
+                  <div className="mt-3 space-y-3">
+                    {resourcesNav.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
                 <div className="border-t border-slate-200 pt-4">
                   <div className="grid gap-4">
                     {mainNav.map((item) => (
@@ -222,13 +252,13 @@ export function SiteHeader() {
               </nav>
               <div className="grid gap-3">
                 <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-translate-y-0.5">
-                  <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)} className="text-center">
-                    Get EmailMagnet for free
+                  <Link href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)} className="text-center">
+                    Start your project
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="w-full">
-                  <Link href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)}>
-                    Contact
+                  <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
+                    Get EmailMagnet for free
                   </Link>
                 </Button>
               </div>

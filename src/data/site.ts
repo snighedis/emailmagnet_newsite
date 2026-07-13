@@ -65,7 +65,7 @@ export const siteConfig = {
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",
   description:
-    "Four focused browser tools: EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321. Built for sales teams, founders, and ecommerce pros.",
+    "Dentoku Dev is a Milan software studio that ships four browser and ecommerce products and builds custom, AI-ready software for small and mid-sized businesses.",
   // Footer-only positioning line. Kept separate from the SEO `description` so the
   // meta keeps its product keywords while the footer speaks to the studio's range.
   footerTagline:
@@ -147,8 +147,17 @@ export const emailMagnetTestimonials = [
 ];
 
 export const mainNav: NavItem[] = [
+  { label: "Services", href: "/#services" },
   { label: "About", href: "/about" },
+];
+
+// Grouped under the "Resources" dropdown in the header (Apollo-style richer nav).
+// Blog moved here from mainNav; it stays reachable from the footer too.
+export const resourcesNav: NavItem[] = [
+  { label: "Overview", href: "/overview" },
+  { label: "Docs", href: "/docs" },
   { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export const productPortfolio: ProductItem[] = [
@@ -481,5 +490,175 @@ export const socialProof = {
     { label: "Export", value: "CSV/TXT" },
   ],
 };
+
+// ---------------------------------------------------------------------------
+// Homepage: consulting-first narrative (hero, showcase, process, FAQ).
+// All homepage copy lives here, not in JSX, so a phased Italian localization
+// can swap these objects without touching page structure.
+// ---------------------------------------------------------------------------
+
+export const homeHero = {
+  eyebrow: "Independent software studio, Milan",
+  titleLead: "Custom software, built by people",
+  titleAccent: "who ship their own.",
+  subhead:
+    "We design and build AI-ready tools, browser extensions, and ecommerce apps for small and mid-sized businesses. Our four products are the proof.",
+  primaryCta: { label: "Start your project", href: "/contact" },
+  secondaryCta: { label: "See what we build", href: "/#services" },
+  trustNote: "4 products live on public stores",
+};
+
+export type ServiceShowcaseMedia =
+  | { kind: "image"; src: string; alt: string; width?: number; height?: number }
+  | { kind: "video"; src: string }
+  | { kind: "volume-demo" };
+
+export type ServiceShowcaseItem = {
+  key: string;
+  label: string;
+  title: string;
+  description: string;
+  outcomes: string[];
+  proof: { name: string; href: string; note: string };
+  media: ServiceShowcaseMedia;
+};
+
+// Services-as-tabs, each proven by a product we shipped for ourselves. This one
+// section replaces the old Portfolio + Studio method + Frameworks + Spotlight.
+export const servicesShowcase: ServiceShowcaseItem[] = [
+  {
+    key: "internal-tools",
+    label: "Internal tools & automation",
+    title: "Workflow tools that remove manual work",
+    description:
+      "We build the small, focused tools your team is missing: data collection, research workflows, back-office automation. EmailMagnet is our own take on this. It turned manual email copy-paste into a one-click browser workflow.",
+    outcomes: [
+      "Replace repetitive copy-paste with one-click workflows",
+      "Export-ready data: CSV, TXT, or straight into your stack",
+      "Scoped small, shipped fast, easy to maintain",
+    ],
+    proof: {
+      name: "EmailMagnet",
+      href: "/emailmagnet",
+      note: "Built for ourselves. 5.0 stars on the Chrome Web Store.",
+    },
+    media: {
+      kind: "image",
+      src: "/brand/emailmagnet-hero-new.webp",
+      alt: "EmailMagnet extension collecting business emails while browsing",
+      width: 1361,
+      height: 852,
+    },
+  },
+  {
+    key: "ai-integration",
+    label: "AI integration",
+    title: "AI where it actually helps",
+    description:
+      "We integrate AI into real workflows: writing, summarizing, translating, custom automations. ClickPilot AI is our proof. It is an assistant that works inside any text field in the browser, no tab switching.",
+    outcomes: [
+      "AI features embedded in the tools you already use",
+      "Practical scope: fix, rewrite, summarize, translate, custom actions",
+      "Your data stays in your accounts, with your own API keys",
+    ],
+    proof: {
+      name: "ClickPilot AI",
+      href: "/clickpilot-ai",
+      note: "Built for ourselves. Live on the Chrome Web Store.",
+    },
+    media: { kind: "video", src: "/clickpilot-ai-demo.mp4" },
+  },
+  {
+    key: "ecommerce",
+    label: "Ecommerce & Shopify",
+    title: "Storefront apps that drive action",
+    description:
+      "We build Shopify apps and storefront features for merchants: campaign tools, urgency, conversion helpers. Countdown321 is ours. It powers countdown timers for product launches and promotions.",
+    outcomes: [
+      "Shopify apps built on the official platform",
+      "Campaign-ready: fixed-date, recurring, and evergreen logic",
+      "Designed for non-technical store owners",
+    ],
+    proof: {
+      name: "Countdown321",
+      href: "/countdown321",
+      note: "Built for ourselves. Live on the Shopify App Store.",
+    },
+    media: {
+      kind: "image",
+      src: "/brand/countdown321-hero.webp",
+      alt: "Countdown321 Shopify countdown timer on a storefront",
+    },
+  },
+  {
+    key: "browser-products",
+    label: "Browser extensions",
+    title: "Extensions people install and keep",
+    description:
+      "We design Chrome extensions end to end: product, UX, store listing, updates. Volume Control PRO is ours. It is a free audio booster that raises tab volume up to 600%.",
+    outcomes: [
+      "Full lifecycle: build, review, publish, maintain",
+      "Chrome Web Store policies handled for you",
+      "Small, fast, and privacy-respecting by default",
+    ],
+    proof: {
+      name: "Volume Control PRO",
+      href: "/volume-control-pro",
+      note: "Built for ourselves. Free on the Chrome Web Store.",
+    },
+    media: { kind: "volume-demo" },
+  },
+];
+
+// "How we work": direct with the builder, no agency layers.
+export const howWeWork = [
+  {
+    title: "Scope",
+    description:
+      "A short call and a written proposal: what we build, what it costs, when it ships. No obligation until you approve it.",
+  },
+  {
+    title: "Ship",
+    description:
+      "We design and build in short cycles, with working software you can try from the first weeks.",
+  },
+  {
+    title: "Support",
+    description:
+      "After launch you keep a direct line to the people who wrote the code. No handoffs, no ticket queues.",
+  },
+];
+
+export const consultingFaq: FaqItem[] = [
+  {
+    question: "What kind of projects do you take on?",
+    answer:
+      "Custom software for small and mid-sized businesses: internal tools, workflow automation, browser extensions, Shopify and ecommerce apps, and AI integration into existing processes. If it looks like one of our own products, we are a strong fit.",
+  },
+  {
+    question: "How does a project start?",
+    answer:
+      "With a short call and a written proposal covering scope, cost, and timeline. You know exactly what we build and when it ships before committing to anything.",
+  },
+  {
+    question: "Who will actually work on my project?",
+    answer:
+      "The same small team that designs, builds, and ships the four products on this site. You talk directly to the people writing the code, not an account manager.",
+  },
+  {
+    question: "Can you work with our existing systems?",
+    answer:
+      "Yes. Most projects plug into tools you already use: spreadsheets, CRMs, Shopify, browser workflows, and APIs. We build around your stack instead of replacing it.",
+  },
+  {
+    question: "Where are you based?",
+    answer: "Milan, Italy. We work with clients remotely, in English and Italian.",
+  },
+  {
+    question: "How do we know you can ship?",
+    answer:
+      "Judge us by what we build for ourselves: four products live on public stores, with real users and public reviews. Client work gets the same craft.",
+  },
+];
 
 export const accentIcon = Sparkles;

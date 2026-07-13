@@ -17,6 +17,9 @@ precise term.
   ($19, Gumroad). Off-site checkout.
 - **Trial** — a Countdown321 paid plan started from its Shopify listing (subscription, 7-day
   free trial, $0 to $19.99/mo). The only recurring-revenue product.
+- **Consulting Lead** — an inbound request for custom work (Services) sent through the contact
+  page. The homepage's primary conversion. Installs remain the north-star for product surfaces
+  (store listings, product pages, money pages), which is where product users actually convert.
 
 ## Discovery surfaces
 
@@ -28,6 +31,14 @@ precise term.
 - **Off-site authority / distribution** — backlinks, mentions, directory listings, community
   posts, and PR that build the domain authority Website SEO depends on and drive referral
   traffic directly.
+
+## Offering
+
+- **Services** — custom software development with AI integration, sold to small and mid-sized
+  businesses (PMI): internal tools, workflow automation, browser extensions, Shopify and
+  ecommerce apps. Converted via Consulting Leads. Credibility rests on the four shipped
+  Products ("judge us by what we build for ourselves"): no client logos or invented metrics
+  are used as proof.
 
 ## Products
 

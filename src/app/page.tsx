@@ -6,20 +6,21 @@ import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { BrowserFrame } from "@/components/marketing/browser-frame";
 import { TrustBar } from "@/components/marketing/trust-bar";
-import { StatStrip } from "@/components/marketing/stat-strip";
-import { FeatureCard } from "@/components/marketing/feature-card";
 import { CtaBand } from "@/components/marketing/cta-band";
+import { FaqList } from "@/components/marketing/faq-list";
+import { ServiceShowcase } from "@/components/marketing/service-showcase";
 import { Button } from "@/components/ui/button";
 import {
-  companyTrustCues,
+  consultingFaq,
   contentHubs,
-  dentokuFrameworks,
-  emailMagnetConfig,
+  homeHero,
+  howWeWork,
   productPortfolio,
-  siteConfig,
+  servicesShowcase,
 } from "@/data/site";
 import { buildItemListSchema } from "@/lib/schema";
 
+// Deep product pages we keep linked from the homepage for SEO (crawl paths).
 const relatedProductLinks: Record<string, Array<{ label: string; href: string }>> = {
   "/countdown321": [
     { label: "Shopify countdown timer guide", href: "/countdown321/shopify-countdown-timer-app" },
@@ -27,133 +28,164 @@ const relatedProductLinks: Record<string, Array<{ label: string; href: string }>
   ],
 };
 
-const spotlightStats = [
-  { value: "5.0★", label: "EmailMagnet rating on the Chrome Web Store" },
-  { value: "200 / mo", label: "Free captures on the EmailMagnet free plan" },
-  { value: "One-time", label: "Lifetime PRO upgrade, no subscription" },
+// "Explore more" rows: the four content hubs plus the docs and blog entry points.
+const exploreLinks = [
+  ...contentHubs,
+  {
+    title: "Documentation",
+    href: "/docs/getting-started",
+    description: "Setup guides, export workflows, and responsible-use documentation.",
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+    description: "Practical guides on lead research, compliance, and browser workflows.",
+  },
 ];
 
 export default function Home() {
   return (
     <>
-      {/* Preload the hero background — it's set via CSS background-image, which the
-          preload scanner can't discover, so this makes it the prioritized LCP fetch. */}
-      <link
-        rel="preload"
-        as="image"
-        href="/brand/dentokudev-hero-image.jpg"
-        fetchPriority="high"
-      />
+      {/* Preload the hero product screenshot: it's the LCP element. */}
+      <link rel="preload" as="image" href="/brand/emailmagnet-hero-new.webp" fetchPriority="high" />
       <JsonLd data={buildItemListSchema("Dentoku Dev software products", productPortfolio)} />
 
-      {/* Hero */}
-      <section className="bg-ink relative isolate flex min-h-[620px] items-center overflow-hidden text-white md:min-h-[720px]">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/brand/dentokudev-hero-image.jpg')" }}
-          aria-hidden
-        />
-        <div className="bg-ink/10 absolute inset-0" aria-hidden />
-        <div
-          className="from-ink/85 via-ink/40 absolute inset-0 bg-gradient-to-r to-transparent"
-          aria-hidden
-        />
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 md:py-28">
-          <div className="max-w-2xl space-y-7">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white backdrop-blur">
-              <span className="bg-brand h-1.5 w-1.5 rounded-full" aria-hidden />
-              An independent software studio.
-            </span>
-            <h1 className="text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
-              <span className="block">Software that ships.</span>
-              <span className="block">
-                Ours, and <span className="text-brand">yours.</span>
-              </span>
+      {/* Hero: consulting-first promise, products as standing proof */}
+      <Section variant="gradient" spacing="loose" containerClassName="max-w-7xl">
+        <div className="grid gap-12 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+          <div className="space-y-7">
+            <Eyebrow>{homeHero.eyebrow}</Eyebrow>
+            <h1 className="text-ink text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
+              {homeHero.titleLead} <span className="text-brand">{homeHero.titleAccent}</span>
             </h1>
-            <p className="max-w-xl text-lg leading-8 text-white md:text-xl">
-              We design, build, and ship our own digital products.
-              <br />
-              And we bring the same craft to teams that want
-              <br />
-              software done properly.
+            <p className="max-w-xl text-lg leading-8 text-slate-700 md:text-xl">
+              {homeHero.subhead}
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="xl" className="font-semibold">
-                <Link href={emailMagnetConfig.secondaryCta.href}>
-                  Add EmailMagnet to Chrome for free
+              <Button asChild size="xl" className="btn-sheen font-semibold hover:-translate-y-0.5">
+                <Link href={homeHero.primaryCta.href}>
+                  {homeHero.primaryCta.label}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button
-                asChild
-                size="xl"
-                variant="outline"
-                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
-              >
-                <Link href={siteConfig.secondaryCta.href}>Work with us</Link>
+              <Button asChild size="xl" variant="outline">
+                <Link href={homeHero.secondaryCta.href}>{homeHero.secondaryCta.label}</Link>
               </Button>
             </div>
-            <Link
-              href="#products"
-              className="inline-flex w-fit items-center gap-1 text-sm font-semibold text-white/80 transition hover:text-white"
-            >
-              Explore all products
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <TrustBar
-              tone="ink"
-              rating={5.0}
-              reviewLabel="Chrome Web Store"
-              items={["Free plan, no credit card"]}
+            <TrustBar rating={5.0} reviewLabel="Chrome Web Store" items={[homeHero.trustNote]} />
+          </div>
+          <div className="relative">
+            <BrowserFrame
+              src="/brand/emailmagnet-hero-new.webp"
+              alt="EmailMagnet, one of the four Dentoku Dev products, reviewing captured emails"
+              url="EmailMagnet · built and shipped by Dentoku Dev"
+              width={1361}
+              height={852}
+              priority
             />
+            {/* The four shipped products, floating over the frame as proof chips */}
+            <div className="shadow-soft-lg absolute -bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-slate-200/80 bg-white py-2 pr-5 pl-3">
+              <span className="flex items-center gap-1.5">
+                {productPortfolio.map((product) => (
+                  <Image
+                    key={product.href}
+                    src={product.icon}
+                    alt={`${product.name} icon`}
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 rounded-md border border-slate-200 bg-slate-50 object-contain p-1"
+                  />
+                ))}
+              </span>
+              <span className="text-xs font-semibold whitespace-nowrap text-slate-600">
+                4 products, shipped and live
+              </span>
+            </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Portfolio */}
-      <Section id="products" variant="default">
+      {/* What we build: services proven by our own products (tabbed showcase) */}
+      <Section id="services" variant="default">
+        <div className="max-w-3xl space-y-3">
+          <Eyebrow>What we build</Eyebrow>
+          <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
+            Every service, proven by a product we ship
+          </h2>
+          <p className="text-lg leading-8 text-slate-600">
+            No slide decks. Each thing we sell to businesses is something we already build, run,
+            and maintain for ourselves.
+          </p>
+        </div>
+        <div className="mt-12">
+          <ServiceShowcase items={servicesShowcase} />
+        </div>
+      </Section>
+
+      {/* How we work: dense ink panel */}
+      <Section variant="ink">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div className="space-y-4">
+            <Eyebrow tone="ink">How we work</Eyebrow>
+            <h2 className="text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
+              You talk to the builder, not an account manager
+            </h2>
+            <p className="text-ink-muted text-lg leading-8">
+              Small team, direct communication, working software early. The same discipline that
+              keeps our products alive on public stores.
+            </p>
+          </div>
+          <ol className="grid gap-4 sm:grid-cols-3">
+            {howWeWork.map((step, index) => (
+              <li
+                key={step.title}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
+              >
+                <p className="font-mono text-xs text-white/40">0{index + 1}</p>
+                <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
+                <p className="text-ink-muted mt-2 text-sm leading-6">{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Section>
+
+      {/* Products strip: compact, keeps every SEO crawl path */}
+      <Section variant="blue">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-3xl space-y-3">
-            <Eyebrow>Portfolio</Eyebrow>
+          <div className="max-w-2xl space-y-3">
+            <Eyebrow>Products</Eyebrow>
             <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-              Four tools. One painful task each. Nothing more.
+              The portfolio, in the open
             </h2>
           </div>
-          <Link className="text-eyebrow text-sm font-semibold hover:underline" href="/contact">
-            Need product support?
+          <Link className="text-eyebrow text-sm font-semibold hover:underline" href="/overview">
+            See the full overview
           </Link>
         </div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {productPortfolio.map((product) => (
             <article
               key={product.href}
-              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 transition hover:-translate-y-0.5 md:p-7"
+              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-5 transition hover:-translate-y-0.5"
             >
-              {product.featured ? (
-                <span className="bg-brand-soft text-eyebrow absolute top-6 right-6 z-10 rounded-full px-3 py-1 text-xs font-semibold">
-                  Featured product
-                </span>
-              ) : null}
               <Image
                 src={product.icon}
                 alt={`${product.name} icon`}
-                width={56}
-                height={56}
-                className="h-14 w-14 rounded-xl border border-slate-200 bg-slate-50 object-contain p-3"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-xl border border-slate-200 bg-slate-50 object-contain p-2"
               />
-              <p className="text-eyebrow mt-5 text-xs font-semibold tracking-[0.14em] uppercase">
+              <p className="text-eyebrow mt-4 text-xs font-semibold tracking-[0.14em] uppercase">
                 {product.category}
               </p>
-              <h3 className="mt-1.5 text-2xl font-semibold text-slate-950">
-                {/* Stretched link makes the whole card clickable while keeping the related links below tappable */}
+              <h3 className="mt-1 text-xl font-semibold text-slate-950">
                 <Link href={product.href} className="after:absolute after:inset-0">
                   {product.name}
                 </Link>
               </h3>
-              <p className="mt-2 leading-7 text-slate-600">{product.description}</p>
               {relatedProductLinks[product.href] ? (
-                <div className="relative z-10 mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium">
+                <div className="relative z-10 mt-2 flex flex-col gap-1 text-sm font-medium">
                   {relatedProductLinks[product.href].map((link) => (
                     <Link key={link.href} href={link.href} className="text-eyebrow hover:underline">
                       {link.label}
@@ -161,7 +193,7 @@ export default function Home() {
                   ))}
                 </div>
               ) : null}
-              <span className="text-eyebrow mt-5 inline-flex items-center gap-1.5 text-sm font-semibold">
+              <span className="text-eyebrow mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
                 View product
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </span>
@@ -170,132 +202,55 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Studio method */}
-      <Section variant="ink">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="space-y-4">
-            <Eyebrow tone="ink">Studio method</Eyebrow>
-            <h2 className="text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
-              One tool. One workflow. One promise.
-            </h2>
-            <p className="text-ink-muted text-lg leading-8">
-              We build tools that do one thing precisely. Not ten things adequately. Every product
-              ships with a single support path, a single page, and a single answer to the question:
-              what does this actually do?
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {companyTrustCues.map((item) => (
-              <FeatureCard
-                key={item.title}
-                icon={item.icon}
-                title={item.title}
-                description={item.description}
-                tone="ink"
-              />
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* Frameworks */}
-      <Section variant="blue">
-        <div className="max-w-3xl">
-          <Eyebrow>Frameworks</Eyebrow>
-          <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-            Internal frameworks that keep products practical
-          </h2>
-        </div>
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          {dentokuFrameworks.map((framework) => (
-            <article
-              key={framework.name}
-              className="shadow-soft rounded-2xl border border-slate-200/80 bg-white p-6 md:p-7"
-            >
-              <h3 className="text-2xl font-semibold text-slate-950">{framework.name}</h3>
-              <p className="mt-3 leading-7 text-slate-600">{framework.description}</p>
-              <ul className="mt-5 flex flex-wrap gap-2">
-                {framework.steps.map((step) => (
-                  <li
-                    key={step}
-                    className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700"
-                  >
-                    {step}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      {/* Explore more */}
-      <Section variant="soft">
+      {/* Explore more: content hubs + docs + blog (SEO crawl paths preserved) */}
+      <Section variant="soft" spacing="compact">
         <div className="max-w-3xl">
           <Eyebrow>Explore more</Eyebrow>
-          <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-            Guides, comparisons, and workflows
+          <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
+            Guides, comparisons, and docs
           </h2>
-          <p className="mt-4 text-lg leading-8 text-slate-600">
-            Deeper resources on email extraction: how it works, where it fits, and how it compares
-            to manual research.
-          </p>
         </div>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {contentHubs.map((hub) => (
-            <FeatureCard
-              key={hub.href}
-              title={hub.title}
-              description={hub.description}
-              href={hub.href}
-              linkLabel="Explore"
-            />
+        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {exploreLinks.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group shadow-soft hover:shadow-soft-lg flex items-start justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 transition hover:-translate-y-0.5"
+            >
+              <span>
+                <span className="block font-semibold text-slate-950">{item.title}</span>
+                <span className="mt-1 block text-sm leading-6 text-slate-600">
+                  {item.description}
+                </span>
+              </span>
+              <ArrowRight className="text-eyebrow mt-1 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           ))}
         </div>
       </Section>
 
-      {/* EmailMagnet spotlight */}
+      {/* Consulting FAQ (no FAQPage schema here; that lives on /faq) */}
       <Section variant="default">
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="space-y-5">
-            <Eyebrow>Spotlight</Eyebrow>
-            <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-              EmailMagnet, the flagship Chrome workflow
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="space-y-4">
+            <Eyebrow>FAQ</Eyebrow>
+            <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
+              Working with us
             </h2>
-            <p className="text-lg leading-8 text-slate-700">
-              Every page you visit is a prospecting opportunity. EmailMagnet turns your browser
-              into a list-building machine. No API, no scraper, no manual copy-paste. Find the
-              email. Export the list. Work it. Free plan available, PRO is a one-time upgrade.
+            <p className="text-lg leading-8 text-slate-600">
+              The questions businesses ask before starting a project with a small studio.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="font-semibold">
-                <Link href={emailMagnetConfig.href}>
-                  Explore EmailMagnet
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <Link href="/docs/getting-started">Read docs</Link>
-              </Button>
-            </div>
-            <StatStrip stats={spotlightStats} className="border-t border-slate-200 pt-8" />
           </div>
-          <BrowserFrame
-            src="/brand/emailmagnet-hero-new.webp"
-            alt="EmailMagnet extension interface"
-            url="EmailMagnet · review and export captured emails"
-            width={1361}
-            height={852}
-          />
+          <FaqList items={consultingFaq} />
         </div>
       </Section>
 
       <CtaBand
-        eyebrow="Contact"
-        title="One workflow still costing you time? Talk to us."
-        description="Reach out for support, billing questions, or details on the current roadmap across our browser and ecommerce products."
-        primary={{ label: "Get in touch", href: "/contact" }}
-        secondary={{ label: "View products", href: "#products" }}
+        eyebrow="Start"
+        title="Tell us what you want to build"
+        description="One call, a written proposal, and software that ships. Or try one of our products first and judge the craft yourself."
+        primary={{ label: "Start your project", href: "/contact" }}
+        secondary={{ label: "See what we build", href: "/#services" }}
       />
     </>
   );
