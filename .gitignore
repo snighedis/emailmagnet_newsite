@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+video/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -35,6 +36,11 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Remotion video workspace: renders + raw fal.ai candidates
+# (the chosen assets live in video/public and ARE committed)
+video/out
+video/assets
 
 # typescript
 *.tsbuildinfo

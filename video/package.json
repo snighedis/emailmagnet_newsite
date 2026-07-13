@@ -1,0 +1,21 @@
+{
+  "name": "dentokudev-hero-video",
+  "private": true,
+  "description": "Remotion workspace that renders the homepage hero video (webm/mp4/poster) into ../public/brand. Self-contained: does not touch the site's dependencies.",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "npm run render:mp4 && npm run render:poster",
+    "render:mp4": "remotion render HomepageHero ../public/brand/homepage-hero.mp4 --codec=h264 --crf=26",
+    "render:poster": "remotion still HomepageHero ../public/brand/homepage-hero-poster.jpg --frame=45"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.6.0"
+  }
+}
