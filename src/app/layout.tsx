@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fira_Sans_Condensed, Geist, Geist_Mono, Spectral } from "next/font/google";
+import { Fira_Sans_Condensed, Geist_Mono, Inter, Newsreader } from "next/font/google";
 import { AnalyticsGate } from "@/components/analytics/analytics-gate";
 import { CookieBanner } from "@/components/ui/cookie-banner";
 import { ExitIntentModal } from "@/components/marketing/exit-intent-modal";
@@ -13,8 +13,8 @@ import {
 import { JsonLd } from "@/components/marketing/json-ld";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -30,10 +30,10 @@ const firaSansCondensed = Fira_Sans_Condensed({
   display: "swap",
 });
 
-// Spectral — SIL Open Font License 1.1 (commercial use + self-hosting allowed).
-// Used for headings/titles site-wide; Geist remains the body/UI font.
-const spectral = Spectral({
-  variable: "--font-spectral",
+// Newsreader — SIL Open Font License 1.1 (commercial use + self-hosting allowed).
+// Used for headings/titles site-wide; Inter is the body/UI font.
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
@@ -98,7 +98,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${spectral.variable} ${firaSansCondensed.variable} h-full`}
+      className={`${inter.variable} ${geistMono.variable} ${newsreader.variable} ${firaSansCondensed.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={buildOrganizationSchema()} />

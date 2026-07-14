@@ -55,8 +55,8 @@ export default function Home() {
           as the protagonist (Apollo pattern). */}
       <Section variant="gradient" containerClassName="max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-6 text-center">
-          <Eyebrow>{homeHero.eyebrow}</Eyebrow>
-          <h1 className="text-ink text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
+          <Eyebrow className="text-[12px] font-medium">{homeHero.eyebrow}</Eyebrow>
+          <h1 className="text-ink text-4xl font-semibold tracking-[-0.02em] text-balance md:text-[70px] md:leading-[1.05]">
             {homeHero.titleLead} <span className="text-brand">{homeHero.titleAccent}</span>
           </h1>
           <p className="mx-auto max-w-xl text-lg leading-8 text-slate-700">{homeHero.subhead}</p>
@@ -86,11 +86,11 @@ export default function Home() {
         <div className="max-w-3xl space-y-3">
           <Eyebrow>What we build</Eyebrow>
           <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-            Every service, proven by a product we ship
+            We only sell what we already ship
           </h2>
           <p className="text-lg leading-8 text-slate-600">
-            No slide decks. Each thing we sell to businesses is something we already build, run,
-            and maintain for ourselves.
+            No slide decks. No paper promises. Every service below is backed by a product we
+            build, run, and maintain for ourselves.
           </p>
         </div>
         <div className="mt-12">
@@ -107,8 +107,8 @@ export default function Home() {
               You talk to the builder, not an account manager
             </h2>
             <p className="text-ink-muted text-lg leading-8">
-              Small team, direct communication, working software early. The same discipline that
-              keeps our products alive on public stores.
+              Small team. Direct answers. Working software early. The same discipline that keeps
+              four products alive on public stores.
             </p>
           </div>
           <ol className="grid gap-4 sm:grid-cols-3">
@@ -132,7 +132,7 @@ export default function Home() {
           <div className="max-w-2xl space-y-3">
             <Eyebrow>Products</Eyebrow>
             <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
-              The portfolio, in the open
+              Four products. Public stores. Public reviews.
             </h2>
           </div>
           <Link className="text-eyebrow text-sm font-semibold hover:underline" href="/overview">
@@ -214,7 +214,7 @@ export default function Home() {
               Working with us
             </h2>
             <p className="text-lg leading-8 text-slate-600">
-              The questions businesses ask before starting a project with a small studio.
+              The questions worth asking before you hire a small studio.
             </p>
           </div>
           <FaqList items={consultingFaq} />
@@ -224,7 +224,7 @@ export default function Home() {
       <CtaBand
         eyebrow="Start"
         title="Tell us what you want to build"
-        description="One call, a written proposal, and software that ships. Or try one of our products first and judge the craft yourself."
+        description="One call. A written proposal. Software that ships. Or try one of our products first and judge the craft yourself."
         primary={{ label: "Start your project", href: "/contact" }}
         secondary={{ label: "See what we build", href: "/#services" }}
       />

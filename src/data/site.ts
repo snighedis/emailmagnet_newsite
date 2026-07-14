@@ -537,7 +537,7 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
   {
     key: "internal-tools",
     label: "Internal tools & automation",
-    title: "Workflow tools that remove manual work",
+    title: "Repetitive work, engineered away.",
     description:
       "We build the small, focused tools your team is missing: data collection, research workflows, back-office automation. EmailMagnet is our own take on this. It turned manual email copy-paste into a one-click browser workflow.",
     outcomes: [
@@ -561,7 +561,7 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
   {
     key: "ai-integration",
     label: "AI integration",
-    title: "AI where it actually helps",
+    title: "AI in the workflow, not in the way.",
     description:
       "We integrate AI into real workflows: writing, summarizing, translating, custom automations. ClickPilot AI is our proof. It is an assistant that works inside any text field in the browser, no tab switching.",
     outcomes: [
@@ -586,7 +586,7 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
   {
     key: "ecommerce",
     label: "Ecommerce & Shopify",
-    title: "Storefront apps that drive action",
+    title: "Apps that turn browsing into buying.",
     description:
       "We build Shopify apps and storefront features for merchants: campaign tools, urgency, conversion helpers. Countdown321 is ours. It powers countdown timers for product launches and promotions.",
     outcomes: [
@@ -608,7 +608,7 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
   {
     key: "browser-products",
     label: "Browser extensions",
-    title: "Extensions people install and keep",
+    title: "Extensions people install and keep.",
     description:
       "We design Chrome extensions end to end: product, UX, store listing, updates. Volume Control PRO is ours. It is a free audio booster that raises tab volume up to 600%.",
     outcomes: [

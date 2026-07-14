@@ -5,10 +5,11 @@
   "scripts": {
     "studio": "remotion studio",
     "render": "npm run render:mp4 && npm run render:poster",
-    "render:mp4": "remotion render HomepageHero ../public/brand/homepage-hero.mp4 --codec=h264 --crf=26",
+    "render:mp4": "remotion render HomepageHero ../public/brand/homepage-hero.mp4 --codec=h264 --crf=26 --muted",
     "render:poster": "remotion still HomepageHero ../public/brand/homepage-hero-poster.jpg --frame=45"
   },
   "dependencies": {
+    "@remotion/google-fonts": "4.0.489",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "remotion": "^4.0.0"

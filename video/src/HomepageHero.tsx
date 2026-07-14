@@ -3,17 +3,26 @@ import {
   AbsoluteFill,
   Img,
   OffthreadVideo,
+  Sequence,
   staticFile,
   useCurrentFrame,
   interpolate,
   spring,
   Easing,
 } from "remotion";
+import { loadFont } from "@remotion/google-fonts/Newsreader";
+
+// Same heading serif as the site (--font-heading), so the closing lockup
+// matches the live hero title exactly.
+const { fontFamily: NEWSREADER } = loadFont("normal", {
+  weights: ["400", "600"],
+  subsets: ["latin"],
+});
 
 export const FPS = 30;
 export const WIDTH = 1280;
 export const HEIGHT = 800;
-export const DURATION_IN_FRAMES = 330; // 11s loop (the closing lockup holds ~3s so it stays readable)
+export const DURATION_IN_FRAMES = 430; // ~14.3s loop (the closing lockup holds ~3s so it stays readable)
 
 // Brand palette (mirrors the site's tokens; Remotion has no Tailwind context).
 const INK = "#0f172a";
@@ -26,9 +35,10 @@ const FADE = 12;
 const S1 = { from: 0, to: 100 } as const;
 const S2 = { from: 88, to: 178 } as const;
 const S3 = { from: 166, to: 246 } as const;
-// S4 runs 234-330: after the ~0.4s entrance springs it HOLDS still for ~2.5s,
+const S4 = { from: 234, to: 334 } as const;
+// S5 runs 322-430: after the ~0.4s entrance springs it HOLDS still for ~2.5s,
 // then fades out into the looping background.
-const S4 = { from: 234, to: DURATION_IN_FRAMES } as const;
+const S5 = { from: 322, to: DURATION_IN_FRAMES } as const;
 
 function sceneOpacity(frame: number, from: number, to: number): number {
   return interpolate(
@@ -247,8 +257,48 @@ function ClickPilotScene({ frame }: { frame: number }) {
   );
 }
 
-function LockupScene({ frame }: { frame: number }) {
+function VolumeControlScene({ frame }: { frame: number }) {
   const local = frame - S4.from;
+  const slide = spring({ frame: local, fps: FPS, config: { damping: 18 } });
+  const zoom = interpolate(local, [0, S4.to - S4.from], [1, 1.03], { extrapolateRight: "clamp" });
+  return (
+    <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
+      <div style={{ transform: `translateX(${(1 - slide) * -260}px) scale(${zoom})` }}>
+        <Chrome url="youtube.com · Volume Control PRO boosting a quiet tab">
+          {/* Real screen recording of the product (1716x1310). Sized to the
+              frame width and shifted up so the recording's own browser toolbar
+              is cropped while the popup header stays fully in frame.
+              (objectPosition is ignored on OffthreadVideo's extracted frames,
+              so the crop is done with an explicit offset instead.)
+              The Sequence anchors video time to the scene start; without it
+              OffthreadVideo maps absolute composition frames past the 5s clip
+              and freezes on the last frame. startFrom + playbackRate are tuned
+              so the 100%->600% slider drag completes right as the fade begins. */}
+          <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+            <Sequence from={S4.from} layout="none">
+              <OffthreadVideo
+                muted
+                src={staticFile("volumecontrol-demo.mp4")}
+                startFrom={30}
+                playbackRate={1.2}
+                style={{
+                  position: "absolute",
+                  top: -56,
+                  left: 0,
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </Sequence>
+          </div>
+        </Chrome>
+      </div>
+    </AbsoluteFill>
+  );
+}
+
+function LockupScene({ frame }: { frame: number }) {
+  const local = frame - S5.from;
   const icons = [
     "emailmagnet-icon-padded.png",
     "clickpilot-ai-icon.png",
@@ -281,7 +331,7 @@ function LockupScene({ frame }: { frame: number }) {
           );
         })}
       </div>
-      <div style={{ textAlign: "center", fontFamily: "Georgia, 'Times New Roman', serif" }}>
+      <div style={{ textAlign: "center", fontFamily: `${NEWSREADER}, Georgia, 'Times New Roman', serif` }}>
         <div style={{ fontSize: 58, fontWeight: 600, color: INK, letterSpacing: -1 }}>
           Software that ships.
         </div>
@@ -339,8 +389,13 @@ export const HomepageHero: React.FC = () => {
           <ClickPilotScene frame={frame} />
         </AbsoluteFill>
       )}
-      {frame >= S4.from && (
+      {frame >= S4.from && frame < S4.to && (
         <AbsoluteFill style={{ opacity: sceneOpacity(frame, S4.from, S4.to) }}>
+          <VolumeControlScene frame={frame} />
+        </AbsoluteFill>
+      )}
+      {frame >= S5.from && (
+        <AbsoluteFill style={{ opacity: sceneOpacity(frame, S5.from, S5.to) }}>
           <LockupScene frame={frame} />
         </AbsoluteFill>
       )}
