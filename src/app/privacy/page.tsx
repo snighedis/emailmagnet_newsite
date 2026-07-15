@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Privacy Policy</h1>
         <p className="mt-6 leading-8 text-slate-600">
-          Last updated: June 9, 2026. This Privacy Policy describes how Dentoku Dev ("{`"we"`}",
+          Last updated: July 15, 2026. This Privacy Policy describes how Dentoku Dev ("{`"we"`}",
           "{`"us"`}", or "{`"our"`}") processes personal data when you visit dentokudev.com, purchase or
           use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
           Art. 13 of Regulation (EU) 2016/679 ("{`"GDPR"`}") and the Italian Personal Data Protection
@@ -338,8 +338,85 @@ export default function PrivacyPage() {
           currently in force.
         </p>
 
-        {/* 11. Contact */}
-        <h2 className="mt-12 text-2xl font-semibold text-slate-950">11. Contact</h2>
+        {/* 11. EmailMagnet Browser Extension */}
+        <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+          11. EmailMagnet Browser Extension
+        </h2>
+        <p className="mt-3 leading-8 text-slate-600">
+          This section describes how the EmailMagnet browser extension (&quot;the
+          extension&quot;) handles data, in addition to the general practices above.
+        </p>
+        <div className="mt-4 space-y-3 leading-8 text-slate-600">
+          <p>
+            <strong>Single purpose.</strong> The extension has one purpose: to detect and extract
+            publicly visible email addresses from web pages you choose to scan.
+          </p>
+          <p>
+            <strong>What the extension accesses.</strong>{" "}
+            When you click to scan a page, or run the automation feature over a list of URLs you
+            provide, the extension reads that page&apos;s content solely to identify email
+            addresses. It does not read pages you do not actively scan, and it does not monitor
+            your general browsing.
+          </p>
+          <p>
+            <strong>Data collected and where it goes.</strong>
+          </p>
+        </div>
+        <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+          <li>
+            Extracted email addresses and the URL of the page they were found on are stored
+            locally in your browser (
+            <code className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.95em] text-slate-800">
+              chrome.storage
+            </code>
+            ).
+          </li>
+          <li>
+            If you are a PRO user and enable Autosave, those extracted email addresses and their
+            source page URLs are transmitted over HTTPS to our backend API (hosted by Vercel
+            Inc., USA) to save them to your account.
+          </li>
+          <li>
+            Your PRO activation token is sent to our backend to validate your licence and to
+            process payment via Stripe, Inc.
+          </li>
+        </ul>
+        <div className="mt-4 space-y-3 leading-8 text-slate-600">
+          <p>
+            <strong>What the extension does NOT do.</strong> It does not collect your browsing
+            history beyond the pages you actively scan; it does not capture keystrokes,
+            passwords, form inputs, or page content unrelated to email detection; it contains no
+            third-party advertising or analytics trackers and loads no remote code.
+          </p>
+          <p>
+            <strong>Limited use.</strong> Data handled by the extension is used only to provide
+            the email-extraction feature to you. We do not sell it, do not use it for
+            advertising, and do not transfer it to third parties other than the service providers
+            strictly necessary to operate the feature (hosting and transactional email delivery),
+            which act as our processors.
+          </p>
+          <p>
+            <strong>Data you extract about third parties.</strong> Email addresses you extract
+            belong to third parties. You are the controller of how you subsequently use them and
+            are responsible for complying with applicable law (including the GDPR and anti-spam
+            legislation such as the CAN-SPAM Act) when contacting them.
+          </p>
+          <p>
+            <strong>Retention and deletion.</strong>{" "}
+            Locally stored results can be cleared at any time from within the extension.
+            Cloud-saved results (PRO) can be deleted using the extension&apos;s delete function.
+            Uninstalling the extension removes all locally stored data.
+          </p>
+          <p>
+            <strong>Permissions.</strong> The extension requests access to the active tab and
+            scripting to scan the current page on demand; access to our backend domain to save
+            results and validate your licence; and, only if you start the automation feature,
+            optional access to the sites in your list.
+          </p>
+        </div>
+
+        {/* 12. Contact */}
+        <h2 className="mt-12 text-2xl font-semibold text-slate-950">12. Contact</h2>
         <p className="mt-3 leading-8 text-slate-600">
           All privacy-related requests, complaints, and questions:{" "}
           <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
