@@ -523,8 +523,7 @@ export type ServiceShowcaseMedia =
       /** Set false when the artwork already contains its own browser window. */
       framed?: boolean;
     }
-  | { kind: "video"; src: string }
-  | { kind: "volume-demo" };
+  | { kind: "video"; src: string; url: string };
 
 export type ServiceShowcaseItem = {
   key: string;
@@ -615,7 +614,7 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
     label: "Browser extensions",
     title: "Extensions people install and keep.",
     description:
-      "We design Chrome extensions end to end: product, UX, store listing, updates. Volume Control PRO is ours. It is a free audio booster that raises tab volume up to 600%.",
+      "We design Chrome extensions end to end: product, UX, store listing, updates. Volume Control PRO is ours. It raises tab volume up to 600%, free to install, with an optional one-time upgrade for the advanced audio tools.",
     outcomes: [
       "Full lifecycle: build, review, publish, maintain",
       "Chrome Web Store policies handled for you",
@@ -624,9 +623,13 @@ export const servicesShowcase: ServiceShowcaseItem[] = [
     proof: {
       name: "Volume Control PRO",
       href: "/volume-control-pro",
-      note: "Built for ourselves. Free on the Chrome Web Store.",
+      note: "Built for ourselves. Free to install on the Chrome Web Store.",
     },
-    media: { kind: "volume-demo" },
+    media: {
+      kind: "video",
+      src: "/brand/volume-control-demo.mp4",
+      url: "youtube.com, Volume Control PRO boosting a quiet tab",
+    },
   },
 ];
 

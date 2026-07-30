@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
 import { BrowserFrame } from "@/components/marketing/browser-frame";
@@ -12,50 +11,15 @@ type ServiceShowcaseProps = {
   items: ServiceShowcaseItem[];
 };
 
-/**
- * Stylized preview of the Volume Control PRO popup. We have no marketing
- * screenshot for this product yet, so this is an honest, clearly-labeled
- * representation built from the real UI concepts (slider up to 600%),
- * not a fake screenshot.
- */
-function VolumeDemo() {
-  return (
-    <div className="flex min-h-72 flex-col items-center justify-center gap-6 p-8 md:min-h-96">
-      <div className="flex items-center gap-3">
-        <Image
-          src="/brand/volume-control-pro-icon.png"
-          alt="Volume Control PRO icon"
-          width={40}
-          height={40}
-          className="h-10 w-10 rounded-lg border border-slate-200 bg-slate-50 object-contain p-1.5"
-        />
-        <p className="text-lg font-semibold text-slate-950">Volume Control PRO</p>
-      </div>
-      <div className="w-full max-w-sm">
-        <div className="flex items-baseline justify-between text-sm font-semibold">
-          <span className="text-slate-500">Tab volume</span>
-          <span className="text-brand text-2xl">600%</span>
-        </div>
-        <div className="relative mt-3 h-2 rounded-full bg-slate-200" aria-hidden>
-          <div className="bg-brand absolute inset-y-0 left-0 w-full rounded-full" />
-          <div className="border-brand absolute top-1/2 right-0 h-5 w-5 -translate-y-1/2 rounded-full border-2 bg-white shadow-sm" />
-        </div>
-        <div className="mt-2 flex justify-between text-xs font-medium text-slate-400" aria-hidden>
-          <span>0%</span>
-          <span>100%</span>
-          <span>600%</span>
-        </div>
-      </div>
-      <p className="text-xs text-slate-400">Stylized preview of the extension popup.</p>
-    </div>
-  );
-}
-
 function ShowcaseMedia({ media, active }: { media: ServiceShowcaseMedia; active: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc = media.kind === "video" ? media.src : null;
 
   // Play the demo video only while its tab is active, and never when the
-  // visitor prefers reduced motion.
+  // visitor prefers reduced motion. videoSrc is a dependency because the
+  // <video> only mounts once a video tab is selected: keying the effect on
+  // `active` alone leaves it stuck on the first render, when there is no
+  // video element yet, so playback would never start.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -65,22 +29,14 @@ function ShowcaseMedia({ media, active }: { media: ServiceShowcaseMedia; active:
     } else {
       video.pause();
     }
-  }, [active]);
+  }, [active, videoSrc]);
 
   if (media.kind === "video") {
     return (
-      <BrowserFrame url="ClickPilot AI, inside any text field">
+      <BrowserFrame url={media.url}>
         <video ref={videoRef} loop muted playsInline preload="metadata" className="h-auto w-full">
           <source src={media.src} type="video/mp4" />
         </video>
-      </BrowserFrame>
-    );
-  }
-
-  if (media.kind === "volume-demo") {
-    return (
-      <BrowserFrame url="Volume Control PRO, any tab">
-        <VolumeDemo />
       </BrowserFrame>
     );
   }
