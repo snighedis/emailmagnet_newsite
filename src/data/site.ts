@@ -228,6 +228,11 @@ export const footerNav = {
     { label: "Email extraction glossary", href: "/glossary/email-extraction" },
     { label: "ClickPilot AI writer", href: "/clickpilot-ai/ai-writing-assistant-chrome-extension" },
     { label: "Chrome volume booster", href: "/volume-control-pro/chrome-volume-booster-600" },
+    {
+      label: "Chrome volume control extension",
+      href: "/volume-control-pro/chrome-volume-control-extension",
+    },
+    { label: "Tab volume control", href: "/volume-control-pro/tab-volume-control" },
     { label: "Getting started guide", href: "/docs/getting-started" },
     { label: "Exporting emails", href: "/docs/exporting-emails" },
     { label: "Responsible use", href: "/docs/responsible-use" },

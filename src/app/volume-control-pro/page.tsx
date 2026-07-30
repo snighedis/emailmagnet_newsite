@@ -143,7 +143,7 @@ const faqs = [
   {
     question: "Is Volume Control PRO free?",
     answer:
-      "Yes. The extension is listed on the Chrome Web Store with no ads and no subscription. Install it and start boosting immediately.",
+      "Installing it is free, and volume boosting up to 600% with per-site memory stays free. There are no ads and no subscription. An optional Audio Studio PRO upgrade unlocks the advanced audio tools for a one-time payment.",
   },
   {
     question: "Who should use Volume Control PRO?",
@@ -312,6 +312,22 @@ export default function VolumeControlProPage() {
               </Link>
             </li>
             <li>
+              <Link
+                className="text-eyebrow hover:underline"
+                href="/volume-control-pro/chrome-volume-control-extension"
+              >
+                Chrome volume control extension
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-eyebrow hover:underline"
+                href="/volume-control-pro/tab-volume-control"
+              >
+                Tab volume control for Chrome
+              </Link>
+            </li>
+            <li>
               <Link className="text-eyebrow hover:underline" href="/overview">
                 Dentoku Dev product overview
               </Link>
@@ -346,7 +362,7 @@ export default function VolumeControlProPage() {
       <CtaBand
         eyebrow="Get started"
         title="Stop straining to hear quiet tabs"
-        description="Install Volume Control PRO from the Chrome Web Store (free, no ads, no subscription), or reach out if you have a support question."
+        description="Install Volume Control PRO from the Chrome Web Store (free to install, no ads, no subscription), or reach out if you have a support question."
         primary={{ label: "Add to Chrome", href: chromeStoreUrl }}
         secondary={{ label: "Contact support", href: "/contact" }}
       />

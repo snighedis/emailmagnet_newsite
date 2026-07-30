@@ -48,7 +48,8 @@ precise term.
   summarize, translate, custom shortcuts). Freemium, PRO $19 one-time, requires the user's
   own OpenAI API key (BYOK).
 - **Volume Control PRO** — Chrome extension that boosts tab audio up to 600% with per-site
-  memory. 100% free (no revenue; brand/portfolio value). Highest raw-install-volume upside.
+  memory. Freemium: free to install, Audio Studio PRO unlocks for €9.99 one-time. Highest
+  raw-install-volume upside.
 - **Countdown321** — Shopify app for storefront countdown timers. Subscription SaaS
   ($0 to $19.99/mo). Highest LTV; smallest addressable audience (Shopify merchants only).
 

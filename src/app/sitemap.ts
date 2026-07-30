@@ -28,6 +28,8 @@ const routes = [
   "/emailmagnet/email-extractor-vs-scraper",
   "/clickpilot-ai/ai-writing-assistant-chrome-extension",
   "/volume-control-pro/chrome-volume-booster-600",
+  "/volume-control-pro/chrome-volume-control-extension",
+  "/volume-control-pro/tab-volume-control",
   "/countdown321/shopify-countdown-timer-app",
   "/countdown321/shopify-urgency-app",
 ];
