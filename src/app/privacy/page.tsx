@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Privacy Policy</h1>
         <p className="mt-6 leading-8 text-slate-600">
-          Last updated: July 15, 2026. This Privacy Policy describes how Dentoku Dev ("{`"we"`}",
+          Last updated: July 31, 2026. This Privacy Policy describes how Dentoku Dev ("{`"we"`}",
           "{`"us"`}", or "{`"our"`}") processes personal data when you visit dentokudev.com, purchase or
           use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
           Art. 13 of Regulation (EU) 2016/679 ("{`"GDPR"`}") and the Italian Personal Data Protection
@@ -383,10 +383,23 @@ export default function PrivacyPage() {
         </ul>
         <div className="mt-4 space-y-3 leading-8 text-slate-600">
           <p>
+            <strong>Anonymous usage statistics.</strong>{" "}
+            To understand how the extension is used and where people get stuck, EmailMagnet sends
+            anonymous usage events to our own backend (hosted by Vercel Inc., USA). An event
+            records only which action occurred (for example that the extension was installed, that
+            the popup was opened, that a scan found results, or that the upgrade page was viewed),
+            together with the extension version, your browser&apos;s interface language, and a
+            random identifier generated at installation. That identifier is not derived from you
+            or your device and is used solely to count distinct installations. These events never
+            include page URLs, extracted email addresses, page content, or any personal data. We
+            use no third-party analytics services, and we neither sell nor share this data.
+          </p>
+          <p>
             <strong>What the extension does NOT do.</strong> It does not collect your browsing
             history beyond the pages you actively scan; it does not capture keystrokes,
             passwords, form inputs, or page content unrelated to email detection; it contains no
-            third-party advertising or analytics trackers and loads no remote code.
+            third-party advertising or analytics trackers and loads no remote code; the only usage
+            data collected is the anonymous, first-party statistics described above.
           </p>
           <p>
             <strong>Limited use.</strong> Data handled by the extension is used only to provide
