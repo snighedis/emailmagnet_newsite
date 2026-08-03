@@ -78,6 +78,8 @@ maximised the transparency that **is** achievable:
 - The product page states plainly, above the fold, that ClickPilot AI generates text with
   artificial intelligence, that output is machine-generated and may be inaccurate or biased, and
   that the user should review and edit before sending or publishing.
+- The support chatbot, a separate AI system on the same site, declares itself as an AI in its
+  opening message under Article 50(1).
 - The privacy policy carries an equivalent statement in the ClickPilot AI section.
 - The Terms of Service allocate responsibility for reviewing output to the user and disclaim
   warranties on generated text.

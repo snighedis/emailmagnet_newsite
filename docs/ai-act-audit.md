@@ -83,11 +83,14 @@ gone forever after one dismissal does not reliably do that for a returning visit
 
 **The durable fix is in the Chatbase dashboard, not in this repo:** set the bot's opening message so
 it states it is an AI assistant. That message is present at the moment of interaction, every time,
-for every user. The code comment in `chatbot-disclosure.tsx` already recommends exactly this; the
-audit could not verify whether it was ever done.
+for every user.
 
-Secondary, in-repo: consider making the notice reappear (session-scoped rather than permanent), or
-label the launcher region itself.
+**Resolved the same day.** The opening message was set, and it renders both as the launcher teaser
+and as the first message inside the chat. The site-rendered notice was then removed: with the
+Chatbase text in place the two said the same thing and overlapped visually, and the in-chat message
+is the stronger of the two because it cannot be dismissed and always appears at the point of
+interaction. `chatbot-disclosure.tsx` no longer exists; the rationale is recorded as a comment in
+`analytics-gate.tsx` so nobody re-adds it without knowing why it went.
 
 ### F3 — Machine-readable marking of ClickPilot AI outputs is unresolved (HIGH, Art. 50(2))
 
@@ -182,12 +185,14 @@ Recording these explicitly so no effort is wasted on them.
 | # | Action | Owner | Status |
 |---|---|---|---|
 | 1 | Fix the "Your text never leaves your browser" badge | Dev | **Done 3 Aug 2026.** Data flow confirmed as browser to OpenAI directly, no Dentoku server. Badge now reads "Your text goes to your own OpenAI account, never to our servers." |
-| 2 | Set the AI disclosure as the Chatbase bot's opening message | You, in the Chatbase dashboard | **Open.** Not verifiable from this repo. This is the single most important remaining item for Art. 50(1). |
-| 3 | Stop the on-site chatbot notice dismissing forever | Dev | **Done 3 Aug 2026.** Moved from `localStorage` to `sessionStorage`, so it returns each session. |
+| 2 | Set the AI disclosure as the Chatbase bot's opening message | You, in the Chatbase dashboard | **Done 3 Aug 2026.** This is now the primary Art. 50(1) disclosure: it shows as the launcher teaser and as the first message in the chat, so it is present at the moment of interaction on every visit and cannot be dismissed permanently. |
+| 3 | Stop the on-site chatbot notice dismissing forever | Dev | **Superseded 3 Aug 2026.** The site-rendered notice was first moved to `sessionStorage`, then removed entirely once item 2 landed: it duplicated the Chatbase text and the two overlapped on screen. One disclosure at the point of interaction is both cleaner and stronger than two competing ones. |
 | 4 | Add an AI clause set to the Terms of Service | Lawyer | **Open.** Largest documentation gap. ClickPilot AI is still not a defined service in the Terms. |
 | 5 | Add a ClickPilot AI / OpenAI section to the privacy policy | Dev + lawyer review | **Drafted 3 Aug 2026** as § 12. States that text goes from the browser straight to OpenAI under the user's own account and agreement, never through our servers, so OpenAI is **not** our processor for that flow. Worth a legal read. |
 | 6 | Name the AI chat in the cookie banner's Analytics description | Dev | **Done 3 Aug 2026.** |
 | 7 | Resolve the Art. 50(2) marking classification for ClickPilot | Lawyer | **Open.** See F3; do not improvise a marking scheme. |
 
-Three items remain, and the two that matter most both need someone other than a developer: the
-Chatbase opening message (you, five minutes in a dashboard) and the Terms of Service (a lawyer).
+**As of 3 August 2026 every Article 50(1) item is closed.** What remains is item 4 (Terms of Service
+review) and item 7 (the Art. 50(2) marking classification), both of which need a lawyer and neither
+of which is an obstacle to operating in the meantime. See `docs/ai-act-art50-assessment.md` for the
+reasoning held on file for item 7.
