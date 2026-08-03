@@ -8,23 +8,29 @@ const DISMISS_KEY = "chatbot-ai-notice-dismissed";
 /**
  * EU AI Act Art. 50(1) transparency: tell visitors the support chat is an AI
  * system before they interact with it. Rendered only when the Chatbase widget
- * is active (i.e. with analytics consent), and dismissible so it shows once.
+ * is active (i.e. with analytics consent).
  *
- * Best practice: also set the bot's opening message in the Chatbase dashboard to
- * repeat this disclosure inside the chat window itself.
+ * Dismissal is deliberately scoped to sessionStorage, not localStorage: Art. 50(1)
+ * asks that the person be informed when they interact with the system, so a notice
+ * that disappears forever after one click leaves every later visit unlabelled.
+ * Per session is the compromise between that duty and not nagging.
+ *
+ * This notice is not the whole obligation. The durable disclosure is the bot's
+ * OPENING MESSAGE, set in the Chatbase dashboard, because that one is present at
+ * the moment of interaction for every user on every visit. Keep it in place there.
  */
 export function ChatbotDisclosure() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (window.localStorage.getItem(DISMISS_KEY) === "1") return;
+    if (window.sessionStorage.getItem(DISMISS_KEY) === "1") return;
     // Surface it just after the chat launcher has had time to mount.
     const timer = window.setTimeout(() => setVisible(true), 1500);
     return () => window.clearTimeout(timer);
   }, []);
 
   const dismiss = () => {
-    window.localStorage.setItem(DISMISS_KEY, "1");
+    window.sessionStorage.setItem(DISMISS_KEY, "1");
     setVisible(false);
   };
 

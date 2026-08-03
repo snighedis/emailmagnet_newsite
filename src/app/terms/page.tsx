@@ -22,7 +22,7 @@ export default function TermsPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Terms of Service</h1>
         <p className="mt-6 leading-8 text-slate-600">
-          Last updated: June 9, 2026. These Terms of Service ("{`"Terms"`}") form a binding
+          Last updated: August 3, 2026. These Terms of Service ("{`"Terms"`}") form a binding
           agreement between you ("{`"User"`}" or "{`"Client"`}") and Dentoku Dev (Nicola Orlandi,
           sole trader / ditta individuale, Via Bullona 8, 20154 Milano, Italy, P.IVA
           IT13625480960) ("{`"Dentoku Dev"`}",
@@ -43,9 +43,20 @@ export default function TermsPage() {
         </p>
         <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
           <li>
-            <strong>Software products</strong>: currently EmailMagnet, a browser extension
-            available in a free tier and a one-time purchase ("{`"PRO"`}") tier with lifetime
-            access to the features described on the product page at time of purchase.
+            <strong>Software products</strong>: browser extensions and store applications
+            published by Dentoku Dev, currently EmailMagnet, ClickPilot AI, Volume Control PRO,
+            and Countdown321. Each is offered on the terms shown on its own product page and store
+            listing at the time of purchase. Where a product has a paid tier, that tier is a
+            one-time purchase with lifetime access to the features described at time of purchase,
+            except Countdown321, which is billed as a recurring subscription through the Shopify
+            App Store.
+          </li>
+          <li>
+            <strong>ClickPilot AI specifically</strong> is an artificial intelligence system. It
+            requires you to supply your own OpenAI API key, and your use of that key is governed by
+            your own separate agreement with OpenAI, L.L.C. Any usage costs charged by OpenAI are
+            yours and are not part of the price you pay us. See Section 10 for how this affects
+            warranties.
           </li>
           <li>
             <strong>Digital consulting</strong>: strategy, implementation, and advisory services
@@ -228,6 +239,29 @@ export default function TermsPage() {
           warrant that the services will be error-free or that results obtained will meet your
           requirements. Nothing in these Terms excludes or limits warranties that cannot be
           excluded under mandatory Italian consumer protection law.
+        </p>
+
+        <h3 className="mt-8 text-lg font-semibold text-slate-950">
+          AI-generated output (ClickPilot AI)
+        </h3>
+        <p className="mt-3 leading-8 text-slate-600">
+          ClickPilot AI produces text using an artificial intelligence model. Output is generated
+          automatically and may be inaccurate, incomplete, outdated, biased, or unsuitable for your
+          purpose, even when it reads as confident and well-formed. We give no warranty as to the
+          accuracy, quality, originality, or fitness for any purpose of generated output.
+        </p>
+        <p className="mt-4 leading-8 text-slate-600">
+          You remain responsible for reviewing and editing output before you send, publish, or
+          otherwise rely on it, and for the consequences of doing so. This includes checking that
+          the result is accurate, that it does not infringe anyone else&apos;s rights, and that
+          sending it complies with any law or professional duty that applies to you.
+        </p>
+        <p className="mt-4 leading-8 text-slate-600">
+          Generation is performed by OpenAI under your own API key and your own agreement with
+          OpenAI. We do not control that model, its availability, its pricing, or the content it
+          returns, and we are not responsible for changes to it or for interruptions of the OpenAI
+          service. Text you process is sent from your browser to OpenAI and does not pass through
+          our servers.
         </p>
 
         {/* 11. Limitation of Liability */}

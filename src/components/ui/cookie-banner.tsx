@@ -27,7 +27,7 @@ const categoryCopy = [
     key: "analytics" as const,
     title: "Analytics",
     description:
-      "Google Analytics and privacy-friendly usage metrics that help us improve the site.",
+      "Google Analytics and privacy-friendly usage metrics that help us improve the site. This also loads our optional AI support chat (Chatbase, USA), which processes what you type in it.",
     locked: false,
   },
   {

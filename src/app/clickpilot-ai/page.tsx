@@ -305,7 +305,9 @@ export default function ClickPilotAiPage() {
                 <CheckCircle2 className="w-5 h-5 text-green-600" />
               </div>
               <p className="font-semibold text-slate-900">Privacy First</p>
-              <p className="text-sm text-slate-600">Your text never leaves your browser</p>
+              <p className="text-sm text-slate-600">
+                Your text goes to your own OpenAI account, never to our servers
+              </p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mb-2">
