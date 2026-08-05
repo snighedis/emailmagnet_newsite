@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Privacy Policy</h1>
         <p className="mt-6 leading-8 text-slate-600">
-          Last updated: August 3, 2026. This Privacy Policy describes how Dentoku Dev ("{`"we"`}",
+          Last updated: August 5, 2026. This Privacy Policy describes how Dentoku Dev ("{`"we"`}",
           "{`"us"`}", or "{`"our"`}") processes personal data when you visit dentokudev.com, purchase or
           use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
           Art. 13 of Regulation (EU) 2016/679 ("{`"GDPR"`}") and the Italian Personal Data Protection
@@ -393,6 +393,11 @@ export default function PrivacyPage() {
             or your device and is used solely to count distinct installations. These events never
             include page URLs, extracted email addresses, page content, or any personal data. We
             use no third-party analytics services, and we neither sell nor share this data.
+          </p>
+          <p>
+            You can turn usage statistics off at any time in the extension&apos;s Settings, under{" "}
+            <strong>Privacy</strong>. When you do, nothing further is sent and any events still
+            waiting to be sent are discarded.
           </p>
           <p>
             <strong>What the extension does NOT do.</strong> It does not collect your browsing
