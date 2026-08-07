@@ -36,7 +36,7 @@ export function FeatureCard({
     "group relative flex h-full flex-col rounded-2xl p-6 transition",
     isInk
       ? "border border-white/10 bg-white/[0.04]"
-      : "shadow-soft border border-slate-200/80 bg-white",
+      : "shadow-soft border border-border bg-white",
     href && (isInk ? "hover:bg-white/[0.07]" : "hover:shadow-soft-lg hover:-translate-y-0.5"),
     className,
   );
@@ -48,7 +48,7 @@ export function FeatureCard({
           <span
             className={cn(
               "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl",
-              isInk ? "bg-white/10 text-teal-200" : "bg-brand-soft text-brand",
+              isInk ? "bg-white/10 text-ink-accent" : "bg-brand-soft text-brand",
             )}
           >
             <Icon className="h-5 w-5" />
@@ -58,7 +58,7 @@ export function FeatureCard({
           <span
             className={cn(
               "text-xs font-semibold tracking-[0.14em]",
-              isInk ? "text-white/40" : "text-slate-300",
+              isInk ? "text-white/60" : "text-muted-foreground",
             )}
           >
             {String(index).padStart(2, "0")}
@@ -70,7 +70,7 @@ export function FeatureCard({
           <p
             className={cn(
               "text-xs font-semibold tracking-[0.14em] uppercase",
-              isInk ? "text-teal-200" : "text-eyebrow",
+              isInk ? "text-ink-accent" : "text-eyebrow",
             )}
           >
             {eyebrow}
@@ -80,12 +80,12 @@ export function FeatureCard({
           className={cn(
             "text-xl font-semibold",
             eyebrow ? "mt-1" : "",
-            isInk ? "text-white" : "text-slate-950",
+            isInk ? "text-white" : "text-ink",
           )}
         >
           {title}
         </h3>
-        <p className={cn("mt-2 leading-7", isInk ? "text-ink-muted" : "text-slate-600")}>
+        <p className={cn("mt-2 leading-7", isInk ? "text-ink-muted" : "text-muted-foreground")}>
           {description}
         </p>
       </div>

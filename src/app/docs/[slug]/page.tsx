@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { Eyebrow } from "@/components/marketing/eyebrow";
 import { createMetadata } from "@/lib/metadata";
 import { formatDate } from "@/lib/dates";
 import { buildBreadcrumbSchema, buildHowToSchema } from "@/lib/schema";
@@ -155,7 +156,7 @@ export default async function DocPage({ params }: DocPageProps) {
           steps: doc.steps,
         })}
       />
-      <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Docs</p>
+      <Eyebrow>Docs</Eyebrow>
       <h1 className="mt-3 text-4xl font-semibold text-slate-950">{doc.title}</h1>
       <p className="mt-4 text-sm font-medium text-slate-500">
         Published <time dateTime={doc.datePublished}>{formatDate(doc.datePublished)}</time> · Last

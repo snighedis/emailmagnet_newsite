@@ -22,6 +22,7 @@ import { Testimonials } from "@/components/marketing/testimonials";
 import { TrustBar } from "@/components/marketing/trust-bar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Eyebrow } from "@/components/marketing/eyebrow";
 import { blogPosts } from "@/content/blog";
 import {
   emailMagnetConfig,
@@ -272,7 +273,7 @@ export default function EmailMagnetPage() {
       <section className="bg-white py-18 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">Before and after</p>
+            <Eyebrow>Before and after</Eyebrow>
             <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Replace the fragile part of lead research
             </h2>
@@ -374,7 +375,7 @@ export default function EmailMagnetPage() {
       <section id="reviews" className="bg-surface-soft py-18 md:py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="max-w-3xl space-y-3">
-            <p className="text-sm font-semibold tracking-[0.15em] text-eyebrow uppercase">Reviews</p>
+            <Eyebrow>Reviews</Eyebrow>
             <h2 className="text-ink text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
               What early users say
             </h2>
@@ -395,7 +396,7 @@ export default function EmailMagnetPage() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">Pricing</p>
+              <Eyebrow>Pricing</Eyebrow>
               <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
                 Start free, upgrade when research becomes recurring
               </h2>
@@ -480,7 +481,7 @@ export default function EmailMagnetPage() {
       <section className="bg-white py-18 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">FAQ</p>
+            <Eyebrow>FAQ</Eyebrow>
             <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Questions before rollout
             </h2>
@@ -530,7 +531,7 @@ export default function EmailMagnetPage() {
       <section className="bg-surface-mint py-18 md:py-20">
         <div className="mx-auto max-w-7xl px-4">
           <div className="max-w-3xl space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.15em] text-eyebrow">Newsletter</p>
+            <Eyebrow>Newsletter</Eyebrow>
             <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Stay updated on EmailMagnet improvements
             </h2>

@@ -31,7 +31,7 @@ export function StatStrip({ stats, tone = "light", className }: StatStripProps) 
           >
             {stat.value}
           </dt>
-          <dd className={cn("mt-1 text-sm leading-6", isInk ? "text-ink-muted" : "text-slate-600")}>
+          <dd className={cn("mt-1 text-sm leading-6", isInk ? "text-ink-muted" : "text-muted-foreground")}>
             {stat.label}
           </dd>
         </div>

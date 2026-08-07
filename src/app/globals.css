@@ -49,6 +49,7 @@
   --color-ink-soft: var(--ink-soft);
   --color-ink-foreground: var(--ink-foreground);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-accent: var(--ink-accent);
   --color-accent-teal: var(--teal);
   --color-eyebrow: var(--eyebrow);
   --color-surface-soft: var(--surface-soft);
@@ -106,6 +107,7 @@
   --ink-soft: oklch(0.29 0.04 245); /* lifted navy ≈ #213343 */
   --ink-foreground: oklch(0.985 0 0); /* text on ink */
   --ink-muted: oklch(0.83 0.02 240); /* muted text on ink ≈ slate-200/300 */
+  --ink-accent: oklch(0.91 0.093 180); /* accent ON ink ≈ #99f6e4, 13:1 on --ink */
   --teal: oklch(0.52 0.08 192); /* trust/check accent ≈ #0f766e */
   --eyebrow: oklch(0.52 0.17 38); /* rust eyebrow label ≈ #c43618 */
   --surface-soft: oklch(0.985 0.006 70); /* warm off-white */

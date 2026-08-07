@@ -5,17 +5,35 @@ import { cn } from "@/lib/utils";
 
 type HeroVideoProps = {
   className?: string;
+  /** Defaults to the homepage Remotion render. */
+  src?: string;
+  /** Shown before playback and as the reduced-motion / no-JS experience. */
+  poster?: string;
+  label?: string;
+  width?: number;
+  height?: number;
 };
 
 /**
- * Homepage hero video (rendered offline with Remotion from real product UI,
- * see video/README.md). Muted 9s loop, Apollo-style.
+ * Looping product video with a poster fallback.
  *
  * Autoplay is started from JS after mount and ONLY when the visitor does not
  * prefer reduced motion, so the static poster is the reduced-motion and no-JS
- * experience. The poster is also the page's LCP image (preloaded in page.tsx).
+ * experience. On the homepage the poster is also the LCP image (preloaded in
+ * page.tsx). `preload="metadata"` keeps the video itself off the critical path.
+ *
+ * Use this instead of a hand-rolled <video autoPlay>: an unconditional autoplay
+ * loop with no pause affordance fails WCAG 2.2 SC 2.2.2, and without a poster
+ * the area stays blank until the file arrives.
  */
-export function HeroVideo({ className }: HeroVideoProps) {
+export function HeroVideo({
+  className,
+  src = "/brand/homepage-hero.mp4",
+  poster = "/brand/homepage-hero-poster.jpg",
+  label = "Short looping showcase of the four Dentoku Dev products",
+  width = 1280,
+  height = 800,
+}: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -47,15 +65,16 @@ export function HeroVideo({ className }: HeroVideoProps) {
         loop
         playsInline
         preload="metadata"
-        poster="/brand/homepage-hero-poster.jpg"
-        width={1280}
-        height={800}
-        className="aspect-[1280/800] h-auto w-full"
-        aria-label="Short looping showcase of the four Dentoku Dev products"
+        poster={poster}
+        width={width}
+        height={height}
+        style={{ aspectRatio: `${width} / ${height}` }}
+        className="h-auto w-full"
+        aria-label={label}
       >
         {/* h264 only: universally decodable, and at this bitrate it came out
             SMALLER than the vp9 webm, which also hit decode errors in testing. */}
-        <source src="/brand/homepage-hero.mp4" type="video/mp4" />
+        <source src={src} type="video/mp4" />
       </video>
     </div>
   );

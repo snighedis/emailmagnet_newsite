@@ -55,7 +55,7 @@ export function SectionHeading({
         <p
           className={cn(
             "text-lg leading-8 md:text-xl",
-            isInk ? "text-ink-muted" : "text-slate-600",
+            isInk ? "text-ink-muted" : "text-muted-foreground",
             descriptionClassName,
           )}
         >

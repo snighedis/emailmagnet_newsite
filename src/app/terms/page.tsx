@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/marketing/json-ld";
+import { Eyebrow } from "@/components/marketing/eyebrow";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema } from "@/lib/schema";
 
@@ -19,7 +20,7 @@ export default function TermsPage() {
         ])}
       />
       <article className="mx-auto max-w-3xl px-4 py-12 md:py-20">
-        <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
+        <Eyebrow>Legal</Eyebrow>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Terms of Service</h1>
         <p className="mt-6 leading-8 text-slate-600">
           Last updated: August 3, 2026. These Terms of Service ("{`"Terms"`}") form a binding

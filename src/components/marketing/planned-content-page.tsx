@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { RelatedResources } from "@/components/marketing/related-resources";
+import { Eyebrow } from "@/components/marketing/eyebrow";
 
 type PlannedContentPageProps = {
   eyebrow: string;
@@ -26,7 +27,7 @@ export function PlannedContentPage({
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-4xl px-4">
-        <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">{eyebrow}</p>
+        <Eyebrow>{eyebrow}</Eyebrow>
         <h1 className="mt-3 text-4xl font-semibold tracking-normal text-balance text-slate-950 md:text-6xl">
           {title}
         </h1>

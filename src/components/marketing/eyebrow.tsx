@@ -9,7 +9,7 @@ type EyebrowProps = ComponentProps<"p"> & {
 
 const toneClasses: Record<EyebrowTone, string> = {
   brand: "text-eyebrow",
-  ink: "text-teal-200",
+  ink: "text-ink-accent",
 };
 
 /**

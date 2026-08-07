@@ -37,7 +37,7 @@ function Stars({ rating }: { rating: number }) {
     <span className="relative inline-flex" aria-hidden>
       <span className="flex">
         {Array.from({ length: 5 }).map((_, i) => (
-          <SolidStar key={i} className="text-slate-300" />
+          <SolidStar key={i} className="text-ink/20" />
         ))}
       </span>
       <span
@@ -70,7 +70,7 @@ export function TrustBar({
     <div
       className={cn(
         "flex flex-wrap items-center gap-x-4 gap-y-2 text-sm",
-        isInk ? "text-ink-muted" : "text-slate-600",
+        isInk ? "text-ink-muted" : "text-muted-foreground",
         className,
       )}
     >
@@ -78,7 +78,7 @@ export function TrustBar({
         <span className="flex items-center gap-2">
           <Stars rating={rating} />
           <span className="sr-only">{rating} out of 5</span>
-          <span className={cn("font-semibold", isInk ? "text-white" : "text-slate-900")}>
+          <span className={cn("font-semibold", isInk ? "text-white" : "text-ink")}>
             {rating.toFixed(1)}
           </span>
           {reviewLabel ? <span>on {reviewLabel}</span> : null}

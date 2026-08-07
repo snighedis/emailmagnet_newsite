@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
+import { HeroVideo } from "@/components/marketing/hero-video";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { FaqList } from "@/components/marketing/faq-list";
 import { PricingCards } from "@/components/marketing/pricing-cards";
@@ -241,9 +242,7 @@ export default function ClickPilotAiPage() {
       />
       <section className="bg-white py-16">
         <div className="mx-auto max-w-4xl px-4 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">
-            Chrome AI Writing Assistant
-          </p>
+          <Eyebrow>Chrome AI Writing Assistant</Eyebrow>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl">
             ClickPilot AI: write better anywhere, directly in your browser
           </h1>
@@ -251,18 +250,19 @@ export default function ClickPilotAiPage() {
             ClickPilot AI works inside the websites you already use. No copy-paste, no extra tabs, no workflow breaks.
           </p>
           
-          <div className="mt-8 rounded-xl overflow-hidden shadow-2xl border border-slate-200 max-w-4xl mx-auto">
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className="w-full h-auto"
-            >
-              <source src="/clickpilot-ai-demo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
+          <HeroVideo
+            className="mx-auto mt-8 max-w-4xl"
+            src="/clickpilot-ai-demo.mp4"
+            poster="/brand/clickpilot-ai-poster.jpg"
+            label="Screen recording of ClickPilot AI rewriting selected text inside a web page"
+            width={1280}
+            height={628}
+          />
+          <p className="sr-only">
+            The demo above is a silent, looping screen recording. It shows text being selected on a
+            web page, the ClickPilot AI panel opening over it, and the selected passage being
+            rewritten in place.
+          </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
@@ -482,9 +482,7 @@ export default function ClickPilotAiPage() {
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow mb-3">
-              Upgrade Available
-            </p>
+            <Eyebrow className="mb-3">Upgrade Available</Eyebrow>
             <h2 className="text-3xl font-bold text-slate-950 mb-4">
               ClickPilot AI Lifetime
             </h2>
@@ -574,7 +572,7 @@ export default function ClickPilotAiPage() {
       <section className="bg-white py-20">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">FAQ</p>
+            <Eyebrow>FAQ</Eyebrow>
             <h2 className="mt-3 text-3xl font-semibold text-slate-950">ClickPilot AI FAQ</h2>
           </div>
           <FaqList items={faqs} />

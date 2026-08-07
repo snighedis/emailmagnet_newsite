@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/marketing/section-heading";
 import { founderConfig, productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildFounderSchema, buildPersonSchema } from "@/lib/schema";
+import { Eyebrow } from "@/components/marketing/eyebrow";
 
 export const metadata = createMetadata({
   title: "Dentoku Dev Founder Led Studio",
@@ -93,9 +94,7 @@ export default function FounderPage() {
                   href={product.href}
                   className="rounded-xl border border-slate-200 p-5 transition hover:border-brand hover:bg-slate-50"
                 >
-                  <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">
-                    {product.category}
-                  </p>
+                  <Eyebrow>{product.category}</Eyebrow>
                   <h3 className="mt-2 text-xl font-semibold text-slate-950">{product.name}</h3>
                   <p className="mt-3 leading-7 text-slate-600">{product.description}</p>
                 </Link>
