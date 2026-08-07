@@ -22,6 +22,7 @@ import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { HeroVideo } from "@/components/marketing/hero-video";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { CtaBand } from "@/components/marketing/cta-band";
 import { FaqList } from "@/components/marketing/faq-list";
 import { PricingCards } from "@/components/marketing/pricing-cards";
 import { productPortfolio, siteConfig, type PricingPlan } from "@/data/site";
@@ -138,7 +139,7 @@ export default function ClickPilotAiPage() {
     {
       name: "Most websites",
       description: "Works in any text field across the web",
-      icon: <Globe2 className="h-10 w-10 text-slate-400" aria-hidden />,
+      icon: <Globe2 className="h-10 w-10 text-muted-foreground" aria-hidden />,
     },
   ];
 
@@ -180,7 +181,7 @@ export default function ClickPilotAiPage() {
       name: "Free plan",
       price: "Free",
       eyebrow: "Perfect to get started",
-      description: "Use core AI writing actions in Chrome before upgrading to recurring workflows.",
+      description: "Use core AI writing actions in Chrome before deciding whether the full toolkit earns its place.",
       features: [
         "Core AI actions.",
         "Fix, rewrite, translate, and summarize.",
@@ -191,11 +192,10 @@ export default function ClickPilotAiPage() {
         label: "Install Free Version",
         href: "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
       },
-      featured: true,
     },
     {
       name: "PRO plan",
-      eyebrow: "For recurring writing",
+      eyebrow: "One-time payment",
       price: "$19",
       description: "One payment for full ClickPilot AI access, custom shortcuts, and lifetime use.",
       features: [
@@ -209,6 +209,7 @@ export default function ClickPilotAiPage() {
         label: "Get Lifetime PRO",
         href: "https://dentoku.gumroad.com/l/clickpilotAI",
       },
+      featured: true,
     },
   ];
 
@@ -240,13 +241,12 @@ export default function ClickPilotAiPage() {
           { name: "ClickPilot AI", href: "/clickpilot-ai" },
         ])}
       />
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-4 text-center">
+      <Section variant="default" container="narrow" containerClassName="text-center">
           <Eyebrow>Chrome AI Writing Assistant</Eyebrow>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-slate-950 sm:text-6xl">
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-6xl">
             ClickPilot AI: write better anywhere, directly in your browser
           </h1>
-          <p className="mt-6 text-xl leading-8 text-slate-600 max-w-3xl mx-auto">
+          <p className="mt-6 text-xl leading-8 text-muted-foreground max-w-3xl mx-auto">
             ClickPilot AI works inside the websites you already use. No copy-paste, no extra tabs, no workflow breaks.
           </p>
           
@@ -265,14 +265,14 @@ export default function ClickPilotAiPage() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
+            <Button asChild size="xl" className="font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                 Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </Button>
           </div>
-          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-slate-500">
+          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
             <span className="inline-flex items-center gap-1.5">
               <Zap className="h-4 w-4 text-eyebrow" /> Installs in 10 seconds
             </span>
@@ -280,45 +280,42 @@ export default function ClickPilotAiPage() {
               <Check className="h-4 w-4 text-accent-teal" /> No account required
             </span>
           </p>
-          <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-slate-500">
-            <strong className="font-semibold text-slate-600">AI transparency:</strong> ClickPilot AI
+          <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-muted-foreground">
+            <strong className="font-semibold text-muted-foreground">AI transparency:</strong> ClickPilot AI
             generates text using artificial intelligence (via your own OpenAI key). Outputs are
             machine-generated and may be inaccurate or biased. Review and edit them before you
             send or publish.
           </p>
-        </div>
-      </section>
+      </Section>
 
       {/* Trust signals section */}
-      <section className="bg-slate-50 py-12">
-        <div className="mx-auto max-w-4xl px-4">
+      <Section variant="soft" spacing="compact" container="narrow">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mb-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <div className="bg-accent-teal/10 mb-2 flex size-9 items-center justify-center rounded-full">
+                <CheckCircle2 className="text-accent-teal size-5" />
               </div>
-              <p className="font-semibold text-slate-900">Chrome Web Store Verified</p>
-              <p className="text-sm text-slate-600">Official extension with security review</p>
+              <p className="font-semibold text-ink">Chrome Web Store Verified</p>
+              <p className="text-sm text-muted-foreground">Official extension with security review</p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mb-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <div className="bg-accent-teal/10 mb-2 flex size-9 items-center justify-center rounded-full">
+                <CheckCircle2 className="text-accent-teal size-5" />
               </div>
-              <p className="font-semibold text-slate-900">Privacy First</p>
-              <p className="text-sm text-slate-600">
+              <p className="font-semibold text-ink">Privacy First</p>
+              <p className="text-sm text-muted-foreground">
                 Your text goes to your own OpenAI account, never to our servers
               </p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mb-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600" />
+              <div className="bg-accent-teal/10 mb-2 flex size-9 items-center justify-center rounded-full">
+                <CheckCircle2 className="text-accent-teal size-5" />
               </div>
-              <p className="font-semibold text-slate-900">Works in 50+ Languages</p>
-              <p className="text-sm text-slate-600">Global writing assistance</p>
+              <p className="font-semibold text-ink">Works in 50+ Languages</p>
+              <p className="text-sm text-muted-foreground">Global writing assistance</p>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Before/After comparison */}
       <Section variant="default" containerClassName="max-w-6xl">
@@ -327,7 +324,7 @@ export default function ClickPilotAiPage() {
           <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
             The old way vs. the ClickPilot way
           </h2>
-          <p className="mt-4 text-lg leading-8 text-slate-600">
+          <p className="mt-4 text-lg leading-8 text-muted-foreground">
             The same task, two very different workflows. See how much time and focus you keep by
             staying right inside your browser.
           </p>
@@ -335,27 +332,27 @@ export default function ClickPilotAiPage() {
 
         <div className="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2 lg:gap-8">
           {/* Old way — de-emphasized */}
-          <div className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-7 md:p-8">
+          <div className="flex h-full flex-col rounded-3xl border border-border bg-white p-7 md:p-8">
             <div className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-red-50 text-red-500">
+                <span className="flex h-9 w-9 items-center justify-center bg-destructive/8 text-destructive rounded-full">
                   <XCircle className="h-5 w-5" />
                 </span>
-                <h3 className="text-lg font-semibold text-slate-600">Without ClickPilot AI</h3>
+                <h3 className="text-lg font-semibold text-muted-foreground">Without ClickPilot AI</h3>
               </div>
-              <span className="rounded-md bg-red-50 px-3 py-1 text-xs font-semibold text-red-600">
+              <span className="bg-destructive/8 text-danger rounded-md px-3 py-1 text-xs font-semibold">
                 8 steps
               </span>
             </div>
             <ul className="mt-6 flex-1 space-y-3">
               {oldWaySteps.map((step) => (
-                <li key={step} className="flex items-start gap-3 text-slate-500">
-                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-red-400" />
+                <li key={step} className="flex items-start gap-3 text-muted-foreground">
+                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-destructive/70" />
                   <span className="leading-6">{step}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-7 flex items-center gap-2 rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+            <div className="mt-7 flex items-center gap-2 bg-destructive/8 text-danger rounded-2xl px-4 py-3 text-sm font-semibold">
               <Clock className="h-4 w-4 shrink-0" /> Takes 2–3 minutes, breaks focus
             </div>
           </div>
@@ -370,7 +367,7 @@ export default function ClickPilotAiPage() {
                 <span className="bg-accent-teal/10 text-accent-teal flex h-9 w-9 items-center justify-center rounded-full">
                   <Check className="h-5 w-5" />
                 </span>
-                <h3 className="text-lg font-semibold text-slate-900">With ClickPilot AI</h3>
+                <h3 className="text-lg font-semibold text-ink">With ClickPilot AI</h3>
               </div>
               <span className="bg-accent-teal/10 text-accent-teal rounded-md px-3 py-1 text-xs font-semibold">
                 4 steps
@@ -378,7 +375,7 @@ export default function ClickPilotAiPage() {
             </div>
             <ul className="mt-6 flex-1 space-y-3">
               {newWaySteps.map((step) => (
-                <li key={step} className="flex items-start gap-3 text-slate-700">
+                <li key={step} className="flex items-start gap-3 text-muted-foreground">
                   <span className="bg-accent-teal/10 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
                     <Check className="text-accent-teal h-3 w-3" />
                   </span>
@@ -394,99 +391,93 @@ export default function ClickPilotAiPage() {
       </Section>
 
       {/* Specific Use Cases */}
-      <section className="bg-slate-50 py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          
-          <h2 className="text-3xl font-bold text-center text-slate-950 mb-12">
+      <Section variant="soft" containerClassName="max-w-6xl">
+          <h2 className="text-3xl font-bold text-center text-ink mb-12">
             With one click, you can:
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <Card
                 key={feature.title}
-                className="rounded-xl border-orange-200 bg-gradient-to-br from-orange-50 to-red-50 shadow-sm transition-shadow hover:shadow-md"
+                className="shadow-soft hover:shadow-soft-lg border-border rounded-2xl bg-white transition-shadow"
               >
                 <CardContent className="p-6">
                   <div className="flex items-start gap-3">
-                    <feature.icon className="mt-0.5 h-7 w-7 shrink-0 text-orange-700" />
+                    <feature.icon className="text-brand mt-0.5 h-7 w-7 shrink-0" />
                     <div>
-                      <h3 className="text-lg font-semibold text-orange-800">{feature.title}</h3>
-                      <p className="mt-2 text-orange-700">{feature.description}</p>
+                      <h3 className="text-ink text-lg font-semibold">{feature.title}</h3>
+                      <p className="text-muted-foreground mt-2">{feature.description}</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
-          
+
           {/* CTA Section */}
           <div className="mt-16 text-center">
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-slate-950 mb-4">Ready to Write Better, Faster?</h3>
-              <p className="text-slate-600 mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
-              <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
+            <div className="bg-white rounded-2xl border border-border p-8 max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-ink mb-4">Ready to Write Better, Faster?</h3>
+              <p className="text-muted-foreground mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
+              <Button asChild size="xl" className="font-semibold">
                 <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                   Add to Chrome - It&apos;s Free
                   <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
               </Button>
-              <p className="mt-4 text-sm text-slate-500">
+              <p className="mt-4 text-sm text-muted-foreground">
                 Start free • Upgrade to PRO for $19 • One-time payment, lifetime access
               </p>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Where it works */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-4xl px-4">
+      <Section variant="default" container="narrow">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-950 mb-4">
+            <h2 className="text-3xl font-bold text-ink mb-4">
               Where it works
             </h2>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-muted-foreground">
               ClickPilot AI integrates seamlessly with your favorite platforms
             </p>
           </div>
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {whereItWorks.map((platform) => (
-              <Card key={platform.name} className="rounded-xl border-slate-200 shadow-sm">
+              <Card key={platform.name} className="rounded-xl border-border shadow-sm">
                 <CardContent className="p-6 text-center">
                   <div className="flex justify-center mb-4">{platform.icon}</div>
-                  <h3 className="text-lg font-semibold text-slate-950 mb-2">{platform.name}</h3>
-                  <p className="text-slate-600">{platform.description}</p>
+                  <h3 className="text-lg font-semibold text-ink mb-2">{platform.name}</h3>
+                  <p className="text-muted-foreground">{platform.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
           
           <div className="mt-8 text-center">
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-muted-foreground">
               Note: Some platforms like Google Docs may have limited support
             </p>
           </div>
 
-          <div className="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
-            <p className="mt-2 leading-7 text-slate-600">
+          <div className="mt-10 rounded-xl border border-border bg-muted p-5">
+            <h2 className="text-lg font-semibold text-ink">What it is not</h2>
+            <p className="mt-2 leading-7 text-muted-foreground">
               ClickPilot AI is not a document editor or a content manager. It improves the text in
               fields you are already writing in (fix, rewrite, summarize, translate) and hands
               control straight back to you.
             </p>
           </div>
-        </div>
-      </section>
+      </Section>
 
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-6xl px-4">
+      <Section variant="soft" containerClassName="max-w-6xl">
           <div className="text-center mb-16">
             <Eyebrow className="mb-3">Upgrade Available</Eyebrow>
-            <h2 className="text-3xl font-bold text-slate-950 mb-4">
+            <h2 className="text-3xl font-bold text-ink mb-4">
               ClickPilot AI Lifetime
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Upgrade to ClickPilot AI Lifetime and bring AI writing into your daily workflow.
             </p>
           </div>
@@ -494,61 +485,59 @@ export default function ClickPilotAiPage() {
           <div className="mt-10">
             <PricingCards plans={clickPilotPricingPlans} />
           </div>
-        </div>
-      </section>
+      </Section>
 
-      <section className="bg-slate-50 py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-semibold tracking-normal text-slate-950 md:text-4xl">
+      <Section variant="default" containerClassName="max-w-6xl">
+          <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
             How activation works
           </h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {workflow.map((step, index) => (
-              <Card key={step.title} className="rounded-xl border-slate-200 bg-white shadow-sm">
+              <Card key={step.title} className="rounded-xl border-border bg-white shadow-sm">
                 <CardContent className="p-6">
-                  <p className="text-xs font-mono text-slate-400">0{index + 1}</p>
-                  <h3 className="mt-4 text-xl font-semibold text-slate-950">{step.title}</h3>
-                  <p className="mt-3 leading-7 text-slate-600">{step.description}</p>
+                  <p className="text-xs font-mono text-muted-foreground">0{index + 1}</p>
+                  <h3 className="mt-4 text-xl font-semibold text-ink">{step.title}</h3>
+                  <p className="mt-3 leading-7 text-muted-foreground">{step.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
           
           {/* Requirements */}
-          <div className="mt-16 bg-white rounded-2xl border border-slate-200 p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-slate-950 mb-6 text-center">Requirements</h3>
+          <div className="mt-16 bg-white rounded-2xl border border-border p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-ink mb-6 text-center">Requirements</h3>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Globe2 className="h-6 w-6 text-blue-600" />
+                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
+                  <Globe2 className="text-brand h-6 w-6" />
                 </div>
-                <h4 className="font-semibold text-slate-950">Google Chrome</h4>
-                <p className="text-sm text-slate-600 mt-1">Browser required</p>
+                <h4 className="font-semibold text-ink">Google Chrome</h4>
+                <p className="text-sm text-muted-foreground mt-1">Browser required</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Puzzle className="h-6 w-6 text-green-600" />
+                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
+                  <Puzzle className="text-brand h-6 w-6" />
                 </div>
-                <h4 className="font-semibold text-slate-950">Extension installed</h4>
-                <p className="text-sm text-slate-600 mt-1">Free from Chrome Web Store</p>
+                <h4 className="font-semibold text-ink">Extension installed</h4>
+                <p className="text-sm text-muted-foreground mt-1">Free from Chrome Web Store</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <Key className="h-6 w-6 text-orange-600" />
+                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
+                  <Key className="text-brand h-6 w-6" />
                 </div>
-                <h4 className="font-semibold text-slate-950">OpenAI API key</h4>
-                <p className="text-sm text-slate-600 mt-1">Your own key (BYOK)</p>
+                <h4 className="font-semibold text-ink">OpenAI API key</h4>
+                <p className="text-sm text-muted-foreground mt-1">Your own key (BYOK)</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <CreditCard className="h-6 w-6 text-red-600" />
+                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
+                  <CreditCard className="text-brand h-6 w-6" />
                 </div>
-                <h4 className="font-semibold text-slate-950">API usage costs</h4>
-                <p className="text-sm text-slate-600 mt-1">Not included in license</p>
+                <h4 className="font-semibold text-ink">API usage costs</h4>
+                <p className="text-sm text-muted-foreground mt-1">Not included in license</p>
               </div>
             </div>
             <div className="mt-6 text-center">
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-muted-foreground">
                 API usage costs are separate and paid directly to OpenAI
               </p>
             </div>
@@ -556,34 +545,33 @@ export default function ClickPilotAiPage() {
           
           {/* Final CTA */}
           <div className="mt-16 text-center">
-            <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
+            <Button asChild size="xl" className="font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                 Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
             </Button>
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-slate-500">
+            <p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">
               <Zap className="h-4 w-4 text-eyebrow" /> Installs in 10 seconds • Start writing better immediately
             </p>
           </div>
-        </div>
-      </section>
+      </Section>
 
-      <section className="bg-white py-20">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[0.8fr_1fr]">
+      <Section variant="soft" containerClassName="max-w-6xl">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr]">
           <div>
             <Eyebrow>FAQ</Eyebrow>
-            <h2 className="mt-3 text-3xl font-semibold text-slate-950">ClickPilot AI FAQ</h2>
+            <h2 className="mt-3 text-3xl font-semibold text-ink">ClickPilot AI FAQ</h2>
           </div>
           <FaqList items={faqs} />
         </div>
-      </section>
 
-      <section className="bg-white pb-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <nav aria-label="ClickPilot AI related Dentoku Dev pages" className="rounded-xl border border-slate-200 bg-white p-5">
-            <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
-            <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+        <nav
+          aria-label="ClickPilot AI related Dentoku Dev pages"
+          className="shadow-soft border-border mt-12 rounded-2xl border bg-white p-5"
+        >
+          <h2 className="text-ink text-lg font-semibold">Related pages</h2>
+          <ul className="text-muted-foreground mt-3 grid gap-2 text-sm sm:grid-cols-2">
               <li>
                 <Link className="font-medium text-eyebrow hover:underline" href="/overview">
                   Dentoku Dev product overview
@@ -604,10 +592,20 @@ export default function ClickPilotAiPage() {
                   Contact Dentoku Dev support
                 </Link>
               </li>
-            </ul>
-          </nav>
-        </div>
-      </section>
+          </ul>
+        </nav>
+      </Section>
+
+      <CtaBand
+        eyebrow="Get started"
+        title="Stop switching tabs to fix a sentence"
+        description="Install the free extension and use fix, rewrite, summarize and translate inside the fields you already type in. Upgrade to the lifetime licence when it earns its place."
+        primary={{
+          label: "Add to Chrome",
+          href: "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
+        }}
+        secondary={{ label: "Get lifetime PRO", href: "https://dentoku.gumroad.com/l/clickpilotAI" }}
+      />
     </>
   );
 }

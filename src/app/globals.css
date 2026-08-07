@@ -28,6 +28,7 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-danger: var(--danger);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -108,6 +109,13 @@
   --ink-foreground: oklch(0.985 0 0); /* text on ink */
   --ink-muted: oklch(0.83 0.02 240); /* muted text on ink ≈ slate-200/300 */
   --ink-accent: oklch(0.91 0.093 180); /* accent ON ink ≈ #99f6e4, 13:1 on --ink */
+  /* Same split as --brand / --brand-cta: the base token is fine for icons and
+     fills, but destructive TEXT on a tinted destructive background only reaches
+     4.13:1. This darker cut is 5.2:1 there and 6.0:1 on white. */
+  --danger: oklch(0.52 0.22 27.3); /* ≈ #c90009. Named --danger, not
+     --destructive-strong: Tailwind will not generate a utility whose name
+     extends an already-registered colour (destructive), so the longer name
+     silently produced no class at all. */
   --teal: oklch(0.52 0.08 192); /* trust/check accent ≈ #0f766e */
   --eyebrow: oklch(0.52 0.17 38); /* rust eyebrow label ≈ #c43618 */
   --surface-soft: oklch(0.985 0.006 70); /* warm off-white */
