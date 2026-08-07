@@ -280,7 +280,6 @@ export const pricingPlans: PricingPlan[] = [
       "Unlimited export size.",
       "Autosave while browsing.",
       "Bulk extraction for reviewed URL lists.",
-      "Faster processing for recurring research sessions.",
       "CSV and TXT export.",
       "Priority email support.",
     ],
