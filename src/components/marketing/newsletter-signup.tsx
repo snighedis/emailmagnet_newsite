@@ -67,7 +67,7 @@ export function NewsletterSignup() {
           />
           <button
             type="submit"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-white shadow-sm transition hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-80"
+            className="inline-flex h-10 items-center justify-center rounded-md bg-brand-cta px-4 text-sm font-medium text-white shadow-sm transition hover:bg-brand-cta-hover disabled:cursor-not-allowed disabled:opacity-80"
             disabled={state === "loading"}
           >
             {state === "loading" ? "Please wait..." : "Subscribe"}

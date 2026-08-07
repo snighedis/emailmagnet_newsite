@@ -117,7 +117,7 @@ export default function Home() {
                 key={step.title}
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
               >
-                <p className="font-mono text-xs text-white/40">0{index + 1}</p>
+                <p className="font-mono text-xs text-white/60">0{index + 1}</p>
                 <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
                 <p className="text-ink-muted mt-2 text-sm leading-6">{step.description}</p>
               </li>

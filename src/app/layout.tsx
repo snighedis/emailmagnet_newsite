@@ -32,10 +32,11 @@ const firaSansCondensed = Fira_Sans_Condensed({
 
 // Newsreader — SIL Open Font License 1.1 (commercial use + self-hosting allowed).
 // Used for headings/titles site-wide; Inter is the body/UI font.
+// No `weight`: Newsreader has a variable axis, so omitting it ships ONE variable
+// file instead of four static cuts. Listing weights explicitly forfeits that.
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 

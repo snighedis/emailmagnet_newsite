@@ -68,7 +68,7 @@ export function ProductVisual() {
                   </div>
                 ))}
               </div>
-              <button className="mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-md bg-brand text-sm font-semibold text-white">
+              <button className="mt-4 flex h-10 w-full items-center justify-center gap-2 rounded-md bg-brand-cta text-sm font-semibold text-white">
                 <Download className="h-4 w-4" />
                 Export CSV
               </button>

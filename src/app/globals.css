@@ -43,6 +43,8 @@
   --color-brand: var(--brand);
   --color-brand-strong: var(--brand-strong);
   --color-brand-soft: var(--brand-soft);
+  --color-brand-cta: var(--brand-cta);
+  --color-brand-cta-hover: var(--brand-cta-hover);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-ink-foreground: var(--ink-foreground);
@@ -91,6 +93,14 @@
   /* Brand & semantic tokens (warm HubSpot-style palette) */
   --brand: oklch(0.68 0.21 35); /* vivid orange ≈ #ff5c35 */
   --brand-strong: oklch(0.6 0.2 33); /* hover ≈ #df4320 */
+  /* Surfaces that carry WHITE text must use these, not --brand: white on
+     --brand is 3.15:1 and on --brand-strong 4.34:1, both under the 4.5:1 that
+     WCAG 2.2 SC 1.4.3 requires for normal-size text. No button size on this
+     site reaches the large-text threshold, so the brand orange can never sit
+     behind white button labels. --brand stays as-is for large display text
+     (the 70px hero accent clears the 3:1 large-text bar) and for borders. */
+  --brand-cta: oklch(0.585 0.21 35); /* ≈ #dc3400 → 4.63:1 on white */
+  --brand-cta-hover: oklch(0.55 0.2 33); /* ≈ #cc2c05 → 5.35:1 on white */
   --brand-soft: oklch(0.96 0.028 45); /* tinted surface ≈ #fff5f1 */
   --ink: oklch(0.24 0.035 248); /* deep navy ≈ #132333 */
   --ink-soft: oklch(0.29 0.04 245); /* lifted navy ≈ #213343 */
@@ -157,6 +167,13 @@
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+  }
+  /* The hero's secondary CTA jumps to #services, so smooth scroll is motion the
+     visitor did not ask for. WCAG 2.2 SC 2.3.3. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
   /* Newsreader (serif) for all titles; Inter stays for body/UI text. */
   h1,

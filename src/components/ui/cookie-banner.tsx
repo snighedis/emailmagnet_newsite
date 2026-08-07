@@ -150,10 +150,10 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={rejectAll}
-            className="flex h-6 w-6 items-center justify-center rounded-full text-slate-400 hover:text-slate-600"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-700"
             aria-label="Reject non-essential cookies and close"
           >
-            <X className="h-3.5 w-3.5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
@@ -205,20 +205,20 @@ export function CookieBanner() {
         <div className="mt-4 flex flex-wrap gap-2">
           <Button
             onClick={rejectAll}
-            size="sm"
+            size="lg"
             className="flex-1 bg-slate-900 text-white hover:bg-slate-800"
           >
             Reject all
           </Button>
           {isPreferences ? (
-            <Button onClick={savePreferences} size="sm" variant="outline" className="flex-1">
+            <Button onClick={savePreferences} size="lg" variant="outline" className="flex-1">
               Save choices
             </Button>
           ) : null}
           <Button
             onClick={acceptAll}
-            size="sm"
-            className="bg-brand hover:bg-brand-strong flex-1 text-white"
+            size="lg"
+            className="flex-1"
           >
             Accept all
           </Button>
@@ -228,7 +228,7 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={openPanel}
-            className="mt-3 text-xs font-medium text-slate-500 underline underline-offset-4 hover:text-slate-700"
+            className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-slate-600 underline underline-offset-4 hover:text-slate-900"
           >
             Manage preferences
           </button>

@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           { name: "Privacy Policy", href: "/privacy" },
         ])}
       />
-      <article className="mx-auto max-w-3xl px-4 py-20">
+      <article className="mx-auto max-w-3xl px-4 py-12 md:py-20">
         <p className="text-sm font-semibold uppercase tracking-wide text-eyebrow">Legal</p>
         <h1 className="mt-3 text-4xl font-semibold text-slate-950">Privacy Policy</h1>
         <p className="mt-6 leading-8 text-slate-600">

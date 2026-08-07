@@ -106,6 +106,7 @@ export function ServiceShowcase({ items }: ServiceShowcaseProps) {
       <div
         role="tablist"
         aria-label="What we build"
+        aria-orientation="horizontal"
         className="flex flex-wrap gap-2 border-b border-slate-200 pb-4"
       >
         {items.map((item, index) => {
@@ -119,7 +120,7 @@ export function ServiceShowcase({ items }: ServiceShowcaseProps) {
               role="tab"
               id={`showcase-tab-${item.key}`}
               aria-selected={isActive}
-              aria-controls={`showcase-panel-${item.key}`}
+              aria-controls={isActive ? `showcase-panel-${item.key}` : undefined}
               tabIndex={isActive ? 0 : -1}
               onClick={() => setActiveIndex(index)}
               onKeyDown={(event) => handleKeyDown(event, index)}
@@ -138,6 +139,7 @@ export function ServiceShowcase({ items }: ServiceShowcaseProps) {
 
       <div
         role="tabpanel"
+        tabIndex={0}
         id={`showcase-panel-${active.key}`}
         aria-labelledby={`showcase-tab-${active.key}`}
         className="mt-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"

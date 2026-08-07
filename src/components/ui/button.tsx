@@ -12,8 +12,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        // WCAG 1.4.3: --brand-cta, not --brand. See the token comment in globals.css.
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-brand-strong hover:shadow-sm",
+          "bg-brand-cta text-white shadow-xs hover:bg-brand-cta-hover hover:shadow-sm",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:

@@ -25,7 +25,7 @@ export function PricingCards({ plans }: PricingCardsProps) {
             <span
               className={cn(
                 "absolute -top-3 right-8 rounded-md px-3 py-1 text-xs font-semibold",
-                plan.featured ? "bg-brand text-white" : "bg-slate-100 text-slate-600",
+                plan.featured ? "bg-brand-cta text-white" : "bg-slate-100 text-slate-600",
               )}
             >
               {plan.eyebrow}

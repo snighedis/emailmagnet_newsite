@@ -9,7 +9,7 @@ export default function NotFound() {
       <p className="mt-4 text-lg leading-8 text-slate-600">
         The page you requested does not exist in the EmailMagnet site architecture.
       </p>
-      <Button asChild className="mt-8 bg-brand text-white hover:bg-brand-strong">
+      <Button asChild className="mt-8">
         <Link href="/">Return home</Link>
       </Button>
     </section>

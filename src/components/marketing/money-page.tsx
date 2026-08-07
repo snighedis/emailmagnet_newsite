@@ -51,7 +51,7 @@ export function MoneyPage({
           </li>
         ))}
       </ul>
-      <div className="shadow-soft mt-12 overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
+      <div className="shadow-soft mt-12 overflow-x-auto rounded-2xl border border-slate-200/80 bg-white">
         <table className="w-full text-left text-sm">
           <thead className="text-ink bg-slate-50">
             <tr>

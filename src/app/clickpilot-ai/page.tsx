@@ -265,7 +265,7 @@ export default function ClickPilotAiPage() {
           </div>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
+            <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                 Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />
@@ -424,14 +424,14 @@ export default function ClickPilotAiPage() {
             <div className="bg-white rounded-2xl border border-slate-200 p-8 max-w-3xl mx-auto">
               <h3 className="text-2xl font-bold text-slate-950 mb-4">Ready to Write Better, Faster?</h3>
               <p className="text-slate-600 mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
-              <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
+              <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
                 <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                   Add to Chrome - It&apos;s Free
                   <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
               </Button>
               <p className="mt-4 text-sm text-slate-500">
-                Start free • Upgrade to PRO for unlimited usage • Cancel anytime
+                Start free • Upgrade to PRO for $19 • One-time payment, lifetime access
               </p>
             </div>
           </div>
@@ -558,7 +558,7 @@ export default function ClickPilotAiPage() {
           
           {/* Final CTA */}
           <div className="mt-16 text-center">
-            <Button asChild size="lg" className="bg-brand text-white hover:bg-brand-strong px-8 py-4 text-lg font-semibold">
+            <Button asChild size="lg" className="px-8 py-4 text-lg font-semibold">
               <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
                 Add to Chrome - It&apos;s Free
                 <ArrowRight className="h-5 w-5 ml-2" />

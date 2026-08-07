@@ -250,7 +250,7 @@ export default function VolumeControlProPage() {
           title="Where it performs best"
           description="Built for the everyday situations where browser audio is simply too quiet."
         />
-        <div className="mt-10 overflow-hidden rounded-xl border border-slate-200">
+        <div className="mt-10 overflow-x-auto rounded-xl border border-slate-200">
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-50 text-slate-950">
               <tr>
