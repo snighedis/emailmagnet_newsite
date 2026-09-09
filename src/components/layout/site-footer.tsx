@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { footerNav, siteConfig } from "@/data/site";
+import type { ChromeCopy } from "@/copy";
+import { siteConfig } from "@/data/site";
+import { LocaleLink } from "@/i18n/locale-link";
 import { CookiePreferencesButton } from "@/components/ui/cookie-preferences-button";
 
 function LinkedInIcon({ className }: { className?: string }) {
@@ -19,31 +21,37 @@ function XIcon({ className }: { className?: string }) {
   );
 }
 
-export function SiteFooter() {
+/**
+ * Server component: receives the resolved copy from SiteShell rather than
+ * reading context. Internal links go through LocaleLink so that, on an
+ * Italian page, a link to a localised page opens its Italian twin.
+ */
+export function SiteFooter({ copy }: { copy: ChromeCopy }) {
+  const { common, site } = copy;
   return (
     <footer className="bg-surface-soft border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 md:grid-cols-[1.5fr_repeat(4,1fr)]">
           <div>
-            <Link href="/" className="flex items-center gap-2 font-semibold text-slate-950">
+            <LocaleLink href="/" className="flex items-center gap-2 font-semibold text-slate-950">
               <Image
                 src={siteConfig.logo}
-                alt="Dentoku Dev logo"
+                alt={common.footer.logoAlt}
                 width={36}
                 height={36}
                 className="h-9 w-9 object-contain"
                 unoptimized
               />
               <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
-            </Link>
-            <p className="mt-1 max-w-sm text-sm leading-6 text-slate-600">{siteConfig.footerTagline}</p>
+            </LocaleLink>
+            <p className="mt-1 max-w-sm text-sm leading-6 text-slate-600">{site.footerTagline}</p>
             <a
               href="https://shipveryfast.dev/?ref=dentokudev"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-[10px] border border-[#e7e3da] bg-white px-3.5 py-2 text-sm leading-none whitespace-nowrap"
             >
-              <span className="font-medium text-[#78716c]">Built with</span>
+              <span className="font-medium text-[#78716c]">{common.footer.builtWith}</span>
               {/* Hosted by ShipVeryFast (CORS-open, full quality, auto-updating); plain
                   img since next/image doesn't paint reliably in this build. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -62,29 +70,29 @@ export function SiteFooter() {
             <div className="mt-6 flex items-center gap-2">
               <Link
                 href={siteConfig.social.linkedin}
-                aria-label="Dentoku Dev on LinkedIn"
+                aria-label={common.footer.linkedinAria}
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
               >
                 <LinkedInIcon className="h-4 w-4" />
               </Link>
               <Link
                 href={siteConfig.social.x}
-                aria-label="Dentoku Dev on X"
+                aria-label={common.footer.xAria}
                 className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
               >
                 <XIcon className="h-4 w-4" />
               </Link>
             </div>
           </div>
-          {Object.entries(footerNav).map(([label, items]) => (
-            <div key={label}>
-              <h2 className="text-sm font-semibold text-slate-950">{label}</h2>
+          {site.footerColumns.map((column) => (
+            <div key={column.label}>
+              <h2 className="text-sm font-semibold text-slate-950">{column.label}</h2>
               <ul className="mt-4 space-y-3 text-sm text-slate-600">
-                {items.map((item) => (
+                {column.items.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="transition hover:text-slate-950">
+                    <LocaleLink href={item.href} className="transition hover:text-slate-950">
                       {item.label}
-                    </Link>
+                    </LocaleLink>
                   </li>
                 ))}
               </ul>
@@ -94,11 +102,11 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-slate-200">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 Dentoku Dev. All rights reserved.</p>
+          <p>{common.footer.copyright}</p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <CookiePreferencesButton className="transition hover:text-slate-950" />
             <span>
-              {siteConfig.companyName}, {siteConfig.location}
+              {siteConfig.companyName}, {site.location}
             </span>
           </div>
         </div>

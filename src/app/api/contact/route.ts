@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isValidEmail, isValidMessage, isValidName } from "@/lib/contact-validation";
 
 type ContactPayload = {
   firstName?: string;
@@ -39,22 +40,6 @@ const ipHits = globalStore.__contactIpHits ?? new Map<string, number[]>();
 const emailHits = globalStore.__contactEmailHits ?? new Map<string, number[]>();
 globalStore.__contactIpHits = ipHits;
 globalStore.__contactEmailHits = emailHits;
-
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function isValidName(value: string): boolean {
-  return /^[A-Za-z][A-Za-z' -]{1,59}$/.test(value);
-}
-
-function isValidMessage(value: string): boolean {
-  const normalized = value.trim();
-  if (normalized.length < 20 || normalized.length > 3000) return false;
-  if (!/[A-Za-z]/.test(normalized)) return false;
-  if (/(.)\1{6,}/.test(normalized)) return false;
-  return true;
-}
 
 function getClientIp(request: Request): string {
   const forwardedFor = request.headers.get("x-forwarded-for");

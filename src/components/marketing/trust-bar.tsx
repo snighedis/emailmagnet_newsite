@@ -29,6 +29,8 @@ type TrustBarProps = {
   items?: string[];
   tone?: TrustBarTone;
   className?: string;
+  /** Connective words around the rating; defaults to English. */
+  labels?: { on: string; outOfFive: string };
 };
 
 function Stars({ rating }: { rating: number }) {
@@ -62,6 +64,7 @@ export function TrustBar({
   items,
   tone = "light",
   className,
+  labels = { on: "on", outOfFive: "out of 5" },
 }: TrustBarProps) {
   const isInk = tone === "ink";
   const trailing = [highlight, ...(items ?? [])].filter(Boolean) as string[];
@@ -77,11 +80,11 @@ export function TrustBar({
       {typeof rating === "number" ? (
         <span className="flex items-center gap-2">
           <Stars rating={rating} />
-          <span className="sr-only">{rating} out of 5</span>
+          <span className="sr-only">{rating} {labels.outOfFive}</span>
           <span className={cn("font-semibold", isInk ? "text-white" : "text-ink")}>
             {rating.toFixed(1)}
           </span>
-          {reviewLabel ? <span>on {reviewLabel}</span> : null}
+          {reviewLabel ? <span>{labels.on} {reviewLabel}</span> : null}
         </span>
       ) : null}
       {trailing.map((label, index) => (

@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
+import { LocaleLink } from "@/i18n/locale-link";
 import { Section } from "./section";
 import { Eyebrow } from "./eyebrow";
 
@@ -34,10 +34,10 @@ export function CtaBand({ eyebrow, title, description, primary, secondary }: Cta
         ) : null}
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button asChild size="xl">
-            <Link href={primary.href}>
+            <LocaleLink href={primary.href}>
               {primary.label}
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </LocaleLink>
           </Button>
           {secondary ? (
             <Button
@@ -46,7 +46,7 @@ export function CtaBand({ eyebrow, title, description, primary, secondary }: Cta
               variant="outline"
               className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
             >
-              <Link href={secondary.href}>{secondary.label}</Link>
+              <LocaleLink href={secondary.href}>{secondary.label}</LocaleLink>
             </Button>
           ) : null}
         </div>

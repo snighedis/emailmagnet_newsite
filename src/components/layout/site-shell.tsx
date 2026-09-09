@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { ExitIntentModal } from "@/components/marketing/exit-intent-modal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { CookieBanner } from "@/components/ui/cookie-banner";
+import { getCopy } from "@/copy";
 import { siteConfig } from "@/data/site";
 import type { Locale } from "@/i18n/config";
 import { LocaleProvider } from "@/i18n/locale-context";
@@ -18,10 +19,14 @@ import { buildOrganizationSchema, buildWebsiteSchema } from "@/lib/schema";
  * from the app root, where there is no layout once the root layout lives
  * under [lang]), so it needs the same shell from a shared component.
  *
- * Global CSS is imported by those two app files, not here: Next only accepts
- * global stylesheet imports from files inside the app directory.
+ * The chrome copy is resolved here, once per document, and handed to client
+ * components through LocaleProvider. Global CSS is imported by the two app
+ * files, not here: Next only accepts global stylesheet imports from files
+ * inside the app directory.
  */
 export function SiteShell({ lang, children }: { lang: Locale; children: React.ReactNode }) {
+  const copy = getCopy(lang);
+
   return (
     <html
       lang={lang}
@@ -34,10 +39,10 @@ export function SiteShell({ lang, children }: { lang: Locale; children: React.Re
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={buildOrganizationSchema()} />
         <JsonLd data={buildWebsiteSchema(lang)} />
-        <LocaleProvider lang={lang}>
+        <LocaleProvider lang={lang} copy={copy}>
           <SiteHeader />
           <main className="flex-1">{children}</main>
-          <SiteFooter />
+          <SiteFooter copy={copy} />
           <CookieBanner />
           <ExitIntentModal />
         </LocaleProvider>

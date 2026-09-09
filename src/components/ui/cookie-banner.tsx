@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import Link from "next/link";
 import { X } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
+import { useCopy } from "@/i18n/locale-context";
+import { LocaleLink } from "@/i18n/locale-link";
 import { cn } from "@/lib/utils";
 import {
   getConsentSnapshot,
@@ -15,28 +16,10 @@ import {
   type ConsentCategories,
 } from "@/lib/consent";
 
-const categoryCopy = [
-  {
-    key: "necessary" as const,
-    title: "Strictly necessary",
-    description:
-      "Required for the site to work and to remember your cookie choice. Always on.",
-    locked: true,
-  },
-  {
-    key: "analytics" as const,
-    title: "Analytics",
-    description:
-      "Google Analytics and privacy-friendly usage metrics that help us improve the site. This also loads our optional AI support chat (Chatbase, USA), which processes what you type in it.",
-    locked: false,
-  },
-  {
-    key: "marketing" as const,
-    title: "Marketing",
-    description:
-      "Google Ads tags used to measure campaign conversions. Off unless you allow them.",
-    locked: false,
-  },
+const categoryKeys = [
+  { key: "necessary" as const, locked: true },
+  { key: "analytics" as const, locked: false },
+  { key: "marketing" as const, locked: false },
 ];
 
 function Toggle({
@@ -75,6 +58,7 @@ function Toggle({
 }
 
 export function CookieBanner() {
+  const { cookieBanner: copy } = useCopy().common;
   // SSR-safe source of truth: "" means no (valid, unexpired) stored choice yet.
   const snapshot = useSyncExternalStore(
     subscribeConsent,
@@ -136,7 +120,7 @@ export function CookieBanner() {
     <div
       role="dialog"
       aria-modal="false"
-      aria-label="Cookie consent"
+      aria-label={copy.dialogAria}
       className={cn(
         "fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)]",
         isPreferences ? "sm:max-w-lg" : "sm:max-w-md",
@@ -145,13 +129,13 @@ export function CookieBanner() {
       <div className="shadow-soft-lg rounded-xl border border-slate-200 bg-white p-5">
         <div className="flex items-start justify-between gap-3">
           <h2 className="text-base font-semibold text-slate-950">
-            {isPreferences ? "Cookie preferences" : "We value your privacy"}
+            {isPreferences ? copy.preferencesTitle : copy.title}
           </h2>
           <button
             type="button"
             onClick={rejectAll}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-700"
-            aria-label="Reject non-essential cookies and close"
+            aria-label={copy.closeAria}
           >
             <X className="h-4 w-4" />
           </button>
@@ -159,17 +143,16 @@ export function CookieBanner() {
 
         {!isPreferences ? (
           <p className="mt-2 text-sm leading-6 text-slate-600">
-            We use strictly necessary cookies to run this site, and, only with your consent,
-            analytics and marketing cookies. You can accept, reject, or choose per category. Read
-            our{" "}
-            <Link href="/cookies" className="text-eyebrow font-medium hover:underline">
-              Cookie Policy
-            </Link>
-            .
+            {copy.intro.before}{" "}
+            <LocaleLink href="/cookies" className="text-eyebrow font-medium hover:underline">
+              {copy.intro.link}
+            </LocaleLink>
+            {copy.intro.after}
           </p>
         ) : (
           <div className="mt-3 space-y-3">
-            {categoryCopy.map((category) => {
+            {categoryKeys.map((category) => {
+              const text = copy.categories[category.key];
               const checked =
                 category.key === "necessary"
                   ? true
@@ -182,13 +165,13 @@ export function CookieBanner() {
                   className="flex items-start justify-between gap-4 rounded-lg border border-slate-200 bg-slate-50 p-3"
                 >
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">{category.title}</p>
+                    <p className="text-sm font-semibold text-slate-900">{text.title}</p>
                     <p className="mt-0.5 text-xs leading-5 text-slate-600">
-                      {category.description}
+                      {text.description}
                     </p>
                   </div>
                   <Toggle
-                    label={category.title}
+                    label={text.title}
                     checked={checked}
                     disabled={category.locked}
                     onChange={(next) =>
@@ -208,11 +191,11 @@ export function CookieBanner() {
             size="lg"
             className="flex-1 bg-slate-900 text-white hover:bg-slate-800"
           >
-            Reject all
+            {copy.rejectAll}
           </Button>
           {isPreferences ? (
             <Button onClick={savePreferences} size="lg" variant="outline" className="flex-1">
-              Save choices
+              {copy.saveChoices}
             </Button>
           ) : null}
           <Button
@@ -220,7 +203,7 @@ export function CookieBanner() {
             size="lg"
             className="flex-1"
           >
-            Accept all
+            {copy.acceptAll}
           </Button>
         </div>
 
@@ -230,7 +213,7 @@ export function CookieBanner() {
             onClick={openPanel}
             className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-slate-600 underline underline-offset-4 hover:text-slate-900"
           >
-            Manage preferences
+            {copy.managePreferences}
           </button>
         ) : null}
       </div>

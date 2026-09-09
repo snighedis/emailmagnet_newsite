@@ -3,7 +3,8 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight, Download, MailCheck, Sparkles } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
-import { subscribeToLoops } from "@/lib/loops";
+import { useCopy, useLocale } from "@/i18n/locale-context";
+import { loopsErrorText, subscribeToLoops } from "@/lib/loops";
 
 const LEAD_MAGNET_PATH = "/lead-magnets/cold-outreach-compliance-checklist.pdf";
 const TIMESTAMP_KEY = "loops-form-timestamp";
@@ -21,6 +22,8 @@ function track(event: string, params: Record<string, unknown> = {}) {
  * the shared Loops endpoint; tags signups so the source is visible in Loops.
  */
 export function LeadMagnetSignup() {
+  const lang = useLocale();
+  const { leadMagnet: copy } = useCopy().common;
   const [email, setEmail] = useState("");
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
@@ -33,7 +36,7 @@ export function LeadMagnetSignup() {
     const previous = Number(localStorage.getItem(TIMESTAMP_KEY) ?? "0");
     if (previous && previous + 60000 > now) {
       setState("error");
-      setMessage("Too many signups, please try again in a little while.");
+      setMessage(copy.tooMany);
       return;
     }
     localStorage.setItem(TIMESTAMP_KEY, String(now));
@@ -52,7 +55,7 @@ export function LeadMagnetSignup() {
     }
 
     setState("error");
-    setMessage(result.message ?? "Something went wrong, please try again.");
+    setMessage(loopsErrorText(result, { generic: copy.genericError, tooMany: copy.tooMany }, lang));
     // Allow an immediate retry after a transient failure.
     localStorage.setItem(TIMESTAMP_KEY, "");
   }
@@ -66,16 +69,13 @@ export function LeadMagnetSignup() {
           </span>
           <div>
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.01em]">
-              Your checklist is ready
+              {copy.successTitle}
             </h2>
-            <p className="mt-2 leading-7 text-slate-700">
-              Thanks for subscribing. Grab your copy below and look out for new guides in your
-              inbox.
-            </p>
+            <p className="mt-2 leading-7 text-slate-700">{copy.successBody}</p>
           </div>
           <Button asChild size="lg" className="font-semibold">
             <a href={LEAD_MAGNET_PATH} target="_blank" rel="noopener noreferrer" download>
-              Download the checklist
+              {copy.download}
               <Download className="h-4 w-4" />
             </a>
           </Button>
@@ -83,23 +83,20 @@ export function LeadMagnetSignup() {
       ) : (
         <>
           <span className="text-eyebrow inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] uppercase">
-            <Sparkles className="h-4 w-4" /> Free checklist
+            <Sparkles className="h-4 w-4" /> {copy.eyebrow}
           </span>
           <h2 className="text-ink mt-3 text-2xl font-semibold tracking-[-0.01em] text-balance">
-            Turn this into a list you can actually send to
+            {copy.title}
           </h2>
-          <p className="mt-3 leading-7 text-slate-700">
-            Get the GDPR &amp; CAN-SPAM compliance checklist we use to qualify extracted contacts
-            before any outreach. Delivered as a one-page PDF.
-          </p>
+          <p className="mt-3 leading-7 text-slate-700">{copy.body}</p>
 
           <form onSubmit={onSubmit} className="mt-6 flex w-full flex-col gap-3 sm:flex-row">
             <input
               type="email"
               required
               autoComplete="email"
-              placeholder="you@company.com"
-              aria-label="Email address"
+              placeholder={copy.emailPlaceholder}
+              aria-label={copy.emailAria}
               aria-invalid={state === "error"}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -107,7 +104,7 @@ export function LeadMagnetSignup() {
               className="focus:border-brand focus:ring-brand/20 h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:ring-2"
             />
             <Button type="submit" size="lg" className="font-semibold" disabled={state === "loading"}>
-              {state === "loading" ? "Sending…" : "Send me the checklist"}
+              {state === "loading" ? copy.sending : copy.submit}
               {state === "loading" ? null : <ArrowRight className="h-4 w-4" />}
             </Button>
           </form>
@@ -115,7 +112,7 @@ export function LeadMagnetSignup() {
           {state === "error" ? <p className="mt-2 text-sm text-red-700">{message}</p> : null}
 
           <p className="mt-4 text-xs leading-5 text-slate-500">
-            We&apos;ll email you occasional guides and product updates. No spam, unsubscribe anytime.
+            {copy.consent}
           </p>
         </>
       )}

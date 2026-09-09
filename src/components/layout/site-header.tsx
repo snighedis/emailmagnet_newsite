@@ -2,7 +2,6 @@
 
 import { ArrowRight, MenuBars, Star } from "@/components/ui/icons";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,29 +10,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { emailMagnetConfig, mainNav, productPortfolio, resourcesNav, siteConfig } from "@/data/site";
+import { emailMagnetConfig, siteConfig } from "@/data/site";
+import { useCopy } from "@/i18n/locale-context";
+import { LocaleLink } from "@/i18n/locale-link";
 import { cn } from "@/lib/utils";
 
 type MenuId = "products" | "resources";
 
-// One-line descriptions for the Resources panel columns.
-const resourceDescriptions: Record<string, string> = {
-  "/overview": "Every product and where it fits, on one page.",
-  "/docs": "Setup, exports, and responsible-use guides.",
-  "/blog": "Practical guides on browser workflows.",
-  "/faq": "Short answers on pricing, limits, and support.",
-};
-
 function Logo({ onClick }: { onClick?: () => void } = {}) {
+  const { common } = useCopy();
   return (
-    <Link
+    <LocaleLink
       href="/"
       onClick={onClick}
       className="flex items-center gap-2.5 font-semibold text-slate-950 lg:gap-2"
     >
       <Image
         src={siteConfig.logo}
-        alt="Dentoku Dev logo"
+        alt={common.header.logoAlt}
         width={36}
         height={36}
         className="h-10 w-10 object-contain lg:h-9 lg:w-9"
@@ -43,24 +37,25 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
       <span className="font-brand uppercase text-[1.2rem] leading-none tracking-normal lg:text-[1.35rem]">
         Dentoku Dev
       </span>
-    </Link>
+    </LocaleLink>
   );
 }
 
 function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
-  const featured = productPortfolio.find((product) => product.featured) ?? productPortfolio[0];
-  const rest = productPortfolio.filter((product) => product !== featured);
+  const { common, site } = useCopy();
+  const featured = site.products.find((product) => product.featured) ?? site.products[0];
+  const rest = site.products.filter((product) => product !== featured);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.05fr_2fr]">
-      <Link
+      <LocaleLink
         href={featured.href}
         onClick={onNavigate}
         className="bg-ink hover:bg-ink-soft focus-visible:ring-brand group rounded-2xl p-6 text-white outline-none transition focus-visible:ring-2"
       >
         <div className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1 text-xs font-semibold text-teal-100">
           <Star className="h-3 w-3" />
-          Featured product
+          {common.header.featuredBadge}
         </div>
         <div className="mt-4 flex items-center gap-3">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
@@ -76,17 +71,17 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
         </div>
         <p className="text-ink-muted mt-3 text-sm leading-6">{featured.description}</p>
         <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
-          View product page
+          {common.header.viewProduct}
           <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
-      </Link>
+      </LocaleLink>
       <div>
         <p className="px-2 pb-3 text-xs font-semibold tracking-wide text-slate-500 uppercase">
-          Product portfolio
+          {common.header.portfolioLabel}
         </p>
         <div className="grid gap-2 sm:grid-cols-3">
           {rest.map((product) => (
-            <Link
+            <LocaleLink
               key={product.href}
               href={product.href}
               onClick={onNavigate}
@@ -106,7 +101,7 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
                 {product.category}
               </span>
               <p className="mt-2 text-sm leading-6 text-slate-600">{product.description}</p>
-            </Link>
+            </LocaleLink>
           ))}
         </div>
       </div>
@@ -115,10 +110,11 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
 }
 
 function ResourcesPanel({ onNavigate }: { onNavigate: () => void }) {
+  const { common, site } = useCopy();
   return (
     <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-      {resourcesNav.map((item) => (
-        <Link
+      {site.resourcesNav.map((item) => (
+        <LocaleLink
           key={item.href}
           href={item.href}
           onClick={onNavigate}
@@ -129,15 +125,16 @@ function ResourcesPanel({ onNavigate }: { onNavigate: () => void }) {
             <ArrowRight className="text-eyebrow h-4 w-4 opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
           </span>
           <p className="mt-1 text-sm leading-6 text-slate-600">
-            {resourceDescriptions[item.href]}
+            {common.header.resourceDescriptions[item.href]}
           </p>
-        </Link>
+        </LocaleLink>
       ))}
     </div>
   );
 }
 
 export function SiteHeader() {
+  const { common, site } = useCopy();
   const [mobileOpen, setMobileOpen] = useState(false);
   // Lightdash-style: one full-width panel slides down from the header. A single
   // state drives both menus so hovering the other trigger switches panels.
@@ -200,17 +197,17 @@ export function SiteHeader() {
               onClick={() => (openMenu === "products" ? closeNow() : openNow("products"))}
               className={triggerClass("products")}
             >
-              Products
+              {common.header.products}
             </button>
-            {mainNav.map((item) => (
-              <Link
+            {site.mainNav.map((item) => (
+              <LocaleLink
                 key={item.href}
                 href={item.href}
                 onClick={closeNow}
                 className="rounded-md px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
               >
                 {item.label}
-              </Link>
+              </LocaleLink>
             ))}
             <button
               type="button"
@@ -221,89 +218,89 @@ export function SiteHeader() {
               onClick={() => (openMenu === "resources" ? closeNow() : openNow("resources"))}
               className={triggerClass("resources")}
             >
-              Resources
+              {common.header.resources}
             </button>
           </nav>
         </div>
         <div className="hidden items-center gap-2 lg:flex">
           <Button asChild variant="ghost">
-            <Link href={emailMagnetConfig.href}>Get EmailMagnet</Link>
+            <LocaleLink href={emailMagnetConfig.href}>{common.header.getEmailMagnet}</LocaleLink>
           </Button>
           <Button asChild className="btn-sheen font-semibold hover:-translate-y-0.5">
-            <Link href={siteConfig.secondaryCta.href}>Start your project</Link>
+            <LocaleLink href={siteConfig.secondaryCta.href}>{common.header.startProject}</LocaleLink>
           </Button>
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="outline" size="icon" aria-label="Open navigation" className="h-12 w-12 rounded-md">
+            <Button variant="outline" size="icon" aria-label={common.header.openNavigation} className="h-12 w-12 rounded-md">
               <MenuBars className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
-            <SheetTitle className="sr-only">Dentoku Dev navigation</SheetTitle>
+            <SheetTitle className="sr-only">{common.header.navigationTitle}</SheetTitle>
             <div className="mt-8 space-y-6 px-6">
               <Logo onClick={() => setMobileOpen(false)} />
               <nav className="grid gap-5 text-base font-medium">
                 <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
                   <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
-                    Products
+                    {common.header.products}
                   </p>
                   <div className="mt-3 space-y-3">
-                    {productPortfolio.map((product) => (
-                      <Link
+                    {site.products.map((product) => (
+                      <LocaleLink
                         key={product.href}
                         href={product.href}
                         onClick={() => setMobileOpen(false)}
                         className="block"
                       >
                         {product.name}
-                      </Link>
+                      </LocaleLink>
                     ))}
                   </div>
                 </div>
                 <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
                   <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
-                    Resources
+                    {common.header.resources}
                   </p>
                   <div className="mt-3 space-y-3">
-                    {resourcesNav.map((item) => (
-                      <Link
+                    {site.resourcesNav.map((item) => (
+                      <LocaleLink
                         key={item.href}
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
                         className="block"
                       >
                         {item.label}
-                      </Link>
+                      </LocaleLink>
                     ))}
                   </div>
                 </div>
                 <div className="border-t border-slate-200 pt-4">
                   <div className="grid gap-4">
-                    {mainNav.map((item) => (
-                      <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
+                    {site.mainNav.map((item) => (
+                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
                         {item.label}
-                      </Link>
+                      </LocaleLink>
                     ))}
-                    <Link href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)}>
+                    <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)}>
                       LinkedIn
-                    </Link>
-                    <Link href={siteConfig.social.x} onClick={() => setMobileOpen(false)}>
+                    </LocaleLink>
+                    <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)}>
                       X/Twitter
-                    </Link>
+                    </LocaleLink>
                   </div>
                 </div>
               </nav>
               <div className="grid gap-3">
                 <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-translate-y-0.5">
-                  <Link href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)} className="text-center">
-                    Start your project
-                  </Link>
+                  <LocaleLink href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)} className="text-center">
+                    {common.header.startProject}
+                  </LocaleLink>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="w-full">
-                  <Link href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
-                    Get EmailMagnet for free
-                  </Link>
+                  <LocaleLink href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
+                    {common.header.getEmailMagnetFree}
+                  </LocaleLink>
                 </Button>
               </div>
             </div>

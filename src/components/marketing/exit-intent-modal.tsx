@@ -2,14 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
 import { Dialog } from "radix-ui";
 import { ArrowRight, Download, MailCheck, Sparkles, X } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { readConsent } from "@/lib/consent";
-import { subscribeToLoops } from "@/lib/loops";
+import { loopsErrorText, subscribeToLoops } from "@/lib/loops";
+import { localizedHref } from "@/i18n/href";
+import { useCopy, useLocale } from "@/i18n/locale-context";
+import { LocaleLink } from "@/i18n/locale-link";
 import {
   canShowExitIntent,
   markExitIntentShown,
@@ -31,13 +33,16 @@ function track(event: string, params: Record<string, unknown> = {}) {
 
 export function ExitIntentModal() {
   const pathname = usePathname();
+  const lang = useLocale();
+  const { exitIntent: copy } = useCopy().common;
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
   const firedRef = useRef(false);
 
-  const excluded = EXCLUDED_PREFIXES.some(
+  // Each excluded page is checked under its English URL and its Italian twin.
+  const excluded = EXCLUDED_PREFIXES.flatMap((prefix) => [prefix, localizedHref("it", prefix)]).some(
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   );
 
@@ -95,7 +100,7 @@ export function ExitIntentModal() {
     }
 
     setState("error");
-    setMessage(result.message ?? "Something went wrong, please try again.");
+    setMessage(loopsErrorText(result, { generic: copy.genericError, tooMany: copy.tooMany }, lang));
   }
 
   return (
@@ -112,7 +117,7 @@ export function ExitIntentModal() {
         >
           <Dialog.Close
             className="absolute top-4 right-4 flex h-7 w-7 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
-            aria-label="Close"
+            aria-label={copy.closeAria}
           >
             <X className="h-4 w-4" />
           </Dialog.Close>
@@ -123,15 +128,12 @@ export function ExitIntentModal() {
                 <MailCheck className="h-6 w-6" />
               </span>
               <Dialog.Title className="text-ink mt-4 text-2xl font-semibold tracking-[-0.01em]">
-                Your checklist is ready
+                {copy.successTitle}
               </Dialog.Title>
-              <p className="mt-2 leading-7 text-slate-600">
-                Thanks for subscribing. Grab your copy below and look out for new guides in your
-                inbox.
-              </p>
+              <p className="mt-2 leading-7 text-slate-600">{copy.successBody}</p>
               <Button asChild size="lg" className="mt-6 w-full font-semibold">
                 <a href={LEAD_MAGNET_PATH} target="_blank" rel="noopener noreferrer" download>
-                  Download the checklist
+                  {copy.download}
                   <Download className="h-4 w-4" />
                 </a>
               </Button>
@@ -139,24 +141,20 @@ export function ExitIntentModal() {
           ) : (
             <>
               <span className="text-eyebrow inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] uppercase">
-                <Sparkles className="h-4 w-4" /> Free checklist
+                <Sparkles className="h-4 w-4" /> {copy.eyebrow}
               </span>
               <Dialog.Title className="text-ink mt-3 text-3xl font-semibold tracking-[-0.01em] text-balance">
-                Before you go, grab the compliance checklist
+                {copy.title}
               </Dialog.Title>
-              <p className="mt-3 leading-7 text-slate-600">
-                The GDPR &amp; CAN-SPAM checklist we use to turn raw email extraction into lists you
-                can actually send to. Get the PDF and join the sales reps, recruiters, and growth
-                teams who rate EmailMagnet 5.0★.
-              </p>
+              <p className="mt-3 leading-7 text-slate-600">{copy.body}</p>
 
               <form onSubmit={onSubmit} className="mt-6 space-y-3">
                 <Input
                   type="email"
                   required
                   autoComplete="email"
-                  placeholder="you@company.com"
-                  aria-label="Email address"
+                  placeholder={copy.emailPlaceholder}
+                  aria-label={copy.emailAria}
                   aria-invalid={state === "error"}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -169,7 +167,7 @@ export function ExitIntentModal() {
                   className="w-full font-semibold"
                   disabled={state === "loading"}
                 >
-                  {state === "loading" ? "Sending…" : "Send me the checklist"}
+                  {state === "loading" ? copy.sending : copy.submit}
                   {state === "loading" ? null : <ArrowRight className="h-4 w-4" />}
                 </Button>
               </form>
@@ -179,12 +177,11 @@ export function ExitIntentModal() {
               ) : null}
 
               <p className="mt-4 text-xs leading-5 text-slate-500">
-                We&apos;ll email you occasional guides and product updates. No spam, unsubscribe
-                anytime. See our{" "}
-                <Link href="/privacy" className="underline underline-offset-2 hover:text-slate-700">
-                  Privacy Policy
-                </Link>
-                .
+                {copy.consent.before}{" "}
+                <LocaleLink href="/privacy" className="underline underline-offset-2 hover:text-slate-700">
+                  {copy.consent.link}
+                </LocaleLink>
+                {copy.consent.after}
               </p>
             </>
           )}

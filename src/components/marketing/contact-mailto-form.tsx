@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useCopy } from "@/i18n/locale-context";
 
 type ContactMailtoFormProps = {
   supportEmail?: string;
@@ -39,15 +40,6 @@ const defaultState: FormState = {
   turnstileToken: "",
 };
 
-const productOptions = [
-  "EmailMagnet",
-  "ClickPilot AI",
-  "Volume Control PRO",
-  "Countdown321",
-  "A new project",
-  "General inquiry",
-] as const;
-
 declare global {
   interface Window {
     onContactTurnstileSuccess?: (token: string) => void;
@@ -61,6 +53,7 @@ function looksLikeEmail(value: string): boolean {
 
 export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: ContactMailtoFormProps) {
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const { contactForm: copy } = useCopy().common;
   const [form, setForm] = useState<FormState>(defaultState);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
@@ -100,7 +93,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
 
     if (!canSubmit) {
       setSuccess("");
-      setError("Fill first name, last name, a valid email, and message before sending.");
+      setError(copy.incomplete);
       return;
     }
 
@@ -122,9 +115,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
       subject,
     )}&body=${encodeURIComponent(body)}`;
 
-    setSuccess(
-      `Your email app should open with the message ready to send. If it doesn't, email us directly at ${supportEmail}.`,
-    );
+    setSuccess(copy.success.replace("{email}", supportEmail));
     setForm(defaultState);
   }
 
@@ -132,24 +123,24 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
     <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-sm md:p-10">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="grid gap-2 text-base font-semibold text-slate-800">
-          First name<span className="sr-only"> required</span>
+          {copy.firstName}<span className="sr-only">{copy.requiredSr}</span>
           <Input
             required
             name="firstName"
             autoComplete="given-name"
-            placeholder="First name"
+            placeholder={copy.firstNamePlaceholder}
             value={form.firstName}
             onChange={(event) => updateField("firstName", event.target.value)}
             className="h-12 rounded-sm border-slate-400 bg-white px-4 text-base"
           />
         </label>
         <label className="grid gap-2 text-base font-semibold text-slate-800">
-          Last name<span className="sr-only"> required</span>
+          {copy.lastName}<span className="sr-only">{copy.requiredSr}</span>
           <Input
             required
             name="lastName"
             autoComplete="family-name"
-            placeholder="Last name"
+            placeholder={copy.lastNamePlaceholder}
             value={form.lastName}
             onChange={(event) => updateField("lastName", event.target.value)}
             className="h-12 rounded-sm border-slate-400 bg-white px-4 text-base"
@@ -158,13 +149,13 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
       </div>
 
       <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
-        Email<span className="sr-only"> required</span>
+        {copy.email}<span className="sr-only">{copy.requiredSr}</span>
         <Input
           required
           name="email"
           type="email"
           autoComplete="email"
-          placeholder="Email"
+          placeholder={copy.emailPlaceholder}
           value={form.email}
           onChange={(event) => updateField("email", event.target.value)}
           className="h-12 rounded-sm border-slate-400 bg-white px-4 text-base"
@@ -172,7 +163,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
       </label>
 
       <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
-        Topic
+        {copy.topic}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
@@ -181,7 +172,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
               aria-haspopup="listbox"
             >
               <span className={form.product ? "text-slate-900" : "text-slate-500"}>
-                {form.product || "Select a topic"}
+                {copy.topics.find((topic) => topic.value === form.product)?.label ?? copy.selectTopic}
               </span>
               <ChevronDown className="h-4 w-4 text-slate-500" />
             </button>
@@ -190,15 +181,15 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
             align="start"
             className="w-[var(--radix-dropdown-menu-trigger-width)] rounded-sm border border-slate-300 bg-white p-1"
           >
-            {productOptions.map((option) => {
-              const isSelected = form.product === option;
+            {copy.topics.map((option) => {
+              const isSelected = form.product === option.value;
               return (
                 <DropdownMenuItem
-                  key={option}
-                  onSelect={() => updateField("product", option)}
+                  key={option.value}
+                  onSelect={() => updateField("product", option.value)}
                   className="flex h-10 items-center justify-between rounded-sm px-3 text-base font-medium text-slate-900 focus:bg-slate-100"
                 >
-                  <span>{option}</span>
+                  <span>{option.label}</span>
                   {isSelected ? <Check className="h-4 w-4 text-[#244f9e]" /> : null}
                 </DropdownMenuItem>
               );
@@ -208,11 +199,11 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
       </label>
 
       <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
-        Message<span className="sr-only"> required</span>
+        {copy.message}<span className="sr-only">{copy.requiredSr}</span>
         <Textarea
           required
           name="message"
-          placeholder="Tell us what you want to build, or what you need help with."
+          placeholder={copy.messagePlaceholder}
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
           className="min-h-32 rounded-sm border-slate-400 bg-white px-4 py-3 text-base"
@@ -261,7 +252,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
       ) : null}
 
       <p className="mt-6 text-base font-semibold leading-7 text-slate-900">
-        By submitting this form, you confirm that you have read and accepted the Privacy Policy.
+        {copy.consent}
       </p>
 
       {error ? (
@@ -279,7 +270,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
           size="lg"
           className="h-14 px-8 text-lg"
         >
-          Send message
+          {copy.submit}
         </Button>
       </div>
     </form>
