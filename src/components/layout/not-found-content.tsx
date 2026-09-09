@@ -2,7 +2,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 
-export default function NotFound() {
+/**
+ * Shared by app/global-not-found.tsx (URLs matching no route) and
+ * app/[lang]/not-found.tsx (notFound() thrown while rendering a route, e.g.
+ * an Italian URL for a page that only exists in English).
+ */
+export function NotFoundContent() {
   return (
     <section className="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-4 py-20 text-center">
       <Eyebrow>404</Eyebrow>

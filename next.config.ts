@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // The root layout lives under app/[lang], so Next cannot compose the
+    // routing-level 404 from a root layout. app/global-not-found.tsx renders
+    // the full document for unmatched URLs instead. See that file.
+    globalNotFound: true,
+  },
   async redirects() {
     return [
       {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { createMetadata } from "@/lib/metadata";
@@ -242,9 +243,9 @@ export default function PrivacyPage() {
           to understand aggregate traffic patterns. No cookies are used for behavioural
           advertising. You can manage or withdraw cookie consent at any time through the cookie
           banner or your browser settings. For detailed information see our{" "}
-          <a href="/cookies" className="underline underline-offset-2">
+          <Link href="/cookies" className="underline underline-offset-2">
             Cookie Policy
-          </a>
+          </Link>
           .
         </p>
 

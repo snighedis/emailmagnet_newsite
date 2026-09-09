@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { createMetadata } from "@/lib/metadata";
@@ -31,9 +32,9 @@ export default function CookiesPage() {
         </p>
         <p className="mt-4 leading-8 text-slate-600">
           For information on how we handle personal data more broadly, see our{" "}
-          <a href="/privacy" className="underline underline-offset-2">
+          <Link href="/privacy" className="underline underline-offset-2">
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
 
@@ -100,9 +101,9 @@ export default function CookiesPage() {
           consent. Our optional AI support chat (Chatbase) is also loaded under this category and
           may store local data in your browser to keep the chat session; it is an AI assistant, as
           explained in our{" "}
-          <a href="/privacy" className="underline underline-offset-2">
+          <Link href="/privacy" className="underline underline-offset-2">
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
         <div className="mt-4 overflow-x-auto">
