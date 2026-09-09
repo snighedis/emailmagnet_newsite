@@ -11,8 +11,6 @@ import { cn } from "@/lib/utils";
  * rendered on the server, so crawlers see the pair in the HTML; no cookie,
  * no JS navigation, the URL alone chooses the language. Points at the twin
  * page when one exists, otherwise at the other language's home.
- *
- * Not mounted until the first Italian pages go live.
  */
 export function LanguageSwitcher({ className }: { className?: string }) {
   const lang = useLocale();

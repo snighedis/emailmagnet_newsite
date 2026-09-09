@@ -22,6 +22,8 @@ export type SiteCopy = {
   footerColumns: Array<{ label: string; items: NavItem[] }>;
   footerTagline: string;
   location: string;
+  /** Studio description, used by the About page and the WebSite JSON-LD. */
+  description: string;
 };
 
 export const site: SiteCopy = {
@@ -31,4 +33,5 @@ export const site: SiteCopy = {
   footerColumns: Object.entries(footerNav).map(([label, items]) => ({ label, items })),
   footerTagline: siteConfig.footerTagline,
   location: siteConfig.location,
+  description: siteConfig.description,
 };

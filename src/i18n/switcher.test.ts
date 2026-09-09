@@ -16,6 +16,13 @@ describe("switchTarget", () => {
     expect(switchTarget("it", "/it")).toBe("/");
   });
 
+  it("gives the same answer for the proxy-rewritten path seen during the server render", () => {
+    expect(switchTarget("en", "/en/about")).toBe("/it/chi-siamo");
+    expect(switchTarget("en", "/en")).toBe("/it");
+    expect(switchTarget("en", "/en/blog")).toBe("/it");
+    expect(switchTarget("it", "/it/about")).toBe("/about");
+  });
+
   it("from an Italian URL with no twin, goes to the English home", () => {
     expect(switchTarget("it", "/it/qualcosa")).toBe("/");
   });

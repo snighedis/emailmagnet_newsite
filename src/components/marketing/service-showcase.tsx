@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocaleLink } from "@/i18n/locale-link";
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
 import { BrowserFrame } from "@/components/marketing/browser-frame";
@@ -9,6 +9,8 @@ import type { ServiceShowcaseItem, ServiceShowcaseMedia } from "@/data/site";
 
 type ServiceShowcaseProps = {
   items: ServiceShowcaseItem[];
+  /** Localised strings; `explore` has a `{name}` placeholder. Defaults to English. */
+  labels?: { tablist: string; explore: string };
 };
 
 function ShowcaseMedia({ media, active }: { media: ServiceShowcaseMedia; active: boolean }) {
@@ -74,7 +76,10 @@ function ShowcaseMedia({ media, active }: { media: ServiceShowcaseMedia; active:
  * a product we shipped for ourselves. Keyboard accessible (arrow keys move
  * between tabs) and honest by construction: every visual is a real product.
  */
-export function ServiceShowcase({ items }: ServiceShowcaseProps) {
+export function ServiceShowcase({
+  items,
+  labels = { tablist: "What we build", explore: "Explore {name}" },
+}: ServiceShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = items[activeIndex];
@@ -105,7 +110,7 @@ export function ServiceShowcase({ items }: ServiceShowcaseProps) {
     <div>
       <div
         role="tablist"
-        aria-label="What we build"
+        aria-label={labels.tablist}
         aria-orientation="horizontal"
         className="flex flex-wrap gap-2 border-b border-slate-200 pb-4"
       >
@@ -159,13 +164,13 @@ export function ServiceShowcase({ items }: ServiceShowcaseProps) {
           </ul>
           <div className="border-t border-slate-200 pt-5">
             <p className="text-sm leading-6 text-slate-500">{active.proof.note}</p>
-            <Link
+            <LocaleLink
               href={active.proof.href}
               className="text-eyebrow mt-2 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
             >
-              Explore {active.proof.name}
+              {labels.explore.replace("{name}", active.proof.name)}
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </LocaleLink>
           </div>
         </div>
         <ShowcaseMedia media={active.media} active />

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/content/blog";
 import { productPortfolio, siteConfig } from "@/data/site";
+import { hasItalianTwin, italianSlugs, italianUrlPath } from "@/i18n/slugs";
 
 const routes = [
   "",
@@ -34,6 +35,20 @@ const routes = [
   "/countdown321/shopify-urgency-app",
 ];
 
+const englishUrl = (route: string) => `${siteConfig.url}${route === "/" ? "" : route}`;
+const italianUrl = (route: string) => `${siteConfig.url}${italianUrlPath(route)}`;
+
+/**
+ * hreflang pair for a page that exists in both languages. Gated on the slug
+ * map, the same source the proxy and createMetadata use, so the sitemap can
+ * never advertise an Italian URL that is not live.
+ */
+function alternatesFor(route: string) {
+  const path = route === "" ? "/" : route;
+  if (!hasItalianTwin(path)) return {};
+  return { alternates: { languages: { en: englishUrl(path), it: italianUrl(path) } } };
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticRoutes = routes.map((route) => ({
@@ -41,6 +56,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: route === "" ? 1 : route === "/blog" ? 0.9 : 0.8,
+    ...alternatesFor(route),
+  }));
+  const italianRoutes = Object.keys(italianSlugs).map((path) => ({
+    url: italianUrl(path),
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: path === "/" ? 1 : 0.8,
+    ...alternatesFor(path),
   }));
   const productRoutes = productPortfolio
     .filter((product) => !routes.includes(product.href))
@@ -57,5 +80,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes];
+  return [...staticRoutes, ...italianRoutes, ...productRoutes, ...blogRoutes];
 }

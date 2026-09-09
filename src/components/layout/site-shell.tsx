@@ -38,7 +38,7 @@ export function SiteShell({ lang, children }: { lang: Locale; children: React.Re
     >
       <body className="flex min-h-full flex-col antialiased">
         <JsonLd data={buildOrganizationSchema()} />
-        <JsonLd data={buildWebsiteSchema(lang)} />
+        <JsonLd data={buildWebsiteSchema(lang, copy.site.description)} />
         <LocaleProvider lang={lang} copy={copy}>
           <SiteHeader />
           <main className="flex-1">{children}</main>

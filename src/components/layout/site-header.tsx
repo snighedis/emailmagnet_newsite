@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { emailMagnetConfig, siteConfig } from "@/data/site";
 import { useCopy } from "@/i18n/locale-context";
 import { LocaleLink } from "@/i18n/locale-link";
@@ -223,6 +224,7 @@ export function SiteHeader() {
           </nav>
         </div>
         <div className="hidden items-center gap-2 lg:flex">
+          <LanguageSwitcher />
           <Button asChild variant="ghost">
             <LocaleLink href={emailMagnetConfig.href}>{common.header.getEmailMagnet}</LocaleLink>
           </Button>
@@ -302,6 +304,7 @@ export function SiteHeader() {
                     {common.header.getEmailMagnetFree}
                   </LocaleLink>
                 </Button>
+                <LanguageSwitcher className="justify-center" />
               </div>
             </div>
           </SheetContent>

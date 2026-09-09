@@ -310,7 +310,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What does the PRO version include?",
     answer:
-      "PRO ($19 lifetime) includes unlimited email extraction, unlimited export size, autosave while browsing, bulk extraction for reviewed URL lists, faster processing, and priority support. No monthly subscription.",
+      "PRO ($19 lifetime) includes unlimited email extraction, unlimited export size, autosave while browsing, bulk extraction for reviewed URL lists, and priority support. No monthly subscription.",
   },
   {
     question: "Is email extraction legal?",

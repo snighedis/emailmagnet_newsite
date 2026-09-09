@@ -73,4 +73,6 @@ export const site: SiteCopy = {
   footerTagline:
     "Uno studio software che realizza i propri prodotti e offre consulenza digitale e AI.",
   location: "Milano, Italia",
+  description:
+    "Dentoku Dev è uno studio software di Milano che pubblica quattro prodotti per browser ed ecommerce e realizza software su misura, pronto per l'AI, per piccole e medie imprese.",
 };
