@@ -9,8 +9,15 @@ import {
   siteConfig,
 } from "@/data/site";
 import { type Author, defaultAuthor } from "@/data/authors";
+import type { Locale } from "@/i18n/config";
+import { localizedHref } from "@/i18n/href";
 
 const base = siteConfig.url;
+
+// Every builder takes an optional `lang` defaulting to "en" so existing call
+// sites (and the tests that pin their output) are unchanged. Localised pages
+// pass "it" to get `inLanguage` and `/it/...` URLs.
+const supportLanguages = ["en", "it"];
 
 export function buildOrganizationSchema() {
   return {
@@ -29,29 +36,31 @@ export function buildOrganizationSchema() {
       "@type": "ContactPoint",
       contactType: "customer support",
       email: siteConfig.supportEmail,
-      availableLanguage: ["en"],
+      availableLanguage: supportLanguages,
     },
     sameAs: brandProfiles,
   };
 }
 
-export function buildWebsiteSchema() {
+export function buildWebsiteSchema(lang: Locale = "en", description = siteConfig.description) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteConfig.name,
     url: base,
-    description: siteConfig.description,
+    description,
+    inLanguage: lang,
   };
 }
 
-export function buildFounderSchema() {
+export function buildFounderSchema(lang: Locale = "en", description = founderConfig.description) {
   return {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: founderConfig.name,
-    description: founderConfig.description,
-    url: `${base}${founderConfig.href}`,
+    description,
+    url: `${base}${localizedHref(lang, founderConfig.href)}`,
+    inLanguage: lang,
     about: {
       "@type": "Organization",
       name: siteConfig.companyName,
@@ -196,10 +205,11 @@ export function buildItemListSchema(
   };
 }
 
-export function buildFaqSchema(items: FaqItem[]) {
+export function buildFaqSchema(items: FaqItem[], lang: Locale = "en") {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: lang,
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -211,7 +221,10 @@ export function buildFaqSchema(items: FaqItem[]) {
   };
 }
 
-export function buildBreadcrumbSchema(items: Array<{ name: string; href: string }>) {
+export function buildBreadcrumbSchema(
+  items: Array<{ name: string; href: string }>,
+  lang: Locale = "en",
+) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -219,7 +232,7 @@ export function buildBreadcrumbSchema(items: Array<{ name: string; href: string 
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${base}${item.href}`,
+      item: `${base}${localizedHref(lang, item.href)}`,
     })),
   };
 }
@@ -310,12 +323,13 @@ export function buildVideoSchema(input: {
   };
 }
 
-export function buildContactPointSchema() {
+export function buildContactPointSchema(lang: Locale = "en", name = "Contact Dentoku Dev Support") {
   return {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Contact Dentoku Dev Support",
-    url: `${base}/contact`,
+    name,
+    url: `${base}${localizedHref(lang, "/contact")}`,
+    inLanguage: lang,
     about: {
       "@type": "Organization",
       name: siteConfig.companyName,
@@ -324,7 +338,7 @@ export function buildContactPointSchema() {
         "@type": "ContactPoint",
         contactType: "customer support",
         email: siteConfig.supportEmail,
-        availableLanguage: ["en"],
+        availableLanguage: supportLanguages,
       },
     },
   };
