@@ -16,6 +16,9 @@ export const italianSlugs: Record<string, string> = {
   "/founder": "/fondatore",
   "/contact": "/contatti",
   "/faq": "/domande-frequenti",
+  "/privacy": "/privacy",
+  "/terms": "/termini",
+  "/cookies": "/cookie",
 };
 
 const reverse: Record<string, string> = Object.fromEntries(
