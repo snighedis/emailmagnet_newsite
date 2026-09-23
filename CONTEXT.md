@@ -39,6 +39,18 @@ precise term.
   ecommerce apps. Converted via Consulting Leads. Credibility rests on the four shipped
   Products ("judge us by what we build for ourselves"): no client logos or invented metrics
   are used as proof.
+- **Studio** — Dentoku Dev is founder-led: Nicola Orlandi plus collaborators engaged per
+  project when the work needs them. Not a stable multi-person team. "Small team" is accurate;
+  copy must not imply permanent staff, departments, or account managers.
+- **Source handover** — on final payment the client owns the code written for their project,
+  with documentation for any other developer to continue it. The studio keeps its pre-existing
+  reusable components and grants the client a perpetual licence to use them. This is the
+  studio's answer to the continuity objection a founder-led studio raises; the exact clause
+  lives in the contract template.
+- **Discovery call** — the short first call that precedes every written proposal. It is the
+  only "consulting" the studio offers: there is no standalone advisory service (no AI
+  assessment, workshop, or paid analysis phase). Copy in any language must not promise one;
+  the answer to "where should we start with AI?" is always a small built tool, not a plan.
 
 ## Products
 
@@ -60,3 +72,20 @@ precise term.
   means adding keys, not files.
 - **Money page** — a long-tail, high-commercial-intent product subpage (for example
   `/emailmagnet/chrome-email-extractor`) targeting a specific search query.
+
+## Localisation
+
+- **Claim** — any statement a reader could verify on a store listing, an invoice, or a
+  contract: ratings, install counts, prices, plan limits, feature lists, "no subscription".
+  Claims are invariant across languages: the Italian text carries exactly the English claim,
+  never a stronger or vaguer one.
+- **Argument** — everything around the claims: which need or ambition the page speaks to, the
+  order of the sections, the tone, the objections it answers. The argument may differ by
+  market.
+- **Translation** — Italian text that keeps both the claims and the argument of the English
+  page. The default for every surface that speaks to a product user (product pages, EmailMagnet
+  FAQ, docs, chrome, legal), because those audiences are global.
+- **Transcreation** — Italian text that keeps the claims but rewrites the argument for the
+  Italian market. Allowed only on the consulting funnel: homepage, contact page, the
+  "Working with us" FAQ. The consulting reader in Italy is a PMI owner exploring AI, not the
+  North American buyer the English argument was written for.

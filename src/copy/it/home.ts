@@ -12,12 +12,12 @@ export const home: HomeCopy = {
   },
   itemListName: "Prodotti software di Dentoku Dev",
   hero: {
-    eyebrow: "Non un'agenzia. Uno studio software di Milano.",
-    titleLead: "Software su misura. AI dove conta.",
-    titleAccent: "Consegnato.",
+    eyebrow: "Uno studio software di Milano, non un'agenzia.",
+    titleLead: "L'AI in azienda, senza scommesse.",
+    titleAccent: "Funzionante.",
     subhead:
-      "Dentoku Dev è uno studio software di Milano che realizza estensioni Chrome, app Shopify e strumenti interni per piccole e medie imprese. Prova quello che rilasciamo prima di affidarci un progetto.",
-    primaryCta: { label: "Avvia il tuo progetto", href: "/contact" },
+      "Costruiamo software su misura per piccole e medie imprese: strumenti interni, estensioni e app, con l'intelligenza artificiale solo dove porta un risultato. Prova prima i nostri prodotti, poi decidi.",
+    primaryCta: { label: "Raccontaci il problema", href: "/contact" },
     secondaryCta: { label: "Guarda cosa costruiamo", href: "/#services" },
     trustNote: "4 prodotti online su store pubblici",
   },
@@ -25,7 +25,7 @@ export const home: HomeCopy = {
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "su", outOfFive: "su 5" } },
   services: {
     eyebrow: "Cosa costruiamo",
-    title: "Vendiamo solo ciò che abbiamo già rilasciato",
+    title: "Vendiamo solo quello che abbiamo già costruito per noi",
     description:
       "Niente slide. Niente promesse sulla carta. Ogni servizio qui sotto è sostenuto da un prodotto che costruiamo, gestiamo e manteniamo per noi stessi.",
     tablistLabel: "Cosa costruiamo",
@@ -58,9 +58,9 @@ export const home: HomeCopy = {
       {
         key: "ai-integration",
         label: "Integrazione AI",
-        title: "L'AI nel flusso di lavoro, non d'intralcio.",
+        title: "L'AI dove fa risparmiare tempo, non dove fa notizia.",
         description:
-          "Integriamo l'AI in flussi di lavoro reali: scrittura, sintesi, traduzione, automazioni personalizzate. ClickPilot AI è la nostra prova: un assistente che lavora dentro qualsiasi campo di testo del browser, senza cambiare scheda.",
+          "Non partiamo dalla tecnologia ma da un'attività che oggi costa ore: scrivere, riassumere, tradurre, classificare. Integriamo l'AI lì, dentro gli strumenti che la tua azienda già usa, con i tuoi account e le tue chiavi. ClickPilot AI è la nostra prova: un assistente che lavora in qualsiasi campo di testo del browser, senza cambiare scheda.",
         outcomes: [
           "Funzioni AI integrate negli strumenti che già usi",
           "Perimetro concreto: correggi, riscrivi, riassumi, traduci, azioni personalizzate",
@@ -224,8 +224,29 @@ export const home: HomeCopy = {
           "Sì. La maggior parte dei progetti si collega a strumenti che già usi: fogli di calcolo, CRM, Shopify, flussi nel browser e API. Costruiamo attorno al tuo stack invece di sostituirlo.",
       },
       {
-        question: "Dove siete?",
-        answer: "A Milano. Lavoriamo con i clienti da remoto, in italiano e in inglese.",
+        question: "Come si lavora insieme, a distanza?",
+        answer:
+          "Siamo a Milano e lavoriamo con clienti in tutta Italia in videochiamata, in italiano: la prima call, la proposta e gli aggiornamenti durante il progetto passano tutti da lì. Il software lo provate voi, nel vostro browser, dalle prime settimane.",
+      },
+      {
+        question: "Non abbiamo competenze tecniche interne. È un problema?",
+        answer:
+          "No, è il caso più comune. La proposta scritta descrive cosa farà il software in linguaggio comune, senza gergo, e dopo la consegna resta una linea diretta con chi ha scritto il codice. Non serve nessuno in azienda che sappia programmare.",
+      },
+      {
+        question: "I nostri dati dove finiscono?",
+        answer:
+          "Costruiamo gli strumenti attorno ai vostri account e alle vostre chiavi, non ai nostri. La proposta indica per iscritto quali servizi esterni usa il software, così sapete prima dove passano i dati e potete dire di no.",
+      },
+      {
+        question: "Cosa succede al software se un giorno non lavoriamo più insieme?",
+        answer:
+          "Il codice scritto per il vostro progetto è vostro al saldo, con la documentazione per farlo proseguire a qualsiasi sviluppatore. I nostri componenti riutilizzabili restano in licenza d'uso perpetua, quindi potete mantenere e modificare il software anche senza di noi.",
+      },
+      {
+        question: "Quanto costa iniziare?",
+        answer:
+          "Dipende dal perimetro, e lo sapete per iscritto prima di impegnarvi: la prima call non costa nulla e si chiude con una proposta che indica cosa costruiamo, quanto costa e quando è pronto.",
       },
       {
         question: "Come sappiamo che siete in grado di consegnare?",
@@ -239,7 +260,7 @@ export const home: HomeCopy = {
     title: "Raccontaci cosa vuoi costruire",
     description:
       "Una call. Una proposta scritta. Software che va online. Oppure prova prima uno dei nostri prodotti e giudica tu la qualità.",
-    primary: { label: "Avvia il tuo progetto", href: "/contact" },
+    primary: { label: "Raccontaci il problema", href: "/contact" },
     secondary: { label: "Guarda cosa costruiamo", href: "/#services" },
   },
 };

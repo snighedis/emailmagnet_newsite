@@ -8,13 +8,13 @@ export const contact: ContactCopy = {
   },
   breadcrumb: "Contatti",
   contactPointName: "Contatta il supporto Dentoku Dev",
-  badge: "Avvia il tuo progetto",
+  badge: "Prima call gratuita",
   title: "Raccontaci cosa vuoi costruire.",
   intro:
     "Software su misura, integrazione AI o una domanda sui nostri prodotti. In ogni caso parli direttamente con le persone che progettano, costruiscono e rilasciano il lavoro.",
   steps: [
     "1. Scrivi qualche riga sul progetto.",
     "2. Fissiamo una breve call per definire il perimetro.",
-    "3. Ricevi una proposta scritta: perimetro, costi, tempi.",
+    "3. Ricevi una proposta scritta: cosa costruiamo, quanto costa, quando è pronto.",
   ],
 };

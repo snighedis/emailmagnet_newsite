@@ -14,7 +14,7 @@ export const founder: FounderCopy = {
     "Nicola Orlandi è CEO e fondatore di Dentoku Dev, uno studio software che realizza estensioni Chrome, app Shopify, strumenti di scrittura AI e software di produttività mirato.",
   shortAnswer: {
     title: "In breve",
-    body: "Dentoku Dev è uno studio software guidato dal fondatore, con sede a {location}, diretto da {name}, {role}. Progetta, costruisce, rilascia e supporta ogni prodotto del portfolio. Strumenti mirati per browser, ecommerce, scrittura AI e flussi di lavoro aziendali pratici.",
+    body: "Dentoku Dev è uno studio software guidato dal fondatore, con sede a {location}, diretto da {name}, {role}. Progetta, costruisce, rilascia e supporta ogni prodotto del portfolio, con collaboratori a progetto quando il lavoro lo richiede. Strumenti mirati per browser, ecommerce, scrittura AI e flussi di lavoro aziendali pratici.",
   },
   proofPoints: [
     {
