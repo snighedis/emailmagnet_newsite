@@ -31,7 +31,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Ultimo aggiornamento: 5 agosto 2026. La presente Informativa descrive come Dentoku Dev
+        Ultimo aggiornamento: 24 settembre 2026. La presente Informativa descrive come Dentoku Dev
         (“noi”) tratta i dati personali quando visiti dentokudev.com, acquisti o usi EmailMagnet, o
         ci affidi servizi di consulenza digitale. È resa ai sensi dell’art. 13 del Regolamento (UE)
         2016/679 (“GDPR”) e del Codice in materia di protezione dei dati personali (D.Lgs.
@@ -344,13 +344,11 @@ export function PrivacyBody() {
       <ul className={ul}>
         <li>
           Gli indirizzi email estratti e l’URL della pagina in cui sono stati trovati sono salvati
-          localmente nel tuo browser (
-          <code className="rounded bg-slate-100 px-1 text-sm">chrome.storage</code>).
-        </li>
-        <li>
-          Se sei un utente PRO e attivi il salvataggio automatico (Autosave), gli indirizzi email
-          estratti e gli URL delle pagine di origine vengono trasmessi via HTTPS alla nostra API di
-          backend (ospitata da Vercel Inc., USA) per essere salvati nel tuo account.
+          solo nel tuo browser (
+          <code className="rounded bg-slate-100 px-1 text-sm">chrome.storage</code>). Non vengono
+          mai inviati a noi né ad altri. L’impostazione Autosave decide se i risultati delle pagine
+          che visiti restano nella cronologia del browser o se viene conservata solo la pagina
+          corrente.
         </li>
         <li>
           Il tuo token di attivazione PRO viene inviato al nostro backend per verificare la licenza
@@ -377,6 +375,16 @@ export function PrivacyBody() {
           nulla e gli eventi eventualmente ancora in attesa di invio vengono scartati.
         </p>
         <p>
+          <strong>Questionario di disinstallazione.</strong> Quando rimuovi EmailMagnet, Chrome apre
+          un breve questionario facoltativo ospitato su Google Moduli. Ti chiede perché hai rimosso
+          l’estensione, e il numero di versione dell’estensione viene compilato automaticamente
+          così sappiamo a quale versione si riferisce la tua risposta. Non viene incluso nient’altro
+          su di te o sul tuo browser. Se scegli di lasciare il tuo indirizzo email, lo usiamo solo
+          per contattarti per una breve call di feedback e per inviarti la licenza gratuita offerta
+          nel questionario. Non lo usiamo per il marketing e non lo condividiamo. Puoi chiederci di
+          cancellarlo in qualsiasi momento scrivendo a <Mail />.
+        </p>
+        <p>
           <strong>Cosa l’estensione NON fa.</strong> Non raccoglie la tua cronologia di navigazione
           oltre alle pagine che analizzi attivamente; non registra tasti premuti, password, dati
           inseriti nei moduli o contenuti delle pagine estranei al rilevamento delle email; non
@@ -397,10 +405,8 @@ export function PrivacyBody() {
           antispam come il CAN-SPAM Act) quando li contatti.
         </p>
         <p>
-          <strong>Conservazione e cancellazione.</strong> I risultati salvati localmente possono
-          essere cancellati in qualsiasi momento dall’estensione. I risultati salvati nel cloud
-          (PRO) possono essere eliminati con la funzione di cancellazione dell’estensione. La
-          disinstallazione dell’estensione rimuove tutti i dati salvati localmente.
+          <strong>Conservazione e cancellazione.</strong> I risultati salvati possono essere cancellati in
+          qualsiasi momento dall’estensione. La disinstallazione dell’estensione li rimuove tutti.
         </p>
         <p>
           <strong>Autorizzazioni.</strong> L’estensione richiede l’accesso alla scheda attiva e la

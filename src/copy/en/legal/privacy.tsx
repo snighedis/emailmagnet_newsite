@@ -17,7 +17,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Last updated: August 5, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
+        Last updated: September 24, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
         &quot;us&quot;, or &quot;our&quot;) processes personal data when you visit dentokudev.com, purchase or
         use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
         Art. 13 of Regulation (EU) 2016/679 (&quot;GDPR&quot;) and the Italian Personal Data Protection
@@ -359,17 +359,14 @@ export function PrivacyBody() {
       </div>
       <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
         <li>
-          Extracted email addresses and the URL of the page they were found on are stored
-          locally in your browser (
+          Extracted email addresses and the URL of the page they were found on are stored only
+          in your browser (
           <code className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.95em] text-slate-800">
             chrome.storage
           </code>
-          ).
-        </li>
-        <li>
-          If you are a PRO user and enable Autosave, those extracted email addresses and their
-          source page URLs are transmitted over HTTPS to our backend API (hosted by Vercel
-          Inc., USA) to save them to your account.
+          ). They are never sent to us or to anyone else. The Autosave setting decides whether
+          results from the pages you visit are kept in your browser&apos;s history or only the
+          current page is kept.
         </li>
         <li>
           Your PRO activation token is sent to our backend to validate your licence and to
@@ -395,6 +392,20 @@ export function PrivacyBody() {
           waiting to be sent are discarded.
         </p>
         <p>
+          <strong>Uninstall survey.</strong>{" "}
+          When you remove EmailMagnet, Chrome opens a short
+          optional survey hosted on Google Forms. It asks why you removed the extension, and the
+          extension&apos;s version number is filled in automatically so we know which release your
+          answer refers to. Nothing else about you or your browser is included. If you choose to
+          leave your email address, we use it only to contact you about a short feedback call and
+          to send the free licence offered in the survey. We do not use it for marketing and we do
+          not share it. You can ask us to delete it at any time by writing to{" "}
+          <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
+            support@dentokudev.com
+          </a>
+          .
+        </p>
+        <p>
           <strong>What the extension does NOT do.</strong> It does not collect your browsing
           history beyond the pages you actively scan; it does not capture keystrokes,
           passwords, form inputs, or page content unrelated to email detection; it contains no
@@ -416,9 +427,8 @@ export function PrivacyBody() {
         </p>
         <p>
           <strong>Retention and deletion.</strong>{" "}
-          Locally stored results can be cleared at any time from within the extension.
-          Cloud-saved results (PRO) can be deleted using the extension&apos;s delete function.
-          Uninstalling the extension removes all locally stored data.
+          Stored results can be cleared at any time from within the extension.
+          Uninstalling the extension removes all of them.
         </p>
         <p>
           <strong>Permissions.</strong> The extension requests access to the active tab and
