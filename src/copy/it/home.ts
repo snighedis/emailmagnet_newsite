@@ -21,7 +21,13 @@ export const home: HomeCopy = {
     secondaryCta: { label: "Guarda cosa costruiamo", href: "/#services" },
     trustNote: "4 prodotti online su store pubblici",
   },
-  heroVideoLabel: "Breve video in loop che mostra i quattro prodotti Dentoku Dev",
+  heroVideo: {
+    src: "/brand/studio-hero-it.mp4",
+    poster: "/brand/studio-hero-it-poster.jpg",
+    label:
+      "Video in loop di 29 secondi: il titolare di un agriturismo chiede di rispondere agli ospiti mentre fa altro; Dentoku Dev lo progetta, collega WhatsApp e l'AI e mostra Kallmy in anteprima",
+    controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
+  },
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "su", outOfFive: "su 5" } },
   services: {
     eyebrow: "Cosa costruiamo",

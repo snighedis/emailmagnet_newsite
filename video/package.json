@@ -6,7 +6,14 @@
     "studio": "remotion studio",
     "render": "npm run render:mp4 && npm run render:poster",
     "render:mp4": "remotion render HomepageHero ../public/brand/homepage-hero.mp4 --codec=h264 --crf=26 --muted",
-    "render:poster": "remotion still HomepageHero ../public/brand/homepage-hero-poster.jpg --frame=45"
+    "render:poster": "remotion still HomepageHero ../public/brand/homepage-hero-poster.jpg --frame=45",
+    "render:film:music": "python3 assets/music/launch_track.py public/reel/launch-music.wav",
+    "render:film": "npm run render:film:music && npm run render:film:it && npm run render:film:en",
+    "render:film:it": "remotion render LaunchFilmIt ../public/brand/launch-film-it.mp4 --codec=h264 --crf=24 --audio-codec=aac --audio-bitrate=160k && remotion still LaunchFilmIt ../public/brand/launch-film-it-poster.jpg --frame=134 --image-format=jpeg --jpeg-quality=82",
+    "render:film:en": "remotion render LaunchFilmEn ../public/brand/launch-film-en.mp4 --codec=h264 --crf=24 --audio-codec=aac --audio-bitrate=160k && remotion still LaunchFilmEn ../public/brand/launch-film-en-poster.jpg --frame=134 --image-format=jpeg --jpeg-quality=82",
+    "render:hero2": "npm run render:hero2:it && npm run render:hero2:en",
+    "render:hero2:it": "remotion render StudioHeroIt ../public/brand/studio-hero-it.mp4 --codec=h264 --crf=25 --muted && remotion still StudioHeroIt ../public/brand/studio-hero-it-poster.jpg --frame=60 --image-format=jpeg --jpeg-quality=80",
+    "render:hero2:en": "remotion render StudioHeroEn ../public/brand/studio-hero-en.mp4 --codec=h264 --crf=25 --muted && remotion still StudioHeroEn ../public/brand/studio-hero-en-poster.jpg --frame=60 --image-format=jpeg --jpeg-quality=80"
   },
   "dependencies": {
     "@remotion/google-fonts": "4.0.489",

@@ -20,7 +20,13 @@ export const home = {
   },
   itemListName: "Dentoku Dev software products",
   hero: homeHero,
-  heroVideoLabel: "Short looping showcase of the four Dentoku Dev products",
+  heroVideo: {
+    src: "/brand/studio-hero-en.mp4",
+    poster: "/brand/studio-hero-en-poster.jpg",
+    label:
+      "29-second loop: a farm-stay owner asks to answer guests while busy with something else; Dentoku Dev plans it, connects WhatsApp and AI, and shows a sneak peek of Kallmy",
+    controls: { play: "Play video", pause: "Pause video" },
+  },
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "on", outOfFive: "out of 5" } },
   services: {
     eyebrow: "What we build",

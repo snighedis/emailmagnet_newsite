@@ -31,8 +31,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <>
-      {/* Preload the hero video poster: it's the LCP element. */}
-      <link rel="preload" as="image" href="/brand/homepage-hero-poster.jpg" fetchPriority="high" />
+      {/* The hero loop poster is the LCP element. */}
+      <link rel="preload" as="image" href={copy.heroVideo.poster} fetchPriority="high" />
       <JsonLd data={buildItemListSchema(copy.itemListName, products)} />
 
       {/* Hero: consulting-first promise, products as standing proof.
@@ -66,8 +66,16 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             />
           </div>
         </div>
+        {/* Hero loop (video/src/StudioHero.tsx): silent, play/pause only. */}
         <div className="mt-10">
-          <HeroVideo label={copy.heroVideoLabel} />
+          <HeroVideo
+            src={copy.heroVideo.src}
+            poster={copy.heroVideo.poster}
+            label={copy.heroVideo.label}
+            controls={copy.heroVideo.controls}
+            width={1728}
+            height={864}
+          />
         </div>
       </Section>
 
