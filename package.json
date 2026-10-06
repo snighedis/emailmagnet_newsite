@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "check:i18n": "bash scripts/check-i18n.sh"
   },
   "dependencies": {
     "@next/mdx": "^16.2.6",

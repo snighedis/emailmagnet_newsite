@@ -497,8 +497,10 @@ export const socialProof = {
 
 // ---------------------------------------------------------------------------
 // Homepage: consulting-first narrative (hero, showcase, process, FAQ).
-// All homepage copy lives here, not in JSX, so a phased Italian localization
-// can swap these objects without touching page structure.
+// These objects are the ENGLISH source of truth: src/copy/en/home.ts re-exports
+// them. The Italian homepage lives in src/copy/it/home.ts, typed against the
+// English module and transcreated for the Italian market (CONTEXT.md,
+// "Transcreation"): change a claim here and update the Italian module too.
 // ---------------------------------------------------------------------------
 
 export const homeHero = {
