@@ -17,7 +17,7 @@ export function CookiesBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Last updated: June 15, 2026. This Cookie Policy explains what cookies and similar
+        Last updated: October 7, 2026. This Cookie Policy explains what cookies and similar
         technologies are used on dentokudev.com, why we use them, and how you can control
         them. It is issued in accordance with the EU ePrivacy Directive (2002/58/EC as amended
         by 2009/136/EC), the Italian implementing legislation (D.Lgs. 69/2012 and the Garante
@@ -85,7 +85,7 @@ export function CookiesBody() {
         b) Analytics Cookies (consent required)
       </h3>
       <p className="mt-3 leading-8 text-slate-600">
-        We use Google Analytics 4 to collect anonymised statistics about how visitors use this
+        We use Google Analytics 4 to collect statistics about how visitors use this
         website (pages visited, session duration, traffic sources). This helps us improve the
         site. These cookies are only set if you enable Analytics in the cookie banner (via
         “Accept all” or by toggling Analytics on under “Manage preferences”). If you reject them
@@ -131,8 +131,9 @@ export function CookiesBody() {
         </table>
       </div>
       <p className="mt-4 leading-8 text-slate-600">
-        IP anonymisation is enabled. Google Analytics data is processed in the United States
-        under Standard Contractual Clauses (Decision 2021/914). For more information, see
+        Google Analytics 4 does not log or store IP addresses. Google Analytics data is processed
+        in the United States; Google LLC is certified under the EU-U.S. Data Privacy Framework
+        (adequacy decision 2023/1795). For more information, see
         Google's{" "}
         <a
           href="https://policies.google.com/privacy"
@@ -245,8 +246,9 @@ export function CookiesBody() {
         4. Retention of Cookie Data
       </h2>
       <p className="mt-3 leading-8 text-slate-600">
-        Cookie lifetimes are shown in the tables above. Aggregated analytics reports are
-        retained for up to 26 months in Google Analytics before automatic deletion. We
+        Cookie lifetimes are shown in the tables above. Google Analytics keeps event-level data for
+        at most 14 months, the longest period a standard Google Analytics 4 property allows,
+        before automatic deletion. We
         periodically review active cookies and remove those that are no longer necessary.
       </p>
 

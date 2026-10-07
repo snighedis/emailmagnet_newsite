@@ -93,7 +93,7 @@ export function AnalyticsGate({ gaId, adsId }: AnalyticsGateProps) {
   if (!tracking) return null;
 
   // One gtag.js load covers both products; each is configured only with its own
-  // consent. GA runs with anonymised IP; Google Ads only with marketing consent.
+  // consent. GA4 stores no IPs (anonymize_ip is a no-op there); Google Ads only with marketing consent.
   const containerId = analyticsConsent ? gaId : adsId;
   const initScript = [
     "window.dataLayer = window.dataLayer || [];",

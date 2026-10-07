@@ -31,7 +31,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Ultimo aggiornamento: 24 settembre 2026. La presente Informativa descrive come Dentoku Dev
+        Ultimo aggiornamento: 7 ottobre 2026. La presente Informativa descrive come Dentoku Dev
         (“noi”) tratta i dati personali quando visiti dentokudev.com, acquisti o usi EmailMagnet, o
         ci affidi servizi di consulenza digitale. È resa ai sensi dell’art. 13 del Regolamento (UE)
         2016/679 (“GDPR”) e del Codice in materia di protezione dei dati personali (D.Lgs.
@@ -154,8 +154,8 @@ export function PrivacyBody() {
         </li>
         <li>
           <strong>Analisi</strong>: Google LLC (Google Analytics 4, USA), per statistiche
-          anonimizzate sull’uso del sito, sulla base delle Clausole Contrattuali Standard e con
-          anonimizzazione dell’indirizzo IP.
+          sull’uso del sito, trasferite sulla base dell’EU-U.S. Data Privacy Framework. Google
+          Analytics 4 non registra né conserva gli indirizzi IP.
         </li>
         <li>
           <strong>Chat di assistenza AI</strong>: Chatbase, Inc. (USA), che gestisce il widget
@@ -233,8 +233,10 @@ export function PrivacyBody() {
       <p className={p}>
         Utilizziamo cookie strettamente necessari per il funzionamento del sito (gestione della
         sessione, sicurezza). Con il tuo consenso utilizziamo anche cookie di analisi (Google
-        Analytics 4) per comprendere l’andamento aggregato del traffico. Non utilizziamo cookie
-        per pubblicità comportamentale. Puoi gestire o revocare il consenso ai cookie in qualsiasi
+        Analytics 4) per comprendere l’andamento aggregato del traffico e, solo se attivi i cookie di
+        Marketing, i tag di Google Ads che misurano le conversioni delle nostre campagne
+        pubblicitarie. Non utilizziamo cookie di profilazione per finalità diverse da questa
+        misurazione delle conversioni. Puoi gestire o revocare il consenso ai cookie in qualsiasi
         momento dal banner dei cookie o dalle impostazioni del browser. Per informazioni
         dettagliate consulta la nostra{" "}
         <LocaleLink href="/cookies" className={a}>

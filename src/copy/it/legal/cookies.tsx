@@ -26,7 +26,7 @@ export function CookiesBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Ultimo aggiornamento: 15 giugno 2026. La presente Cookie Policy spiega quali cookie e
+        Ultimo aggiornamento: 7 ottobre 2026. La presente Cookie Policy spiega quali cookie e
         tecnologie simili sono utilizzati su dentokudev.com, perché li utilizziamo e come puoi
         gestirli. È redatta ai sensi della Direttiva ePrivacy (2002/58/CE, come modificata dalla
         2009/136/CE), della normativa italiana di attuazione (D.Lgs. 69/2012 e Linee guida del
@@ -90,7 +90,7 @@ export function CookiesBody() {
 
       <h3 className={h3}>b) Cookie di analisi (consenso richiesto)</h3>
       <p className={p}>
-        Utilizziamo Google Analytics 4 per raccogliere statistiche anonimizzate su come i visitatori
+        Utilizziamo Google Analytics 4 per raccogliere statistiche su come i visitatori
         usano il sito (pagine visitate, durata della sessione, sorgenti di traffico). Queste
         informazioni ci aiutano a migliorare il sito. I cookie vengono installati solo se attivi
         la categoria Analisi nel banner (con “Accetta tutti” oppure attivando Analisi in
@@ -136,8 +136,9 @@ export function CookiesBody() {
         </table>
       </div>
       <p className={p4}>
-        L’anonimizzazione dell’indirizzo IP è attiva. I dati di Google Analytics sono trattati negli
-        Stati Uniti sulla base delle Clausole Contrattuali Standard (Decisione 2021/914). Per
+        Google Analytics 4 non registra né conserva gli indirizzi IP. I dati di Google Analytics
+        sono trattati negli Stati Uniti; Google LLC aderisce all’EU-U.S. Data Privacy Framework
+        (decisione di adeguatezza 2023/1795). Per
         maggiori informazioni consulta l’
         <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className={a}>
           Informativa sulla privacy di Google
@@ -229,9 +230,9 @@ export function CookiesBody() {
 
       <h2 className={h2}>4. Conservazione dei dati dei cookie</h2>
       <p className={p}>
-        La durata dei cookie è indicata nelle tabelle precedenti. I report aggregati di analisi
-        sono conservati in Google Analytics per un massimo di 26 mesi prima della cancellazione
-        automatica. Verifichiamo periodicamente i cookie attivi e rimuoviamo quelli non più
+        La durata dei cookie è indicata nelle tabelle precedenti. Google Analytics conserva i dati a livello di
+        evento per un massimo di 14 mesi, il periodo più lungo consentito da una proprietà
+        standard di Google Analytics 4, prima della cancellazione automatica. Verifichiamo periodicamente i cookie attivi e rimuoviamo quelli non più
         necessari.
       </p>
 

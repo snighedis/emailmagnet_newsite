@@ -17,7 +17,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Last updated: September 24, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
+        Last updated: October 7, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
         &quot;us&quot;, or &quot;our&quot;) processes personal data when you visit dentokudev.com, purchase or
         use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
         Art. 13 of Regulation (EU) 2016/679 (&quot;GDPR&quot;) and the Italian Personal Data Protection
@@ -148,8 +148,9 @@ export function PrivacyBody() {
           API under SCCs.
         </li>
         <li>
-          <strong>Analytics</strong>: Google LLC (Google Analytics 4, USA); anonymised
-          website usage statistics under SCCs and IP anonymisation.
+          <strong>Analytics</strong>: Google LLC (Google Analytics 4, USA); website usage
+          statistics, transferred under the EU-U.S. Data Privacy Framework. Google Analytics 4
+          does not log or store IP addresses.
         </li>
         <li>
           <strong>AI support chat</strong>: Chatbase, Inc. (USA); powers the optional AI
@@ -233,8 +234,9 @@ export function PrivacyBody() {
       <p className="mt-3 leading-8 text-slate-600">
         We use strictly necessary cookies to operate the website (session management,
         security). With your consent, we also deploy analytics cookies (Google Analytics 4)
-        to understand aggregate traffic patterns. No cookies are used for behavioural
-        advertising. You can manage or withdraw cookie consent at any time through the cookie
+        to understand aggregate traffic patterns and, only if you enable Marketing cookies, Google
+        Ads tags that measure conversions from our advertising campaigns. We do not use profiling
+        cookies for any purpose other than this conversion measurement. You can manage or withdraw cookie consent at any time through the cookie
         banner or your browser settings. For detailed information see our{" "}
         <LocaleLink href="/cookies" className="underline underline-offset-2">
           Cookie Policy
