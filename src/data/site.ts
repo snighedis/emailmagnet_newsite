@@ -678,11 +678,6 @@ export const consultingFaq: FaqItem[] = [
     question: "Where are you based?",
     answer: "Milan, Italy. We work with clients remotely, in English and Italian.",
   },
-  {
-    question: "How do we know you can ship?",
-    answer:
-      "Judge us by what we build for ourselves: four products live on public stores, with real users and public reviews. Client work gets the same craft.",
-  },
 ];
 
 export const accentIcon = Sparkles;

@@ -79,7 +79,7 @@ export const home = {
     eyebrow: "Start",
     title: "Tell us what you want to build",
     description:
-      "One call. A written proposal. Software that ships. Or try one of our products first and judge the craft yourself.",
+      "One call. A written proposal. Software that ships.",
     primary: { label: "Start your project", href: "/contact" },
     secondary: { label: "See what we build", href: "/#services" },
   },

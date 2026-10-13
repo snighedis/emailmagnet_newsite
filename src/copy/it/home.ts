@@ -248,18 +248,13 @@ export const home: HomeCopy = {
         answer:
           "Dipende dal perimetro, e lo sapete per iscritto prima di impegnarvi: la prima call non costa nulla e si chiude con una proposta che indica cosa costruiamo, quanto costa e quando è pronto.",
       },
-      {
-        question: "Come sappiamo che siete in grado di consegnare?",
-        answer:
-          "Giudicaci da ciò che costruiamo per noi stessi: quattro prodotti online su store pubblici, con utenti reali e recensioni pubbliche. Il lavoro per i clienti riceve la stessa cura.",
-      },
     ],
   },
   cta: {
     eyebrow: "Inizia",
     title: "Raccontaci cosa vuoi costruire",
     description:
-      "Una call. Una proposta scritta. Software che va online. Oppure prova prima uno dei nostri prodotti e giudica tu la qualità.",
+      "Una call. Una proposta scritta. Software che va online.",
     primary: { label: "Raccontaci il problema", href: "/contact" },
     secondary: { label: "Guarda cosa costruiamo", href: "/#services" },
   },
