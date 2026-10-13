@@ -141,7 +141,7 @@ export const home: HomeCopy = {
       {
         title: "Perimetro",
         description:
-          "Una breve call e una proposta scritta: cosa costruiamo, quanto costa, quando è pronto. Nessun impegno finché non la approvi.",
+          "Una breve call e una proposta scritta: cosa costruiamo, quanto costa, quando è pronto e quante ore al mese ti costa oggi il problema. Nessun impegno finché non la approvi.",
       },
       {
         title: "Rilascio",
@@ -211,7 +211,7 @@ export const home: HomeCopy = {
       {
         question: "Come inizia un progetto?",
         answer:
-          "Con una breve call e una proposta scritta che copre perimetro, costi e tempi. Sai esattamente cosa costruiamo e quando sarà pronto prima di impegnarti in qualsiasi cosa.",
+          "Con una breve call e una proposta scritta che copre perimetro, costi e tempi, e quante ore al mese ti costa oggi il problema. Sai esattamente cosa costruiamo e quando sarà pronto prima di impegnarti in qualsiasi cosa. Dopo il rilascio misuriamo insieme il risparmio.",
       },
       {
         question: "Chi lavorerà davvero al mio progetto?",

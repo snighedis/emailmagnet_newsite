@@ -69,7 +69,7 @@ export const siteConfig = {
   // Footer-only positioning line. Kept separate from the SEO `description` so the
   // meta keeps its product keywords while the footer speaks to the studio's range.
   footerTagline:
-    "A software studio that ships its own products and provides digital and AI consulting.",
+    "A Milan software studio. We automate small businesses' repetitive work with AI, and measure how much it saves you.",
   supportEmail: "support@dentokudev.com",
   location: "Milan, Italy",
   primaryCta: {
@@ -639,7 +639,7 @@ export const howWeWork = [
   {
     title: "Scope",
     description:
-      "A short call and a written proposal: what we build, what it costs, when it ships. No obligation until you approve it.",
+      "A short call and a written proposal: what we build, what it costs, when it ships, and how many hours a month the problem costs you today. No obligation until you approve it.",
   },
   {
     title: "Ship",
@@ -662,7 +662,7 @@ export const consultingFaq: FaqItem[] = [
   {
     question: "How does a project start?",
     answer:
-      "With a short call and a written proposal covering scope, cost, and timeline. You know exactly what we build and when it ships before committing to anything.",
+      "With a short call and a written proposal covering scope, cost, and timeline, plus how many hours a month the problem costs you today. You know exactly what we build and when it ships before committing to anything. After release we measure the saving together.",
   },
   {
     question: "Who will actually work on my project?",

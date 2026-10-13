@@ -52,6 +52,28 @@ precise term.
   assessment, workshop, or paid analysis phase). Copy in any language must not promise one;
   the answer to "where should we start with AI?" is always a small built tool, not a plan.
 
+## Positioning
+
+- **Positioning statement** — the internal source every self-description derives from (home
+  hero, meta, footer, social card, LinkedIn, store listings). Not published verbatim. Decided
+  13 October 2026:
+  *For owners of small Italian businesses who lose hours every week to repetitive work
+  (reading email, preparing quotes, retyping data), Dentoku Dev is the Milan software studio
+  that builds AI-automated workflows on one precise problem, with a saving measured every
+  month. Because we only sell what we have already built and use ourselves: four products live
+  on public stores. Unlike agencies, we do not sell projects and slides: you talk to the person
+  who writes the code, and we measure the saving together.*
+  Target: small Italian businesses. Category: software studio. Alternative: agencies.
+- **Measured saving** — the studio's method, not a result: every written proposal states the
+  baseline (hours per month the problem costs today), and after release the saving is measured
+  again with the client. Copy may promise the measurement; it must never state a saving figure
+  that has not been measured on a real project. The first measured projects become the case
+  studies the site does not have yet.
+- **Short line** — the one-line form of the positioning, used in the footer, LinkedIn bio and
+  social card. IT: "Studio software di Milano. Automatizziamo con l'AI il lavoro ripetitivo
+  delle piccole imprese, e misuriamo quanto ti fa risparmiare." EN: "A Milan software studio.
+  We automate small businesses' repetitive work with AI, and measure how much it saves you."
+
 ## Products
 
 - **EmailMagnet** — Chrome extension for extracting visible business emails while browsing;
