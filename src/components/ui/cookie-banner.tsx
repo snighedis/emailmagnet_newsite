@@ -57,6 +57,9 @@ function Toggle({
   );
 }
 
+/** Exit transition length; matches duration-200 on the dialog. */
+const EXIT_MS = 200;
+
 export function CookieBanner() {
   const { cookieBanner: copy } = useCopy().common;
   // SSR-safe source of truth: "" means no (valid, unexpired) stored choice yet.
@@ -72,6 +75,16 @@ export function CookieBanner() {
   const [panelOpen, setPanelOpen] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [marketing, setMarketing] = useState(false);
+  // Set only by a choice made in the banner: it stays mounted for the exit
+  // transition, showing what it showed when the choice was made. Not driven by
+  // `visible`, so a visitor who already chose never sees it fade out on load.
+  const [leaving, setLeaving] = useState<null | { preferences: boolean }>(null);
+
+  useEffect(() => {
+    if (!leaving) return;
+    const timer = window.setTimeout(() => setLeaving(null), EXIT_MS);
+    return () => window.clearTimeout(timer);
+  }, [leaving]);
 
   useEffect(() => {
     const openPreferences = () => {
@@ -86,6 +99,7 @@ export function CookieBanner() {
 
   const apply = (next: ConsentCategories) => {
     const previous = readConsent();
+    setLeaving({ preferences: panelOpen });
     writeConsent(next);
     setPanelOpen(false);
 
@@ -112,21 +126,32 @@ export function CookieBanner() {
 
   // Show the panel when reopened; otherwise the first-layer banner only when no
   // valid choice is stored. Nothing shows once a choice exists.
-  const isPreferences = panelOpen;
   const visible = panelOpen || !hasConsent;
-  if (!visible) return null;
+  const exiting = !visible && leaving !== null;
+  const isPreferences = exiting ? leaving.preferences : panelOpen;
+  if (!visible && !exiting) return null;
 
   return (
     <div
       role="dialog"
       aria-modal="false"
       aria-label={copy.dialogAria}
+      aria-hidden={exiting || undefined}
+      inert={exiting || undefined}
       className={cn(
         "fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)]",
+        // Enters from the bottom edge it is anchored to, and leaves the same way.
+        "transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] starting:translate-y-4 starting:opacity-0",
+        "motion-reduce:translate-y-0 motion-reduce:starting:translate-y-0",
+        exiting && "translate-y-4 opacity-0 duration-200 ease-in motion-reduce:translate-y-0",
         isPreferences ? "sm:max-w-lg" : "sm:max-w-md",
       )}
     >
-      <div className="shadow-soft-lg rounded-xl border border-slate-200 bg-white p-5">
+      {/* Re-keyed when switching to the preferences, so the new content fades in. */}
+      <div
+        key={isPreferences ? "preferences" : "intro"}
+        className="shadow-soft-lg animate-in fade-in-0 rounded-xl border border-slate-200 bg-white p-5 duration-150"
+      >
         <div className="flex items-start justify-between gap-3">
           <h2 className="text-base font-semibold text-slate-950">
             {isPreferences ? copy.preferencesTitle : copy.title}

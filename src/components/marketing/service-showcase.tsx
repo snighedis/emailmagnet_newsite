@@ -2,6 +2,7 @@
 
 import { LocaleLink } from "@/i18n/locale-link";
 import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, CheckCircle2 } from "@/components/ui/icons";
 import { BrowserFrame } from "@/components/marketing/browser-frame";
 import { cn } from "@/lib/utils";
@@ -81,12 +82,19 @@ export function ServiceShowcase({
   labels = { tablist: "What we build", explore: "Explore {name}" },
 }: ServiceShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const reduceMotion = useReducedMotion();
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const active = items[activeIndex];
 
+  function select(index: number) {
+    setActiveIndex(index);
+    // On a phone the tabs are one scrolling row: keep the chosen tab fully in view.
+    tabRefs.current[index]?.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+  }
+
   function focusTab(index: number) {
     const next = (index + items.length) % items.length;
-    setActiveIndex(next);
+    select(next);
     tabRefs.current[next]?.focus();
   }
 
@@ -112,7 +120,7 @@ export function ServiceShowcase({
         role="tablist"
         aria-label={labels.tablist}
         aria-orientation="horizontal"
-        className="flex flex-wrap gap-2 border-b border-slate-200 pb-4"
+        className="-mx-4 flex snap-x scroll-px-4 gap-2 overflow-x-auto border-b border-slate-200 px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
       >
         {items.map((item, index) => {
           const isActive = index === activeIndex;
@@ -127,27 +135,40 @@ export function ServiceShowcase({
               aria-selected={isActive}
               aria-controls={isActive ? `showcase-panel-${item.key}` : undefined}
               tabIndex={isActive ? 0 : -1}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => select(index)}
               onKeyDown={(event) => handleKeyDown(event, index)}
               className={cn(
-                "focus-visible:ring-brand cursor-pointer rounded-md px-4 py-2 text-sm font-semibold outline-none transition focus-visible:ring-2",
+                "focus-visible:ring-brand relative min-h-11 shrink-0 cursor-pointer snap-start rounded-md px-4 text-sm font-semibold whitespace-nowrap outline-none transition focus-visible:ring-2 active:scale-[0.97] motion-reduce:active:scale-100",
                 isActive
-                  ? "bg-ink text-white"
+                  ? cn("text-white", reduceMotion ? "bg-ink" : "bg-slate-100")
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-950",
               )}
             >
-              {item.label}
+              {/* One dark pill shared by every tab: it slides to the chosen tab
+                  instead of jumping. z-10 keeps it above the siblings' grey while
+                  it travels; each label sits above it. Reduced motion: no slide,
+                  the background simply cross-fades (bg-ink above). */}
+              {isActive && !reduceMotion ? (
+                <motion.span
+                  layoutId="showcase-tab-pill"
+                  aria-hidden="true"
+                  className="bg-ink absolute inset-0 z-10 rounded-md"
+                  transition={{ type: "spring", duration: 0.35, bounce: 0 }}
+                />
+              ) : null}
+              <span className="relative z-20">{item.label}</span>
             </button>
           );
         })}
       </div>
 
       <div
+        key={active.key}
         role="tabpanel"
         tabIndex={0}
         id={`showcase-panel-${active.key}`}
         aria-labelledby={`showcase-tab-${active.key}`}
-        className="mt-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+        className="animate-in fade-in-0 mt-10 grid gap-10 duration-300 motion-reduce:animate-none lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
       >
         <div className="space-y-5">
           <h3 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">

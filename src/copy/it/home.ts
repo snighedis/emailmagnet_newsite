@@ -160,12 +160,6 @@ export const home: HomeCopy = {
     title: "Quattro prodotti. Store pubblici. Recensioni pubbliche.",
     overviewLink: "Vedi la panoramica completa",
     viewProduct: "Vai al prodotto",
-    related: {
-      "/countdown321": [
-        { label: "Guida al timer di conto alla rovescia per Shopify", href: "/countdown321/shopify-countdown-timer-app" },
-        { label: "Guida all'app di urgenza per Shopify", href: "/countdown321/shopify-urgency-app" },
-      ],
-    },
   },
   explore: {
     eyebrow: "Esplora",

@@ -121,8 +121,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </Section>
 
-      {/* Products strip: compact, keeps every SEO crawl path */}
-      <Section variant="blue">
+      {/* Products strip: each card shows what the product does and where it is published */}
+      <Section variant="default">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">
             <Eyebrow>{copy.products.eyebrow}</Eyebrow>
@@ -138,70 +138,65 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           {products.map((product) => (
             <article
               key={product.href}
-              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-5 transition hover:-translate-y-0.5"
+              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 transition duration-200 hover:-translate-y-0.5 active:scale-[0.98] motion-reduce:transition-none"
             >
-              <Image
-                src={product.icon}
-                alt={`${product.name} icon`}
-                width={44}
-                height={44}
-                className="h-11 w-11 rounded-xl border border-slate-200 bg-slate-50 object-contain p-2"
-              />
-              <p className="text-eyebrow mt-4 text-xs font-semibold tracking-[0.14em] uppercase">
-                {product.category}
-              </p>
-              <h3 className="mt-1 text-xl font-semibold text-slate-950">
+              <div className="flex items-center gap-3">
+                <Image
+                  src={product.icon}
+                  alt=""
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 rounded-xl border border-slate-200 bg-slate-50 object-contain p-2"
+                />
+                <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
+                  {product.category}
+                </p>
+              </div>
+              <h3 className="mt-5 text-xl font-semibold text-slate-950">
                 <LocaleLink href={product.href} className="after:absolute after:inset-0">
                   {product.name}
                 </LocaleLink>
               </h3>
-              {copy.products.related[product.href] ? (
-                <div className="relative z-10 mt-2 flex flex-col gap-1 text-sm font-medium">
-                  {copy.products.related[product.href].map((link) => (
-                    <LocaleLink key={link.href} href={link.href} className="text-eyebrow hover:underline">
-                      {link.label}
-                    </LocaleLink>
-                  ))}
-                </div>
-              ) : null}
-              <span className="text-eyebrow mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
-                {copy.products.viewProduct}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
+              <p className="mt-2 mb-5 text-sm leading-6 text-slate-600">{product.description}</p>
+              <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-4 text-sm">
+                {/* Store names are never translated (AGENTS.md) */}
+                <span className="whitespace-nowrap text-slate-500">
+                  {product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store"}
+                </span>
+                {/* The whole card is the link (the name's ::after); the label stays for screen readers */}
+                <span className="text-eyebrow inline-flex items-center">
+                  <span className="sr-only">{copy.products.viewProduct}</span>
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </div>
             </article>
           ))}
         </div>
       </Section>
 
-      {/* Explore more: content hubs + docs + blog (SEO crawl paths preserved) */}
-      <Section variant="soft" spacing="compact">
-        <div className="max-w-3xl">
-          <Eyebrow>{copy.explore.eyebrow}</Eyebrow>
-          <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
-            {copy.explore.title}
-          </h2>
-        </div>
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {copy.explore.links.map((item) => (
-            <LocaleLink
-              key={item.href}
-              href={item.href}
-              className="group shadow-soft hover:shadow-soft-lg flex items-start justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 transition hover:-translate-y-0.5"
-            >
-              <span>
-                <span className="block font-semibold text-slate-950">{item.title}</span>
-                <span className="mt-1 block text-sm leading-6 text-slate-600">
-                  {item.description}
-                </span>
-              </span>
-              <ArrowRight className="text-eyebrow mt-1 h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
-            </LocaleLink>
-          ))}
+      {/* Explore more: one compact row of crawlable links to the content hubs */}
+      <Section variant="default" spacing="none" containerClassName="border-t border-slate-200 py-10">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
+          <h2 className="text-ink shrink-0 text-lg font-semibold">{copy.explore.title}</h2>
+          <ul className="flex flex-wrap gap-2">
+            {copy.explore.links.map((item) => (
+              <li key={item.href}>
+                <LocaleLink
+                  href={item.href}
+                  title={item.description}
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950 active:scale-[0.97] motion-reduce:transition-none"
+                >
+                  {item.title}
+                  <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
+                </LocaleLink>
+              </li>
+            ))}
+          </ul>
         </div>
       </Section>
 
       {/* Consulting FAQ (no FAQPage schema here; that lives on /faq) */}
-      <Section variant="default">
+      <Section variant="default" containerClassName="border-t border-slate-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-4">
             <Eyebrow>{copy.faq.eyebrow}</Eyebrow>
@@ -210,7 +205,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
             </h2>
             <p className="text-lg leading-8 text-slate-600">{copy.faq.description}</p>
           </div>
-          <FaqList items={copy.faq.items} />
+          <FaqList items={copy.faq.items} collapsible />
         </div>
       </Section>
 

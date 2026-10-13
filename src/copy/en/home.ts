@@ -50,13 +50,6 @@ export const home = {
     title: "Four products. Public stores. Public reviews.",
     overviewLink: "See the full overview",
     viewProduct: "View product",
-    // Deep product pages we keep linked from the homepage for SEO (crawl paths).
-    related: {
-      "/countdown321": [
-        { label: "Shopify countdown timer guide", href: "/countdown321/shopify-countdown-timer-app" },
-        { label: "Shopify urgency app guide", href: "/countdown321/shopify-urgency-app" },
-      ],
-    } as Record<string, Array<{ label: string; href: string }>>,
   },
   explore: {
     eyebrow: "Explore more",

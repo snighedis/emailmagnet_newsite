@@ -78,7 +78,7 @@ export function HeroVideo({
   };
 
   const buttonClass =
-    "bg-ink/75 hover:bg-ink focus-visible:ring-brand flex h-11 w-11 items-center justify-center rounded-full text-white backdrop-blur outline-none transition focus-visible:ring-2";
+    "bg-ink/75 hover:bg-ink focus-visible:ring-brand flex h-11 w-11 items-center justify-center rounded-full text-white backdrop-blur outline-none transition duration-[160ms] ease-out focus-visible:ring-2 active:scale-[0.95] motion-reduce:active:scale-100";
 
   return (
     <div
@@ -114,7 +114,7 @@ export function HeroVideo({
             aria-label={playing ? controls.pause : controls.play}
             className={buttonClass}
           >
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+            <svg key={playing ? "pause" : "play"} viewBox="0 0 24 24" className="icon-swap h-5 w-5" fill="currentColor" aria-hidden>
               {playing ? (
                 <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
               ) : (
@@ -130,7 +130,7 @@ export function HeroVideo({
             aria-pressed={!muted}
             className={buttonClass}
           >
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <svg key={muted ? "muted" : "sound"} viewBox="0 0 24 24" className="icon-swap h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z" fill="currentColor" />
               {muted ? (
                 <path d="M16 9.5l5 5M21 9.5l-5 5" />
