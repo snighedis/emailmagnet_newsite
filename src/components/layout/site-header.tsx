@@ -238,22 +238,29 @@ export function SiteHeader() {
               <MenuBars className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-80">
+          <SheetContent
+            side="right"
+            closeLabel={common.header.closeNavigation}
+            className="w-80 overflow-y-auto pb-8"
+          >
             <SheetTitle className="sr-only">{common.header.navigationTitle}</SheetTitle>
-            <div className="mt-8 space-y-6 px-6">
-              <Logo onClick={() => setMobileOpen(false)} />
+            <div className="mt-16 space-y-6 px-6">
+              <div className="flex items-center justify-between gap-3">
+                <Logo onClick={() => setMobileOpen(false)} />
+                <LanguageSwitcher className="border border-slate-200" />
+              </div>
               <nav className="grid gap-5 text-base font-medium">
                 <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
                   <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
                     {common.header.products}
                   </p>
-                  <div className="mt-3 space-y-3">
+                  <div className="mt-2 grid">
                     {site.products.map((product) => (
                       <LocaleLink
                         key={product.href}
                         href={product.href}
                         onClick={() => setMobileOpen(false)}
-                        className="block"
+                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-200/70"
                       >
                         {product.name}
                       </LocaleLink>
@@ -264,13 +271,13 @@ export function SiteHeader() {
                   <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
                     {common.header.resources}
                   </p>
-                  <div className="mt-3 space-y-3">
+                  <div className="mt-2 grid">
                     {site.resourcesNav.map((item) => (
                       <LocaleLink
                         key={item.href}
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="block"
+                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-200/70"
                       >
                         {item.label}
                       </LocaleLink>
@@ -278,16 +285,16 @@ export function SiteHeader() {
                   </div>
                 </div>
                 <div className="border-t border-slate-200 pt-4">
-                  <div className="grid gap-4">
+                  <div className="grid">
                     {site.mainNav.map((item) => (
-                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>
+                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-100">
                         {item.label}
                       </LocaleLink>
                     ))}
-                    <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)}>
+                    <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-100">
                       LinkedIn
                     </LocaleLink>
-                    <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)}>
+                    <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-100">
                       X/Twitter
                     </LocaleLink>
                   </div>
@@ -304,7 +311,6 @@ export function SiteHeader() {
                     {common.header.getEmailMagnetFree}
                   </LocaleLink>
                 </Button>
-                <LanguageSwitcher className="justify-center" />
               </div>
             </div>
           </SheetContent>

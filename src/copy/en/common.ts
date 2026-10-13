@@ -30,6 +30,7 @@ export const common = {
     getEmailMagnetFree: "Get EmailMagnet for free",
     startProject: "Start your project",
     openNavigation: "Open navigation",
+    closeNavigation: "Close navigation",
     navigationTitle: "Dentoku Dev navigation",
     logoAlt: "Dentoku Dev logo",
   },

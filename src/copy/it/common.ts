@@ -26,6 +26,7 @@ export const common: CommonCopy = {
     getEmailMagnetFree: "Scarica EmailMagnet gratis",
     startProject: "Raccontaci il problema",
     openNavigation: "Apri il menu",
+    closeNavigation: "Chiudi il menu",
     navigationTitle: "Menu di Dentoku Dev",
     logoAlt: "Logo Dentoku Dev",
   },
