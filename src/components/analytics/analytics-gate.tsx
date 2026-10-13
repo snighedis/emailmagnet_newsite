@@ -4,7 +4,6 @@ import { useEffect, useSyncExternalStore } from "react";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { ChatbaseWidget } from "@/components/analytics/chatbase-widget";
 import {
   getConsentSnapshot,
   getServerConsentSnapshot,
@@ -124,13 +123,6 @@ export function AnalyticsGate({ gaId, adsId }: AnalyticsGateProps) {
         <>
           <Analytics />
           <SpeedInsights />
-          {/* EU AI Act Art. 50(1) disclosure for the support chat lives in the
-              Chatbase bot's opening message, set in the Chatbase dashboard. It is
-              shown as the launcher teaser and as the first message in the chat, so
-              it is present at the moment of interaction on every visit. A second
-              site-rendered notice used to sit here; it was removed because it
-              duplicated that text and collided with the teaser on screen. */}
-          <ChatbaseWidget />
         </>
       ) : null}
     </>

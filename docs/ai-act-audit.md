@@ -196,3 +196,11 @@ Recording these explicitly so no effort is wasted on them.
 review) and item 7 (the Art. 50(2) marking classification), both of which need a lawyer and neither
 of which is an obstacle to operating in the meantime. See `docs/ai-act-art50-assessment.md` for the
 reasoning held on file for item 7.
+
+---
+
+## Update, 9 October 2026: the support chat is gone
+
+The Chatbase support chat was removed from the site: nobody used it. With it go findings F2 and F6
+and the site's only Article 50(1) obligation as a deployer. The privacy policy, cookie policy and
+banner no longer mention it. What remains from this audit concerns ClickPilot AI only (F3, F4, F5).

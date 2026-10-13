@@ -17,7 +17,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Last updated: October 7, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
+        Last updated: October 9, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
         &quot;us&quot;, or &quot;our&quot;) processes personal data when you visit dentokudev.com, purchase or
         use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
         Art. 13 of Regulation (EU) 2016/679 (&quot;GDPR&quot;) and the Italian Personal Data Protection
@@ -153,11 +153,6 @@ export function PrivacyBody() {
           does not log or store IP addresses.
         </li>
         <li>
-          <strong>AI support chat</strong>: Chatbase, Inc. (USA); powers the optional AI
-          assistant chat widget. If you open the chat, the messages you send are processed to
-          generate automated replies. Loaded only with your analytics consent, under SCCs.
-        </li>
-        <li>
           <strong>Email delivery</strong>: transactional email sent via a provider under a
           DPA; used only for licence delivery, support replies, and mandatory service notices.
         </li>
@@ -168,23 +163,6 @@ export function PrivacyBody() {
           unsubscribe at any time via the link in every email.
         </li>
       </ul>
-
-      <h3 className="mt-8 text-lg font-semibold text-slate-950">
-        AI assistant transparency (EU AI Act)
-      </h3>
-      <p className="mt-3 leading-8 text-slate-600">
-        Our website offers an optional support chat that is an{" "}
-        <strong>artificial intelligence system</strong>, not a human agent. In line with Article
-        50 of Regulation (EU) 2024/1689 (the AI Act), we disclose this clearly before you
-        interact with it. Replies are generated automatically and may be inaccurate or
-        incomplete; they do not constitute professional, legal, or binding advice. Please do not
-        share sensitive personal data in the chat, and contact{" "}
-        <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
-          support@dentokudev.com
-        </a>{" "}
-        for anything important. The assistant does not make automated decisions producing legal
-        or similarly significant effects about you (Art. 22 GDPR).
-      </p>
       <p className="mt-4 leading-8 text-slate-600">
         We may also disclose data to public authorities when required by law, court order, or
         to protect our legal rights.

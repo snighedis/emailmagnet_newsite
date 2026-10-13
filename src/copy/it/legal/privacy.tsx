@@ -31,7 +31,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Ultimo aggiornamento: 7 ottobre 2026. La presente Informativa descrive come Dentoku Dev
+        Ultimo aggiornamento: 9 ottobre 2026. La presente Informativa descrive come Dentoku Dev
         (“noi”) tratta i dati personali quando visiti dentokudev.com, acquisti o usi EmailMagnet, o
         ci affidi servizi di consulenza digitale. È resa ai sensi dell’art. 13 del Regolamento (UE)
         2016/679 (“GDPR”) e del Codice in materia di protezione dei dati personali (D.Lgs.
@@ -158,12 +158,6 @@ export function PrivacyBody() {
           Analytics 4 non registra né conserva gli indirizzi IP.
         </li>
         <li>
-          <strong>Chat di assistenza AI</strong>: Chatbase, Inc. (USA), che gestisce il widget
-          facoltativo di chat con l’assistente AI. Se apri la chat, i messaggi che invii vengono
-          trattati per generare risposte automatiche. Viene caricata solo con il tuo consenso alla
-          categoria Analisi, sulla base delle Clausole Contrattuali Standard.
-        </li>
-        <li>
           <strong>Invio di email</strong>: le email di servizio sono inviate tramite un fornitore
           vincolato da un accordo sul trattamento dei dati e sono usate solo per la consegna delle
           licenze, le risposte dell’assistenza e le comunicazioni di servizio obbligatorie.
@@ -176,19 +170,6 @@ export function PrivacyBody() {
           momento tramite il link presente in ogni email.
         </li>
       </ul>
-
-      <h3 className={h3}>Trasparenza sull’assistente AI (AI Act)</h3>
-      <p className={p}>
-        Il nostro sito offre una chat di assistenza facoltativa che è un{" "}
-        <strong>sistema di intelligenza artificiale</strong>, non un operatore umano. In linea con
-        l’articolo 50 del Regolamento (UE) 2024/1689 (AI Act), lo dichiariamo chiaramente prima che
-        tu interagisca con essa. Le risposte sono generate automaticamente e possono essere
-        inesatte o incomplete; non costituiscono consulenza professionale o legale né impegni
-        vincolanti. Non condividere dati personali sensibili nella chat e scrivi a <Mail /> per
-        qualsiasi questione importante. L’assistente non prende decisioni automatizzate che
-        producano effetti giuridici o effetti analogamente significativi nei tuoi confronti (art. 22
-        GDPR).
-      </p>
       <p className={p4}>
         Possiamo inoltre comunicare dati alle autorità pubbliche quando richiesto dalla legge o da
         un provvedimento giudiziario, o per tutelare i nostri diritti.

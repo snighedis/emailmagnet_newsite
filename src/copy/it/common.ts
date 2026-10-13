@@ -57,7 +57,7 @@ export const common: CommonCopy = {
       analytics: {
         title: "Analisi",
         description:
-          "Google Analytics e metriche d'uso rispettose della privacy che ci aiutano a migliorare il sito. Attiva anche la chat di assistenza AI opzionale (Chatbase, USA), che elabora ciò che scrivi al suo interno.",
+          "Google Analytics e metriche d'uso rispettose della privacy che ci aiutano a migliorare il sito.",
       },
       marketing: {
         title: "Marketing",

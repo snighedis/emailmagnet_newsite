@@ -26,7 +26,7 @@ export function CookiesBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-slate-600">
-        Ultimo aggiornamento: 7 ottobre 2026. La presente Cookie Policy spiega quali cookie e
+        Ultimo aggiornamento: 9 ottobre 2026. La presente Cookie Policy spiega quali cookie e
         tecnologie simili sono utilizzati su dentokudev.com, perché li utilizziamo e come puoi
         gestirli. È redatta ai sensi della Direttiva ePrivacy (2002/58/CE, come modificata dalla
         2009/136/CE), della normativa italiana di attuazione (D.Lgs. 69/2012 e Linee guida del
@@ -97,14 +97,7 @@ export function CookiesBody() {
         “Gestisci le preferenze”). Se li rifiuti o chiudi il banner, non viene installato alcun
         cookie di analisi. Utilizziamo anche gli strumenti di analisi di Vercel, rispettosi della
         privacy e senza cookie, che carichiamo ugualmente solo con il tuo consenso alla categoria
-        Analisi. Nella stessa categoria rientra la nostra chat di assistenza AI opzionale
-        (Chatbase), che può salvare dati locali nel tuo browser per mantenere la sessione della
-        chat; si tratta di un assistente basato sull’intelligenza artificiale, come spiegato nella
-        nostra{" "}
-        <LocaleLink href="/privacy" className={a}>
-          Informativa sulla privacy
-        </LocaleLink>
-        .
+        Analisi.
       </p>
       <div className="mt-4 overflow-x-auto">
         <table className="w-full text-sm text-slate-600">
