@@ -140,20 +140,20 @@ export function ServiceShowcase({
               className={cn(
                 "focus-visible:ring-brand relative min-h-11 shrink-0 cursor-pointer snap-start rounded-md px-4 text-sm font-semibold whitespace-nowrap outline-none transition focus-visible:ring-2 active:scale-[0.97] motion-reduce:active:scale-100",
                 isActive
-                  ? cn("text-white", reduceMotion ? "bg-ink" : "bg-slate-100")
+                  ? "bg-slate-100 text-white"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-950",
               )}
             >
               {/* One dark pill shared by every tab: it slides to the chosen tab
                   instead of jumping. z-10 keeps it above the siblings' grey while
-                  it travels; each label sits above it. Reduced motion: no slide,
-                  the background simply cross-fades (bg-ink above). */}
-              {isActive && !reduceMotion ? (
+                  it travels; each label sits above it. Always rendered, so server
+                  and client markup match; reduced motion only drops the slide. */}
+              {isActive ? (
                 <motion.span
                   layoutId="showcase-tab-pill"
                   aria-hidden="true"
                   className="bg-ink absolute inset-0 z-10 rounded-md"
-                  transition={{ type: "spring", duration: 0.35, bounce: 0 }}
+                  transition={reduceMotion ? { duration: 0 } : { type: "spring", duration: 0.35, bounce: 0 }}
                 />
               ) : null}
               <span className="relative z-20">{item.label}</span>
