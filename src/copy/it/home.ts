@@ -16,7 +16,7 @@ export const home: HomeCopy = {
     titleLead: "L'AI in azienda, senza scommesse.",
     titleAccent: "Funzionante.",
     subhead:
-      "Costruiamo software su misura per piccole e medie imprese: strumenti interni, estensioni e app, con l'intelligenza artificiale solo dove porta un risultato. Prova prima i nostri prodotti, poi decidi.",
+      "Costruiamo software su misura per piccole e medie imprese: strumenti interni, estensioni e app, con l'intelligenza artificiale solo dove porta un risultato.",
     primaryCta: { label: "Raccontaci il problema", href: "/contact" },
     secondaryCta: { label: "Guarda cosa costruiamo", href: "/#services" },
     trustNote: "4 prodotti online su store pubblici",
@@ -250,12 +250,61 @@ export const home: HomeCopy = {
       },
     ],
   },
-  cta: {
-    eyebrow: "Inizia",
-    title: "Raccontaci cosa vuoi costruire",
-    description:
-      "Una call. Una proposta scritta. Software che va online.",
-    primary: { label: "Raccontaci il problema", href: "/contact" },
-    secondary: { label: "Guarda cosa costruiamo", href: "/#services" },
+  audience: {
+    label: "Per",
+    items: ["Agriturismi e B&B", "Studi professionali", "Negozi", "Artigiani"],
+  },
+  brief: {
+    eyebrow: "Il brief",
+    title: "Quante ore ti costa oggi?",
+    lede: "Quattro tocchi. Il numero resta sul tuo telefono finché non decidi di inviarlo.",
+    business: {
+      legend: "La tua attività",
+      options: {
+        farmstay: "Agriturismo o B&B",
+        office: "Studio professionale",
+        shop: "Negozio",
+        workshop: "Artigiano o laboratorio",
+        other: "Altro",
+      },
+    },
+    task: {
+      legend: "Il lavoro ripetitivo che ti ruba più tempo",
+      options: {
+        email: "Rispondere alle email",
+        quotes: "Preparare preventivi",
+        retyping: "Ricopiare dati",
+        bookings: "Gestire prenotazioni",
+        other: "Altro",
+      },
+    },
+    times: { legend: "Quante volte a settimana" },
+    minutes: { legend: "Minuti ogni volta", unit: "min" },
+    result: {
+      idle: "Rispondi alle quattro domande per vedere quanto ti costa oggi.",
+      lead: "Oggi ti costa",
+      tail: "al mese.",
+    },
+    text: {
+      hours: { underOne: "meno di un’ora", one: "circa {count} ora", other: "circa {count} ore" },
+      formula: "{times} × {minutes} min × {weeks} settimane",
+      mail: {
+        subject: "[Brief] {task}, {hours} al mese",
+        intro: "Ciao Dentoku Dev, ecco il mio brief dal sito.",
+        business: "Attività",
+        task: "Lavoro ripetitivo",
+        frequency: "Quanto spesso",
+        baseline: "Quanto mi costa oggi",
+        formula: "Calcolo",
+        method: "È una mia stima: la misuriamo bene nella proposta.",
+        more: "Altro che dovreste sapere:",
+      },
+    },
+    method: "È il punto di partenza della proposta. Dopo il rilascio lo rimisuriamo insieme.",
+    send: "Mandacelo per email",
+    copy: "Copia il brief",
+    copied: "Copiato",
+    fallback: "Non si apre la posta? Scrivici a",
+    privacy: "Niente lascia questa pagina finché non premi Invia nella tua app di posta.",
   },
 };

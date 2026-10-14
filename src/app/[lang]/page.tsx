@@ -6,7 +6,7 @@ import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { HeroVideo } from "@/components/marketing/hero-video";
 import { TrustBar } from "@/components/marketing/trust-bar";
-import { CtaBand } from "@/components/marketing/cta-band";
+import { Brief } from "@/components/marketing/brief";
 import { FaqList } from "@/components/marketing/faq-list";
 import { ServiceShowcase } from "@/components/marketing/service-showcase";
 import { Button } from "@/components/ui/button";
@@ -38,20 +38,27 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       {/* Hero: consulting-first promise, products as standing proof.
           Centered compact copy, then the video spans the full container width
           as the protagonist (Apollo pattern). */}
-      <Section variant="gradient" containerClassName="max-w-7xl">
+      <Section variant="soft" containerClassName="max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-6 text-center">
           <Eyebrow className="text-[12px] font-medium">{copy.hero.eyebrow}</Eyebrow>
           <h1 className="text-ink text-4xl font-semibold tracking-[-0.02em] text-balance md:text-[70px] md:leading-[1.05]">
             {copy.hero.titleLead} <span className="text-brand">{copy.hero.titleAccent}</span>
           </h1>
           <p className="mx-auto max-w-xl text-lg leading-8 text-slate-700">{copy.hero.subhead}</p>
+          {/* Who the studio works for, named by kind of business */}
+          <p className="mx-auto flex max-w-2xl flex-wrap justify-center gap-x-4 gap-y-1.5 font-mono text-xs tracking-[0.08em] text-slate-500 uppercase">
+            <span className="text-eyebrow">{copy.audience.label}</span>
+            {copy.audience.items.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             {/* The hero CTA pair is the only pill-shaped element on the site */}
             <Button asChild size="xl" className="btn-sheen rounded-full font-semibold hover:-translate-y-0.5">
-              <LocaleLink href={copy.hero.primaryCta.href}>
+              <a href="#brief">
                 {copy.hero.primaryCta.label}
                 <ArrowRight className="h-4 w-4" />
-              </LocaleLink>
+              </a>
             </Button>
             <Button asChild size="xl" variant="outline" className="rounded-full">
               <LocaleLink href={copy.hero.secondaryCta.href}>{copy.hero.secondaryCta.label}</LocaleLink>
@@ -80,9 +87,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* What we build: services proven by our own products (tabbed showcase) */}
-      <Section id="services" variant="default">
+      <Section id="services" variant="soft" className="border-t border-slate-200/70">
         <div className="max-w-3xl space-y-3">
-          <Eyebrow>{copy.services.eyebrow}</Eyebrow>
+          <Eyebrow index="01">{copy.services.eyebrow}</Eyebrow>
           <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
             {copy.services.title}
           </h2>
@@ -100,7 +107,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <Section variant="ink">
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-4">
-            <Eyebrow tone="ink">{copy.process.eyebrow}</Eyebrow>
+            <Eyebrow tone="ink" index="02">{copy.process.eyebrow}</Eyebrow>
             <h2 className="text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
               {copy.process.title}
             </h2>
@@ -122,10 +129,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* Products strip: each card shows what the product does and where it is published */}
-      <Section variant="default">
+      <Section variant="soft">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">
-            <Eyebrow>{copy.products.eyebrow}</Eyebrow>
+            <Eyebrow index="03">{copy.products.eyebrow}</Eyebrow>
             <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
               {copy.products.title}
             </h2>
@@ -175,7 +182,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* Explore more: one compact row of crawlable links to the content hubs */}
-      <Section variant="default" spacing="none" containerClassName="border-t border-slate-200 py-10">
+      <Section variant="soft" spacing="none" containerClassName="border-t border-slate-200 py-10">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <h2 className="text-ink shrink-0 text-lg font-semibold">{copy.explore.title}</h2>
           <ul className="flex flex-wrap gap-2">
@@ -196,10 +203,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* Consulting FAQ (no FAQPage schema here; that lives on /faq) */}
-      <Section variant="default" containerClassName="border-t border-slate-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
+      <Section variant="soft" containerClassName="border-t border-slate-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-4">
-            <Eyebrow>{copy.faq.eyebrow}</Eyebrow>
+            <Eyebrow index="04">{copy.faq.eyebrow}</Eyebrow>
             <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
               {copy.faq.title}
             </h2>
@@ -209,13 +216,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </Section>
 
-      <CtaBand
-        eyebrow={copy.cta.eyebrow}
-        title={copy.cta.title}
-        description={copy.cta.description}
-        primary={copy.cta.primary}
-        secondary={copy.cta.secondary}
-      />
+      {/* The brief closes the page: the hero's primary call to action lands here. */}
+      <Section id="brief" variant="soft" containerClassName="border-t border-slate-200 pt-18 md:pt-24" spacing="none" className="scroll-mt-20 pb-18 md:pb-24">
+        <div className="max-w-3xl space-y-4">
+          <Eyebrow index="05">{copy.brief.eyebrow}</Eyebrow>
+          <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] text-balance md:text-5xl">
+            {copy.brief.title}
+          </h2>
+          <p className="text-lg leading-8 text-slate-600">{copy.brief.lede}</p>
+        </div>
+        <div className="mt-12">
+          <Brief copy={copy.brief} lang={lang} />
+        </div>
+      </Section>
     </>
   );
 }

@@ -69,6 +69,11 @@ precise term.
   again with the client. Copy may promise the measurement; it must never state a saving figure
   that has not been measured on a real project. The first measured projects become the case
   studies the site does not have yet.
+- **Brief** — the interactive block that opens the homepage: four taps (business, repetitive
+  task, times a week, minutes each) give the visitor their own baseline, "today it costs you
+  about N hours a month", with the formula shown. Client-side and deterministic, no AI, sent
+  only through the visitor's own mail app. It never shows a saving: the saving is measured
+  after release (see Measured saving). Logic in `src/lib/brief.ts`.
 - **Short line** — the one-line form of the positioning, used in the footer, LinkedIn bio and
   social card. IT: "Studio software di Milano. Automatizziamo con l'AI il lavoro ripetitivo
   delle piccole imprese, e misuriamo quanto ti fa risparmiare." EN: "A Milan software studio.

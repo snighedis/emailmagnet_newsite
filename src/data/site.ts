@@ -508,7 +508,7 @@ export const homeHero = {
   titleLead: "Custom software. AI where it counts.",
   titleAccent: "Shipped.",
   subhead:
-    "Dentoku Dev is a Milan software studio building Chrome extensions, Shopify apps, and internal tools for small and mid-sized businesses. Try what we ship before you hire us.",
+    "Dentoku Dev is a Milan software studio building Chrome extensions, Shopify apps, and internal tools for small and mid-sized businesses.",
   primaryCta: { label: "Start your project", href: "/contact" },
   secondaryCta: { label: "See what we build", href: "/#services" },
   trustNote: "4 products live on public stores",
