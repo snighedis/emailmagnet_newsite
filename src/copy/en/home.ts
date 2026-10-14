@@ -129,6 +129,7 @@ export const home = {
       },
     },
     method: "This is where the proposal starts. After release we measure it again, together.",
+    barCta: "See it",
     send: "Send it by email",
     copy: "Copy the brief",
     copied: "Copied",

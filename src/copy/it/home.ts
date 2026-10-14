@@ -301,6 +301,7 @@ export const home: HomeCopy = {
       },
     },
     method: "È il punto di partenza della proposta. Dopo il rilascio lo rimisuriamo insieme.",
+    barCta: "Vedi",
     send: "Mandacelo per email",
     copy: "Copia il brief",
     copied: "Copiato",

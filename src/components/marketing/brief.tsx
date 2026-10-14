@@ -1,6 +1,7 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ArrowRight } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import type { HomeCopy } from "@/copy/en/home";
@@ -74,6 +75,33 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
   const id = useId();
   const [answers, setAnswers] = useState<BriefAnswers>({});
   const [copied, setCopied] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const resultRef = useRef<HTMLDivElement>(null);
+  const numberRef = useRef<HTMLDivElement>(null);
+  // Phone layout stacks the result under the questions, so the last tap lands
+  // off screen. Track both: the bar shows while the visitor is in the questions
+  // and the result card is not visible.
+  const [formInView, setFormInView] = useState(false);
+  const [resultInView, setResultInView] = useState(false);
+
+  useEffect(() => {
+    const form = formRef.current;
+    const number = numberRef.current;
+    if (!form || !number || typeof IntersectionObserver === "undefined") return;
+    // The result counts as seen only when the number line is fully on screen:
+    // the card's edge peeking in at the bottom is not enough.
+    const formObserver = new IntersectionObserver(([entry]) => setFormInView(entry.isIntersecting));
+    const numberObserver = new IntersectionObserver(
+      ([entry]) => setResultInView(entry.intersectionRatio >= 0.99),
+      { threshold: [0, 0.99] },
+    );
+    formObserver.observe(form);
+    numberObserver.observe(number);
+    return () => {
+      formObserver.disconnect();
+      numberObserver.disconnect();
+    };
+  }, []);
 
   const hours = monthlyHours(answers);
   const complete = Boolean(answers.business && answers.task && hours !== null);
@@ -107,9 +135,17 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
     }
   };
 
+  const barVisible = hours !== null && formInView && !resultInView;
+
+  const showResult = () => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    resultRef.current?.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    resultRef.current?.focus({ preventScroll: true });
+  };
+
   return (
     <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-      <form className="space-y-8" onSubmit={(event) => event.preventDefault()}>
+      <form ref={formRef} className="space-y-8" onSubmit={(event) => event.preventDefault()}>
         <Choice
           name={`${id}-business`}
           legend={copy.business.legend}
@@ -142,8 +178,12 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
 
       {/* The result: the visitor's own baseline, with the formula visible so it can be checked. */}
       <div className="lg:sticky lg:top-28 lg:self-start">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
-          <div aria-live="polite" className="min-h-28">
+        <div
+          ref={resultRef}
+          tabIndex={-1}
+          className="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-6 outline-none md:p-8"
+        >
+          <div ref={numberRef} aria-live="polite" className="min-h-28">
             {hours === null ? (
               <p className="text-lg leading-8 text-slate-600">{copy.result.idle}</p>
             ) : (
@@ -191,6 +231,38 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
           <p className="mt-2 text-xs leading-5 text-slate-500">{copy.privacy}</p>
         </div>
       </div>
+
+      {/* Phone only: the result follows the visitor while they are still in the
+          questions. Enters from the bottom edge it is anchored to and leaves the
+          same way once the result card is on screen. Decorative duplicate of the
+          live region above, so it is hidden from assistive tech. Portalled to
+          <body>: the sections' entrance animation leaves a transform on them,
+          which would pin a fixed child to the section instead of the screen. */}
+      {hours !== null ? createPortal(
+        <div
+          aria-hidden="true"
+          inert={!barVisible || undefined}
+          className={cn(
+            "fixed inset-x-0 bottom-0 z-40 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden",
+            "transition-[translate,opacity] duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]",
+            "starting:translate-y-full starting:opacity-0",
+            barVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
+            "motion-reduce:translate-y-0 motion-reduce:duration-150 motion-reduce:starting:translate-y-0",
+          )}
+        >
+          <div className="shadow-soft-lg flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white py-2 pr-2 pl-4">
+            <p className="text-sm leading-5 text-slate-700">
+              {copy.result.lead}{" "}
+              <span className="text-brand-cta font-semibold">{formatHours(hours, copy.text, lang)}</span>{" "}
+              {copy.result.tail}
+            </p>
+            <Button size="lg" variant="outline" className="shrink-0" onClick={showResult} tabIndex={-1}>
+              {copy.barCta}
+            </Button>
+          </div>
+        </div>,
+        document.body,
+      ) : null}
     </div>
   );
 }
