@@ -16,7 +16,7 @@ export const privacy = {
 export function PrivacyBody() {
   return (
     <>
-      <p className="mt-6 leading-8 text-slate-600">
+      <p className="mt-6 leading-8 text-stone-600">
         Last updated: October 9, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
         &quot;us&quot;, or &quot;our&quot;) processes personal data when you visit dentokudev.com, purchase or
         use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
@@ -25,12 +25,12 @@ export function PrivacyBody() {
       </p>
 
       {/* 1. Data Controller */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">1. Data Controller</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">1. Data Controller</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         The data controller is Dentoku Dev (Nicola Orlandi, sole trader / ditta individuale),
         Via Bullona 8, 20154 Milano, Italy, P.IVA IT13625480960.
       </p>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         Contact for data protection matters:{" "}
         <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
           support@dentokudev.com
@@ -40,12 +40,12 @@ export function PrivacyBody() {
       </p>
 
       {/* 2. Categories of Personal Data */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">2. Personal Data We Process</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">2. Personal Data We Process</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Depending on how you interact with us, we may process the following categories of
         personal data:
       </p>
-      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
           <strong>Identity and contact data</strong>: name, email address, and (for consulting
           clients) company name, VAT number, billing address.
@@ -71,7 +71,7 @@ export function PrivacyBody() {
           <strong>Cookies and tracking data</strong>: as described in Section 7 below.
         </li>
       </ul>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         We do not intentionally collect special-category data (Art. 9 GDPR) or data concerning
         criminal convictions. We do not knowingly process personal data of persons under 16
         years of age; if you believe a minor has submitted data to us, contact us for prompt
@@ -79,39 +79,39 @@ export function PrivacyBody() {
       </p>
 
       {/* 3. Purposes and Legal Bases */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         3. Purposes and Legal Bases
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We process personal data only where a legal basis under Art. 6 GDPR applies:
       </p>
 
       <div className="mt-6 space-y-6">
         <div>
-          <p className="font-semibold text-slate-900">
+          <p className="font-semibold text-stone-900">
             a) Performance of a contract (Art. 6(1)(b) GDPR)
           </p>
-          <p className="mt-1 leading-8 text-slate-600">
+          <p className="mt-1 leading-8 text-stone-600">
             Processing your name, email, and billing information to deliver EmailMagnet PRO
             access, issue invoices, and fulfil digital consulting engagements you have
             requested. Without this data the service cannot be provided.
           </p>
         </div>
         <div>
-          <p className="font-semibold text-slate-900">
+          <p className="font-semibold text-stone-900">
             b) Compliance with a legal obligation (Art. 6(1)(c) GDPR)
           </p>
-          <p className="mt-1 leading-8 text-slate-600">
+          <p className="mt-1 leading-8 text-stone-600">
             Retaining billing records and invoices as required by Italian tax and accounting
             law (D.P.R. 633/1972 on VAT; D.P.R. 600/1973 on income tax), for a period of ten
             years from the date of each document.
           </p>
         </div>
         <div>
-          <p className="font-semibold text-slate-900">
+          <p className="font-semibold text-stone-900">
             c) Legitimate interests (Art. 6(1)(f) GDPR)
           </p>
-          <p className="mt-1 leading-8 text-slate-600">
+          <p className="mt-1 leading-8 text-stone-600">
             Operating, securing, and improving our website and services; detecting and
             preventing fraud and abuse; maintaining server access logs for security and
             forensic purposes (retained for up to 90 days); and sending transactional
@@ -120,8 +120,8 @@ export function PrivacyBody() {
           </p>
         </div>
         <div>
-          <p className="font-semibold text-slate-900">d) Consent (Art. 6(1)(a) GDPR)</p>
-          <p className="mt-1 leading-8 text-slate-600">
+          <p className="font-semibold text-stone-900">d) Consent (Art. 6(1)(a) GDPR)</p>
+          <p className="mt-1 leading-8 text-stone-600">
             Where we send optional marketing communications or deploy non-essential cookies, we
             do so only on the basis of your freely given, specific, and informed consent, which
             you may withdraw at any time without affecting prior processing.
@@ -130,14 +130,14 @@ export function PrivacyBody() {
       </div>
 
       {/* 4. Third-Party Processors */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         4. Sub-Processors and Data Sharing
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We do not sell, rent, or trade personal data. We engage the following categories of
         processors under written data-processing agreements:
       </p>
-      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
           <strong>Payment processing</strong>: Stripe, Inc. (USA) for EmailMagnet PRO;
           Gumroad, Inc. (USA) for ClickPilotAI. Both process billing and payment data under
@@ -163,14 +163,14 @@ export function PrivacyBody() {
           unsubscribe at any time via the link in every email.
         </li>
       </ul>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         We may also disclose data to public authorities when required by law, court order, or
         to protect our legal rights.
       </p>
 
       {/* 5. International Transfers */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">5. International Transfers</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">5. International Transfers</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Some sub-processors listed above are established in the United States, which does not
         benefit from an adequacy decision for all transfer scenarios. Transfers are covered by
         the Standard Contractual Clauses adopted by the European Commission (Decision 2021/914)
@@ -183,8 +183,8 @@ export function PrivacyBody() {
       </p>
 
       {/* 6. Retention */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">6. Retention Periods</h2>
-      <div className="mt-4 space-y-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">6. Retention Periods</h2>
+      <div className="mt-4 space-y-3 leading-8 text-stone-600">
         <p>
           <strong>Purchase and billing records</strong>: 10 years from the date of the
           transaction, as required by Italian fiscal law.
@@ -208,8 +208,8 @@ export function PrivacyBody() {
       </div>
 
       {/* 7. Cookies */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">7. Cookies and Tracking</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">7. Cookies and Tracking</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         We use strictly necessary cookies to operate the website (session management,
         security). With your consent, we also deploy analytics cookies (Google Analytics 4)
         to understand aggregate traffic patterns and, only if you enable Marketing cookies, Google
@@ -223,12 +223,12 @@ export function PrivacyBody() {
       </p>
 
       {/* 8. Your Rights */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">8. Your Rights</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">8. Your Rights</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Under the GDPR (Arts. 15–22) and, for Italian residents, the Italian Privacy Code, you
         have the following rights with respect to your personal data:
       </p>
-      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
           <strong>Right of access (Art. 15)</strong>: obtain confirmation of whether we
           process your data and receive a copy.
@@ -265,7 +265,7 @@ export function PrivacyBody() {
           on automated processing.
         </li>
       </ul>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         To exercise any of the above rights, email{" "}
         <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
           support@dentokudev.com
@@ -274,7 +274,7 @@ export function PrivacyBody() {
         (extendable by a further 60 days for complex requests, with notice). We do not charge
         a fee for reasonable requests.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         If you believe your rights have not been upheld, you have the right to lodge a
         complaint with the Italian supervisory authority, the{" "}
         <strong>Garante per la protezione dei dati personali</strong>, Piazza di Monte Citorio
@@ -292,8 +292,8 @@ export function PrivacyBody() {
       </p>
 
       {/* 9. Security */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">9. Security Measures</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">9. Security Measures</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         We implement appropriate technical and organisational measures pursuant to Art. 32
         GDPR, including HTTPS/TLS in transit, access controls, and regular review of
         processing activities. In the event of a personal data breach that is likely to result
@@ -302,10 +302,10 @@ export function PrivacyBody() {
       </p>
 
       {/* 10. Changes */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         10. Changes to This Policy
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We may revise this policy to reflect changes in our processing activities, applicable
         law, or supervisory guidance. Material changes will be notified by email to active
         users or by a notice on this page at least 30 days before taking effect. The{" "}
@@ -314,14 +314,14 @@ export function PrivacyBody() {
       </p>
 
       {/* 11. EmailMagnet Browser Extension */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         11. EmailMagnet Browser Extension
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         This section describes how the EmailMagnet browser extension (&quot;the
         extension&quot;) handles data, in addition to the general practices above.
       </p>
-      <div className="mt-4 space-y-3 leading-8 text-slate-600">
+      <div className="mt-4 space-y-3 leading-8 text-stone-600">
         <p>
           <strong>Single purpose.</strong> The extension has one purpose: to detect and extract
           publicly visible email addresses from web pages you choose to scan.
@@ -337,11 +337,11 @@ export function PrivacyBody() {
           <strong>Data collected and where it goes.</strong>
         </p>
       </div>
-      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
           Extracted email addresses and the URL of the page they were found on are stored only
           in your browser (
-          <code className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[0.95em] text-slate-800">
+          <code className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[0.95em] text-stone-800">
             chrome.storage
           </code>
           ). They are never sent to us or to anyone else. The Autosave setting decides whether
@@ -353,7 +353,7 @@ export function PrivacyBody() {
           process payment via Stripe, Inc.
         </li>
       </ul>
-      <div className="mt-4 space-y-3 leading-8 text-slate-600">
+      <div className="mt-4 space-y-3 leading-8 text-stone-600">
         <p>
           <strong>Anonymous usage statistics.</strong>{" "}
           To understand how the extension is used and where people get stuck, EmailMagnet sends
@@ -419,14 +419,14 @@ export function PrivacyBody() {
       </div>
 
       {/* 12. ClickPilot AI Browser Extension */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         12. ClickPilot AI Browser Extension
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         This section describes how the ClickPilot AI browser extension handles data. Its data
         flow is different from EmailMagnet&apos;s, because the text you process never reaches us.
       </p>
-      <div className="mt-4 space-y-3 leading-8 text-slate-600">
+      <div className="mt-4 space-y-3 leading-8 text-stone-600">
         <p>
           <strong>What it does.</strong> ClickPilot AI is an artificial intelligence system that
           works inside text fields in your browser: it can fix, rewrite, summarize, translate,
@@ -463,8 +463,8 @@ export function PrivacyBody() {
       </div>
 
       {/* 13. Contact */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">13. Contact</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">13. Contact</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         All privacy-related requests, complaints, and questions:{" "}
         <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
           support@dentokudev.com

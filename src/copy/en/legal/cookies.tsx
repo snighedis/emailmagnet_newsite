@@ -16,14 +16,14 @@ export const cookies = {
 export function CookiesBody() {
   return (
     <>
-      <p className="mt-6 leading-8 text-slate-600">
+      <p className="mt-6 leading-8 text-stone-600">
         Last updated: October 9, 2026. This Cookie Policy explains what cookies and similar
         technologies are used on dentokudev.com, why we use them, and how you can control
         them. It is issued in accordance with the EU ePrivacy Directive (2002/58/EC as amended
         by 2009/136/EC), the Italian implementing legislation (D.Lgs. 69/2012 and the Garante
         per la protezione dei dati personali guidelines of 10 June 2021), and the GDPR.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         For information on how we handle personal data more broadly, see our{" "}
         <LocaleLink href="/privacy" className="underline underline-offset-2">
           Privacy Policy
@@ -32,8 +32,8 @@ export function CookiesBody() {
       </p>
 
       {/* 1. What are cookies */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">1. What Are Cookies</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">1. What Are Cookies</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Cookies are small text files placed on your device when you visit a website. They allow
         the site to remember information about your visit (such as your preferred language or
         whether you have already given consent) and can make your next visit easier and the
@@ -42,32 +42,32 @@ export function CookiesBody() {
       </p>
 
       {/* 2. Categories */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">2. Cookies We Use</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">2. Cookies We Use</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         We use three categories of cookies. Analytics and Marketing cookies require your prior
         consent and are only set if you enable them in the cookie banner; you can accept or
         reject each category independently, and change your mind at any time.
       </p>
 
-      <h3 className="mt-8 text-lg font-semibold text-slate-950">
+      <h3 className="mt-8 text-lg font-semibold text-stone-950">
         a) Strictly Necessary Cookies
       </h3>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         These cookies are essential for the website to function correctly and cannot be
         switched off. They do not collect information that could be used for marketing and are
         not shared with third parties for advertising purposes. No consent is required to
         deploy them under Art. 5(3) ePrivacy Directive.
       </p>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm text-slate-600">
+        <table className="w-full text-sm text-stone-600">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-slate-900">
+            <tr className="border-b border-stone-200 text-left text-stone-900">
               <th className="pb-3 pr-4 font-semibold">Name</th>
               <th className="pb-3 pr-4 font-semibold">Purpose</th>
               <th className="pb-3 font-semibold">Duration</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-stone-100">
             <tr>
               <td className="py-3 pr-4 font-mono text-xs">cookie-consent</td>
               <td className="py-3 pr-4">
@@ -81,10 +81,10 @@ export function CookiesBody() {
         </table>
       </div>
 
-      <h3 className="mt-8 text-lg font-semibold text-slate-950">
+      <h3 className="mt-8 text-lg font-semibold text-stone-950">
         b) Analytics Cookies (consent required)
       </h3>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We use Google Analytics 4 to collect statistics about how visitors use this
         website (pages visited, session duration, traffic sources). This helps us improve the
         site. These cookies are only set if you enable Analytics in the cookie banner (via
@@ -94,16 +94,16 @@ export function CookiesBody() {
         consent.
       </p>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm text-slate-600">
+        <table className="w-full text-sm text-stone-600">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-slate-900">
+            <tr className="border-b border-stone-200 text-left text-stone-900">
               <th className="pb-3 pr-4 font-semibold">Name</th>
               <th className="pb-3 pr-4 font-semibold">Provider</th>
               <th className="pb-3 pr-4 font-semibold">Purpose</th>
               <th className="pb-3 font-semibold">Duration</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-stone-100">
             <tr>
               <td className="py-3 pr-4 font-mono text-xs">_ga</td>
               <td className="py-3 pr-4">Google LLC</td>
@@ -124,7 +124,7 @@ export function CookiesBody() {
           </tbody>
         </table>
       </div>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         Google Analytics 4 does not log or store IP addresses. Google Analytics data is processed
         in the United States; Google LLC is certified under the EU-U.S. Data Privacy Framework
         (adequacy decision 2023/1795). For more information, see
@@ -149,10 +149,10 @@ export function CookiesBody() {
         .
       </p>
 
-      <h3 className="mt-8 text-lg font-semibold text-slate-950">
+      <h3 className="mt-8 text-lg font-semibold text-stone-950">
         c) Marketing Cookies (consent required)
       </h3>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We use Google Ads tags to measure conversions from our advertising campaigns (for
         example, when a visit leads to installing an extension or starting a checkout). These
         cookies are <strong>off by default</strong> and are only set if you enable Marketing in
@@ -160,16 +160,16 @@ export function CookiesBody() {
         profiling beyond Google Ads conversion measurement.
       </p>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm text-slate-600">
+        <table className="w-full text-sm text-stone-600">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-slate-900">
+            <tr className="border-b border-stone-200 text-left text-stone-900">
               <th className="pb-3 pr-4 font-semibold">Name</th>
               <th className="pb-3 pr-4 font-semibold">Provider</th>
               <th className="pb-3 pr-4 font-semibold">Purpose</th>
               <th className="pb-3 font-semibold">Duration</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-stone-100">
             <tr>
               <td className="py-3 pr-4 font-mono text-xs">_gcl_au</td>
               <td className="py-3 pr-4">Google LLC</td>
@@ -181,20 +181,20 @@ export function CookiesBody() {
           </tbody>
         </table>
       </div>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         If you do not enable Marketing cookies, no Google Ads tag is loaded. We do not use
         profiling cookies for any purpose other than the advertising conversion measurement
         described above.
       </p>
 
       {/* 3. How to manage */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         3. How to Manage and Withdraw Consent
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         You can change your cookie preferences at any time using one of the following methods:
       </p>
-      <ul className="mt-4 list-disc pl-6 space-y-3 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc pl-6 space-y-3 leading-8 text-stone-600">
         <li>
           <strong>Cookie preferences link.</strong> Click <strong>“Cookie preferences”</strong>{" "}
           in the footer of any page. The consent panel reopens with your current choices, and you
@@ -230,16 +230,16 @@ export function CookiesBody() {
           to prevent your data from being collected by Google Analytics across all sites.
         </li>
       </ul>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         Withdrawing consent does not affect the lawfulness of any processing that occurred
         before the withdrawal.
       </p>
 
       {/* 4. Retention */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         4. Retention of Cookie Data
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         Cookie lifetimes are shown in the tables above. Google Analytics keeps event-level data for
         at most 14 months, the longest period a standard Google Analytics 4 property allows,
         before automatic deletion. We
@@ -247,10 +247,10 @@ export function CookiesBody() {
       </p>
 
       {/* 5. Changes */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         5. Changes to This Policy
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We may update this Cookie Policy when we add or remove cookies, or when the law
         requires it. Material changes will be reflected in the{" "}
         <strong>Last updated</strong> date above, and the cookie consent banner will
@@ -258,8 +258,8 @@ export function CookiesBody() {
       </p>
 
       {/* 6. Contact */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">6. Contact</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">6. Contact</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Questions about this Cookie Policy:{" "}
         <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
           support@dentokudev.com

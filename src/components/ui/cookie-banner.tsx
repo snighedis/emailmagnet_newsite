@@ -43,14 +43,14 @@ function Toggle({
       onClick={() => onChange(!checked)}
       className={cn(
         "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition",
-        checked ? "bg-brand" : "bg-slate-300",
+        checked ? "bg-brand" : "bg-stone-300",
         disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
       )}
     >
       <span
         className={cn(
           "inline-block h-5 w-5 transform rounded-full bg-white shadow transition",
-          checked ? "translate-x-[22px]" : "translate-x-0.5",
+          checked ? "transtone-x-[22px]" : "transtone-x-0.5",
         )}
       />
     </button>
@@ -141,25 +141,25 @@ export function CookieBanner() {
       className={cn(
         "fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)]",
         // Enters from the bottom edge it is anchored to, and leaves the same way.
-        "transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] starting:translate-y-4 starting:opacity-0",
-        "motion-reduce:translate-y-0 motion-reduce:starting:translate-y-0",
-        exiting && "translate-y-4 opacity-0 duration-200 ease-in motion-reduce:translate-y-0",
+        "transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] starting:transtone-y-4 starting:opacity-0",
+        "motion-reduce:transtone-y-0 motion-reduce:starting:transtone-y-0",
+        exiting && "transtone-y-4 opacity-0 duration-200 ease-in motion-reduce:transtone-y-0",
         isPreferences ? "sm:max-w-lg" : "sm:max-w-md",
       )}
     >
       {/* Re-keyed when switching to the preferences, so the new content fades in. */}
       <div
         key={isPreferences ? "preferences" : "intro"}
-        className="shadow-soft-lg animate-in fade-in-0 rounded-xl border border-slate-200 bg-white p-5 duration-150"
+        className="shadow-soft-lg animate-in fade-in-0 rounded-xl border border-stone-200 bg-white p-5 duration-150"
       >
         <div className="flex items-start justify-between gap-3">
-          <h2 className="text-base font-semibold text-slate-950">
+          <h2 className="text-base font-semibold text-stone-950">
             {isPreferences ? copy.preferencesTitle : copy.title}
           </h2>
           <button
             type="button"
             onClick={rejectAll}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-700"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-stone-500 hover:bg-stone-100 hover:text-stone-700"
             aria-label={copy.closeAria}
           >
             <X className="h-4 w-4" />
@@ -167,7 +167,7 @@ export function CookieBanner() {
         </div>
 
         {!isPreferences ? (
-          <p className="mt-2 text-sm leading-6 text-slate-600">
+          <p className="mt-2 text-sm leading-6 text-stone-600">
             {copy.intro.before}{" "}
             <LocaleLink href="/cookies" className="text-eyebrow font-medium hover:underline">
               {copy.intro.link}
@@ -187,11 +187,11 @@ export function CookieBanner() {
               return (
                 <div
                   key={category.key}
-                  className="flex items-start justify-between gap-4 rounded-lg border border-slate-200 bg-slate-50 p-3"
+                  className="flex items-start justify-between gap-4 rounded-lg border border-stone-200 bg-stone-50 p-3"
                 >
                   <div>
-                    <p className="text-sm font-semibold text-slate-900">{text.title}</p>
-                    <p className="mt-0.5 text-xs leading-5 text-slate-600">
+                    <p className="text-sm font-semibold text-stone-900">{text.title}</p>
+                    <p className="mt-0.5 text-xs leading-5 text-stone-600">
                       {text.description}
                     </p>
                   </div>
@@ -214,7 +214,8 @@ export function CookieBanner() {
           <Button
             onClick={rejectAll}
             size="lg"
-            className="flex-1 bg-slate-900 text-white hover:bg-slate-800"
+            variant="secondary"
+            className="flex-1"
           >
             {copy.rejectAll}
           </Button>
@@ -236,7 +237,7 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={openPanel}
-            className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-slate-600 underline underline-offset-4 hover:text-slate-900"
+            className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-stone-600 underline underline-offset-4 hover:text-stone-900"
           >
             {copy.managePreferences}
           </button>

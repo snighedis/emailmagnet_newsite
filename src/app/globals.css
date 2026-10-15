@@ -57,6 +57,7 @@
   --color-surface-peach: var(--surface-peach);
   --color-surface-blue: var(--surface-blue);
   --color-surface-mint: var(--surface-mint);
+  --color-surface-muted: var(--surface-muted);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -67,24 +68,26 @@
 }
 
 :root {
-  --background: oklch(0.99 0.005 210);
-  --foreground: oklch(0.21 0.03 248);
+  /* Warm editorial system (docs/adr/0002): one orange, a warm off-white ground,
+     navy as ink. Every grey is warm. The shadcn tokens below derive from these. */
+  --background: oklch(0.99 0.005 75); /* warm white */
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.68 0.21 35);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.96 0.025 195);
-  --secondary-foreground: oklch(0.24 0.04 225);
-  --muted: oklch(0.97 0.01 230);
-  --muted-foreground: oklch(0.47 0.035 242);
-  --accent: oklch(0.92 0.07 185);
-  --accent-foreground: oklch(0.24 0.04 225);
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --primary-foreground: var(--ink);
+  --secondary: oklch(0.965 0.008 70); /* subtle chip (Badge), warm */
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.965 0.008 70); /* warm grey tint */
+  --muted-foreground: oklch(0.47 0.02 60); /* warm grey text, 6.4:1 on the ground */
+  --accent: var(--brand-soft);
+  --accent-foreground: var(--ink);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.9 0.01 70);
+  --input: oklch(0.9 0.01 70);
+  --ring: oklch(0.7 0.01 70);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -92,23 +95,24 @@
   --chart-5: oklch(0.269 0 0);
   --radius: 0.875rem;
 
-  /* Brand & semantic tokens (warm HubSpot-style palette) */
-  --brand: oklch(0.68 0.21 35); /* vivid orange ≈ #ff5c35 */
-  --brand-strong: oklch(0.6 0.2 33); /* hover ≈ #df4320 */
-  /* Surfaces that carry WHITE text must use these, not --brand: white on
-     --brand is 3.15:1 and on --brand-strong 4.34:1, both under the 4.5:1 that
-     WCAG 2.2 SC 1.4.3 requires for normal-size text. No button size on this
-     site reaches the large-text threshold, so the brand orange can never sit
-     behind white button labels. --brand stays as-is for large display text
-     (the 70px hero accent clears the 3:1 large-text bar) and for borders. */
-  --brand-cta: oklch(0.585 0.21 35); /* ≈ #dc3400 → 4.63:1 on white */
-  --brand-cta-hover: oklch(0.55 0.2 33); /* ≈ #cc2c05 → 5.35:1 on white */
-  --brand-soft: oklch(0.96 0.028 45); /* tinted surface ≈ #fff5f1 */
-  --ink: oklch(0.24 0.035 248); /* deep navy ≈ #132333 */
-  --ink-soft: oklch(0.29 0.04 245); /* lifted navy ≈ #213343 */
+  /* The one orange (docs/adr/0002). Contrast, measured: white on it 3.50:1,
+     it on the ground 3.34:1, it on --ink 4.68:1. So it is never small text and
+     never sits behind white text. It lives as a field under ink text (buttons),
+     as display text from 24px up (hero accent, the brief's number), as icons,
+     rules, focus rings and the symbol, and as the label colour on ink sections. */
+  --brand: #f05423;
+  /* Hover LIGHTENS the orange: ink text on the darker cut would drop to 3.83:1,
+     on this lighter one it is 5.29:1. A state derived from the one orange, not
+     a second orange. */
+  --brand-strong: oklch(from var(--brand) calc(l + 0.03) c h);
+  --brand-cta: var(--brand); /* buttons: orange field, ink label */
+  --brand-cta-hover: var(--brand-strong);
+  --brand-soft: oklch(0.96 0.03 40); /* tinted surface, the orange at 4% */
+  --ink: oklch(0.24 0.035 248); /* deep navy ≈ #11212f */
+  --ink-soft: oklch(0.29 0.04 245); /* lifted navy ≈ #1a2d3e */
   --ink-foreground: oklch(0.985 0 0); /* text on ink */
-  --ink-muted: oklch(0.83 0.02 240); /* muted text on ink ≈ slate-200/300 */
-  --ink-accent: oklch(0.91 0.093 180); /* accent ON ink ≈ #99f6e4, 13:1 on --ink */
+  --ink-muted: oklch(0.84 0.015 70); /* muted text on ink, warm */
+  --ink-accent: var(--brand); /* labels on ink: 4.68:1 */
   /* Same split as --brand / --brand-cta: the base token is fine for icons and
      fills, but destructive TEXT on a tinted destructive background only reaches
      4.13:1. This darker cut is 5.2:1 there and 6.0:1 on white. */
@@ -116,12 +120,13 @@
      --destructive-strong: Tailwind will not generate a utility whose name
      extends an already-registered colour (destructive), so the longer name
      silently produced no class at all. */
-  --teal: oklch(0.52 0.08 192); /* trust/check accent ≈ #0f766e */
-  --eyebrow: oklch(0.52 0.17 38); /* rust eyebrow label ≈ #c43618 */
-  --surface-soft: oklch(0.985 0.006 70); /* warm off-white */
-  --surface-peach: oklch(0.975 0.018 52); /* ≈ #fff7f2 */
-  --surface-blue: oklch(0.975 0.012 240); /* ≈ #f4f9ff */
-  --surface-mint: oklch(0.97 0.028 178); /* ≈ #ecf9f7 */
+  --teal: var(--brand); /* the former second accent (checks, tints) now takes the one orange */
+  --eyebrow: var(--ink-soft); /* labels and text links: ink, never small orange */
+  --surface-soft: oklch(0.985 0.006 70); /* warm off-white ≈ #fdf9f6 */
+  --surface-muted: oklch(0.965 0.008 70); /* the one alternation tone on long pages */
+  --surface-peach: oklch(0.975 0.015 55); /* warm, kept for contact/blog/pricing */
+  --surface-blue: var(--surface-muted); /* legacy names: both now warm */
+  --surface-mint: var(--surface-muted);
 
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -219,8 +224,52 @@
 }
 
 ::selection {
-  background: oklch(0.85 0.09 45);
+  background: oklch(from var(--brand) 0.88 0.08 h);
   color: var(--ink);
+}
+
+/* Type scale (docs/adr/0002): Newsreader for headings at weight 500, hierarchy by
+   size. Templates adopt these classes as they are redesigned. */
+@layer components {
+  .type-display,
+  .type-h1,
+  .type-h2,
+  .type-h3 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+  .type-display {
+    font-size: clamp(2.75rem, 7vw, 4.75rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+  .type-h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .type-h2 {
+    font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+  .type-h3 {
+    font-size: 1.375rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .type-lead {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--muted-foreground);
+  }
+  .type-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
 }
 
 @keyframes choreographed-rise {
@@ -342,7 +391,7 @@ main > section:nth-of-type(n + 5) {
 --------------------------------------------------------------------------- */
 
 .blog-article {
-  color: #334155;
+  color: #44403c;
   font-size: 1.125rem;
   line-height: 1.85;
 }
@@ -358,7 +407,7 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article h2 {
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e7e5e4;
   color: var(--ink);
   font-size: clamp(1.65rem, 2.2vw, 2.05rem);
   font-weight: 650;
@@ -370,7 +419,7 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article h3 {
-  color: #0f172a;
+  color: var(--ink);
   font-size: 1.32rem;
   font-weight: 650;
   line-height: 1.3;
@@ -379,7 +428,7 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article h4 {
-  color: #0f172a;
+  color: var(--ink);
   font-size: 1.12rem;
   font-weight: 650;
   line-height: 1.4;
@@ -392,7 +441,7 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article strong {
-  color: #0f172a;
+  color: var(--ink);
   font-weight: 650;
 }
 
@@ -444,7 +493,7 @@ main > section:nth-of-type(n + 5) {
 
 /* GFM tables — wrapped in .blog-table by the MDX table component for overflow. */
 .blog-article .blog-table {
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e7e5e4;
   border-radius: 0.875rem;
   margin-top: 2rem;
   overflow-x: auto;
@@ -458,8 +507,8 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article thead th {
-  background: var(--surface-blue);
-  border-bottom: 1px solid #e2e8f0;
+  background: var(--surface-muted);
+  border-bottom: 1px solid #e7e5e4;
   color: var(--ink);
   font-family: var(--font-sans);
   font-weight: 650;
@@ -469,13 +518,13 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article tbody td {
-  border-bottom: 1px solid #eef2f7;
+  border-bottom: 1px solid #f0eeec;
   padding: 0.8rem 1rem;
   vertical-align: top;
 }
 
 .blog-article tbody tr:nth-child(even) {
-  background: #f8fafc;
+  background: #fafaf9;
 }
 
 .blog-article tbody tr:last-child td {
@@ -486,7 +535,7 @@ main > section:nth-of-type(n + 5) {
 .blog-article pre {
   background: var(--ink);
   border-radius: 0.875rem;
-  color: #e2e8f0;
+  color: #e7e5e4;
   font-size: 0.92rem;
   line-height: 1.7;
   margin-top: 1.6rem;
@@ -504,8 +553,8 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article :not(pre) > code {
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
+  background: #f5f5f4;
+  border: 1px solid #e7e5e4;
   border-radius: 0.4rem;
   color: var(--ink);
   font-size: 0.85em;
@@ -514,7 +563,7 @@ main > section:nth-of-type(n + 5) {
 }
 
 .blog-article img {
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e7e5e4;
   border-radius: 0.875rem;
   height: auto;
   margin-top: 2rem;
@@ -523,19 +572,21 @@ main > section:nth-of-type(n + 5) {
 
 .blog-article hr {
   border: 0;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #e7e5e4;
   margin: 3rem 0;
 }
 
 .blog-article a {
-  color: var(--eyebrow);
+  color: var(--ink);
   font-weight: 600;
   text-decoration: underline;
+  text-decoration-color: var(--brand);
+  text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
 
 .blog-article a:hover {
-  color: var(--brand-strong);
+  text-decoration-color: var(--ink);
 }
 
 /* Button sheen: a diagonal light sweep on hover, inspired by the loops.so

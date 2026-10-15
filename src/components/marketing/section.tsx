@@ -15,15 +15,17 @@ type SectionSpacing = "default" | "compact" | "loose" | "none";
 type SectionContainer = false | "default" | "narrow" | "wide";
 
 const variantClasses: Record<SectionVariant, string> = {
+  // Two tones (docs/adr/0002): the warm ground and ink. `muted` is the one
+  // alternation tint for long pages; the older names map onto it.
   default: "bg-background text-foreground",
   soft: "bg-surface-soft text-foreground",
-  muted: "bg-muted text-foreground",
+  muted: "bg-surface-muted text-foreground",
   ink: "bg-ink text-ink-foreground",
-  blue: "bg-surface-blue text-foreground",
+  blue: "bg-surface-muted text-foreground",
   peach: "bg-surface-peach text-foreground",
-  mint: "bg-surface-mint text-foreground",
+  mint: "bg-surface-muted text-foreground",
   gradient:
-    "text-foreground bg-[radial-gradient(125%_120%_at_12%_8%,var(--brand-soft)_0%,var(--surface-peach)_36%,var(--surface-blue)_100%)]",
+    "text-foreground bg-[radial-gradient(125%_120%_at_12%_8%,var(--brand-soft)_0%,var(--surface-peach)_40%,var(--surface-soft)_100%)]",
 };
 
 const spacingClasses: Record<SectionSpacing, string> = {

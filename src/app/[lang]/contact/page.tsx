@@ -32,14 +32,14 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
 
       <div className="mx-auto grid min-h-[720px] max-w-7xl items-center gap-10 rounded-lg bg-surface-peach px-6 py-12 md:px-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-14">
         <div className="max-w-xl">
-          <span className="inline-flex rounded-sm border border-slate-300 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
+          <span className="inline-flex rounded-sm border border-stone-300 bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700">
             {copy.badge}
           </span>
-          <h1 className="mt-7 text-4xl font-semibold leading-tight tracking-normal text-slate-950 md:text-5xl">
+          <h1 className="mt-7 text-4xl font-semibold leading-tight tracking-normal text-stone-950 md:text-5xl">
             {copy.title}
           </h1>
-          <p className="mt-5 max-w-lg text-xl leading-8 text-slate-700">{copy.intro}</p>
-          <ul className="mt-7 space-y-2.5 text-base leading-7 text-slate-600">
+          <p className="mt-5 max-w-lg text-xl leading-8 text-stone-700">{copy.intro}</p>
+          <ul className="mt-7 space-y-2.5 text-base leading-7 text-stone-600">
             {copy.steps.map((step) => (
               <li key={step}>{step}</li>
             ))}

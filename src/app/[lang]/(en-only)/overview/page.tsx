@@ -62,28 +62,28 @@ export default function OverviewPage() {
         />
 
         <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-teal-100 bg-teal-50 p-5">
-          <h2 className="text-lg font-semibold text-slate-950">Short answer</h2>
-          <p className="mt-2 leading-7 text-slate-700">
+          <h2 className="text-lg font-semibold text-stone-950">Short answer</h2>
+          <p className="mt-2 leading-7 text-stone-700">
             Dentoku Dev builds small software products that remove repetitive manual work.
             The current portfolio includes EmailMagnet, ClickPilot AI, Volume Control PRO, and
             Countdown321.
           </p>
         </div>
 
-        <div className="mt-12 overflow-hidden rounded-xl border border-slate-200">
+        <div className="mt-12 overflow-hidden rounded-xl border border-stone-200">
           <table className="w-full text-left text-sm">
             <caption className="sr-only">Dentoku Dev products and use cases</caption>
-            <thead className="bg-slate-50 text-slate-950">
+            <thead className="bg-stone-50 text-stone-950">
               <tr>
                 <th scope="col" className="px-4 py-3 font-semibold">Product</th>
                 <th scope="col" className="px-4 py-3 font-semibold">Category</th>
                 <th scope="col" className="px-4 py-3 font-semibold">Primary use case</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 text-slate-700">
+            <tbody className="divide-y divide-stone-200 text-stone-700">
               {productPortfolio.map((product) => (
                 <tr key={product.href}>
-                  <th scope="row" className="px-4 py-4 font-semibold text-slate-950">
+                  <th scope="row" className="px-4 py-4 font-semibold text-stone-950">
                     <Link href={product.href} className="hover:text-eyebrow hover:underline">
                       {product.name}
                     </Link>
@@ -97,26 +97,26 @@ export default function OverviewPage() {
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <Card className="rounded-xl border-slate-200 shadow-sm">
+          <Card className="rounded-xl border-stone-200 shadow-sm">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-slate-950">Primary use cases</h2>
-              <ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-slate-700">
+              <h2 className="text-2xl font-semibold text-stone-950">Primary use cases</h2>
+              <ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-stone-700">
                 {useCases.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </CardContent>
           </Card>
-          <Card className="rounded-xl border-slate-200 bg-slate-50 shadow-sm">
+          <Card className="rounded-xl border-stone-200 bg-stone-50 shadow-sm">
             <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-slate-950">Where to go next</h2>
-              <ul className="mt-5 space-y-3 leading-7 text-slate-700">
+              <h2 className="text-2xl font-semibold text-stone-950">Where to go next</h2>
+              <ul className="mt-5 space-y-3 leading-7 text-stone-700">
                 {helpLinks.map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} className="font-semibold text-eyebrow hover:underline">
                       {item.title}
                     </Link>
-                    <span className="block text-sm text-slate-600">{item.description}</span>
+                    <span className="block text-sm text-stone-600">{item.description}</span>
                   </li>
                 ))}
               </ul>
@@ -124,9 +124,9 @@ export default function OverviewPage() {
           </Card>
         </div>
 
-        <section className="mt-12 rounded-xl border border-slate-200 bg-surface-peach p-6">
-          <h2 className="text-2xl font-semibold text-slate-950">Featured product: EmailMagnet</h2>
-          <p className="mt-3 leading-8 text-slate-700">
+        <section className="mt-12 rounded-xl border border-stone-200 bg-surface-peach p-6">
+          <h2 className="text-2xl font-semibold text-stone-950">Featured product: EmailMagnet</h2>
+          <p className="mt-3 leading-8 text-stone-700">
             EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from
             websites while browsing. It supports CSV and TXT export, a Free plan for light use, and
             a PRO plan with lifetime access.

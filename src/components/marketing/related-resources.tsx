@@ -33,9 +33,9 @@ export function RelatedResources({
   return (
     <nav
       aria-label="Related resources"
-      className={cn("rounded-2xl border border-slate-200 bg-slate-50 p-6", className)}
+      className={cn("rounded-2xl border border-stone-200 bg-stone-50 p-6", className)}
     >
-      <h2 className="text-lg font-semibold text-slate-950">{heading}</h2>
+      <h2 className="text-lg font-semibold text-stone-950">{heading}</h2>
       <ul className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
         {links.map((link) => (
           <li key={link.href}>

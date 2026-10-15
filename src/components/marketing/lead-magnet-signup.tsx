@@ -71,7 +71,7 @@ export function LeadMagnetSignup() {
             <h2 className="text-ink text-2xl font-semibold tracking-[-0.01em]">
               {copy.successTitle}
             </h2>
-            <p className="mt-2 leading-7 text-slate-700">{copy.successBody}</p>
+            <p className="mt-2 leading-7 text-stone-700">{copy.successBody}</p>
           </div>
           <Button asChild size="lg" className="font-semibold">
             <a href={LEAD_MAGNET_PATH} target="_blank" rel="noopener noreferrer" download>
@@ -88,7 +88,7 @@ export function LeadMagnetSignup() {
           <h2 className="text-ink mt-3 text-2xl font-semibold tracking-[-0.01em] text-balance">
             {copy.title}
           </h2>
-          <p className="mt-3 leading-7 text-slate-700">{copy.body}</p>
+          <p className="mt-3 leading-7 text-stone-700">{copy.body}</p>
 
           <form onSubmit={onSubmit} className="mt-6 flex w-full flex-col gap-3 sm:flex-row">
             <input
@@ -101,7 +101,7 @@ export function LeadMagnetSignup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={state === "loading"}
-              className="focus:border-brand focus:ring-brand/20 h-11 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:ring-2"
+              className="focus:border-brand focus:ring-brand/20 h-11 w-full rounded-md border border-stone-300 bg-white px-3 text-sm text-stone-900 shadow-sm outline-none placeholder:text-stone-400 focus:ring-2"
             />
             <Button type="submit" size="lg" className="font-semibold" disabled={state === "loading"}>
               {state === "loading" ? copy.sending : copy.submit}
@@ -111,7 +111,7 @@ export function LeadMagnetSignup() {
 
           {state === "error" ? <p className="mt-2 text-sm text-red-700">{message}</p> : null}
 
-          <p className="mt-4 text-xs leading-5 text-slate-500">
+          <p className="mt-4 text-xs leading-5 text-stone-500">
             {copy.consent}
           </p>
         </>

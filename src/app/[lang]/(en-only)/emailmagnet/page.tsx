@@ -162,7 +162,7 @@ export default function EmailMagnetPage() {
               items={["Free plan, no credit card"]}
             />
 
-            <ul className="grid gap-2 text-sm font-medium text-slate-200 sm:grid-cols-3">
+            <ul className="grid gap-2 text-sm font-medium text-stone-200 sm:grid-cols-3">
               {heroHighlights.map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
@@ -186,7 +186,7 @@ export default function EmailMagnetPage() {
 
         {/* Trust signals + key stats — one aligned credibility row */}
         <div className="relative mt-10 grid items-stretch gap-6 lg:grid-cols-[1fr_0.95fr]">
-          <div className="grid gap-3 rounded-2xl border border-white/15 bg-white/5 p-5 text-sm text-slate-100 sm:grid-cols-2">
+          <div className="grid gap-3 rounded-2xl border border-white/15 bg-white/5 p-5 text-sm text-stone-100 sm:grid-cols-2">
             {trustSignals.map((signal) => (
               <div key={signal} className="flex items-start gap-2">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
@@ -198,7 +198,7 @@ export default function EmailMagnetPage() {
             {socialProof.stats.map((stat) => (
               <div key={stat.label}>
                 <p className="text-2xl font-semibold text-white">{stat.value}</p>
-                <p className="text-xs tracking-wide text-slate-300 uppercase">{stat.label}</p>
+                <p className="text-xs tracking-wide text-stone-300 uppercase">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -209,18 +209,18 @@ export default function EmailMagnetPage() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-6 lg:grid-cols-3">
             {audienceCards.map((audience, index) => (
-              <article key={audience.title} className="rounded-2xl border border-slate-200 bg-white p-6">
+              <article key={audience.title} className="rounded-2xl border border-stone-200 bg-white p-6">
                 <div className="mb-6 flex items-center justify-between">
                   <audience.icon className="h-6 w-6 text-eyebrow" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">0{index + 1}</span>
+                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-400">0{index + 1}</span>
                 </div>
-                <h2 className="text-2xl font-semibold text-slate-950">{audience.title}</h2>
-                <p className="mt-3 leading-7 text-slate-600">{audience.description}</p>
+                <h2 className="text-2xl font-semibold text-stone-950">{audience.title}</h2>
+                <p className="mt-3 leading-7 text-stone-600">{audience.description}</p>
               </article>
             ))}
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+          <div className="mt-10 overflow-hidden rounded-2xl border border-stone-200 bg-white">
             <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
               <Image
                 src="/brand/emailmagnet-directory-showcase.webp"
@@ -230,10 +230,10 @@ export default function EmailMagnetPage() {
                 className="h-full w-full object-cover"
               />
               <div className="space-y-5 p-6 md:p-8">
-                <h2 className="text-3xl font-semibold tracking-[-0.02em] text-slate-950">
+                <h2 className="text-3xl font-semibold tracking-[-0.02em] text-stone-950">
                   Research first, collect second, export third
                 </h2>
-                <p className="leading-8 text-slate-600">
+                <p className="leading-8 text-stone-600">
                   EmailMagnet is designed for pages you are already evaluating. The tool speeds up
                   collection, while your team keeps control of source quality and usage decisions.
                 </p>
@@ -258,8 +258,8 @@ export default function EmailMagnetPage() {
                     <div key={item.title} className="flex gap-3">
                       <item.icon className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
                       <div>
-                        <h3 className="font-semibold text-slate-950">{item.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-slate-600">{item.text}</p>
+                        <h3 className="font-semibold text-stone-950">{item.title}</h3>
+                        <p className="mt-1 text-sm leading-6 text-stone-600">{item.text}</p>
                       </div>
                     </div>
                   ))}
@@ -277,33 +277,33 @@ export default function EmailMagnetPage() {
             <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Replace the fragile part of lead research
             </h2>
-            <p className="text-lg leading-8 text-slate-700">
+            <p className="text-lg leading-8 text-stone-700">
               EmailMagnet does not replace judgment. It removes the repetitive copy-paste work
               between finding a relevant page and preparing a clean list.
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-slate-200">
-            <div className="hidden grid-cols-2 bg-slate-100 text-sm font-semibold uppercase tracking-wide text-slate-700 md:grid">
+          <div className="overflow-hidden rounded-2xl border border-stone-200">
+            <div className="hidden grid-cols-2 bg-stone-100 text-sm font-semibold uppercase tracking-wide text-stone-700 md:grid">
               <div className="px-4 py-3">Manual workflow</div>
               <div className="px-4 py-3">With EmailMagnet</div>
             </div>
-            <div className="divide-y divide-slate-200">
+            <div className="divide-y divide-stone-200">
               {workflowComparison.map((row) => (
                 <div key={row.manual} className="grid gap-0 text-sm leading-6 md:grid-cols-2">
-                  <div className="flex gap-3 bg-slate-50 px-4 py-4 text-slate-600">
+                  <div className="flex gap-3 bg-stone-50 px-4 py-4 text-stone-600">
                     <XCircle className="mt-1 h-4 w-4 shrink-0 text-eyebrow" />
                     <div>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500 md:hidden">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-stone-500 md:hidden">
                         Manual workflow
                       </p>
                       <span>{row.manual}</span>
                     </div>
                   </div>
-                  <div className="flex gap-3 px-4 py-4 text-slate-800">
+                  <div className="flex gap-3 px-4 py-4 text-stone-800">
                     <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent-teal" />
                     <div>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500 md:hidden">
+                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-stone-500 md:hidden">
                         With EmailMagnet
                       </p>
                       <span>{row.emailMagnet}</span>
@@ -335,7 +335,7 @@ export default function EmailMagnetPage() {
               <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
                 Saved per address
               </p>
-              <p className="mt-4 text-base leading-6 text-slate-200">
+              <p className="mt-4 text-base leading-6 text-stone-200">
                 Manual: spot the address, copy, switch tab, paste, format. EmailMagnet
                 surfaces every visible email on the page in one pass. No tab switching, no
                 cleanup.
@@ -349,7 +349,7 @@ export default function EmailMagnetPage() {
               <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
                 Steps per page
               </p>
-              <p className="mt-4 text-base leading-6 text-slate-200">
+              <p className="mt-4 text-base leading-6 text-stone-200">
                 Open page → select → copy → new tab → paste → format → review → save. We
                 replace the whole loop with one extraction action and a single export.
               </p>
@@ -359,7 +359,7 @@ export default function EmailMagnetPage() {
               <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
                 Lifetime, not monthly
               </p>
-              <p className="mt-4 text-base leading-6 text-slate-200">
+              <p className="mt-4 text-base leading-6 text-stone-200">
                 One-time payment for PRO. Compare with the $30–$99 per seat per month most
                 lead-gen tools ask for, and that&apos;s before the data add-ons.
               </p>
@@ -379,7 +379,7 @@ export default function EmailMagnetPage() {
             <h2 className="text-ink text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
               What early users say
             </h2>
-            <p className="text-lg leading-8 text-slate-700">
+            <p className="text-lg leading-8 text-stone-700">
               A handful of reviews so far, straight from the Chrome Web Store. Every one is five
               stars.
             </p>
@@ -400,7 +400,7 @@ export default function EmailMagnetPage() {
               <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
                 Start free, upgrade when research becomes recurring
               </h2>
-              <p className="text-lg leading-8 text-slate-700">
+              <p className="text-lg leading-8 text-stone-700">
                 Free is enough to validate real workflows. PRO is for repeated research sessions,
                 larger exports, autosave, and reviewed URL-list processing.
               </p>
@@ -410,8 +410,8 @@ export default function EmailMagnetPage() {
               <div className="flex items-start gap-3">
                 <ListChecks className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-950">Upgrade to PRO when...</h3>
-                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
+                  <h3 className="text-xl font-semibold text-stone-950">Upgrade to PRO when...</h3>
+                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-stone-700">
                     {proTriggers.map((trigger) => (
                       <li key={trigger} className="flex gap-2">
                         <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-teal-700" />
@@ -432,35 +432,35 @@ export default function EmailMagnetPage() {
 
       <section className="bg-surface-blue py-18 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
+          <article className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
             <div className="flex items-center gap-3">
               <ShieldCheck className="h-6 w-6 text-teal-700" />
-              <h2 className="text-2xl font-semibold text-slate-950">Responsible by design</h2>
+              <h2 className="text-2xl font-semibold text-stone-950">Responsible by design</h2>
             </div>
-            <p className="mt-4 leading-8 text-slate-600">
+            <p className="mt-4 leading-8 text-stone-600">
               EmailMagnet is built for public contact research on pages you can access and review.
               The extension helps with collection and export, but your team controls lawful purpose,
               qualification, storage, outreach policy, and opt-out handling.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {valueProps.map((item) => (
-                <div key={item.title} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <div key={item.title} className="rounded-xl border border-stone-200 bg-stone-50 p-4">
                   <div className="flex items-center gap-2">
                     <item.icon className="h-4 w-4 text-eyebrow" />
-                    <h3 className="text-sm font-semibold text-slate-900">{item.title}</h3>
+                    <h3 className="text-sm font-semibold text-stone-900">{item.title}</h3>
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
+                  <p className="mt-2 text-sm leading-6 text-stone-600">{item.description}</p>
                 </div>
               ))}
             </div>
           </article>
 
-          <aside className="rounded-2xl border border-slate-200 bg-white p-6 md:p-8">
+          <aside className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
             <div className="flex items-center gap-3">
               <XCircle className="h-6 w-6 text-eyebrow" />
-              <h2 className="text-2xl font-semibold text-slate-950">What EmailMagnet is not for</h2>
+              <h2 className="text-2xl font-semibold text-stone-950">What EmailMagnet is not for</h2>
             </div>
-            <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-700">
+            <ul className="mt-5 space-y-3 text-sm leading-6 text-stone-700">
               {notFor.map((item) => (
                 <li key={item} className="flex gap-3">
                   <XCircle className="mt-1 h-4 w-4 shrink-0 text-eyebrow" />
@@ -485,16 +485,16 @@ export default function EmailMagnetPage() {
             <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
               Questions before rollout
             </h2>
-            <p className="text-lg leading-8 text-slate-700">
+            <p className="text-lg leading-8 text-stone-700">
               Short answers on capabilities, pricing, and responsible use before you adopt the
               extension in recurring workflows.
             </p>
           </div>
           <div className="space-y-6">
             <FaqList items={faqItems.slice(0, 6)} />
-            <nav aria-label="EmailMagnet related help pages" className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-              <h3 className="text-lg font-semibold text-slate-950">Related help pages and guides</h3>
-              <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+            <nav aria-label="EmailMagnet related help pages" className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+              <h3 className="text-lg font-semibold text-stone-950">Related help pages and guides</h3>
+              <ul className="mt-3 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
                 <li>
                   <Link className="font-medium text-eyebrow hover:underline" href="/docs/getting-started" prefetch={false}>
                     Install and use EmailMagnet

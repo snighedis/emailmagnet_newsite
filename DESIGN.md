@@ -1,29 +1,51 @@
 # DESIGN.md
 
-## Design Style
-Warm technical brand with a committed orange lead color, ink-toned typography, and editorial spacing without serif nostalgia. The visual mood should feel product-driven and energetic, not decorative.
+The visual system decided in `docs/adr/0002-warm-editorial-redesign.md`. Tokens live in
+`src/app/globals.css`; this file says what they mean and how to use them.
 
-## Color Palette
-- Background: soft warm neutrals with slight amber tint.
-- Primary: vivid orange for key actions and anchor moments.
-- Secondary: deep ink/navy for contrast blocks and dense reading zones.
-- Support: muted slate and teal accents for structure and trust markers.
+## Mood
 
-## Typography
-- Primary family: Geist / Geist fallback stack.
-- Strong size contrast in headlines; compact supporting copy.
-- High readability with generous line-height for body content.
+Warm editorial. A software studio in Milan that talks to small-business owners: calm,
+legible, one colour, real photographs. Nothing that reads as "agency": no WebGL, no
+custom cursors, no decorative motion.
 
-## Layout & Rhythm
-- Alternate between open canvas sections and dense information panels.
-- Use asymmetry in hero and spotlight areas.
-- Avoid repeated identical card grids; vary section composition.
+## Colour
+
+- **One orange, `#f05423` (`--brand`).** It is a field under ink text (buttons), display
+  text from 24px up (the hero accent, the brief's number), icons, rules, the focus ring,
+  the symbol, and the label colour on ink sections. It is never small text and never
+  sits behind white text: white on it is 3.50:1, it on the ground 3.34:1, it on ink 4.68:1.
+  Hover states derive from it (`--brand-cta-hover`), they are not a second orange.
+- **Ink, `--ink` (navy ≈ #11212f).** Text, headings, the one dark section per page,
+  secondary buttons. `--ink-soft` lifts it for labels and links (`--eyebrow`).
+- **Ground.** `--background` and `--surface-soft` are warm whites; `--surface-muted` is
+  the single alternation tint for long pages; `--brand-soft` is the orange at 4% for
+  highlighted boxes. Cards are white on the ground.
+- **Greys are warm.** Utilities use the `stone` scale; `--muted-foreground` is warm.
+  No `slate`, no teal: the old second accent maps to the orange.
+
+## Type
+
+- **Newsreader** for headings at weight 500, hierarchy by size: `.type-display`,
+  `.type-h1`, `.type-h2`, `.type-h3`.
+- **Inter** for text: `.type-lead` for introductions, 16px/1.7 for reading.
+- **Mono** (`.type-label`) for section labels with numbers ("01", "02"), formulas and
+  small data. The orange in a label is a hairline rule, not the text.
+- **Wordmark:** DENTOKU DEV in Fira Sans Condensed capitals, symbol in orange.
 
 ## Components
-- CTA buttons with high-contrast fill and clear hierarchy.
-- Data rows and checklists for practical workflow information.
-- Product previews with real imagery and concise annotations.
 
-## Motion
-- Subtle entrance and hover transitions only.
-- No decorative motion that competes with content.
+- `Button`: default is an orange field with an ink label; `secondary` is ink with white;
+  `outline` and `ghost` are ink on the ground; `link` is ink underlined in orange.
+- `Section`: `default`/`soft` (ground), `muted` (alternation), `ink` (dark). The older
+  `blue`, `mint` and `gradient` names map onto these.
+- `Eyebrow index="01"`: numbered section label with the orange rule.
+- Cards: white, 1px warm border, `rounded-2xl`, no heavy shadows.
+- Press feedback on every control (`active:scale-[0.97]`); reduced motion keeps only
+  cross-fades.
+
+## Layout & motion
+
+- Sections on the ground are separated by a hairline, not by colour changes.
+- Motion only where content would otherwise jump: accordions, the cookie banner, the
+  tab pill, the brief's result. Under 300ms, the site curve `cubic-bezier(0.16, 1, 0.3, 1)`.

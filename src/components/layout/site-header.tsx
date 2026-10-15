@@ -24,7 +24,7 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
     <LocaleLink
       href="/"
       onClick={onClick}
-      className="flex items-center gap-2.5 font-semibold text-slate-950 lg:gap-2"
+      className="flex items-center gap-2.5 font-semibold text-stone-950 lg:gap-2"
     >
       <Image
         src={siteConfig.logo}
@@ -73,11 +73,11 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
         <p className="text-ink-muted mt-3 text-sm leading-6">{featured.description}</p>
         <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
           {common.header.viewProduct}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
         </span>
       </LocaleLink>
       <div>
-        <p className="px-2 pb-3 text-xs font-semibold tracking-wide text-slate-500 uppercase">
+        <p className="px-2 pb-3 text-xs font-semibold tracking-wide text-stone-500 uppercase">
           {common.header.portfolioLabel}
         </p>
         <div className="grid gap-2 sm:grid-cols-3">
@@ -86,7 +86,7 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
               key={product.href}
               href={product.href}
               onClick={onNavigate}
-              className="focus-visible:ring-brand rounded-xl border border-transparent p-3 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2"
+              className="focus-visible:ring-brand rounded-xl border border-transparent p-3 outline-none transition hover:border-stone-200 hover:bg-stone-50 focus-visible:bg-stone-50 focus-visible:ring-2"
             >
               <div className="flex items-center gap-3">
                 <Image
@@ -94,14 +94,14 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
                   alt={`${product.name} icon`}
                   width={40}
                   height={40}
-                  className="h-10 w-10 shrink-0 rounded-lg bg-slate-50 object-contain p-1.5"
+                  className="h-10 w-10 shrink-0 rounded-lg bg-stone-50 object-contain p-1.5"
                 />
-                <span className="font-semibold text-slate-950">{product.name}</span>
+                <span className="font-semibold text-stone-950">{product.name}</span>
               </div>
-              <span className="mt-3 inline-block rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600">
+              <span className="mt-3 inline-block rounded-md bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-600">
                 {product.category}
               </span>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{product.description}</p>
+              <p className="mt-2 text-sm leading-6 text-stone-600">{product.description}</p>
             </LocaleLink>
           ))}
         </div>
@@ -119,13 +119,13 @@ function ResourcesPanel({ onNavigate }: { onNavigate: () => void }) {
           key={item.href}
           href={item.href}
           onClick={onNavigate}
-          className="focus-visible:ring-brand group rounded-xl border border-transparent p-4 outline-none transition hover:border-slate-200 hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:ring-2"
+          className="focus-visible:ring-brand group rounded-xl border border-transparent p-4 outline-none transition hover:border-stone-200 hover:bg-stone-50 focus-visible:bg-stone-50 focus-visible:ring-2"
         >
-          <span className="flex items-center gap-1.5 font-semibold text-slate-950">
+          <span className="flex items-center gap-1.5 font-semibold text-stone-950">
             {item.label}
-            <ArrowRight className="text-eyebrow h-4 w-4 opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
+            <ArrowRight className="text-eyebrow h-4 w-4 opacity-0 transition group-hover:transtone-x-0.5 group-hover:opacity-100" />
           </span>
-          <p className="mt-1 text-sm leading-6 text-slate-600">
+          <p className="mt-1 text-sm leading-6 text-stone-600">
             {common.header.resourceDescriptions[item.href]}
           </p>
         </LocaleLink>
@@ -175,20 +175,20 @@ export function SiteHeader() {
 
   const triggerClass = (menu: MenuId) =>
     cn(
-      "focus-visible:ring-brand cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-slate-700 outline-none transition hover:bg-slate-100 hover:text-slate-950 focus-visible:ring-2",
-      openMenu === menu && "bg-slate-100 text-slate-950",
+      "focus-visible:ring-brand cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-stone-700 outline-none transition hover:bg-stone-100 hover:text-stone-950 focus-visible:ring-2",
+      openMenu === menu && "bg-stone-100 text-stone-950",
     );
 
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-stone-200/70 bg-white/80 backdrop-blur-xl"
     >
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-18">
         {/* Apollo-style: logo and nav grouped on the left, CTAs on the right */}
         <div className="flex items-center gap-10">
           <Logo onClick={closeNow} />
-          <nav className="hidden items-center gap-1 text-sm font-medium text-slate-700 lg:flex">
+          <nav className="hidden items-center gap-1 text-sm font-medium text-stone-700 lg:flex">
             <button
               type="button"
               aria-expanded={openMenu === "products"}
@@ -205,7 +205,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={closeNow}
-                className="rounded-md px-3 py-2 transition hover:bg-slate-100 hover:text-slate-950"
+                className="rounded-md px-3 py-2 transition hover:bg-stone-100 hover:text-stone-950"
               >
                 {item.label}
               </LocaleLink>
@@ -228,7 +228,7 @@ export function SiteHeader() {
           <Button asChild variant="ghost">
             <LocaleLink href={emailMagnetConfig.href}>{common.header.getEmailMagnet}</LocaleLink>
           </Button>
-          <Button asChild className="btn-sheen font-semibold hover:-translate-y-0.5">
+          <Button asChild className="btn-sheen font-semibold hover:-transtone-y-0.5">
             <LocaleLink href={siteConfig.secondaryCta.href}>{common.header.startProject}</LocaleLink>
           </Button>
         </div>
@@ -247,11 +247,11 @@ export function SiteHeader() {
             <div className="mt-16 space-y-6 px-6">
               <div className="flex items-center justify-between gap-3">
                 <Logo onClick={() => setMobileOpen(false)} />
-                <LanguageSwitcher className="border border-slate-200" />
+                <LanguageSwitcher className="border border-stone-200" />
               </div>
               <nav className="grid gap-5 text-base font-medium">
-                <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
-                  <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+                <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
+                  <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
                     {common.header.products}
                   </p>
                   <div className="mt-2 grid">
@@ -260,15 +260,15 @@ export function SiteHeader() {
                         key={product.href}
                         href={product.href}
                         onClick={() => setMobileOpen(false)}
-                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-200/70"
+                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
                       >
                         {product.name}
                       </LocaleLink>
                     ))}
                   </div>
                 </div>
-                <div className="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
-                  <p className="text-xs font-semibold tracking-wide text-slate-500 uppercase">
+                <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
+                  <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
                     {common.header.resources}
                   </p>
                   <div className="mt-2 grid">
@@ -277,31 +277,31 @@ export function SiteHeader() {
                         key={item.href}
                         href={item.href}
                         onClick={() => setMobileOpen(false)}
-                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-200/70"
+                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
                       >
                         {item.label}
                       </LocaleLink>
                     ))}
                   </div>
                 </div>
-                <div className="border-t border-slate-200 pt-4">
+                <div className="border-t border-stone-200 pt-4">
                   <div className="grid">
                     {site.mainNav.map((item) => (
-                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-100">
+                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
                         {item.label}
                       </LocaleLink>
                     ))}
-                    <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-100">
+                    <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
                       LinkedIn
                     </LocaleLink>
-                    <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-slate-100">
+                    <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
                       X/Twitter
                     </LocaleLink>
                   </div>
                 </div>
               </nav>
               <div className="grid gap-3">
-                <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-translate-y-0.5">
+                <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-transtone-y-0.5">
                   <LocaleLink href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)} className="text-center">
                     {common.header.startProject}
                   </LocaleLink>
@@ -323,7 +323,7 @@ export function SiteHeader() {
           id="header-panel"
           onMouseEnter={() => openNow(openMenu)}
           onMouseLeave={closeSoon}
-          className="animate-in fade-in slide-in-from-top-2 absolute inset-x-0 top-full hidden border-b border-slate-200/70 bg-white shadow-soft-lg duration-150 lg:block"
+          className="animate-in fade-in slide-in-from-top-2 absolute inset-x-0 top-full hidden border-b border-stone-200/70 bg-white shadow-soft-lg duration-150 lg:block"
         >
           <div className="mx-auto max-w-7xl px-4 py-8">
             {openMenu === "products" ? (

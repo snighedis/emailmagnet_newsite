@@ -35,14 +35,14 @@ export function BrowserFrame({
         className,
       )}
     >
-      <div className="flex items-center gap-3 border-b border-slate-100 bg-slate-50/80 px-4 py-3">
+      <div className="flex items-center gap-3 border-b border-stone-100 bg-stone-50/80 px-4 py-3">
         <span className="flex gap-1.5" aria-hidden>
-          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-stone-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-stone-300" />
+          <span className="h-2.5 w-2.5 rounded-full bg-stone-300" />
         </span>
         {url ? (
-          <span className="hidden min-w-0 flex-1 truncate rounded-md bg-white px-3 py-1 text-xs text-slate-400 ring-1 ring-slate-200 sm:block">
+          <span className="hidden min-w-0 flex-1 truncate rounded-md bg-white px-3 py-1 text-xs text-stone-400 ring-1 ring-stone-200 sm:block">
             {url}
           </span>
         ) : null}

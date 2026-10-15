@@ -187,7 +187,7 @@ export default function VolumeControlProPage() {
         <h1 className="text-ink mt-3 text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
           Volume Control PRO
         </h1>
-        <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-600">
+        <p className="mt-6 max-w-3xl text-xl leading-9 text-stone-600">
           Audio booster and volume amplifier for Chrome. Increase tab volume up to 600% for
           videos, music, and calls, and fix low sound on the sites you already use, without
           touching your system settings.
@@ -203,19 +203,19 @@ export default function VolumeControlProPage() {
             <Link href="/contact">Contact support</Link>
           </Button>
         </div>
-        <StatStrip stats={stats} className="mt-12 max-w-3xl border-t border-slate-200 pt-8" />
+        <StatStrip stats={stats} className="mt-12 max-w-3xl border-t border-stone-200 pt-8" />
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <div className="rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>
-            <p className="mt-2 leading-7 text-slate-700">
+            <h2 className="text-lg font-semibold text-stone-950">Quick answer</h2>
+            <p className="mt-2 leading-7 text-stone-700">
               Use Volume Control PRO when the search intent is “Chrome volume booster,” “increase
               tab volume,” or “volume amplifier for Chrome.” It focuses on faster audio control
               without changing system-wide settings.
             </p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
-            <p className="mt-2 leading-7 text-slate-600">
+          <div className="rounded-xl border border-stone-200 bg-stone-50 p-5">
+            <h2 className="text-lg font-semibold text-stone-950">What it is not</h2>
+            <p className="mt-2 leading-7 text-stone-600">
               Volume Control PRO is not a system-wide equalizer or an audio recorder. It controls
               the volume of browser tabs only, not other applications or your operating system’s
               master volume.
@@ -250,9 +250,9 @@ export default function VolumeControlProPage() {
           title="Where it performs best"
           description="Built for the everyday situations where browser audio is simply too quiet."
         />
-        <div className="mt-10 overflow-x-auto rounded-xl border border-slate-200">
+        <div className="mt-10 overflow-x-auto rounded-xl border border-stone-200">
           <table className="w-full text-left text-sm">
-            <thead className="bg-slate-50 text-slate-950">
+            <thead className="bg-stone-50 text-stone-950">
               <tr>
                 <th scope="col" className="px-4 py-3 font-semibold">
                   Use case
@@ -265,10 +265,10 @@ export default function VolumeControlProPage() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 text-slate-700">
+            <tbody className="divide-y divide-stone-200 text-stone-700">
               {useCaseRows.map((row) => (
                 <tr key={row.useCase}>
-                  <td className="px-4 py-4 font-medium text-slate-900">{row.useCase}</td>
+                  <td className="px-4 py-4 font-medium text-stone-900">{row.useCase}</td>
                   <td className="px-4 py-4">{row.problem}</td>
                   <td className="px-4 py-4">{row.fit}</td>
                 </tr>
@@ -276,7 +276,7 @@ export default function VolumeControlProPage() {
             </tbody>
           </table>
         </div>
-        <p className="mt-6 max-w-3xl text-sm leading-6 text-slate-500">
+        <p className="mt-6 max-w-3xl text-sm leading-6 text-stone-500">
           Honest compatibility note: boosting works very well on YouTube and most HTML5 media
           sites. Some protected web players (for example, certain Spotify Web playback scenarios)
           may have limited boost support due to browser restrictions.
@@ -288,20 +288,20 @@ export default function VolumeControlProPage() {
         <SectionHeading eyebrow="How it works" title="Three steps to louder tabs" />
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {operationSteps.map((step, index) => (
-            <Card key={step.title} className="rounded-2xl border-slate-200/80 bg-white shadow-soft">
+            <Card key={step.title} className="rounded-2xl border-stone-200/80 bg-white shadow-soft">
               <CardContent className="p-6">
-                <p className="font-mono text-xs text-slate-400">0{index + 1}</p>
-                <h3 className="mt-4 text-xl font-semibold text-slate-950">{step.title}</h3>
-                <p className="mt-3 leading-7 text-slate-600">{step.description}</p>
+                <p className="font-mono text-xs text-stone-400">0{index + 1}</p>
+                <h3 className="mt-4 text-xl font-semibold text-stone-950">{step.title}</h3>
+                <p className="mt-3 leading-7 text-stone-600">{step.description}</p>
               </CardContent>
             </Card>
           ))}
         </div>
         <nav
           aria-label="Volume Control PRO related Dentoku Dev pages"
-          className="shadow-soft mt-12 rounded-2xl border border-slate-200/80 bg-white p-6"
+          className="shadow-soft mt-12 rounded-2xl border border-stone-200/80 bg-white p-6"
         >
-          <h2 className="text-lg font-semibold text-slate-950">Related pages</h2>
+          <h2 className="text-lg font-semibold text-stone-950">Related pages</h2>
           <ul className="mt-3 grid gap-2 text-sm font-medium sm:grid-cols-2">
             <li>
               <Link

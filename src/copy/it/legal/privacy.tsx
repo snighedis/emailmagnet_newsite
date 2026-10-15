@@ -14,13 +14,13 @@ export const privacy: typeof privacyEn = {
   title: "Informativa sulla privacy",
 };
 
-const p = "mt-3 leading-8 text-slate-600";
-const p4 = "mt-4 leading-8 text-slate-600";
-const h2 = "mt-12 text-2xl font-semibold text-slate-950";
-const h3 = "mt-8 text-lg font-semibold text-slate-950";
+const p = "mt-3 leading-8 text-stone-600";
+const p4 = "mt-4 leading-8 text-stone-600";
+const h2 = "mt-12 text-2xl font-semibold text-stone-950";
+const h3 = "mt-8 text-lg font-semibold text-stone-950";
 const a = "underline underline-offset-2";
-const ul = "mt-4 list-disc space-y-2 pl-6 leading-8 text-slate-600";
-const stack = "mt-4 space-y-4 leading-8 text-slate-600";
+const ul = "mt-4 list-disc space-y-2 pl-6 leading-8 text-stone-600";
+const stack = "mt-4 space-y-4 leading-8 text-stone-600";
 const Mail = () => (
   <a href="mailto:support@dentokudev.com" className={a}>
     support@dentokudev.com
@@ -30,7 +30,7 @@ const Mail = () => (
 export function PrivacyBody() {
   return (
     <>
-      <p className="mt-6 leading-8 text-slate-600">
+      <p className="mt-6 leading-8 text-stone-600">
         Ultimo aggiornamento: 9 ottobre 2026. La presente Informativa descrive come Dentoku Dev
         (“noi”) tratta i dati personali quando visiti dentokudev.com, acquisti o usi EmailMagnet, o
         ci affidi servizi di consulenza digitale. È resa ai sensi dell’art. 13 del Regolamento (UE)
@@ -94,20 +94,20 @@ export function PrivacyBody() {
       </p>
       <div className="mt-6 space-y-6">
         <div>
-          <p className="font-semibold text-slate-950">
+          <p className="font-semibold text-stone-950">
             a) Esecuzione di un contratto (art. 6(1)(b) GDPR)
           </p>
-          <p className="mt-2 leading-8 text-slate-600">
+          <p className="mt-2 leading-8 text-stone-600">
             Trattamento di nome, email e dati di fatturazione per fornire l’accesso a EmailMagnet
             PRO, emettere fatture ed eseguire gli incarichi di consulenza digitale che hai
             richiesto. Senza questi dati il servizio non può essere fornito.
           </p>
         </div>
         <div>
-          <p className="font-semibold text-slate-950">
+          <p className="font-semibold text-stone-950">
             b) Adempimento di un obbligo di legge (art. 6(1)(c) GDPR)
           </p>
-          <p className="mt-2 leading-8 text-slate-600">
+          <p className="mt-2 leading-8 text-stone-600">
             Conservazione delle registrazioni contabili e delle fatture come richiesto dalla
             normativa fiscale e contabile italiana (D.P.R. 633/1972 in materia di IVA; D.P.R.
             600/1973 in materia di imposte sui redditi), per dieci anni dalla data di ciascun
@@ -115,10 +115,10 @@ export function PrivacyBody() {
           </p>
         </div>
         <div>
-          <p className="font-semibold text-slate-950">
+          <p className="font-semibold text-stone-950">
             c) Legittimo interesse (art. 6(1)(f) GDPR)
           </p>
-          <p className="mt-2 leading-8 text-slate-600">
+          <p className="mt-2 leading-8 text-stone-600">
             Gestione, protezione e miglioramento del sito e dei servizi; individuazione e
             prevenzione di frodi e abusi; conservazione dei log di accesso al server per finalità
             di sicurezza e di analisi forense (fino a 90 giorni); invio di comunicazioni di
@@ -127,8 +127,8 @@ export function PrivacyBody() {
           </p>
         </div>
         <div>
-          <p className="font-semibold text-slate-950">d) Consenso (art. 6(1)(a) GDPR)</p>
-          <p className="mt-2 leading-8 text-slate-600">
+          <p className="font-semibold text-stone-950">d) Consenso (art. 6(1)(a) GDPR)</p>
+          <p className="mt-2 leading-8 text-stone-600">
             Quando inviamo comunicazioni di marketing facoltative o utilizziamo cookie non
             essenziali, lo facciamo solo sulla base del tuo consenso libero, specifico e informato,
             che puoi revocare in qualsiasi momento senza pregiudicare i trattamenti precedenti.
@@ -328,7 +328,7 @@ export function PrivacyBody() {
         <li>
           Gli indirizzi email estratti e l’URL della pagina in cui sono stati trovati sono salvati
           solo nel tuo browser (
-          <code className="rounded bg-slate-100 px-1 text-sm">chrome.storage</code>). Non vengono
+          <code className="rounded bg-stone-100 px-1 text-sm">chrome.storage</code>). Non vengono
           mai inviati a noi né ad altri. L’impostazione Autosave decide se i risultati delle pagine
           che visiti restano nella cronologia del browser o se viene conservata solo la pagina
           corrente.

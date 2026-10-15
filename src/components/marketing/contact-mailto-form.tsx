@@ -122,7 +122,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
   return (
     <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-sm md:p-10">
       <div className="grid gap-5 sm:grid-cols-2">
-        <label className="grid gap-2 text-base font-semibold text-slate-800">
+        <label className="grid gap-2 text-base font-semibold text-stone-800">
           {copy.firstName}<span className="sr-only">{copy.requiredSr}</span>
           <Input
             required
@@ -131,10 +131,10 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
             placeholder={copy.firstNamePlaceholder}
             value={form.firstName}
             onChange={(event) => updateField("firstName", event.target.value)}
-            className="h-12 rounded-sm border-slate-400 bg-white px-4 text-base"
+            className="h-12 rounded-sm border-stone-400 bg-white px-4 text-base"
           />
         </label>
-        <label className="grid gap-2 text-base font-semibold text-slate-800">
+        <label className="grid gap-2 text-base font-semibold text-stone-800">
           {copy.lastName}<span className="sr-only">{copy.requiredSr}</span>
           <Input
             required
@@ -143,12 +143,12 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
             placeholder={copy.lastNamePlaceholder}
             value={form.lastName}
             onChange={(event) => updateField("lastName", event.target.value)}
-            className="h-12 rounded-sm border-slate-400 bg-white px-4 text-base"
+            className="h-12 rounded-sm border-stone-400 bg-white px-4 text-base"
           />
         </label>
       </div>
 
-      <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
+      <label className="mt-5 grid gap-2 text-base font-semibold text-stone-800">
         {copy.email}<span className="sr-only">{copy.requiredSr}</span>
         <Input
           required
@@ -158,28 +158,28 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
           placeholder={copy.emailPlaceholder}
           value={form.email}
           onChange={(event) => updateField("email", event.target.value)}
-          className="h-12 rounded-sm border-slate-400 bg-white px-4 text-base"
+          className="h-12 rounded-sm border-stone-400 bg-white px-4 text-base"
         />
       </label>
 
-      <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
+      <label className="mt-5 grid gap-2 text-base font-semibold text-stone-800">
         {copy.topic}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
               type="button"
-              className="flex h-12 w-full items-center justify-between rounded-sm border border-slate-400 bg-white px-4 text-left text-base font-medium text-slate-900 outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+              className="flex h-12 w-full items-center justify-between rounded-sm border border-stone-400 bg-white px-4 text-left text-base font-medium text-stone-900 outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
               aria-haspopup="listbox"
             >
-              <span className={form.product ? "text-slate-900" : "text-slate-500"}>
+              <span className={form.product ? "text-stone-900" : "text-stone-500"}>
                 {copy.topics.find((topic) => topic.value === form.product)?.label ?? copy.selectTopic}
               </span>
-              <ChevronDown className="h-4 w-4 text-slate-500" />
+              <ChevronDown className="h-4 w-4 text-stone-500" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align="start"
-            className="w-[var(--radix-dropdown-menu-trigger-width)] rounded-sm border border-slate-300 bg-white p-1"
+            className="w-[var(--radix-dropdown-menu-trigger-width)] rounded-sm border border-stone-300 bg-white p-1"
           >
             {copy.topics.map((option) => {
               const isSelected = form.product === option.value;
@@ -187,7 +187,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
                 <DropdownMenuItem
                   key={option.value}
                   onSelect={() => updateField("product", option.value)}
-                  className="flex h-10 items-center justify-between rounded-sm px-3 text-base font-medium text-slate-900 focus:bg-slate-100"
+                  className="flex h-10 items-center justify-between rounded-sm px-3 text-base font-medium text-stone-900 focus:bg-stone-100"
                 >
                   <span>{option.label}</span>
                   {isSelected ? <Check className="h-4 w-4 text-[#244f9e]" /> : null}
@@ -198,7 +198,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
         </DropdownMenu>
       </label>
 
-      <label className="mt-5 grid gap-2 text-base font-semibold text-slate-800">
+      <label className="mt-5 grid gap-2 text-base font-semibold text-stone-800">
         {copy.message}<span className="sr-only">{copy.requiredSr}</span>
         <Textarea
           required
@@ -206,7 +206,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
           placeholder={copy.messagePlaceholder}
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="min-h-32 rounded-sm border-slate-400 bg-white px-4 py-3 text-base"
+          className="min-h-32 rounded-sm border-stone-400 bg-white px-4 py-3 text-base"
         />
       </label>
       <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
@@ -251,7 +251,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
         </div>
       ) : null}
 
-      <p className="mt-6 text-base font-semibold leading-7 text-slate-900">
+      <p className="mt-6 text-base font-semibold leading-7 text-stone-900">
         {copy.consent}
       </p>
 

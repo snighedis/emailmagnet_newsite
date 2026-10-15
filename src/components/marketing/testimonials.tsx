@@ -37,23 +37,23 @@ export function Testimonials({ items, sourceHref, sourceLabel, className }: Test
         {items.map((item) => (
           <figure
             key={item.name}
-            className="shadow-soft flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 md:p-7"
+            className="shadow-soft flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 md:p-7"
           >
             <FiveStars />
-            <blockquote className="mt-4 leading-7 text-slate-700">
+            <blockquote className="mt-4 leading-7 text-stone-700">
               “{item.quote}”
             </blockquote>
-            <figcaption className="mt-5 text-sm font-semibold text-slate-950">
+            <figcaption className="mt-5 text-sm font-semibold text-stone-950">
               {item.name}
               {item.detail ? (
-                <span className="block text-xs font-medium text-slate-500">{item.detail}</span>
+                <span className="block text-xs font-medium text-stone-500">{item.detail}</span>
               ) : null}
             </figcaption>
           </figure>
         ))}
       </div>
       {sourceHref ? (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-stone-500">
           <Link
             href={sourceHref}
             className="text-eyebrow font-medium hover:underline"

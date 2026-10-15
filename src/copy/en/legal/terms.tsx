@@ -16,7 +16,7 @@ export const terms = {
 export function TermsBody() {
   return (
     <>
-      <p className="mt-6 leading-8 text-slate-600">
+      <p className="mt-6 leading-8 text-stone-600">
         Last updated: September 23, 2026. These Terms of Service (&quot;Terms&quot;) form a binding
         agreement between you (&quot;User&quot; or &quot;Client&quot;) and Dentoku Dev (Nicola Orlandi,
         sole trader / ditta individuale, Via Bullona 8, 20154 Milano, Italy, P.IVA
@@ -24,7 +24,7 @@ export function TermsBody() {
         &quot;we&quot;, or &quot;us&quot;) and govern your access to and use of EmailMagnet, this website,
         and any digital consulting services we provide.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         By creating an account, completing a purchase, or engaging our consulting services,
         you confirm that you have read, understood, and accepted these Terms. If you are acting
         on behalf of a company or other legal entity, you warrant that you have authority to
@@ -32,11 +32,11 @@ export function TermsBody() {
       </p>
 
       {/* 1. Services */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">1. Services</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">1. Services</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Dentoku Dev provides two categories of services:
       </p>
-      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
           <strong>Software products</strong>: browser extensions and store applications
           published by Dentoku Dev, currently EmailMagnet, ClickPilot AI, Volume Control PRO,
@@ -62,8 +62,8 @@ export function TermsBody() {
       </ul>
 
       {/* 2. Eligibility */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">2. Eligibility</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">2. Eligibility</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         You must be at least 18 years of age (or the age of majority in your jurisdiction) and
         have full legal capacity to enter into a contract. If purchasing on behalf of a
         business, you represent that the business is duly incorporated and that you are
@@ -71,8 +71,8 @@ export function TermsBody() {
       </p>
 
       {/* 3. Accounts */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">3. Accounts and Access</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">3. Accounts and Access</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Where account creation is required, you are responsible for maintaining the
         confidentiality of your credentials and for all activity that occurs under your
         account. You must notify us immediately at{" "}
@@ -84,10 +84,10 @@ export function TermsBody() {
       </p>
 
       {/* 4. Pricing, Billing, and Taxes */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         4. Pricing, Billing, and Taxes
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         Prices are displayed in USD unless otherwise indicated at checkout. Italian VAT (IVA)
         or other applicable taxes may be added by the payment processor depending on your
         billing location. The applicable total, including any taxes, is shown before you
@@ -95,36 +95,36 @@ export function TermsBody() {
         ClickPilotAI is processed by Gumroad, Inc. By completing checkout you also accept
         the terms and privacy policy of the applicable payment processor.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>EmailMagnet PRO: lifetime access.</strong> A one-time payment grants you a
         perpetual, non-exclusive, non-transferable licence to use EmailMagnet PRO features as
         they exist at time of purchase and as we continue to develop them. &quot;Lifetime&quot; means
         for as long as we operate EmailMagnet as a product; we will provide reasonable advance
         notice (minimum 60 days) if we decide to discontinue the product permanently.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Consulting fees.</strong> Rates, milestones, and payment schedules for
         consulting engagements are set out in the applicable SOW. Unless otherwise agreed,
         invoices are payable within 30 days of issuance. Late payments accrue interest at the
         rate provided by D.Lgs. 231/2002 (Italian late-payment legislation, applicable to
         B2B transactions).
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         We reserve the right to change pricing for new purchases. Existing lifetime licence
         holders are not affected by price changes.
       </p>
 
       {/* 5. Right of Withdrawal (B2C) */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         5. Right of Withdrawal (Consumer Purchases)
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         If you are a <strong>consumer</strong> (a natural person acting outside of any trade,
         business, or profession) resident in the European Union, you normally have a 14-day
         right of withdrawal from distance contracts under D.Lgs. 206/2005 (Codice del
         Consumo) and Directive 2011/83/EU.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         For <strong>digital content not supplied on a tangible medium</strong> (such as
         EmailMagnet PRO licence delivery), you expressly agree, before purchase is completed,
         that performance of the contract begins immediately upon payment confirmation and that
@@ -133,7 +133,7 @@ export function TermsBody() {
         {/* Citations corrected on 2026-09-23 (they were swapped): flagged for legal review. */} This waiver is clearly
         presented and confirmed in the checkout flow prior to payment.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         If the waiver was not properly obtained, or if you have a legitimate complaint about a
         defective product, contact us at{" "}
         <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
@@ -145,9 +145,9 @@ export function TermsBody() {
       </p>
 
       {/* 6. Acceptable Use */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">6. Acceptable Use</h2>
-      <p className="mt-3 leading-8 text-slate-600">You agree not to:</p>
-      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">6. Acceptable Use</h2>
+      <p className="mt-3 leading-8 text-stone-600">You agree not to:</p>
+      <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
           Use EmailMagnet or any Dentoku Dev service to collect, process, or transmit personal
           data in violation of applicable privacy law, including GDPR, the Italian Privacy
@@ -171,24 +171,24 @@ export function TermsBody() {
           unlawful purpose.
         </li>
       </ul>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         You are solely responsible for ensuring that your use of the services complies with all
         laws applicable to you, including data protection, electronic communications, and
         consumer protection legislation. We are not liable for your compliance failures.
       </p>
 
       {/* 7. Intellectual Property */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         7. Intellectual Property
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         All intellectual property rights in the EmailMagnet software, website, brand, and
         documentation are owned by or licensed to Dentoku Dev and are protected by Italian and
         international copyright law (L. 633/1941 and Directive 2009/24/EC on software
         protection). These Terms grant you a limited licence to use the services; they do not
         transfer any ownership.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Consulting deliverables.</strong> Unless the applicable SOW states otherwise,
         intellectual property in deliverables produced for consulting clients transfers to the
         client upon receipt of full payment. Dentoku Dev retains a non-exclusive licence to
@@ -197,8 +197,8 @@ export function TermsBody() {
       </p>
 
       {/* 8. Confidentiality */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">8. Confidentiality</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">8. Confidentiality</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Each party agrees to keep confidential any non-public information disclosed by the
         other party in connection with consulting engagements that is marked confidential or
         that a reasonable person would consider confidential given the circumstances.
@@ -210,8 +210,8 @@ export function TermsBody() {
       </p>
 
       {/* 9. Service Availability */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">9. Service Availability</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">9. Service Availability</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         We aim for high availability but do not guarantee uninterrupted access. We may perform
         scheduled maintenance, apply security patches, or modify features without prior notice
         where urgency requires it. We will endeavour to notify users of planned downtime in
@@ -220,15 +220,15 @@ export function TermsBody() {
       </p>
 
       {/* 10. Warranties and Disclaimer */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         10. Warranties and Disclaimer
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We warrant that EmailMagnet will perform materially in accordance with its published
         documentation for 90 days following your initial purchase. For consulting services, we
         warrant that work will be performed with reasonable skill and care.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         Except as stated above and to the maximum extent permitted by applicable law, the
         services are provided &quot;as is&quot; and &quot;as available&quot; without warranties of
         merchantability, fitness for a particular purpose, or non-infringement. We do not
@@ -237,22 +237,22 @@ export function TermsBody() {
         excluded under mandatory Italian consumer protection law.
       </p>
 
-      <h3 className="mt-8 text-lg font-semibold text-slate-950">
+      <h3 className="mt-8 text-lg font-semibold text-stone-950">
         AI-generated output (ClickPilot AI)
       </h3>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         ClickPilot AI produces text using an artificial intelligence model. Output is generated
         automatically and may be inaccurate, incomplete, outdated, biased, or unsuitable for your
         purpose, even when it reads as confident and well-formed. We give no warranty as to the
         accuracy, quality, originality, or fitness for any purpose of generated output.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         You remain responsible for reviewing and editing output before you send, publish, or
         otherwise rely on it, and for the consequences of doing so. This includes checking that
         the result is accurate, that it does not infringe anyone else&apos;s rights, and that
         sending it complies with any law or professional duty that applies to you.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         Generation is performed by OpenAI under your own API key and your own agreement with
         OpenAI. We do not control that model, its availability, its pricing, or the content it
         returns, and we are not responsible for changes to it or for interruptions of the OpenAI
@@ -261,21 +261,21 @@ export function TermsBody() {
       </p>
 
       {/* 11. Limitation of Liability */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         11. Limitation of Liability
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         To the maximum extent permitted by applicable law, Dentoku Dev's total aggregate
         liability to you for any claim arising out of or in connection with these Terms,
         whether in contract, tort, or otherwise, is limited to the greater of: (a) the amount
         you paid to us in the 12 months preceding the claim; or (b) EUR 100.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         In no event will Dentoku Dev be liable for loss of profits, loss of revenue, loss of
         data, loss of business opportunities, or indirect, consequential, special, or punitive
         damages, even if advised of the possibility of such losses.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Consumer notice.</strong> Nothing in this Section excludes or limits liability
         for death or personal injury caused by negligence, fraud, or any other liability that
         cannot be excluded under mandatory Italian law, including rights under D.Lgs. 206/2005
@@ -283,28 +283,28 @@ export function TermsBody() {
       </p>
 
       {/* 12. Termination */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">12. Termination</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">12. Termination</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         <strong>By you.</strong> You may stop using our services at any time. Deletion of your
         data is governed by our Privacy Policy.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>By us.</strong> We may suspend or terminate your access with immediate effect
         if you materially breach these Terms (including acceptable use violations), if required
         by law or court order, or for serious security reasons. We will give reasonable prior
         notice where circumstances permit. Termination does not entitle you to a refund of
         amounts already paid, except where required by law.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         Provisions that by their nature should survive (intellectual property, confidentiality,
         limitation of liability, governing law) continue in effect after termination.
       </p>
 
       {/* 13. Governing Law and Jurisdiction */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         13. Governing Law and Jurisdiction
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         These Terms are governed by and construed in accordance with Italian law, excluding
         its conflict-of-law rules. For <strong>B2B disputes</strong>, the exclusive
         jurisdiction is the competent court of Milano, Italy. For{" "}
@@ -313,7 +313,7 @@ export function TermsBody() {
         their place of residence pursuant to Art. 18 of Regulation (EU) 1215/2012
         (Brussels I Recast).
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         Where Italian law requires an attempt at out-of-court settlement before litigation,
         the parties agree to participate in mediation pursuant to D.Lgs. 28/2010. For EU
         consumers, disputes may also be submitted through the European Commission's Online
@@ -330,10 +330,10 @@ export function TermsBody() {
       </p>
 
       {/* 14. Changes */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">
         14. Changes to These Terms
       </h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <p className="mt-3 leading-8 text-stone-600">
         We may revise these Terms to reflect changes in law, product, or operations. For
         material changes affecting existing users, we will provide at least 30 days' advance
         notice by email or prominent notice on this page. Continued use after the effective
@@ -343,28 +343,28 @@ export function TermsBody() {
       </p>
 
       {/* 15. Miscellaneous */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">15. Miscellaneous</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">15. Miscellaneous</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         <strong>Entire agreement.</strong> These Terms, together with any applicable SOW and
         our Privacy Policy, constitute the entire agreement between you and Dentoku Dev
         regarding the services and supersede all prior agreements or understandings.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Severability.</strong> If any provision is held unenforceable, the remaining
         provisions continue in full force; the unenforceable provision will be modified to the
         minimum extent necessary to make it enforceable.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Waiver.</strong> Failure to enforce any provision is not a waiver of our right
         to enforce it later.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Force majeure.</strong> Neither party is liable for failure to perform
         obligations caused by circumstances beyond its reasonable control (including natural
         disasters, acts of government, or widespread infrastructure failures), provided the
         affected party gives prompt notice and uses reasonable efforts to mitigate.
       </p>
-      <p className="mt-4 leading-8 text-slate-600">
+      <p className="mt-4 leading-8 text-stone-600">
         <strong>Language.</strong> These Terms are provided in English. An Italian translation is
         available at{" "}
         <Link href="/it/termini" hrefLang="it" lang="it" className="underline underline-offset-2">
@@ -377,8 +377,8 @@ export function TermsBody() {
       </p>
 
       {/* 16. Contact */}
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">16. Contact</h2>
-      <p className="mt-3 leading-8 text-slate-600">
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">16. Contact</h2>
+      <p className="mt-3 leading-8 text-stone-600">
         Questions about these Terms:{" "}
         <a href="mailto:support@dentokudev.com" className="underline underline-offset-2">
           support@dentokudev.com

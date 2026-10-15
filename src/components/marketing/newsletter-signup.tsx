@@ -50,14 +50,14 @@ export function NewsletterSignup() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-      <h2 className="text-2xl font-semibold text-slate-950 sm:text-3xl">{copy.title}</h2>
-      <p className="mt-3 leading-7 text-slate-600">{copy.body}</p>
+    <div className="mx-auto max-w-3xl rounded-xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 className="text-2xl font-semibold text-stone-950 sm:text-3xl">{copy.title}</h2>
+      <p className="mt-3 leading-7 text-stone-600">{copy.body}</p>
 
       {state === "idle" || state === "loading" ? (
         <form onSubmit={onSubmit} className="mt-6 flex w-full flex-col gap-3 sm:flex-row">
           <input
-            className="h-10 w-full rounded-md border border-slate-300 bg-white px-3 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-brand/20"
+            className="h-10 w-full rounded-md border border-stone-300 bg-white px-3 text-sm text-stone-900 shadow-sm outline-none placeholder:text-stone-400 focus:border-brand focus:ring-2 focus:ring-brand/20"
             placeholder={copy.emailPlaceholder}
             required
             type="email"
@@ -68,7 +68,7 @@ export function NewsletterSignup() {
           />
           <button
             type="submit"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-brand-cta px-4 text-sm font-medium text-white shadow-sm transition hover:bg-brand-cta-hover disabled:cursor-not-allowed disabled:opacity-80"
+            className="inline-flex h-10 items-center justify-center rounded-md bg-brand-cta px-4 text-sm font-medium text-ink shadow-sm transition hover:bg-brand-cta-hover disabled:cursor-not-allowed disabled:opacity-80"
             disabled={state === "loading"}
           >
             {state === "loading" ? copy.wait : copy.subscribe}
@@ -78,10 +78,10 @@ export function NewsletterSignup() {
 
       {state === "success" ? (
         <div className="mt-6">
-          <p className="text-sm text-slate-900">{copy.thanks}</p>
+          <p className="text-sm text-stone-900">{copy.thanks}</p>
           <button
             type="button"
-            className="mt-3 text-sm text-slate-500 hover:underline"
+            className="mt-3 text-sm text-stone-500 hover:underline"
             onClick={onReset}
           >
             {copy.back}
@@ -94,7 +94,7 @@ export function NewsletterSignup() {
           <p className="text-sm text-red-700">{message}</p>
           <button
             type="button"
-            className="mt-3 text-sm text-slate-500 hover:underline"
+            className="mt-3 text-sm text-stone-500 hover:underline"
             onClick={onReset}
           >
             {copy.back}

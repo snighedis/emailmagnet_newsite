@@ -33,28 +33,28 @@ export default function PricingPage() {
         <div className="mt-12">
           <PricingCards plans={pricingPlans} />
         </div>
-        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-6 text-slate-600">
+        <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-6 text-stone-600">
           Pricing and limits are based on the current EmailMagnet product offer. Billing details
           are shown during checkout.
         </p>
-        <div className="shadow-soft mt-10 overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
+        <div className="shadow-soft mt-10 overflow-hidden rounded-2xl border border-stone-200/80 bg-white">
           <table className="w-full text-left text-sm">
             <caption className="sr-only">EmailMagnet pricing comparison</caption>
-            <thead className="text-ink bg-slate-50">
+            <thead className="text-ink bg-stone-50">
               <tr>
                 <th scope="col" className="px-4 py-3 font-semibold">Plan</th>
                 <th scope="col" className="px-4 py-3 font-semibold">Best for</th>
                 <th scope="col" className="px-4 py-3 font-semibold">Limits</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 text-slate-700">
+            <tbody className="divide-y divide-stone-200 text-stone-700">
               <tr>
-                <td className="px-4 py-4 font-medium text-slate-950">Free</td>
+                <td className="px-4 py-4 font-medium text-stone-950">Free</td>
                 <td className="px-4 py-4">Trying EmailMagnet and occasional extraction</td>
                 <td className="px-4 py-4">200 emails per month, 100 emails per export</td>
               </tr>
               <tr>
-                <td className="px-4 py-4 font-medium text-slate-950">PRO</td>
+                <td className="px-4 py-4 font-medium text-stone-950">PRO</td>
                 <td className="px-4 py-4">Recurring research, prospecting, and bulk extraction</td>
                 <td className="px-4 py-4">Unlimited extraction and unlimited export size</td>
               </tr>

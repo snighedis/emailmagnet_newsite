@@ -17,8 +17,8 @@ export function NotFoundContent() {
   return (
     <section className="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-4 py-20 text-center">
       <Eyebrow>{notFound.eyebrow}</Eyebrow>
-      <h1 className="mt-3 text-4xl font-semibold text-slate-950">{notFound.title}</h1>
-      <p className="mt-4 text-lg leading-8 text-slate-600">{notFound.body}</p>
+      <h1 className="mt-3 text-4xl font-semibold text-stone-950">{notFound.title}</h1>
+      <p className="mt-4 text-lg leading-8 text-stone-600">{notFound.body}</p>
       <Button asChild className="mt-8">
         <LocaleLink href="/">{notFound.home}</LocaleLink>
       </Button>

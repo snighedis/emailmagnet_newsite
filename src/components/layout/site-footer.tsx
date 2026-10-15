@@ -29,11 +29,11 @@ function XIcon({ className }: { className?: string }) {
 export function SiteFooter({ copy }: { copy: ChromeCopy }) {
   const { common, site } = copy;
   return (
-    <footer className="bg-surface-soft border-t border-slate-200">
+    <footer className="bg-surface-soft border-t border-stone-200">
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 md:grid-cols-[1.5fr_repeat(4,1fr)]">
           <div>
-            <LocaleLink href="/" className="flex items-center gap-2 font-semibold text-slate-950">
+            <LocaleLink href="/" className="flex items-center gap-2 font-semibold text-stone-950">
               <Image
                 src={siteConfig.logo}
                 alt={common.footer.logoAlt}
@@ -44,7 +44,7 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
               />
               <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
             </LocaleLink>
-            <p className="mt-1 max-w-sm text-sm leading-6 text-slate-600">{site.footerTagline}</p>
+            <p className="mt-1 max-w-sm text-sm leading-6 text-stone-600">{site.footerTagline}</p>
             <a
               href="https://shipveryfast.dev/?ref=dentokudev"
               target="_blank"
@@ -71,14 +71,14 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
               <Link
                 href={siteConfig.social.linkedin}
                 aria-label={common.footer.linkedinAria}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600 transition hover:border-stone-300 hover:text-stone-950"
               >
                 <LinkedInIcon className="h-4 w-4" />
               </Link>
               <Link
                 href={siteConfig.social.x}
                 aria-label={common.footer.xAria}
-                className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:border-slate-300 hover:text-slate-950"
+                className="flex h-9 w-9 items-center justify-center rounded-lg border border-stone-200 bg-white text-stone-600 transition hover:border-stone-300 hover:text-stone-950"
               >
                 <XIcon className="h-4 w-4" />
               </Link>
@@ -86,11 +86,11 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
           </div>
           {site.footerColumns.map((column) => (
             <div key={column.label}>
-              <h2 className="text-sm font-semibold text-slate-950">{column.label}</h2>
-              <ul className="mt-4 space-y-3 text-sm text-slate-600">
+              <h2 className="text-sm font-semibold text-stone-950">{column.label}</h2>
+              <ul className="mt-4 space-y-3 text-sm text-stone-600">
                 {column.items.map((item) => (
                   <li key={item.href}>
-                    <LocaleLink href={item.href} className="transition hover:text-slate-950">
+                    <LocaleLink href={item.href} className="transition hover:text-stone-950">
                       {item.label}
                     </LocaleLink>
                   </li>
@@ -100,11 +100,11 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
           ))}
         </div>
       </div>
-      <div className="border-t border-slate-200">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+      <div className="border-t border-stone-200">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-stone-500 sm:flex-row sm:items-center sm:justify-between">
           <p>{common.footer.copyright}</p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <CookiePreferencesButton className="transition hover:text-slate-950" />
+            <CookiePreferencesButton className="transition hover:text-stone-950" />
             <span>
               {siteConfig.companyName}, {site.location}
             </span>

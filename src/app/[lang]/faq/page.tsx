@@ -40,12 +40,12 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
             description={copy.description}
           />
           <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">{copy.shortAnswer.title}</h2>
-            <p className="mt-2 leading-7 text-slate-700">{copy.shortAnswer.body}</p>
+            <h2 className="text-lg font-semibold text-stone-950">{copy.shortAnswer.title}</h2>
+            <p className="mt-2 leading-7 text-stone-700">{copy.shortAnswer.body}</p>
           </div>
           <nav aria-label={copy.related.ariaLabel} className="mt-8">
-            <h2 className="text-lg font-semibold text-slate-950">{copy.related.title}</h2>
-            <ul className="mt-3 space-y-2 text-sm text-slate-600">
+            <h2 className="text-lg font-semibold text-stone-950">{copy.related.title}</h2>
+            <ul className="mt-3 space-y-2 text-sm text-stone-600">
               {copy.related.links.map((link) => (
                 <li key={link.href}>
                   <LocaleLink href={link.href} className="font-medium text-eyebrow hover:underline">

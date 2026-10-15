@@ -14,10 +14,10 @@ export const cookies: typeof cookiesEn = {
   title: "Cookie Policy",
 };
 
-const p = "mt-3 leading-8 text-slate-600";
-const p4 = "mt-4 leading-8 text-slate-600";
-const h2 = "mt-12 text-2xl font-semibold text-slate-950";
-const h3 = "mt-8 text-lg font-semibold text-slate-950";
+const p = "mt-3 leading-8 text-stone-600";
+const p4 = "mt-4 leading-8 text-stone-600";
+const h2 = "mt-12 text-2xl font-semibold text-stone-950";
+const h3 = "mt-8 text-lg font-semibold text-stone-950";
 const a = "underline underline-offset-2";
 const th = "pb-3 pr-4 font-semibold";
 const td = "py-3 pr-4";
@@ -25,7 +25,7 @@ const td = "py-3 pr-4";
 export function CookiesBody() {
   return (
     <>
-      <p className="mt-6 leading-8 text-slate-600">
+      <p className="mt-6 leading-8 text-stone-600">
         Ultimo aggiornamento: 9 ottobre 2026. La presente Cookie Policy spiega quali cookie e
         tecnologie simili sono utilizzati su dentokudev.com, perché li utilizziamo e come puoi
         gestirli. È redatta ai sensi della Direttiva ePrivacy (2002/58/CE, come modificata dalla
@@ -66,15 +66,15 @@ export function CookiesBody() {
         Direttiva ePrivacy, il loro utilizzo non richiede consenso.
       </p>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm text-slate-600">
+        <table className="w-full text-sm text-stone-600">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-slate-900">
+            <tr className="border-b border-stone-200 text-left text-stone-900">
               <th className={th}>Nome</th>
               <th className={th}>Finalità</th>
               <th className="pb-3 font-semibold">Durata</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-stone-100">
             <tr>
               <td className={`${td} font-mono text-xs`}>cookie-consent</td>
               <td className={td}>
@@ -100,16 +100,16 @@ export function CookiesBody() {
         Analisi.
       </p>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm text-slate-600">
+        <table className="w-full text-sm text-stone-600">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-slate-900">
+            <tr className="border-b border-stone-200 text-left text-stone-900">
               <th className={th}>Nome</th>
               <th className={th}>Fornitore</th>
               <th className={th}>Finalità</th>
               <th className="pb-3 font-semibold">Durata</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-stone-100">
             <tr>
               <td className={`${td} font-mono text-xs`}>_ga</td>
               <td className={td}>Google LLC</td>
@@ -153,16 +153,16 @@ export function CookiesBody() {
         diversi oltre alla misurazione delle conversioni di Google Ads.
       </p>
       <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-sm text-slate-600">
+        <table className="w-full text-sm text-stone-600">
           <thead>
-            <tr className="border-b border-slate-200 text-left text-slate-900">
+            <tr className="border-b border-stone-200 text-left text-stone-900">
               <th className={th}>Nome</th>
               <th className={th}>Fornitore</th>
               <th className={th}>Finalità</th>
               <th className="pb-3 font-semibold">Durata</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-stone-100">
             <tr>
               <td className={`${td} font-mono text-xs`}>_gcl_au</td>
               <td className={td}>Google LLC</td>
@@ -185,7 +185,7 @@ export function CookiesBody() {
       <p className={p}>
         Puoi modificare le tue preferenze sui cookie in qualsiasi momento in uno dei seguenti modi:
       </p>
-      <ul className="mt-4 list-disc space-y-3 pl-6 leading-8 text-slate-600">
+      <ul className="mt-4 list-disc space-y-3 pl-6 leading-8 text-stone-600">
         <li>
           <strong>Link “Preferenze cookie”.</strong> Fai clic su{" "}
           <strong>“Preferenze cookie”</strong> nel footer di qualsiasi pagina. Il pannello del

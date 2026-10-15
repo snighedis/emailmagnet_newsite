@@ -30,8 +30,8 @@ export default function BlogPage() {
             title="Email extraction guides and product education"
             description="Practical articles about EmailMagnet, email extraction workflows, responsible use, and browser-based productivity."
           />
-          <nav aria-label="Blog related resources" className="mx-auto mt-8 max-w-3xl rounded-xl border border-slate-200 bg-slate-50 p-5 text-center">
-            <h2 className="text-lg font-semibold text-slate-950">Start with the main resources</h2>
+          <nav aria-label="Blog related resources" className="mx-auto mt-8 max-w-3xl rounded-xl border border-stone-200 bg-stone-50 p-5 text-center">
+            <h2 className="text-lg font-semibold text-stone-950">Start with the main resources</h2>
             <div className="mt-3 flex flex-wrap justify-center gap-4 text-sm font-medium">
               <Link className="text-eyebrow hover:underline" href="/emailmagnet">
                 EmailMagnet product page
@@ -50,7 +50,7 @@ export default function BlogPage() {
           {featured ? (
             <Link
               href={`/blog/${featured.slug}`}
-              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block overflow-hidden rounded-3xl border border-slate-200/70 transition hover:-translate-y-1"
+              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block overflow-hidden rounded-3xl border border-stone-200/70 transition hover:-transtone-y-1"
             >
               <div className="grid items-center lg:grid-cols-[1.05fr_0.95fr]">
                 <div className="p-8 md:p-12">
@@ -64,20 +64,20 @@ export default function BlogPage() {
                       </Badge>
                     ))}
                   </div>
-                  <h2 className="mt-5 text-3xl font-semibold tracking-normal text-balance text-slate-950 group-hover:underline md:text-4xl">
+                  <h2 className="mt-5 text-3xl font-semibold tracking-normal text-balance text-stone-950 group-hover:underline md:text-4xl">
                     {featured.title}
                   </h2>
-                  <p className="mt-4 text-lg leading-8 text-slate-600">{featured.description}</p>
-                  <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-slate-500">
-                    <span className="font-semibold text-slate-900">{defaultAuthor.name}</span>
-                    <span aria-hidden className="h-1 w-1 rounded-full bg-slate-300" />
+                  <p className="mt-4 text-lg leading-8 text-stone-600">{featured.description}</p>
+                  <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-stone-500">
+                    <span className="font-semibold text-stone-900">{defaultAuthor.name}</span>
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-stone-300" />
                     <span>{featured.readingTime}</span>
-                    <span aria-hidden className="h-1 w-1 rounded-full bg-slate-300" />
+                    <span aria-hidden className="h-1 w-1 rounded-full bg-stone-300" />
                     <time dateTime={featured.date}>{formatDate(featured.date)}</time>
                   </div>
                   <span className="text-eyebrow mt-6 inline-flex items-center gap-1.5 text-sm font-semibold">
                     Read article
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
                   </span>
                 </div>
                 {featured.featuredImage ? (
@@ -100,7 +100,7 @@ export default function BlogPage() {
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {rest.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <Card className="shadow-soft hover:shadow-soft-lg h-full overflow-hidden rounded-2xl border-slate-200/80 pt-0 transition hover:-translate-y-1">
+                <Card className="shadow-soft hover:shadow-soft-lg h-full overflow-hidden rounded-2xl border-stone-200/80 pt-0 transition hover:-transtone-y-1">
                   {post.featuredImage ? (
                     // next/image doesn't paint reliably in this Next build; a plain img is dependable.
                     // eslint-disable-next-line @next/next/no-img-element
@@ -111,7 +111,7 @@ export default function BlogPage() {
                       height={800}
                       loading="lazy"
                       decoding="async"
-                      className="aspect-[2/1] w-full border-b border-slate-200/80 object-cover"
+                      className="aspect-[2/1] w-full border-b border-stone-200/80 object-cover"
                     />
                   ) : null}
                   <CardContent className="flex h-full flex-col p-6">
@@ -122,11 +122,11 @@ export default function BlogPage() {
                         </Badge>
                       ))}
                     </div>
-                    <h2 className="mt-5 text-2xl leading-snug font-semibold text-slate-950 group-hover:underline">
+                    <h2 className="mt-5 text-2xl leading-snug font-semibold text-stone-950 group-hover:underline">
                       {post.title}
                     </h2>
-                    <p className="mt-3 line-clamp-3 leading-7 text-slate-600">{post.description}</p>
-                    <p className="mt-auto pt-5 text-sm font-medium text-slate-500">
+                    <p className="mt-3 line-clamp-3 leading-7 text-stone-600">{post.description}</p>
+                    <p className="mt-auto pt-5 text-sm font-medium text-stone-500">
                       {defaultAuthor.name} · {post.readingTime} ·{" "}
                       <time dateTime={post.date}>{formatDate(post.date)}</time>
                     </p>
@@ -141,13 +141,13 @@ export default function BlogPage() {
       <section className="bg-surface-peach px-4 py-12 md:py-14">
         <div className="mx-auto grid max-w-7xl items-center gap-10 rounded-lg bg-surface-peach px-6 py-8 md:px-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-14">
           <div className="max-w-xl">
-            <span className="inline-flex rounded-sm border border-slate-300 bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700">
+            <span className="inline-flex rounded-sm border border-stone-300 bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700">
               Contact us
             </span>
-            <h2 className="mt-7 text-4xl font-semibold leading-tight tracking-normal text-slate-950 md:text-5xl">
+            <h2 className="mt-7 text-4xl font-semibold leading-tight tracking-normal text-stone-950 md:text-5xl">
               Need help after reading?
             </h2>
-            <p className="mt-5 max-w-lg text-xl leading-8 text-slate-700">
+            <p className="mt-5 max-w-lg text-xl leading-8 text-stone-700">
               Ask us about EmailMagnet workflows, billing, integrations, or support questions.
             </p>
           </div>

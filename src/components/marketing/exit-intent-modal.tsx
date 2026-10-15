@@ -110,13 +110,13 @@ export function ExitIntentModal() {
         <Dialog.Content
           aria-describedby={undefined}
           className={cn(
-            "fixed top-1/2 left-1/2 z-[70] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2",
-            "shadow-soft-lg rounded-2xl border border-slate-200 bg-white p-7",
+            "fixed top-1/2 left-1/2 z-[70] w-[calc(100%-2rem)] max-w-md -transtone-x-1/2 -transtone-y-1/2",
+            "shadow-soft-lg rounded-2xl border border-stone-200 bg-white p-7",
             "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 motion-reduce:animate-none",
           )}
         >
           <Dialog.Close
-            className="absolute top-4 right-4 flex h-7 w-7 items-center justify-center rounded-full text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+            className="absolute top-4 right-4 flex h-7 w-7 items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-700"
             aria-label={copy.closeAria}
           >
             <X className="h-4 w-4" />
@@ -130,7 +130,7 @@ export function ExitIntentModal() {
               <Dialog.Title className="text-ink mt-4 text-2xl font-semibold tracking-[-0.01em]">
                 {copy.successTitle}
               </Dialog.Title>
-              <p className="mt-2 leading-7 text-slate-600">{copy.successBody}</p>
+              <p className="mt-2 leading-7 text-stone-600">{copy.successBody}</p>
               <Button asChild size="lg" className="mt-6 w-full font-semibold">
                 <a href={LEAD_MAGNET_PATH} target="_blank" rel="noopener noreferrer" download>
                   {copy.download}
@@ -146,7 +146,7 @@ export function ExitIntentModal() {
               <Dialog.Title className="text-ink mt-3 text-3xl font-semibold tracking-[-0.01em] text-balance">
                 {copy.title}
               </Dialog.Title>
-              <p className="mt-3 leading-7 text-slate-600">{copy.body}</p>
+              <p className="mt-3 leading-7 text-stone-600">{copy.body}</p>
 
               <form onSubmit={onSubmit} className="mt-6 space-y-3">
                 <Input
@@ -176,9 +176,9 @@ export function ExitIntentModal() {
                 <p className="mt-2 text-sm text-red-700">{message}</p>
               ) : null}
 
-              <p className="mt-4 text-xs leading-5 text-slate-500">
+              <p className="mt-4 text-xs leading-5 text-stone-500">
                 {copy.consent.before}{" "}
-                <LocaleLink href="/privacy" className="underline underline-offset-2 hover:text-slate-700">
+                <LocaleLink href="/privacy" className="underline underline-offset-2 hover:text-stone-700">
                   {copy.consent.link}
                 </LocaleLink>
                 {copy.consent.after}

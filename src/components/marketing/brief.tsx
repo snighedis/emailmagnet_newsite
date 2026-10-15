@@ -37,14 +37,14 @@ type ChoiceProps = {
 function Choice({ name, legend, options, value, onChange }: ChoiceProps) {
   return (
     <fieldset>
-      <legend className="text-base font-semibold text-slate-950">{legend}</legend>
+      <legend className="text-base font-semibold text-stone-950">{legend}</legend>
       <div className="mt-3 flex flex-wrap gap-2">
         {options.map((option) => (
           <label
             key={option.value}
             className={cn(
               "inline-flex min-h-11 cursor-pointer items-center rounded-full border px-4 text-sm font-medium transition select-none",
-              "border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:text-slate-950",
+              "border-stone-300 bg-white text-stone-700 hover:border-stone-400 hover:text-stone-950",
               "has-checked:border-ink has-checked:bg-ink has-checked:text-white",
               "has-focus-visible:ring-brand has-focus-visible:ring-2 has-focus-visible:ring-offset-2",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
@@ -181,11 +181,11 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
         <div
           ref={resultRef}
           tabIndex={-1}
-          className="scroll-mt-24 rounded-2xl border border-slate-200 bg-white p-6 outline-none md:p-8"
+          className="scroll-mt-24 rounded-2xl border border-stone-200 bg-white p-6 outline-none md:p-8"
         >
           <div ref={numberRef} aria-live="polite" className="min-h-28">
             {hours === null ? (
-              <p className="text-lg leading-8 text-slate-600">{copy.result.idle}</p>
+              <p className="text-lg leading-8 text-stone-600">{copy.result.idle}</p>
             ) : (
               <>
                 <p className="font-heading text-ink text-3xl leading-tight tracking-[-0.02em] md:text-4xl">
@@ -195,13 +195,13 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
                   </span>{" "}
                   {copy.result.tail}
                 </p>
-                <p className="mt-3 font-mono text-xs text-slate-500 tabular-nums">
+                <p className="mt-3 font-mono text-xs text-stone-500 tabular-nums">
                   {formatFormula(answers, copy.text, lang)}
                 </p>
               </>
             )}
           </div>
-          <p className="mt-5 border-t border-slate-200 pt-5 text-sm leading-6 text-slate-600">
+          <p className="mt-5 border-t border-stone-200 pt-5 text-sm leading-6 text-stone-600">
             {copy.method}
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -222,13 +222,13 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
               {copied ? copy.copied : copy.copy}
             </Button>
           </div>
-          <p className="mt-4 text-sm leading-6 text-slate-500">
+          <p className="mt-4 text-sm leading-6 text-stone-500">
             {copy.fallback}{" "}
             <a href={`mailto:${supportEmail}`} className="text-eyebrow font-medium hover:underline">
               {supportEmail}
             </a>
           </p>
-          <p className="mt-2 text-xs leading-5 text-slate-500">{copy.privacy}</p>
+          <p className="mt-2 text-xs leading-5 text-stone-500">{copy.privacy}</p>
         </div>
       </div>
 
@@ -245,13 +245,13 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
           className={cn(
             "fixed inset-x-0 bottom-0 z-40 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden",
             "transition-[translate,opacity] duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            "starting:translate-y-full starting:opacity-0",
-            barVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
-            "motion-reduce:translate-y-0 motion-reduce:duration-150 motion-reduce:starting:translate-y-0",
+            "starting:transtone-y-full starting:opacity-0",
+            barVisible ? "transtone-y-0 opacity-100" : "pointer-events-none transtone-y-full opacity-0",
+            "motion-reduce:transtone-y-0 motion-reduce:duration-150 motion-reduce:starting:transtone-y-0",
           )}
         >
-          <div className="shadow-soft-lg flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white py-2 pr-2 pl-4">
-            <p className="text-sm leading-5 text-slate-700">
+          <div className="shadow-soft-lg flex items-center justify-between gap-3 rounded-xl border border-stone-200 bg-white py-2 pr-2 pl-4">
+            <p className="text-sm leading-5 text-stone-700">
               {copy.result.lead}{" "}
               <span className="text-brand-cta font-semibold">{formatHours(hours, copy.text, lang)}</span>{" "}
               {copy.result.tail}

@@ -120,7 +120,7 @@ export function ServiceShowcase({
         role="tablist"
         aria-label={labels.tablist}
         aria-orientation="horizontal"
-        className="-mx-4 flex snap-x scroll-px-4 gap-2 overflow-x-auto border-b border-slate-200 px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
+        className="-mx-4 flex snap-x scroll-px-4 gap-2 overflow-x-auto border-b border-stone-200 px-4 pb-4 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
       >
         {items.map((item, index) => {
           const isActive = index === activeIndex;
@@ -140,8 +140,8 @@ export function ServiceShowcase({
               className={cn(
                 "focus-visible:ring-brand relative min-h-11 shrink-0 cursor-pointer snap-start rounded-md px-4 text-sm font-semibold whitespace-nowrap outline-none transition focus-visible:ring-2 active:scale-[0.97] motion-reduce:active:scale-100",
                 isActive
-                  ? "bg-slate-100 text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-950",
+                  ? "bg-stone-100 text-white"
+                  : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-950",
               )}
             >
               {/* One dark pill shared by every tab: it slides to the chosen tab
@@ -174,17 +174,17 @@ export function ServiceShowcase({
           <h3 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
             {active.title}
           </h3>
-          <p className="text-lg leading-8 text-slate-600">{active.description}</p>
+          <p className="text-lg leading-8 text-stone-600">{active.description}</p>
           <ul className="space-y-3">
             {active.outcomes.map((outcome) => (
-              <li key={outcome} className="flex items-start gap-3 leading-7 text-slate-700">
+              <li key={outcome} className="flex items-start gap-3 leading-7 text-stone-700">
                 <CheckCircle2 className="text-accent-teal mt-1 h-4 w-4 shrink-0" />
                 <span>{outcome}</span>
               </li>
             ))}
           </ul>
-          <div className="border-t border-slate-200 pt-5">
-            <p className="text-sm leading-6 text-slate-500">{active.proof.note}</p>
+          <div className="border-t border-stone-200 pt-5">
+            <p className="text-sm leading-6 text-stone-500">{active.proof.note}</p>
             <LocaleLink
               href={active.proof.href}
               className="text-eyebrow mt-2 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"

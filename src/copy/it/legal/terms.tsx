@@ -16,11 +16,11 @@ export const terms: typeof termsEn = {
   title: "Termini di servizio",
 };
 
-const p = "mt-3 leading-8 text-slate-600";
-const p4 = "mt-4 leading-8 text-slate-600";
-const h2 = "mt-12 text-2xl font-semibold text-slate-950";
+const p = "mt-3 leading-8 text-stone-600";
+const p4 = "mt-4 leading-8 text-stone-600";
+const h2 = "mt-12 text-2xl font-semibold text-stone-950";
 const a = "underline underline-offset-2";
-const ul = "mt-4 list-disc space-y-2 pl-6 leading-8 text-slate-600";
+const ul = "mt-4 list-disc space-y-2 pl-6 leading-8 text-stone-600";
 const Mail = () => (
   <a href="mailto:support@dentokudev.com" className={a}>
     support@dentokudev.com
@@ -30,7 +30,7 @@ const Mail = () => (
 export function TermsBody() {
   return (
     <>
-      <p className="mt-6 leading-8 text-slate-600">
+      <p className="mt-6 leading-8 text-stone-600">
         Ultimo aggiornamento: 23 settembre 2026. I presenti Termini di servizio (i “Termini”)
         costituiscono un accordo vincolante tra te (l’“Utente” o il “Cliente”) e Dentoku Dev
         (Nicola Orlandi, ditta individuale, Via Bullona 8, 20154 Milano, Italia, P.IVA
@@ -227,7 +227,7 @@ export function TermsBody() {
         escluse in base alla normativa italiana inderogabile a tutela dei consumatori.
       </p>
 
-      <h3 className="mt-8 text-lg font-semibold text-slate-950">
+      <h3 className="mt-8 text-lg font-semibold text-stone-950">
         Contenuti generati dall’intelligenza artificiale (ClickPilot AI)
       </h3>
       <p className={p}>

@@ -41,7 +41,7 @@ export function LegalPage({ lang, path, title, children }: LegalPageProps) {
       />
       <article className="mx-auto max-w-3xl px-4 py-12 md:py-20">
         <Eyebrow>{label.eyebrow}</Eyebrow>
-        <h1 className="mt-3 text-4xl font-semibold text-slate-950">{title}</h1>
+        <h1 className="mt-3 text-4xl font-semibold text-stone-950">{title}</h1>
         {lang !== "en" ? (
           <p
             role="note"

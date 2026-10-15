@@ -131,7 +131,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       />
 
       {/* Article header */}
-      <header className="bg-surface-soft border-b border-slate-200/70">
+      <header className="bg-surface-soft border-b border-stone-200/70">
         <div className="mx-auto max-w-3xl px-4 pt-12 pb-10 md:pt-16 md:pb-14">
           <nav aria-label="Breadcrumb" className="text-sm font-medium">
             <Link href="/blog" className="text-eyebrow inline-flex items-center gap-1.5 hover:underline">
@@ -145,11 +145,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </Badge>
             ))}
           </div>
-          <h1 className="mt-5 text-4xl font-semibold tracking-normal text-balance text-slate-950 md:text-5xl md:leading-[1.12]">
+          <h1 className="mt-5 text-4xl font-semibold tracking-normal text-balance text-stone-950 md:text-5xl md:leading-[1.12]">
             {post.title}
           </h1>
-          <p className="mt-5 text-xl leading-9 text-slate-600">{post.description}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-slate-500">
+          <p className="mt-5 text-xl leading-9 text-stone-600">{post.description}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-stone-500">
             <Link
               href={founderConfig.href}
               className="hover:text-eyebrow group inline-flex items-center gap-2.5"
@@ -161,17 +161,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 N
               </span>
               <span>
-                <span className="block leading-tight font-semibold text-slate-900 group-hover:underline">
+                <span className="block leading-tight font-semibold text-stone-900 group-hover:underline">
                   {defaultAuthor.name}
                 </span>
-                <span className="block text-xs leading-tight text-slate-500">
+                <span className="block text-xs leading-tight text-stone-500">
                   {defaultAuthor.role}
                 </span>
               </span>
             </Link>
-            <span aria-hidden className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
+            <span aria-hidden className="hidden h-1 w-1 rounded-full bg-stone-300 sm:block" />
             <span>{post.readingTime}</span>
-            <span aria-hidden className="hidden h-1 w-1 rounded-full bg-slate-300 sm:block" />
+            <span aria-hidden className="hidden h-1 w-1 rounded-full bg-stone-300 sm:block" />
             <span>
               Published <time dateTime={post.date}>{formatDate(post.date)}</time>
               {wasUpdated ? (
@@ -197,7 +197,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             height={800}
             fetchPriority="high"
             decoding="async"
-            className="shadow-soft aspect-[2/1] w-full rounded-2xl border border-slate-200 object-cover"
+            className="shadow-soft aspect-[2/1] w-full rounded-2xl border border-stone-200 object-cover"
           />
         </div>
       ) : null}
@@ -206,14 +206,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="mx-auto max-w-6xl px-4 py-12 md:py-16 lg:grid lg:grid-cols-[minmax(0,1fr)_270px] lg:gap-16">
         <div className="mx-auto w-full max-w-3xl lg:mx-0">
           {toc.length > 1 ? (
-            <details className="mb-10 rounded-xl border border-slate-200 bg-slate-50 p-5 lg:hidden">
-              <summary className="cursor-pointer text-sm font-semibold tracking-[0.14em] text-slate-900 uppercase">
+            <details className="mb-10 rounded-xl border border-stone-200 bg-stone-50 p-5 lg:hidden">
+              <summary className="cursor-pointer text-sm font-semibold tracking-[0.14em] text-stone-900 uppercase">
                 On this page
               </summary>
               <ol className="mt-4 space-y-2.5 text-[15px] font-medium">
                 {toc.map((entry) => (
                   <li key={entry.id}>
-                    <a href={`#${entry.id}`} className="hover:text-eyebrow text-slate-600">
+                    <a href={`#${entry.id}`} className="hover:text-eyebrow text-stone-600">
                       {entry.text}
                     </a>
                   </li>
@@ -239,9 +239,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <LeadMagnetSignup />
 
           {post.tags.some((tag) => ["Compliance", "GDPR", "CAN-SPAM"].includes(tag)) ? (
-            <aside className="mt-14 rounded-xl border border-slate-200 bg-slate-50 p-5">
-              <h2 className="text-lg font-semibold text-slate-950">Official references</h2>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700">
+            <aside className="mt-14 rounded-xl border border-stone-200 bg-stone-50 p-5">
+              <h2 className="text-lg font-semibold text-stone-950">Official references</h2>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-700">
                 <li>
                   <Link className="text-eyebrow font-medium hover:underline" href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business">
                     FTC CAN-SPAM Act compliance guide
@@ -257,7 +257,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
 
           {/* Author card */}
-          <aside className="mt-14 rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-7">
+          <aside className="mt-14 rounded-2xl border border-stone-200 bg-stone-50 p-6 md:p-7">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
               <span
                 aria-hidden
@@ -269,9 +269,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
                   Written by
                 </p>
-                <h2 className="mt-1.5 text-xl font-semibold text-slate-950">{defaultAuthor.name}</h2>
-                <p className="text-sm font-medium text-slate-500">{defaultAuthor.role}</p>
-                <p className="mt-3 leading-7 text-slate-600">{defaultAuthor.bio}</p>
+                <h2 className="mt-1.5 text-xl font-semibold text-stone-950">{defaultAuthor.name}</h2>
+                <p className="text-sm font-medium text-stone-500">{defaultAuthor.role}</p>
+                <p className="mt-3 leading-7 text-stone-600">{defaultAuthor.bio}</p>
                 <Link
                   href={founderConfig.href}
                   className="text-eyebrow mt-4 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
@@ -286,24 +286,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Related posts */}
           {related.length > 0 ? (
             <section className="mt-14" aria-label="Related articles">
-              <h2 className="text-2xl font-semibold text-slate-950">Continue reading</h2>
+              <h2 className="text-2xl font-semibold text-stone-950">Continue reading</h2>
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 {related.map((item) => (
                   <Link
                     key={item.slug}
                     href={`/blog/${item.slug}`}
-                    className="group shadow-soft hover:shadow-soft-lg flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 transition hover:-translate-y-0.5"
+                    className="group shadow-soft hover:shadow-soft-lg flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition hover:-transtone-y-0.5"
                   >
                     <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
                       {item.tags[0]}
                     </p>
-                    <h3 className="mt-2 text-lg leading-snug font-semibold text-slate-950 group-hover:underline">
+                    <h3 className="mt-2 text-lg leading-snug font-semibold text-stone-950 group-hover:underline">
                       {item.title}
                     </h3>
-                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-600">
+                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-600">
                       {item.description}
                     </p>
-                    <p className="mt-4 text-xs font-medium text-slate-500">
+                    <p className="mt-4 text-xs font-medium text-stone-500">
                       {item.readingTime} ·{" "}
                       <time dateTime={item.date}>{formatDate(item.date)}</time>
                     </p>
@@ -316,9 +316,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Related product resources */}
           <nav
             aria-label="Related Dentoku Dev pages"
-            className="mt-14 border-t border-slate-200 pt-8"
+            className="mt-14 border-t border-stone-200 pt-8"
           >
-            <h2 className="text-sm font-semibold tracking-[0.14em] text-slate-900 uppercase">
+            <h2 className="text-sm font-semibold tracking-[0.14em] text-stone-900 uppercase">
               Related resources
             </h2>
             <ul className="mt-4 grid gap-2 text-sm font-medium sm:grid-cols-2">
@@ -351,15 +351,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="sticky top-24 space-y-8">
             {toc.length > 1 ? (
               <nav aria-label="Table of contents">
-                <p className="text-xs font-semibold tracking-[0.14em] text-slate-900 uppercase">
+                <p className="text-xs font-semibold tracking-[0.14em] text-stone-900 uppercase">
                   On this page
                 </p>
-                <ol className="mt-4 space-y-2.5 border-l border-slate-200 text-sm font-medium">
+                <ol className="mt-4 space-y-2.5 border-l border-stone-200 text-sm font-medium">
                   {toc.map((entry) => (
                     <li key={entry.id}>
                       <a
                         href={`#${entry.id}`}
-                        className="hover:text-eyebrow hover:border-brand -ml-px block border-l-2 border-transparent py-0.5 pl-4 leading-snug text-slate-500"
+                        className="hover:text-eyebrow hover:border-brand -ml-px block border-l-2 border-transparent py-0.5 pl-4 leading-snug text-stone-500"
                       >
                         {entry.text}
                       </a>
@@ -372,7 +372,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
                 Put it into practice
               </p>
-              <p className="mt-2.5 text-base leading-7 font-semibold text-slate-950">
+              <p className="mt-2.5 text-base leading-7 font-semibold text-stone-950">
                 Build your next lead list while you browse.
               </p>
               <Button asChild size="sm" className="mt-4 font-semibold">

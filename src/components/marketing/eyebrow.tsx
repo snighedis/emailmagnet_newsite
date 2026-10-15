@@ -11,7 +11,7 @@ type EyebrowProps = ComponentProps<"p"> & {
 
 const toneClasses: Record<EyebrowTone, string> = {
   brand: "text-eyebrow",
-  ink: "text-ink-accent",
+  ink: "text-ink-muted",
 };
 
 /**
@@ -23,7 +23,7 @@ export function Eyebrow({ tone = "brand", index, className, children, ...props }
     <p
       className={cn(
         index
-          ? "font-mono text-xs font-medium tracking-[0.14em] uppercase"
+          ? "flex items-center gap-3 font-mono text-xs font-medium tracking-[0.14em] uppercase"
           : "text-sm font-semibold tracking-[0.16em] uppercase",
         toneClasses[tone],
         className,
@@ -32,13 +32,12 @@ export function Eyebrow({ tone = "brand", index, className, children, ...props }
     >
       {index ? (
         <>
+          {/* The orange lives in the rule, not in 12px text (contrast, ADR 0002) */}
+          <span aria-hidden="true" className="bg-brand h-px w-6 shrink-0" />
           <span>{index}</span>
-          <span aria-hidden="true" className="mx-2 opacity-60">
-            /
-          </span>
         </>
       ) : null}
-      {children}
+      <span>{children}</span>
     </p>
   );
 }

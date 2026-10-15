@@ -35,7 +35,7 @@ const docs = [
 
 export default function DocsPage() {
   return (
-    <section className="bg-slate-50 py-20">
+    <section className="bg-stone-50 py-20">
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },
@@ -60,8 +60,8 @@ export default function DocsPage() {
           description="Clear guides for setup, exports, and responsible usage."
         />
         <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-teal-100 bg-white p-5 text-center">
-          <h2 className="text-lg font-semibold text-slate-950">Short answer</h2>
-          <p className="mt-2 leading-7 text-slate-600">
+          <h2 className="text-lg font-semibold text-stone-950">Short answer</h2>
+          <p className="mt-2 leading-7 text-stone-600">
             EmailMagnet docs explain how to install the Chrome extension, extract emails from
             website pages, export results, and use collected contact data responsibly.
           </p>
@@ -69,19 +69,19 @@ export default function DocsPage() {
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {docs.map((doc) => (
             <Link key={doc.slug} href={`/docs/${doc.slug}`}>
-              <Card className="h-full rounded-xl border-slate-200 bg-white shadow-sm">
+              <Card className="h-full rounded-xl border-stone-200 bg-white shadow-sm">
                 <CardContent className="p-6">
-                  <h2 className="text-xl font-semibold text-slate-950">{doc.title}</h2>
-                  <p className="mt-3 leading-7 text-slate-600">{doc.description}</p>
-                  <p className="mt-5 text-sm leading-6 text-slate-500">{doc.bestFor}</p>
+                  <h2 className="text-xl font-semibold text-stone-950">{doc.title}</h2>
+                  <p className="mt-3 leading-7 text-stone-600">{doc.description}</p>
+                  <p className="mt-5 text-sm leading-6 text-stone-500">{doc.bestFor}</p>
                 </CardContent>
               </Card>
             </Link>
           ))}
         </div>
-        <section className="mt-16 rounded-xl border border-slate-200 bg-white p-6">
-          <h2 className="text-2xl font-semibold text-slate-950">Recommended reading order</h2>
-          <ol className="mt-5 list-decimal space-y-3 pl-5 leading-7 text-slate-600">
+        <section className="mt-16 rounded-xl border border-stone-200 bg-white p-6">
+          <h2 className="text-2xl font-semibold text-stone-950">Recommended reading order</h2>
+          <ol className="mt-5 list-decimal space-y-3 pl-5 leading-7 text-stone-600">
             <li>Start with getting started to understand the extraction workflow.</li>
             <li>Read exporting emails before moving contacts into another tool.</li>
             <li>Review responsible use before outreach, recruiting, or sales follow-up.</li>

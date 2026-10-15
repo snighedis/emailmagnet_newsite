@@ -41,12 +41,12 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <Section variant="soft" containerClassName="max-w-7xl">
         <div className="mx-auto max-w-3xl space-y-6 text-center">
           <Eyebrow className="text-[12px] font-medium">{copy.hero.eyebrow}</Eyebrow>
-          <h1 className="text-ink text-4xl font-semibold tracking-[-0.02em] text-balance md:text-[70px] md:leading-[1.05]">
+          <h1 className="type-display text-ink">
             {copy.hero.titleLead} <span className="text-brand">{copy.hero.titleAccent}</span>
           </h1>
-          <p className="mx-auto max-w-xl text-lg leading-8 text-slate-700">{copy.hero.subhead}</p>
+          <p className="mx-auto max-w-xl text-lg leading-8 text-stone-700">{copy.hero.subhead}</p>
           {/* Who the studio works for, named by kind of business */}
-          <p className="mx-auto flex max-w-2xl flex-wrap justify-center gap-x-4 gap-y-1.5 font-mono text-xs tracking-[0.08em] text-slate-500 uppercase">
+          <p className="mx-auto flex max-w-2xl flex-wrap justify-center gap-x-4 gap-y-1.5 font-mono text-xs tracking-[0.08em] text-stone-500 uppercase">
             <span className="text-eyebrow">{copy.audience.label}</span>
             {copy.audience.items.map((item) => (
               <span key={item}>{item}</span>
@@ -54,7 +54,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             {/* The hero CTA pair is the only pill-shaped element on the site */}
-            <Button asChild size="xl" className="btn-sheen rounded-full font-semibold hover:-translate-y-0.5">
+            <Button asChild size="xl" className="btn-sheen rounded-full font-semibold hover:-transtone-y-0.5">
               <a href="#brief">
                 {copy.hero.primaryCta.label}
                 <ArrowRight className="h-4 w-4" />
@@ -87,13 +87,13 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* What we build: services proven by our own products (tabbed showcase) */}
-      <Section id="services" variant="soft" className="border-t border-slate-200/70">
+      <Section id="services" variant="soft" className="border-t border-stone-200/70">
         <div className="max-w-3xl space-y-3">
           <Eyebrow index="01">{copy.services.eyebrow}</Eyebrow>
-          <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
+          <h2 className="type-h2 text-ink">
             {copy.services.title}
           </h2>
-          <p className="text-lg leading-8 text-slate-600">{copy.services.description}</p>
+          <p className="text-lg leading-8 text-stone-600">{copy.services.description}</p>
         </div>
         <div className="mt-12">
           <ServiceShowcase
@@ -108,7 +108,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-4">
             <Eyebrow tone="ink" index="02">{copy.process.eyebrow}</Eyebrow>
-            <h2 className="text-3xl font-semibold tracking-[-0.02em] text-white md:text-5xl">
+            <h2 className="type-h2 text-white">
               {copy.process.title}
             </h2>
             <p className="text-ink-muted text-lg leading-8">{copy.process.description}</p>
@@ -133,7 +133,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">
             <Eyebrow index="03">{copy.products.eyebrow}</Eyebrow>
-            <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-5xl">
+            <h2 className="type-h2 text-ink">
               {copy.products.title}
             </h2>
           </div>
@@ -145,7 +145,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           {products.map((product) => (
             <article
               key={product.href}
-              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 transition duration-200 hover:-translate-y-0.5 active:scale-[0.98] motion-reduce:transition-none"
+              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition duration-200 hover:-transtone-y-0.5 active:scale-[0.98] motion-reduce:transition-none"
             >
               <div className="flex items-center gap-3">
                 <Image
@@ -153,27 +153,27 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                   alt=""
                   width={44}
                   height={44}
-                  className="h-11 w-11 rounded-xl border border-slate-200 bg-slate-50 object-contain p-2"
+                  className="h-11 w-11 rounded-xl border border-stone-200 bg-stone-50 object-contain p-2"
                 />
                 <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
                   {product.category}
                 </p>
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-slate-950">
+              <h3 className="mt-5 text-xl font-semibold text-stone-950">
                 <LocaleLink href={product.href} className="after:absolute after:inset-0">
                   {product.name}
                 </LocaleLink>
               </h3>
-              <p className="mt-2 mb-5 text-sm leading-6 text-slate-600">{product.description}</p>
-              <div className="mt-auto flex items-center justify-between gap-3 border-t border-slate-100 pt-4 text-sm">
+              <p className="mt-2 mb-5 text-sm leading-6 text-stone-600">{product.description}</p>
+              <div className="mt-auto flex items-center justify-between gap-3 border-t border-stone-100 pt-4 text-sm">
                 {/* Store names are never translated (AGENTS.md) */}
-                <span className="whitespace-nowrap text-slate-500">
+                <span className="whitespace-nowrap text-stone-500">
                   {product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store"}
                 </span>
                 {/* The whole card is the link (the name's ::after); the label stays for screen readers */}
                 <span className="text-eyebrow inline-flex items-center">
                   <span className="sr-only">{copy.products.viewProduct}</span>
-                  <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
                 </span>
               </div>
             </article>
@@ -182,7 +182,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* Explore more: one compact row of crawlable links to the content hubs */}
-      <Section variant="soft" spacing="none" containerClassName="border-t border-slate-200 py-10">
+      <Section variant="soft" spacing="none" containerClassName="border-t border-stone-200 py-10">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <h2 className="text-ink shrink-0 text-lg font-semibold">{copy.explore.title}</h2>
           <ul className="flex flex-wrap gap-2">
@@ -191,10 +191,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 <LocaleLink
                   href={item.href}
                   title={item.description}
-                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 transition hover:border-slate-300 hover:text-slate-950 active:scale-[0.97] motion-reduce:transition-none"
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-stone-200 bg-white px-4 text-sm font-medium text-stone-700 transition hover:border-stone-300 hover:text-stone-950 active:scale-[0.97] motion-reduce:transition-none"
                 >
                   {item.title}
-                  <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
+                  <ArrowRight className="h-3.5 w-3.5 text-stone-400" />
                 </LocaleLink>
               </li>
             ))}
@@ -203,27 +203,27 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       </Section>
 
       {/* Consulting FAQ (no FAQPage schema here; that lives on /faq) */}
-      <Section variant="soft" containerClassName="border-t border-slate-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
+      <Section variant="soft" containerClassName="border-t border-stone-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div className="space-y-4">
             <Eyebrow index="04">{copy.faq.eyebrow}</Eyebrow>
-            <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
+            <h2 className="type-h2 text-ink">
               {copy.faq.title}
             </h2>
-            <p className="text-lg leading-8 text-slate-600">{copy.faq.description}</p>
+            <p className="text-lg leading-8 text-stone-600">{copy.faq.description}</p>
           </div>
           <FaqList items={copy.faq.items} collapsible />
         </div>
       </Section>
 
       {/* The brief closes the page: the hero's primary call to action lands here. */}
-      <Section id="brief" variant="soft" containerClassName="border-t border-slate-200 pt-18 md:pt-24" spacing="none" className="scroll-mt-20 pb-18 md:pb-24">
+      <Section id="brief" variant="soft" containerClassName="border-t border-stone-200 pt-18 md:pt-24" spacing="none" className="scroll-mt-20 pb-18 md:pb-24">
         <div className="max-w-3xl space-y-4">
           <Eyebrow index="05">{copy.brief.eyebrow}</Eyebrow>
-          <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] text-balance md:text-5xl">
+          <h2 className="type-h2 text-ink">
             {copy.brief.title}
           </h2>
-          <p className="text-lg leading-8 text-slate-600">{copy.brief.lede}</p>
+          <p className="text-lg leading-8 text-stone-600">{copy.brief.lede}</p>
         </div>
         <div className="mt-12">
           <Brief copy={copy.brief} lang={lang} />

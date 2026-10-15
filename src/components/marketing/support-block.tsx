@@ -21,7 +21,7 @@ export function SupportBlock({ copy = commonEn.support }: SupportBlockProps) {
           </div>
           <h2 className="text-3xl font-semibold tracking-[-0.02em] md:text-5xl">{copy.title}</h2>
           <p className="text-ink-muted text-lg leading-8">{copy.body}</p>
-          <p className="text-base text-slate-400">{copy.responseTime}</p>
+          <p className="text-base text-stone-400">{copy.responseTime}</p>
         </div>
         <Button asChild size="xl" className="font-semibold">
           <Link href={`mailto:${siteConfig.supportEmail}`}>

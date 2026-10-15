@@ -51,21 +51,21 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
             description={copy.description}
           />
           <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">{copy.shortAnswer.title}</h2>
-            <p className="mt-2 leading-8 text-slate-700">{shortAnswer}</p>
+            <h2 className="text-lg font-semibold text-stone-950">{copy.shortAnswer.title}</h2>
+            <p className="mt-2 leading-8 text-stone-700">{shortAnswer}</p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {copy.proofPoints.map((point, index) => {
               const Icon = proofIcons[index] ?? BadgeCheck;
               return (
-                <Card key={point.title} className="rounded-xl border-slate-200 shadow-sm">
+                <Card key={point.title} className="rounded-xl border-stone-200 shadow-sm">
                   <CardContent className="p-6">
                     <div className="flex h-11 w-11 items-center justify-center rounded-md bg-teal-50 text-teal-700">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h2 className="mt-5 text-xl font-semibold text-slate-950">{point.title}</h2>
-                    <p className="mt-3 leading-7 text-slate-600">{point.description}</p>
+                    <h2 className="mt-5 text-xl font-semibold text-stone-950">{point.title}</h2>
+                    <p className="mt-3 leading-7 text-stone-600">{point.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -73,29 +73,29 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
           </div>
 
           <section className="mt-16">
-            <h2 className="text-3xl font-semibold text-slate-950">{copy.products.title}</h2>
-            <p className="mt-4 max-w-3xl leading-8 text-slate-600">{copy.products.description}</p>
+            <h2 className="text-3xl font-semibold text-stone-950">{copy.products.title}</h2>
+            <p className="mt-4 max-w-3xl leading-8 text-stone-600">{copy.products.description}</p>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {products.map((product) => (
                 <LocaleLink
                   key={product.href}
                   href={product.href}
-                  className="rounded-xl border border-slate-200 p-5 transition hover:border-brand hover:bg-slate-50"
+                  className="rounded-xl border border-stone-200 p-5 transition hover:border-brand hover:bg-stone-50"
                 >
                   <Eyebrow>{product.category}</Eyebrow>
-                  <h3 className="mt-2 text-xl font-semibold text-slate-950">{product.name}</h3>
-                  <p className="mt-3 leading-7 text-slate-600">{product.description}</p>
+                  <h3 className="mt-2 text-xl font-semibold text-stone-950">{product.name}</h3>
+                  <p className="mt-3 leading-7 text-stone-600">{product.description}</p>
                 </LocaleLink>
               ))}
             </div>
           </section>
 
-          <section className="mt-16 rounded-xl border border-slate-200 bg-slate-50 p-6">
+          <section className="mt-16 rounded-xl border border-stone-200 bg-stone-50 p-6">
             <div className="flex items-start gap-3">
               <MailCheck className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
               <div>
-                <h2 className="text-xl font-semibold text-slate-950">{copy.contact.title}</h2>
-                <p className="mt-3 leading-7 text-slate-600">{copy.contact.body}</p>
+                <h2 className="text-xl font-semibold text-stone-950">{copy.contact.title}</h2>
+                <p className="mt-3 leading-7 text-stone-600">{copy.contact.body}</p>
                 <Link
                   href={`mailto:${siteConfig.supportEmail}`}
                   className="mt-4 inline-flex items-center gap-2 font-semibold text-eyebrow hover:underline"

@@ -157,20 +157,20 @@ export default async function DocPage({ params }: DocPageProps) {
         })}
       />
       <Eyebrow>Docs</Eyebrow>
-      <h1 className="mt-3 text-4xl font-semibold text-slate-950">{doc.title}</h1>
-      <p className="mt-4 text-sm font-medium text-slate-500">
+      <h1 className="mt-3 text-4xl font-semibold text-stone-950">{doc.title}</h1>
+      <p className="mt-4 text-sm font-medium text-stone-500">
         Published <time dateTime={doc.datePublished}>{formatDate(doc.datePublished)}</time> · Last
         updated <time dateTime={doc.dateModified}>{formatDate(doc.dateModified)}</time>
       </p>
-      <p className="mt-5 text-xl leading-8 text-slate-600">{doc.description}</p>
+      <p className="mt-5 text-xl leading-8 text-stone-600">{doc.description}</p>
       <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
-        <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>
-        <p className="mt-2 leading-7 text-slate-700">{doc.answer}</p>
+        <h2 className="text-lg font-semibold text-stone-950">Quick answer</h2>
+        <p className="mt-2 leading-7 text-stone-700">{doc.answer}</p>
       </div>
-      <h2 className="mt-12 text-2xl font-semibold text-slate-950">Step-by-step workflow</h2>
+      <h2 className="mt-12 text-2xl font-semibold text-stone-950">Step-by-step workflow</h2>
       <ol className="mt-5 space-y-4">
         {doc.steps.map((item) => (
-          <li key={item} className="rounded-md border border-slate-200 bg-white p-4 text-slate-700">
+          <li key={item} className="rounded-md border border-stone-200 bg-white p-4 text-stone-700">
             {item}
           </li>
         ))}
@@ -178,22 +178,22 @@ export default async function DocPage({ params }: DocPageProps) {
       <div className="mt-12 space-y-8">
         {doc.details.map((item) => (
           <section key={item.title}>
-            <h2 className="text-2xl font-semibold text-slate-950">{item.title}</h2>
-            <p className="mt-3 leading-8 text-slate-600">{item.body}</p>
+            <h2 className="text-2xl font-semibold text-stone-950">{item.title}</h2>
+            <p className="mt-3 leading-8 text-stone-600">{item.body}</p>
           </section>
         ))}
       </div>
       {doc.citation ? (
-        <p className="mt-10 text-sm leading-6 text-slate-500">
+        <p className="mt-10 text-sm leading-6 text-stone-500">
           Official reference:{" "}
           <Link className="font-medium text-eyebrow underline-offset-4 hover:underline" href={doc.citation.href}>
             {doc.citation.label}
           </Link>
         </p>
       ) : null}
-      <nav aria-label="Documentation related pages" className="mt-12 rounded-xl border border-slate-200 bg-slate-50 p-5">
-        <h2 className="text-lg font-semibold text-slate-950">Related EmailMagnet resources</h2>
-        <ul className="mt-3 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
+      <nav aria-label="Documentation related pages" className="mt-12 rounded-xl border border-stone-200 bg-stone-50 p-5">
+        <h2 className="text-lg font-semibold text-stone-950">Related EmailMagnet resources</h2>
+        <ul className="mt-3 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
           <li>
             <Link className="font-medium text-eyebrow hover:underline" href="/emailmagnet">
               EmailMagnet product page

@@ -221,7 +221,7 @@ export default function Countdown321Page() {
         <h1 className="text-ink mt-3 text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
           Countdown321 Shopify countdown timer app
         </h1>
-        <p className="mt-6 max-w-3xl text-xl leading-9 text-slate-600">
+        <p className="mt-6 max-w-3xl text-xl leading-9 text-stone-600">
           Add product, landing, and bar countdown timers to your Shopify store and launch urgency
           campaigns in minutes, with fixed-date, recurring, or evergreen countdowns that match
           your theme.
@@ -239,23 +239,23 @@ export default function Countdown321Page() {
         </div>
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
           <div className="rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">Quick answer</h2>
-            <p className="mt-2 leading-7 text-slate-700">
+            <h2 className="text-lg font-semibold text-stone-950">Quick answer</h2>
+            <p className="mt-2 leading-7 text-stone-700">
               Use Countdown321 when the search intent is “Shopify countdown timer app,” “Shopify
               urgency app,” or “countdown timer for ecommerce campaigns.” It gives merchants a
               focused way to show time-sensitive messages without custom storefront development.
             </p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-            <h2 className="text-lg font-semibold text-slate-950">What it is not</h2>
-            <p className="mt-2 leading-7 text-slate-600">
+          <div className="rounded-xl border border-stone-200 bg-stone-50 p-5">
+            <h2 className="text-lg font-semibold text-stone-950">What it is not</h2>
+            <p className="mt-2 leading-7 text-stone-600">
               Countdown321 is not a full marketing-automation suite. It handles time-based
               countdowns and urgency messages, not email campaigns, discount-code logic, or
               multi-step funnels.
             </p>
           </div>
         </div>
-        <div className="shadow-soft mt-12 overflow-hidden rounded-2xl border border-slate-200/80 bg-white">
+        <div className="shadow-soft mt-12 overflow-hidden rounded-2xl border border-stone-200/80 bg-white">
           <Image
             src="/brand/countdown321-hero.webp"
             alt="Countdown321 timer styles preview"
@@ -292,9 +292,9 @@ export default function Countdown321Page() {
           eyebrow="Use cases"
           title="What Countdown321 does for Shopify stores"
         />
-        <div className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white">
+        <div className="mt-10 overflow-hidden rounded-xl border border-stone-200 bg-white">
           <table className="w-full text-left text-sm">
-            <thead className="bg-slate-50 text-slate-950">
+            <thead className="bg-stone-50 text-stone-950">
               <tr>
                 <th scope="col" className="px-4 py-3 font-semibold">
                   Shopify goal
@@ -307,10 +307,10 @@ export default function Countdown321Page() {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 text-slate-700">
+            <tbody className="divide-y divide-stone-200 text-stone-700">
               {useCaseRows.map((row) => (
                 <tr key={row.goal}>
-                  <td className="px-4 py-4 font-medium text-slate-900">{row.goal}</td>
+                  <td className="px-4 py-4 font-medium text-stone-900">{row.goal}</td>
                   <td className="px-4 py-4">{row.message}</td>
                   <td className="px-4 py-4">{row.why}</td>
                 </tr>
@@ -318,10 +318,10 @@ export default function Countdown321Page() {
             </tbody>
           </table>
         </div>
-        <Card className="shadow-soft mt-10 rounded-2xl border-slate-200/80">
+        <Card className="shadow-soft mt-10 rounded-2xl border-stone-200/80">
           <CardContent className="p-6 md:p-7">
-            <h3 className="text-2xl font-semibold text-slate-950">TIMER Framework</h3>
-            <p className="mt-3 max-w-3xl leading-7 text-slate-600">
+            <h3 className="text-2xl font-semibold text-stone-950">TIMER Framework</h3>
+            <p className="mt-3 max-w-3xl leading-7 text-stone-600">
               Dentoku Dev uses the TIMER Framework for urgency tools: Timing, Incentive, Message,
               Event, and Result. Countdown321 should make the campaign deadline clear, connect it
               to a meaningful offer, and keep the storefront message easy to understand.
@@ -345,24 +345,24 @@ export default function Countdown321Page() {
                 "relative flex h-full flex-col rounded-2xl border bg-white p-6",
                 plan.featured
                   ? "border-brand/40 shadow-soft-lg ring-brand/10 ring-1"
-                  : "shadow-soft border-slate-200/80",
+                  : "shadow-soft border-stone-200/80",
               )}
             >
               {plan.featured ? (
-                <span className="bg-brand-cta absolute -top-3 right-6 rounded-md px-3 py-1 text-xs font-semibold text-white">
+                <span className="bg-brand-cta absolute -top-3 right-6 rounded-md px-3 py-1 text-xs font-semibold text-ink">
                   Most popular
                 </span>
               ) : null}
-              <h3 className="text-lg font-semibold text-slate-950">{plan.name}</h3>
+              <h3 className="text-lg font-semibold text-stone-950">{plan.name}</h3>
               <div className="mt-3 flex items-end gap-1.5">
                 <span className="text-ink text-4xl font-semibold tracking-[-0.02em]">
                   {plan.price}
                 </span>
-                <span className="pb-1.5 text-sm font-medium text-slate-500">{plan.cadence}</span>
+                <span className="pb-1.5 text-sm font-medium text-stone-500">{plan.cadence}</span>
               </div>
               <ul className="mt-5 space-y-2.5">
                 {plan.features.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700">
+                  <li key={item} className="flex items-start gap-2 text-sm leading-6 text-stone-700">
                     <Check className="mt-1 h-4 w-4 shrink-0 text-teal-600" />
                     {item}
                   </li>
@@ -371,7 +371,7 @@ export default function Countdown321Page() {
             </div>
           ))}
         </div>
-        <p className="mt-8 max-w-3xl text-sm leading-6 text-slate-500">
+        <p className="mt-8 max-w-3xl text-sm leading-6 text-stone-500">
           Honest note: unlike our Chrome extensions, which are one-time purchases, Countdown321
           runs on Shopify’s recurring app billing. Plans scale by monthly timer views. Prices are
           listed on the Shopify App Store and may change there first.
@@ -388,9 +388,9 @@ export default function Countdown321Page() {
             </h2>
             <nav
               aria-label="Countdown321 related Dentoku Dev pages"
-              className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5"
+              className="mt-8 rounded-xl border border-stone-200 bg-stone-50 p-5"
             >
-              <h3 className="text-lg font-semibold text-slate-950">Related pages</h3>
+              <h3 className="text-lg font-semibold text-stone-950">Related pages</h3>
               <ul className="mt-3 space-y-2 text-sm font-medium">
                 <li>
                   <Link
