@@ -4,9 +4,7 @@ import { ArrowRight } from "@/components/ui/icons";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
-import { HeroVideo } from "@/components/marketing/hero-video";
-import { TrustBar } from "@/components/marketing/trust-bar";
-import { Brief } from "@/components/marketing/brief";
+import { HomeHero } from "@/components/marketing/home-hero";
 import { FaqList } from "@/components/marketing/faq-list";
 import { ServiceShowcase } from "@/components/marketing/service-showcase";
 import { Button } from "@/components/ui/button";
@@ -35,55 +33,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <link rel="preload" as="image" href={copy.heroVideo.poster} fetchPriority="high" />
       <JsonLd data={buildItemListSchema(copy.itemListName, products)} />
 
-      {/* Hero: consulting-first promise, products as standing proof.
-          Centered compact copy, then the video spans the full container width
-          as the protagonist (Apollo pattern). */}
+      {/* The opening: heading, the brief, then the film (docs/adr/0002) */}
       <Section variant="soft" containerClassName="max-w-7xl">
-        <div className="mx-auto max-w-3xl space-y-6 text-center">
-          <Eyebrow className="text-[12px] font-medium">{copy.hero.eyebrow}</Eyebrow>
-          <h1 className="type-display text-ink">
-            {copy.hero.titleLead} <span className="text-brand">{copy.hero.titleAccent}</span>
-          </h1>
-          <p className="mx-auto max-w-xl text-lg leading-8 text-stone-700">{copy.hero.subhead}</p>
-          {/* Who the studio works for, named by kind of business */}
-          <p className="mx-auto flex max-w-2xl flex-wrap justify-center gap-x-4 gap-y-1.5 font-mono text-xs tracking-[0.08em] text-stone-500 uppercase">
-            <span className="text-eyebrow">{copy.audience.label}</span>
-            {copy.audience.items.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </p>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            {/* The hero CTA pair is the only pill-shaped element on the site */}
-            <Button asChild size="xl" className="btn-sheen rounded-full font-semibold hover:-transtone-y-0.5">
-              <a href="#brief">
-                {copy.hero.primaryCta.label}
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button asChild size="xl" variant="outline" className="rounded-full">
-              <LocaleLink href={copy.hero.secondaryCta.href}>{copy.hero.secondaryCta.label}</LocaleLink>
-            </Button>
-          </div>
-          <div className="flex justify-center">
-            <TrustBar
-              rating={5.0}
-              reviewLabel={copy.trustBar.reviewLabel}
-              labels={copy.trustBar.labels}
-              items={[copy.hero.trustNote]}
-            />
-          </div>
-        </div>
-        {/* Hero loop (video/src/StudioHero.tsx): silent, play/pause only. */}
-        <div className="mt-10">
-          <HeroVideo
-            src={copy.heroVideo.src}
-            poster={copy.heroVideo.poster}
-            label={copy.heroVideo.label}
-            controls={copy.heroVideo.controls}
-            width={1728}
-            height={864}
-          />
-        </div>
+        <HomeHero copy={copy} lang={lang} />
       </Section>
 
       {/* What we build: services proven by our own products (tabbed showcase) */}
@@ -216,19 +168,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </div>
       </Section>
 
-      {/* The brief closes the page: the hero's primary call to action lands here. */}
-      <Section id="brief" variant="soft" containerClassName="border-t border-stone-200 pt-18 md:pt-24" spacing="none" className="scroll-mt-20 pb-18 md:pb-24">
-        <div className="max-w-3xl space-y-4">
-          <Eyebrow index="05">{copy.brief.eyebrow}</Eyebrow>
-          <h2 className="type-h2 text-ink">
-            {copy.brief.title}
-          </h2>
-          <p className="text-lg leading-8 text-stone-600">{copy.brief.lede}</p>
-        </div>
-        <div className="mt-12">
-          <Brief copy={copy.brief} lang={lang} />
-        </div>
-      </Section>
     </>
   );
 }

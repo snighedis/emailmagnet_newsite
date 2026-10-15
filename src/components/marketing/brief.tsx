@@ -23,6 +23,9 @@ type BriefProps = {
   copy: BriefCopy;
   lang: string;
   supportEmail?: string;
+  /** `side`: questions left, result card right (sticky). `stack`: questions in a
+   *  two-column grid, result card below them, full width. */
+  layout?: "side" | "stack";
 };
 
 type ChoiceProps = {
@@ -71,7 +74,12 @@ function Choice({ name, legend, options, value, onChange }: ChoiceProps) {
  * them today, in hours a month. Deterministic and client-side; the answers leave
  * the page only through the visitor's own mail app. Never shows a saving.
  */
-export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: BriefProps) {
+export function Brief({
+  copy,
+  lang,
+  supportEmail = "support@dentokudev.com",
+  layout = "side",
+}: BriefProps) {
   const id = useId();
   const [answers, setAnswers] = useState<BriefAnswers>({});
   const [copied, setCopied] = useState(false);
@@ -143,94 +151,119 @@ export function Brief({ copy, lang, supportEmail = "support@dentokudev.com" }: B
     resultRef.current?.focus({ preventScroll: true });
   };
 
+  const questions = [
+    {
+      key: "business",
+      legend: copy.business.legend,
+      options: Object.entries(copy.business.options).map(([value, label]) => ({ value, label })),
+      value: answers.business,
+      onChange: (value: string) => set("business", value),
+    },
+    {
+      key: "task",
+      legend: copy.task.legend,
+      options: Object.entries(copy.task.options).map(([value, label]) => ({ value, label })),
+      value: answers.task,
+      onChange: (value: string) => set("task", value),
+    },
+    {
+      key: "times",
+      legend: copy.times.legend,
+      options: TIMES_PER_WEEK.map((n) => ({ value: String(n), label: String(n) })),
+      value: answers.timesPerWeek ? String(answers.timesPerWeek) : undefined,
+      onChange: (value: string) => set("timesPerWeek", Number(value)),
+    },
+    {
+      key: "minutes",
+      legend: copy.minutes.legend,
+      options: MINUTES_EACH.map((n) => ({ value: String(n), label: `${n} ${copy.minutes.unit}` })),
+      value: answers.minutesEach ? String(answers.minutesEach) : undefined,
+      onChange: (value: string) => set("minutesEach", Number(value)),
+    },
+  ];
+  const stack = layout === "stack";
+
+  const resultCard = (
+    <div
+      ref={resultRef}
+      tabIndex={-1}
+      className="scroll-mt-24 rounded-2xl border border-stone-200 bg-white p-6 outline-none md:p-8"
+    >
+      <div ref={numberRef} aria-live="polite" className={stack ? undefined : "min-h-28"}>
+        {hours === null ? (
+          <p className="text-lg leading-8 text-stone-600">{copy.result.idle}</p>
+        ) : (
+          <>
+            <p className="font-heading text-ink text-3xl leading-tight tracking-[-0.02em] md:text-4xl">
+              {copy.result.lead}{" "}
+              <span key={hours} className="text-brand-cta animate-in fade-in-0 duration-150 motion-reduce:animate-none">
+                {formatHours(hours, copy.text, lang)}
+              </span>{" "}
+              {copy.result.tail}
+            </p>
+            <p className="mt-3 font-mono text-xs text-stone-500 tabular-nums">
+              {formatFormula(answers, copy.text, lang)}
+            </p>
+          </>
+        )}
+      </div>
+      <p className="mt-5 border-t border-stone-200 pt-5 text-sm leading-6 text-stone-600">
+        {copy.method}
+      </p>
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        {complete && mailto ? (
+          <Button asChild size="lg" className="font-semibold">
+            <a href={mailto}>
+              {copy.send}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
+        ) : (
+          <Button size="lg" className="font-semibold" disabled>
+            {copy.send}
+            <ArrowRight className="h-4 w-4" />
+          </Button>
+        )}
+        <Button size="lg" variant="outline" onClick={copyBrief} disabled={!complete}>
+          {copied ? copy.copied : copy.copy}
+        </Button>
+      </div>
+      <p className="mt-4 text-sm leading-6 text-stone-500">
+        {copy.fallback}{" "}
+        <a href={`mailto:${supportEmail}`} className="text-eyebrow font-medium hover:underline">
+          {supportEmail}
+        </a>
+      </p>
+      <p className="mt-2 text-xs leading-5 text-stone-500">{copy.privacy}</p>
+    </div>
+  );
+
   return (
-    <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-      <form ref={formRef} className="space-y-8" onSubmit={(event) => event.preventDefault()}>
-        <Choice
-          name={`${id}-business`}
-          legend={copy.business.legend}
-          options={Object.entries(copy.business.options).map(([value, label]) => ({ value, label }))}
-          value={answers.business}
-          onChange={(value) => set("business", value)}
-        />
-        <Choice
-          name={`${id}-task`}
-          legend={copy.task.legend}
-          options={Object.entries(copy.task.options).map(([value, label]) => ({ value, label }))}
-          value={answers.task}
-          onChange={(value) => set("task", value)}
-        />
-        <Choice
-          name={`${id}-times`}
-          legend={copy.times.legend}
-          options={TIMES_PER_WEEK.map((n) => ({ value: String(n), label: String(n) }))}
-          value={answers.timesPerWeek ? String(answers.timesPerWeek) : undefined}
-          onChange={(value) => set("timesPerWeek", Number(value))}
-        />
-        <Choice
-          name={`${id}-minutes`}
-          legend={copy.minutes.legend}
-          options={MINUTES_EACH.map((n) => ({ value: String(n), label: `${n} ${copy.minutes.unit}` }))}
-          value={answers.minutesEach ? String(answers.minutesEach) : undefined}
-          onChange={(value) => set("minutesEach", Number(value))}
-        />
+    <div className={stack ? "space-y-8" : "grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16"}>
+      <form
+        ref={formRef}
+        className={stack ? "grid gap-6 sm:grid-cols-2 sm:gap-x-10" : "space-y-8"}
+        onSubmit={(event) => event.preventDefault()}
+      >
+        {questions.map((q) => (
+          <Choice
+            key={q.key}
+            name={`${id}-${q.key}`}
+            legend={q.legend}
+            options={q.options}
+            value={q.value}
+            onChange={q.onChange}
+          />
+        ))}
       </form>
 
-      {/* The result: the visitor's own baseline, with the formula visible so it can be checked. */}
-      <div className="lg:sticky lg:top-28 lg:self-start">
-        <div
-          ref={resultRef}
-          tabIndex={-1}
-          className="scroll-mt-24 rounded-2xl border border-stone-200 bg-white p-6 outline-none md:p-8"
-        >
-          <div ref={numberRef} aria-live="polite" className="min-h-28">
-            {hours === null ? (
-              <p className="text-lg leading-8 text-stone-600">{copy.result.idle}</p>
-            ) : (
-              <>
-                <p className="font-heading text-ink text-3xl leading-tight tracking-[-0.02em] md:text-4xl">
-                  {copy.result.lead}{" "}
-                  <span key={hours} className="text-brand-cta animate-in fade-in-0 duration-150 motion-reduce:animate-none">
-                    {formatHours(hours, copy.text, lang)}
-                  </span>{" "}
-                  {copy.result.tail}
-                </p>
-                <p className="mt-3 font-mono text-xs text-stone-500 tabular-nums">
-                  {formatFormula(answers, copy.text, lang)}
-                </p>
-              </>
-            )}
-          </div>
-          <p className="mt-5 border-t border-stone-200 pt-5 text-sm leading-6 text-stone-600">
-            {copy.method}
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            {complete && mailto ? (
-              <Button asChild size="lg" className="font-semibold">
-                <a href={mailto}>
-                  {copy.send}
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </Button>
-            ) : (
-              <Button size="lg" className="font-semibold" disabled>
-                {copy.send}
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            )}
-            <Button size="lg" variant="outline" onClick={copyBrief} disabled={!complete}>
-              {copied ? copy.copied : copy.copy}
-            </Button>
-          </div>
-          <p className="mt-4 text-sm leading-6 text-stone-500">
-            {copy.fallback}{" "}
-            <a href={`mailto:${supportEmail}`} className="text-eyebrow font-medium hover:underline">
-              {supportEmail}
-            </a>
-          </p>
-          <p className="mt-2 text-xs leading-5 text-stone-500">{copy.privacy}</p>
-        </div>
-      </div>
+      {/* The result: the visitor's own baseline, with the formula visible so it can be checked.
+          Stacked under the questions it appears only once there is a number to show. */}
+      {stack ? (
+        hours !== null ? resultCard : <div ref={resultRef} tabIndex={-1} className="hidden" />
+      ) : (
+        <div className="lg:sticky lg:top-28 lg:self-start">{resultCard}</div>
+      )}
 
       {/* Phone only: the result follows the visitor while they are still in the
           questions. Enters from the bottom edge it is anchored to and leaves the
