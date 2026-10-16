@@ -6,7 +6,6 @@ import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { FaqList } from "@/components/marketing/faq-list";
-import { ServiceShowcase } from "@/components/marketing/service-showcase";
 import { Button } from "@/components/ui/button";
 import { getCopy, getPageCopy } from "@/copy";
 import { LocaleLink } from "@/i18n/locale-link";
@@ -26,6 +25,10 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   const lang = await resolveLang(params);
   const copy = getPageCopy(lang).home;
   const { products } = getCopy(lang).site;
+  const order: HomeSectionKey[] =
+    lang === "it"
+      ? ["automate", "process", "products", "faq"]
+      : ["products", "automate", "process", "explore", "faq"];
 
   return (
     <>
@@ -38,56 +41,108 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <HomeHero copy={copy} lang={lang} />
       </Section>
 
-      {/* What we build: services proven by our own products (tabbed showcase) */}
-      <Section id="services" variant="soft" className="border-t border-stone-200/70">
-        <div className="max-w-3xl space-y-3">
-          <Eyebrow index="01">{copy.services.eyebrow}</Eyebrow>
-          <h2 className="type-h2 text-ink">
-            {copy.services.title}
-          </h2>
-          <p className="text-lg leading-8 text-stone-600">{copy.services.description}</p>
-        </div>
-        <div className="mt-12">
-          <ServiceShowcase
-            items={copy.services.items}
-            labels={{ tablist: copy.services.tablistLabel, explore: copy.services.explore }}
-          />
-        </div>
-      </Section>
+      {/* The sections after the opening. Their order differs by language
+          (redesign tickets 05 and 08): the Italian consulting funnel leads with what
+          we automate; the English page keeps the products first, and keeps the row
+          of guides, which are English-only pages. Numbers follow the order. */}
+      {order.map((key, index) => (
+        <HomeSection key={key} id={key} index={index + 1} copy={copy} products={products} />
+      ))}
 
-      {/* How we work: dense ink panel */}
-      <Section variant="ink">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="space-y-4">
-            <Eyebrow tone="ink" index="02">{copy.process.eyebrow}</Eyebrow>
-            <h2 className="type-h2 text-white">
-              {copy.process.title}
-            </h2>
-            <p className="text-ink-muted text-lg leading-8">{copy.process.description}</p>
+      {/* Closing: back to the brief at the top, or the contact page */}
+      <Section variant="soft" containerClassName="border-t border-stone-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
+        <div className="mx-auto max-w-2xl space-y-5 text-center">
+          <h2 className="type-h2 text-ink">{copy.closing.title}</h2>
+          <p className="text-lg leading-8 text-stone-600">{copy.closing.description}</p>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
+            <Button asChild size="xl" className="font-semibold">
+              <a href={copy.closing.primary.href}>
+                {copy.closing.primary.label}
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </Button>
+            <Button asChild size="xl" variant="outline">
+              <LocaleLink href={copy.closing.secondary.href}>{copy.closing.secondary.label}</LocaleLink>
+            </Button>
           </div>
-          <ol className="grid gap-4 sm:grid-cols-3">
-            {copy.process.steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6"
-              >
-                <p className="font-mono text-xs text-white/60">0{index + 1}</p>
-                <h3 className="mt-4 text-xl font-semibold text-white">{step.title}</h3>
-                <p className="text-ink-muted mt-2 text-sm leading-6">{step.description}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </Section>
+    </>
+  );
+}
 
-      {/* Products strip: each card shows what the product does and where it is published */}
-      <Section variant="soft">
+type HomeSectionKey = "automate" | "process" | "products" | "explore" | "faq";
+
+type HomeSectionProps = {
+  id: HomeSectionKey;
+  index: number;
+  copy: ReturnType<typeof getPageCopy>["home"];
+  products: ReturnType<typeof getCopy>["site"]["products"];
+};
+
+function HomeSection({ id, index, copy, products }: HomeSectionProps) {
+  const number = String(index).padStart(2, "0");
+  const divider = "border-t border-stone-200";
+
+  if (id === "automate") {
+    return (
+      <Section id="services" variant="soft" className={divider}>
+        <div className="max-w-3xl space-y-3">
+          <Eyebrow index={number}>{copy.automate.eyebrow}</Eyebrow>
+          <h2 className="type-h2 text-ink">{copy.automate.title}</h2>
+          <p className="text-lg leading-8 text-stone-600">{copy.automate.description}</p>
+        </div>
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 sm:grid-cols-2">
+          {copy.automate.items.map((item, i) => (
+            <li key={item.title} className="flex flex-col gap-5 bg-white p-6 md:p-8">
+              <p className="font-mono text-xs text-stone-500">0{i + 1}</p>
+              <h3 className="type-h3 text-ink">{item.title}</h3>
+              <dl className="grid gap-4 text-sm leading-6">
+                <div>
+                  <dt className="text-eyebrow font-semibold">{copy.automate.doesLabel}</dt>
+                  <dd className="mt-1 text-stone-600">{item.does}</dd>
+                </div>
+                <div>
+                  <dt className="text-eyebrow font-semibold">{copy.automate.staysLabel}</dt>
+                  <dd className="mt-1 text-stone-600">{item.stays}</dd>
+                </div>
+              </dl>
+            </li>
+          ))}
+        </ol>
+      </Section>
+    );
+  }
+
+  if (id === "process") {
+    return (
+      <Section variant="ink">
+        <div className="max-w-3xl space-y-4">
+          <Eyebrow tone="ink" index={number}>{copy.process.eyebrow}</Eyebrow>
+          <h2 className="type-h2 text-white">{copy.process.title}</h2>
+          <p className="text-ink-muted text-lg leading-8">{copy.process.description}</p>
+        </div>
+        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {copy.process.steps.map((step, i) => (
+            <li key={step.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+              <p className="font-mono text-xs text-white/60">0{i + 1}</p>
+              <h3 className="mt-4 text-xl font-medium text-white">{step.title}</h3>
+              <p className="text-ink-muted mt-2 text-sm leading-6">{step.description}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+    );
+  }
+
+  if (id === "products") {
+    return (
+      <Section variant="soft" className={divider}>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl space-y-3">
-            <Eyebrow index="03">{copy.products.eyebrow}</Eyebrow>
-            <h2 className="type-h2 text-ink">
-              {copy.products.title}
-            </h2>
+            <Eyebrow index={number}>{copy.products.eyebrow}</Eyebrow>
+            <h2 className="type-h2 text-ink">{copy.products.title}</h2>
+            <p className="text-lg leading-8 text-stone-600">{copy.products.description}</p>
           </div>
           <LocaleLink className="text-eyebrow text-sm font-semibold hover:underline" href="/overview">
             {copy.products.overviewLink}
@@ -97,7 +152,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           {products.map((product) => (
             <article
               key={product.href}
-              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition duration-200 hover:-transtone-y-0.5 active:scale-[0.98] motion-reduce:transition-none"
+              className="group shadow-soft hover:shadow-soft-lg relative flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition duration-200 hover:-translate-y-0.5 active:scale-[0.98] motion-reduce:transition-none"
             >
               <div className="flex items-center gap-3">
                 <Image
@@ -111,7 +166,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                   {product.category}
                 </p>
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-stone-950">
+              <h3 className="mt-5 text-xl font-medium text-stone-950">
                 <LocaleLink href={product.href} className="after:absolute after:inset-0">
                   {product.name}
                 </LocaleLink>
@@ -125,16 +180,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
                 {/* The whole card is the link (the name's ::after); the label stays for screen readers */}
                 <span className="text-eyebrow inline-flex items-center">
                   <span className="sr-only">{copy.products.viewProduct}</span>
-                  <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </div>
             </article>
           ))}
         </div>
       </Section>
+    );
+  }
 
-      {/* Explore more: one compact row of crawlable links to the content hubs */}
-      <Section variant="soft" spacing="none" containerClassName="border-t border-stone-200 py-10">
+  if (id === "explore") {
+    return (
+      <Section variant="soft" spacing="none" containerClassName={`${divider} py-10`}>
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
           <h2 className="text-ink shrink-0 text-lg font-semibold">{copy.explore.title}</h2>
           <ul className="flex flex-wrap gap-2">
@@ -153,21 +211,19 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </ul>
         </div>
       </Section>
+    );
+  }
 
-      {/* Consulting FAQ (no FAQPage schema here; that lives on /faq) */}
-      <Section variant="soft" containerClassName="border-t border-stone-200 pt-18 md:pt-24" spacing="none" className="pb-18 md:pb-24">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="space-y-4">
-            <Eyebrow index="04">{copy.faq.eyebrow}</Eyebrow>
-            <h2 className="type-h2 text-ink">
-              {copy.faq.title}
-            </h2>
-            <p className="text-lg leading-8 text-stone-600">{copy.faq.description}</p>
-          </div>
-          <FaqList items={copy.faq.items} collapsible />
+  return (
+    <Section variant="soft" containerClassName={`${divider} pt-18 md:pt-24`} spacing="none" className="pb-18 md:pb-24">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="space-y-4">
+          <Eyebrow index={number}>{copy.faq.eyebrow}</Eyebrow>
+          <h2 className="type-h2 text-ink">{copy.faq.title}</h2>
+          <p className="text-lg leading-8 text-stone-600">{copy.faq.description}</p>
         </div>
-      </Section>
-
-    </>
+        <FaqList items={copy.faq.items} collapsible />
+      </div>
+    </Section>
   );
 }

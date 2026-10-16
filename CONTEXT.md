@@ -36,9 +36,12 @@ precise term.
 
 - **Services** — custom software development with AI integration, sold to small and mid-sized
   businesses (PMI): internal tools, workflow automation, browser extensions, Shopify and
-  ecommerce apps. Converted via Consulting Leads. Credibility rests on the four shipped
-  Products ("judge us by what we build for ourselves"): no client logos or invented metrics
-  are used as proof.
+  ecommerce apps. Converted via Consulting Leads. On the consulting funnel the proof is the
+  method (a written proposal that records today's monthly hours, the saving measured again
+  after release) and, once they exist, measured projects. The four shipped Products are proof
+  of reliability, in second row: the studio ships and maintains real software with public
+  users and reviews. They are not presented as proof of capability. No client logos or
+  invented metrics are used as proof.
 - **Studio** — Dentoku Dev is founder-led: Nicola Orlandi plus collaborators engaged per
   project when the work needs them. Not a stable multi-person team. "Small team" is accurate;
   copy must not imply permanent staff, departments, or account managers.

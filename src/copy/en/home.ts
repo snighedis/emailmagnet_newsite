@@ -3,7 +3,6 @@ import {
   contentHubs,
   homeHero,
   howWeWork,
-  servicesShowcase,
   siteConfig,
 } from "@/data/site";
 
@@ -28,26 +27,51 @@ export const home = {
     controls: { play: "Play video", pause: "Pause video" },
   },
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "on", outOfFive: "out of 5" } },
-  services: {
-    eyebrow: "What we build",
-    title: "We only sell what we already ship",
+  // What we automate: the four repetitive jobs the brief asks about. Capabilities,
+  // not past projects: no client claims until there are measured ones (CONTEXT.md).
+  automate: {
+    eyebrow: "What we automate",
+    title: "The work you redo every week, done by software",
     description:
-      "No slide decks. No paper promises. Every service below is backed by a product we build, run, and maintain for ourselves.",
-    tablistLabel: "What we build",
-    /** `{name}` is replaced with the product name. */
-    explore: "Explore {name}",
-    items: servicesShowcase,
+      "Four repetitive jobs that cost a small business hours. For each one, what the software does and what stays with you.",
+    doesLabel: "What the software does",
+    staysLabel: "What stays with you",
+    items: [
+      {
+        title: "Answering customer email",
+        does: "Reads the requests that come in, drafts a reply in your tone with the right details (availability, prices, terms) and leaves it in your drafts.",
+        stays: "You read it, fix it if needed, and press Send.",
+      },
+      {
+        title: "Preparing quotes",
+        does: "Takes the request, matches it against your price list and fills in the quote in your own format, ready to check.",
+        stays: "You decide the final price and terms.",
+      },
+      {
+        title: "Retyping data between tools",
+        does: "Moves data between the tools you already use (email, spreadsheets, your management software, Shopify) without anyone retyping it.",
+        stays: "You see what moved, and where.",
+      },
+      {
+        title: "Handling bookings and orders",
+        does: "Collects requests and confirmations, updates the calendar and sends the reminders.",
+        stays: "You handle the exceptions.",
+      },
+    ],
   },
   process: {
     eyebrow: "How we work",
-    title: "You talk to the builder, not an account manager",
+    title: "Scope, ship, support, measure",
     description:
-      "Small team. Direct answers. Working software early. The same discipline that keeps four products alive on public stores.",
+      "A written proposal with today's hours in it, working software early, a direct line after launch, and the same hours measured again.",
     steps: howWeWork,
   },
   products: {
-    eyebrow: "Products",
+    eyebrow: "What we ship",
     title: "Four products. Public stores. Public reviews.",
+    // Products are proof of reliability, not of capability (redesign ticket 03).
+    description:
+      "The software we build, publish and maintain for ourselves, with users and reviews on the stores. It says one thing: what we ship stays online and works.",
     overviewLink: "See the full overview",
     viewProduct: "View product",
   },
@@ -78,7 +102,15 @@ export const home = {
   // Hart-style: who the studio works for, named by kind of business.
   audience: {
     label: "For",
-    items: ["Farm stays and B&Bs", "Professional offices", "Shops", "Workshops"],
+    items: ["Online shops", "Professional practices", "Vacation rentals", "Agencies and studios"],
+  },
+  // Closes the page: back to the brief at the top, or the contact page.
+  closing: {
+    title: "Want a number to start from?",
+    description:
+      "Answer the four questions at the top of the page: in a minute you know how many hours a month repetitive work costs you today. Or write to us.",
+    primary: { label: "Go to the brief", href: "#brief" },
+    secondary: { label: "Write to us", href: "/contact" },
   },
   // The brief: the visitor's own baseline (src/lib/brief.ts). It shows what a task
   // costs today, never a saving (CONTEXT.md, "Measured saving").
@@ -86,25 +118,27 @@ export const home = {
     eyebrow: "The brief",
     title: "How many hours does it cost you today?",
     lede: "Four taps. The number stays on your phone until you decide to send it.",
+    // Option keys differ by language on purpose (each market has its own kinds of
+    // business, redesign ticket 08), so they are typed as a plain record.
     business: {
       legend: "Your business",
       options: {
-        farmstay: "Farm stay or B&B",
-        office: "Professional office",
-        shop: "Shop",
-        workshop: "Workshop or craft",
+        online: "Online shop (Shopify or other)",
+        practice: "Professional practice",
+        rental: "Vacation rental or B&B",
+        agency: "Agency or studio",
         other: "Something else",
-      },
+      } as Record<string, string>,
     },
     task: {
       legend: "The repetitive work that takes most of your time",
       options: {
-        email: "Answering email",
+        email: "Answering customer email",
         quotes: "Preparing quotes",
-        retyping: "Retyping data",
-        bookings: "Handling bookings",
+        retyping: "Retyping data between tools",
+        bookings: "Handling bookings and orders",
         other: "Something else",
-      },
+      } as Record<string, string>,
     },
     times: { legend: "How many times a week" },
     minutes: { legend: "Minutes each time", unit: "min" },

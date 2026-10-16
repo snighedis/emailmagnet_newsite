@@ -16,7 +16,7 @@ export const home: HomeCopy = {
     titleLead: "L'AI in azienda, senza scommesse.",
     titleAccent: "Funzionante.",
     subhead:
-      "Costruiamo software su misura per piccole e medie imprese: strumenti interni, estensioni e app, con l'intelligenza artificiale solo dove porta un risultato.",
+      "Software su misura per piccole imprese: togliamo il lavoro ripetitivo con l'AI e misuriamo quanto ti fa risparmiare.",
     primaryCta: { label: "Raccontaci il problema", href: "/contact" },
     secondaryCta: { label: "Guarda cosa costruiamo", href: "/#services" },
     trustNote: "4 prodotti online su store pubblici",
@@ -29,114 +29,41 @@ export const home: HomeCopy = {
     controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
   },
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "su", outOfFive: "su 5" } },
-  services: {
-    eyebrow: "Cosa costruiamo",
-    title: "Vendiamo solo quello che abbiamo già costruito per noi",
+  automate: {
+    eyebrow: "Cosa automatizziamo",
+    title: "Il lavoro che rifai ogni settimana, fatto dal software",
     description:
-      "Niente slide. Niente promesse sulla carta. Ogni servizio qui sotto è sostenuto da un prodotto che costruiamo, gestiamo e manteniamo per noi stessi.",
-    tablistLabel: "Cosa costruiamo",
-    explore: "Scopri {name}",
+      "Quattro lavori ripetitivi che costano ore a una piccola impresa. Per ciascuno, cosa fa il software e cosa resta a te.",
+    doesLabel: "Cosa fa il software",
+    staysLabel: "Cosa resta a te",
     items: [
       {
-        key: "internal-tools",
-        label: "Strumenti interni e automazione",
-        title: "Il lavoro ripetitivo, risolto con il software.",
-        description:
-          "Costruiamo i piccoli strumenti mirati che mancano al tuo team: raccolta dati, flussi di ricerca, automazione del back office. EmailMagnet è la nostra versione di tutto questo: ha trasformato il copia e incolla manuale delle email in un flusso nel browser a un clic.",
-        outcomes: [
-          "Sostituisci il copia e incolla ripetitivo con flussi a un clic",
-          "Dati pronti per l'esportazione: CSV, TXT o direttamente nel tuo stack",
-          "Perimetro ridotto, rilascio rapido, manutenzione semplice",
-        ],
-        proof: {
-          name: "EmailMagnet",
-          href: "/emailmagnet",
-          note: "Costruito per noi stessi. 5.0 stelle sul Chrome Web Store.",
-        },
-        media: {
-          kind: "image",
-          src: "/brand/emailmagnet-hero-new.webp",
-          alt: "L'estensione EmailMagnet raccoglie email aziendali durante la navigazione",
-          width: 1361,
-          height: 852,
-        },
+        title: "Rispondere alle email",
+        does: "Legge le richieste che arrivano, prepara una risposta nel tuo tono con le informazioni giuste (disponibilità, prezzi, condizioni) e la lascia in bozza.",
+        stays: "Tu la leggi, la correggi se serve e premi Invia.",
       },
       {
-        key: "ai-integration",
-        label: "Integrazione AI",
-        title: "L'AI dove fa risparmiare tempo, non dove fa notizia.",
-        description:
-          "Non partiamo dalla tecnologia ma da un'attività che oggi costa ore: scrivere, riassumere, tradurre, classificare. Integriamo l'AI lì, dentro gli strumenti che la tua azienda già usa, con i tuoi account e le tue chiavi. ClickPilot AI è la nostra prova: un assistente che lavora in qualsiasi campo di testo del browser, senza cambiare scheda.",
-        outcomes: [
-          "Funzioni AI integrate negli strumenti che già usi",
-          "Perimetro concreto: correggi, riscrivi, riassumi, traduci, azioni personalizzate",
-          "I tuoi dati restano nei tuoi account, con le tue chiavi API",
-        ],
-        proof: {
-          name: "ClickPilot AI",
-          href: "/clickpilot-ai",
-          note: "Costruito per noi stessi. Disponibile sul Chrome Web Store.",
-        },
-        media: {
-          kind: "image",
-          src: "/brand/clickpilot-ai-showcase.png",
-          alt: "Barra delle azioni di ClickPilot AI con Fix Grammar, Translate ed Explain easy sopra un testo evidenziato in Chrome",
-          width: 1280,
-          height: 799,
-          framed: false,
-        },
+        title: "Preparare preventivi",
+        does: "Prende la richiesta, la confronta con il tuo listino e compila il preventivo nel tuo formato, pronto da controllare.",
+        stays: "Tu decidi prezzo e condizioni finali.",
       },
       {
-        key: "ecommerce",
-        label: "Ecommerce e Shopify",
-        title: "App che trasformano la navigazione in acquisti.",
-        description:
-          "Costruiamo app Shopify e funzionalità di vetrina per i merchant: strumenti per le campagne, urgenza, aiuti alla conversione. Countdown321 è nostra: gestisce i timer di conto alla rovescia per lanci di prodotto e promozioni.",
-        outcomes: [
-          "App Shopify costruite sulla piattaforma ufficiale",
-          "Pronte per le campagne: logica a data fissa, ricorrente ed evergreen",
-          "Pensate per titolari di negozio non tecnici",
-        ],
-        proof: {
-          name: "Countdown321",
-          href: "/countdown321",
-          note: "Costruito per noi stessi. Disponibile sullo Shopify App Store.",
-        },
-        media: {
-          kind: "image",
-          src: "/brand/countdown321-hero.webp",
-          alt: "Timer di conto alla rovescia Countdown321 su una vetrina Shopify",
-        },
+        title: "Ricopiare dati",
+        does: "Sposta i dati tra i programmi che usi già (email, fogli di calcolo, gestionale, Shopify) senza che nessuno li ricopi a mano.",
+        stays: "Tu vedi cosa è passato, e dove.",
       },
       {
-        key: "browser-products",
-        label: "Estensioni per browser",
-        title: "Estensioni che le persone installano e tengono.",
-        description:
-          "Progettiamo estensioni Chrome dall'inizio alla fine: prodotto, UX, scheda sullo store, aggiornamenti. Volume Control PRO è nostra: alza il volume delle schede fino al 600%, gratis da installare, con un upgrade opzionale una tantum per gli strumenti audio avanzati.",
-        outcomes: [
-          "Ciclo completo: sviluppo, revisione, pubblicazione, manutenzione",
-          "Le policy del Chrome Web Store le gestiamo noi",
-          "Piccole, veloci e rispettose della privacy per impostazione predefinita",
-        ],
-        proof: {
-          name: "Volume Control PRO",
-          href: "/volume-control-pro",
-          note: "Costruito per noi stessi. Gratis da installare sul Chrome Web Store.",
-        },
-        media: {
-          kind: "video",
-          src: "/brand/volume-control-demo.mp4",
-          url: "youtube.com, Volume Control PRO alza il volume di una scheda silenziosa",
-        },
+        title: "Gestire prenotazioni",
+        does: "Raccoglie richieste e conferme, aggiorna il calendario e manda i promemoria.",
+        stays: "Tu gestisci le eccezioni.",
       },
     ],
   },
   process: {
     eyebrow: "Come lavoriamo",
-    title: "Parli con chi costruisce, non con un account manager",
+    title: "Perimetro, rilascio, supporto, misura",
     description:
-      "Team piccolo. Risposte dirette. Software funzionante fin dalle prime settimane. La stessa disciplina che tiene quattro prodotti online su store pubblici.",
+      "Una proposta scritta con le ore di oggi, software da provare presto, una linea diretta dopo il rilascio, e le stesse ore rimisurate.",
     steps: [
       {
         title: "Perimetro",
@@ -153,11 +80,18 @@ export const home: HomeCopy = {
         description:
           "Dopo il lancio mantieni una linea diretta con chi ha scritto il codice. Niente passaggi di mano, niente code di ticket.",
       },
+      {
+        title: "Misura",
+        description:
+          "Dopo il rilascio contiamo di nuovo insieme le ore al mese che il lavoro ti costa. È il numero da cui era partita la proposta, e dice se il software ha fatto quello che doveva.",
+      },
     ],
   },
   products: {
-    eyebrow: "Prodotti",
+    eyebrow: "Software nostro",
     title: "Quattro prodotti. Store pubblici. Recensioni pubbliche.",
+    description:
+      "È il software che costruiamo, pubblichiamo e manteniamo per noi, con utenti e recensioni sugli store. Dice una cosa sola: quello che rilasciamo resta online e funziona.",
     overviewLink: "Vedi la panoramica completa",
     viewProduct: "Vai al prodotto",
   },
@@ -244,6 +178,11 @@ export const home: HomeCopy = {
           "Il codice scritto per il vostro progetto è vostro al saldo, con la documentazione per farlo proseguire a qualsiasi sviluppatore. I nostri componenti riutilizzabili restano in licenza d'uso perpetua, quindi potete mantenere e modificare il software anche senza di noi.",
       },
       {
+        question: "Usate l'intelligenza artificiale nel vostro lavoro?",
+        answer:
+          "Sì: assistenti per scrivere codice e testi, e strumenti che trascrivono le call. Lo diciamo prima di iniziare e lo scriviamo nella lettera d'incarico, con l'elenco degli strumenti e dove passano i dati.",
+      },
+      {
         question: "Quanto costa iniziare?",
         answer:
           "Dipende dal perimetro, e lo sapete per iscritto prima di impegnarvi: la prima call non costa nulla e si chiude con una proposta che indica cosa costruiamo, quanto costa e quando è pronto.",
@@ -253,6 +192,13 @@ export const home: HomeCopy = {
   audience: {
     label: "Per",
     items: ["Agriturismi e B&B", "Studi professionali", "Negozi", "Artigiani"],
+  },
+  closing: {
+    title: "Vuoi un numero da cui partire?",
+    description:
+      "Rispondi alle quattro domande in cima alla pagina: in un minuto sai quante ore al mese ti costa oggi il lavoro ripetitivo. Oppure scrivici.",
+    primary: { label: "Vai al brief", href: "#brief" },
+    secondary: { label: "Scrivici", href: "/contact" },
   },
   brief: {
     eyebrow: "Il brief",

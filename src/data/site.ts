@@ -508,131 +508,11 @@ export const homeHero = {
   titleLead: "Custom software. AI where it counts.",
   titleAccent: "Shipped.",
   subhead:
-    "Dentoku Dev is a Milan software studio building Chrome extensions, Shopify apps, and internal tools for small and mid-sized businesses.",
+    "A Milan software studio. Four products you can install today, and custom software that removes repetitive work and measures the saving.",
   primaryCta: { label: "Start your project", href: "/contact" },
   secondaryCta: { label: "See what we build", href: "/#services" },
   trustNote: "4 products live on public stores",
 };
-
-export type ServiceShowcaseMedia =
-  | {
-      kind: "image";
-      src: string;
-      alt: string;
-      width?: number;
-      height?: number;
-      /** Set false when the artwork already contains its own browser window. */
-      framed?: boolean;
-    }
-  | { kind: "video"; src: string; url: string };
-
-export type ServiceShowcaseItem = {
-  key: string;
-  label: string;
-  title: string;
-  description: string;
-  outcomes: string[];
-  proof: { name: string; href: string; note: string };
-  media: ServiceShowcaseMedia;
-};
-
-// Services-as-tabs, each proven by a product we shipped for ourselves. This one
-// section replaces the old Portfolio + Studio method + Frameworks + Spotlight.
-export const servicesShowcase: ServiceShowcaseItem[] = [
-  {
-    key: "internal-tools",
-    label: "Internal tools & automation",
-    title: "Repetitive work, engineered away.",
-    description:
-      "We build the small, focused tools your team is missing: data collection, research workflows, back-office automation. EmailMagnet is our own take on this. It turned manual email copy-paste into a one-click browser workflow.",
-    outcomes: [
-      "Replace repetitive copy-paste with one-click workflows",
-      "Export-ready data: CSV, TXT, or straight into your stack",
-      "Scoped small, shipped fast, easy to maintain",
-    ],
-    proof: {
-      name: "EmailMagnet",
-      href: "/emailmagnet",
-      note: "Built for ourselves. 5.0 stars on the Chrome Web Store.",
-    },
-    media: {
-      kind: "image",
-      src: "/brand/emailmagnet-hero-new.webp",
-      alt: "EmailMagnet extension collecting business emails while browsing",
-      width: 1361,
-      height: 852,
-    },
-  },
-  {
-    key: "ai-integration",
-    label: "AI integration",
-    title: "AI in the workflow, not in the way.",
-    description:
-      "We integrate AI into real workflows: writing, summarizing, translating, custom automations. ClickPilot AI is our proof. It is an assistant that works inside any text field in the browser, no tab switching.",
-    outcomes: [
-      "AI features embedded in the tools you already use",
-      "Practical scope: fix, rewrite, summarize, translate, custom actions",
-      "Your data stays in your accounts, with your own API keys",
-    ],
-    proof: {
-      name: "ClickPilot AI",
-      href: "/clickpilot-ai",
-      note: "Built for ourselves. Live on the Chrome Web Store.",
-    },
-    media: {
-      kind: "image",
-      src: "/brand/clickpilot-ai-showcase.png",
-      alt: "ClickPilot AI action bar with Fix Grammar, Translate, and Explain easy over highlighted text in Chrome",
-      width: 1280,
-      height: 799,
-      framed: false,
-    },
-  },
-  {
-    key: "ecommerce",
-    label: "Ecommerce & Shopify",
-    title: "Apps that turn browsing into buying.",
-    description:
-      "We build Shopify apps and storefront features for merchants: campaign tools, urgency, conversion helpers. Countdown321 is ours. It powers countdown timers for product launches and promotions.",
-    outcomes: [
-      "Shopify apps built on the official platform",
-      "Campaign-ready: fixed-date, recurring, and evergreen logic",
-      "Designed for non-technical store owners",
-    ],
-    proof: {
-      name: "Countdown321",
-      href: "/countdown321",
-      note: "Built for ourselves. Live on the Shopify App Store.",
-    },
-    media: {
-      kind: "image",
-      src: "/brand/countdown321-hero.webp",
-      alt: "Countdown321 Shopify countdown timer on a storefront",
-    },
-  },
-  {
-    key: "browser-products",
-    label: "Browser extensions",
-    title: "Extensions people install and keep.",
-    description:
-      "We design Chrome extensions end to end: product, UX, store listing, updates. Volume Control PRO is ours. It raises tab volume up to 600%, free to install, with an optional one-time upgrade for the advanced audio tools.",
-    outcomes: [
-      "Full lifecycle: build, review, publish, maintain",
-      "Chrome Web Store policies handled for you",
-      "Small, fast, and privacy-respecting by default",
-    ],
-    proof: {
-      name: "Volume Control PRO",
-      href: "/volume-control-pro",
-      note: "Built for ourselves. Free to install on the Chrome Web Store.",
-    },
-    media: {
-      kind: "video",
-      src: "/brand/volume-control-demo.mp4",
-      url: "youtube.com, Volume Control PRO boosting a quiet tab",
-    },
-  },
-];
 
 // "How we work": direct with the builder, no agency layers.
 export const howWeWork = [
@@ -650,6 +530,11 @@ export const howWeWork = [
     title: "Support",
     description:
       "After launch you keep a direct line to the people who wrote the code. No handoffs, no ticket queues.",
+  },
+  {
+    title: "Measure",
+    description:
+      "After release we count the monthly hours again, together. It is the number the proposal started from, and it says whether the software did what it was meant to.",
   },
 ];
 
@@ -673,6 +558,11 @@ export const consultingFaq: FaqItem[] = [
     question: "Can you work with our existing systems?",
     answer:
       "Yes. Most projects plug into tools you already use: spreadsheets, CRMs, Shopify, browser workflows, and APIs. We build around your stack instead of replacing it.",
+  },
+  {
+    question: "Do you use AI in your own work?",
+    answer:
+      "Yes: assistants for writing code and text, and tools that transcribe calls. We say so before we start and put it in the engagement letter, with the list of tools and where the data goes.",
   },
   {
     question: "Where are you based?",
