@@ -45,28 +45,6 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
               <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
             </LocaleLink>
             <p className="mt-1 max-w-sm text-sm leading-6 text-stone-600">{site.footerTagline}</p>
-            <a
-              href="https://shipveryfast.dev/?ref=dentokudev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex w-fit items-center gap-1.5 rounded-[10px] border border-[#e7e3da] bg-white px-3.5 py-2 text-sm leading-none whitespace-nowrap"
-            >
-              <span className="font-medium text-[#78716c]">{common.footer.builtWith}</span>
-              {/* Hosted by ShipVeryFast (CORS-open, full quality, auto-updating); plain
-                  img since next/image doesn't paint reliably in this build. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://shipveryfast.dev/logo.png"
-                alt="ShipVeryFast"
-                width={17}
-                height={22}
-                className="block"
-                decoding="async"
-              />
-              <span className="font-bold tracking-[-0.2px] text-[#1c1917]">
-                Ship<span className="text-[#f45a1b]">Very</span>Fast
-              </span>
-            </a>
             <div className="mt-6 flex items-center gap-2">
               <Link
                 href={siteConfig.social.linkedin}

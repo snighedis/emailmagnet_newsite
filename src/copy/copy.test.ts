@@ -74,8 +74,14 @@ describe("site copy: Italian navigation points at the same pages", () => {
     expect(hrefs(siteIt.footerColumns)).toEqual(hrefs(siteEn.footerColumns));
   });
 
-  it("has the same main and resources navigation hrefs", () => {
-    expect(siteIt.mainNav.map((item) => item.href)).toEqual(siteEn.mainNav.map((item) => item.href));
+  it("has the same resources navigation hrefs, and a main navigation that only points at pages both languages have", () => {
     expect(siteIt.resourcesNav.map((item) => item.href)).toEqual(siteEn.resourcesNav.map((item) => item.href));
+    // The Italian menu leads with the consulting funnel (redesign ticket 09), so its
+    // entries differ from the English ones; each must still be a home anchor or a
+    // page that exists in Italian.
+    const italianPages = new Set(["/about", "/contact", "/faq", "/founder"]);
+    for (const item of siteIt.mainNav) {
+      expect(item.href.startsWith("/#") || italianPages.has(item.href)).toBe(true);
+    }
   });
 });

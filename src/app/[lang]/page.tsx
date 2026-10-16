@@ -86,7 +86,7 @@ function HomeSection({ id, index, copy, products }: HomeSectionProps) {
 
   if (id === "automate") {
     return (
-      <Section id="services" variant="soft" className={divider}>
+      <Section id="services" variant="soft" className={`${divider} scroll-mt-16`}>
         <div className="max-w-3xl space-y-3">
           <Eyebrow index={number}>{copy.automate.eyebrow}</Eyebrow>
           <h2 className="type-h2 text-ink">{copy.automate.title}</h2>
@@ -116,7 +116,7 @@ function HomeSection({ id, index, copy, products }: HomeSectionProps) {
 
   if (id === "process") {
     return (
-      <Section variant="ink">
+      <Section id="process" variant="ink" className="scroll-mt-16">
         <div className="max-w-3xl space-y-4">
           <Eyebrow tone="ink" index={number}>{copy.process.eyebrow}</Eyebrow>
           <h2 className="type-h2 text-white">{copy.process.title}</h2>

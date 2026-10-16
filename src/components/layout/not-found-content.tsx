@@ -16,10 +16,10 @@ export function NotFoundContent() {
   const { notFound } = useCopy().common;
   return (
     <section className="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-4 py-20 text-center">
-      <Eyebrow>{notFound.eyebrow}</Eyebrow>
-      <h1 className="mt-3 text-4xl font-semibold text-stone-950">{notFound.title}</h1>
+      <Eyebrow className="font-mono">{notFound.eyebrow}</Eyebrow>
+      <h1 className="type-h1 text-ink mt-4">{notFound.title}</h1>
       <p className="mt-4 text-lg leading-8 text-stone-600">{notFound.body}</p>
-      <Button asChild className="mt-8">
+      <Button asChild size="lg" className="mt-8 font-semibold">
         <LocaleLink href="/">{notFound.home}</LocaleLink>
       </Button>
     </section>

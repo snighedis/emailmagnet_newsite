@@ -37,7 +37,7 @@ export function FeatureCard({
     isInk
       ? "border border-white/10 bg-white/[0.04]"
       : "shadow-soft border border-border bg-white",
-    href && (isInk ? "hover:bg-white/[0.07]" : "hover:shadow-soft-lg hover:-transtone-y-0.5"),
+    href && (isInk ? "hover:bg-white/[0.07]" : "hover:shadow-soft-lg hover:-translate-y-0.5"),
     className,
   );
 
@@ -97,7 +97,7 @@ export function FeatureCard({
           )}
         >
           {linkLabel ?? "Learn more"}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
       ) : null}
     </>

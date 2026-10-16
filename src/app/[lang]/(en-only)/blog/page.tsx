@@ -50,7 +50,7 @@ export default function BlogPage() {
           {featured ? (
             <Link
               href={`/blog/${featured.slug}`}
-              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block overflow-hidden rounded-3xl border border-stone-200/70 transition hover:-transtone-y-1"
+              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block overflow-hidden rounded-3xl border border-stone-200/70 transition hover:-translate-y-1"
             >
               <div className="grid items-center lg:grid-cols-[1.05fr_0.95fr]">
                 <div className="p-8 md:p-12">
@@ -77,7 +77,7 @@ export default function BlogPage() {
                   </div>
                   <span className="text-eyebrow mt-6 inline-flex items-center gap-1.5 text-sm font-semibold">
                     Read article
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </div>
                 {featured.featuredImage ? (
@@ -100,7 +100,7 @@ export default function BlogPage() {
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {rest.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <Card className="shadow-soft hover:shadow-soft-lg h-full overflow-hidden rounded-2xl border-stone-200/80 pt-0 transition hover:-transtone-y-1">
+                <Card className="shadow-soft hover:shadow-soft-lg h-full overflow-hidden rounded-2xl border-stone-200/80 pt-0 transition hover:-translate-y-1">
                   {post.featuredImage ? (
                     // next/image doesn't paint reliably in this Next build; a plain img is dependable.
                     // eslint-disable-next-line @next/next/no-img-element

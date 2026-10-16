@@ -14,6 +14,7 @@ import {
   subscribeConsent,
   writeConsent,
   type ConsentCategories,
+  clearTrackingCookies,
 } from "@/lib/consent";
 
 const categoryKeys = [
@@ -50,7 +51,7 @@ function Toggle({
       <span
         className={cn(
           "inline-block h-5 w-5 transform rounded-full bg-white shadow transition",
-          checked ? "transtone-x-[22px]" : "transtone-x-0.5",
+          checked ? "translate-x-[22px]" : "translate-x-0.5",
         )}
       />
     </button>
@@ -109,6 +110,7 @@ export function CookieBanner() {
       (previous?.analytics && !next.analytics) ||
       (previous?.marketing && !next.marketing);
     if (downgraded) {
+      clearTrackingCookies();
       window.location.reload();
     }
   };
@@ -141,9 +143,9 @@ export function CookieBanner() {
       className={cn(
         "fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)]",
         // Enters from the bottom edge it is anchored to, and leaves the same way.
-        "transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] starting:transtone-y-4 starting:opacity-0",
-        "motion-reduce:transtone-y-0 motion-reduce:starting:transtone-y-0",
-        exiting && "transtone-y-4 opacity-0 duration-200 ease-in motion-reduce:transtone-y-0",
+        "transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] starting:translate-y-4 starting:opacity-0",
+        "motion-reduce:translate-y-0 motion-reduce:starting:translate-y-0",
+        exiting && "translate-y-4 opacity-0 duration-200 ease-in motion-reduce:translate-y-0",
         isPreferences ? "sm:max-w-lg" : "sm:max-w-md",
       )}
     >
@@ -173,6 +175,8 @@ export function CookieBanner() {
               {copy.intro.link}
             </LocaleLink>
             {copy.intro.after}
+            {/* Garante guidelines 2021, 7.1: say what closing with the X does */}
+            <span className="mt-2 block text-xs leading-5 text-stone-500">{copy.closeNote}</span>
           </p>
         ) : (
           <div className="mt-3 space-y-3">

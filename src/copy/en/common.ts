@@ -35,7 +35,6 @@ export const common = {
     logoAlt: "Dentoku Dev logo",
   },
   footer: {
-    builtWith: "Built with",
     linkedinAria: "Dentoku Dev on LinkedIn",
     xAria: "Dentoku Dev on X",
     copyright: "© 2026 Dentoku Dev. All rights reserved.",
@@ -47,6 +46,7 @@ export const common = {
     title: "We value your privacy",
     preferencesTitle: "Cookie preferences",
     closeAria: "Reject non-essential cookies and close",
+    closeNote: "Closing this banner with the X rejects the non-essential cookies.",
     intro: {
       before:
         "We use strictly necessary cookies to run this site, and, only with your consent, analytics and marketing cookies. You can accept, reject, or choose per category. Read our",
@@ -129,7 +129,7 @@ export const common = {
   notFound: {
     eyebrow: "404",
     title: "Page not found",
-    body: "The page you requested does not exist in the EmailMagnet site architecture.",
+    body: "The page you requested does not exist.",
     home: "Return home",
   },
   newsletter: {

@@ -4,7 +4,8 @@
  * and stored only after an explicit choice — nothing non-essential runs before.
  */
 
-export const CONSENT_VERSION = 2;
+// 3: the AI chat left the site and the banner text changed (October 2026).
+export const CONSENT_VERSION = 3;
 
 const STORAGE_KEY = "cookie-consent";
 
@@ -101,4 +102,25 @@ export function subscribeConsent(onChange: () => void): () => void {
 export function openCookiePreferences(): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT));
+}
+
+/**
+ * Withdrawal must take real effect: besides stopping the scripts (the page
+ * reloads), the cookies they already wrote are removed. Google Analytics and
+ * Google Ads set theirs on the registrable domain, so each is cleared on the
+ * current host and on the parent domain.
+ */
+export function clearTrackingCookies(): void {
+  if (typeof document === "undefined") return;
+  const names = document.cookie
+    .split(";")
+    .map((part) => part.trim().split("=")[0])
+    .filter((name) => /^(_ga|_gid|_gat|_gcl)/.test(name));
+  const host = window.location.hostname;
+  const parent = host.split(".").slice(-2).join(".");
+  for (const name of names) {
+    for (const domain of ["", host, `.${parent}`]) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain ? `; domain=${domain}` : ""}`;
+    }
+  }
 }

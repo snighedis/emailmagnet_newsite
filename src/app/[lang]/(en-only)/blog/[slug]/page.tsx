@@ -292,7 +292,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <Link
                     key={item.slug}
                     href={`/blog/${item.slug}`}
-                    className="group shadow-soft hover:shadow-soft-lg flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition hover:-transtone-y-0.5"
+                    className="group shadow-soft hover:shadow-soft-lg flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition hover:-translate-y-0.5"
                   >
                     <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
                       {item.tags[0]}

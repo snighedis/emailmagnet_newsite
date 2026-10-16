@@ -278,9 +278,9 @@ export function Brief({
           className={cn(
             "fixed inset-x-0 bottom-0 z-40 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] lg:hidden",
             "transition-[translate,opacity] duration-250 ease-[cubic-bezier(0.16,1,0.3,1)]",
-            "starting:transtone-y-full starting:opacity-0",
-            barVisible ? "transtone-y-0 opacity-100" : "pointer-events-none transtone-y-full opacity-0",
-            "motion-reduce:transtone-y-0 motion-reduce:duration-150 motion-reduce:starting:transtone-y-0",
+            "starting:translate-y-full starting:opacity-0",
+            barVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
+            "motion-reduce:translate-y-0 motion-reduce:duration-150 motion-reduce:starting:translate-y-0",
           )}
         >
           <div className="shadow-soft-lg flex items-center justify-between gap-3 rounded-xl border border-stone-200 bg-white py-2 pr-2 pl-4">

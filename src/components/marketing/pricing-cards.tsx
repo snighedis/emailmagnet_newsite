@@ -46,7 +46,7 @@ export function PricingCards({ plans }: PricingCardsProps) {
             size="xl"
             className={cn(
               "mt-6 w-full font-semibold",
-              plan.featured ? "btn-sheen hover:-transtone-y-0.5" : "",
+              plan.featured ? "btn-sheen hover:-translate-y-0.5" : "",
             )}
             variant={plan.featured ? "default" : "outline"}
           >

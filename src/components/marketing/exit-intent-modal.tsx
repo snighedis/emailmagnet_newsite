@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { readConsent } from "@/lib/consent";
 import { loopsErrorText, subscribeToLoops } from "@/lib/loops";
-import { localizedHref } from "@/i18n/href";
 import { useCopy, useLocale } from "@/i18n/locale-context";
 import { LocaleLink } from "@/i18n/locale-link";
 import {
@@ -21,7 +20,10 @@ import {
 const LEAD_MAGNET_PATH = "/lead-magnets/cold-outreach-compliance-checklist.pdf";
 const ARM_DELAY_MS = 4000;
 // Pages where an exit-intent capture would be redundant or unwelcome.
-const EXCLUDED_PREFIXES = ["/contact", "/privacy", "/terms", "/cookies"];
+// The lead magnet is an EmailMagnet guide for the products' English audience:
+// it shows only on the English product pages and the blog, never on the Italian
+// consulting funnel (redesign ticket 09).
+const ALLOWED_PREFIXES = ["/emailmagnet", "/clickpilot-ai", "/volume-control-pro", "/countdown321", "/blog"];
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -41,10 +43,9 @@ export function ExitIntentModal() {
   const [message, setMessage] = useState("");
   const firedRef = useRef(false);
 
-  // Each excluded page is checked under its English URL and its Italian twin.
-  const excluded = EXCLUDED_PREFIXES.flatMap((prefix) => [prefix, localizedHref("it", prefix)]).some(
-    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
-  );
+  const excluded =
+    lang !== "en" ||
+    !ALLOWED_PREFIXES.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
 
   const trigger = useCallback(() => {
     if (firedRef.current) return;
@@ -110,7 +111,7 @@ export function ExitIntentModal() {
         <Dialog.Content
           aria-describedby={undefined}
           className={cn(
-            "fixed top-1/2 left-1/2 z-[70] w-[calc(100%-2rem)] max-w-md -transtone-x-1/2 -transtone-y-1/2",
+            "fixed top-1/2 left-1/2 z-[70] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2",
             "shadow-soft-lg rounded-2xl border border-stone-200 bg-white p-7",
             "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 motion-reduce:animate-none",
           )}

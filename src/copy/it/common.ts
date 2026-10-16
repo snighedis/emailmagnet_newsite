@@ -31,7 +31,6 @@ export const common: CommonCopy = {
     logoAlt: "Logo Dentoku Dev",
   },
   footer: {
-    builtWith: "Realizzato con",
     linkedinAria: "Dentoku Dev su LinkedIn",
     xAria: "Dentoku Dev su X",
     copyright: "© 2026 Dentoku Dev. Tutti i diritti riservati.",
@@ -43,6 +42,7 @@ export const common: CommonCopy = {
     title: "Rispettiamo la tua privacy",
     preferencesTitle: "Preferenze cookie",
     closeAria: "Rifiuta i cookie non essenziali e chiudi",
+    closeNote: "Chiudere questo banner con la X equivale a rifiutare i cookie non essenziali.",
     intro: {
       before:
         "Usiamo cookie strettamente necessari per far funzionare il sito e, solo con il tuo consenso, cookie di analisi e di marketing. Puoi accettare, rifiutare o scegliere per categoria. Leggi la nostra",

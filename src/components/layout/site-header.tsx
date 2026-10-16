@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { emailMagnetConfig, siteConfig } from "@/data/site";
-import { useCopy } from "@/i18n/locale-context";
+import { useCopy, useLocale } from "@/i18n/locale-context";
 import { LocaleLink } from "@/i18n/locale-link";
 import { cn } from "@/lib/utils";
 
@@ -54,7 +54,7 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
         onClick={onNavigate}
         className="bg-ink hover:bg-ink-soft focus-visible:ring-brand group rounded-2xl p-6 text-white outline-none transition focus-visible:ring-2"
       >
-        <div className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1 text-xs font-semibold text-teal-100">
+        <div className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1 text-xs font-semibold text-brand">
           <Star className="h-3 w-3" />
           {common.header.featuredBadge}
         </div>
@@ -73,7 +73,7 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
         <p className="text-ink-muted mt-3 text-sm leading-6">{featured.description}</p>
         <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
           {common.header.viewProduct}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:transtone-x-0.5" />
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
       </LocaleLink>
       <div>
@@ -123,7 +123,7 @@ function ResourcesPanel({ onNavigate }: { onNavigate: () => void }) {
         >
           <span className="flex items-center gap-1.5 font-semibold text-stone-950">
             {item.label}
-            <ArrowRight className="text-eyebrow h-4 w-4 opacity-0 transition group-hover:transtone-x-0.5 group-hover:opacity-100" />
+            <ArrowRight className="text-eyebrow h-4 w-4 opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
           </span>
           <p className="mt-1 text-sm leading-6 text-stone-600">
             {common.header.resourceDescriptions[item.href]}
@@ -136,6 +136,13 @@ function ResourcesPanel({ onNavigate }: { onNavigate: () => void }) {
 
 export function SiteHeader() {
   const { common, site } = useCopy();
+  const lang = useLocale();
+  // The English chrome serves the products' global audience: products first,
+  // resources, the EmailMagnet button. The Italian chrome serves the consulting
+  // funnel: the funnel links first, products last, no resources (ticket 09).
+  const productsFirst = lang === "en";
+  const showResources = lang === "en";
+  const showEmailMagnet = lang === "en";
   const [mobileOpen, setMobileOpen] = useState(false);
   // Lightdash-style: one full-width panel slides down from the header. A single
   // state drives both menus so hovering the other trigger switches panels.
@@ -179,27 +186,51 @@ export function SiteHeader() {
       openMenu === menu && "bg-stone-100 text-stone-950",
     );
 
+  const productsBox = (
+                <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
+                  <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
+                    {common.header.products}
+                  </p>
+                  <div className="mt-2 grid">
+                    {site.products.map((product) => (
+                      <LocaleLink
+                        key={product.href}
+                        href={product.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
+                      >
+                        {product.name}
+                      </LocaleLink>
+                    ))}
+                  </div>
+                </div>
+  );
+
+  const productsTrigger = (
+    <button
+      type="button"
+      aria-expanded={openMenu === "products"}
+      aria-controls="header-panel"
+      onMouseEnter={() => openNow("products")}
+      onMouseLeave={closeSoon}
+      onClick={() => (openMenu === "products" ? closeNow() : openNow("products"))}
+      className={triggerClass("products")}
+    >
+      {common.header.products}
+    </button>
+  );
+
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 border-b border-stone-200/70 bg-white/80 backdrop-blur-xl"
+      className="bg-surface-soft/85 sticky top-0 z-50 border-b border-stone-200/70 backdrop-blur-xl"
     >
       <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-18">
         {/* Apollo-style: logo and nav grouped on the left, CTAs on the right */}
         <div className="flex items-center gap-10">
           <Logo onClick={closeNow} />
           <nav className="hidden items-center gap-1 text-sm font-medium text-stone-700 lg:flex">
-            <button
-              type="button"
-              aria-expanded={openMenu === "products"}
-              aria-controls="header-panel"
-              onMouseEnter={() => openNow("products")}
-              onMouseLeave={closeSoon}
-              onClick={() => (openMenu === "products" ? closeNow() : openNow("products"))}
-              className={triggerClass("products")}
-            >
-              {common.header.products}
-            </button>
+            {productsFirst ? productsTrigger : null}
             {site.mainNav.map((item) => (
               <LocaleLink
                 key={item.href}
@@ -210,25 +241,30 @@ export function SiteHeader() {
                 {item.label}
               </LocaleLink>
             ))}
-            <button
-              type="button"
-              aria-expanded={openMenu === "resources"}
-              aria-controls="header-panel"
-              onMouseEnter={() => openNow("resources")}
-              onMouseLeave={closeSoon}
-              onClick={() => (openMenu === "resources" ? closeNow() : openNow("resources"))}
-              className={triggerClass("resources")}
-            >
-              {common.header.resources}
-            </button>
+            {productsFirst ? null : productsTrigger}
+            {showResources ? (
+              <button
+                type="button"
+                aria-expanded={openMenu === "resources"}
+                aria-controls="header-panel"
+                onMouseEnter={() => openNow("resources")}
+                onMouseLeave={closeSoon}
+                onClick={() => (openMenu === "resources" ? closeNow() : openNow("resources"))}
+                className={triggerClass("resources")}
+              >
+                {common.header.resources}
+              </button>
+            ) : null}
           </nav>
         </div>
         <div className="hidden items-center gap-2 lg:flex">
           <LanguageSwitcher />
-          <Button asChild variant="ghost">
-            <LocaleLink href={emailMagnetConfig.href}>{common.header.getEmailMagnet}</LocaleLink>
-          </Button>
-          <Button asChild className="btn-sheen font-semibold hover:-transtone-y-0.5">
+          {showEmailMagnet ? (
+            <Button asChild variant="ghost">
+              <LocaleLink href={emailMagnetConfig.href}>{common.header.getEmailMagnet}</LocaleLink>
+            </Button>
+          ) : null}
+          <Button asChild className="btn-sheen font-semibold hover:-translate-y-0.5">
             <LocaleLink href={siteConfig.secondaryCta.href}>{common.header.startProject}</LocaleLink>
           </Button>
         </div>
@@ -250,67 +286,59 @@ export function SiteHeader() {
                 <LanguageSwitcher className="border border-stone-200" />
               </div>
               <nav className="grid gap-5 text-base font-medium">
-                <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
-                  <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
-                    {common.header.products}
-                  </p>
-                  <div className="mt-2 grid">
-                    {site.products.map((product) => (
-                      <LocaleLink
-                        key={product.href}
-                        href={product.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
-                      >
-                        {product.name}
-                      </LocaleLink>
-                    ))}
+                {productsFirst ? productsBox : null}
+                {showResources ? (
+                  <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
+                    <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
+                      {common.header.resources}
+                    </p>
+                    <div className="mt-2 grid">
+                      {site.resourcesNav.map((item) => (
+                        <LocaleLink
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
+                        >
+                          {item.label}
+                        </LocaleLink>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
-                  <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
-                    {common.header.resources}
-                  </p>
-                  <div className="mt-2 grid">
-                    {site.resourcesNav.map((item) => (
-                      <LocaleLink
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
-                      >
-                        {item.label}
-                      </LocaleLink>
-                    ))}
-                  </div>
-                </div>
-                <div className="border-t border-stone-200 pt-4">
+                ) : null}
+                <div className={productsFirst ? "border-t border-stone-200 pt-4" : undefined}>
                   <div className="grid">
                     {site.mainNav.map((item) => (
                       <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
                         {item.label}
                       </LocaleLink>
                     ))}
-                    <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
-                      LinkedIn
-                    </LocaleLink>
-                    <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
-                      X/Twitter
-                    </LocaleLink>
                   </div>
+                </div>
+                {productsFirst ? null : productsBox}
+                {/* Social links last, in both languages */}
+                <div className="grid border-t border-stone-200 pt-4 text-sm">
+                  <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
+                    LinkedIn
+                  </LocaleLink>
+                  <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
+                    X/Twitter
+                  </LocaleLink>
                 </div>
               </nav>
               <div className="grid gap-3">
-                <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-transtone-y-0.5">
+                <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-translate-y-0.5">
                   <LocaleLink href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)} className="text-center">
                     {common.header.startProject}
                   </LocaleLink>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="w-full">
-                  <LocaleLink href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
-                    {common.header.getEmailMagnetFree}
-                  </LocaleLink>
-                </Button>
+                {showEmailMagnet ? (
+                  <Button asChild size="lg" variant="outline" className="w-full">
+                    <LocaleLink href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
+                      {common.header.getEmailMagnetFree}
+                    </LocaleLink>
+                  </Button>
+                ) : null}
               </div>
             </div>
           </SheetContent>

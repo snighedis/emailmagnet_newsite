@@ -38,8 +38,11 @@ const products = productPortfolio.map((product) => {
 });
 
 export const site: SiteCopy = {
+  // The Italian menu leads with the consulting funnel; "Prodotti" comes last and
+  // "Risorse" (English-only pages) stays in the footer (redesign tickets 03, 09).
   mainNav: [
-    { label: "Servizi", href: "/#services" },
+    { label: "Cosa automatizziamo", href: "/#services" },
+    { label: "Come lavoriamo", href: "/#process" },
     { label: "Chi siamo", href: "/about" },
   ],
   resourcesNav: [
