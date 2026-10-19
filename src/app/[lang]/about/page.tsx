@@ -65,7 +65,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
           <section className="mt-16">
             <h2 className="text-3xl font-semibold text-stone-950">{copy.portfolio.title}</h2>
             <p className="mt-4 max-w-3xl leading-8 text-stone-600">{copy.portfolio.description}</p>
-            <div className="mt-8 overflow-hidden rounded-xl border border-stone-200">
+            <div className="mt-8 overflow-x-auto rounded-xl border border-stone-200">
               <table className="w-full text-left text-sm">
                 <caption className="sr-only">{copy.portfolio.caption}</caption>
                 <thead className="bg-stone-50 text-stone-950">
