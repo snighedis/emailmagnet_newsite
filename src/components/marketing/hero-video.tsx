@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 type HeroVideoProps = {
@@ -17,6 +17,13 @@ type HeroVideoProps = {
    * autoplay muted, so sound is always opt-in. Silent renders omit them.
    */
   controls?: { play: string; pause: string; soundOn?: string; soundOff?: string };
+  /**
+   * Visible label for footage that is an AI Act deep fake (Art. 50(4)): a
+   * realistic person or scene made with AI. It stays on screen for the whole
+   * loop and over the poster, because an autoplaying loop is seen from any
+   * point, not from its start (Art. 50 guidelines, point 143).
+   */
+  aiDisclosure?: string;
   width?: number;
   height?: number;
 };
@@ -41,8 +48,10 @@ export function HeroVideo({
   width = 1280,
   height = 800,
   controls,
+  aiDisclosure,
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const disclosureId = useId();
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
 
@@ -99,6 +108,7 @@ export function HeroVideo({
         style={{ aspectRatio: `${width} / ${height}` }}
         className="h-auto w-full"
         aria-label={label}
+        aria-describedby={aiDisclosure ? disclosureId : undefined}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       >
@@ -106,6 +116,14 @@ export function HeroVideo({
             SMALLER than the vp9 webm, which also hit decode errors in testing. */}
         <source src={src} type="video/mp4" />
       </video>
+      {aiDisclosure ? (
+        <p
+          id={disclosureId}
+          className="bg-ink/75 pointer-events-none absolute top-3 left-3 rounded-full px-3 py-1.5 text-xs font-medium text-white backdrop-blur"
+        >
+          {aiDisclosure}
+        </p>
+      ) : null}
       {controls ? (
         <div className="absolute right-3 bottom-3 flex gap-2">
           <button

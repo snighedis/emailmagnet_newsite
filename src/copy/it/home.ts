@@ -27,6 +27,7 @@ export const home: HomeCopy = {
     label:
       "Video in loop di 29 secondi: il titolare di un agriturismo chiede di rispondere agli ospiti mentre fa altro; Dentoku Dev lo progetta, collega WhatsApp e l'AI e mostra Kallmy in anteprima",
     controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
+    aiDisclosure: "Riprese generate con l’AI",
   },
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "su", outOfFive: "su 5" } },
   automate: {

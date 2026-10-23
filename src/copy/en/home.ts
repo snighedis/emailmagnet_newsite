@@ -25,6 +25,8 @@ export const home = {
     label:
       "29-second loop: a farm-stay owner asks to answer guests while busy with something else; Dentoku Dev plans it, connects WhatsApp and AI, and shows a sneak peek of Kallmy",
     controls: { play: "Play video", pause: "Pause video" },
+    // AI Act Art. 50(4): the opening footage (the farm-stay owner) is AI-generated.
+    aiDisclosure: "AI-generated footage",
   },
   trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "on", outOfFive: "out of 5" } },
   // What we automate: the four repetitive jobs the brief asks about. Capabilities,

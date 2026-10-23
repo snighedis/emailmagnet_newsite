@@ -164,12 +164,20 @@ any, record-keeping is expected at this size.
 
 Recording these explicitly so no effort is wasted on them.
 
-- **The fal.ai imagery in the hero video is not a deep fake.** `scripts/generate-hero-assets.mjs`
-  generates only soft-focus abstract backdrops and geometry, with the negative prompt "no readable
-  text, no letters, no words, no logos, no watermarks, **no people**". Nothing depicts a real
-  person, object, place or event, so it does not meet the deep-fake definition in Article 50(4).
-  The project rule that a model must never render product UI is doing real work here: every
-  foreground element in that video is a genuine screen recording or a real asset.
+- **Superseded on 23 October 2026: the homepage video now needs a deep-fake label.** This
+  paragraph cleared the July hero video, whose fal.ai imagery (`scripts/generate-hero-assets.mjs`)
+  was only soft-focus abstract backdrops with the negative prompt "no people". The video that
+  replaced it on 6 October (`studio-hero-{en,it}.mp4`, source `video/src/StudioHero.tsx`) opens
+  with photorealistic fal.ai footage of a farm-stay owner at a laptop. The Commission's Article 50
+  guidelines (C(2026) 5054, points 113-114) count "realistic AI-generated human avatars or
+  personas" as persons, need only that the subject "can plausibly exist", and list fully
+  AI-generated actors and a synthetic avatar in a promotional video among deep fakes. So the
+  footage is treated as a deep fake under Article 50(4), which applies since 2 August 2026. The
+  video now carries a visible label ("AI-generated footage" / "Riprese generate con l’AI") for the
+  whole loop and over the poster, tied to the video for screen readers (`HeroVideo`,
+  `aiDisclosure`): an autoplaying loop is seen from any point, so a label at the start alone would
+  not do (point 143). The UI cards, products and data in the video are real. Any future
+  AI-generated image or footage of realistic people, places or services gets the same label.
 - **The blog does not trigger the Article 50(4) text obligation.** No post is AI-generated, and in
   any case the posts have human review and editorial responsibility, which is the exemption.
 - **Chatbot consent gating is sound.** Nothing loads before an explicit consent choice; the widget
