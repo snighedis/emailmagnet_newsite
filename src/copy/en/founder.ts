@@ -14,7 +14,7 @@ export const founder = {
   shortAnswer: {
     title: "Short answer",
     /** `{location}`, `{name}` and `{role}` are replaced by the page. */
-    body: "Dentoku Dev is a founder-led software studio based in {location}, run by {name}, {role}. He designs, builds, ships, and supports every product in the portfolio. Focused tools for browser, ecommerce, AI writing, and practical business workflows.",
+    body: "Dentoku Dev is a founder-led software studio based in {location}, run by {name}, {role}. He designs, builds, ships, and supports every product in the portfolio, with collaborators engaged per project when the work needs them. Focused tools for browser, ecommerce, AI writing, and practical business workflows.",
   },
   proofPoints: [
     {

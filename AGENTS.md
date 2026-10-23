@@ -46,7 +46,8 @@ Italian copy module. Pages left in `(en-only)` are a 404 under `/it` by construc
   (`src/copy/en/*` exports `typeof`), so a missing or extra key fails `tsc`.
 - **Claims are identical in every language** (see the product-claims rule above and
   CONTEXT.md, "Claim"). Italian may change the *argument* only on the consulting funnel
-  (home, contact, "Working with us" FAQ); everywhere else it is a faithful translation.
+  (home, contact, "Working with us" FAQ, About, Founder); everywhere else it is a faithful
+  translation.
 - **Italian copy is never pushed without the owner's read.**
 - **Legal pages:** the English version prevails and the Italian pages carry a "pending legal
   review" notice. Every change to `src/copy/en/legal/*.tsx` must be mirrored in

@@ -19,7 +19,7 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
   const copy = getPageCopy(lang).faq;
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-surface-soft py-20">
       <JsonLd data={buildFaqSchema(copy.items, lang)} />
       <JsonLd
         data={buildBreadcrumbSchema(
@@ -39,12 +39,12 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
             title={copy.title}
             description={copy.description}
           />
-          <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-stone-950">{copy.shortAnswer.title}</h2>
+          <div className="border-brand mt-8 border-l-2 bg-brand-soft/60 py-5 pr-5 pl-6">
+            <h2 className="type-label text-ink">{copy.shortAnswer.title}</h2>
             <p className="mt-2 leading-7 text-stone-700">{copy.shortAnswer.body}</p>
           </div>
           <nav aria-label={copy.related.ariaLabel} className="mt-8">
-            <h2 className="text-lg font-semibold text-stone-950">{copy.related.title}</h2>
+            <h2 className="type-label text-ink">{copy.related.title}</h2>
             <ul className="mt-3 space-y-2 text-sm text-stone-600">
               {copy.related.links.map((link) => (
                 <li key={link.href}>
@@ -56,7 +56,7 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
             </ul>
           </nav>
         </div>
-        <FaqList items={copy.items} />
+        <FaqList items={copy.items} collapsible />
       </div>
     </section>
   );

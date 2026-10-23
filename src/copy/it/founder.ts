@@ -1,45 +1,50 @@
 import type { FounderCopy } from "@/copy/en/founder";
 
+/**
+ * Italian Founder page. Part of the consulting funnel (CONTEXT.md, "Transcreation"):
+ * same keys and claims as English, argument rewritten for a consulting client. The
+ * role stays in English, as on LinkedIn (CONTEXT.md, "Founder role").
+ */
 export const founder: FounderCopy = {
   meta: {
-    title: "Dentoku Dev, uno studio guidato dal fondatore",
+    title: "Nicola Orlandi, fondatore di Dentoku Dev",
     description:
-      "Scopri Dentoku Dev, lo studio guidato dal fondatore dietro EmailMagnet, ClickPilot AI, Countdown321 e strumenti software mirati.",
+      "Nicola Orlandi, fondatore di Dentoku Dev a Milano: progetta e costruisce software su misura che toglie il lavoro ripetitivo alle piccole imprese, e misura il risparmio.",
   },
   breadcrumb: "Fondatore",
   eyebrow: "Fondatore",
-  role: "CEO e fondatore",
-  location: "Milano, Italia",
+  role: "Founder & AI Automation Specialist",
+  location: "Milano",
   description:
-    "Nicola Orlandi è CEO e fondatore di Dentoku Dev, uno studio software che realizza estensioni Chrome, app Shopify, strumenti di scrittura AI e software di produttività mirato.",
+    "Progetta e costruisce il software su misura che toglie il lavoro ripetitivo alle piccole imprese, e misura con i clienti quanto fa risparmiare.",
   shortAnswer: {
     title: "In breve",
-    body: "Dentoku Dev è uno studio software guidato dal fondatore, con sede a {location}, diretto da {name}, {role}. Progetta, costruisce, rilascia e supporta ogni prodotto del portfolio, con collaboratori a progetto quando il lavoro lo richiede. Strumenti mirati per browser, ecommerce, scrittura AI e flussi di lavoro aziendali pratici.",
+    body: "Dentoku Dev è uno studio software con sede a {location}, guidato da {name}, {role}. Ogni progetto lo segue lui, dal problema al rilascio, con collaboratori scelti per progetto quando il lavoro lo richiede.",
   },
   proofPoints: [
     {
-      title: "Titolarità dei prodotti",
+      title: "Dal problema al rilascio",
       description:
-        "Pagine prodotto, documentazione, prezzi e percorsi di supporto di Dentoku Dev sono mantenuti sotto un'unica entità di studio, non su pagine anonime monouso.",
+        "La call iniziale, la proposta scritta, la costruzione e il rilascio passano dalla stessa persona. Non spieghi due volte il tuo lavoro e nessuno si perde nei passaggi di mano.",
     },
     {
-      title: "Focus sui flussi nel browser",
+      title: "Il risparmio, misurato",
       description:
-        "EmailMagnet, ClickPilot AI e Volume Control PRO partono dalla stessa idea operativa: ridurre il lavoro ripetitivo nel browser con strumenti mirati e comprensibili.",
+        "Ogni proposta parte dalle ore al mese che il lavoro ripetitivo ti costa oggi, e dopo il rilascio le ricontiamo insieme. Nessuna promessa di percentuali: un numero tuo, prima e dopo.",
     },
     {
-      title: "Contenuti di prodotto responsabili",
+      title: "A distanza, in italiano",
       description:
-        "Documentazione e blog coprono uso pratico, flussi di esportazione, aspetti di privacy e gestione responsabile dei contatti.",
+        "Lo studio è a Milano e lavora con clienti in tutta Italia in videochiamata. Il software lo provi tu, nel tuo browser o nei tuoi strumenti, dalle prime settimane.",
     },
   ],
   products: {
-    title: "Prodotti mantenuti da Dentoku Dev",
+    title: "Il software che mantiene",
     description:
-      "Il portfolio è volutamente fatto di prodotti piccoli e specifici. Ogni strumento ha una pagina prodotto, un percorso di supporto e una documentazione dedicati, così gli utenti capiscono cosa fa prima di installarlo o acquistarlo.",
+      "Oltre ai progetti per i clienti, pubblica e mantiene quattro prodotti propri sugli store: strumenti semplici e specifici, con utenti e recensioni pubbliche.",
   },
   contact: {
-    title: "Contatti e supporto",
-    body: "Il supporto ai prodotti e le domande commerciali passano dal supporto Dentoku Dev, così ogni richiesta può essere collegata al prodotto giusto.",
+    title: "Scrivigli direttamente",
+    body: "Le richieste per un nuovo progetto e il supporto ai prodotti arrivano allo stesso indirizzo.",
   },
 };

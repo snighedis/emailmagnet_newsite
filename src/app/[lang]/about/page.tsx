@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Card, CardContent } from "@/components/ui/card";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { SectionHeading } from "@/components/marketing/section-heading";
+import { Eyebrow } from "@/components/marketing/eyebrow";
+import { Section } from "@/components/marketing/section";
 import { getCopy, getPageCopy } from "@/copy";
 import { founderConfig } from "@/data/site";
 import { LocaleLink } from "@/i18n/locale-link";
@@ -32,16 +32,14 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
         )}
       />
       <JsonLd data={buildItemListSchema(copy.itemListName, products)} />
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <SectionHeading
-            as="h1"
-            eyebrow={copy.eyebrow}
-            title={copy.title}
-            description={copy.description}
-          />
-          <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-stone-950">{copy.shortAnswer.title}</h2>
+      <Section variant="soft" containerClassName="max-w-5xl">
+          <div className="max-w-3xl space-y-5">
+            <Eyebrow index="01">{copy.eyebrow}</Eyebrow>
+            <h1 className="type-h1 text-ink">{copy.title}</h1>
+            <p className="type-lead">{copy.description}</p>
+          </div>
+          <div className="border-brand mt-10 border-l-2 bg-brand-soft/60 py-5 pr-5 pl-6">
+            <h2 className="type-label text-ink">{copy.shortAnswer.title}</h2>
             <p className="mt-2 leading-8 text-stone-700">{copy.shortAnswer.body}</p>
             <p className="mt-4 leading-8 text-stone-700">
               {copy.shortAnswer.founder.before}{" "}
@@ -51,21 +49,20 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
               {copy.shortAnswer.founder.after}
             </p>
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {copy.cards.map((card) => (
-              <Card key={card.title} className="rounded-xl border-stone-200 shadow-sm">
-                <CardContent className="p-6">
-                  <h2 className="text-xl font-semibold text-stone-950">{card.title}</h2>
-                  <p className="mt-3 leading-7 text-stone-600">{card.body}</p>
-                </CardContent>
-              </Card>
+          <ol className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-stone-200 bg-stone-200 md:grid-cols-2">
+            {copy.cards.map((card, index) => (
+              <li key={card.title} className="bg-white p-6 md:p-8">
+                <p className="font-mono text-xs text-stone-500">0{index + 1}</p>
+                <h2 className="type-h3 text-ink mt-3">{card.title}</h2>
+                <p className="mt-3 leading-7 text-stone-600">{card.body}</p>
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <section className="mt-16">
-            <h2 className="text-3xl font-semibold text-stone-950">{copy.portfolio.title}</h2>
+          <section className="mt-20 border-t border-stone-200 pt-16">
+            <h2 className="type-h2 text-ink">{copy.portfolio.title}</h2>
             <p className="mt-4 max-w-3xl leading-8 text-stone-600">{copy.portfolio.description}</p>
-            <div className="mt-8 overflow-x-auto rounded-xl border border-stone-200">
+            <div className="mt-8 overflow-x-auto rounded-2xl border border-stone-200 bg-white">
               <table className="w-full text-left text-sm">
                 <caption className="sr-only">{copy.portfolio.caption}</caption>
                 <thead className="bg-stone-50 text-stone-950">
@@ -91,8 +88,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
               </table>
             </div>
           </section>
-        </div>
-      </section>
+      </Section>
     </>
   );
 }

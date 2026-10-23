@@ -226,7 +226,7 @@ describe("Dentoku Dev structured data", () => {
     expect(buildPersonSchema()).toMatchObject({
       "@type": "Person",
       name: "Nicola Orlandi",
-      jobTitle: "CEO & Founder at Dentoku Dev",
+      jobTitle: "Founder & AI Automation Specialist at Dentoku Dev",
       url: "https://www.dentokudev.com/founder",
       worksFor: expect.objectContaining({ name: "Dentoku Dev" }),
     });

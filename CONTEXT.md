@@ -45,6 +45,10 @@ precise term.
 - **Studio** — Dentoku Dev is founder-led: Nicola Orlandi plus collaborators engaged per
   project when the work needs them. Not a stable multi-person team. "Small team" is accurate;
   copy must not imply permanent staff, departments, or account managers.
+- **Founder role** — "Founder & AI Automation Specialist" (in Italian the role stays in
+  English, as on LinkedIn). The founder designs and builds the client's software from the
+  problem to the release; copy describes the role by what he does and never by a trade title
+  such as "developer".
 - **Source handover** — on final payment the client owns the code written for their project,
   with documentation for any other developer to continue it. The studio keeps its pre-existing
   reusable components and grants the client a perpetual licence to use them. This is the
@@ -117,5 +121,8 @@ precise term.
   FAQ, docs, chrome, legal), because those audiences are global.
 - **Transcreation** — Italian text that keeps the claims but rewrites the argument for the
   Italian market. Allowed only on the consulting funnel: homepage, contact page, the
-  "Working with us" FAQ. The consulting reader in Italy is a PMI owner exploring AI, not the
-  North American buyer the English argument was written for.
+  "Working with us" FAQ, the About page and the Founder page (the last two since October
+  2026: in Italian they present the studio and the founder to a consulting client, while in
+  English they stay oriented to the products' global audience). The consulting reader in
+  Italy is a small-business owner exploring AI, not the North American buyer the English
+  argument was written for.

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BadgeCheck, Code2, ExternalLink, Layers3, MailCheck } from "@/components/ui/icons";
 import { Card, CardContent } from "@/components/ui/card";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { SectionHeading } from "@/components/marketing/section-heading";
+import { Section } from "@/components/marketing/section";
 import { Eyebrow } from "@/components/marketing/eyebrow";
 import { getCopy, getPageCopy } from "@/copy";
 import { founderConfig, siteConfig } from "@/data/site";
@@ -42,16 +42,15 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
           lang,
         )}
       />
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-5xl px-4">
-          <SectionHeading
-            as="h1"
-            eyebrow={copy.eyebrow}
-            title={founderConfig.name}
-            description={copy.description}
-          />
-          <div className="mt-10 rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-stone-950">{copy.shortAnswer.title}</h2>
+      <Section variant="soft" containerClassName="max-w-5xl">
+          <div className="max-w-3xl space-y-5">
+            <Eyebrow index="01">{copy.eyebrow}</Eyebrow>
+            <h1 className="type-display text-ink">{founderConfig.name}</h1>
+            <p className="type-label text-stone-600">{copy.role}</p>
+            <p className="type-lead">{copy.description}</p>
+          </div>
+          <div className="border-brand mt-10 border-l-2 bg-brand-soft/60 py-5 pr-5 pl-6">
+            <h2 className="type-label text-ink">{copy.shortAnswer.title}</h2>
             <p className="mt-2 leading-8 text-stone-700">{shortAnswer}</p>
           </div>
 
@@ -59,12 +58,12 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
             {copy.proofPoints.map((point, index) => {
               const Icon = proofIcons[index] ?? BadgeCheck;
               return (
-                <Card key={point.title} className="rounded-xl border-stone-200 shadow-sm">
+                <Card key={point.title} className="rounded-2xl border-stone-200 shadow-none">
                   <CardContent className="p-6">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-md bg-teal-50 text-teal-700">
+                    <div className="text-brand flex h-11 w-11 items-center justify-center rounded-md bg-brand-soft">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h2 className="mt-5 text-xl font-semibold text-stone-950">{point.title}</h2>
+                    <h2 className="type-h3 text-ink mt-5">{point.title}</h2>
                     <p className="mt-3 leading-7 text-stone-600">{point.description}</p>
                   </CardContent>
                 </Card>
@@ -72,29 +71,29 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
             })}
           </div>
 
-          <section className="mt-16">
-            <h2 className="text-3xl font-semibold text-stone-950">{copy.products.title}</h2>
+          <section className="mt-20 border-t border-stone-200 pt-16">
+            <h2 className="type-h2 text-ink">{copy.products.title}</h2>
             <p className="mt-4 max-w-3xl leading-8 text-stone-600">{copy.products.description}</p>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {products.map((product) => (
                 <LocaleLink
                   key={product.href}
                   href={product.href}
-                  className="rounded-xl border border-stone-200 p-5 transition hover:border-brand hover:bg-stone-50"
+                  className="rounded-2xl border border-stone-200 bg-white p-5 transition hover:border-stone-300 active:scale-[0.99] motion-reduce:transition-none"
                 >
-                  <Eyebrow>{product.category}</Eyebrow>
-                  <h3 className="mt-2 text-xl font-semibold text-stone-950">{product.name}</h3>
+                  <p className="type-label text-stone-500">{product.category}</p>
+                  <h3 className="type-h3 text-ink mt-2">{product.name}</h3>
                   <p className="mt-3 leading-7 text-stone-600">{product.description}</p>
                 </LocaleLink>
               ))}
             </div>
           </section>
 
-          <section className="mt-16 rounded-xl border border-stone-200 bg-stone-50 p-6">
+          <section className="mt-16 rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
             <div className="flex items-start gap-3">
-              <MailCheck className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
+              <MailCheck className="text-brand mt-1 h-5 w-5 shrink-0" />
               <div>
-                <h2 className="text-xl font-semibold text-stone-950">{copy.contact.title}</h2>
+                <h2 className="type-h3 text-ink">{copy.contact.title}</h2>
                 <p className="mt-3 leading-7 text-stone-600">{copy.contact.body}</p>
                 <Link
                   href={`mailto:${siteConfig.supportEmail}`}
@@ -106,8 +105,7 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
               </div>
             </div>
           </section>
-        </div>
-      </section>
+      </Section>
     </>
   );
 }
