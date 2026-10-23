@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { BrandLockup } from "@/components/brand/logo";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { emailMagnetConfig, siteConfig } from "@/data/site";
 import { useCopy, useLocale } from "@/i18n/locale-context";
@@ -24,20 +25,9 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
     <LocaleLink
       href="/"
       onClick={onClick}
-      className="flex items-center gap-2.5 font-semibold text-stone-950 lg:gap-2"
+      className="flex items-center text-[1.2rem] text-stone-950 lg:text-[1.35rem]"
     >
-      <Image
-        src={siteConfig.logo}
-        alt={common.header.logoAlt}
-        width={36}
-        height={36}
-        className="h-10 w-10 object-contain lg:h-9 lg:w-9"
-        priority
-        unoptimized
-      />
-      <span className="font-brand uppercase text-[1.2rem] leading-none tracking-normal lg:text-[1.35rem]">
-        Dentoku Dev
-      </span>
+      <BrandLockup label={common.header.logoAlt} markClassName="w-[1.55em] lg:w-[1.25em]" />
     </LocaleLink>
   );
 }

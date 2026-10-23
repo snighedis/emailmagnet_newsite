@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { BrandLockup } from "@/components/brand/logo";
 import type { ChromeCopy } from "@/copy";
 import { siteConfig } from "@/data/site";
 import { LocaleLink } from "@/i18n/locale-link";
@@ -33,16 +33,8 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 md:grid-cols-[1.5fr_repeat(4,1fr)]">
           <div>
-            <LocaleLink href="/" className="flex items-center gap-2 font-semibold text-stone-950">
-              <Image
-                src={siteConfig.logo}
-                alt={common.footer.logoAlt}
-                width={36}
-                height={36}
-                className="h-9 w-9 object-contain"
-                unoptimized
-              />
-              <span className="font-brand uppercase text-lg tracking-normal">Dentoku Dev</span>
+            <LocaleLink href="/" className="inline-flex items-center text-lg text-stone-950">
+              <BrandLockup label={common.footer.logoAlt} />
             </LocaleLink>
             <p className="mt-1 max-w-sm text-sm leading-6 text-stone-600">{site.footerTagline}</p>
             <div className="mt-6 flex items-center gap-2">

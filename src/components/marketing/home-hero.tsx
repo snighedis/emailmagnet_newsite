@@ -17,7 +17,7 @@ type HomeHeroProps = {
  */
 export function HomeHero({ copy, lang }: HomeHeroProps) {
   return (
-    <div className="space-y-10 md:space-y-14">
+    <div data-home-hero className="space-y-10 md:space-y-14">
       <div className="mx-auto max-w-3xl space-y-5 text-center">
         <Eyebrow className="text-[12px] font-medium">{copy.hero.eyebrow}</Eyebrow>
         <h1 className="type-display text-ink">

@@ -60,7 +60,7 @@ export const siteConfig = {
   name: "Dentoku Dev",
   companyName: "Dentoku Dev",
   url: "https://www.dentokudev.com",
-  logo: "/brand/dentoku-dev-logo-128x128.png",
+  logo: "/brand/dentoku-dev-logo-256.png",
   socialImage: "/brand/dentoku-social-preview.png",
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",

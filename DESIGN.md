@@ -12,8 +12,8 @@ custom cursors, no decorative motion.
 ## Colour
 
 - **One orange, `#f05423` (`--brand`).** It is a field under ink text (buttons), display
-  text from 24px up (the hero accent, the brief's number), icons, rules, the focus ring,
-  the symbol, and the label colour on ink sections. It is never small text and never
+  text from 24px up (the hero accent, the brief's number), icons, rules, the focus ring
+  and the label colour on ink sections. It is never small text and never
   sits behind white text: white on it is 3.50:1, it on the ground 3.34:1, it on ink 4.68:1.
   Hover states derive from it (`--brand-cta-hover`), they are not a second orange.
 - **Ink, `--ink` (navy ≈ #11212f).** Text, headings, the one dark section per page,
@@ -31,7 +31,10 @@ custom cursors, no decorative motion.
 - **Inter** for text: `.type-lead` for introductions, 16px/1.7 for reading.
 - **Mono** (`.type-label`) for section labels with numbers ("01", "02"), formulas and
   small data. The orange in a label is a hairline rule, not the text.
-- **Wordmark:** DENTOKU DEV in Fira Sans Condensed capitals, symbol in orange.
+- **Logo:** the original two-layer symbol in its greys (#999 behind, #4d4d4d in front),
+  never orange, beside DENTOKU DEV in Fira Sans Condensed SemiBold capitals. Both live in
+  `src/components/brand/logo.tsx`: the symbol as the original PNG (no redrawn vector, it
+  distorts the shape), the wordmark as outlines so no web font is loaded for it.
 
 ## Components
 

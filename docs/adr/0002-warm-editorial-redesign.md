@@ -31,9 +31,11 @@ grammar only (no copy, assets, fonts or layouts are reused):
   the business options are adapted to that market.
 - **Type:** Newsreader for headings, Inter for text, monospace for labels and numbers.
   Hierarchy comes from size more than weight.
-- **Colour:** one accent only, orange `#f05423`, for the symbol, accents and buttons, on a
+- **Colour:** one accent only, orange `#f05423`, for accents and buttons, on a
   warm off-white ground. Navy is ink (text, one dark section), not a second brand colour.
-- **Wordmark:** "DENTOKU DEV" in Fira Sans Condensed capitals, with the symbol in orange.
+- **Wordmark:** "DENTOKU DEV" in Fira Sans Condensed capitals, beside the original symbol in
+  its greys. (Amended October 2026: the orange symbol was tried and rejected by the owner,
+  and so was a redrawn vector symbol, which distorted the shape.)
   The social card and every other use align to it.
 - **Images:** real photos of the founder and the work, plus real product screenshots. Until
   the shoot happens the redesign ships with the current 29-second hero film.
