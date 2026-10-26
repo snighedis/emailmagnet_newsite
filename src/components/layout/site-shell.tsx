@@ -35,8 +35,13 @@ export function SiteShell({ lang, children }: { lang: Locale; children: React.Re
       // scroll to top.
       data-scroll-behavior="smooth"
       className={`${fontClassNames} h-full`}
+      // The inline script below adds `js` to this element before hydration.
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col antialiased">
+        {/* Marks the document as scripted before first paint, so scroll reveals can
+            start hidden (.js [data-reveal]) and nothing stays hidden without JS. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <JsonLd data={buildOrganizationSchema()} />
         <JsonLd data={buildWebsiteSchema(lang, copy.site.description)} />
         <LocaleProvider lang={lang} copy={copy}>

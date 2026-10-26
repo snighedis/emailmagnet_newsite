@@ -40,6 +40,8 @@ export const common = {
     copyright: "© 2026 Dentoku Dev. All rights reserved.",
     cookiePreferences: "Cookie preferences",
     logoAlt: "Dentoku Dev logo",
+    contactLead: "Write to us. The person who replies writes the code.",
+    backToTop: "Back to top",
   },
   cookieBanner: {
     dialogAria: "Cookie consent",

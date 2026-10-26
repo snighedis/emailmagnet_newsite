@@ -504,35 +504,34 @@ export const socialProof = {
 // ---------------------------------------------------------------------------
 
 export const homeHero = {
-  eyebrow: "Not an agency. A Milan software studio.",
-  titleLead: "Repetitive work,",
-  titleAccent: "done by software.",
-  subhead:
-    "A Milan software studio. Four products you can install today, and custom software that removes repetitive work and measures the saving.",
-  primaryCta: { label: "Start your project", href: "/contact" },
-  secondaryCta: { label: "See what we build", href: "/#services" },
-  trustNote: "4 products live on public stores",
+  // Two authored lines: the headline rises line by line (masked reveal).
+  title: ["Repetitive work,", "done by software."],
+  standfirst:
+    "A Milan software studio. Four products you can install today, and custom software for small businesses that measures the hours it saves.",
+  primaryCta: { label: "Count your hours", href: "#brief" },
+  secondaryCta: { label: "Write to us", href: "/contact" },
 };
 
-// "How we work": direct with the builder, no agency layers.
+// "How we work": direct with the builder, no agency layers. Each stage is one
+// line of display type that starts with its order word, so no numbers are shown.
 export const howWeWork = [
   {
-    title: "Scope",
+    title: "First, we count the hours.",
     description:
       "A short call and a written proposal: what we build, what it costs, when it ships, and how many hours a month the problem costs you today. No obligation until you approve it.",
   },
   {
-    title: "Ship",
+    title: "Then we build.",
     description:
       "We design and build in short cycles, with working software you can try from the first weeks.",
   },
   {
-    title: "Support",
+    title: "After launch, we stay.",
     description:
       "After launch you keep a direct line to the people who wrote the code. No handoffs, no ticket queues.",
   },
   {
-    title: "Measure",
+    title: "Finally, we count again.",
     description:
       "After release we count the monthly hours again, together. It is the number the proposal started from, and it says whether the software did what it was meant to.",
   },

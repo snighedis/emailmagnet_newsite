@@ -213,9 +213,9 @@ export function SiteHeader() {
   return (
     <header
       ref={headerRef}
-      className="bg-surface-soft/85 sticky top-0 z-50 border-b border-stone-200/70 backdrop-blur-xl"
+      className="bg-surface-soft/90 sticky top-0 z-50 backdrop-blur-xl"
     >
-      <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-18">
+      <div className="page-x relative flex h-16 items-center justify-between lg:h-18">
         {/* Apollo-style: logo and nav grouped on the left, CTAs on the right */}
         <div className="flex items-center gap-10">
           <Logo onClick={closeNow} />
@@ -343,7 +343,7 @@ export function SiteHeader() {
           onMouseLeave={closeSoon}
           className="animate-in fade-in slide-in-from-top-2 absolute inset-x-0 top-full hidden border-b border-stone-200/70 bg-white shadow-soft-lg duration-150 lg:block"
         >
-          <div className="mx-auto max-w-7xl px-4 py-8">
+          <div className="page-x py-8">
             {openMenu === "products" ? (
               <ProductsPanel onNavigate={closeNow} />
             ) : (

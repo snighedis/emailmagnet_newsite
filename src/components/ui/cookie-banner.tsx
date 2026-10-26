@@ -50,7 +50,7 @@ function Toggle({
     >
       <span
         className={cn(
-          "inline-block h-5 w-5 transform rounded-full bg-white shadow transition",
+          "inline-block h-5 w-5 transform rounded-full bg-white transition",
           checked ? "translate-x-[22px]" : "translate-x-0.5",
         )}
       />
@@ -141,7 +141,8 @@ export function CookieBanner() {
       aria-hidden={exiting || undefined}
       inert={exiting || undefined}
       className={cn(
-        "fixed bottom-4 left-4 z-50 w-[calc(100%-2rem)]",
+        // Phone: a compact bar on the bottom edge; wider screens: a card in the corner.
+        "fixed inset-x-0 bottom-0 z-50 w-full sm:inset-x-auto sm:bottom-4 sm:left-4 sm:w-[calc(100%-2rem)]",
         // Enters from the bottom edge it is anchored to, and leaves the same way.
         "transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] starting:translate-y-4 starting:opacity-0",
         "motion-reduce:translate-y-0 motion-reduce:starting:translate-y-0",
@@ -152,9 +153,9 @@ export function CookieBanner() {
       {/* Re-keyed when switching to the preferences, so the new content fades in. */}
       <div
         key={isPreferences ? "preferences" : "intro"}
-        className="shadow-soft-lg animate-in fade-in-0 rounded-xl border border-stone-200 bg-white p-5 duration-150"
+        className="shadow-soft-lg animate-in fade-in-0 bg-white px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))] duration-150 sm:p-5"
       >
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center justify-between gap-3">
           <h2 className="text-base font-semibold text-stone-950">
             {isPreferences ? copy.preferencesTitle : copy.title}
           </h2>
@@ -169,14 +170,21 @@ export function CookieBanner() {
         </div>
 
         {!isPreferences ? (
-          <p className="mt-2 text-sm leading-6 text-stone-600">
+          <p className="text-[14px] leading-[1.45] text-stone-700">
             {copy.intro.before}{" "}
-            <LocaleLink href="/cookies" className="text-eyebrow font-medium hover:underline">
+            <LocaleLink href="/cookies" className="text-link text-ink font-medium">
               {copy.intro.link}
             </LocaleLink>
-            {copy.intro.after}
+            {copy.intro.after}{" "}
             {/* Garante guidelines 2021, 7.1: say what closing with the X does */}
-            <span className="mt-2 block text-xs leading-5 text-stone-500">{copy.closeNote}</span>
+            {copy.closeNote}{" "}
+            <button
+              type="button"
+              onClick={openPanel}
+              className="text-link text-ink inline font-medium"
+            >
+              {copy.managePreferences}
+            </button>
           </p>
         ) : (
           <div className="mt-3 space-y-3">
@@ -191,11 +199,11 @@ export function CookieBanner() {
               return (
                 <div
                   key={category.key}
-                  className="flex items-start justify-between gap-4 rounded-lg border border-stone-200 bg-stone-50 p-3"
+                  className="bg-surface-muted flex items-start justify-between gap-4 p-3"
                 >
                   <div>
                     <p className="text-sm font-semibold text-stone-900">{text.title}</p>
-                    <p className="mt-0.5 text-xs leading-5 text-stone-600">
+                    <p className="mt-0.5 text-[13px] leading-5 text-stone-600">
                       {text.description}
                     </p>
                   </div>
@@ -214,7 +222,7 @@ export function CookieBanner() {
         )}
 
         {/* Equal-prominence Accept / Reject (no dark patterns). */}
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-wrap gap-2 sm:mt-4">
           <Button
             onClick={rejectAll}
             size="lg"
@@ -237,15 +245,6 @@ export function CookieBanner() {
           </Button>
         </div>
 
-        {!isPreferences ? (
-          <button
-            type="button"
-            onClick={openPanel}
-            className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-stone-600 underline underline-offset-4 hover:text-stone-900"
-          >
-            {copy.managePreferences}
-          </button>
-        ) : null}
       </div>
     </div>
   );

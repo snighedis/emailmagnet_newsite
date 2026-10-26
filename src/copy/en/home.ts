@@ -28,58 +28,57 @@ export const home = {
     // AI Act Art. 50(4): the opening footage (the farm-stay owner) is AI-generated.
     aiDisclosure: "AI-generated footage",
   },
-  trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "on", outOfFive: "out of 5" } },
+  // One sentence under the brief: who the studio works for, and the public proof.
+  // The rating is the real Chrome Web Store score (src/data/site.ts).
+  proof: {
+    audience:
+      "We work with online shops, professional practices, vacation rentals, and agencies and studios.",
+    rating: "Our four products are live on public stores, rated {rating} out of 5 on the Chrome Web Store.",
+  },
   // What we automate: the four repetitive jobs the brief asks about. Capabilities,
   // not past projects: no client claims until there are measured ones (CONTEXT.md).
   automate: {
-    eyebrow: "What we automate",
-    title: "The work you redo every week, done by software",
-    description:
-      "Four repetitive jobs that cost a small business hours. For each one, what the software does and what stays with you.",
-    doesLabel: "What the software does",
-    staysLabel: "What stays with you",
+    heading: "What we automate",
+    statement:
+      "The software answers email, writes quotes, moves your data and keeps bookings in order. You keep the decisions.",
+    staysLabel: "Stays with you:",
     items: [
       {
-        title: "Answering customer email",
+        title: "Answering customer email.",
         does: "Reads the requests that come in, drafts a reply in your tone with the right details (availability, prices, terms) and leaves it in your drafts.",
-        stays: "You read it, fix it if needed, and press Send.",
+        stays: "you read it, fix it if needed, and press Send.",
       },
       {
-        title: "Preparing quotes",
+        title: "Preparing quotes.",
         does: "Takes the request, matches it against your price list and fills in the quote in your own format, ready to check.",
-        stays: "You decide the final price and terms.",
+        stays: "the final price and terms.",
       },
       {
-        title: "Retyping data between tools",
+        title: "Retyping data between tools.",
         does: "Moves data between the tools you already use (email, spreadsheets, your management software, Shopify) without anyone retyping it.",
-        stays: "You see what moved, and where.",
+        stays: "seeing what moved, and where.",
       },
       {
-        title: "Handling bookings and orders",
+        title: "Handling bookings and orders.",
         does: "Collects requests and confirmations, updates the calendar and sends the reminders.",
-        stays: "You handle the exceptions.",
+        stays: "the exceptions.",
       },
     ],
   },
   process: {
-    eyebrow: "How we work",
-    title: "Scope, ship, support, measure",
-    description:
-      "A written proposal with today's hours in it, working software early, a direct line after launch, and the same hours measured again.",
+    heading: "How we work",
     steps: howWeWork,
   },
   products: {
-    eyebrow: "What we ship",
-    title: "Four products. Public stores. Public reviews.",
+    title: "Our own software",
     // Products are proof of reliability, not of capability (redesign ticket 03).
-    description:
-      "The software we build, publish and maintain for ourselves, with users and reviews on the stores. It says one thing: what we ship stays online and works.",
-    overviewLink: "See the full overview",
-    viewProduct: "View product",
+    caption:
+      "EmailMagnet, Volume Control PRO and ClickPilot AI on the Chrome Web Store, Countdown321 on the Shopify App Store. We build, publish and maintain them ourselves.",
+    overviewLink: "See all products",
   },
   explore: {
-    eyebrow: "Explore more",
-    title: "Guides, comparisons, and docs",
+    title: "Guides and docs",
+    lead: "Read the",
     // The four content hubs plus the docs and blog entry points.
     links: [
       ...contentHubs,
@@ -96,28 +95,21 @@ export const home = {
     ],
   },
   faq: {
-    eyebrow: "FAQ",
-    title: "Working with us",
-    description: "The questions worth asking before you hire a small studio.",
+    title: "Before you start",
     items: consultingFaq,
   },
-  // Hart-style: who the studio works for, named by kind of business.
-  audience: {
-    label: "For",
-    items: ["Online shops", "Professional practices", "Vacation rentals", "Agencies and studios"],
-  },
-  // Closes the page: back to the brief at the top, or the contact page.
+  // Closes the page: the written proposal as a card, with the number it starts from.
   closing: {
-    title: "Want a number to start from?",
-    description:
-      "Answer the four questions at the top of the page: in a minute you know how many hours a month repetitive work costs you today. Or write to us.",
-    primary: { label: "Go to the brief", href: "#brief" },
-    secondary: { label: "Write to us", href: "/contact" },
+    title: "Start from your hours.",
+    fill: ["Today it costs you", "hours a month."],
+    description: "Four questions, one minute. The proposal starts from that number.",
+    aside:
+      "The written proposal says what we build, what it costs and when it is ready, and it starts from the hours repetitive work costs you today.",
+    primary: { label: "Count your hours", href: "#brief" },
   },
   // The brief: the visitor's own baseline (src/lib/brief.ts). It shows what a task
   // costs today, never a saving (CONTEXT.md, "Measured saving").
   brief: {
-    eyebrow: "The brief",
     title: "How many hours does it cost you today?",
     lede: "Four taps. The number stays on your phone until you decide to send it.",
     // Option keys differ by language on purpose (each market has its own kinds of

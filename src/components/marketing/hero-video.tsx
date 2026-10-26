@@ -24,6 +24,11 @@ type HeroVideoProps = {
    * point, not from its start (Art. 50 guidelines, point 143).
    */
   aiDisclosure?: string;
+  /**
+   * Unframed: square corners, no border or shadow, for editorial pages. The
+   * film keeps its own shape either way. The default is a framed player.
+   */
+  band?: boolean;
   width?: number;
   height?: number;
 };
@@ -49,6 +54,7 @@ export function HeroVideo({
   height = 800,
   controls,
   aiDisclosure,
+  band = false,
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const disclosureId = useId();
@@ -87,12 +93,14 @@ export function HeroVideo({
   };
 
   const buttonClass =
-    "bg-ink/75 hover:bg-ink focus-visible:ring-brand flex h-11 w-11 items-center justify-center rounded-full text-white backdrop-blur outline-none transition duration-[160ms] ease-out focus-visible:ring-2 active:scale-[0.95] motion-reduce:active:scale-100";
+    "bg-ink/85 hover:bg-ink focus-visible:ring-brand flex h-11 w-11 items-center justify-center rounded-full text-white outline-none transition duration-[160ms] ease-out focus-visible:ring-2 active:scale-[0.95] motion-reduce:active:scale-100";
 
   return (
     <div
       className={cn(
-        "shadow-soft-lg relative overflow-hidden rounded-2xl border border-black/[0.06] bg-white",
+        band
+          ? "bg-ink relative overflow-hidden"
+          : "shadow-soft-lg relative overflow-hidden rounded-2xl border border-black/[0.06] bg-white",
         className,
       )}
     >
@@ -119,13 +127,17 @@ export function HeroVideo({
       {aiDisclosure ? (
         <p
           id={disclosureId}
-          className="bg-ink/75 pointer-events-none absolute top-3 left-3 rounded-full px-3 py-1.5 text-xs font-medium text-white backdrop-blur"
+          className={cn(
+            "bg-ink/85 pointer-events-none absolute rounded-full px-3 py-1.5 text-[14px] font-medium text-white",
+            // Bottom-right: the film's own logo and prompt sit at the top.
+            band ? "right-4 bottom-4" : "top-3 left-3",
+          )}
         >
           {aiDisclosure}
         </p>
       ) : null}
       {controls ? (
-        <div className="absolute right-3 bottom-3 flex gap-2">
+        <div className={cn("absolute flex gap-2", band ? "bottom-4 left-4" : "right-3 bottom-3")}>
           <button
             type="button"
             onClick={togglePlay}

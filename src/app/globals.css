@@ -67,9 +67,22 @@
 }
 
 :root {
-  /* Warm editorial system (docs/adr/0002): one orange, a warm off-white ground,
-     navy as ink. Every grey is warm. The shadcn tokens below derive from these. */
-  --background: oklch(0.99 0.005 75); /* warm white */
+  /* Motion tokens (tasteskill references/motion.md). */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  /* One pair of page margins, and the column line at 42% of the viewport that
+     the editorial pages hang from (headings start on it, body hangs from it). */
+  --margin: clamp(20px, 3.3vw, 48px);
+  --axis: calc(42vw - var(--margin));
+
+  /* Editorial system (docs/adr/0002, amended 26 Oct 2026 for the Taste house
+     rules): one orange, a low-chroma bone ground (not a yellow cream), navy as ink.
+     The shadcn tokens below derive from these. */
+  --background: #fbfbfa; /* stone white, below the cream threshold (HSL s < 0.16) */
   --foreground: var(--ink);
   --card: oklch(1 0 0);
   --card-foreground: var(--ink);
@@ -121,8 +134,8 @@
      silently produced no class at all. */
   --teal: var(--brand); /* the former second accent (checks, tints) now takes the one orange */
   --eyebrow: var(--ink-soft); /* labels and text links: ink, never small orange */
-  --surface-soft: oklch(0.985 0.006 70); /* warm off-white ≈ #fdf9f6 */
-  --surface-muted: oklch(0.965 0.008 70); /* the one alternation tone on long pages */
+  --surface-soft: #fbfbfa; /* same as the ground */
+  --surface-muted: #f1f1ef; /* the one tone step: a filled surface, never a line */
   --surface-peach: oklch(0.975 0.015 55); /* warm, kept for contact/blog/pricing */
   --surface-blue: var(--surface-muted); /* legacy names: both now warm */
   --surface-mint: var(--surface-muted);
@@ -673,4 +686,123 @@ body:has([data-home-hero]) header .brand-wordmark {
   .btn-sheen:hover::after {
     animation: none;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Editorial pages (the homepage first; docs/adr/0002 as amended, tasteskill
+   direction "The printed annual"). Five type steps, one column line, square
+   corners, no rules, no shadows at rest.
+   --------------------------------------------------------------------------- */
+.page-x {
+  padding-inline: var(--margin);
+}
+
+/* Below 1024px the column line collapses to the left margin: one column, with
+   the row gaps (gap-y-*) still applied between its parts. */
+.axis {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1024px) {
+  .axis {
+    display: grid;
+    grid-template-columns: var(--axis) minmax(0, 1fr);
+  }
+}
+
+.t-display,
+.t-2,
+.t-3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  text-wrap: balance;
+}
+.t-display {
+  font-size: clamp(42px, 6vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+.t-2 {
+  font-size: clamp(30px, 4.2vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.t-3 {
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+.t-lead {
+  font-size: 18px;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+@media (min-width: 768px) {
+  .t-lead {
+    font-size: 20px;
+  }
+}
+.t-body {
+  font-size: 16px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+/* Masked line reveal: each authored headline line rises from behind its own
+   baseline. The padding/negative margin pair keeps descenders inside the mask. */
+.lines .line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.lines [data-line] {
+  display: block;
+}
+
+/* Reveal on scroll, once (home-reveal.tsx adds .is-in). Gated on html.js so
+   nothing stays hidden without script, and on no-preference for motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .lines [data-line] {
+    transform: translateY(105%);
+    animation: line-up 900ms var(--ease-expo) forwards;
+    animation-delay: calc(var(--i, 0) * 110ms + 150ms);
+  }
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 700ms var(--ease-out),
+      transform 900ms var(--ease-expo);
+    transition-delay: calc(var(--d, 0) * 80ms);
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes line-up {
+  to {
+    transform: none;
+  }
+}
+
+/* Text links: underline appears on hover, never a colour drop. */
+.text-link {
+  text-decoration: underline;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklch, currentColor 35%, transparent);
+  transition: text-decoration-color var(--t-hover) ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .text-link:hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+/* The editorial homepage runs its own reveals, not the load-time section rise. */
+body:has([data-home-hero]) main > section,
+body:has([data-home-hero]) main > section:first-of-type > div:last-child {
+  animation: none;
 }

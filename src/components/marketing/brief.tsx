@@ -46,8 +46,8 @@ function Choice({ name, legend, options, value, onChange }: ChoiceProps) {
           <label
             key={option.value}
             className={cn(
-              "inline-flex min-h-11 cursor-pointer items-center rounded-full border px-4 text-sm font-medium transition select-none",
-              "border-stone-300 bg-white text-stone-700 hover:border-stone-400 hover:text-stone-950",
+              "inline-flex min-h-11 cursor-pointer items-center border px-4 text-base font-medium transition select-none active:scale-[0.97] motion-reduce:active:scale-100",
+              "border-stone-300 bg-white text-ink hover:border-ink",
               "has-checked:border-ink has-checked:bg-ink has-checked:text-white",
               "has-focus-visible:ring-brand has-focus-visible:ring-2 has-focus-visible:ring-offset-2",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",
@@ -187,7 +187,13 @@ export function Brief({
     <div
       ref={resultRef}
       tabIndex={-1}
-      className="scroll-mt-24 rounded-2xl border border-stone-200 bg-white p-6 outline-none md:p-8"
+      className={cn(
+        "scroll-mt-24 bg-white p-6 outline-none md:p-8",
+        // Stacked, the card only mounts with the fourth answer: it rises 8px into
+        // place instead of appearing at once. Reduced motion keeps the fade only.
+        stack &&
+          "transition-[opacity,translate] duration-[240ms] ease-[var(--ease-out)] starting:translate-y-2 starting:opacity-0 motion-reduce:starting:translate-y-0",
+      )}
     >
       <div ref={numberRef} aria-live="polite" className={stack ? undefined : "min-h-28"}>
         {hours === null ? (
@@ -201,13 +207,13 @@ export function Brief({
               </span>{" "}
               {copy.result.tail}
             </p>
-            <p className="mt-3 font-mono text-xs text-stone-500 tabular-nums">
+            <p className="mt-3 text-sm text-stone-600 tabular-nums">
               {formatFormula(answers, copy.text, lang)}
             </p>
           </>
         )}
       </div>
-      <p className="mt-5 border-t border-stone-200 pt-5 text-sm leading-6 text-stone-600">
+      <p className="text-ink mt-6 text-base leading-7">
         {copy.method}
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -228,13 +234,13 @@ export function Brief({
           {copied ? copy.copied : copy.copy}
         </Button>
       </div>
-      <p className="mt-4 text-sm leading-6 text-stone-500">
+      <p className="mt-4 text-sm leading-6 text-stone-600">
         {copy.fallback}{" "}
-        <a href={`mailto:${supportEmail}`} className="text-eyebrow font-medium hover:underline">
+        <a href={`mailto:${supportEmail}`} className="text-link text-ink font-medium">
           {supportEmail}
         </a>
       </p>
-      <p className="mt-2 text-xs leading-5 text-stone-500">{copy.privacy}</p>
+      <p className="mt-2 text-sm leading-6 text-stone-600">{copy.privacy}</p>
     </div>
   );
 

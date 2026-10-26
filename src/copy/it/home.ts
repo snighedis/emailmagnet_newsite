@@ -12,201 +12,165 @@ export const home: HomeCopy = {
   },
   itemListName: "Prodotti software di Dentoku Dev",
   hero: {
-    eyebrow: "Uno studio software di Milano, non un'agenzia.",
-    titleLead: "Il lavoro ripetitivo",
-    titleAccent: "lo fa il software.",
-    subhead:
-      "Software su misura per piccole imprese: togliamo il lavoro ripetitivo con l'AI e misuriamo quanto ti fa risparmiare.",
-    primaryCta: { label: "Raccontaci il problema", href: "/contact" },
-    secondaryCta: { label: "Guarda cosa costruiamo", href: "/#services" },
-    trustNote: "4 prodotti online su store pubblici",
+    title: ["Il lavoro ripetitivo", "lo fa il software."],
+    standfirst:
+      "Siamo uno studio software di Milano. Costruiamo software su misura per piccole imprese e contiamo con te le ore che ti fa risparmiare.",
+    primaryCta: { label: "Calcola le tue ore", href: "#brief" },
+    secondaryCta: { label: "Scrivici", href: "/contact" },
   },
   heroVideo: {
     src: "/brand/studio-hero-it.mp4",
     poster: "/brand/studio-hero-it-poster.jpg",
     label:
-      "Video in loop di 29 secondi: il titolare di un agriturismo chiede di rispondere agli ospiti mentre fa altro; Dentoku Dev lo progetta, collega WhatsApp e l'AI e mostra Kallmy in anteprima",
+      "Video in loop di 29 secondi: il titolare di un agriturismo chiede di rispondere agli ospiti mentre fa altro; Dentoku Dev lo progetta, collega WhatsApp e l’AI e mostra Kallmy in anteprima",
     controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
     aiDisclosure: "Riprese generate con l’AI",
   },
-  trustBar: { reviewLabel: "Chrome Web Store", labels: { on: "su", outOfFive: "su 5" } },
+  proof: {
+    audience: "Lavoriamo con agriturismi e B&B, studi professionali, negozi e artigiani.",
+    rating: "I nostri quattro prodotti sono online su store pubblici, con {rating} su 5 su Chrome Web Store.",
+  },
   automate: {
-    eyebrow: "Cosa automatizziamo",
-    title: "Il lavoro che rifai ogni settimana, fatto dal software",
-    description:
-      "Quattro lavori ripetitivi che costano ore a una piccola impresa. Per ciascuno, cosa fa il software e cosa resta a te.",
-    doesLabel: "Cosa fa il software",
-    staysLabel: "Cosa resta a te",
+    heading: "Cosa automatizziamo",
+    statement:
+      "Il software risponde alle email, prepara i preventivi, ricopia i dati da un programma all’altro e tiene in ordine le prenotazioni. A te restano le decisioni.",
+    staysLabel: "A te resta:",
     items: [
       {
-        title: "Rispondere alle email",
-        does: "Legge le richieste che arrivano, prepara una risposta nel tuo tono con le informazioni giuste (disponibilità, prezzi, condizioni) e la lascia in bozza.",
-        stays: "Tu la leggi, la correggi se serve e premi Invia.",
+        title: "Rispondere alle email.",
+        does: "Il software legge le richieste, scrive una risposta con il tuo tono e le informazioni giuste (disponibilità, prezzi, condizioni) e la lascia in bozza.",
+        stays: "rileggerla, sistemarla se serve e premere Invia.",
       },
       {
-        title: "Preparare preventivi",
-        does: "Prende la richiesta, la confronta con il tuo listino e compila il preventivo nel tuo formato, pronto da controllare.",
-        stays: "Tu decidi prezzo e condizioni finali.",
+        title: "Preparare i preventivi.",
+        does: "Legge la richiesta, la confronta con il tuo listino e compila il preventivo nel tuo formato, pronto da controllare.",
+        stays: "decidere prezzo e condizioni.",
       },
       {
-        title: "Ricopiare dati",
+        title: "Ricopiare i dati.",
         does: "Sposta i dati tra i programmi che usi già (email, fogli di calcolo, gestionale, Shopify) senza che nessuno li ricopi a mano.",
-        stays: "Tu vedi cosa è passato, e dove.",
+        stays: "vedere cosa è passato e dove.",
       },
       {
-        title: "Gestire prenotazioni",
+        title: "Gestire le prenotazioni.",
         does: "Raccoglie richieste e conferme, aggiorna il calendario e manda i promemoria.",
-        stays: "Tu gestisci le eccezioni.",
+        stays: "i casi particolari.",
       },
     ],
   },
   process: {
-    eyebrow: "Come lavoriamo",
-    title: "Perimetro, rilascio, supporto, misura",
-    description:
-      "Una proposta scritta con le ore di oggi, software da provare presto, una linea diretta dopo il rilascio, e le stesse ore rimisurate.",
+    heading: "Come lavoriamo",
     steps: [
       {
-        title: "Perimetro",
+        title: "Prima contiamo le ore.",
         description:
-          "Una breve call e una proposta scritta: cosa costruiamo, quanto costa, quando è pronto e quante ore al mese ti costa oggi il problema. Nessun impegno finché non la approvi.",
+          "Una call breve, poi una proposta scritta: cosa costruiamo, quanto costa, quando è pronto e quante ore al mese ti costa oggi il problema. Non ti impegni finché non la approvi.",
       },
       {
-        title: "Rilascio",
+        title: "Poi costruiamo.",
         description:
-          "Progettiamo e sviluppiamo in cicli brevi, con software funzionante che puoi provare dalle prime settimane.",
+          "Lavoriamo a cicli brevi: dalle prime settimane hai software funzionante da provare.",
       },
       {
-        title: "Supporto",
+        title: "Dopo restiamo in linea.",
         description:
-          "Dopo il lancio mantieni una linea diretta con chi ha scritto il codice. Niente passaggi di mano, niente code di ticket.",
+          "Dopo il lancio parli direttamente con chi ha scritto il codice. Nessun passaggio di mano, nessuna coda di ticket.",
       },
       {
-        title: "Misura",
+        title: "Infine ricontiamo.",
         description:
-          "Dopo il rilascio contiamo di nuovo insieme le ore al mese che il lavoro ti costa. È il numero da cui era partita la proposta, e dice se il software ha fatto quello che doveva.",
+          "Rifacciamo insieme il conto delle ore al mese. È il numero da cui partiva la proposta, e dice se il software ha fatto il suo lavoro.",
       },
     ],
   },
   products: {
-    eyebrow: "Software nostro",
-    title: "Quattro prodotti. Store pubblici. Recensioni pubbliche.",
-    description:
-      "È il software che costruiamo, pubblichiamo e manteniamo per noi, con utenti e recensioni sugli store. Dice una cosa sola: quello che rilasciamo resta online e funziona.",
-    overviewLink: "Vedi la panoramica completa",
-    viewProduct: "Vai al prodotto",
+    title: "Il nostro software",
+    caption:
+      "EmailMagnet, Volume Control PRO e ClickPilot AI su Chrome Web Store, Countdown321 su Shopify App Store. Li costruiamo, li pubblichiamo e li manteniamo noi.",
+    overviewLink: "Vedi tutti i prodotti",
   },
+  // Not shown on the Italian home (the guides are English-only pages); kept so the
+  // module matches the English shape.
   explore: {
-    eyebrow: "Esplora",
-    title: "Guide, confronti e documentazione",
+    title: "Guide e documentazione",
+    lead: "Leggi",
     links: [
-      {
-        title: "Casi d'uso",
-        href: "/use-cases/emailmagnet-sales-prospecting",
-        description: "Flussi pratici per prospecting, ricerca, recruiting e outreach per piccole imprese.",
-      },
-      {
-        title: "Glossario",
-        href: "/glossary/email-extraction",
-        description:
-          "Definizioni di estrazione email, estrazione in blocco, esportazione CSV, salvataggio automatico e termini di conformità.",
-      },
-      {
-        title: "Confronti",
-        href: "/compare/manual-email-copying",
-        description: "Pagine di confronto chiare tra flussi manuali e strumenti di scraping più pesanti.",
-      },
-      {
-        title: "Integrazioni",
-        href: "/integrations/emailmagnet-chrome",
-        description: "Pagine di integrazione, a partire da Chrome e dai flussi di esportazione.",
-      },
-      {
-        title: "Documentazione",
-        href: "/docs/getting-started",
-        description: "Guide di configurazione, flussi di esportazione e documentazione sull'uso responsabile.",
-      },
-      {
-        title: "Blog",
-        href: "/blog",
-        description: "Guide pratiche su ricerca di lead, conformità e flussi di lavoro nel browser.",
-      },
+      { title: "Casi d’uso", href: "/use-cases/emailmagnet-sales-prospecting", description: "Flussi pratici per prospecting, ricerca, recruiting e outreach." },
+      { title: "Glossario", href: "/glossary/email-extraction", description: "I termini dell’estrazione email e della conformità." },
+      { title: "Confronti", href: "/compare/manual-email-copying", description: "Flussi manuali e strumenti di scraping a confronto." },
+      { title: "Integrazioni", href: "/integrations/emailmagnet-chrome", description: "Le integrazioni, a partire da Chrome." },
+      { title: "Documentazione", href: "/docs/getting-started", description: "Configurazione, esportazione e uso responsabile." },
+      { title: "Blog", href: "/blog", description: "Guide pratiche su ricerca di lead e conformità." },
     ],
   },
   faq: {
-    eyebrow: "FAQ",
-    title: "Lavorare con noi",
-    description: "Le domande che vale la pena fare prima di affidarsi a un piccolo studio.",
+    title: "Domande prima di iniziare",
     items: [
       {
-        question: "Che tipo di progetti seguite?",
+        question: "Che progetti seguite?",
         answer:
-          "Software su misura per piccole e medie imprese: strumenti interni, automazione dei flussi di lavoro, estensioni per browser, app Shopify ed ecommerce, integrazione dell'AI nei processi esistenti. Se assomiglia a uno dei nostri prodotti, siamo la scelta giusta.",
+          "Software su misura per piccole e medie imprese: strumenti interni, automazione del lavoro d’ufficio, estensioni per il browser, app Shopify ed ecommerce, AI dentro i processi che hai già. Se somiglia a uno dei nostri prodotti, siamo lo studio giusto.",
       },
       {
         question: "Come inizia un progetto?",
         answer:
-          "Con una breve call e una proposta scritta che copre perimetro, costi e tempi, e quante ore al mese ti costa oggi il problema. Sai esattamente cosa costruiamo e quando sarà pronto prima di impegnarti in qualsiasi cosa. Dopo il rilascio misuriamo insieme il risparmio.",
+          "Con una call breve e una proposta scritta: cosa costruiamo, quanto costa, quando è pronto e quante ore al mese ti costa oggi il problema. Decidi solo dopo averla letta. Dopo il rilascio misuriamo insieme il risparmio.",
       },
       {
-        question: "Chi lavorerà davvero al mio progetto?",
+        question: "Chi lavora davvero al mio progetto?",
         answer:
-          "Lo stesso piccolo team che progetta, costruisce e rilascia i quattro prodotti di questo sito. Parli direttamente con chi scrive il codice, non con un account manager.",
+          "Lo stesso piccolo team che ha costruito i quattro prodotti di questo sito. Parli con chi scrive il codice, non con un account manager.",
       },
       {
-        question: "Potete lavorare con i nostri sistemi esistenti?",
+        question: "Il software funziona con i programmi che uso già?",
         answer:
-          "Sì. La maggior parte dei progetti si collega a strumenti che già usi: fogli di calcolo, CRM, Shopify, flussi nel browser e API. Costruiamo attorno al tuo stack invece di sostituirlo.",
+          "Sì. Quasi sempre lo colleghiamo a strumenti che hai già: fogli di calcolo, CRM, Shopify, il browser, altre API. Costruiamo attorno a quello che usi, non lo sostituiamo.",
       },
       {
-        question: "Come si lavora insieme, a distanza?",
+        question: "Come lavoriamo insieme, a distanza?",
         answer:
-          "Siamo a Milano e lavoriamo con clienti in tutta Italia in videochiamata, in italiano: la prima call, la proposta e gli aggiornamenti durante il progetto passano tutti da lì. Il software lo provate voi, nel vostro browser, dalle prime settimane.",
+          "Siamo a Milano e lavoriamo con clienti in tutta Italia in videochiamata, in italiano: la prima call, la proposta e gli aggiornamenti passano tutti da lì. Il software lo provi tu, nel tuo browser, dalle prime settimane.",
       },
       {
-        question: "Non abbiamo competenze tecniche interne. È un problema?",
+        question: "In azienda nessuno sa di tecnologia. È un problema?",
         answer:
-          "No, è il caso più comune. La proposta scritta descrive cosa farà il software in linguaggio comune, senza gergo, e dopo la consegna resta una linea diretta con chi ha scritto il codice. Non serve nessuno in azienda che sappia programmare.",
+          "No, è il caso più comune. La proposta spiega in parole semplici cosa farà il software, e dopo la consegna resta una linea diretta con chi ha scritto il codice. Non serve nessuno che sappia programmare.",
       },
       {
-        question: "I nostri dati dove finiscono?",
+        question: "I miei dati dove finiscono?",
         answer:
-          "Costruiamo gli strumenti attorno ai vostri account e alle vostre chiavi, non ai nostri. La proposta indica per iscritto quali servizi esterni usa il software, così sapete prima dove passano i dati e potete dire di no.",
+          "Costruiamo gli strumenti sui tuoi account e sulle tue chiavi, non sui nostri. La proposta elenca per iscritto i servizi esterni che il software usa: sai prima dove passano i dati e puoi dire di no.",
       },
       {
-        question: "Cosa succede al software se un giorno non lavoriamo più insieme?",
+        question: "Se smettiamo di lavorare insieme, che fine fa il software?",
         answer:
-          "Il codice scritto per il vostro progetto è vostro al saldo, con la documentazione per farlo proseguire a qualsiasi sviluppatore. I nostri componenti riutilizzabili restano in licenza d'uso perpetua, quindi potete mantenere e modificare il software anche senza di noi.",
+          "Con il saldo, il codice scritto per te diventa tuo, con la documentazione per farlo continuare a qualsiasi sviluppatore. I nostri componenti riutilizzabili restano in licenza d’uso perpetua: puoi mantenere e modificare il software anche senza di noi.",
       },
       {
-        question: "Usate l'intelligenza artificiale nel vostro lavoro?",
+        question: "Usate l’intelligenza artificiale nel vostro lavoro?",
         answer:
-          "Sì: assistenti per scrivere codice e testi, e strumenti che trascrivono le call. Lo diciamo prima di iniziare e lo scriviamo nella lettera d'incarico, con l'elenco degli strumenti e dove passano i dati.",
+          "Sì: assistenti per scrivere codice e testi, e strumenti che trascrivono le call. Lo diciamo prima di iniziare e lo scriviamo nella lettera d’incarico, con l’elenco degli strumenti e dove passano i dati.",
       },
       {
         question: "Quanto costa iniziare?",
         answer:
-          "Dipende dal perimetro, e lo sapete per iscritto prima di impegnarvi: la prima call non costa nulla e si chiude con una proposta che indica cosa costruiamo, quanto costa e quando è pronto.",
+          "Dipende da cosa costruiamo, e lo sai per iscritto prima di impegnarti. La prima call è gratuita e si chiude con una proposta: cosa facciamo, quanto costa, quando è pronto.",
       },
     ],
   },
-  audience: {
-    label: "Per",
-    items: ["Agriturismi e B&B", "Studi professionali", "Negozi", "Artigiani"],
-  },
   closing: {
-    title: "Vuoi un numero da cui partire?",
-    description:
-      "Rispondi alle quattro domande in cima alla pagina: in un minuto sai quante ore al mese ti costa oggi il lavoro ripetitivo. Oppure scrivici.",
-    primary: { label: "Vai al brief", href: "#brief" },
-    secondary: { label: "Scrivici", href: "/contact" },
+    title: "Parti dalle tue ore.",
+    fill: ["Oggi ti costa", "ore al mese."],
+    description: "Quattro domande, un minuto. Da quel numero parte la proposta.",
+    aside:
+      "La proposta scritta dice cosa costruiamo, quanto costa e quando è pronto, e parte dalle ore che il lavoro ripetitivo ti costa oggi.",
+    primary: { label: "Calcola le tue ore", href: "#brief" },
   },
   brief: {
-    eyebrow: "Il brief",
     title: "Quante ore ti costa oggi?",
-    lede: "Quattro tocchi. Il numero resta sul tuo telefono finché non decidi di inviarlo.",
+    lede: "Quattro tocchi e hai il numero. Resta sul tuo telefono finché non decidi di mandarcelo.",
     business: {
-      legend: "La tua attività",
+      legend: "Che attività hai",
       options: {
         farmstay: "Agriturismo o B&B",
         office: "Studio professionale",
@@ -216,7 +180,7 @@ export const home: HomeCopy = {
       },
     },
     task: {
-      legend: "Il lavoro ripetitivo che ti ruba più tempo",
+      legend: "Il lavoro che ti porta via più tempo",
       options: {
         email: "Rispondere alle email",
         quotes: "Preparare preventivi",
@@ -226,9 +190,9 @@ export const home: HomeCopy = {
       },
     },
     times: { legend: "Quante volte a settimana" },
-    minutes: { legend: "Minuti ogni volta", unit: "min" },
+    minutes: { legend: "Quanti minuti ogni volta", unit: "min" },
     result: {
-      idle: "Rispondi alle quattro domande per vedere quanto ti costa oggi.",
+      idle: "Rispondi alle quattro domande e vedi quanto ti costa oggi.",
       lead: "Oggi ti costa",
       tail: "al mese.",
     },
@@ -247,12 +211,12 @@ export const home: HomeCopy = {
         more: "Altro che dovreste sapere:",
       },
     },
-    method: "È il punto di partenza della proposta. Dopo il rilascio lo rimisuriamo insieme.",
+    method: "Da questo numero parte la nostra proposta. Dopo il rilascio lo ricontiamo insieme.",
     barCta: "Vedi",
     send: "Mandacelo per email",
     copy: "Copia il brief",
     copied: "Copiato",
-    fallback: "Non si apre la posta? Scrivici a",
-    privacy: "Niente lascia questa pagina finché non premi Invia nella tua app di posta.",
+    fallback: "La posta non si apre? Scrivici a",
+    privacy: "Nulla esce da questa pagina finché non premi Invia nella tua app di posta.",
   },
 };

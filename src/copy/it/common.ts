@@ -36,6 +36,8 @@ export const common: CommonCopy = {
     copyright: "© 2026 Dentoku Dev. Tutti i diritti riservati.",
     cookiePreferences: "Preferenze cookie",
     logoAlt: "Logo Dentoku Dev",
+    contactLead: "Scrivici. Ti risponde chi scrive il codice.",
+    backToTop: "Torna su",
   },
   cookieBanner: {
     dialogAria: "Consenso ai cookie",

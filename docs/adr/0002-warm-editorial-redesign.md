@@ -48,3 +48,21 @@ grammar only (no copy, assets, fonts or layouts are reused):
   it must be rechecked (WCAG 1.4.3).
 - The closing CTA band and the gradient/tinted section variants leave the homepage.
 - A photo shoot becomes a dependency for the final look, not for the launch.
+
+## Amendment, 26 October 2026: the tasteskill house rules
+
+The owner adopted every house rule of the tasteskill design skill (design-taste-frontend),
+first on the homepage and the shared chrome. This reverses four choices above: numbered
+monospace section labels, the orange accent word in the hero headline, the warm off-white
+ground (now a stone white below the skill's cream threshold) and soft-cornered buttons (now
+square). The one orange, Newsreader with Inter, the grey logo and the brief stay. The
+homepage follows the skill's "printed annual" direction: the title on a column line at 42%,
+then the film whole at its 2:1 shape (a cropped band and a band of sliced product screenshots
+were tried and rejected by the owner: a crop makes the scene and the interfaces unreadable),
+"How we work" as a whole orange page, the products as a two-by-two grid of whole
+screenshots (the current Chrome Web Store images, Volume Control PRO's popup recomposed in
+the same 16:10 style without third-party content), the FAQ as an accordion of filled tiles
+(the reading-text version read as too static), and a close on
+the ink field where the written proposal lies as a tilted paper card ("Parti dalle tue
+ore", with the line "Oggi ti costa ____ ore al mese" left blank). Details in DESIGN.md.
+
