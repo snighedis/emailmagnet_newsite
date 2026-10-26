@@ -114,8 +114,8 @@ export const common: CommonCopy = {
       { value: "General inquiry", label: "Richiesta generica" },
     ],
     consent:
-      "Inviando questo modulo confermi di aver letto e accettato l'Informativa sulla privacy.",
-    incomplete: "Compila nome, cognome, un'email valida e il messaggio prima di inviare.",
+      "Inviando questo modulo confermi di aver letto e accettato l’Informativa sulla privacy.",
+    incomplete: "Compila nome, cognome, un’email valida e il messaggio prima di inviare.",
     success:
       "Dovrebbe aprirsi la tua app di posta con il messaggio pronto da inviare. Se non succede, scrivici direttamente a {email}.",
     submit: "Invia il messaggio",

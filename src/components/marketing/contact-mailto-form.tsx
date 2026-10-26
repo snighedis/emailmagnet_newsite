@@ -16,6 +16,8 @@ import { useCopy } from "@/i18n/locale-context";
 
 type ContactMailtoFormProps = {
   supportEmail?: string;
+  /** The form's own surface. The contact page sets it on the page field, square and flat. */
+  className?: string;
 };
 
 type FormState = {
@@ -51,7 +53,10 @@ function looksLikeEmail(value: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
 }
 
-export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: ContactMailtoFormProps) {
+export function ContactMailtoForm({
+  supportEmail = "support@dentokudev.com",
+  className = "rounded-lg bg-white p-6 md:p-10",
+}: ContactMailtoFormProps) {
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
   const { contactForm: copy } = useCopy().common;
   const [form, setForm] = useState<FormState>(defaultState);
@@ -120,9 +125,9 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="rounded-lg bg-white p-6 shadow-sm md:p-10">
+    <form onSubmit={handleSubmit} noValidate className={className}>
       <div className="grid gap-5 sm:grid-cols-2">
-        <label className="grid gap-2 text-base font-semibold text-stone-800">
+        <label className="grid gap-2 text-ink text-base font-semibold">
           {copy.firstName}<span className="sr-only">{copy.requiredSr}</span>
           <Input
             required
@@ -131,10 +136,10 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
             placeholder={copy.firstNamePlaceholder}
             value={form.firstName}
             onChange={(event) => updateField("firstName", event.target.value)}
-            className="h-12 rounded-sm border-stone-400 bg-white px-4 text-base"
+            className="h-12 rounded-none border-stone-400 bg-white px-4 text-base"
           />
         </label>
-        <label className="grid gap-2 text-base font-semibold text-stone-800">
+        <label className="grid gap-2 text-ink text-base font-semibold">
           {copy.lastName}<span className="sr-only">{copy.requiredSr}</span>
           <Input
             required
@@ -143,12 +148,12 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
             placeholder={copy.lastNamePlaceholder}
             value={form.lastName}
             onChange={(event) => updateField("lastName", event.target.value)}
-            className="h-12 rounded-sm border-stone-400 bg-white px-4 text-base"
+            className="h-12 rounded-none border-stone-400 bg-white px-4 text-base"
           />
         </label>
       </div>
 
-      <label className="mt-5 grid gap-2 text-base font-semibold text-stone-800">
+      <label className="mt-5 grid gap-2 text-ink text-base font-semibold">
         {copy.email}<span className="sr-only">{copy.requiredSr}</span>
         <Input
           required
@@ -158,17 +163,17 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
           placeholder={copy.emailPlaceholder}
           value={form.email}
           onChange={(event) => updateField("email", event.target.value)}
-          className="h-12 rounded-sm border-stone-400 bg-white px-4 text-base"
+          className="h-12 rounded-none border-stone-400 bg-white px-4 text-base"
         />
       </label>
 
-      <label className="mt-5 grid gap-2 text-base font-semibold text-stone-800">
+      <label className="mt-5 grid gap-2 text-ink text-base font-semibold">
         {copy.topic}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
               type="button"
-              className="flex h-12 w-full items-center justify-between rounded-sm border border-stone-400 bg-white px-4 text-left text-base font-medium text-stone-900 outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+              className="flex h-12 w-full items-center justify-between rounded-none border border-stone-400 bg-white px-4 text-left text-base font-medium text-stone-900 outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
               aria-haspopup="listbox"
             >
               <span className={form.product ? "text-stone-900" : "text-stone-500"}>
@@ -198,7 +203,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
         </DropdownMenu>
       </label>
 
-      <label className="mt-5 grid gap-2 text-base font-semibold text-stone-800">
+      <label className="mt-5 grid gap-2 text-ink text-base font-semibold">
         {copy.message}<span className="sr-only">{copy.requiredSr}</span>
         <Textarea
           required
@@ -206,10 +211,10 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
           placeholder={copy.messagePlaceholder}
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="min-h-32 rounded-sm border-stone-400 bg-white px-4 py-3 text-base"
+          className="min-h-40 rounded-none border-stone-400 bg-white px-4 py-3 text-base"
         />
       </label>
-      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+      <div className="sr-only" aria-hidden="true">
         <label htmlFor="website">Website</label>
         <input
           id="website"
@@ -221,7 +226,7 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
           onChange={(event) => updateField("website", event.target.value)}
         />
       </div>
-      <div className="absolute left-[-10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+      <div className="sr-only" aria-hidden="true">
         <label htmlFor="company">Company</label>
         <input
           id="company"
@@ -251,25 +256,21 @@ export function ContactMailtoForm({ supportEmail = "support@dentokudev.com" }: C
         </div>
       ) : null}
 
-      <p className="mt-6 text-base font-semibold leading-7 text-stone-900">
+      <p className="text-ink mt-6 text-base leading-7">
         {copy.consent}
       </p>
 
       {error ? (
-        <p className="mt-3 rounded-sm bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p>
+        <p className="mt-3 bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p>
       ) : null}
       {success ? (
-        <p className="mt-3 rounded-sm bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700">
+        <p className="mt-3 bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700">
           {success}
         </p>
       ) : null}
 
-      <div className="mt-8 flex justify-center">
-        <Button
-          type="submit"
-          size="lg"
-          className="h-14 px-8 text-lg"
-        >
+      <div className="mt-8">
+        <Button type="submit" size="xl">
           {copy.submit}
         </Button>
       </div>

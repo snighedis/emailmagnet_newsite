@@ -70,6 +70,10 @@ styled accent word inside a headline, two typefaces at most, nothing under 13px.
   `ProposalClose` (the proposal card; off the homepage its action points at the home's
   `#brief`). Inner pages open like the homepage: the title on the column line in two
   authored lines, the standfirst and one action to its left.
+- Contact is "two ways" (redesign ticket 11): the homepage's brief on the tone step
+  (`#hours`), then the free form on a filled panel with what happens next beside it
+  (`#write`), then the products for support questions. No proposal card: its brief is
+  already on the page.
 - The close is the written proposal as a paper card on its own field, `--ink-raised` (one
   tone step above the ink footer, so the two read as separate surfaces without a line),
   tilted and cropped by the section's bottom edge; the crop only ever takes the card's
