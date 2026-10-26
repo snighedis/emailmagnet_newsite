@@ -13,9 +13,7 @@ export const common: CommonCopy = {
   header: {
     products: "Prodotti",
     resources: "Risorse",
-    featuredBadge: "Prodotto in evidenza",
-    viewProduct: "Vai alla pagina del prodotto",
-    portfolioLabel: "Portfolio prodotti",
+    allProducts: "Vedi tutti i prodotti",
     resourceDescriptions: {
       "/overview": "Tutti i prodotti e il ruolo di ciascuno, in una sola pagina.",
       "/docs": "Configurazione, esportazioni e guide all'uso responsabile.",

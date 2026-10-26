@@ -6,6 +6,7 @@ import { HomeHero } from "@/components/marketing/home-hero";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { Button } from "@/components/ui/button";
 import { getCopy, getPageCopy } from "@/copy";
+import { inShowcaseOrder, productPicture } from "@/data/product-pictures";
 import { LocaleLink } from "@/i18n/locale-link";
 import { resolveLang } from "@/i18n/params";
 import { createMetadata } from "@/lib/metadata";
@@ -83,16 +84,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
   );
 }
 
-// Store screenshots, 16:10 like the Chrome Web Store ones. EmailMagnet's is the
-// current store image; Volume Control PRO's is its store popup set on the same
-// kind of ground, with the headline in the page's language.
-const PRODUCT_PICTURES: Record<string, string | Record<string, string>> = {
-  EmailMagnet: "/brand/emailmagnet-one-click.webp",
-  "ClickPilot AI": "/brand/clickpilot-ai-showcase.png",
-  "Volume Control PRO": { it: "/brand/volume-control-landscape-it.webp", en: "/brand/volume-control-landscape-en.webp" },
-  Countdown321: "/brand/countdown321-hero.webp",
-};
-
 function HomeSection({
   id,
   copy,
@@ -159,10 +150,9 @@ function HomeSection({
 
   if (id === "products") {
     const { products: p } = copy;
-    // Each product's own 16:10 store image filling its tile. ClickPilot AI goes
-    // last on the home (owner's order); the shared product list stays as it is.
-    const HOME_ORDER = ["EmailMagnet", "Volume Control PRO", "Countdown321", "ClickPilot AI"];
-    const ordered = [...products].sort((a, b) => HOME_ORDER.indexOf(a.name) - HOME_ORDER.indexOf(b.name));
+    // Each product's own 16:10 store image filling its tile, in the showcase
+    // order (src/data/product-pictures.ts); the shared product list is unchanged.
+    const ordered = inShowcaseOrder(products);
     return (
       <section className="bg-background">
         <div className="page-x axis gap-y-6 pt-20 md:pt-32">
@@ -175,8 +165,7 @@ function HomeSection({
         </div>
         <ul className="page-x mt-12 grid gap-x-8 gap-y-14 md:mt-16 md:grid-cols-2">
           {ordered.map((product, i) => {
-            const entry = PRODUCT_PICTURES[product.name];
-            const picture = typeof entry === "string" ? entry : entry?.[lang];
+            const picture = productPicture(product.name, lang);
             const store = product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store";
             return (
               <li key={product.href} data-reveal style={d(i % 2)} className="group">

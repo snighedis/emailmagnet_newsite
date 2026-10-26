@@ -17,9 +17,7 @@ export const common = {
   header: {
     products: "Products",
     resources: "Resources",
-    featuredBadge: "Featured product",
-    viewProduct: "View product page",
-    portfolioLabel: "Product portfolio",
+    allProducts: "See all products",
     resourceDescriptions: {
       "/overview": "Every product and where it fits, on one page.",
       "/docs": "Setup, exports, and responsible-use guides.",

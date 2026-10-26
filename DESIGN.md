@@ -47,6 +47,12 @@ styled accent word inside a headline, two typefaces at most, nothing under 13px.
 ## Layout
 
 - One pair of margins (`.page-x`, `--margin`, 20-48px) for header, content and footer.
+- Header: wordmark, plain text links (`.text-link.link-quiet`: underlined only on hover or
+  when a menu is open), the language as a link, one filled button. The menus are text only:
+  products grouped by store (Chrome Web Store, Shopify App Store), name in Newsreader and one
+  line on what it does, each group sized by how many products it holds and adding columns as
+  it grows, then "See all products"; resources in columns that fill the width. On a phone the menu fills the screen: one size
+  of link in the bar's order, sections separated by space, the action pinned at the bottom.
 - The column line (`.axis`) at 42% of the viewport: headings and body start on it, the zone
   to its left holds a standfirst or a side note. Below 1024px it collapses to the margin.
 - Sections are separated by space or a change of field colour, never by a rule.

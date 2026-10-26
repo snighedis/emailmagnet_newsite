@@ -1,7 +1,6 @@
 "use client";
 
-import { ArrowRight, MenuBars, Star } from "@/components/ui/icons";
-import Image from "next/image";
+import { MenuBars } from "@/components/ui/icons";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { BrandLockup } from "@/components/brand/logo";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
+import { inShowcaseOrder } from "@/data/product-pictures";
 import { emailMagnetConfig, siteConfig } from "@/data/site";
 import { useCopy, useLocale } from "@/i18n/locale-context";
 import { LocaleLink } from "@/i18n/locale-link";
@@ -32,70 +32,49 @@ function Logo({ onClick }: { onClick?: () => void } = {}) {
   );
 }
 
+// The products as text, grouped by the store they are on. Each group takes room
+// in proportion to how many products it holds, and its list adds columns as it
+// grows, so a new product needs no change here.
 function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
   const { common, site } = useCopy();
-  const featured = site.products.find((product) => product.featured) ?? site.products[0];
-  const rest = site.products.filter((product) => product !== featured);
-
+  const groups = new Map<string, typeof site.products>();
+  for (const product of inShowcaseOrder(site.products)) {
+    // Store names are never translated (AGENTS.md)
+    const store = product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store";
+    groups.set(store, [...(groups.get(store) ?? []), product]);
+  }
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.05fr_2fr]">
-      <LocaleLink
-        href={featured.href}
-        onClick={onNavigate}
-        className="bg-ink hover:bg-ink-soft focus-visible:ring-brand group rounded-2xl p-6 text-white outline-none transition focus-visible:ring-2"
-      >
-        <div className="inline-flex items-center gap-1 rounded-md bg-white/10 px-3 py-1 text-xs font-semibold text-brand">
-          <Star className="h-3 w-3" />
-          {common.header.featuredBadge}
-        </div>
-        <div className="mt-4 flex items-center gap-3">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10">
-            <Image
-              src={featured.icon}
-              alt={`${featured.name} icon`}
-              width={32}
-              height={32}
-              className="h-8 w-8 object-contain"
-            />
-          </span>
-          <h2 className="text-2xl font-semibold">{featured.name}</h2>
-        </div>
-        <p className="text-ink-muted mt-3 text-sm leading-6">{featured.description}</p>
-        <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
-          {common.header.viewProduct}
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </span>
-      </LocaleLink>
-      <div>
-        <p className="px-2 pb-3 text-xs font-semibold tracking-wide text-stone-500 uppercase">
-          {common.header.portfolioLabel}
-        </p>
-        <div className="grid gap-2 sm:grid-cols-3">
-          {rest.map((product) => (
-            <LocaleLink
-              key={product.href}
-              href={product.href}
-              onClick={onNavigate}
-              className="focus-visible:ring-brand rounded-xl border border-transparent p-3 outline-none transition hover:border-stone-200 hover:bg-stone-50 focus-visible:bg-stone-50 focus-visible:ring-2"
-            >
-              <div className="flex items-center gap-3">
-                <Image
-                  src={product.icon}
-                  alt={`${product.name} icon`}
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 shrink-0 rounded-lg bg-stone-50 object-contain p-1.5"
-                />
-                <span className="font-semibold text-stone-950">{product.name}</span>
-              </div>
-              <span className="mt-3 inline-block rounded-md bg-stone-100 px-2 py-0.5 text-xs font-semibold text-stone-600">
-                {product.category}
-              </span>
-              <p className="mt-2 text-sm leading-6 text-stone-600">{product.description}</p>
-            </LocaleLink>
-          ))}
-        </div>
+    <div>
+      <div className="flex gap-16">
+        {[...groups].map(([store, products]) => (
+          <section key={store} style={{ flexGrow: products.length, flexBasis: 0 }} className="min-w-0">
+            <h2 className="text-base font-semibold text-stone-600">{store}</h2>
+            <ul className="mt-4 grid grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] gap-x-10 gap-y-6">
+              {products.map((product) => (
+                <li key={product.href}>
+                  <LocaleLink
+                    href={product.href}
+                    onClick={onNavigate}
+                    className="group text-ink focus-visible:ring-brand block outline-none focus-visible:ring-2 focus-visible:ring-offset-4"
+                  >
+                    <span className="text-link link-quiet font-heading text-[22px] leading-tight group-hover:decoration-current">
+                      {product.name}
+                    </span>
+                    <span className="mt-1.5 block text-sm leading-6">{product.description}</span>
+                  </LocaleLink>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
+      <LocaleLink
+        href="/overview"
+        onClick={onNavigate}
+        className="text-link text-ink focus-visible:ring-brand mt-8 inline-block text-base font-medium outline-none focus-visible:ring-2"
+      >
+        {common.header.allProducts}
+      </LocaleLink>
     </div>
   );
 }
@@ -103,24 +82,20 @@ function ProductsPanel({ onNavigate }: { onNavigate: () => void }) {
 function ResourcesPanel({ onNavigate }: { onNavigate: () => void }) {
   const { common, site } = useCopy();
   return (
-    <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+    <ul className="grid grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] gap-x-10 gap-y-6">
       {site.resourcesNav.map((item) => (
-        <LocaleLink
-          key={item.href}
-          href={item.href}
-          onClick={onNavigate}
-          className="focus-visible:ring-brand group rounded-xl border border-transparent p-4 outline-none transition hover:border-stone-200 hover:bg-stone-50 focus-visible:bg-stone-50 focus-visible:ring-2"
-        >
-          <span className="flex items-center gap-1.5 font-semibold text-stone-950">
-            {item.label}
-            <ArrowRight className="text-eyebrow h-4 w-4 opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
-          </span>
-          <p className="mt-1 text-sm leading-6 text-stone-600">
-            {common.header.resourceDescriptions[item.href]}
-          </p>
-        </LocaleLink>
+        <li key={item.href}>
+          <LocaleLink
+            href={item.href}
+            onClick={onNavigate}
+            className="text-ink focus-visible:ring-brand block outline-none focus-visible:ring-2 focus-visible:ring-offset-4"
+          >
+            <span className="text-link link-quiet font-heading text-[22px] leading-tight">{item.label}</span>
+            <span className="mt-1.5 block text-sm leading-6">{common.header.resourceDescriptions[item.href]}</span>
+          </LocaleLink>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -170,31 +145,11 @@ export function SiteHeader() {
     };
   }, [openMenu]);
 
-  const triggerClass = (menu: MenuId) =>
-    cn(
-      "focus-visible:ring-brand cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-stone-700 outline-none transition hover:bg-stone-100 hover:text-stone-950 focus-visible:ring-2",
-      openMenu === menu && "bg-stone-100 text-stone-950",
-    );
-
-  const productsBox = (
-                <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
-                  <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
-                    {common.header.products}
-                  </p>
-                  <div className="mt-2 grid">
-                    {site.products.map((product) => (
-                      <LocaleLink
-                        key={product.href}
-                        href={product.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
-                      >
-                        {product.name}
-                      </LocaleLink>
-                    ))}
-                  </div>
-                </div>
-  );
+  // Plain text links on one line, underlined on hover; the open menu's trigger
+  // stays underlined. No pill backgrounds.
+  const linkClass =
+    "text-link link-quiet focus-visible:ring-brand rounded-none px-2 py-2 text-[15px] font-medium text-ink outline-none focus-visible:ring-2";
+  const triggerClass = () => cn(linkClass, "cursor-pointer");
 
   const productsTrigger = (
     <button
@@ -204,10 +159,27 @@ export function SiteHeader() {
       onMouseEnter={() => openNow("products")}
       onMouseLeave={closeSoon}
       onClick={() => (openMenu === "products" ? closeNow() : openNow("products"))}
-      className={triggerClass("products")}
+      className={triggerClass()}
     >
       {common.header.products}
     </button>
+  );
+
+  // Phone menu: one column of links at one size, in the same order as the bar,
+  // sections separated by space only.
+  const mobileLink = "text-ink font-heading flex min-h-12 items-center text-[24px] leading-tight active:opacity-60";
+  const mobileSubLink = mobileLink;
+  const productsBox = (
+    <div>
+      <p className="text-base font-semibold text-stone-600">{common.header.products}</p>
+      <div className="mt-1 grid">
+        {inShowcaseOrder(site.products).map((product) => (
+          <LocaleLink key={product.href} href={product.href} onClick={() => setMobileOpen(false)} className={mobileSubLink}>
+            {product.name}
+          </LocaleLink>
+        ))}
+      </div>
+    </div>
   );
 
   return (
@@ -216,18 +188,13 @@ export function SiteHeader() {
       className="bg-surface-soft/90 sticky top-0 z-50 backdrop-blur-xl"
     >
       <div className="page-x relative flex h-16 items-center justify-between lg:h-18">
-        {/* Apollo-style: logo and nav grouped on the left, CTAs on the right */}
-        <div className="flex items-center gap-10">
+        {/* Wordmark and links on the left, language and the one action on the right */}
+        <div className="flex items-center gap-8">
           <Logo onClick={closeNow} />
-          <nav className="hidden items-center gap-1 text-sm font-medium text-stone-700 lg:flex">
+          <nav className="hidden items-center gap-3 lg:flex">
             {productsFirst ? productsTrigger : null}
             {site.mainNav.map((item) => (
-              <LocaleLink
-                key={item.href}
-                href={item.href}
-                onClick={closeNow}
-                className="rounded-md px-3 py-2 transition hover:bg-stone-100 hover:text-stone-950"
-              >
+              <LocaleLink key={item.href} href={item.href} onClick={closeNow} className={linkClass}>
                 {item.label}
               </LocaleLink>
             ))}
@@ -240,96 +207,85 @@ export function SiteHeader() {
                 onMouseEnter={() => openNow("resources")}
                 onMouseLeave={closeSoon}
                 onClick={() => (openMenu === "resources" ? closeNow() : openNow("resources"))}
-                className={triggerClass("resources")}
+                className={triggerClass()}
               >
                 {common.header.resources}
               </button>
             ) : null}
           </nav>
         </div>
-        <div className="hidden items-center gap-2 lg:flex">
-          <LanguageSwitcher />
+        <div className="hidden items-center gap-5 lg:flex">
+          <LanguageSwitcher className={linkClass} />
           {showEmailMagnet ? (
-            <Button asChild variant="ghost">
-              <LocaleLink href={emailMagnetConfig.href}>{common.header.getEmailMagnet}</LocaleLink>
-            </Button>
+            <LocaleLink href={emailMagnetConfig.href} className={linkClass}>
+              {common.header.getEmailMagnet}
+            </LocaleLink>
           ) : null}
-          <Button asChild className="btn-sheen font-semibold hover:-translate-y-0.5">
+          {/* The one action of the bar */}
+          <Button asChild size="lg">
             <LocaleLink href={siteConfig.secondaryCta.href}>{common.header.startProject}</LocaleLink>
           </Button>
         </div>
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="outline" size="icon" aria-label={common.header.openNavigation} className="h-12 w-12 rounded-md">
+            <Button variant="ghost" size="icon" aria-label={common.header.openNavigation} className="-mr-2 h-12 w-12">
               <MenuBars className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent
             side="right"
             closeLabel={common.header.closeNavigation}
-            className="w-80 overflow-y-auto pb-8"
+            className="bg-background w-full gap-0 border-0 shadow-none data-[side=right]:w-full data-[side=right]:sm:max-w-none"
           >
             <SheetTitle className="sr-only">{common.header.navigationTitle}</SheetTitle>
-            <div className="mt-16 space-y-6 px-6">
-              <div className="flex items-center justify-between gap-3">
-                <Logo onClick={() => setMobileOpen(false)} />
-                <LanguageSwitcher className="border border-stone-200" />
+            <div className="page-x flex h-16 shrink-0 items-center">
+              <Logo onClick={() => setMobileOpen(false)} />
+            </div>
+            <nav className="page-x flex-1 space-y-8 overflow-y-auto pt-6 pb-8">
+              {productsFirst ? productsBox : null}
+              <div className="grid">
+                {site.mainNav.map((item) => (
+                  <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className={mobileLink}>
+                    {item.label}
+                  </LocaleLink>
+                ))}
               </div>
-              <nav className="grid gap-5 text-base font-medium">
-                {productsFirst ? productsBox : null}
-                {showResources ? (
-                  <div className="rounded-xl border border-stone-200 bg-stone-50/70 p-4">
-                    <p className="text-xs font-semibold tracking-wide text-stone-500 uppercase">
-                      {common.header.resources}
-                    </p>
-                    <div className="mt-2 grid">
-                      {site.resourcesNav.map((item) => (
-                        <LocaleLink
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-200/70"
-                        >
-                          {item.label}
-                        </LocaleLink>
-                      ))}
-                    </div>
-                  </div>
-                ) : null}
-                <div className={productsFirst ? "border-t border-stone-200 pt-4" : undefined}>
-                  <div className="grid">
-                    {site.mainNav.map((item) => (
-                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
+              {productsFirst ? null : productsBox}
+              {showResources ? (
+                <div>
+                  <p className="text-base font-semibold text-stone-600">{common.header.resources}</p>
+                  <div className="mt-1 grid">
+                    {site.resourcesNav.map((item) => (
+                      <LocaleLink key={item.href} href={item.href} onClick={() => setMobileOpen(false)} className={mobileSubLink}>
                         {item.label}
                       </LocaleLink>
                     ))}
                   </div>
                 </div>
-                {productsFirst ? null : productsBox}
-                {/* Social links last, in both languages */}
-                <div className="grid border-t border-stone-200 pt-4 text-sm">
-                  <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
-                    LinkedIn
-                  </LocaleLink>
-                  <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="-mx-2 flex min-h-11 items-center rounded-md px-2 active:bg-stone-100">
-                    X/Twitter
-                  </LocaleLink>
-                </div>
-              </nav>
-              <div className="grid gap-3">
-                <Button asChild size="lg" className="btn-sheen w-full font-semibold hover:-translate-y-0.5">
-                  <LocaleLink href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)} className="text-center">
-                    {common.header.startProject}
-                  </LocaleLink>
-                </Button>
-                {showEmailMagnet ? (
-                  <Button asChild size="lg" variant="outline" className="w-full">
-                    <LocaleLink href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)}>
-                      {common.header.getEmailMagnetFree}
-                    </LocaleLink>
-                  </Button>
-                ) : null}
+              ) : null}
+              {/* Language and social links last, in both languages */}
+              <div className="flex flex-wrap items-center gap-x-6 text-base">
+                <LanguageSwitcher className="text-link text-ink px-0 text-base" />
+                <LocaleLink href={siteConfig.social.linkedin} onClick={() => setMobileOpen(false)} className="text-link text-ink flex min-h-11 items-center">
+                  LinkedIn
+                </LocaleLink>
+                <LocaleLink href={siteConfig.social.x} onClick={() => setMobileOpen(false)} className="text-link text-ink flex min-h-11 items-center">
+                  X
+                </LocaleLink>
               </div>
+            </nav>
+            {/* The action stays in view at the bottom of the menu */}
+            <div className="page-x bg-background grid shrink-0 gap-3 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+              <Button asChild size="xl" className="w-full">
+                <LocaleLink href={siteConfig.secondaryCta.href} onClick={() => setMobileOpen(false)}>
+                  {common.header.startProject}
+                </LocaleLink>
+              </Button>
+              {showEmailMagnet ? (
+                <LocaleLink href={emailMagnetConfig.href} onClick={() => setMobileOpen(false)} className="text-link text-ink flex min-h-11 items-center justify-center text-base font-medium">
+                  {common.header.getEmailMagnetFree}
+                </LocaleLink>
+              ) : null}
             </div>
           </SheetContent>
         </Sheet>
@@ -341,9 +297,9 @@ export function SiteHeader() {
           id="header-panel"
           onMouseEnter={() => openNow(openMenu)}
           onMouseLeave={closeSoon}
-          className="animate-in fade-in slide-in-from-top-2 absolute inset-x-0 top-full hidden border-b border-stone-200/70 bg-white shadow-soft-lg duration-150 lg:block"
+          className="animate-in fade-in slide-in-from-top-2 shadow-soft-lg absolute inset-x-0 top-full hidden bg-white duration-150 lg:block"
         >
-          <div className="page-x py-8">
+          <div className="page-x py-10">
             {openMenu === "products" ? (
               <ProductsPanel onNavigate={closeNow} />
             ) : (

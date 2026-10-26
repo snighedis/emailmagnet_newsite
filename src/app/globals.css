@@ -801,6 +801,20 @@ body:has([data-home-hero]) header .brand-wordmark {
   }
 }
 
+/* Navigation links: the same underline, shown only on hover (and on the open
+   menu's trigger), so every item in a bar looks the same at rest. */
+.text-link.link-quiet {
+  text-decoration-color: transparent;
+}
+@media (hover: hover) and (pointer: fine) {
+  .text-link.link-quiet:hover {
+    text-decoration-color: currentColor;
+  }
+}
+.text-link.link-quiet[aria-expanded="true"] {
+  text-decoration-color: currentColor;
+}
+
 /* The editorial homepage runs its own reveals, not the load-time section rise. */
 body:has([data-home-hero]) main > section,
 body:has([data-home-hero]) main > section:first-of-type > div:last-child {
