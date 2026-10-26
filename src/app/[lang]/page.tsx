@@ -1,12 +1,11 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { HomeReveal } from "@/components/marketing/home-reveal";
-import { Button } from "@/components/ui/button";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import { ProposalClose } from "@/components/marketing/proposal-close";
 import { getCopy, getPageCopy } from "@/copy";
-import { inShowcaseOrder, productPicture } from "@/data/product-pictures";
 import { LocaleLink } from "@/i18n/locale-link";
 import { resolveLang } from "@/i18n/params";
 import { createMetadata } from "@/lib/metadata";
@@ -52,34 +51,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <HomeSection key={key} id={key} copy={copy} products={products} lang={lang} />
       ))}
 
-      {/* The close (tasteskill blueprint "The reply card"): the written proposal as a
-          paper card lying on the ink field, tilted and cropped by the section's
-          bottom edge, with the line it starts from left to fill in. The footer
-          continues the same ink field. */}
-      <section className="bg-ink text-ink-foreground overflow-hidden">
-        <div className="page-x grid gap-12 pt-20 md:pt-28 lg:grid-cols-12 lg:items-end">
-          <p data-reveal className="t-lead max-w-[34ch] text-white/85 lg:col-span-4 lg:mb-28">
-            {copy.closing.aside}
-          </p>
-          <div data-reveal style={d(1)} className="lg:col-span-7 lg:col-start-6 lg:justify-self-end">
-            <div className="bg-background text-ink mx-auto flex w-[90%] translate-y-[60px] rotate-1 flex-col justify-center px-8 pt-8 pb-[92px] text-center sm:px-12 sm:pt-12 sm:pb-[108px] lg:aspect-[7/5] lg:w-[44vw] lg:rotate-2">
-              <h2 className="t-3">{copy.closing.title}</h2>
-              <p className="t-lead mt-6">
-                {copy.closing.fill[0]}{" "}
-                <span aria-hidden="true" className="border-ink/50 inline-block w-[3.5em] translate-y-[0.15em] border-b-2" />{" "}
-                {copy.closing.fill[1]}
-              </p>
-              <p className="t-body mt-3 text-stone-700">{copy.closing.description}</p>
-              <a
-                href={copy.closing.primary.href}
-                className="bg-ink hover:bg-ink-soft mt-8 flex h-14 w-full items-center justify-center text-base font-semibold text-white transition-colors duration-[180ms] active:scale-[0.98] motion-reduce:active:scale-100"
-              >
-                {copy.closing.primary.label}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProposalClose closing={copy.closing} />
     </>
   );
 }
@@ -150,54 +122,14 @@ function HomeSection({
 
   if (id === "products") {
     const { products: p } = copy;
-    // Each product's own 16:10 store image filling its tile, in the showcase
-    // order (src/data/product-pictures.ts); the shared product list is unchanged.
-    const ordered = inShowcaseOrder(products);
     return (
-      <section className="bg-background">
-        <div className="page-x axis gap-y-6 pt-20 md:pt-32">
-          <h2 data-reveal className="t-2 text-ink lg:col-start-2">
-            {p.title}
-          </h2>
-          <p data-reveal style={d(1)} className="t-lead text-ink max-w-[52ch] lg:col-start-2">
-            {p.caption}
-          </p>
-        </div>
-        <ul className="page-x mt-12 grid gap-x-8 gap-y-14 md:mt-16 md:grid-cols-2">
-          {ordered.map((product, i) => {
-            const picture = productPicture(product.name, lang);
-            const store = product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store";
-            return (
-              <li key={product.href} data-reveal style={d(i % 2)} className="group">
-                <LocaleLink href={product.href} className="block">
-                  <span className="bg-surface-muted relative block aspect-[16/10] overflow-hidden">
-                    {picture ? (
-                      <Image
-                        src={picture}
-                        alt=""
-                        fill
-                        sizes="(min-width: 768px) 46vw, 92vw"
-                        className="object-cover transition-transform duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.02] motion-reduce:transition-none"
-                      />
-                    ) : null}
-                  </span>
-                  <span className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                    <span className="t-3 text-ink">{product.name}</span>
-                    {/* Store names are never translated (AGENTS.md) */}
-                    <span className="text-sm text-stone-600">{store}</span>
-                  </span>
-                  <span className="t-body text-ink mt-2 block max-w-[52ch]">{product.description}</span>
-                </LocaleLink>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="page-x pt-12 pb-20 md:pb-32">
-          <LocaleLink href="/overview" className="text-link text-ink text-base font-medium">
-            {p.overviewLink}
-          </LocaleLink>
-        </div>
-      </section>
+      <ProductShowcase
+        products={products}
+        lang={lang}
+        title={p.title}
+        caption={p.caption}
+        overviewLink={p.overviewLink}
+      />
     );
   }
 

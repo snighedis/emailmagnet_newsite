@@ -47,6 +47,7 @@
   --color-brand-cta-hover: var(--brand-cta-hover);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
+  --color-ink-raised: var(--ink-raised);
   --color-ink-foreground: var(--ink-foreground);
   --color-ink-muted: var(--ink-muted);
   --color-ink-accent: var(--ink-accent);
@@ -122,6 +123,9 @@
   --brand-soft: oklch(0.96 0.03 40); /* tinted surface, the orange at 4% */
   --ink: oklch(0.24 0.035 248); /* deep navy ≈ #11212f */
   --ink-soft: oklch(0.29 0.04 245); /* lifted navy ≈ #1a2d3e */
+  /* One tone step above --ink for a field that sits on the ink footer (the
+     proposal close), so the two read as separate surfaces without a line. */
+  --ink-raised: oklch(0.315 0.042 245);
   --ink-foreground: oklch(0.985 0 0); /* text on ink */
   --ink-muted: oklch(0.84 0.015 70); /* muted text on ink, warm */
   --ink-accent: var(--brand); /* labels on ink: 4.68:1 */
