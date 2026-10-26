@@ -505,8 +505,8 @@ export const socialProof = {
 
 export const homeHero = {
   eyebrow: "Not an agency. A Milan software studio.",
-  titleLead: "Custom software. AI where it counts.",
-  titleAccent: "Shipped.",
+  titleLead: "Repetitive work,",
+  titleAccent: "done by software.",
   subhead:
     "A Milan software studio. Four products you can install today, and custom software that removes repetitive work and measures the saving.",
   primaryCta: { label: "Start your project", href: "/contact" },

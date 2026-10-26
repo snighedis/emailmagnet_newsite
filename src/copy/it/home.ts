@@ -13,8 +13,8 @@ export const home: HomeCopy = {
   itemListName: "Prodotti software di Dentoku Dev",
   hero: {
     eyebrow: "Uno studio software di Milano, non un'agenzia.",
-    titleLead: "L'AI in azienda, senza scommesse.",
-    titleAccent: "Funzionante.",
+    titleLead: "Il lavoro ripetitivo",
+    titleAccent: "lo fa il software.",
     subhead:
       "Software su misura per piccole imprese: togliamo il lavoro ripetitivo con l'AI e misuriamo quanto ti fa risparmiare.",
     primaryCta: { label: "Raccontaci il problema", href: "/contact" },
