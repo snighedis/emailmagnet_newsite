@@ -7,13 +7,17 @@ export const faq = {
       "Answers to common EmailMagnet questions about how it works, reliability, legality, free plan restrictions, and lifetime PRO access.",
   },
   breadcrumb: "FAQ",
-  eyebrow: "FAQ",
-  title: "EmailMagnet frequently asked questions",
+  // Two authored lines: the headline rises line by line.
+  title: ["Questions about", "EmailMagnet."],
   description: "Concise answers about EmailMagnet, exports, pricing, reliability, and responsible use.",
+  storeCta: "Add to Chrome, free",
+  // The short answer: one statement set large, the plans beneath it.
   shortAnswer: {
     title: "Short answer",
-    body: "EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from websites while browsing. It has a Free plan for light use and a PRO plan for unlimited extraction, autosave, bulk extraction, and priority support.",
+    body: "EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from websites while browsing.",
+    plans: "It has a Free plan for light use and a PRO plan for unlimited extraction, autosave, bulk extraction, and priority support.",
   },
+  questionsTitle: "All the questions",
   related: {
     ariaLabel: "FAQ related pages",
     title: "Related pages",

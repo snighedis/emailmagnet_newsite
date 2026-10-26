@@ -20,7 +20,7 @@ export const about: AboutCopy = {
   founderLink: "Chi è il fondatore",
   statement: {
     heading: "In breve",
-    body: "Il fondatore segue ogni progetto dal problema al rilascio, con collaboratori scelti per progetto quando il lavoro lo richiede. Non ci sono account manager né passaggi di mano.",
+    body: "Il fondatore segue ogni progetto dal problema al rilascio, con collaboratori scelti quando serve: niente account manager, niente passaggi di mano.",
     founder: {
       before: "Chi c’è dietro lo studio lo trovi nella pagina del",
       link: "fondatore",

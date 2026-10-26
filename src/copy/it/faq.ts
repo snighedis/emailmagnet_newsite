@@ -8,20 +8,22 @@ export const faq: FaqCopy = {
       "Risposte alle domande più comuni su EmailMagnet: come funziona, affidabilità, legalità, limiti del piano gratuito e accesso PRO a vita.",
   },
   breadcrumb: "FAQ",
-  eyebrow: "FAQ",
-  title: "Domande frequenti su EmailMagnet",
+  title: ["Domande frequenti", "su EmailMagnet."],
   description: "Risposte concise su EmailMagnet, esportazioni, prezzi, affidabilità e uso responsabile.",
+  storeCta: "Aggiungi a Chrome, gratis",
   shortAnswer: {
     title: "In breve",
-    body: "EmailMagnet è un'estensione Chrome di Dentoku Dev per trovare ed estrarre email dai siti web durante la navigazione. Ha un piano Free per un uso leggero e un piano PRO con estrazione illimitata, salvataggio automatico, estrazione in blocco e supporto prioritario.",
+    body: "EmailMagnet è un’estensione Chrome di Dentoku Dev per trovare ed estrarre email dai siti web durante la navigazione.",
+    plans: "Ha un piano Free per un uso leggero e un piano PRO con estrazione illimitata, salvataggio automatico, estrazione in blocco e supporto prioritario.",
   },
+  questionsTitle: "Tutte le domande",
   related: {
     ariaLabel: "Pagine correlate alle FAQ",
     title: "Pagine correlate",
     links: [
-      { label: "Pagina prodotto EmailMagnet", href: "/emailmagnet" },
-      { label: "Prezzi di EmailMagnet", href: "/pricing" },
-      { label: "Guida all'uso responsabile", href: "/docs/responsible-use" },
+      { label: "EmailMagnet product page", href: "/emailmagnet" },
+      { label: "EmailMagnet pricing", href: "/pricing" },
+      { label: "Responsible use guide", href: "/docs/responsible-use" },
       { label: "Contatta Dentoku Dev", href: "/contact" },
     ],
   },
@@ -29,7 +31,7 @@ export const faq: FaqCopy = {
     {
       question: "Come funziona EmailMagnet?",
       answer:
-        "EmailMagnet è un'estensione Chrome che rileva gli indirizzi email visibili mentre navighi sui siti pertinenti. Apri una pagina contatti, una directory, un elenco di fornitori o un profilo pubblico, avvia EmailMagnet, controlla le email rilevate e poi esporta l'elenco in CSV o TXT.",
+        "EmailMagnet è un’estensione Chrome che rileva gli indirizzi email visibili mentre navighi sui siti pertinenti. Apri una pagina contatti, una directory, un elenco di fornitori o un profilo pubblico, avvia EmailMagnet, controlla le email rilevate e poi esporta l’elenco in CSV o TXT.",
     },
     {
       question: "Quanto è affidabile EmailMagnet?",
@@ -47,9 +49,9 @@ export const faq: FaqCopy = {
         "PRO (19 $ una tantum, a vita) include estrazione illimitata, esportazioni senza limiti di dimensione, salvataggio automatico durante la navigazione, estrazione in blocco da elenchi di URL già verificati e supporto prioritario. Nessun abbonamento mensile.",
     },
     {
-      question: "L'estrazione di email è legale?",
+      question: "L’estrazione di email è legale?",
       answer:
-        "L'estrazione di email da siti web pubblicamente visibili può essere legale se fatta in modo responsabile. Rispetta le leggi sulla privacy applicabili come GDPR e CAN-SPAM, raccogli solo email mostrate pubblicamente, usale per scopi commerciali legittimi, conserva il contesto della fonte e rispetta le richieste di opt-out. EmailMagnet è pensato per una ricerca responsabile, non per l'invio automatico.",
+        "L’estrazione di email da siti web pubblicamente visibili può essere legale se fatta in modo responsabile. Rispetta le leggi sulla privacy applicabili come GDPR e CAN-SPAM, raccogli solo email mostrate pubblicamente, usale per scopi commerciali legittimi, conserva il contesto della fonte e rispetta le richieste di opt-out. EmailMagnet è pensato per una ricerca responsabile, non per l’invio automatico.",
     },
     {
       question: "Su quali siti funziona EmailMagnet?",
@@ -59,7 +61,7 @@ export const faq: FaqCopy = {
     {
       question: "Come esporto le email?",
       answer:
-        "Dopo l'estrazione, fai clic sul pulsante di esportazione nel popup di EmailMagnet. Scegli CSV per la compatibilità con i fogli di calcolo o TXT per il testo semplice. I file si scaricano subito sul tuo computer e funzionano con la maggior parte dei CRM e degli strumenti di outreach.",
+        "Dopo l’estrazione, fai clic sul pulsante di esportazione nel popup di EmailMagnet. Scegli CSV per la compatibilità con i fogli di calcolo o TXT per il testo semplice. I file si scaricano subito sul tuo computer e funzionano con la maggior parte dei CRM e degli strumenti di outreach.",
     },
   ],
 };

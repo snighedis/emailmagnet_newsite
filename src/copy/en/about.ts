@@ -16,7 +16,7 @@ export const about = {
   // The short answer, set large as one statement.
   statement: {
     heading: "Short answer",
-    body: "Dentoku Dev is the product studio behind EmailMagnet, ClickPilot AI, Volume Control PRO and Countdown321: small, practical software for browser, ecommerce and business workflows.",
+    body: "Dentoku Dev is the product studio behind EmailMagnet, ClickPilot AI, Volume Control PRO and Countdown321.",
     founder: {
       before: "The studio is founded and maintained by",
       link: "the Dentoku Dev founder",
