@@ -98,7 +98,7 @@ describe("Dentoku Dev site hierarchy", () => {
   it("models the current free and pro pricing structure without invented plans", () => {
     expect(pricingPlans).toHaveLength(2);
     expect(pricingPlans.map((plan) => plan.name)).toEqual(["Free plan", "PRO plan"]);
-    expect(pricingPlans[0].features).toContain("200 emails per month.");
+    expect(pricingPlans[0].features).toContain("No monthly or per-export limit.");
     expect(pricingPlans[1].price).toBe("$19");
     expect(pricingPlans[1].features).toContain("Autosave while browsing.");
     expect(pricingPlans[1].features).toContain("Bulk extraction for reviewed URL lists.");
@@ -109,7 +109,7 @@ describe("Dentoku Dev site hierarchy", () => {
     expect(questions).toContain("How does EmailMagnet work?");
     expect(questions).toContain("How reliable is EmailMagnet?");
     expect(questions).toContain("Is email extraction legal?");
-    expect(questions).toContain("What are the free version restrictions?");
+    expect(questions).toContain("What does the free version include?");
   });
 });
 

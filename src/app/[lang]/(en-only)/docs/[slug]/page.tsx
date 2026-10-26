@@ -54,14 +54,13 @@ const docs: Record<
   "exporting-emails": {
     title: "Exporting Emails with EmailMagnet",
     datePublished: "2026-05-11",
-    dateModified: "2026-06-08",
+    dateModified: "2026-10-26",
     description:
       "Learn when to export EmailMagnet results as CSV or TXT, how to review addresses first, and how to prepare cleaner lists for spreadsheets or CRM handoff.",
     answer:
       "EmailMagnet exports detected website emails as CSV or TXT so the list can move into spreadsheets, CRM preparation, research notes, or follow-up workflows.",
     steps: [
-      "Free plan: export up to 100 emails at once.",
-      "PRO plan: unlimited export size.",
+      "No limit on export size, on Free or PRO.",
       "Supported formats: CSV and TXT.",
     ],
     details: [

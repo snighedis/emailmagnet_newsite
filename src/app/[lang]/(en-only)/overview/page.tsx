@@ -128,7 +128,7 @@ export default function OverviewPage() {
           <h2 className="text-2xl font-semibold text-stone-950">Featured product: EmailMagnet</h2>
           <p className="mt-3 leading-8 text-stone-700">
             EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from
-            websites while browsing. It supports CSV and TXT export, a Free plan for light use, and
+            websites while browsing. It supports CSV and TXT export, a Free plan with no extraction or export limit, and
             a PRO plan with lifetime access.
           </p>
           <div className="mt-5 flex flex-wrap gap-4 text-sm font-medium">

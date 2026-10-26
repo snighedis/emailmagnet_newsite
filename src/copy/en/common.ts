@@ -22,7 +22,7 @@ export const common = {
       "/overview": "Every product and where it fits, on one page.",
       "/docs": "Setup, exports, and responsible-use guides.",
       "/blog": "Practical guides on browser workflows.",
-      "/faq": "Short answers on pricing, limits, and support.",
+      "/faq": "Short answers on pricing, plans, and support.",
     } as Record<string, string>,
     getEmailMagnet: "Get EmailMagnet",
     getEmailMagnetFree: "Get EmailMagnet for free",

@@ -78,9 +78,8 @@ const workflowComparison = [
 
 const proTriggers = [
   "You research directories, contact pages, or partner lists every week.",
-  "The free extraction/export limits are now your bottleneck.",
-  "You want autosave and larger export batches for repeated sessions.",
-  "You work from pre-reviewed URL lists and need faster processing.",
+  "You want autosave to keep results across repeated sessions.",
+  "You work from pre-reviewed URL lists and want bulk extraction.",
 ];
 
 const notFor = [

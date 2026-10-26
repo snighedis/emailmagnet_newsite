@@ -22,7 +22,7 @@ const useCases = {
       },
       {
         title: "Free vs PRO fit",
-        body: "The Free plan is enough for occasional research and small lists. PRO makes sense when prospecting is recurring, exports exceed the free limits, or bulk extraction and autosave remove repeated manual work.",
+        body: "The Free plan has no extraction or export limit. PRO makes sense when prospecting is recurring and bulk extraction and autosave remove repeated manual work.",
       },
       {
         title: "Responsible outreach guardrails",

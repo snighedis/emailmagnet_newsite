@@ -13,8 +13,8 @@ that way and were each found by audit, not by the change that broke them:
 - **ClickPilot AI** sold "Your text never leaves your browser" twenty lines below
   its own notice saying the text is sent to OpenAI.
 - **Volume Control PRO** was "100% free" after Audio Studio PRO shipped at €9.99.
-- **EmailMagnet** advertises a free tier capped at 100 emails per export and a PRO
-  that lifts the cap. Neither limit exists in the product.
+- **EmailMagnet** advertised a free tier capped at 200 emails a month and 100 per
+  export, and a PRO that lifted the caps. Neither limit ever existed in the product.
 
 **The rule: when you change what a product does, re-read that product's entries in
 `src/data/site.ts` in the same change.** It takes five minutes and would have

@@ -18,7 +18,7 @@ export const common: CommonCopy = {
       "/overview": "Tutti i prodotti e il ruolo di ciascuno, in una sola pagina.",
       "/docs": "Configurazione, esportazioni e guide all'uso responsabile.",
       "/blog": "Guide pratiche sui flussi di lavoro nel browser.",
-      "/faq": "Risposte brevi su prezzi, limiti e assistenza.",
+      "/faq": "Risposte brevi su prezzi, piani e assistenza.",
     },
     getEmailMagnet: "Scarica EmailMagnet",
     getEmailMagnetFree: "Scarica EmailMagnet gratis",

@@ -1,11 +1,11 @@
 import type { FaqCopy } from "@/copy/en/faq";
 
-/** Same limits and price as src/data/site.ts faqItems: 200/month, 100 per export, $19 lifetime. */
+/** Same claims and price as src/data/site.ts faqItems: no extraction or export limit, $19 lifetime. */
 export const faq: FaqCopy = {
   meta: {
     title: "FAQ e supporto EmailMagnet",
     description:
-      "Risposte alle domande più comuni su EmailMagnet: come funziona, affidabilità, legalità, limiti del piano gratuito e accesso PRO a vita.",
+      "Risposte alle domande più comuni su EmailMagnet: come funziona, affidabilità, legalità, cosa include il piano gratuito e accesso PRO a vita.",
   },
   breadcrumb: "FAQ",
   title: ["Domande frequenti", "su EmailMagnet."],
@@ -14,7 +14,7 @@ export const faq: FaqCopy = {
   shortAnswer: {
     title: "In breve",
     body: "EmailMagnet è un’estensione Chrome di Dentoku Dev per trovare ed estrarre email dai siti web durante la navigazione.",
-    plans: "Ha un piano Free per un uso leggero e un piano PRO con estrazione illimitata, salvataggio automatico, estrazione in blocco e supporto prioritario.",
+    plans: "Il piano Free non ha limiti mensili né per esportazione; PRO aggiunge salvataggio automatico, estrazione in blocco e supporto prioritario.",
   },
   questionsTitle: "Tutte le domande",
   related: {
@@ -39,14 +39,14 @@ export const faq: FaqCopy = {
         "EmailMagnet è pensato per rilevare le email visibili nelle pagine che stai già consultando in Chrome. I risultati dipendono da come il sito mostra le informazioni di contatto, quindi controlla sempre gli indirizzi estratti prima di esportarli o usarli.",
     },
     {
-      question: "Quali sono i limiti della versione gratuita?",
+      question: "Cosa include la versione gratuita?",
       answer:
-        "EmailMagnet Free include 200 estrazioni di email al mese, esportazioni fino a 100 email alla volta, esportazione CSV/TXT e supporto via email. È pensato per provare il flusso di lavoro e per sessioni di ricerca occasionali.",
+        "EmailMagnet Free include estrazione con un clic, esportazione CSV/TXT e supporto via email, senza limiti mensili né per esportazione sulle email che estrai. PRO aggiunge funzioni per la ricerca ricorrente, non più volume.",
     },
     {
       question: "Cosa include la versione PRO?",
       answer:
-        "PRO (19 $ una tantum, a vita) include estrazione illimitata, esportazioni senza limiti di dimensione, salvataggio automatico durante la navigazione, estrazione in blocco da elenchi di URL già verificati e supporto prioritario. Nessun abbonamento mensile.",
+        "PRO (19 $ una tantum, a vita) aggiunge salvataggio automatico durante la navigazione, estrazione in blocco da elenchi di URL già verificati e supporto prioritario. Nessun abbonamento mensile.",
     },
     {
       question: "L’estrazione di email è legale?",

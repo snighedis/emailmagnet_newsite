@@ -3,6 +3,12 @@
 _Audit delle claim di prodotto su dentokudev.com, agosto 2026. Da rileggere quando il gate
 sull'export è live sullo store._
 
+**Aggiornamento 26 ottobre 2026:** il proprietario conferma che il prodotto non ha limiti, né mensili
+né per export. Le claim #1-#4 sono state tolte da tutto il sito (dati, JSON-LD, test, pagine, blog):
+il Free è dichiarato senza limiti e il PRO aggiunge autosave, estrazione in blocco e supporto
+prioritario. Anche #6 ("faster processing") non compare più nel sito. Resta aperta #5: autosave venduto come
+differenza PRO.
+
 ## In breve
 
 Il sito descrive un prodotto sensato che non è mai stato costruito: un piano gratuito con export

@@ -105,7 +105,7 @@ export function buildSoftwareSchema() {
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Chrome Extension",
     operatingSystem: "Windows, macOS, Linux, ChromeOS",
-    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan available with 200 emails/month. PRO plan offers unlimited extraction for $19 lifetime.",
+    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan with no monthly or per-export limit. PRO plan adds autosave and bulk extraction for $19 lifetime.",
     keywords: "email extractor, Chrome extension, email finder, lead generation, prospecting, CSV export, browser email extraction",
     url: `${base}${emailMagnetConfig.href}`,
     downloadUrl: emailMagnetConfig.secondaryCta.href,
@@ -124,7 +124,7 @@ export function buildSoftwareSchema() {
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.secondaryCta.href,
         category: "Free Plan",
-        description: "200 emails per month, export up to 100 emails at once"
+        description: "No monthly or per-export limit, CSV and TXT export"
       },
       {
         "@type": "Offer",
@@ -134,7 +134,7 @@ export function buildSoftwareSchema() {
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.primaryCta.href,
         category: "Lifetime access",
-        description: "Unlimited email extraction, unlimited export size, autosave, bulk extraction"
+        description: "Autosave, bulk extraction, priority support"
       }
     ],
     featureList: [
