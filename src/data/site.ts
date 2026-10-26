@@ -93,6 +93,15 @@ export const founderConfig = {
   location: "Milan, Italy",
   description:
     "Nicola Orlandi is the founder of Dentoku Dev, a Milan software studio. He designs and builds custom software that removes repetitive work from small businesses, and ships the studio's Chrome extensions and Shopify app.",
+  // Career, from the founder's public portfolio (portfolio-nicola-orlandi.vercel.app).
+  // Employment, not client work: copy says he worked there, never that they are clients.
+  experience: [
+    { from: 2024, to: null, role: "Founder & AI Automation Specialist", company: "Dentoku Dev", place: { en: "Milan", it: "Milano" } },
+    { from: 2023, to: 2024, role: "Digital Communication Manager", company: "Fantini S.p.A.", place: { en: "Pella", it: "Pella" } },
+    { from: 2017, to: 2023, role: "Digital Communication & E‑commerce Specialist", company: "Artemide / Danese Milano", place: { en: "Milan", it: "Milano" } },
+    { from: 2013, to: 2017, role: "Digital Communication Expert", company: "iGuzzini", place: { en: "Recanati", it: "Recanati" } },
+    { from: 2012, to: 2013, role: "Product Assistant, Design Lab", company: "iGuzzini", place: { en: "Recanati", it: "Recanati" } },
+  ],
   focusAreas: [
     "Chrome extension workflows",
     "Shopify storefront tools",

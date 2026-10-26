@@ -736,6 +736,12 @@ body:has([data-home-hero]) header .brand-wordmark {
   line-height: 1.18;
   letter-spacing: -0.015em;
 }
+/* A statement that would run past four lines at 24px on a phone steps down there. */
+@media (max-width: 639px) {
+  .t-3.t-3-compact {
+    font-size: 20px;
+  }
+}
 .t-lead {
   font-size: 18px;
   line-height: 1.55;

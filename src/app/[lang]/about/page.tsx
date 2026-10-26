@@ -79,7 +79,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/about">) 
             {copy.statement.heading}
           </h2>
           <div className="space-y-6">
-            <p data-reveal style={d(1)} className="t-3 text-ink max-w-[44ch]">
+            <p data-reveal style={d(1)} className="t-3 t-3-compact text-ink max-w-[54ch]">
               {copy.statement.body}
             </p>
             <p data-reveal style={d(2)} className="t-lead text-ink">
