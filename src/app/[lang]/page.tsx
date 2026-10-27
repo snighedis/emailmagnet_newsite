@@ -103,15 +103,23 @@ function HomeSection({
     const steps = copy.process.steps;
     const indent = ["lg:ml-0", "lg:ml-[16.66%]", "lg:ml-[33.33%]", "lg:ml-[50%]"];
     const indentPhone = ["ml-0", "ml-[6vw]", "ml-[12vw]", "ml-[18vw]"];
+    // On a tablet each stage is 60% wide and the stair runs margin to margin, so
+    // the last stage closes the right edge instead of leaving half the field empty.
+    const indentTablet = ["md:ml-0", "md:ml-[13.33%]", "md:ml-[26.66%]", "md:ml-[40%]"];
     return (
       <section id="process" aria-label={copy.process.heading} className="bg-brand text-ink scroll-mt-16">
         <ol className="page-x space-y-10 py-20 md:space-y-14 md:py-32">
           {steps.map((step, i) => {
             const Heading = i === 0 ? "h2" : "h3";
             return (
-              <li key={step.title} data-reveal style={d(i)} className={`${indentPhone[i]} ${indent[i]}`}>
+              <li
+                key={step.title}
+                data-reveal
+                style={d(i)}
+                className={`${indentPhone[i]} ${indentTablet[i]} ${indent[i]} md:w-[60%] lg:w-auto`}
+              >
                 <Heading className="t-2 whitespace-nowrap max-sm:whitespace-normal">{step.title}</Heading>
-                <p className="t-body mt-3 max-w-[38ch]">{step.description}</p>
+                <p className="t-body mt-3 max-w-[38ch] md:max-w-none lg:max-w-[38ch]">{step.description}</p>
               </li>
             );
           })}

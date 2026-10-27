@@ -73,7 +73,6 @@ export const common: CommonCopy = {
   },
   exitIntent: {
     closeAria: "Chiudi",
-    eyebrow: "Checklist gratuita",
     title: "Prima di andare, scarica la checklist sulla conformità",
     body: "La checklist GDPR e CAN-SPAM che usiamo per trasformare le email estratte in liste a cui puoi davvero scrivere. Ricevi il PDF e unisciti a commerciali, recruiter e team growth che valutano EmailMagnet 5.0★.",
     emailPlaceholder: "tu@azienda.com",
@@ -121,25 +120,22 @@ export const common: CommonCopy = {
     submit: "Invia il messaggio",
   },
   notFound: {
-    eyebrow: "404",
     title: "Pagina non trovata",
     body: "La pagina che hai richiesto non esiste.",
     home: "Torna alla home",
-  },
-  newsletter: {
-    title: "Iscriviti alla newsletter",
-    body: "Ricevi aggiornamenti sui prodotti, consigli sui flussi di lavoro e note di rilascio da Dentoku Dev.",
-    loading: "Caricamento del modulo di iscrizione...",
-    emailPlaceholder: "tu@esempio.com",
-    wait: "Attendi...",
-    subscribe: "Iscriviti",
-    thanks: "Grazie! Ti scriveremo presto.",
-    back: "← Indietro",
-    genericError: "Ops! Qualcosa è andato storto, riprova",
-    tooMany: "Troppe iscrizioni, riprova tra poco",
+    productsTitle: "Il software che pubblichiamo",
+    productsCaption:
+      "Forse cercavi uno dei nostri prodotti. Li costruiamo, pubblichiamo e manteniamo noi.",
+    productsLink: "Vedi tutti i prodotti",
+    pagesTitle: "Dove andare",
+    pages: [
+      { label: "Home", href: "/", description: "Cosa costruiamo e come si parte." },
+      { label: "Chi siamo", href: "/about", description: "Chi siamo e come lavoriamo." },
+      { label: "Contatti", href: "/contact", description: "Scrivici, o conta le tue ore." },
+      { label: "Blog", href: "/blog", description: "Guide e articoli, in inglese." },
+    ],
   },
   leadMagnet: {
-    eyebrow: "Checklist gratuita",
     title: "Trasformala in una lista a cui puoi davvero scrivere",
     body: "Ricevi la checklist di conformità GDPR e CAN-SPAM che usiamo per qualificare i contatti estratti prima di qualsiasi attività di outreach. Un PDF di una pagina.",
     emailPlaceholder: "tu@azienda.com",
@@ -153,15 +149,5 @@ export const common: CommonCopy = {
     download: "Scarica la checklist",
     genericError: "Qualcosa è andato storto, riprova.",
     tooMany: "Troppe iscrizioni, riprova tra poco.",
-  },
-  support: {
-    eyebrow: "Assistenza via email",
-    title: "Serve aiuto?",
-    body: "Contatta l'assistenza EmailMagnet per domande sul prodotto, aiuto con la fatturazione o richieste sulla documentazione.",
-    responseTime: "Tempo di risposta tipico: entro un giorno lavorativo.",
-  },
-  trustBar: {
-    on: "su",
-    outOfFive: "su 5",
   },
 };

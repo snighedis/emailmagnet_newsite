@@ -1,6 +1,6 @@
 /**
  * English copy for the global chrome: header, footer, cookie banner,
- * exit-intent modal, contact form, 404, newsletter and lead-magnet forms.
+ * exit-intent modal, contact form, 404 and lead-magnet form.
  * English is the form of truth: `CommonCopy` is derived from this object and
  * the Italian module must satisfy it, so a missing or extra key fails tsc.
  *
@@ -77,7 +77,6 @@ export const common = {
   },
   exitIntent: {
     closeAria: "Close",
-    eyebrow: "Free checklist",
     title: "Before you go, grab the compliance checklist",
     body: "The GDPR & CAN-SPAM checklist we use to turn raw email extraction into lists you can actually send to. Get the PDF and join the sales reps, recruiters, and growth teams who rate EmailMagnet 5.0★.",
     emailPlaceholder: "you@company.com",
@@ -127,25 +126,22 @@ export const common = {
     submit: "Send message",
   },
   notFound: {
-    eyebrow: "404",
     title: "Page not found",
     body: "The page you requested does not exist.",
     home: "Return home",
-  },
-  newsletter: {
-    title: "Join the newsletter",
-    body: "Get product updates, workflow tips, and release notes from Dentoku Dev.",
-    loading: "Loading subscription form...",
-    emailPlaceholder: "you@example.com",
-    wait: "Please wait...",
-    subscribe: "Subscribe",
-    thanks: "Thanks! We'll be in touch!",
-    back: "← Back",
-    genericError: "Oops! Something went wrong, please try again",
-    tooMany: "Too many signups, please try again in a little while",
+    productsTitle: "Our own software",
+    productsCaption:
+      "Maybe you were looking for one of our products. We build, publish and maintain them ourselves.",
+    productsLink: "See all products",
+    pagesTitle: "Where to go",
+    pages: [
+      { label: "Home", href: "/", description: "What we build, and how to start." },
+      { label: "About", href: "/about", description: "Who we are and how we work." },
+      { label: "Contact", href: "/contact", description: "Write to us, or count your hours." },
+      { label: "Blog", href: "/blog", description: "Guides and articles on lead research." },
+    ],
   },
   leadMagnet: {
-    eyebrow: "Free checklist",
     title: "Turn this into a list you can actually send to",
     body: "Get the GDPR & CAN-SPAM compliance checklist we use to qualify extracted contacts before any outreach. Delivered as a one-page PDF.",
     emailPlaceholder: "you@company.com",
@@ -159,18 +155,6 @@ export const common = {
     download: "Download the checklist",
     genericError: "Something went wrong, please try again.",
     tooMany: "Too many signups, please try again in a little while.",
-  },
-  support: {
-    eyebrow: "Email support",
-    title: "Need support?",
-    body: "Contact EmailMagnet support for product questions, billing help, or documentation requests.",
-    responseTime: "Typical response time is within one business day.",
-  },
-  trustBar: {
-    /** "5.0 on Chrome Web Store" */
-    on: "on",
-    /** Screen-reader text after the rating: "5 out of 5" */
-    outOfFive: "out of 5",
   },
 };
 

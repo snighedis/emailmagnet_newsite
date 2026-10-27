@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Dialog } from "radix-ui";
-import { ArrowRight, Download, MailCheck, Sparkles, X } from "@/components/ui/icons";
+import { Download, X } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -107,32 +107,27 @@ export function ExitIntentModal() {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[70] bg-black/40 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 motion-reduce:animate-none" />
+        <Dialog.Overlay className="fixed inset-0 z-[70] bg-black/40 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 motion-reduce:animate-none" />
         <Dialog.Content
           aria-describedby={undefined}
           className={cn(
             "fixed top-1/2 left-1/2 z-[70] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2",
-            "shadow-soft-lg rounded-2xl border border-stone-200 bg-white p-7",
+            "bg-background text-ink p-7 shadow-xl sm:p-9",
             "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 motion-reduce:animate-none",
           )}
         >
           <Dialog.Close
-            className="absolute top-4 right-4 flex h-7 w-7 items-center justify-center rounded-full text-stone-400 transition hover:bg-stone-100 hover:text-stone-700"
+            className="text-ink hover:bg-surface-muted absolute top-3 right-3 flex h-10 w-10 items-center justify-center transition-colors"
             aria-label={copy.closeAria}
           >
             <X className="h-4 w-4" />
           </Dialog.Close>
 
           {state === "success" ? (
-            <div className="text-center">
-              <span className="bg-brand-soft text-eyebrow mx-auto flex h-12 w-12 items-center justify-center rounded-full">
-                <MailCheck className="h-6 w-6" />
-              </span>
-              <Dialog.Title className="text-ink mt-4 text-2xl font-semibold tracking-[-0.01em]">
-                {copy.successTitle}
-              </Dialog.Title>
-              <p className="mt-2 leading-7 text-stone-600">{copy.successBody}</p>
-              <Button asChild size="lg" className="mt-6 w-full font-semibold">
+            <div>
+              <Dialog.Title className="t-3 pr-8">{copy.successTitle}</Dialog.Title>
+              <p className="t-body mt-3">{copy.successBody}</p>
+              <Button asChild size="xl" className="mt-6 w-full">
                 <a href={LEAD_MAGNET_PATH} target="_blank" rel="noopener noreferrer" download>
                   {copy.download}
                   <Download className="h-4 w-4" />
@@ -141,13 +136,8 @@ export function ExitIntentModal() {
             </div>
           ) : (
             <>
-              <span className="text-eyebrow inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] uppercase">
-                <Sparkles className="h-4 w-4" /> {copy.eyebrow}
-              </span>
-              <Dialog.Title className="text-ink mt-3 text-3xl font-semibold tracking-[-0.01em] text-balance">
-                {copy.title}
-              </Dialog.Title>
-              <p className="mt-3 leading-7 text-stone-600">{copy.body}</p>
+              <Dialog.Title className="t-3 pr-8">{copy.title}</Dialog.Title>
+              <p className="t-body mt-3">{copy.body}</p>
 
               <form onSubmit={onSubmit} className="mt-6 space-y-3">
                 <Input
@@ -160,26 +150,20 @@ export function ExitIntentModal() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={state === "loading"}
-                  className="h-11"
+                  className="h-12 rounded-none text-base"
                 />
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full font-semibold"
-                  disabled={state === "loading"}
-                >
+                <Button type="submit" size="xl" className="w-full" disabled={state === "loading"}>
                   {state === "loading" ? copy.sending : copy.submit}
-                  {state === "loading" ? null : <ArrowRight className="h-4 w-4" />}
                 </Button>
               </form>
 
               {state === "error" ? (
-                <p className="mt-2 text-sm text-red-700">{message}</p>
+                <p className="text-destructive mt-2 text-sm">{message}</p>
               ) : null}
 
-              <p className="mt-4 text-xs leading-5 text-stone-500">
+              <p className="mt-4 text-sm leading-6">
                 {copy.consent.before}{" "}
-                <LocaleLink href="/privacy" className="underline underline-offset-2 hover:text-stone-700">
+                <LocaleLink href="/privacy" className="text-link">
                   {copy.consent.link}
                 </LocaleLink>
                 {copy.consent.after}
