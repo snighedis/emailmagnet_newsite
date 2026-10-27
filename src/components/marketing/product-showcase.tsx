@@ -27,6 +27,7 @@ export function ProductShowcase({
   lang: string;
   title: string;
   caption: string;
+  /** Empty on the overview itself, which the link would point back to. */
   overviewLink: string;
   /** On a product page: its own href, so the grid never shows the page you are on. */
   exclude?: string;
@@ -74,9 +75,11 @@ export function ProductShowcase({
         })}
       </ul>
       <div className="page-x pt-12 pb-20 md:pb-32">
-        <LocaleLink href="/overview" className="text-link text-ink text-base font-medium">
-          {overviewLink}
-        </LocaleLink>
+        {overviewLink ? (
+          <LocaleLink href="/overview" className="text-link text-ink text-base font-medium">
+            {overviewLink}
+          </LocaleLink>
+        ) : null}
       </div>
     </section>
   );

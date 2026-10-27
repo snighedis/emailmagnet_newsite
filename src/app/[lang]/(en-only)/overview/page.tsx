@@ -1,8 +1,11 @@
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
+import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { SectionHeading } from "@/components/marketing/section-heading";
-import { emailMagnetConfig, productPortfolio, siteConfig } from "@/data/site";
+import { PageOpening, RowTable, ShortAnswer, SideSection, d } from "@/components/marketing/editorial";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import { ProposalClose } from "@/components/marketing/proposal-close";
+import { getCopy, getPageCopy } from "@/copy";
+import { productPortfolio, siteConfig } from "@/data/site";
+import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
 
@@ -13,39 +16,24 @@ export const metadata = createMetadata({
   path: "/overview",
 });
 
-const helpLinks = [
-  {
-    title: "EmailMagnet docs",
-    href: "/docs",
-    description: "Installation, exporting, and responsible use documentation.",
-  },
-  {
-    title: "EmailMagnet FAQ",
-    href: "/faq",
-    description: "Short answers about pricing, exports, reliability, and usage.",
-  },
-  {
-    title: "Pricing",
-    href: "/pricing",
-    description: "Free plan and PRO lifetime access details for EmailMagnet.",
-  },
-  {
-    title: "Support",
-    href: "/contact",
-    description: `Contact Dentoku Dev at ${siteConfig.supportEmail}.`,
-  },
+const nextSteps = [
+  { title: "EmailMagnet docs", href: "/docs", description: "Installation, exporting and responsible use." },
+  { title: "EmailMagnet FAQ", href: "/faq", description: "Short answers on pricing, exports, reliability and use." },
+  { title: "Pricing", href: "/pricing", description: "The Free plan and PRO lifetime access, side by side." },
+  { title: "Support", href: "/contact", description: `Write to ${siteConfig.supportEmail}.` },
 ];
 
-const useCases = [
-  "Browser-based email discovery and export with EmailMagnet.",
-  "AI-assisted writing inside Chrome fields with ClickPilot AI.",
-  "Chrome tab audio boosting and site-level volume control with Volume Control PRO.",
-  "Shopify countdown timers and urgency messages with Countdown321.",
-];
-
+/**
+ * Overview (redesign: inner pages in the homepage's system). A one-page summary
+ * for people and AI systems: what the studio is, the four products with their
+ * pictures, what each one is for as a real table, where to go next, the proposal.
+ */
 export default function OverviewPage() {
+  const { products } = getCopy("en").site;
+  const { home } = getPageCopy("en");
+
   return (
-    <section className="bg-white py-20">
+    <>
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },
@@ -53,97 +41,61 @@ export default function OverviewPage() {
         ])}
       />
       <JsonLd data={buildItemListSchema("Dentoku Dev product overview", productPortfolio)} />
-      <div className="mx-auto max-w-6xl px-4">
-        <SectionHeading
-          as="h1"
-          eyebrow="Overview"
-          title="Dentoku Dev in one page"
-          description="Dentoku Dev is a software development studio building Chrome extensions, Shopify apps, and lightweight productivity tools for practical browser, ecommerce, and business workflows."
+      <HomeReveal />
+
+      <PageOpening
+        title={["Dentoku Dev", "in one page."]}
+        standfirst="A software studio in Milan building Chrome extensions, Shopify apps and small productivity tools for browser, ecommerce and business work."
+        primary={{ label: "Write to us", href: "/contact" }}
+        secondary={{ label: "Read the docs", href: "/docs" }}
+      />
+
+      <ShortAnswer
+        title="In short"
+        body="We build small software products that remove repetitive work: EmailMagnet, ClickPilot AI, Volume Control PRO and Countdown321."
+      />
+
+      <ProductShowcase
+        products={products}
+        lang="en"
+        title="The four products"
+        caption={home.products.caption}
+        overviewLink=""
+      />
+
+      <SideSection tone="muted" title="What each one is for" lead="The store, the kind of product and the job it does.">
+        <RowTable
+          caption="Dentoku Dev products and use cases"
+          columns={["Product", "Kind", "What it does"]}
+          rows={productPortfolio.map((product) => [product.name, product.category, product.description] as const)}
+          onMuted
         />
+      </SideSection>
 
-        <div className="mx-auto mt-8 max-w-3xl rounded-xl border border-teal-100 bg-teal-50 p-5">
-          <h2 className="text-lg font-semibold text-stone-950">Short answer</h2>
-          <p className="mt-2 leading-7 text-stone-700">
-            Dentoku Dev builds small software products that remove repetitive manual work.
-            The current portfolio includes EmailMagnet, ClickPilot AI, Volume Control PRO, and
-            Countdown321.
-          </p>
-        </div>
-
-        <div className="mt-12 overflow-hidden rounded-xl border border-stone-200">
-          <table className="w-full text-left text-sm">
-            <caption className="sr-only">Dentoku Dev products and use cases</caption>
-            <thead className="bg-stone-50 text-stone-950">
-              <tr>
-                <th scope="col" className="px-4 py-3 font-semibold">Product</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Category</th>
-                <th scope="col" className="px-4 py-3 font-semibold">Primary use case</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-200 text-stone-700">
-              {productPortfolio.map((product) => (
-                <tr key={product.href}>
-                  <th scope="row" className="px-4 py-4 font-semibold text-stone-950">
-                    <Link href={product.href} className="hover:text-eyebrow hover:underline">
-                      {product.name}
-                    </Link>
-                  </th>
-                  <td className="px-4 py-4">{product.category}</td>
-                  <td className="px-4 py-4">{product.description}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          <Card className="rounded-xl border-stone-200 shadow-sm">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-stone-950">Primary use cases</h2>
-              <ul className="mt-5 list-disc space-y-3 pl-5 leading-7 text-stone-700">
-                {useCases.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-          <Card className="rounded-xl border-stone-200 bg-stone-50 shadow-sm">
-            <CardContent className="p-6">
-              <h2 className="text-2xl font-semibold text-stone-950">Where to go next</h2>
-              <ul className="mt-5 space-y-3 leading-7 text-stone-700">
-                {helpLinks.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="font-semibold text-eyebrow hover:underline">
-                      {item.title}
-                    </Link>
-                    <span className="block text-sm text-stone-600">{item.description}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-
-        <section className="mt-12 rounded-xl border border-stone-200 bg-surface-peach p-6">
-          <h2 className="text-2xl font-semibold text-stone-950">Featured product: EmailMagnet</h2>
-          <p className="mt-3 leading-8 text-stone-700">
-            EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from
-            websites while browsing. It supports CSV and TXT export, a Free plan with no extraction or export limit, and
-            a PRO plan with lifetime access.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-4 text-sm font-medium">
-            <Link className="text-eyebrow hover:underline" href={emailMagnetConfig.href}>
-              EmailMagnet product page
-            </Link>
-            <Link className="text-eyebrow hover:underline" href="/docs/getting-started">
-              Getting started guide
-            </Link>
-            <Link className="text-eyebrow hover:underline" href="/pricing">
-              Free vs PRO pricing
-            </Link>
+      <section className="bg-background">
+        <div className="page-x axis gap-y-10 py-20 md:py-32">
+          <div className="space-y-5 lg:pr-12">
+            <h2 data-reveal className="t-2 text-ink">
+              Where to go next
+            </h2>
+            <p data-reveal style={d(1)} className="t-lead text-ink max-w-[40ch]">
+              EmailMagnet has the most documentation. The other products answer questions on their own pages.
+            </p>
           </div>
-        </section>
-      </div>
-    </section>
+          <ul className="grid gap-2 md:grid-cols-2">
+            {nextSteps.map((item, i) => (
+              <li key={item.href} data-reveal style={d(i + 1)} className="bg-surface-muted text-ink">
+                <LocaleLink href={item.href} className="group block p-6 md:p-8">
+                  <span className="t-3 block underline-offset-[0.2em] group-hover:underline">{item.title}</span>
+                  <span className="t-body mt-2 block">{item.description}</span>
+                </LocaleLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <ProposalClose closing={home.closing} actionHref="/#brief" />
+    </>
   );
 }

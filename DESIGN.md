@@ -81,6 +81,12 @@ styled accent word inside a headline, two typefaces at most, nothing under 13px.
   "most popular" label), rows as a real table that stacks on a phone, the FAQ tiles. They end
   with the products and the proposal. EmailMagnet's steps carry a drawn illustration in the
   page's ink and orange (`emailmagnet-how-it-works.webp`, made with an image model).
+- Overview, docs and blog use the same pieces. Guides and articles set their long titles in
+  `.t-article` (26-52px, still two lines), with the byline and dates left of the line, an
+  "On this page" index sticky on the left, and the text on the line at a reading measure.
+  Blog covers are stock photographs of mixed shapes, shown whole in one frame on the tone step
+  (`FramedPhoto`), never cropped to match. The article prose (`.blog-article`) has no rules:
+  notes and table rows are filled bands, links use the `.text-link` underline.
 - The close is the written proposal as a paper card on its own field, `--ink-raised` (one
   tone step above the ink footer, so the two read as separate surfaces without a line),
   tilted and cropped by the section's bottom edge; the crop only ever takes the card's

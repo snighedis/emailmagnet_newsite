@@ -1,12 +1,10 @@
-import Link from "next/link";
 import { ContactMailtoForm } from "@/components/marketing/contact-mailto-form";
-import { ArrowRight } from "@/components/ui/icons";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { SectionHeading } from "@/components/marketing/section-heading";
+import { HomeReveal } from "@/components/marketing/home-reveal";
+import { FramedPhoto, PageOpening, RelatedLinks, SideSection, d } from "@/components/marketing/editorial";
 import { siteConfig } from "@/data/site";
 import { defaultAuthor } from "@/data/authors";
-import { blogPosts } from "@/content/blog";
+import { blogPosts, type BlogPost } from "@/content/blog";
+import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
 import { formatDate } from "@/lib/dates";
 
@@ -17,144 +15,106 @@ export const metadata = createMetadata({
   path: "/blog",
 });
 
+const related = [
+  { label: "EmailMagnet product page", href: "/emailmagnet" },
+  { label: "EmailMagnet docs", href: "/docs" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Dentoku Dev overview", href: "/overview" },
+];
+
+function Byline({ post }: { post: BlogPost }) {
+  return (
+    <span className="t-body text-ink block">
+      {defaultAuthor.name}, {post.readingTime}, <time dateTime={post.date}>{formatDate(post.date)}</time>
+    </span>
+  );
+}
+
+/**
+ * Blog (redesign: inner pages in the homepage's system). The title on the
+ * column line, the latest article large with its cover whole, the others two to
+ * a row like the product grid, then the free form for questions after reading.
+ */
 export default function BlogPage() {
   const [featured, ...rest] = blogPosts;
 
   return (
     <>
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <SectionHeading
-            as="h1"
-            eyebrow="Blog"
-            title="Email extraction guides and product education"
-            description="Practical articles about EmailMagnet, email extraction workflows, responsible use, and browser-based productivity."
-          />
-          <nav aria-label="Blog related resources" className="mx-auto mt-8 max-w-3xl rounded-xl border border-stone-200 bg-stone-50 p-5 text-center">
-            <h2 className="text-lg font-semibold text-stone-950">Start with the main resources</h2>
-            <div className="mt-3 flex flex-wrap justify-center gap-4 text-sm font-medium">
-              <Link className="text-eyebrow hover:underline" href="/emailmagnet">
-                EmailMagnet product page
-              </Link>
-              <Link className="text-eyebrow hover:underline" href="/docs">
-                EmailMagnet docs
-              </Link>
-              <Link className="text-eyebrow hover:underline" href="/faq">
-                FAQ
-              </Link>
-              <Link className="text-eyebrow hover:underline" href="/overview">
-                Dentoku Dev overview
-              </Link>
-            </div>
-          </nav>
-          {featured ? (
-            <Link
-              href={`/blog/${featured.slug}`}
-              className="group bg-surface-peach shadow-soft hover:shadow-soft-lg mt-12 block overflow-hidden rounded-3xl border border-stone-200/70 transition hover:-translate-y-1"
-            >
-              <div className="grid items-center lg:grid-cols-[1.05fr_0.95fr]">
-                <div className="p-8 md:p-12">
-                  <p className="text-eyebrow text-xs font-semibold tracking-[0.16em] uppercase">
-                    Latest article
-                  </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {featured.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="rounded-md">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                  <h2 className="mt-5 text-3xl font-semibold tracking-normal text-balance text-stone-950 group-hover:underline md:text-4xl">
-                    {featured.title}
-                  </h2>
-                  <p className="mt-4 text-lg leading-8 text-stone-600">{featured.description}</p>
-                  <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-stone-500">
-                    <span className="font-semibold text-stone-900">{defaultAuthor.name}</span>
-                    <span aria-hidden className="h-1 w-1 rounded-full bg-stone-300" />
-                    <span>{featured.readingTime}</span>
-                    <span aria-hidden className="h-1 w-1 rounded-full bg-stone-300" />
-                    <time dateTime={featured.date}>{formatDate(featured.date)}</time>
-                  </div>
-                  <span className="text-eyebrow mt-6 inline-flex items-center gap-1.5 text-sm font-semibold">
-                    Read article
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-                {featured.featuredImage ? (
-                  // next/image doesn't paint reliably in this Next build; a plain img is dependable.
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={featured.featuredImage}
-                    alt={featured.featuredImageAlt ?? `Cover image for "${featured.title}"`}
-                    width={1600}
-                    height={900}
-                    loading="eager"
-                    decoding="async"
-                    className="hidden h-full max-h-[420px] w-full object-cover lg:block"
-                  />
-                ) : null}
-              </div>
-            </Link>
-          ) : null}
+      <HomeReveal />
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            {rest.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-                <Card className="shadow-soft hover:shadow-soft-lg h-full overflow-hidden rounded-2xl border-stone-200/80 pt-0 transition hover:-translate-y-1">
-                  {post.featuredImage ? (
-                    // next/image doesn't paint reliably in this Next build; a plain img is dependable.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={post.featuredImage}
-                      alt={post.featuredImageAlt ?? `Cover image for "${post.title}"`}
-                      width={1600}
-                      height={800}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[2/1] w-full border-b border-stone-200/80 object-cover"
-                    />
-                  ) : null}
-                  <CardContent className="flex h-full flex-col p-6">
-                    <div className="flex flex-wrap gap-2">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="secondary" className="rounded-md">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <h2 className="mt-5 text-2xl leading-snug font-semibold text-stone-950 group-hover:underline">
-                      {post.title}
-                    </h2>
-                    <p className="mt-3 line-clamp-3 leading-7 text-stone-600">{post.description}</p>
-                    <p className="mt-auto pt-5 text-sm font-medium text-stone-500">
-                      {defaultAuthor.name} · {post.readingTime} ·{" "}
-                      <time dateTime={post.date}>{formatDate(post.date)}</time>
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PageOpening
+        title={["Guides and", "articles."]}
+        standfirst="Practical articles on EmailMagnet, email extraction workflows, responsible use and browser productivity, written by the person who builds the tools."
+        primary={{ label: "Read the latest article", href: `/blog/${featured.slug}` }}
+        secondary={{ label: "EmailMagnet docs", href: "/docs" }}
+      />
 
-      <section className="bg-surface-peach px-4 py-12 md:py-14">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 rounded-lg bg-surface-peach px-6 py-8 md:px-10 lg:gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:px-14">
-          <div className="max-w-xl">
-            <span className="inline-flex rounded-sm border border-stone-300 bg-stone-100 px-4 py-2 text-sm font-semibold text-stone-700">
-              Contact us
-            </span>
-            <h2 className="mt-7 text-4xl font-semibold leading-tight tracking-normal text-stone-950 md:text-5xl">
-              Need help after reading?
+      <section className="bg-surface-muted">
+        <div className="page-x axis gap-y-8 py-20 md:py-28">
+          <div className="space-y-5 lg:col-start-2 lg:row-start-1">
+            <h2 data-reveal className="t-article text-ink">
+              <LocaleLink href={`/blog/${featured.slug}`} className="underline-offset-[0.15em] hover:underline">
+                {featured.title}
+              </LocaleLink>
             </h2>
-            <p className="mt-5 max-w-lg text-xl leading-8 text-stone-700">
-              Ask us about EmailMagnet workflows, billing, integrations, or support questions.
+            <p data-reveal style={d(1)} className="t-lead text-ink max-w-[52ch]">
+              {featured.description}
             </p>
+            <div data-reveal style={d(2)}>
+              <Byline post={featured} />
+            </div>
           </div>
-
-          <ContactMailtoForm supportEmail={siteConfig.supportEmail} />
+          {featured.featuredImage ? (
+            <LocaleLink
+              href={`/blog/${featured.slug}`}
+              data-reveal
+              style={d(1)}
+              className="group block self-start overflow-hidden lg:col-start-1 lg:row-start-1 lg:mr-12"
+              tabIndex={-1}
+              aria-hidden="true"
+            >
+              <FramedPhoto src={featured.featuredImage} alt="" ground="bg-background" eager />
+            </LocaleLink>
+          ) : null}
         </div>
       </section>
+
+      <section className="bg-background">
+        <div className="page-x axis gap-y-6 pt-20 md:pt-32">
+          <h2 data-reveal className="t-2 text-ink lg:col-start-2">
+            All articles
+          </h2>
+        </div>
+        <ul className="page-x mt-12 grid gap-x-8 gap-y-14 pb-20 md:mt-16 md:grid-cols-2 md:pb-32">
+          {rest.map((post, i) => (
+            <li key={post.slug} data-reveal style={d(i % 2)} className="group">
+              <LocaleLink href={`/blog/${post.slug}`} className="block">
+                {post.featuredImage ? (
+                  <FramedPhoto src={post.featuredImage} alt="" />
+                ) : null}
+                <span className="t-3 text-ink mt-5 block underline-offset-[0.15em] group-hover:underline">
+                  {post.title}
+                </span>
+                <span className="t-body text-ink mt-2 block max-w-[52ch]">{post.description}</span>
+                <span className="mt-3 block">
+                  <Byline post={post} />
+                </span>
+              </LocaleLink>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <SideSection
+        tone="muted"
+        title="Need help after reading?"
+        lead="Ask us about EmailMagnet workflows, billing, integrations or support."
+        aside={<RelatedLinks title="Start with the main resources" ariaLabel="Blog related resources" links={related} />}
+      >
+        <div className="max-w-[44rem]">
+          <ContactMailtoForm supportEmail={siteConfig.supportEmail} className="bg-background p-6 md:p-10" />
+        </div>
+      </SideSection>
     </>
   );
 }

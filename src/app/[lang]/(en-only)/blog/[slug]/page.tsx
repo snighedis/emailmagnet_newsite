@@ -1,13 +1,14 @@
 import type { ComponentProps } from "react";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import { ArrowRight } from "@/components/ui/icons";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { FramedPhoto, RelatedLinks, d } from "@/components/marketing/editorial";
+import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import { getCopy, getPageCopy } from "@/copy";
 import { LeadMagnetSignup } from "@/components/marketing/lead-magnet-signup";
 import { ReadingProgress } from "@/components/marketing/reading-progress";
 import { blogPosts, getBlogPost, type BlogPost } from "@/content/blog";
@@ -17,6 +18,14 @@ import { createMetadata } from "@/lib/metadata";
 import { formatDate } from "@/lib/dates";
 import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/schema";
 import { extractToc } from "@/lib/toc";
+import { LocaleLink } from "@/i18n/locale-link";
+
+const resources = [
+  { label: "EmailMagnet Chrome email extractor", href: "/emailmagnet" },
+  { label: "EmailMagnet Free vs PRO pricing", href: "/pricing" },
+  { label: "How to extract emails with EmailMagnet", href: "/docs/getting-started" },
+  { label: "Responsible email extraction guide", href: "/docs/responsible-use" },
+];
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -119,8 +128,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const wasUpdated = post.updated !== post.date;
 
   return (
-    <article className="bg-white">
+    <article>
       <ReadingProgress />
+      <HomeReveal />
       <JsonLd data={buildArticleSchema(post)} />
       <JsonLd
         data={buildBreadcrumbSchema([
@@ -130,261 +140,170 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         ])}
       />
 
-      {/* Article header */}
-      <header className="bg-surface-soft border-b border-stone-200/70">
-        <div className="mx-auto max-w-3xl px-4 pt-12 pb-10 md:pt-16 md:pb-14">
-          <nav aria-label="Breadcrumb" className="text-sm font-medium">
-            <Link href="/blog" className="text-eyebrow inline-flex items-center gap-1.5 hover:underline">
-              <span aria-hidden>←</span> All articles
-            </Link>
-          </nav>
-          <div className="mt-7 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="rounded-md">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          <h1 className="mt-5 text-4xl font-semibold tracking-normal text-balance text-stone-950 md:text-5xl md:leading-[1.12]">
-            {post.title}
-          </h1>
-          <p className="mt-5 text-xl leading-9 text-stone-600">{post.description}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm font-medium text-stone-500">
-            <Link
-              href={founderConfig.href}
-              className="hover:text-eyebrow group inline-flex items-center gap-2.5"
-            >
-              <span
-                aria-hidden
-                className="bg-brand-soft text-eyebrow flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold"
-              >
-                N
-              </span>
-              <span>
-                <span className="block leading-tight font-semibold text-stone-900 group-hover:underline">
-                  {defaultAuthor.name}
-                </span>
-                <span className="block text-xs leading-tight text-stone-500">
-                  {defaultAuthor.role}
-                </span>
-              </span>
-            </Link>
-            <span aria-hidden className="hidden h-1 w-1 rounded-full bg-stone-300 sm:block" />
-            <span>{post.readingTime}</span>
-            <span aria-hidden className="hidden h-1 w-1 rounded-full bg-stone-300 sm:block" />
-            <span>
+      {/* The title on the column line, the byline and dates to its left, the cover
+          across the page below them */}
+      <header className="bg-background">
+        <div className="page-x axis gap-x-0 gap-y-8 pt-12 pb-16 md:pt-20 md:pb-24">
+          <h1 className="t-article text-ink lg:col-start-2 lg:row-start-1">{post.title}</h1>
+          <div data-reveal style={d(2)} className="t-body text-ink space-y-4 lg:col-start-1 lg:row-start-1 lg:self-start lg:pr-12">
+            <LocaleLink href="/blog" className="text-link block w-fit font-medium">
+              All articles
+            </LocaleLink>
+            <p className="t-lead">{post.description}</p>
+            <p>
+              By{" "}
+              <LocaleLink href={founderConfig.href} className="text-link font-medium">
+                {defaultAuthor.name}
+              </LocaleLink>
+              , {post.readingTime}.
+              <br />
               Published <time dateTime={post.date}>{formatDate(post.date)}</time>
               {wasUpdated ? (
                 <>
-                  {" "}
-                  · Updated <time dateTime={post.updated}>{formatDate(post.updated)}</time>
+                  , updated <time dateTime={post.updated}>{formatDate(post.updated)}</time>
                 </>
               ) : null}
-            </span>
+              .
+            </p>
           </div>
+          {post.featuredImage ? (
+            <figure data-reveal style={d(3)} className="lg:col-span-2 lg:row-start-2">
+              <FramedPhoto
+                src={post.featuredImage}
+                alt={post.featuredImageAlt ?? `Cover image for "${post.title}"`}
+                frame="aspect-[3/2] lg:aspect-[21/9]"
+                eager
+              />
+            </figure>
+          ) : null}
         </div>
       </header>
 
-      {/* Cover image */}
-      {post.featuredImage ? (
-        <div className="mx-auto max-w-4xl px-4 pt-10 md:pt-12">
-          {/* next/image doesn't paint reliably in this Next build; a plain img is dependable. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={post.featuredImage}
-            alt={post.featuredImageAlt ?? `Cover image for "${post.title}"`}
-            width={1600}
-            height={800}
-            fetchPriority="high"
-            decoding="async"
-            className="shadow-soft aspect-[2/1] w-full rounded-2xl border border-stone-200 object-cover"
-          />
-        </div>
-      ) : null}
-
-      {/* Body + sidebar */}
-      <div className="mx-auto max-w-6xl px-4 py-12 md:py-16 lg:grid lg:grid-cols-[minmax(0,1fr)_270px] lg:gap-16">
-        <div className="mx-auto w-full max-w-3xl lg:mx-0">
-          {toc.length > 1 ? (
-            <details className="mb-10 rounded-xl border border-stone-200 bg-stone-50 p-5 lg:hidden">
-              <summary className="cursor-pointer text-sm font-semibold tracking-[0.14em] text-stone-900 uppercase">
-                On this page
-              </summary>
-              <ol className="mt-4 space-y-2.5 text-[15px] font-medium">
-                {toc.map((entry) => (
-                  <li key={entry.id}>
-                    <a href={`#${entry.id}`} className="hover:text-eyebrow text-stone-600">
-                      {entry.text}
-                    </a>
-                  </li>
-                ))}
-              </ol>
-            </details>
-          ) : null}
-
-          <div className="blog-article">
-            <MDXRemote
-              source={post.body}
-              components={mdxComponents}
-              options={{
-                mdxOptions: {
-                  remarkPlugins: [remarkGfm],
-                  rehypePlugins: [rehypeSlug],
-                },
-              }}
-            />
-          </div>
-
-          {/* Top-of-funnel email capture — every article offers the lead magnet. */}
-          <LeadMagnetSignup />
-
-          {post.tags.some((tag) => ["Compliance", "GDPR", "CAN-SPAM"].includes(tag)) ? (
-            <aside className="mt-14 rounded-xl border border-stone-200 bg-stone-50 p-5">
-              <h2 className="text-lg font-semibold text-stone-950">Official references</h2>
-              <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-700">
-                <li>
-                  <Link className="text-eyebrow font-medium hover:underline" href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business">
-                    FTC CAN-SPAM Act compliance guide
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-eyebrow font-medium hover:underline" href="https://commission.europa.eu/law/law-topic/data-protection/rules-business-and-organisations/legal-grounds-processing-data_en">
-                    European Commission GDPR legal grounds for processing data
-                  </Link>
-                </li>
-              </ul>
-            </aside>
-          ) : null}
-
-          {/* Author card */}
-          <aside className="mt-14 rounded-2xl border border-stone-200 bg-stone-50 p-6 md:p-7">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-              <span
-                aria-hidden
-                className="bg-brand-soft text-eyebrow flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-xl font-bold"
-              >
-                N
-              </span>
-              <div>
-                <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
-                  Written by
-                </p>
-                <h2 className="mt-1.5 text-xl font-semibold text-stone-950">{defaultAuthor.name}</h2>
-                <p className="text-sm font-medium text-stone-500">{defaultAuthor.role}</p>
-                <p className="mt-3 leading-7 text-stone-600">{defaultAuthor.bio}</p>
-                <Link
-                  href={founderConfig.href}
-                  className="text-eyebrow mt-4 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
-                >
-                  More about the founder
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </aside>
-
-          {/* Related posts */}
-          {related.length > 0 ? (
-            <section className="mt-14" aria-label="Related articles">
-              <h2 className="text-2xl font-semibold text-stone-950">Continue reading</h2>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                {related.map((item) => (
-                  <Link
-                    key={item.slug}
-                    href={`/blog/${item.slug}`}
-                    className="group shadow-soft hover:shadow-soft-lg flex flex-col rounded-2xl border border-stone-200/80 bg-white p-6 transition hover:-translate-y-0.5"
-                  >
-                    <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
-                      {item.tags[0]}
-                    </p>
-                    <h3 className="mt-2 text-lg leading-snug font-semibold text-stone-950 group-hover:underline">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-600">
-                      {item.description}
-                    </p>
-                    <p className="mt-4 text-xs font-medium text-stone-500">
-                      {item.readingTime} ·{" "}
-                      <time dateTime={item.date}>{formatDate(item.date)}</time>
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
-          {/* Related product resources */}
-          <nav
-            aria-label="Related Dentoku Dev pages"
-            className="mt-14 border-t border-stone-200 pt-8"
-          >
-            <h2 className="text-sm font-semibold tracking-[0.14em] text-stone-900 uppercase">
-              Related resources
-            </h2>
-            <ul className="mt-4 grid gap-2 text-sm font-medium sm:grid-cols-2">
-              <li>
-                <Link className="text-eyebrow hover:underline" href="/emailmagnet">
-                  EmailMagnet Chrome email extractor
-                </Link>
-              </li>
-              <li>
-                <Link className="text-eyebrow hover:underline" href="/pricing">
-                  EmailMagnet Free vs PRO pricing
-                </Link>
-              </li>
-              <li>
-                <Link className="text-eyebrow hover:underline" href="/docs/getting-started">
-                  How to extract emails with EmailMagnet
-                </Link>
-              </li>
-              <li>
-                <Link className="text-eyebrow hover:underline" href="/docs/responsible-use">
-                  Responsible email extraction guide
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        {/* Desktop sidebar */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-24 space-y-8">
+      {/* The text on the column line, its contents and the product beside it */}
+      <div className="bg-background">
+        <div className="page-x axis gap-y-10 pb-20 md:pb-32">
+          <aside className="space-y-10 lg:sticky lg:top-24 lg:self-start lg:pr-12">
             {toc.length > 1 ? (
-              <nav aria-label="Table of contents">
-                <p className="text-xs font-semibold tracking-[0.14em] text-stone-900 uppercase">
-                  On this page
-                </p>
-                <ol className="mt-4 space-y-2.5 border-l border-stone-200 text-sm font-medium">
+              <nav aria-label="Table of contents" className="space-y-3">
+                <h2 className="t-lead text-ink font-semibold">On this page</h2>
+                <ul className="t-body text-ink space-y-2">
                   {toc.map((entry) => (
                     <li key={entry.id}>
-                      <a
-                        href={`#${entry.id}`}
-                        className="hover:text-eyebrow hover:border-brand -ml-px block border-l-2 border-transparent py-0.5 pl-4 leading-snug text-stone-500"
-                      >
+                      <a href={`#${entry.id}`} className="text-link">
                         {entry.text}
                       </a>
                     </li>
                   ))}
-                </ol>
+                </ul>
               </nav>
             ) : null}
-            <div className="bg-brand-soft rounded-2xl p-6">
-              <p className="text-eyebrow text-xs font-semibold tracking-[0.14em] uppercase">
-                Put it into practice
-              </p>
-              <p className="mt-2.5 text-base leading-7 font-semibold text-stone-950">
-                Build your next lead list while you browse.
-              </p>
-              <Button asChild size="sm" className="mt-4 font-semibold">
-                <Link href="/emailmagnet">
-                  Try EmailMagnet free
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+            <div className="bg-surface-muted text-ink hidden space-y-4 p-6 lg:block">
+              <p className="t-lead font-semibold">Build your next lead list while you browse.</p>
+              <Button asChild size="lg">
+                <LocaleLink href="/emailmagnet">Try EmailMagnet free</LocaleLink>
               </Button>
             </div>
+          </aside>
+
+          <div className="max-w-[44rem] min-w-0">
+            <div className="blog-article">
+              <MDXRemote
+                source={post.body}
+                components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [rehypeSlug],
+                  },
+                }}
+              />
+            </div>
+
+            {/* Top-of-funnel email capture: every article offers the lead magnet. */}
+            <LeadMagnetSignup />
+
+            {post.tags.some((tag) => ["Compliance", "GDPR", "CAN-SPAM"].includes(tag)) ? (
+              <aside className="mt-14 space-y-3">
+                <h2 className="t-lead text-ink font-semibold">Official references</h2>
+                <ul className="t-body text-ink space-y-2">
+                  <li>
+                    <a
+                      className="text-link"
+                      href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      FTC CAN-SPAM Act compliance guide
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="text-link"
+                      href="https://commission.europa.eu/law/law-topic/data-protection/rules-business-and-organisations/legal-grounds-processing-data_en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      European Commission GDPR legal grounds for processing data
+                    </a>
+                  </li>
+                </ul>
+              </aside>
+            ) : null}
+
+            <aside className="mt-14 space-y-3">
+              <h2 className="t-3 text-ink">Written by {defaultAuthor.name}</h2>
+              <p className="t-body text-ink">{defaultAuthor.role}</p>
+              <p className="t-body text-ink">{defaultAuthor.bio}</p>
+              <LocaleLink href={founderConfig.href} className="text-link text-ink inline-block text-base font-medium">
+                More about the founder
+              </LocaleLink>
+            </aside>
           </div>
-        </aside>
+        </div>
       </div>
+
+      {related.length > 0 ? (
+        <section className="bg-surface-muted" aria-labelledby="continue-reading">
+          <div className="page-x axis gap-y-6 pt-20 md:pt-28">
+            <h2 id="continue-reading" data-reveal className="t-2 text-ink lg:col-start-2">
+              Continue reading
+            </h2>
+          </div>
+          <ul className="page-x mt-12 grid gap-x-8 gap-y-14 md:grid-cols-2">
+            {related.map((item, i) => (
+              <li key={item.slug} data-reveal style={d(i)} className="group">
+                <LocaleLink href={`/blog/${item.slug}`} className="block">
+                  {item.featuredImage ? (
+                    <FramedPhoto src={item.featuredImage} alt="" ground="bg-background" />
+                  ) : null}
+                  <span className="t-3 text-ink mt-5 block underline-offset-[0.15em] group-hover:underline">
+                    {item.title}
+                  </span>
+                  <span className="t-body text-ink mt-2 block max-w-[52ch]">{item.description}</span>
+                  <span className="t-body text-ink mt-3 block">
+                    {item.readingTime}, <time dateTime={item.date}>{formatDate(item.date)}</time>
+                  </span>
+                </LocaleLink>
+              </li>
+            ))}
+          </ul>
+          <div className="page-x axis pt-14 pb-20 md:pb-28">
+            <div className="lg:col-start-2">
+              <RelatedLinks title="Related resources" ariaLabel="Related Dentoku Dev pages" links={resources} />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <ProductShowcase
+        products={getCopy("en").site.products}
+        lang="en"
+        title="More from the studio"
+        caption="We build, publish and maintain our products ourselves."
+        overviewLink={getPageCopy("en").home.products.overviewLink}
+        exclude="/emailmagnet"
+        limit={2}
+      />
     </article>
   );
 }

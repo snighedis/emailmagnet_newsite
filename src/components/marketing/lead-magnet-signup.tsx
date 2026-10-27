@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { ArrowRight, Download, MailCheck, Sparkles } from "@/components/ui/icons";
+import { Download } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { useCopy, useLocale } from "@/i18n/locale-context";
 import { loopsErrorText, subscribeToLoops } from "@/lib/loops";
@@ -61,19 +61,14 @@ export function LeadMagnetSignup() {
   }
 
   return (
-    <aside className="bg-brand-soft mt-14 rounded-2xl p-6 md:p-8">
+    <aside className="bg-brand text-ink mt-16 p-6 md:p-10">
       {state === "success" ? (
-        <div className="flex flex-col items-start gap-4">
-          <span className="bg-white text-eyebrow flex h-12 w-12 items-center justify-center rounded-full">
-            <MailCheck className="h-6 w-6" />
-          </span>
-          <div>
-            <h2 className="text-ink text-2xl font-semibold tracking-[-0.01em]">
-              {copy.successTitle}
-            </h2>
-            <p className="mt-2 leading-7 text-stone-700">{copy.successBody}</p>
+        <div className="flex flex-col items-start gap-5">
+          <div className="space-y-3">
+            <h2 className="t-3">{copy.successTitle}</h2>
+            <p className="t-body">{copy.successBody}</p>
           </div>
-          <Button asChild size="lg" className="font-semibold">
+          <Button asChild size="xl" variant="secondary">
             <a href={LEAD_MAGNET_PATH} target="_blank" rel="noopener noreferrer" download>
               {copy.download}
               <Download className="h-4 w-4" />
@@ -82,15 +77,10 @@ export function LeadMagnetSignup() {
         </div>
       ) : (
         <>
-          <span className="text-eyebrow inline-flex items-center gap-1.5 text-xs font-semibold tracking-[0.14em] uppercase">
-            <Sparkles className="h-4 w-4" /> {copy.eyebrow}
-          </span>
-          <h2 className="text-ink mt-3 text-2xl font-semibold tracking-[-0.01em] text-balance">
-            {copy.title}
-          </h2>
-          <p className="mt-3 leading-7 text-stone-700">{copy.body}</p>
+          <h2 className="t-3">{copy.title}</h2>
+          <p className="t-body mt-3">{copy.body}</p>
 
-          <form onSubmit={onSubmit} className="mt-6 flex w-full flex-col gap-3 sm:flex-row">
+          <form onSubmit={onSubmit} className="mt-6 flex w-full flex-col gap-2 sm:flex-row">
             <input
               type="email"
               required
@@ -101,19 +91,16 @@ export function LeadMagnetSignup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               disabled={state === "loading"}
-              className="focus:border-brand focus:ring-brand/20 h-11 w-full rounded-md border border-stone-300 bg-white px-3 text-sm text-stone-900 shadow-sm outline-none placeholder:text-stone-400 focus:ring-2"
+              className="focus-visible:ring-ink/40 text-ink h-12 w-full rounded-none bg-white px-4 text-base outline-none placeholder:text-ink/60 focus-visible:ring-3"
             />
-            <Button type="submit" size="lg" className="font-semibold" disabled={state === "loading"}>
+            <Button type="submit" size="xl" variant="secondary" disabled={state === "loading"}>
               {state === "loading" ? copy.sending : copy.submit}
-              {state === "loading" ? null : <ArrowRight className="h-4 w-4" />}
             </Button>
           </form>
 
-          {state === "error" ? <p className="mt-2 text-sm text-red-700">{message}</p> : null}
+          {state === "error" ? <p className="mt-3 text-sm font-medium">{message}</p> : null}
 
-          <p className="mt-4 text-xs leading-5 text-stone-500">
-            {copy.consent}
-          </p>
+          <p className="mt-4 text-sm leading-6">{copy.consent}</p>
         </>
       )}
     </aside>

@@ -1,7 +1,12 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
+import { RelatedLinks, ShortAnswer, SideSection, d } from "@/components/marketing/editorial";
+import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { Eyebrow } from "@/components/marketing/eyebrow";
+import { ProposalClose } from "@/components/marketing/proposal-close";
+import { getCopy, getPageCopy } from "@/copy";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import Image from "next/image";
+import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
 import { formatDate } from "@/lib/dates";
 import { buildBreadcrumbSchema, buildHowToSchema } from "@/lib/schema";
@@ -26,7 +31,7 @@ const docs: Record<
     description:
       "Install EmailMagnet in Chrome, open a relevant website, extract visible emails, review results, and export your first contact list in minutes.",
     answer:
-      "EmailMagnet is a Chrome extension for extracting emails while browsing. Install it from the Chrome Web Store, open a website, run extraction, then export the detected emails as CSV or TXT.",
+      "Install EmailMagnet from the Chrome Web Store, open a website, run the extraction, then export the emails it found as CSV or TXT.",
     steps: [
       "Install the EmailMagnet Chrome extension.",
       "Open the website pages you already review.",
@@ -58,7 +63,7 @@ const docs: Record<
     description:
       "Learn when to export EmailMagnet results as CSV or TXT, how to review addresses first, and how to prepare cleaner lists for spreadsheets or CRM handoff.",
     answer:
-      "EmailMagnet exports detected website emails as CSV or TXT so the list can move into spreadsheets, CRM preparation, research notes, or follow-up workflows.",
+      "EmailMagnet exports the emails it found as CSV or TXT, ready for spreadsheets, CRM preparation, research notes or follow-up.",
     steps: [
       "No limit on export size, on Free or PRO.",
       "Supported formats: CSV and TXT.",
@@ -85,7 +90,7 @@ const docs: Record<
     description:
       "Use EmailMagnet responsibly by documenting source context, qualifying emails before outreach, respecting opt-outs, and following privacy and anti-spam rules.",
     answer:
-      "EmailMagnet helps collect emails, but users are responsible for lawful purpose, relevant outreach, opt-out handling, and compliance with privacy and anti-spam rules.",
+      "EmailMagnet helps you collect emails. Lawful purpose, relevant outreach, opt-outs and privacy and anti-spam rules stay your responsibility.",
     steps: [
       "Follow applicable laws such as GDPR and CAN-SPAM.",
       "Contact people with legitimate, relevant intent.",
@@ -111,6 +116,20 @@ const docs: Record<
     },
   },
 };
+
+const related = [
+  { label: "EmailMagnet product page", href: "/emailmagnet" },
+  { label: "EmailMagnet FAQ", href: "/faq" },
+  { label: "EmailMagnet pricing", href: "/pricing" },
+  { label: "Contact Dentoku Dev support", href: "/contact" },
+];
+
+/** An in-page anchor from a section title. */
+const anchor = (title: string) =>
+  title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
 type DocPageProps = {
   params: Promise<{ slug: string }>;
@@ -138,8 +157,11 @@ export default async function DocPage({ params }: DocPageProps) {
     notFound();
   }
 
+  const others = Object.entries(docs).filter(([key]) => key !== slug);
+  const { home } = getPageCopy("en");
+
   return (
-    <article className="mx-auto max-w-3xl px-4 py-20">
+    <>
       <JsonLd
         data={buildBreadcrumbSchema([
           { name: "Dentoku Dev", href: "/" },
@@ -155,66 +177,122 @@ export default async function DocPage({ params }: DocPageProps) {
           steps: doc.steps,
         })}
       />
-      <Eyebrow>Docs</Eyebrow>
-      <h1 className="mt-3 text-4xl font-semibold text-stone-950">{doc.title}</h1>
-      <p className="mt-4 text-sm font-medium text-stone-500">
-        Published <time dateTime={doc.datePublished}>{formatDate(doc.datePublished)}</time> · Last
-        updated <time dateTime={doc.dateModified}>{formatDate(doc.dateModified)}</time>
-      </p>
-      <p className="mt-5 text-xl leading-8 text-stone-600">{doc.description}</p>
-      <div className="mt-8 rounded-xl border border-teal-100 bg-teal-50 p-5">
-        <h2 className="text-lg font-semibold text-stone-950">Quick answer</h2>
-        <p className="mt-2 leading-7 text-stone-700">{doc.answer}</p>
-      </div>
-      <h2 className="mt-12 text-2xl font-semibold text-stone-950">Step-by-step workflow</h2>
-      <ol className="mt-5 space-y-4">
-        {doc.steps.map((item) => (
-          <li key={item} className="rounded-md border border-stone-200 bg-white p-4 text-stone-700">
-            {item}
-          </li>
-        ))}
-      </ol>
-      <div className="mt-12 space-y-8">
-        {doc.details.map((item) => (
-          <section key={item.title}>
-            <h2 className="text-2xl font-semibold text-stone-950">{item.title}</h2>
-            <p className="mt-3 leading-8 text-stone-600">{item.body}</p>
-          </section>
-        ))}
-      </div>
-      {doc.citation ? (
-        <p className="mt-10 text-sm leading-6 text-stone-500">
-          Official reference:{" "}
-          <Link className="font-medium text-eyebrow underline-offset-4 hover:underline" href={doc.citation.href}>
-            {doc.citation.label}
-          </Link>
-        </p>
-      ) : null}
-      <nav aria-label="Documentation related pages" className="mt-12 rounded-xl border border-stone-200 bg-stone-50 p-5">
-        <h2 className="text-lg font-semibold text-stone-950">Related EmailMagnet resources</h2>
-        <ul className="mt-3 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
-          <li>
-            <Link className="font-medium text-eyebrow hover:underline" href="/emailmagnet">
-              EmailMagnet product page
-            </Link>
-          </li>
-          <li>
-            <Link className="font-medium text-eyebrow hover:underline" href="/docs">
+      <HomeReveal />
+
+      <section className="bg-background">
+        <div className="page-x axis gap-y-8 pt-12 pb-14 md:pt-20 md:pb-16">
+          <div className="space-y-6 lg:col-start-2 lg:row-start-1">
+            <h1 className="t-article text-ink">{doc.title}</h1>
+            <p data-reveal style={d(1)} className="t-lead text-ink max-w-[52ch]">
+              {doc.description}
+            </p>
+          </div>
+          <div data-reveal style={d(2)} className="t-body text-ink space-y-3 lg:col-start-1 lg:row-start-1 lg:self-end lg:pr-12">
+            <LocaleLink href="/docs" className="text-link block w-fit font-medium">
               All EmailMagnet docs
-            </Link>
-          </li>
-          <li>
-            <Link className="font-medium text-eyebrow hover:underline" href="/faq">
-              EmailMagnet FAQ
-            </Link>
-          </li>
-          <li>
-            <Link className="font-medium text-eyebrow hover:underline" href="/contact">
-              Contact Dentoku Dev support
-            </Link>
-          </li>
+            </LocaleLink>
+            <p>
+              Published <time dateTime={doc.datePublished}>{formatDate(doc.datePublished)}</time>.
+              <br />
+              Last updated <time dateTime={doc.dateModified}>{formatDate(doc.dateModified)}</time>.
+            </p>
+          </div>
+        </div>
+        <div className="page-x axis pb-20 md:pb-28">
+          <figure data-reveal style={d(3)} className="bg-surface-muted lg:col-start-2">
+            <Image
+              src="/brand/emailmagnet-one-click.webp"
+              alt="EmailMagnet's popup listing the business emails found on a web page, with CSV and TXT export"
+              width={1280}
+              height={800}
+              priority
+              sizes="(min-width: 1024px) 56vw, 92vw"
+              className="h-auto w-full"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <ShortAnswer title="Quick answer" body={doc.answer} />
+
+      <section className="bg-brand text-ink">
+        <div className="page-x axis gap-y-8 py-20 md:py-28">
+          <h2 data-reveal className="t-2 lg:pr-12">
+            At a glance
+          </h2>
+          <ol className="list-decimal space-y-4 pl-8">
+            {doc.steps.map((item, i) => (
+              <li key={item} data-reveal style={d(i + 1)} className="t-3 t-3-compact max-w-[40ch] pl-2">
+                {item}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="bg-background">
+        <div className="page-x axis gap-y-10 py-20 md:py-32">
+          <nav aria-label="On this page" className="space-y-3 lg:sticky lg:top-24 lg:self-start lg:pr-12">
+            <h2 className="t-lead text-ink font-semibold">On this page</h2>
+            <ul className="t-body text-ink space-y-2">
+              {doc.details.map((item) => (
+                <li key={item.title}>
+                  <a href={`#${anchor(item.title)}`} className="text-link">
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="max-w-[62ch] space-y-14">
+            {doc.details.map((item, i) => (
+              <section key={item.title} id={anchor(item.title)} className="scroll-mt-24">
+                <h2 data-reveal style={d(i % 2)} className="t-3 text-ink">
+                  {item.title}
+                </h2>
+                <p data-reveal style={d((i % 2) + 1)} className="t-lead text-ink mt-4">
+                  {item.body}
+                </p>
+              </section>
+            ))}
+            {doc.citation ? (
+              <p className="t-body text-ink">
+                Official reference:{" "}
+                <a href={doc.citation.href} target="_blank" rel="noopener noreferrer" className="text-link font-medium">
+                  {doc.citation.label}
+                </a>
+              </p>
+            ) : null}
+          </div>
+        </div>
+      </section>
+
+      <SideSection
+        tone="muted"
+        title="Keep reading"
+        aside={<RelatedLinks title="Related pages" ariaLabel="Documentation related pages" links={related} />}
+      >
+        <ul className="space-y-2">
+          {others.map(([key, other]) => (
+            <li key={key} className="bg-background text-ink">
+              <LocaleLink href={`/docs/${key}`} className="group block p-6 md:p-8">
+                <span className="t-3 block underline-offset-[0.2em] group-hover:underline">{other.title}</span>
+                <span className="t-body mt-2 block max-w-[60ch]">{other.description}</span>
+              </LocaleLink>
+            </li>
+          ))}
         </ul>
-      </nav>
-    </article>
+      </SideSection>
+
+      <ProductShowcase
+        products={getCopy("en").site.products}
+        lang="en"
+        title={home.products.title}
+        caption={home.products.caption}
+        overviewLink={home.products.overviewLink}
+      />
+
+      <ProposalClose closing={home.closing} actionHref="/#brief" />
+    </>
   );
 }

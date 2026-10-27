@@ -446,3 +446,39 @@ export function RowTable({
     </table>
   );
 }
+
+/**
+ * A photograph shown whole in a fixed frame on a filled field, so covers of
+ * different shapes line up without being cropped (DESIGN.md, "shown whole").
+ */
+export function FramedPhoto({
+  src,
+  alt,
+  frame = "aspect-[3/2]",
+  ground = "bg-surface-muted",
+  eager = false,
+  className = "",
+}: {
+  src: string;
+  alt: string;
+  /** Tailwind aspect classes for the frame, e.g. "aspect-[3/2] lg:aspect-[21/9]". */
+  frame?: string;
+  ground?: string;
+  eager?: boolean;
+  className?: string;
+}) {
+  return (
+    <span className={`${ground} ${frame} block overflow-hidden ${className}`}>
+      {/* next/image doesn't paint reliably for these covers in this Next build; a plain img is dependable. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : undefined}
+        decoding="async"
+        className="h-full w-full object-contain transition-transform duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.02] motion-reduce:transition-none"
+      />
+    </span>
+  );
+}
