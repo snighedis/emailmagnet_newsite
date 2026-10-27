@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import {
@@ -191,6 +192,16 @@ export default function Countdown321Page() {
       />
 
       <SideSection title="Every placement a campaign needs" lead="Timers where shoppers actually look, on the schedule promotions really run.">
+        <figure className="mb-14">
+          <Image
+            src="/brand/countdown321-product-page.webp"
+            alt="A Countdown321 timer on a Shopify product page, under the price and the Add to cart button"
+            width={1600}
+            height={900}
+            sizes="(min-width: 1024px) 56vw, 92vw"
+            className="h-auto w-full"
+          />
+        </figure>
         <FeatureList items={features} />
       </SideSection>
 
@@ -205,6 +216,16 @@ export default function Countdown321Page() {
           </p>
         }
       >
+        <figure className="mb-10">
+          <Image
+            src="/brand/countdown321-any-page.webp"
+            alt="A Countdown321 timer on a Shopify store's home page, below the new collection banner"
+            width={1600}
+            height={900}
+            sizes="(min-width: 1024px) 56vw, 92vw"
+            className="h-auto w-full"
+          />
+        </figure>
         <RowTable
           caption="What Countdown321 does for Shopify stores"
           columns={["Campaign", "The timer says", "Why it helps"]}

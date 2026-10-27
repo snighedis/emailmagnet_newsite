@@ -1284,3 +1284,10 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
     filter: saturate(1);
   }
 }
+
+/* The footer's address at display size: "@dentokudev.com" is about 7.6 times
+   its font size wide, so under ~340px it shrinks to fit the column instead of
+   pushing the page sideways. */
+.footer-mail {
+  font-size: min(clamp(42px, 6vw, 96px), calc((100vw - 40px) / 7.8));
+}

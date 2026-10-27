@@ -38,7 +38,7 @@ export function SiteFooter({ copy }: { copy: ChromeCopy }) {
           <p className="t-lead text-white/80">{common.footer.contactLead}</p>
           <a
             href={`mailto:${siteConfig.supportEmail}`}
-            className="t-display mt-3 block text-white transition-colors duration-[180ms] hover:text-brand"
+            className="t-display footer-mail mt-3 block text-white transition-colors duration-[180ms] hover:text-brand"
           >
             {user}
             <wbr />@{domain}
