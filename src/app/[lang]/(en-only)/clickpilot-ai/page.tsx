@@ -278,8 +278,10 @@ export default function ClickPilotAiPage() {
         products={products}
         lang="en"
         title="More from the studio"
-        caption={home.products.caption}
+        caption="We build, publish and maintain our products ourselves."
         overviewLink={home.products.overviewLink}
+        exclude="/clickpilot-ai"
+        limit={2}
       />
 
       <ProposalClose closing={home.closing} actionHref="/#brief" />

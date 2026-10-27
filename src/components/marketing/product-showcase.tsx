@@ -20,13 +20,20 @@ export function ProductShowcase({
   title,
   caption,
   overviewLink,
+  exclude,
+  limit,
 }: {
   products: Products;
   lang: string;
   title: string;
   caption: string;
   overviewLink: string;
+  /** On a product page: its own href, so the grid never shows the page you are on. */
+  exclude?: string;
+  /** How many products to show, in showcase order. */
+  limit?: number;
 }) {
+  const shown = inShowcaseOrder(products.filter((product) => product.href !== exclude)).slice(0, limit);
   return (
     <section className="bg-background">
       <div className="page-x axis gap-y-6 pt-20 md:pt-32">
@@ -38,7 +45,7 @@ export function ProductShowcase({
         </p>
       </div>
       <ul className="page-x mt-12 grid gap-x-8 gap-y-14 md:mt-16 md:grid-cols-2">
-        {inShowcaseOrder(products).map((product, i) => {
+        {shown.map((product, i) => {
           const picture = productPicture(product.name, lang);
           const store = product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store";
           return (
