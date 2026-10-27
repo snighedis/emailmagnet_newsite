@@ -12,7 +12,7 @@ export default function ChromeVolumeControlExtensionPage() {
   return (
     <MoneyPage
       eyebrow="Volume Control PRO"
-      title="Chrome volume control extension with per-site audio memory"
+      title="Chrome volume control with per-site memory"
       answer="Volume Control PRO is a Dentoku Dev volume control extension for Chrome. It gives every tab its own audio level from a single slider, remembers the level you picked for each site, and can raise quiet audio up to 600% without touching your system volume."
       bullets={[
         "Set one site loud and another quiet, then leave them that way.",

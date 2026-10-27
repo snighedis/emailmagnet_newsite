@@ -139,10 +139,13 @@ export function ShortAnswer({
   title,
   body,
   aside,
+  long = false,
 }: {
   title: string;
   body: string;
   aside?: { title: string; body: string };
+  /** A long answer is set as a lead paragraph, not at statement size. */
+  long?: boolean;
 }) {
   return (
     <section className="bg-surface-muted">
@@ -151,7 +154,7 @@ export function ShortAnswer({
           {title}
         </h2>
         <div className="space-y-8">
-          <p data-reveal style={d(1)} className="t-3 t-3-compact text-ink max-w-[54ch]">
+          <p data-reveal style={d(1)} className={long ? "t-lead text-ink max-w-[60ch]" : "t-3 t-3-compact text-ink max-w-[54ch]"}>
             {body}
           </p>
           {aside ? (
@@ -413,7 +416,8 @@ export function RowTable({
 }: {
   caption: string;
   columns: readonly [string, string, string];
-  rows: readonly (readonly [string, string, string])[];
+  /** The first cell names the row (and keys it); the other two may hold links. */
+  rows: readonly (readonly [string, ReactNode, ReactNode])[];
   onMuted?: boolean;
 }) {
   return (

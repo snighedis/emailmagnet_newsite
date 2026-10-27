@@ -12,7 +12,7 @@ export default function EmailExtractorVsScraperPage() {
   return (
     <MoneyPage
       eyebrow="Comparison"
-      title="Email extractor vs scraper: when browser-based extraction is enough"
+      title="Email extractor vs scraper: which one you need"
       answer="EmailMagnet is best when users already browse relevant pages and need to extract visible emails quickly. A heavier scraper may fit large automated crawling, but it usually requires more setup, review, and compliance controls."
       bullets={[
         "Choose EmailMagnet for manual research sessions made faster.",

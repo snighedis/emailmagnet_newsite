@@ -87,6 +87,10 @@ styled accent word inside a headline, two typefaces at most, nothing under 13px.
   Blog covers are stock photographs of mixed shapes, shown whole in one frame on the tone step
   (`FramedPhoto`), never cropped to match. The article prose (`.blog-article`) has no rules:
   notes and table rows are filled bands, links use the `.text-link` underline.
+- The 13 search guides (`MoneyPage`, `PlannedContentPage`) share `guide-page.tsx`: the title in
+  `.t-article` on the line, the product's store picture whole in a wide frame under it, the quick
+  answer on the tone step (a long one at lead size), the list and the search table, the text with
+  its index on the left, the related resources on the orange, then the products and the proposal.
 - The close is the written proposal as a paper card on its own field, `--ink-raised` (one
   tone step above the ink footer, so the two read as separate surfaces without a line),
   tilted and cropped by the section's bottom edge; the crop only ever takes the card's
