@@ -74,6 +74,13 @@ styled accent word inside a headline, two typefaces at most, nothing under 13px.
   (`#hours`), then the free form on a filled panel with what happens next beside it
   (`#write`), then the products for support questions. No proposal card: its brief is
   already on the page.
+- Product pages and pricing are built from `src/components/marketing/editorial.tsx`: the
+  opening (title on the line, the store picture shown whole with three facts beside it), "In
+  short" on the tone step, sections with their title sticky left of the line, steps on the
+  orange as a real list, plans as filled panels (the recommended one in the orange, never a
+  "most popular" label), rows as a real table that stacks on a phone, the FAQ tiles. They end
+  with the products and the proposal. EmailMagnet's steps carry a drawn illustration in the
+  page's ink and orange (`emailmagnet-how-it-works.webp`, made with an image model).
 - The close is the written proposal as a paper card on its own field, `--ink-raised` (one
   tone step above the ink footer, so the two read as separate surfaces without a line),
   tilted and cropped by the section's bottom edge; the crop only ever takes the card's

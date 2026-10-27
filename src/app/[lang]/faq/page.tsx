@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { HomeReveal } from "@/components/marketing/home-reveal";
+import { FaqTiles } from "@/components/marketing/editorial";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { ProductShowcase } from "@/components/marketing/product-showcase";
 import { ProposalClose } from "@/components/marketing/proposal-close";
@@ -112,24 +113,8 @@ export default async function FaqPage({ params }: PageProps<"/[lang]/faq">) {
               </ul>
             </nav>
           </div>
-          <div data-reveal style={d(2)} className="space-y-1.5 lg:space-y-2">
-            {copy.items.map((item, i) => (
-              <details
-                key={item.question}
-                name="faq"
-                open={i === 0}
-                className="faq-item bg-surface-muted open:bg-brand not-open:hover:bg-[#e7e7e4] text-ink group transition-colors duration-[240ms]"
-              >
-                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 text-[18px] leading-snug font-medium select-none md:min-h-18 md:px-6 md:text-[20px] [&::-webkit-details-marker]:hidden">
-                  {item.question}
-                  <span aria-hidden="true" className="relative h-4 w-4 shrink-0">
-                    <span className="bg-ink absolute top-1/2 left-0 h-[3px] w-4 -translate-y-1/2" />
-                    <span className="bg-ink absolute top-0 left-1/2 h-4 w-[3px] -translate-x-1/2 transition-transform duration-[240ms] ease-[var(--ease-out)] group-open:rotate-90 motion-reduce:transition-none" />
-                  </span>
-                </summary>
-                <p className="faq-answer t-body max-w-[60ch] px-5 pb-6 md:px-6">{item.answer}</p>
-              </details>
-            ))}
+          <div data-reveal style={d(2)}>
+            <FaqTiles items={copy.items} />
           </div>
         </div>
       </section>

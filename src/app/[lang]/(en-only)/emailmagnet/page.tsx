@@ -1,92 +1,25 @@
-import Image from "next/image";
-import Link from "next/link";
-import {
-  ArrowRight,
-  Briefcase,
-  CheckCircle2,
-  ClipboardCheck,
-  FileSpreadsheet,
-  ListChecks,
-  Search,
-  ShieldCheck,
-  UsersRound,
-  XCircle,
-} from "@/components/ui/icons";
-import { FaqList } from "@/components/marketing/faq-list";
+import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { NewsletterSignupLazy } from "@/components/marketing/newsletter-signup-lazy";
-import { PricingCards } from "@/components/marketing/pricing-cards";
-import { Section } from "@/components/marketing/section";
-import { SupportBlock } from "@/components/marketing/support-block";
-import { Testimonials } from "@/components/marketing/testimonials";
-import { TrustBar } from "@/components/marketing/trust-bar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Eyebrow } from "@/components/marketing/eyebrow";
-import { blogPosts } from "@/content/blog";
 import {
-  emailMagnetConfig,
-  emailMagnetTestimonials,
-  faqItems,
-  heroHighlights,
-  pricingPlans,
-  socialProof,
-  valueProps,
-} from "@/data/site";
+  FaqTiles,
+  FeatureList,
+  PageOpening,
+  PlanPanels,
+  RelatedLinks,
+  ShortAnswer,
+  SideSection,
+  Steps,
+  d,
+  type Plan,
+} from "@/components/marketing/editorial";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import { ProposalClose } from "@/components/marketing/proposal-close";
+import { getCopy, getPageCopy } from "@/copy";
+import { blogPosts } from "@/content/blog";
+import { emailMagnetConfig, emailMagnetTestimonials, faqItems, pricingPlans } from "@/data/site";
+import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildSoftwareSchema } from "@/lib/schema";
-
-const audienceCards = [
-  {
-    title: "Sales researchers",
-    description: "Build prospecting lists from company pages, partner directories, and local branch indexes.",
-    icon: Search,
-  },
-  {
-    title: "Recruiting operators",
-    description: "Collect visible role/team emails while reviewing employers, portfolios, and hiring pages.",
-    icon: UsersRound,
-  },
-  {
-    title: "Founders and agencies",
-    description: "Turn repeated market research into a structured list without maintaining a scraping stack.",
-    icon: Briefcase,
-  },
-];
-
-const trustSignals = [
-  "Detects visible content only",
-  "No automatic outreach",
-  "Human review before export",
-  "Direct support from Dentoku Dev",
-];
-
-const workflowComparison = [
-  {
-    manual: "Open each page, scan for addresses, and paste manually into a sheet.",
-    emailMagnet: "Run one action inside Chrome and collect emails into a single export flow.",
-  },
-  {
-    manual: "Spend extra time fixing duplicates and inconsistent formatting.",
-    emailMagnet: "Export a structured list ready for qualification in CSV or TXT.",
-  },
-  {
-    manual: "Lose source context when the copy-paste step gets long.",
-    emailMagnet: "Keep collection tied to the exact pages you are actively reviewing.",
-  },
-];
-
-const proTriggers = [
-  "You research directories, contact pages, or partner lists every week.",
-  "You want autosave to keep results across repeated sessions.",
-  "You work from pre-reviewed URL lists and want bulk extraction.",
-];
-
-const notFor = [
-  "bypassing login walls or protected/private data",
-  "automatic outreach or spam campaigns",
-  "skipping consent checks, qualification, or opt-out handling",
-];
 
 export const metadata = createMetadata({
   title: "EmailMagnet Chrome Email Extractor",
@@ -95,7 +28,98 @@ export const metadata = createMetadata({
   path: "/emailmagnet",
 });
 
+const comparison = [
+  {
+    manual: "Open each page, scan for addresses and paste them into a sheet one by one.",
+    withIt: "Run one action in Chrome and collect every visible email on the page.",
+  },
+  {
+    manual: "Fix duplicates and inconsistent formatting by hand afterwards.",
+    withIt: "Export a structured list, ready for qualification, as CSV or TXT.",
+  },
+  {
+    manual: "Lose track of where an address came from once the copying gets long.",
+    withIt: "Collect only from the pages you are reviewing, so the source stays in view.",
+  },
+];
+
+const values = [
+  {
+    title: "No more copy and paste",
+    description:
+      "Capture the visible emails on pages you are already reviewing instead of scanning, copying and formatting each address by hand.",
+  },
+  {
+    title: "Lists ready to use",
+    description:
+      "Save reviewed emails as CSV or TXT files for spreadsheets, CRMs, qualification steps or follow-up.",
+  },
+  {
+    title: "The source stays in view",
+    description:
+      "You see why an address is public before deciding whether it belongs in your list.",
+  },
+  {
+    title: "Your call before export",
+    description: "Choose what goes into the final list instead of exporting everything blindly.",
+  },
+];
+
+const steps = [
+  {
+    title: "Open a page you research",
+    description: "A contact page, a directory, a partner list: pages where the business context is visible.",
+  },
+  {
+    title: "Run it and review",
+    description: "It lists the emails the page shows. Keep the ones that belong in your list.",
+  },
+  {
+    title: "Export the list",
+    description: "Download CSV or TXT and take it into your spreadsheet, CRM and review steps.",
+  },
+];
+
+const notFor = [
+  "Getting past logins, or reaching protected or private data.",
+  "Automatic outreach or spam campaigns.",
+  "Skipping consent checks, qualification or opt-out handling.",
+];
+
+const proTriggers = [
+  "You research directories, contact pages or partner lists every week.",
+  "You want autosave to keep results across sessions.",
+  "You work from reviewed URL lists and want bulk extraction.",
+];
+
+const plans: Plan[] = pricingPlans.map((plan) => ({
+  name: plan.name.replace(/ plan$/, ""),
+  price: plan.price === "Free" ? "$0" : plan.price,
+  cadence: plan.price === "Free" ? "for good" : "once",
+  description: plan.description,
+  features: plan.features,
+  action: plan.cta,
+  featured: plan.featured,
+}));
+
+const related = [
+  { label: "Install and use EmailMagnet", href: "/docs/getting-started" },
+  { label: "Export emails as CSV or TXT", href: "/docs/exporting-emails" },
+  { label: "Responsible use guide", href: "/docs/responsible-use" },
+  { label: "Compare Free and PRO", href: "/pricing" },
+  ...blogPosts.map((post) => ({ label: post.title, href: `/blog/${post.slug}` })),
+];
+
+/**
+ * EmailMagnet (redesign: product pages in the homepage's system). The store
+ * picture under the title, the short answer, what it replaces, the three steps
+ * on the orange, the store reviews verbatim, the plans, responsible use, the
+ * questions, then the other products and the proposal.
+ */
 export default function EmailMagnetPage() {
+  const { products } = getCopy("en").site;
+  const { home } = getPageCopy("en");
+
   return (
     <>
       <JsonLd data={buildSoftwareSchema()} />
@@ -105,443 +129,176 @@ export default function EmailMagnetPage() {
           { name: "EmailMagnet", href: "/emailmagnet" },
         ])}
       />
+      <HomeReveal />
 
-      <Section variant="ink" containerClassName="relative">
-        <div
-          className="bg-brand/30 pointer-events-none absolute top-[-6rem] left-[-7rem] h-72 w-72 rounded-full blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="bg-accent-teal/20 pointer-events-none absolute top-12 right-[-8rem] h-80 w-80 rounded-full blur-3xl"
-          aria-hidden
-        />
+      <PageOpening
+        title={["Emails found", "while you browse."]}
+        standfirst="EmailMagnet is a Chrome extension that finds the public business emails on the pages you visit. Review them, then export a clean CSV or TXT list."
+        primary={{ label: "Add to Chrome, free", href: emailMagnetConfig.secondaryCta.href }}
+        secondary={{ label: "See the plans", href: "#plans" }}
+        picture={{
+          src: "/brand/emailmagnet-one-click.webp",
+          alt: "EmailMagnet's popup listing the business emails found on a web page, with CSV and TXT export",
+          width: 1280,
+          height: 800,
+        }}
+        facts={[
+          { term: "Free", detail: "The whole extraction and export workflow, with no monthly or per-export limit." },
+          { term: "PRO, $19 once", detail: "Autosave, bulk extraction and priority support. No subscription." },
+          { term: "Rated 5.0", detail: "On the Chrome Web Store." },
+        ]}
+      />
 
-        <div className="relative grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center">
-          <div className="space-y-7">
-            <Badge className="h-auto max-w-full justify-start gap-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-left text-[0.7rem] leading-5 whitespace-normal text-white sm:w-fit sm:text-xs">
-              <Image
-                src={emailMagnetConfig.icon}
-                alt="EmailMagnet icon"
-                width={18}
-                height={18}
-                className="h-[18px] w-[18px] shrink-0 object-contain"
-              />
-              <span>Free Chrome extension. No setup, no API key.</span>
-            </Badge>
+      <ShortAnswer
+        title="In short"
+        body="Open a directory or a contact page, run EmailMagnet, keep the addresses that belong and export the list."
+        aside={{
+          title: "What it is not for",
+          body: "Getting past logins, automatic outreach or skipping consent. Your team stays in charge of lawful purpose, storage and opt-out handling.",
+        }}
+      />
 
-            <h1 className="max-w-4xl text-5xl font-semibold tracking-[-0.02em] text-balance md:text-7xl">
-              Every page you visit is a lead list
-            </h1>
-            <p className="text-ink-muted max-w-2xl text-lg leading-8 md:text-xl">
-              EmailMagnet is the Chrome extension that finds public business emails while you browse.
-              Review them, then export clean CSV or TXT lists in one click.
-            </p>
-
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="xl" className="font-semibold">
-                <Link href={emailMagnetConfig.secondaryCta.href}>
-                  Add to Chrome for free
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="xl"
-                variant="outline"
-                className="border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-white"
-              >
-                <Link href="#pricing">See PRO workflow</Link>
-              </Button>
-            </div>
-
-            <TrustBar
-              tone="ink"
-              rating={5.0}
-              reviewLabel="Chrome Web Store"
-              items={["Free plan, no credit card"]}
-            />
-
-            <ul className="grid gap-2 text-sm font-medium text-stone-200 sm:grid-cols-3">
-              {heroHighlights.map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/brand/emailmagnet_04.webp"
-            alt="EmailMagnet PRO popup showing captured business emails over a map"
-            width={1696}
-            height={1400}
-            loading="eager"
-            decoding="async"
-            className="shadow-soft-lg w-full rounded-2xl ring-1 ring-white/10"
-          />
-        </div>
-
-        {/* Trust signals + key stats — one aligned credibility row */}
-        <div className="relative mt-10 grid items-stretch gap-6 lg:grid-cols-[1fr_0.95fr]">
-          <div className="grid gap-3 rounded-2xl border border-white/15 bg-white/5 p-5 text-sm text-stone-100 sm:grid-cols-2">
-            {trustSignals.map((signal) => (
-              <div key={signal} className="flex items-start gap-2">
-                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-teal-200" />
-                <span>{signal}</span>
-              </div>
+      <SideSection
+        title="The slow part of lead research, gone"
+        lead="EmailMagnet does not replace judgment. It removes the copy and paste between finding a relevant page and having a clean list."
+      >
+        <table className="t-body text-ink w-full border-separate border-spacing-y-2 text-left">
+          <caption className="sr-only">Lead research by hand and with EmailMagnet</caption>
+          <thead className="max-md:sr-only">
+            <tr>
+              <th scope="col" className="t-lead px-5 pb-2 font-semibold md:w-1/2">
+                By hand
+              </th>
+              <th scope="col" className="t-lead px-5 pb-2 font-semibold">
+                With EmailMagnet
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparison.map((row) => (
+              <tr key={row.manual} className="max-md:flex max-md:flex-col">
+                <td className="bg-surface-muted px-5 py-5 align-top">{row.manual}</td>
+                <td className="bg-brand px-5 py-5 align-top font-medium">{row.withIt}</td>
+              </tr>
             ))}
-          </div>
-          <div className="grid grid-cols-3 items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-5 text-center">
-            {socialProof.stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl font-semibold text-white">{stat.value}</p>
-                <p className="text-xs tracking-wide text-stone-300 uppercase">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+          </tbody>
+        </table>
+        <div className="mt-16">
+          <FeatureList items={values} />
         </div>
-      </Section>
+      </SideSection>
 
-      <section className="bg-surface-blue py-18 md:py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid gap-6 lg:grid-cols-3">
-            {audienceCards.map((audience, index) => (
-              <article key={audience.title} className="rounded-2xl border border-stone-200 bg-white p-6">
-                <div className="mb-6 flex items-center justify-between">
-                  <audience.icon className="h-6 w-6 text-eyebrow" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.14em] text-stone-400">0{index + 1}</span>
-                </div>
-                <h2 className="text-2xl font-semibold text-stone-950">{audience.title}</h2>
-                <p className="mt-3 leading-7 text-stone-600">{audience.description}</p>
-              </article>
-            ))}
-          </div>
+      <Steps
+        title="Research, review, export"
+        lead="Built for the pages you are already evaluating: the tool speeds up collecting, you keep control of quality."
+        steps={steps}
+        picture={{
+          src: "/brand/emailmagnet-how-it-works.webp",
+          alt: "How EmailMagnet works: the emails on a web page's contact cards fly to a magnet and end up in a CSV file",
+          width: 1299,
+          height: 417,
+        }}
+      />
 
-          <div className="mt-10 overflow-hidden rounded-2xl border border-stone-200 bg-white">
-            <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-              <Image
-                src="/brand/emailmagnet-directory-showcase.webp"
-                alt="EmailMagnet extracting visible emails from a directory page"
-                width={1411}
-                height={1411}
-                className="h-full w-full object-cover"
-              />
-              <div className="space-y-5 p-6 md:p-8">
-                <h2 className="text-3xl font-semibold tracking-[-0.02em] text-stone-950">
-                  Research first, collect second, export third
-                </h2>
-                <p className="leading-8 text-stone-600">
-                  EmailMagnet is designed for pages you are already evaluating. The tool speeds up
-                  collection, while your team keeps control of source quality and usage decisions.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    {
-                      icon: Search,
-                      title: "Confirm context on-page",
-                      text: "Use extraction on pages where the business context is visible and relevant.",
-                    },
-                    {
-                      icon: ClipboardCheck,
-                      title: "Review before export",
-                      text: "Choose what belongs in your final list instead of bulk-exporting blindly.",
-                    },
-                    {
-                      icon: FileSpreadsheet,
-                      title: "Export for qualification",
-                      text: "Move CSV/TXT output into spreadsheet, CRM, and compliance review steps.",
-                    },
-                  ].map((item) => (
-                    <div key={item.title} className="flex gap-3">
-                      <item.icon className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
-                      <div>
-                        <h3 className="font-semibold text-stone-950">{item.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-stone-600">{item.text}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-white py-18 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="space-y-4">
-            <Eyebrow>Before and after</Eyebrow>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
-              Replace the fragile part of lead research
-            </h2>
-            <p className="text-lg leading-8 text-stone-700">
-              EmailMagnet does not replace judgment. It removes the repetitive copy-paste work
-              between finding a relevant page and preparing a clean list.
-            </p>
-          </div>
-
-          <div className="overflow-hidden rounded-2xl border border-stone-200">
-            <div className="hidden grid-cols-2 bg-stone-100 text-sm font-semibold uppercase tracking-wide text-stone-700 md:grid">
-              <div className="px-4 py-3">Manual workflow</div>
-              <div className="px-4 py-3">With EmailMagnet</div>
-            </div>
-            <div className="divide-y divide-stone-200">
-              {workflowComparison.map((row) => (
-                <div key={row.manual} className="grid gap-0 text-sm leading-6 md:grid-cols-2">
-                  <div className="flex gap-3 bg-stone-50 px-4 py-4 text-stone-600">
-                    <XCircle className="mt-1 h-4 w-4 shrink-0 text-eyebrow" />
-                    <div>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-stone-500 md:hidden">
-                        Manual workflow
-                      </p>
-                      <span>{row.manual}</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 px-4 py-4 text-stone-800">
-                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-accent-teal" />
-                    <div>
-                      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-stone-500 md:hidden">
-                        With EmailMagnet
-                      </p>
-                      <span>{row.emailMagnet}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="by-the-numbers" className="bg-ink py-18 text-white md:py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="max-w-3xl space-y-3">
-            <p className="text-sm font-semibold tracking-[0.15em] text-teal-200 uppercase">The math</p>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
-              Hours of copy-paste, gone in a click
-            </h2>
-            <p className="text-ink-muted text-lg leading-8 md:max-w-2xl">
-              EmailMagnet collapses the slowest part of lead research: finding addresses,
-              copying them one by one, formatting them into a usable list. The math is
-              brutal in your favor.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
-              <p className="text-5xl font-semibold tracking-[-0.02em] text-white md:text-6xl">~20 sec</p>
-              <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
-                Saved per address
-              </p>
-              <p className="mt-4 text-base leading-6 text-stone-200">
-                Manual: spot the address, copy, switch tab, paste, format. EmailMagnet
-                surfaces every visible email on the page in one pass. No tab switching, no
-                cleanup.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
-              <p className="text-5xl font-semibold tracking-[-0.02em] text-white md:text-6xl">
-                <span aria-hidden>8 → 1</span>
-                <span className="sr-only">eight to one</span>
-              </p>
-              <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
-                Steps per page
-              </p>
-              <p className="mt-4 text-base leading-6 text-stone-200">
-                Open page → select → copy → new tab → paste → format → review → save. We
-                replace the whole loop with one extraction action and a single export.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-8">
-              <p className="text-5xl font-semibold tracking-[-0.02em] text-white md:text-6xl">$19</p>
-              <p className="mt-3 text-sm font-semibold tracking-wide text-teal-200 uppercase">
-                Lifetime, not monthly
-              </p>
-              <p className="mt-4 text-base leading-6 text-stone-200">
-                One-time payment for PRO. Compare with the $30–$99 per seat per month most
-                lead-gen tools ask for, and that&apos;s before the data add-ons.
-              </p>
-            </div>
-          </div>
-          <p className="text-ink-muted mt-8 max-w-3xl text-sm leading-6">
-            Time figures based on the manual copy-paste workflow we replaced internally.
-            Your mileage will depend on the source pages and how clean your review pass is.
-          </p>
-        </div>
-      </section>
-
-      <section id="reviews" className="bg-surface-soft py-18 md:py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="max-w-3xl space-y-3">
-            <Eyebrow>Reviews</Eyebrow>
-            <h2 className="text-ink text-4xl font-semibold tracking-[-0.02em] md:text-5xl">
+      <section id="reviews" className="bg-background">
+        <div className="page-x axis gap-y-10 py-20 md:py-32">
+          <div className="space-y-5 lg:pr-12">
+            <h2 data-reveal className="t-2 text-ink">
               What early users say
             </h2>
-            <p className="text-lg leading-8 text-stone-700">
-              A handful of reviews so far, straight from the Chrome Web Store. Every one is five
-              stars.
+            <p data-reveal style={d(1)} className="t-lead text-ink max-w-[36ch]">
+              Every review so far is five stars. Quoted as written on the Chrome Web Store.
             </p>
+            <a
+              data-reveal
+              style={d(2)}
+              href={emailMagnetConfig.reviewsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link text-ink inline-block text-base font-medium"
+            >
+              Read the reviews on the store
+            </a>
           </div>
-          <Testimonials
-            className="mt-10"
-            items={emailMagnetTestimonials}
-            sourceHref={emailMagnetConfig.reviewsUrl}
-          />
-        </div>
-      </section>
-
-      <section id="pricing" className="bg-white py-18 md:py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div className="space-y-4">
-              <Eyebrow>Pricing</Eyebrow>
-              <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
-                Start free, upgrade when research becomes recurring
-              </h2>
-              <p className="text-lg leading-8 text-stone-700">
-                Free is enough to validate real workflows. PRO is for repeated research sessions,
-                larger exports, autosave, and reviewed URL-list processing.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-teal-100 bg-teal-50 p-6">
-              <div className="flex items-start gap-3">
-                <ListChecks className="mt-1 h-5 w-5 shrink-0 text-teal-700" />
-                <div>
-                  <h3 className="text-xl font-semibold text-stone-950">Upgrade to PRO when...</h3>
-                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-stone-700">
-                    {proTriggers.map((trigger) => (
-                      <li key={trigger} className="flex gap-2">
-                        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-teal-700" />
-                        <span>{trigger}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10">
-            <PricingCards plans={pricingPlans} />
+          <div className="grid gap-x-12 gap-y-12 md:grid-cols-2">
+            {emailMagnetTestimonials.map((item, i) => (
+              <figure key={item.name} data-reveal style={d(i + 1)} className={i === 0 ? "md:col-span-2" : ""}>
+                <blockquote className={i === 0 ? "t-3 t-3-compact text-ink max-w-[40ch]" : "t-lead text-ink max-w-[40ch]"}>
+                  <p>“{item.quote}”</p>
+                </blockquote>
+                <figcaption className="t-body text-ink mt-4">{item.name}</figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-surface-blue py-18 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <ShieldCheck className="h-6 w-6 text-teal-700" />
-              <h2 className="text-2xl font-semibold text-stone-950">Responsible by design</h2>
-            </div>
-            <p className="mt-4 leading-8 text-stone-600">
-              EmailMagnet is built for public contact research on pages you can access and review.
-              The extension helps with collection and export, but your team controls lawful purpose,
-              qualification, storage, outreach policy, and opt-out handling.
-            </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {valueProps.map((item) => (
-                <div key={item.title} className="rounded-xl border border-stone-200 bg-stone-50 p-4">
-                  <div className="flex items-center gap-2">
-                    <item.icon className="h-4 w-4 text-eyebrow" />
-                    <h3 className="text-sm font-semibold text-stone-900">{item.title}</h3>
-                  </div>
-                  <p className="mt-2 text-sm leading-6 text-stone-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <aside className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
-            <div className="flex items-center gap-3">
-              <XCircle className="h-6 w-6 text-eyebrow" />
-              <h2 className="text-2xl font-semibold text-stone-950">What EmailMagnet is not for</h2>
-            </div>
-            <ul className="mt-5 space-y-3 text-sm leading-6 text-stone-700">
-              {notFor.map((item) => (
-                <li key={item} className="flex gap-3">
-                  <XCircle className="mt-1 h-4 w-4 shrink-0 text-eyebrow" />
-                  <span>{item}</span>
-                </li>
+      <SideSection
+        id="plans"
+        tone="muted"
+        title="Start free, upgrade when it is weekly"
+        lead="Free is the whole workflow. PRO is for recurring research sessions."
+        aside={
+          <div className="space-y-3">
+            <h3 className="t-lead text-ink font-semibold">PRO is worth it when</h3>
+            <ul className="t-body text-ink list-disc space-y-2 pl-5">
+              {proTriggers.map((trigger) => (
+                <li key={trigger}>{trigger}</li>
               ))}
             </ul>
-            <Button asChild variant="outline" className="mt-7">
-              <Link href="/docs/responsible-use">
-                Read responsible use guide
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </aside>
-        </div>
-      </section>
-
-      <section className="bg-white py-18 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="space-y-4">
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
-              Questions before rollout
-            </h2>
-            <p className="text-lg leading-8 text-stone-700">
-              Short answers on capabilities, pricing, and responsible use before you adopt the
-              extension in recurring workflows.
-            </p>
           </div>
-          <div className="space-y-6">
-            <FaqList items={faqItems.slice(0, 6)} />
-            <nav aria-label="EmailMagnet related help pages" className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
-              <h3 className="text-lg font-semibold text-stone-950">Related help pages and guides</h3>
-              <ul className="mt-3 grid gap-2 text-sm text-stone-700 sm:grid-cols-2">
-                <li>
-                  <Link className="font-medium text-eyebrow hover:underline" href="/docs/getting-started" prefetch={false}>
-                    Install and use EmailMagnet
-                  </Link>
-                </li>
-                <li>
-                  <Link className="font-medium text-eyebrow hover:underline" href="/docs/exporting-emails" prefetch={false}>
-                    Export emails as CSV or TXT
-                  </Link>
-                </li>
-                <li>
-                  <Link className="font-medium text-eyebrow hover:underline" href="/pricing" prefetch={false}>
-                    Compare Free and PRO pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link className="font-medium text-eyebrow hover:underline" href="/overview" prefetch={false}>
-                    Dentoku Dev product overview
-                  </Link>
-                </li>
-                {blogPosts.map((post) => (
-                  <li key={post.slug}>
-                    <Link className="font-medium text-eyebrow hover:underline" href={`/blog/${post.slug}`} prefetch={false}>
-                      {post.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+        }
+      >
+        <PlanPanels plans={plans} onMuted />
+        <p className="t-body text-ink mt-6 max-w-[60ch]">
+          Billing details are shown at checkout. Compare the plans side by side on the{" "}
+          <LocaleLink href="/pricing" className="text-link font-medium">
+            pricing page
+          </LocaleLink>
+          .
+        </p>
+      </SideSection>
+
+      <SideSection
+        title="Responsible by design"
+        lead="Built for public contact research on pages you can access and review."
+      >
+        <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
+          <p className="t-lead text-ink max-w-[46ch]">
+            The extension helps with collecting and exporting. Your team decides the lawful purpose,
+            qualification, storage, outreach policy and opt-out handling.
+          </p>
+          <div className="space-y-3">
+            <h3 className="t-lead text-ink font-semibold">Not for</h3>
+            <ul className="t-body text-ink list-disc space-y-2 pl-5">
+              {notFor.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <LocaleLink href="/docs/responsible-use" className="text-link text-ink inline-block pt-2 text-base font-medium">
+              Read the responsible use guide
+            </LocaleLink>
           </div>
         </div>
-      </section>
+      </SideSection>
 
-      <section className="bg-surface-mint py-18 md:py-20">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="max-w-3xl space-y-3">
-            <Eyebrow>Newsletter</Eyebrow>
-            <h2 className="text-4xl font-semibold tracking-[-0.02em] text-ink md:text-5xl">
-              Stay updated on EmailMagnet improvements
-            </h2>
-          </div>
-          <div className="mt-10">
-            <NewsletterSignupLazy />
-          </div>
-        </div>
-      </section>
+      <SideSection
+        id="faq"
+        title="Questions before you start"
+        aside={<RelatedLinks title="Guides and help" ariaLabel="EmailMagnet guides and help pages" links={related} />}
+      >
+        <FaqTiles items={faqItems.slice(0, 6)} />
+      </SideSection>
 
-      <SupportBlock />
+      <ProductShowcase
+        products={products}
+        lang="en"
+        title="More from the studio"
+        caption={home.products.caption}
+        overviewLink={home.products.overviewLink}
+      />
+
+      <ProposalClose closing={home.closing} actionHref="/#brief" />
     </>
   );
 }

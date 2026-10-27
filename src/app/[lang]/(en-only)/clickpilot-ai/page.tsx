@@ -1,31 +1,20 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  Check,
-  CheckCircle2,
-  Clock,
-  CreditCard,
-  Globe2,
-  Key,
-  ListChecks,
-  Pen,
-  Puzzle,
-  Repeat,
-  Sparkles,
-  X,
-  XCircle,
-  Zap,
-} from "@/components/ui/icons";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Section } from "@/components/marketing/section";
-import { Eyebrow } from "@/components/marketing/eyebrow";
-import { HeroVideo } from "@/components/marketing/hero-video";
+import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { CtaBand } from "@/components/marketing/cta-band";
-import { FaqList } from "@/components/marketing/faq-list";
-import { PricingCards } from "@/components/marketing/pricing-cards";
-import { productPortfolio, siteConfig, type PricingPlan } from "@/data/site";
+import {
+  FaqTiles,
+  FeatureList,
+  PageOpening,
+  PlanPanels,
+  RelatedLinks,
+  ShortAnswer,
+  SideSection,
+  Steps,
+  type Plan,
+} from "@/components/marketing/editorial";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import { ProposalClose } from "@/components/marketing/proposal-close";
+import { getCopy, getPageCopy } from "@/copy";
+import { productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildProductSoftwareSchema } from "@/lib/schema";
 
@@ -36,182 +25,125 @@ export const metadata = createMetadata({
   path: "/clickpilot-ai",
 });
 
+const storeUrl = "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb";
+const proUrl = "https://dentoku.gumroad.com/l/clickpilotAI";
+
 const clickPilotProduct = productPortfolio.find((product) => product.href === "/clickpilot-ai");
 
+const oldWay = [
+  "Write in Gmail or LinkedIn",
+  "Select and copy the text",
+  "Open ChatGPT in a new tab",
+  "Paste it and ask for help",
+  "Wait for the answer",
+  "Copy the result",
+  "Switch back to the first tab",
+  "Paste it and fix the formatting",
+];
+
+const newWay = [
+  "Write in Gmail or LinkedIn",
+  "Select the text",
+  "Right-click and open ClickPilot AI",
+  "Choose fix, rewrite, summarize or translate",
+];
+
+const features = [
+  { title: "Fix grammar and clarity", description: "Improve what you wrote without leaving the text field." },
+  { title: "Rewrite in another tone", description: "Turn a message into the right tone for the person reading it." },
+  { title: "Summarize long text", description: "Get the short version of a long passage you have selected." },
+  { title: "Translate", description: "Translate the selected text in place." },
+  { title: "Your own shortcuts", description: "Save your own prompts for the tasks you repeat. Part of PRO." },
+];
+
+const places = [
+  { name: "Gmail", description: "Emails" },
+  { name: "LinkedIn", description: "Posts and messages" },
+  { name: "X", description: "Posts and replies" },
+  { name: "Notion", description: "Notes and documents" },
+  { name: "Most websites", description: "Any text field" },
+];
+
+const plans: Plan[] = [
+  {
+    name: "Free",
+    price: "$0",
+    cadence: "for good",
+    description: "The core writing actions, to try ClickPilot AI on your own text first.",
+    features: [
+      "Fix, rewrite, summarize and translate.",
+      "Works on most websites with text fields.",
+      "Runs on your own OpenAI API key.",
+    ],
+    action: { label: "Add to Chrome", href: storeUrl },
+  },
+  {
+    name: "PRO",
+    price: "$19",
+    cadence: "once",
+    description: "One payment for every PRO feature, for life.",
+    features: [
+      "Lifetime PRO licence.",
+      "Every PRO feature.",
+      "Unlimited use on the extension side.",
+      "Custom AI shortcuts.",
+      "No monthly subscription.",
+    ],
+    action: { label: "Get lifetime PRO", href: proUrl },
+    featured: true,
+  },
+];
+
+const activation = [
+  { title: "Buy on Gumroad", description: "The ClickPilot AI lifetime licence costs $19, paid once." },
+  { title: "Get the key by email", description: "Gumroad sends your licence key to the address you used." },
+  { title: "Paste it in ClickPilot AI", description: "Open the extension, enter the key, and the PRO features switch on." },
+];
+
+const faqs = [
+  {
+    question: "Do I need my own OpenAI API key?",
+    answer:
+      "Yes. ClickPilot AI uses your own OpenAI API key (bring your own key). API usage costs are separate and paid directly to OpenAI.",
+  },
+  {
+    question: "How is this different from ChatGPT?",
+    answer:
+      "ChatGPT means switching tabs and copying text back and forth. ClickPilot AI works inside the sites you write in, such as Gmail, LinkedIn and X, and PRO adds custom shortcuts for repeated tasks.",
+  },
+  {
+    question: "Does it work on all websites?",
+    answer:
+      "It works on Gmail, LinkedIn, X, Notion and most websites with text fields. Some platforms, such as Google Docs, may have limited support.",
+  },
+  {
+    question: "What's included in the $19 lifetime license?",
+    answer:
+      "A lifetime PRO license with every PRO feature, unlimited usage on the extension side, custom AI shortcuts, and no monthly subscription.",
+  },
+  {
+    question: "How do I activate the PRO features?",
+    answer:
+      "After buying on Gumroad you receive a license key by email. Paste the key in ClickPilot AI to switch on the PRO features.",
+  },
+];
+
+const related = [
+  { label: "Dentoku Dev product overview", href: "/overview" },
+  { label: "Product and support FAQ", href: "/faq" },
+  { label: "Browser productivity articles", href: "/blog" },
+  { label: "Contact Dentoku Dev support", href: "/contact" },
+];
+
+/**
+ * ClickPilot AI (redesign: product pages in the homepage's system). The store
+ * picture under the title with the AI notice, the old way against the new, what
+ * it does and where, the plans, activation on the orange, the questions, then
+ * the other products and the proposal.
+ */
 export default function ClickPilotAiPage() {
-  const faqs = [
-    {
-      question: "Do I need my own OpenAI API key?",
-      answer:
-        "Yes, ClickPilot AI uses your own OpenAI API key (BYOK - Bring Your Own Key). API usage costs are separate and paid directly to OpenAI.",
-    },
-    {
-      question: "How is this different from ChatGPT?",
-      answer:
-        "ChatGPT requires tab switching and copy-paste, breaking your workflow. ClickPilot AI works directly inside websites like Gmail, LinkedIn, and X/Twitter. Plus, it includes Custom AI Shortcuts for repeatable tasks.",
-    },
-    {
-      question: "Does it work on all websites?",
-      answer:
-        "ClickPilot AI works on Gmail, LinkedIn, X/Twitter, Notion, and most websites with text fields. Some platforms like Google Docs may have limited support.",
-    },
-    {
-      question: "What's included in the $19 lifetime license?",
-      answer:
-        "You get a lifetime Pro license with full access to all Pro features, unlimited usage on the extension side, Custom AI Shortcuts, and no monthly subscription fees.",
-    },
-    {
-      question: "How do I activate the Pro features?",
-      answer:
-        "After purchasing on Gumroad, you'll receive a license key by email. Simply paste the key in ClickPilot AI to unlock all Pro features.",
-    },
-  ];
-  const features = [
-    {
-      title: "Fix grammar and clarity",
-      description: "Instantly improve your writing without leaving the text field.",
-      icon: Pen,
-    },
-    {
-      title: "Rewrite in different tones/styles",
-      description: "Transform your message to match the right tone for any situation.",
-      icon: Repeat,
-    },
-    {
-      title: "Summarize long text",
-      description: "Get concise summaries of lengthy content in seconds.",
-      icon: ListChecks,
-    },
-    {
-      title: "Translate content",
-      description: "Break language barriers with instant translations.",
-      icon: Globe2,
-    },
-    {
-      title: "Run custom AI shortcuts",
-      description: "Create your own prompts for repeated tasks and workflows.",
-      icon: Zap,
-    },
-    {
-      title: "Smart templates & automation",
-      description: "Coming soon: Pre-built templates and automated workflows for common writing scenarios.",
-      icon: Sparkles,
-    },
-  ];
-
-  const whereItWorks = [
-    {
-      name: "Gmail",
-      description: "Write professional emails with AI assistance",
-      icon: (
-        <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden>
-          <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" fill="#EA4335"/>
-        </svg>
-      ),
-    },
-    {
-      name: "LinkedIn",
-      description: "Create engaging posts and messages",
-      icon: (
-        <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden>
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="#0A66C2"/>
-        </svg>
-      ),
-    },
-    {
-      name: "X / Twitter",
-      description: "Craft compelling tweets and replies",
-      icon: (
-        <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden>
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="#000000"/>
-        </svg>
-      ),
-    },
-    {
-      name: "Notion",
-      description: "Improve your notes and documentation",
-      icon: (
-        <svg viewBox="0 0 24 24" className="h-10 w-10" aria-hidden>
-          <path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z" fill="#000000"/>
-        </svg>
-      ),
-    },
-    {
-      name: "Most websites",
-      description: "Works in any text field across the web",
-      icon: <Globe2 className="h-10 w-10 text-muted-foreground" aria-hidden />,
-    },
-  ];
-
-  const workflow = [
-    {
-      title: "Purchase on Gumroad",
-      description: "Get your ClickPilot AI Lifetime license for $19",
-    },
-    {
-      title: "Receive license key by email",
-      description: "You'll get your activation key delivered instantly",
-    },
-    {
-      title: "Paste key in ClickPilot AI",
-      description: "Open the extension and enter your key to unlock Pro features",
-    },
-  ];
-
-  const oldWaySteps = [
-    "Write text in Gmail/LinkedIn",
-    "Select and copy your text",
-    "Open ChatGPT in new tab",
-    "Paste and ask for help",
-    "Wait for response",
-    "Copy the result",
-    "Switch back to original tab",
-    "Paste and format",
-  ];
-
-  const newWaySteps = [
-    "Write text in Gmail/LinkedIn",
-    "Select text",
-    "Right-click → ClickPilot AI",
-    "Choose: Fix, Rewrite, Summarize, or Translate",
-  ];
-
-  const clickPilotPricingPlans: PricingPlan[] = [
-    {
-      name: "Free plan",
-      price: "Free",
-      eyebrow: "Perfect to get started",
-      description: "Use core AI writing actions in Chrome before deciding whether the full toolkit earns its place.",
-      features: [
-        "Core AI actions.",
-        "Fix, rewrite, translate, and summarize.",
-        "Works on most websites with text fields.",
-        "Requires your own OpenAI API key.",
-      ],
-      cta: {
-        label: "Install Free Version",
-        href: "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
-      },
-    },
-    {
-      name: "PRO plan",
-      eyebrow: "One-time payment",
-      price: "$19",
-      description: "One payment for full ClickPilot AI access, custom shortcuts, and lifetime use.",
-      features: [
-        "Lifetime Pro license.",
-        "Full access to all Pro features.",
-        "Unlimited usage on the extension side.",
-        "Custom AI shortcuts.",
-        "No monthly subscription.",
-      ],
-      cta: {
-        label: "Get Lifetime PRO",
-        href: "https://dentoku.gumroad.com/l/clickpilotAI",
-      },
-      featured: true,
-    },
-  ];
+  const { products } = getCopy("en").site;
+  const { home } = getPageCopy("en");
 
   return (
     <>
@@ -228,10 +160,7 @@ export default function ClickPilotAiPage() {
               availability: "https://schema.org/InStock",
               url: `${siteConfig.url}/clickpilot-ai`,
             },
-            [
-              "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
-              "https://dentoku.gumroad.com/l/clickpilotAI",
-            ],
+            [storeUrl, proUrl],
           )}
         />
       ) : null}
@@ -241,371 +170,119 @@ export default function ClickPilotAiPage() {
           { name: "ClickPilot AI", href: "/clickpilot-ai" },
         ])}
       />
-      <Section variant="default" container="narrow" containerClassName="text-center">
-          <Eyebrow>Chrome AI Writing Assistant</Eyebrow>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-6xl">
-            ClickPilot AI: write better anywhere, directly in your browser
-          </h1>
-          <p className="mt-6 text-xl leading-8 text-muted-foreground max-w-3xl mx-auto">
-            ClickPilot AI works inside the websites you already use. No copy-paste, no extra tabs, no workflow breaks.
-          </p>
-          
-          <HeroVideo
-            className="mx-auto mt-8 max-w-4xl"
-            src="/clickpilot-ai-demo.mp4"
-            poster="/brand/clickpilot-ai-poster.jpg"
-            label="Screen recording of ClickPilot AI rewriting selected text inside a web page"
-            width={1280}
-            height={628}
-          />
-          <p className="sr-only">
-            The demo above is a silent, looping screen recording. It shows text being selected on a
-            web page, the ClickPilot AI panel opening over it, and the selected passage being
-            rewritten in place.
-          </p>
+      <HomeReveal />
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button asChild size="xl" className="font-semibold">
-              <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                Add to Chrome - It&apos;s Free
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Link>
-            </Button>
-          </div>
-          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <Zap className="h-4 w-4 text-eyebrow" /> Installs in 10 seconds
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-accent-teal" /> No account required
-            </span>
-          </p>
-          <p className="mx-auto mt-6 max-w-2xl text-xs leading-5 text-muted-foreground">
-            <strong className="font-semibold text-muted-foreground">AI transparency:</strong> ClickPilot AI
-            generates text using artificial intelligence (via your own OpenAI key). Outputs are
-            machine-generated and may be inaccurate or biased. Review and edit them before you
-            send or publish.
-          </p>
-      </Section>
-
-      {/* Trust signals section */}
-      <Section variant="soft" spacing="compact" container="narrow">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
-            <div className="flex flex-col items-center">
-              <div className="bg-accent-teal/10 mb-2 flex size-9 items-center justify-center rounded-full">
-                <CheckCircle2 className="text-accent-teal size-5" />
-              </div>
-              <p className="font-semibold text-ink">Chrome Web Store Verified</p>
-              <p className="text-sm text-muted-foreground">Official extension with security review</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-accent-teal/10 mb-2 flex size-9 items-center justify-center rounded-full">
-                <CheckCircle2 className="text-accent-teal size-5" />
-              </div>
-              <p className="font-semibold text-ink">Privacy First</p>
-              <p className="text-sm text-muted-foreground">
-                Your text goes to your own OpenAI account, never to our servers
-              </p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="bg-accent-teal/10 mb-2 flex size-9 items-center justify-center rounded-full">
-                <CheckCircle2 className="text-accent-teal size-5" />
-              </div>
-              <p className="font-semibold text-ink">Works in 50+ Languages</p>
-              <p className="text-sm text-muted-foreground">Global writing assistance</p>
-            </div>
-          </div>
-      </Section>
-
-      {/* Before/After comparison */}
-      <Section variant="default" containerClassName="max-w-6xl">
-        <div className="mx-auto max-w-2xl text-center">
-          <Eyebrow>How it compares</Eyebrow>
-          <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
-            The old way vs. the ClickPilot way
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            The same task, two very different workflows. See how much time and focus you keep by
-            staying right inside your browser.
-          </p>
-        </div>
-
-        <div className="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2 lg:gap-8">
-          {/* Old way — de-emphasized */}
-          <div className="flex h-full flex-col rounded-3xl border border-border bg-white p-7 md:p-8">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-9 w-9 items-center justify-center bg-destructive/8 text-destructive rounded-full">
-                  <XCircle className="h-5 w-5" />
-                </span>
-                <h3 className="text-lg font-semibold text-muted-foreground">Without ClickPilot AI</h3>
-              </div>
-              <span className="bg-destructive/8 text-danger rounded-md px-3 py-1 text-xs font-semibold">
-                8 steps
-              </span>
-            </div>
-            <ul className="mt-6 flex-1 space-y-3">
-              {oldWaySteps.map((step) => (
-                <li key={step} className="flex items-start gap-3 text-muted-foreground">
-                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-destructive/70" />
-                  <span className="leading-6">{step}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex items-center gap-2 bg-destructive/8 text-danger rounded-2xl px-4 py-3 text-sm font-semibold">
-              <Clock className="h-4 w-4 shrink-0" /> Takes 2–3 minutes, breaks focus
-            </div>
-          </div>
-
-          {/* ClickPilot way — emphasized */}
-          <div className="border-accent-teal/30 shadow-soft-lg ring-accent-teal/10 relative flex h-full flex-col rounded-3xl border bg-white p-7 ring-1 md:p-8">
-            <span className="bg-accent-teal absolute -top-3 right-7 rounded-md px-3 py-1 text-xs font-semibold text-white shadow-sm">
-              Recommended
-            </span>
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5">
-                <span className="bg-accent-teal/10 text-accent-teal flex h-9 w-9 items-center justify-center rounded-full">
-                  <Check className="h-5 w-5" />
-                </span>
-                <h3 className="text-lg font-semibold text-ink">With ClickPilot AI</h3>
-              </div>
-              <span className="bg-accent-teal/10 text-accent-teal rounded-md px-3 py-1 text-xs font-semibold">
-                4 steps
-              </span>
-            </div>
-            <ul className="mt-6 flex-1 space-y-3">
-              {newWaySteps.map((step) => (
-                <li key={step} className="flex items-start gap-3 text-muted-foreground">
-                  <span className="bg-accent-teal/10 mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full">
-                    <Check className="text-accent-teal h-3 w-3" />
-                  </span>
-                  <span className="font-medium leading-6">{step}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="bg-accent-teal/10 text-accent-teal mt-7 flex items-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold">
-              <Zap className="h-4 w-4 shrink-0" /> Done in ~5 seconds, never lose focus
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Specific Use Cases */}
-      <Section variant="soft" containerClassName="max-w-6xl">
-          <h2 className="text-3xl font-bold text-center text-ink mb-12">
-            With one click, you can:
-          </h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <Card
-                key={feature.title}
-                className="shadow-soft hover:shadow-soft-lg border-border rounded-2xl bg-white transition-shadow"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-3">
-                    <feature.icon className="text-brand mt-0.5 h-7 w-7 shrink-0" />
-                    <div>
-                      <h3 className="text-ink text-lg font-semibold">{feature.title}</h3>
-                      <p className="text-muted-foreground mt-2">{feature.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-16 text-center">
-            <div className="bg-white rounded-2xl border border-border p-8 max-w-3xl mx-auto">
-              <h3 className="text-2xl font-bold text-ink mb-4">Ready to Write Better, Faster?</h3>
-              <p className="text-muted-foreground mb-6">Bring AI writing into your daily workflow and eliminate copy-paste forever.</p>
-              <Button asChild size="xl" className="font-semibold">
-                <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                  Add to Chrome - It&apos;s Free
-                  <ArrowRight className="h-5 w-5 ml-2" />
-                </Link>
-              </Button>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Start free • Upgrade to PRO for $19 • One-time payment, lifetime access
-              </p>
-            </div>
-          </div>
-      </Section>
-
-      {/* Where it works */}
-      <Section variant="default" container="narrow">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-ink mb-4">
-              Where it works
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              ClickPilot AI integrates seamlessly with your favorite platforms
-            </p>
-          </div>
-          
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {whereItWorks.map((platform) => (
-              <Card key={platform.name} className="rounded-xl border-border shadow-sm">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">{platform.icon}</div>
-                  <h3 className="text-lg font-semibold text-ink mb-2">{platform.name}</h3>
-                  <p className="text-muted-foreground">{platform.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              Note: Some platforms like Google Docs may have limited support
-            </p>
-          </div>
-
-          <div className="mt-10 rounded-xl border border-border bg-muted p-5">
-            <h2 className="text-lg font-semibold text-ink">What it is not</h2>
-            <p className="mt-2 leading-7 text-muted-foreground">
-              ClickPilot AI is not a document editor or a content manager. It improves the text in
-              fields you are already writing in (fix, rewrite, summarize, translate) and hands
-              control straight back to you.
-            </p>
-          </div>
-      </Section>
-
-      <Section variant="soft" containerClassName="max-w-6xl">
-          <div className="text-center mb-16">
-            <Eyebrow className="mb-3">Upgrade Available</Eyebrow>
-            <h2 className="text-3xl font-bold text-ink mb-4">
-              ClickPilot AI Lifetime
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Upgrade to ClickPilot AI Lifetime and bring AI writing into your daily workflow.
-            </p>
-          </div>
-
-          <div className="mt-10">
-            <PricingCards plans={clickPilotPricingPlans} />
-          </div>
-      </Section>
-
-      <Section variant="default" containerClassName="max-w-6xl">
-          <h2 className="text-ink text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
-            How activation works
-          </h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {workflow.map((step, index) => (
-              <Card key={step.title} className="rounded-xl border-border bg-white shadow-sm">
-                <CardContent className="p-6">
-                  <p className="text-xs font-mono text-muted-foreground">0{index + 1}</p>
-                  <h3 className="mt-4 text-xl font-semibold text-ink">{step.title}</h3>
-                  <p className="mt-3 leading-7 text-muted-foreground">{step.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          {/* Requirements */}
-          <div className="mt-16 bg-white rounded-2xl border border-border p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-ink mb-6 text-center">Requirements</h3>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div className="text-center">
-                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
-                  <Globe2 className="text-brand h-6 w-6" />
-                </div>
-                <h4 className="font-semibold text-ink">Google Chrome</h4>
-                <p className="text-sm text-muted-foreground mt-1">Browser required</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
-                  <Puzzle className="text-brand h-6 w-6" />
-                </div>
-                <h4 className="font-semibold text-ink">Extension installed</h4>
-                <p className="text-sm text-muted-foreground mt-1">Free from Chrome Web Store</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
-                  <Key className="text-brand h-6 w-6" />
-                </div>
-                <h4 className="font-semibold text-ink">OpenAI API key</h4>
-                <p className="text-sm text-muted-foreground mt-1">Your own key (BYOK)</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-brand-soft mx-auto mb-3 flex size-12 items-center justify-center rounded-full">
-                  <CreditCard className="text-brand h-6 w-6" />
-                </div>
-                <h4 className="font-semibold text-ink">API usage costs</h4>
-                <p className="text-sm text-muted-foreground mt-1">Not included in license</p>
-              </div>
-            </div>
-            <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground">
-                API usage costs are separate and paid directly to OpenAI
-              </p>
-            </div>
-          </div>
-          
-          {/* Final CTA */}
-          <div className="mt-16 text-center">
-            <Button asChild size="xl" className="font-semibold">
-              <Link href="https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb">
-                Add to Chrome - It&apos;s Free
-                <ArrowRight className="h-5 w-5 ml-2" />
-              </Link>
-            </Button>
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-muted-foreground">
-              <Zap className="h-4 w-4 text-eyebrow" /> Installs in 10 seconds • Start writing better immediately
-            </p>
-          </div>
-      </Section>
-
-      <Section variant="soft" containerClassName="max-w-6xl">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr]">
-          <div>
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 className="mt-3 text-3xl font-semibold text-ink">ClickPilot AI FAQ</h2>
-          </div>
-          <FaqList items={faqs} />
-        </div>
-
-        <nav
-          aria-label="ClickPilot AI related Dentoku Dev pages"
-          className="shadow-soft border-border mt-12 rounded-2xl border bg-white p-5"
-        >
-          <h2 className="text-ink text-lg font-semibold">Related pages</h2>
-          <ul className="text-muted-foreground mt-3 grid gap-2 text-sm sm:grid-cols-2">
-              <li>
-                <Link className="font-medium text-eyebrow hover:underline" href="/overview">
-                  Dentoku Dev product overview
-                </Link>
-              </li>
-              <li>
-                <Link className="font-medium text-eyebrow hover:underline" href="/faq">
-                  Product and support FAQ
-                </Link>
-              </li>
-              <li>
-                <Link className="font-medium text-eyebrow hover:underline" href="/blog">
-                  Browser productivity articles
-                </Link>
-              </li>
-              <li>
-                <Link className="font-medium text-eyebrow hover:underline" href="/contact">
-                  Contact Dentoku Dev support
-                </Link>
-              </li>
-          </ul>
-        </nav>
-      </Section>
-
-      <CtaBand
-        eyebrow="Get started"
-        title="Stop switching tabs to fix a sentence"
-        description="Install the free extension and use fix, rewrite, summarize and translate inside the fields you already type in. Upgrade to the lifetime licence when it earns its place."
-        primary={{
-          label: "Add to Chrome",
-          href: "https://chromewebstore.google.com/detail/clickpilot-ai/haampmmjkjahplfoelcnjjhncbacgehb",
+      <PageOpening
+        title={["Write better", "where you type."]}
+        standfirst="ClickPilot AI is a Chrome extension that fixes, rewrites, summarizes and translates the text you select, inside Gmail, LinkedIn and most websites. No copying into another tab."
+        primary={{ label: "Add to Chrome, free", href: storeUrl }}
+        secondary={{ label: "Lifetime PRO, $19", href: "#plans" }}
+        picture={{
+          src: "/brand/clickpilot-ai-showcase.png",
+          alt: "Text selected in a Gmail window with ClickPilot AI's actions below it: Fix Grammar, Translate, Explain easy",
+          width: 1280,
+          height: 800,
         }}
-        secondary={{ label: "Get lifetime PRO", href: "https://dentoku.gumroad.com/l/clickpilotAI" }}
+        facts={[
+          { term: "Free to start", detail: "Fix, rewrite, summarize and translate." },
+          { term: "PRO, $19 once", detail: "Custom AI shortcuts, no subscription." },
+          { term: "Your own key", detail: "Runs on your OpenAI API key. Usage is billed by OpenAI." },
+        ]}
+        note={
+          <p>
+            <strong className="font-semibold">AI transparency:</strong> ClickPilot AI generates text with
+            artificial intelligence, through your own OpenAI key. Outputs are machine-generated and may be
+            inaccurate or biased. Review and edit them before you send or publish.
+          </p>
+        }
       />
+
+      <ShortAnswer
+        title="In short"
+        body="Select the text, right-click, choose what to do. It all happens on the page you are writing on, with no second tab and no copying back and forth."
+        aside={{
+          title: "What it is not",
+          body: "A document editor or a content manager. It improves the text in fields you are already writing in and hands control straight back to you.",
+        }}
+      />
+
+      <SideSection
+        title="Four steps instead of eight"
+        lead="The same task, done the usual way and with ClickPilot AI."
+      >
+        <div className="grid gap-2 md:grid-cols-2">
+          <div className="bg-surface-muted text-ink p-6 md:p-8">
+            <h3 className="t-lead font-semibold">Without ClickPilot AI</h3>
+            <ol className="t-body mt-5 list-decimal space-y-2 pl-5">
+              {oldWay.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </div>
+          <div className="bg-brand text-ink p-6 md:p-8">
+            <h3 className="t-lead font-semibold">With ClickPilot AI</h3>
+            <ol className="t-body mt-5 list-decimal space-y-2 pl-5 font-medium">
+              {newWay.map((step) => (
+                <li key={step}>{step}</li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </SideSection>
+
+      <SideSection
+        tone="muted"
+        title="What it does, and where"
+        lead="One click on the text you have selected."
+        aside={
+          <p className="t-body text-ink max-w-[40ch]">
+            Some platforms, such as Google Docs, may have limited support.
+          </p>
+        }
+      >
+        <FeatureList items={features} />
+        <h3 className="t-lead text-ink mt-16 font-semibold">Where it works</h3>
+        <ul className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+          {places.map((place) => (
+            <li key={place.name} className="bg-background text-ink p-5">
+              <span className="t-3 block">{place.name}</span>
+              <span className="t-body mt-1 block">{place.description}</span>
+            </li>
+          ))}
+        </ul>
+      </SideSection>
+
+      <SideSection
+        id="plans"
+        title="Free to start, $19 for life"
+        lead="Both plans run on your own OpenAI API key. API usage is paid to OpenAI and is not part of the licence."
+      >
+        <PlanPanels plans={plans} />
+      </SideSection>
+
+      <Steps
+        title="How activation works"
+        lead="You need Chrome, the extension from the Chrome Web Store and your own OpenAI API key."
+        steps={activation}
+      />
+
+      <SideSection
+        id="faq"
+        title="ClickPilot AI questions"
+        aside={<RelatedLinks title="Related pages" ariaLabel="ClickPilot AI related Dentoku Dev pages" links={related} />}
+      >
+        <FaqTiles items={faqs} />
+      </SideSection>
+
+      <ProductShowcase
+        products={products}
+        lang="en"
+        title="More from the studio"
+        caption={home.products.caption}
+        overviewLink={home.products.overviewLink}
+      />
+
+      <ProposalClose closing={home.closing} actionHref="/#brief" />
     </>
   );
 }

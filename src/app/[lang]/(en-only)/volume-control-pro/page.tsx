@@ -1,23 +1,18 @@
-import Link from "next/link";
-import {
-  ArrowRight,
-  Globe2,
-  MousePointerClick,
-  Repeat,
-  ShieldCheck,
-  Sparkles,
-  Zap,
-} from "@/components/ui/icons";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Section } from "@/components/marketing/section";
-import { Eyebrow } from "@/components/marketing/eyebrow";
-import { SectionHeading } from "@/components/marketing/section-heading";
-import { FeatureCard } from "@/components/marketing/feature-card";
-import { StatStrip } from "@/components/marketing/stat-strip";
-import { CtaBand } from "@/components/marketing/cta-band";
-import { FaqList } from "@/components/marketing/faq-list";
+import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
+import {
+  FaqTiles,
+  FeatureList,
+  PageOpening,
+  RelatedLinks,
+  ShortAnswer,
+  RowTable,
+  SideSection,
+  Steps,
+} from "@/components/marketing/editorial";
+import { ProductShowcase } from "@/components/marketing/product-showcase";
+import { ProposalClose } from "@/components/marketing/proposal-close";
+import { getCopy, getPageCopy } from "@/copy";
 import { productPortfolio, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildProductSoftwareSchema } from "@/lib/schema";
@@ -32,91 +27,65 @@ export const metadata = createMetadata({
   path: "/volume-control-pro",
 });
 
-const stats = [
-  { value: "600%", label: "Maximum tab volume boost" },
-  { value: "~44 KB", label: "Lightweight install, no clutter" },
-  { value: "7", label: "Languages supported" },
-];
-
 const features = [
   {
-    title: "Boost volume up to 600%",
-    description:
-      "Raise quiet browser audio well above Chrome's default ceiling for videos, music, and calls.",
-    icon: Zap,
+    title: "Up to 600%",
+    description: "Raise quiet browser audio well above Chrome's usual ceiling, for videos, music and calls.",
   },
   {
-    title: "One slider, instant effect",
-    description:
-      "Open the extension, adjust the slider, and hear the difference immediately. No settings pages.",
-    icon: MousePointerClick,
+    title: "One slider",
+    description: "Open the extension, move the slider and hear the difference at once. No settings pages.",
   },
   {
-    title: "Per-site volume memory",
-    description:
-      "Saved site settings mean repeat sessions start at the level you already chose.",
-    icon: Repeat,
+    title: "Remembered per site",
+    description: "Saved site settings mean the next visit starts at the level you already chose.",
   },
   {
-    title: "Stable on dynamic sites",
-    description:
-      "Improved handling for pages that update content in real time, so boosted audio stays smooth.",
-    icon: Sparkles,
+    title: "Steady on live pages",
+    description: "Pages that update in real time keep their boosted audio smooth.",
   },
   {
-    title: "Graceful fallback",
-    description:
-      "If a site limits boosting, the extension handles it gracefully instead of breaking playback.",
-    icon: ShieldCheck,
+    title: "A clean fallback",
+    description: "If a site limits boosting, the extension steps aside instead of breaking playback.",
   },
   {
-    title: "Localized in 7 languages",
-    description: "English, German, Spanish, French, Italian, Japanese, and Korean.",
-    icon: Globe2,
+    title: "Seven languages",
+    description: "English, German, Spanish, French, Italian, Japanese and Korean.",
   },
 ];
 
-const useCaseRows = [
+const useCases = [
   {
-    useCase: "Quiet YouTube videos and tutorials",
+    useCase: "Quiet videos and tutorials",
     problem: "Speech recorded too low to follow comfortably.",
-    fit: "Boost the active tab past 100% without touching system volume.",
+    fit: "Boost the active tab past 100% without touching the system volume.",
   },
   {
     useCase: "Online classes and webinars",
-    problem: "Presenters and platforms with inconsistent levels.",
-    fit: "Set the level once and adjust live as the session changes.",
+    problem: "Presenters and platforms at different levels.",
+    fit: "Set the level once and adjust it live as the session changes.",
   },
   {
     useCase: "Podcasts and interviews",
-    problem: "Multiple speakers mixed at different volumes.",
-    fit: "Amplify low segments without re-encoding or downloads.",
+    problem: "Several speakers mixed at different volumes.",
+    fit: "Lift the low parts without re-encoding or downloading.",
   },
   {
     useCase: "Video calls and meetings",
     problem: "A colleague's microphone is too quiet.",
-    fit: "Raise only the call tab while other tabs stay unchanged.",
+    fit: "Raise only the call's tab while the other tabs stay as they are.",
   },
   {
-    useCase: "Streaming with inconsistent loudness",
-    problem: "Volume jumps between episodes, ads, and platforms.",
-    fit: "Per-site memory keeps your preferred level per platform.",
+    useCase: "Streaming with uneven loudness",
+    problem: "Volume jumps between episodes, ads and platforms.",
+    fit: "Per-site memory keeps your level for each platform.",
   },
 ];
 
-const operationSteps = [
-  {
-    title: "Open the extension",
-    description: "Click the Volume Control PRO icon from your Chrome toolbar.",
-  },
-  {
-    title: "Set your level",
-    description: "Move the slider to the volume level you need, up to 600%.",
-  },
-  {
-    title: "Keep listening",
-    description: "Audio updates instantly, and saved site settings speed up future sessions.",
-  },
+const steps = [
+  { title: "Open the extension", description: "Click the Volume Control PRO icon in your Chrome toolbar." },
+  { title: "Set your level", description: "Move the slider to the level you need, up to 600%." },
+  { title: "Keep listening", description: "The audio changes at once, and the site keeps its level next time." },
 ];
 
 const faqs = [
@@ -152,11 +121,27 @@ const faqs = [
   },
 ];
 
-const volumeControlProduct = productPortfolio.find(
-  (product) => product.href === "/volume-control-pro",
-);
+const related = [
+  { label: "Chrome volume booster 600% guide", href: "/volume-control-pro/chrome-volume-booster-600" },
+  { label: "Chrome volume control extension", href: "/volume-control-pro/chrome-volume-control-extension" },
+  { label: "Tab volume control for Chrome", href: "/volume-control-pro/tab-volume-control" },
+  { label: "Dentoku Dev product overview", href: "/overview" },
+  { label: "Browser productivity articles", href: "/blog" },
+  { label: "Contact Dentoku Dev support", href: "/contact" },
+];
 
+const volumeControlProduct = productPortfolio.find((product) => product.href === "/volume-control-pro");
+
+/**
+ * Volume Control PRO (redesign: product pages in the homepage's system). The
+ * store picture under the title, the short answer, what it does, where it
+ * helps as a real table, the three steps on the orange, the questions, then the
+ * other products and the proposal.
+ */
 export default function VolumeControlProPage() {
+  const { products } = getCopy("en").site;
+  const { home } = getPageCopy("en");
+
   return (
     <>
       {volumeControlProduct ? (
@@ -180,192 +165,77 @@ export default function VolumeControlProPage() {
           { name: "Volume Control PRO", href: "/volume-control-pro" },
         ])}
       />
+      <HomeReveal />
 
-      {/* Hero */}
-      <Section variant="default">
-        <Eyebrow>Chrome extension</Eyebrow>
-        <h1 className="text-ink mt-3 text-4xl font-semibold tracking-[-0.02em] text-balance md:text-6xl">
-          Volume Control PRO
-        </h1>
-        <p className="mt-6 max-w-3xl text-xl leading-9 text-stone-600">
-          Audio booster and volume amplifier for Chrome. Increase tab volume up to 600% for
-          videos, music, and calls, and fix low sound on the sites you already use, without
-          touching your system settings.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild size="lg" className="font-semibold">
-            <Link href={chromeStoreUrl}>
-              Add to Chrome for free
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link href="/contact">Contact support</Link>
-          </Button>
-        </div>
-        <StatStrip stats={stats} className="mt-12 max-w-3xl border-t border-stone-200 pt-8" />
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-xl border border-teal-100 bg-teal-50 p-5">
-            <h2 className="text-lg font-semibold text-stone-950">Quick answer</h2>
-            <p className="mt-2 leading-7 text-stone-700">
-              Use Volume Control PRO when the search intent is “Chrome volume booster,” “increase
-              tab volume,” or “volume amplifier for Chrome.” It focuses on faster audio control
-              without changing system-wide settings.
-            </p>
-          </div>
-          <div className="rounded-xl border border-stone-200 bg-stone-50 p-5">
-            <h2 className="text-lg font-semibold text-stone-950">What it is not</h2>
-            <p className="mt-2 leading-7 text-stone-600">
-              Volume Control PRO is not a system-wide equalizer or an audio recorder. It controls
-              the volume of browser tabs only, not other applications or your operating system’s
-              master volume.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Features */}
-      <Section variant="blue">
-        <SectionHeading
-          eyebrow="Features"
-          title="Small extension, complete volume control"
-          description="Everything below comes from the Chrome Web Store listing. No more, no less."
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.title}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          ))}
-        </div>
-      </Section>
-
-      {/* Use cases */}
-      <Section variant="default">
-        <SectionHeading
-          eyebrow="Use cases"
-          title="Where it performs best"
-          description="Built for the everyday situations where browser audio is simply too quiet."
-        />
-        <div className="mt-10 overflow-x-auto rounded-xl border border-stone-200">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-stone-50 text-stone-950">
-              <tr>
-                <th scope="col" className="px-4 py-3 font-semibold">
-                  Use case
-                </th>
-                <th scope="col" className="px-4 py-3 font-semibold">
-                  Problem
-                </th>
-                <th scope="col" className="px-4 py-3 font-semibold">
-                  Volume Control PRO fit
-                </th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-200 text-stone-700">
-              {useCaseRows.map((row) => (
-                <tr key={row.useCase}>
-                  <td className="px-4 py-4 font-medium text-stone-900">{row.useCase}</td>
-                  <td className="px-4 py-4">{row.problem}</td>
-                  <td className="px-4 py-4">{row.fit}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="mt-6 max-w-3xl text-sm leading-6 text-stone-500">
-          Honest compatibility note: boosting works very well on YouTube and most HTML5 media
-          sites. Some protected web players (for example, certain Spotify Web playback scenarios)
-          may have limited boost support due to browser restrictions.
-        </p>
-      </Section>
-
-      {/* Workflow */}
-      <Section variant="soft">
-        <SectionHeading eyebrow="How it works" title="Three steps to louder tabs" />
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {operationSteps.map((step, index) => (
-            <Card key={step.title} className="rounded-2xl border-stone-200/80 bg-white shadow-soft">
-              <CardContent className="p-6">
-                <p className="font-mono text-xs text-stone-400">0{index + 1}</p>
-                <h3 className="mt-4 text-xl font-semibold text-stone-950">{step.title}</h3>
-                <p className="mt-3 leading-7 text-stone-600">{step.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <nav
-          aria-label="Volume Control PRO related Dentoku Dev pages"
-          className="shadow-soft mt-12 rounded-2xl border border-stone-200/80 bg-white p-6"
-        >
-          <h2 className="text-lg font-semibold text-stone-950">Related pages</h2>
-          <ul className="mt-3 grid gap-2 text-sm font-medium sm:grid-cols-2">
-            <li>
-              <Link
-                className="text-eyebrow hover:underline"
-                href="/volume-control-pro/chrome-volume-booster-600"
-              >
-                Chrome volume booster 600% guide
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="text-eyebrow hover:underline"
-                href="/volume-control-pro/chrome-volume-control-extension"
-              >
-                Chrome volume control extension
-              </Link>
-            </li>
-            <li>
-              <Link
-                className="text-eyebrow hover:underline"
-                href="/volume-control-pro/tab-volume-control"
-              >
-                Tab volume control for Chrome
-              </Link>
-            </li>
-            <li>
-              <Link className="text-eyebrow hover:underline" href="/overview">
-                Dentoku Dev product overview
-              </Link>
-            </li>
-            <li>
-              <Link className="text-eyebrow hover:underline" href="/blog">
-                Browser productivity articles
-              </Link>
-            </li>
-            <li>
-              <Link className="text-eyebrow hover:underline" href="/contact">
-                Contact Dentoku Dev support
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </Section>
-
-      {/* FAQ */}
-      <Section variant="default">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr]">
-          <div>
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 className="text-ink mt-3 text-3xl font-semibold tracking-[-0.02em] md:text-4xl">
-              Volume Control PRO FAQ
-            </h2>
-          </div>
-          <FaqList items={faqs} />
-        </div>
-      </Section>
-
-      <CtaBand
-        eyebrow="Get started"
-        title="Stop straining to hear quiet tabs"
-        description="Install Volume Control PRO from the Chrome Web Store (free to install, no ads, no subscription), or reach out if you have a support question."
-        primary={{ label: "Add to Chrome", href: chromeStoreUrl }}
-        secondary={{ label: "Contact support", href: "/contact" }}
+      <PageOpening
+        title={["Every tab,", "up to 600%."]}
+        standfirst="Volume Control PRO is a Chrome extension that turns quiet tabs up past 100% and remembers the level for each site. Your system volume stays where it is."
+        primary={{ label: "Add to Chrome, free", href: chromeStoreUrl }}
+        secondary={{ label: "Questions and answers", href: "#faq" }}
+        picture={{
+          src: "/brand/volume-control-landscape-en.webp",
+          alt: "Volume Control PRO's popup with the volume slider at 150%, beside the line Every tab, up to 600%",
+          width: 1600,
+          height: 1000,
+        }}
+        facts={[
+          { term: "Free to install", detail: "Boosting and per-site memory stay free, with no ads and no subscription." },
+          { term: "Remembered per site", detail: "The next visit starts at the level you already chose." },
+          { term: "Your data stays yours", detail: "The store disclosure states the developer does not collect or use it." },
+        ]}
       />
+
+      <ShortAnswer
+        title="In short"
+        body="For the moment a video, a call or a class is too quiet: boost that one tab, past what Chrome allows, without touching the rest of the computer."
+        aside={{
+          title: "What it is not",
+          body: "A system-wide equalizer or an audio recorder. It controls the volume of browser tabs only, not other applications or your operating system's master volume.",
+        }}
+      />
+
+      <SideSection title="Small extension, full control" lead="Everything here comes from the Chrome Web Store listing.">
+        <FeatureList items={features} />
+      </SideSection>
+
+      <SideSection
+        tone="muted"
+        title="Where it helps"
+        lead="The everyday moments when browser audio is simply too quiet."
+        aside={
+          <p className="t-body text-ink max-w-[40ch]">
+            Boosting works very well on YouTube and most HTML5 media sites. Some protected web players, such as
+            certain Spotify Web playback, may limit it because of browser restrictions.
+          </p>
+        }
+      >
+        <RowTable
+          caption="Where Volume Control PRO helps"
+          columns={["When", "The problem", "What it does"]}
+          rows={useCases.map((row) => [row.useCase, row.problem, row.fit] as const)}
+          onMuted
+        />
+      </SideSection>
+
+      <Steps title="Three steps to a louder tab" steps={steps} />
+
+      <SideSection
+        id="faq"
+        title="Volume Control PRO questions"
+        aside={<RelatedLinks title="Related pages" ariaLabel="Volume Control PRO related Dentoku Dev pages" links={related} />}
+      >
+        <FaqTiles items={faqs} />
+      </SideSection>
+
+      <ProductShowcase
+        products={products}
+        lang="en"
+        title="More from the studio"
+        caption={home.products.caption}
+        overviewLink={home.products.overviewLink}
+      />
+
+      <ProposalClose closing={home.closing} actionHref="/#brief" />
     </>
   );
 }
