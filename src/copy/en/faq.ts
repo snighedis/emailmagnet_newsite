@@ -15,7 +15,7 @@ export const faq = {
   shortAnswer: {
     title: "Short answer",
     body: "EmailMagnet is a Chrome extension by Dentoku Dev for finding and extracting emails from websites while browsing.",
-    plans: "Its Free plan has no monthly or per-export limit; PRO adds autosave, bulk extraction, and priority support.",
+    plans: "Its Free plan includes local autosave and exports up to 100 addresses per file; PRO adds one list across pages, bulk URL extraction, no export cap and priority support.",
   },
   questionsTitle: "All the questions",
   related: {

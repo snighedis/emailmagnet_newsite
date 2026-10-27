@@ -105,7 +105,7 @@ export function buildSoftwareSchema() {
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Chrome Extension",
     operatingSystem: "Windows, macOS, Linux, ChromeOS",
-    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan with no monthly or per-export limit. PRO plan adds autosave and bulk extraction for $19 lifetime.",
+    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan with local autosave and CSV or TXT export up to 100 addresses per file. PRO adds one list across pages, bulk extraction from URL lists and export with no cap, for $19 lifetime.",
     keywords: "email extractor, Chrome extension, email finder, lead generation, prospecting, CSV export, browser email extraction",
     url: `${base}${emailMagnetConfig.href}`,
     downloadUrl: emailMagnetConfig.secondaryCta.href,
@@ -124,7 +124,7 @@ export function buildSoftwareSchema() {
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.secondaryCta.href,
         category: "Free Plan",
-        description: "No monthly or per-export limit, CSV and TXT export"
+        description: "Email extraction, local autosave, CSV and TXT export up to 100 addresses per file"
       },
       {
         "@type": "Offer",
@@ -134,7 +134,7 @@ export function buildSoftwareSchema() {
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.primaryCta.href,
         category: "Lifetime access",
-        description: "Autosave, bulk extraction, priority support"
+        description: "One list across pages, bulk extraction from URL lists, export with no cap, priority support"
       }
     ],
     featureList: [
@@ -143,8 +143,10 @@ export function buildSoftwareSchema() {
       "One-click email collection",
       "Company directory support",
       "Contact page email detection",
-      "Bulk extraction (PRO)",
-      "Autosave functionality (PRO)"
+      "Local autosave you control",
+      "One list of emails across pages (PRO)",
+      "Bulk extraction from URL lists (PRO)",
+      "Export with no cap (PRO)"
     ],
     publisher: {
       "@type": "Organization",

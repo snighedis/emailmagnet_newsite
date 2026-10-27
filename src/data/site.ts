@@ -266,11 +266,12 @@ export const pricingPlans: PricingPlan[] = [
     name: "Free plan",
     price: "Free",
     eyebrow: "Perfect to get started",
-    description: "The full extraction and export workflow, with no monthly or per-export limit.",
+    description: "Extraction, local autosave and CSV or TXT export, up to 100 addresses per file.",
     features: [
-      "No monthly or per-export limit.",
       "One-click email extraction.",
-      "CSV and TXT export.",
+      "CSV and TXT export, up to 100 addresses per file.",
+      "Local autosave you control: a history across pages, or only the page you are on.",
+      "7 days of PRO with every new install, no card.",
       "Email support.",
     ],
     cta: {
@@ -285,9 +286,9 @@ export const pricingPlans: PricingPlan[] = [
     priceNote: "One-time payment. No subscription, ever.",
     description: "Pay once, keep it for life. No subscription, no seats, no renewals.",
     features: [
-      "Autosave while browsing.",
-      "Bulk extraction for reviewed URL lists.",
-      "CSV and TXT export.",
+      "Every email from every page in one list.",
+      "Bulk extraction across a list of URLs, up to 1,000 per run.",
+      "CSV and TXT export with no cap.",
       "Priority email support.",
     ],
     cta: {
@@ -312,12 +313,12 @@ export const faqItems: FaqItem[] = [
   {
     question: "What does the free version include?",
     answer:
-      "EmailMagnet Free includes one-click extraction, CSV/TXT export, and email support, with no monthly or per-export limit on the emails you extract. PRO adds features for recurring research, not more volume.",
+      "EmailMagnet Free includes one-click extraction, local autosave you control, CSV/TXT export of up to 100 addresses per file, and email support. Every new install also gets 7 days of PRO, with no card.",
   },
   {
     question: "What does the PRO version include?",
     answer:
-      "PRO ($19 lifetime) adds autosave while browsing, bulk extraction for reviewed URL lists, and priority support. No monthly subscription.",
+      "PRO ($19 once, lifetime) puts every email from every page in one list, scans a list of URLs in bulk (up to 1,000 per run), exports every result with no cap, and adds priority support. No monthly subscription.",
   },
   {
     question: "Is email extraction legal?",

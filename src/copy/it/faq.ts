@@ -1,6 +1,6 @@
 import type { FaqCopy } from "@/copy/en/faq";
 
-/** Same claims and price as src/data/site.ts faqItems: no extraction or export limit, $19 lifetime. */
+/** Same claims and price as src/data/site.ts faqItems: 100 addresses per file on Free, local autosave, $19 lifetime. */
 export const faq: FaqCopy = {
   meta: {
     title: "FAQ e supporto EmailMagnet",
@@ -14,7 +14,7 @@ export const faq: FaqCopy = {
   shortAnswer: {
     title: "In breve",
     body: "EmailMagnet è un’estensione Chrome di Dentoku Dev per trovare ed estrarre email dai siti web durante la navigazione.",
-    plans: "Il piano Free non ha limiti mensili né per esportazione; PRO aggiunge salvataggio automatico, estrazione in blocco e supporto prioritario.",
+    plans: "Il piano Free include l’autosalvataggio locale ed esporta fino a 100 indirizzi per file; PRO aggiunge un’unica lista tra le pagine, l’estrazione in blocco da elenchi di URL, export senza tetto e supporto prioritario.",
   },
   questionsTitle: "Tutte le domande",
   related: {
@@ -41,12 +41,12 @@ export const faq: FaqCopy = {
     {
       question: "Cosa include la versione gratuita?",
       answer:
-        "EmailMagnet Free include estrazione con un clic, esportazione CSV/TXT e supporto via email, senza limiti mensili né per esportazione sulle email che estrai. PRO aggiunge funzioni per la ricerca ricorrente, non più volume.",
+        "EmailMagnet Free include estrazione con un clic, autosalvataggio locale sotto il tuo controllo, esportazione CSV/TXT fino a 100 indirizzi per file e supporto via email. Ogni nuova installazione riceve anche 7 giorni di PRO, senza carta di credito.",
     },
     {
       question: "Cosa include la versione PRO?",
       answer:
-        "PRO (19 $ una tantum, a vita) aggiunge salvataggio automatico durante la navigazione, estrazione in blocco da elenchi di URL già verificati e supporto prioritario. Nessun abbonamento mensile.",
+        "PRO (19 $ una tantum, a vita) mette tutte le email di tutte le pagine in un’unica lista, scansiona un elenco di URL in blocco (fino a 1.000 per esecuzione), esporta tutti i risultati senza tetto e aggiunge il supporto prioritario. Nessun abbonamento mensile.",
     },
     {
       question: "L’estrazione di email è legale?",

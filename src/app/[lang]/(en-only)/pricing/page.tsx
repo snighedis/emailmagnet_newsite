@@ -12,7 +12,7 @@ import { buildBreadcrumbSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "EmailMagnet Pricing Plans",
   description:
-    "EmailMagnet pricing includes a Free plan and a PRO plan with $19 lifetime access, autosave, bulk extraction, and priority support. No extraction or export limits on either plan.",
+    "EmailMagnet pricing: a Free plan with local autosave and export up to 100 addresses per file, and a $19 lifetime PRO with one list across pages, bulk URL extraction, no export cap and priority support.",
   path: "/pricing",
 });
 
@@ -30,12 +30,12 @@ const comparison = [
   {
     plan: "Free",
     bestFor: "Trying EmailMagnet and occasional extraction",
-    includes: "Extraction and CSV/TXT export, no monthly or per-export limit",
+    includes: "Extraction, local autosave, CSV/TXT export up to 100 addresses per file",
   },
   {
     plan: "PRO",
     bestFor: "Recurring research, prospecting and bulk extraction",
-    includes: "Everything in Free, plus autosave, bulk extraction and priority support",
+    includes: "Everything in Free, plus one list across pages, bulk URL extraction, no export cap and priority support",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function PricingPage() {
 
       <PageOpening
         title={["Pay once.", "Extract for good."]}
-        standfirst="EmailMagnet's Free plan does the whole extraction and export job. PRO adds autosave, bulk extraction and priority support for $19, paid once."
+        standfirst="EmailMagnet's Free plan extracts, autosaves locally and exports up to 100 addresses per file. PRO adds one list across pages, bulk URL extraction and no export cap, for $19 paid once."
         primary={{ label: "Add to Chrome, free", href: emailMagnetConfig.secondaryCta.href }}
         secondary={{ label: "Get lifetime PRO", href: emailMagnetConfig.primaryCta.href }}
       />
@@ -91,7 +91,7 @@ export default function PricingPage() {
         id="plans"
         tone="muted"
         title="Two plans, no subscription"
-        lead="Neither plan limits how many emails you extract or export. Billing details are shown at checkout."
+        lead="Every new install gets 7 days of PRO, with no card. Billing details are shown at checkout."
       >
         <PlanPanels plans={plans} onMuted />
       </SideSection>

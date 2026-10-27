@@ -9,6 +9,13 @@ il Free è dichiarato senza limiti e il PRO aggiunge autosave, estrazione in blo
 prioritario. Anche #6 ("faster processing") non compare più nel sito. Resta aperta #5: autosave venduto come
 differenza PRO.
 
+**Aggiornamento 27 ottobre 2026:** l'aggiornamento del 26 era sbagliato sul limite. La versione
+live sullo store, la 2.5.7, ha `FREE_EXPORT_LIMIT = 100` in `popup.js` (dalla 2.5.0), e la sua scheda
+approvata dice "100 addresses per file on the free plan, no cap with PRO". L'autosave è un controllo
+locale gratuito dalla 2.5.0. Il sito ora segue la scheda 2.5.7: Free con autosave locale ed export
+fino a 100 per file, 7 giorni di PRO a ogni installazione; PRO con lista unica tra le pagine, URL in
+blocco (fino a 1.000 per esecuzione), export senza tetto e supporto prioritario. La #5 è chiusa.
+
 ## In breve
 
 Il sito descrive un prodotto sensato che non è mai stato costruito: un piano gratuito con export

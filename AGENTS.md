@@ -13,12 +13,18 @@ that way and were each found by audit, not by the change that broke them:
 - **ClickPilot AI** sold "Your text never leaves your browser" twenty lines below
   its own notice saying the text is sent to OpenAI.
 - **Volume Control PRO** was "100% free" after Audio Studio PRO shipped at €9.99.
-- **EmailMagnet** advertised a free tier capped at 200 emails a month and 100 per
-  export, and a PRO that lifted the caps. Neither limit ever existed in the product.
+- **EmailMagnet** sold Autosave as PRO after the extension had made it a free local
+  control, and for a day in October 2026 the site said Free had no export limit while
+  the live extension capped it at 100 addresses per file.
 
 **The rule: when you change what a product does, re-read that product's entries in
 `src/data/site.ts` in the same change.** It takes five minutes and would have
 caught all three.
+
+Check a claim against the version live on the store, not against memory or the
+newest source. EmailMagnet's packages and approved store listings are in
+`~/Desktop/Chrome Extension/EMAILMAGNET/INVII A CHROME WEB STORE/` (the
+`store-listing/approvato-<version>` folders hold what the store shows).
 
 Two places are easy to miss and belong in the same pass:
 

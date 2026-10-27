@@ -18,7 +18,7 @@ export default function ChromeEmailExtractorPage() {
         "Extract emails from public website content without manual copy-paste.",
         "Use CSV export for spreadsheet and CRM preparation.",
         "Use TXT export for lightweight clean lists.",
-        "Upgrade to PRO for autosave and bulk workflows.",
+        "Upgrade to PRO for one list across pages and bulk URL lists.",
       ]}
       table={[
         { intent: "Chrome email extractor", fit: "Core EmailMagnet use case", page: "/emailmagnet" },

@@ -98,10 +98,14 @@ describe("Dentoku Dev site hierarchy", () => {
   it("models the current free and pro pricing structure without invented plans", () => {
     expect(pricingPlans).toHaveLength(2);
     expect(pricingPlans.map((plan) => plan.name)).toEqual(["Free plan", "PRO plan"]);
-    expect(pricingPlans[0].features).toContain("No monthly or per-export limit.");
+    // Claims as the live extension (2.5.7) and its store listing state them:
+    // 100 addresses per file on Free, autosave free and local, no cap with PRO.
+    expect(pricingPlans[0].features).toContain("CSV and TXT export, up to 100 addresses per file.");
+    expect(pricingPlans[0].features.join(" ")).toMatch(/Local autosave/);
     expect(pricingPlans[1].price).toBe("$19");
-    expect(pricingPlans[1].features).toContain("Autosave while browsing.");
-    expect(pricingPlans[1].features).toContain("Bulk extraction for reviewed URL lists.");
+    expect(pricingPlans[1].features.join(" ")).not.toMatch(/autosave/i);
+    expect(pricingPlans[1].features).toContain("Every email from every page in one list.");
+    expect(pricingPlans[1].features).toContain("CSV and TXT export with no cap.");
   });
 
   it("includes required FAQ answers for users and AI answer engines", () => {
