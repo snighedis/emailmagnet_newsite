@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import {
@@ -88,8 +89,9 @@ const notFor = [
 
 const proTriggers = [
   "You research directories, contact pages or partner lists every week.",
-  "You want autosave to keep results across sessions.",
-  "You work from reviewed URL lists and want bulk extraction.",
+  "You want every email from every page in one list.",
+  "You work from lists of URLs and want to scan them in bulk.",
+  "Your exports run past 100 addresses a file.",
 ];
 
 const plans: Plan[] = pricingPlans.map((plan) => ({
@@ -145,8 +147,8 @@ export default function EmailMagnetPage() {
           height: 800,
         }}
         facts={[
-          { term: "Free", detail: "The whole extraction and export workflow, with no monthly or per-export limit." },
-          { term: "PRO, $19 once", detail: "Autosave, bulk extraction and priority support. No subscription." },
+          { term: "Free", detail: "Extraction, local autosave and export, up to 100 addresses per file." },
+          { term: "PRO, $19 once", detail: "One list across pages, URL lists in bulk, no export cap. No subscription." },
           { term: "Rated 5.0", detail: "On the Chrome Web Store." },
         ]}
       />
@@ -164,6 +166,16 @@ export default function EmailMagnetPage() {
         title="The slow part of lead research, gone"
         lead="EmailMagnet does not replace judgment. It removes the copy and paste between finding a relevant page and having a clean list."
       >
+        <figure className="mb-14 bg-white">
+          <Image
+            src="/brand/emailmagnet-by-hand-vs-one-click.webp"
+            alt="By hand: overlapping tabs, a clock and addresses copied into a sheet one at a time. With EmailMagnet: one click and a checked list of emails."
+            width={1283}
+            height={429}
+            sizes="(min-width: 1024px) 56vw, 92vw"
+            className="h-auto w-full"
+          />
+        </figure>
         <table className="t-body text-ink w-full border-separate border-spacing-y-2 text-left">
           <caption className="sr-only">Lead research by hand and with EmailMagnet</caption>
           <thead className="max-md:sr-only">
@@ -239,7 +251,7 @@ export default function EmailMagnetPage() {
         id="plans"
         tone="muted"
         title="Start free, upgrade when it is weekly"
-        lead="Free is the whole workflow. PRO is for recurring research sessions."
+        lead="Free covers everyday research. Every new install gets 7 days of PRO, with no card."
         aside={
           <div className="space-y-3">
             <h3 className="t-lead text-ink font-semibold">PRO is worth it when</h3>
@@ -251,6 +263,21 @@ export default function EmailMagnetPage() {
           </div>
         }
       >
+        <figure className="mb-8">
+          <span className="block bg-white">
+            <Image
+              src="/brand/emailmagnet-one-list.webp"
+              alt="Three web pages sending their emails along dotted lines into one CSV list"
+              width={1262}
+              height={488}
+              sizes="(min-width: 1024px) 56vw, 92vw"
+              className="h-auto w-full"
+            />
+          </span>
+          <figcaption className="t-body text-ink mt-3">
+            With PRO, the emails from every page you visit end up in one list.
+          </figcaption>
+        </figure>
         <PlanPanels plans={plans} onMuted />
         <p className="t-body text-ink mt-6 max-w-[60ch]">
           Billing details are shown at checkout. Compare the plans side by side on the{" "}
