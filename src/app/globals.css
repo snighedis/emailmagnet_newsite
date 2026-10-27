@@ -773,3 +773,514 @@ body:has([data-home-hero]) main > section,
 body:has([data-home-hero]) main > section:first-of-type > div:last-child {
   animation: none;
 }
+
+/* EmailMagnet's popup rebuilt in HTML (src/components/marketing/emailmagnet-ui.tsx).
+   Values from the 2.5.7 package's styles/main.css, set a little smaller (the real
+   popup is 435px wide) so a page and the popup fit one column side by side. */
+[data-ui].emui {
+  font-family: var(--font-sans);
+  color: #333;
+  line-height: 1.35;
+  text-align: left;
+}
+[data-ui] .emui-browser {
+  border: 1px solid #cfd3d8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+[data-ui] .emui-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 8px 8px 0;
+  background: #dee1e6;
+  overflow: hidden;
+}
+[data-ui] .emui-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 230px;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  font-size: 12px;
+  color: #3c4043;
+}
+[data-ui] .emui-tab-on {
+  background: #fff;
+  color: #202124;
+}
+[data-ui] .emui-tab-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+[data-ui] .emui-favicon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+[data-ui] .emui-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+[data-ui] .emui-url {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #f1f3f4;
+  font-size: 13px;
+  color: #202124;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+[data-ui] .emui-ext {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  outline: 4px solid #e8eaed;
+}
+[data-ui] .emui-viewport {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  padding: 0 12px 16px 0;
+  background: #fff;
+}
+[data-ui] .emui-page {
+  padding: 28px 0 0 28px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #1f2937;
+}
+[data-ui] .emui-page p + p,
+[data-ui] .emui-page dl + p {
+  margin-top: 12px;
+}
+[data-ui] .emui-page-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  line-height: 1.15;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+[data-ui] .emui-desks {
+  margin-top: 18px;
+}
+[data-ui] .emui-desks dt {
+  font-size: 12px;
+  color: #6b7280;
+}
+[data-ui] .emui-desks dd {
+  margin-bottom: 10px;
+}
+[data-ui] .emui-link {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  word-break: break-all;
+}
+[data-ui] .emui-anchor {
+  align-self: start;
+}
+/* The browser decides by its own width, not the screen's: in a narrow column
+   (a phone, or the side column of a laptop) the page gives way to the popup. */
+[data-ui] .emui-browser,
+[data-ui].emui-review {
+  container-type: inline-size;
+}
+@container (max-width: 40rem) {
+  [data-ui] .emui-viewport {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 8px 8px;
+  }
+  [data-ui] .emui-page {
+    display: none;
+  }
+  /* The popup hangs from the extension icon, at the right of the toolbar. */
+  [data-ui] .emui-anchor {
+    justify-self: end;
+    min-width: 0;
+    max-width: 100%;
+  }
+  [data-ui] .emui-tab:not(.emui-tab-on) .emui-tab-title {
+    display: none;
+  }
+}
+
+/* The popup */
+[data-ui] .emui-popup {
+  width: 360px;
+  max-width: 100%;
+  overflow: hidden;
+  border: 1px solid #d6d9de;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+}
+[data-ui] .emui-head {
+  padding: 9px 13px 6px;
+  border-bottom: 1px solid #e5e7eb;
+}
+[data-ui] .emui-top,
+[data-ui] .emui-counter,
+[data-ui] .emui-controls,
+[data-ui] .emui-toolbar,
+[data-ui] .emui-selectall,
+[data-ui] .emui-foot-buttons,
+[data-ui] .emui-rate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+[data-ui] .emui-logo {
+  font-size: 18px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+}
+[data-ui] .emui-logo-email {
+  color: #6b7280;
+}
+[data-ui] .emui-logo-magnet {
+  color: #ef4444;
+}
+[data-ui] .emui-pro {
+  margin-left: 4px;
+  padding: 1px 4px;
+  vertical-align: top;
+  font-size: 9px;
+  font-style: normal;
+  background: #ffc107;
+  color: #333;
+}
+[data-ui] .emui-icons {
+  display: flex;
+  gap: 10px;
+}
+[data-ui] .emui-icons svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+[data-ui] .emui-icon-toggle {
+  stroke: #0f766e;
+}
+[data-ui] .emui-icon-cog {
+  stroke: #475569;
+}
+[data-ui] .emui-counter {
+  align-items: baseline;
+  margin-top: 6px;
+}
+[data-ui] .emui-count {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+[data-ui] .emui-status {
+  font-size: 10px;
+  color: #6b7280;
+}
+[data-ui] .emui-banner {
+  display: block;
+  margin-top: 2px;
+  font-size: 10px;
+  color: #b91c1c;
+}
+[data-ui] .emui-controls {
+  padding-top: 6px;
+}
+[data-ui] .emui-autosave {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+}
+[data-ui] .emui-switch {
+  position: relative;
+  width: 38px;
+  height: 20px;
+  border-radius: 20px;
+  background: #4299e1;
+}
+[data-ui] .emui-switch::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+}
+[data-ui] .emui-automation {
+  padding: 7px 14px;
+  border-radius: 4px;
+  background: #4299e1;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}
+[data-ui] .emui-toolbar {
+  gap: 6px;
+  padding: 6px 9px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+[data-ui] .emui-search,
+[data-ui] .emui-sort {
+  padding: 5px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 11px;
+}
+[data-ui] .emui-search {
+  flex: 1;
+  color: #6b7280;
+}
+[data-ui] .emui-sort {
+  padding-right: 22px;
+  color: #374151;
+  background: #fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 7px center / 11px 11px;
+}
+[data-ui] .emui-selectall {
+  padding: 6px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+[data-ui] .emui-selectall-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+}
+[data-ui] .emui-selected {
+  font-size: 10px;
+  color: #6b7280;
+}
+[data-ui] .emui-check {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #767676;
+  border-radius: 3px;
+  background: #fff;
+}
+[data-ui] .emui-check-on {
+  border-color: #ed453b;
+  background: #ed453b;
+}
+[data-ui] .emui-check svg {
+  width: 11px;
+  height: 11px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+[data-ui] .emui-list {
+  overflow: hidden;
+}
+[data-ui] .emui-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+[data-ui] .emui-row-on {
+  background: #dce9fa;
+}
+[data-ui] .emui-row-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+[data-ui] .emui-email {
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+[data-ui] .emui-email-current {
+  font-weight: 500;
+}
+[data-ui] .emui-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 3px;
+}
+[data-ui] .emui-badge {
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+}
+[data-ui] .emui-badge-high {
+  background: #0f766e;
+}
+[data-ui] .emui-badge-medium {
+  background: #b45309;
+}
+[data-ui] .emui-source {
+  font-size: 10px;
+  color: #64748b;
+  white-space: nowrap;
+}
+[data-ui] .emui-current {
+  margin-left: auto;
+  flex: none;
+  font-size: 10px;
+  color: #10b981;
+}
+[data-ui] .emui-foot {
+  padding: 8px 13px 7px;
+  background: #f7f7f7;
+}
+[data-ui] .emui-button {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #ebebeb;
+  font-size: 11px;
+  font-weight: 500;
+}
+[data-ui] .emui-button + .emui-button {
+  margin-left: 6px;
+}
+[data-ui] .emui-rate {
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #374151;
+}
+[data-ui] .emui-stars {
+  display: inline-flex;
+  gap: 1px;
+  margin-left: 4px;
+  vertical-align: -1px;
+}
+[data-ui] .emui-stars svg {
+  width: 10px;
+  height: 10px;
+  fill: #c4c9d0;
+}
+[data-ui] .emui-rate-button {
+  padding: 3px 9px;
+  border: 1px solid #ef4444;
+  border-radius: 4px;
+  color: #ef4444;
+}
+
+/* The popup beside the CSV it exports */
+[data-ui].emui-review {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  align-items: start;
+}
+[data-ui] .emui-review-popup {
+  position: relative;
+  z-index: 1;
+}
+[data-ui] .emui-sheet {
+  margin: 196px 0 0 -72px;
+  overflow: hidden;
+  border: 1px solid #c7ccd1;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+}
+[data-ui] .emui-review-popup + .emui-sheet {
+  position: relative;
+  z-index: 2;
+}
+[data-ui] .emui-sheet-title {
+  padding: 8px 12px;
+  border-bottom: 1px solid #e2e5e9;
+  background: #f3f4f6;
+  font-size: 12px;
+  font-weight: 500;
+  color: #202124;
+}
+[data-ui] .emui-sheet-scroll {
+  overflow: hidden;
+}
+[data-ui] .emui-sheet table {
+  border-collapse: collapse;
+  font-size: 12px;
+  white-space: nowrap;
+}
+[data-ui] .emui-sheet th,
+[data-ui] .emui-sheet td {
+  height: 28px;
+  padding: 0 9px;
+  border: 1px solid #e2e5e9;
+}
+[data-ui] .emui-sheet th {
+  min-width: 30px;
+  background: #f8f9fa;
+  font-size: 11px;
+  font-weight: 500;
+  color: #5f6368;
+  text-align: center;
+}
+[data-ui] .emui-sheet td {
+  min-width: 60px;
+  color: #202124;
+}
+[data-ui] .emui-sheet-head td {
+  font-weight: 600;
+}
+[data-ui] .emui-num {
+  text-align: right;
+}
+/* A container query cannot restyle its own container, so the review's grid
+   lives one level down, on its children. */
+@container (max-width: 36rem) {
+  [data-ui] .emui-review-popup {
+    grid-column: 1 / -1;
+  }
+  [data-ui] .emui-sheet {
+    grid-column: 1 / -1;
+    margin: 12px 0 0 20px;
+  }
+}
+
+/* The other products at the foot of a product page (ProductShowcase with
+   `exclude`): 40% saturation at rest, full colour when pointed at or focused.
+   Touch screens, which cannot hover, keep the full colour. */
+@media (hover: hover) {
+  .tile-muted {
+    filter: saturate(0.4);
+  }
+  .group:hover .tile-muted,
+  .group:has(:focus-visible) .tile-muted {
+    filter: saturate(1);
+  }
+}

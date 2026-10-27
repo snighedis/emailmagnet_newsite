@@ -79,8 +79,11 @@ styled accent word inside a headline, two typefaces at most, nothing under 13px.
   short" on the tone step, sections with their title sticky left of the line, steps on the
   orange as a real list, plans as filled panels (the recommended one in the orange, never a
   "most popular" label), rows as a real table that stacks on a phone, the FAQ tiles. They end
-  with the products and the proposal. EmailMagnet's steps carry a drawn illustration in the
-  page's ink and orange (`emailmagnet-how-it-works.webp`, made with an image model).
+  with the products and the proposal. EmailMagnet shows its own interface, never an illustration:
+  the popup rebuilt in HTML from the store version's package (`emailmagnet-ui.tsx`, styles under
+  `[data-ui]` in `globals.css`) on a contact page, beside the CSV it exports, and across three tabs
+  for PRO. Its small type and borders are the product's own, exempt under `data-ui`. When the
+  extension's interface changes on the store, these change with it.
 - Overview, docs and blog use the same pieces. Guides and articles set their long titles in
   `.t-article` (26-52px, still two lines), with the byline and dates left of the line, an
   "On this page" index sticky on the left, and the text on the line at a reading measure.

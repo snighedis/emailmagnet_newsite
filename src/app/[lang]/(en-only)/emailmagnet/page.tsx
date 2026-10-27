@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ContactPageScan, OneListAcrossTabs, ReviewAndExport } from "@/components/marketing/emailmagnet-ui";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import {
@@ -166,15 +166,8 @@ export default function EmailMagnetPage() {
         title="The slow part of lead research, gone"
         lead="EmailMagnet does not replace judgment. It removes the copy and paste between finding a relevant page and having a clean list."
       >
-        <figure className="mb-14 bg-white">
-          <Image
-            src="/brand/emailmagnet-by-hand-vs-one-click.webp"
-            alt="By hand: overlapping tabs, a clock and addresses copied into a sheet one at a time. With EmailMagnet: one click and a checked list of emails."
-            width={1283}
-            height={429}
-            sizes="(min-width: 1024px) 56vw, 92vw"
-            className="h-auto w-full"
-          />
+        <figure className="mb-14">
+          <ContactPageScan />
         </figure>
         <table className="t-body text-ink w-full border-separate border-spacing-y-2 text-left">
           <caption className="sr-only">Lead research by hand and with EmailMagnet</caption>
@@ -206,12 +199,7 @@ export default function EmailMagnetPage() {
         title="Research, review, export"
         lead="Built for the pages you are already evaluating: the tool speeds up collecting, you keep control of quality."
         steps={steps}
-        picture={{
-          src: "/brand/emailmagnet-how-it-works.webp",
-          alt: "How EmailMagnet works: the emails on a web page's contact cards fly to a magnet and end up in a CSV file",
-          width: 1299,
-          height: 417,
-        }}
+        figure={<ReviewAndExport />}
       />
 
       <section id="reviews" className="bg-background">
@@ -264,16 +252,7 @@ export default function EmailMagnetPage() {
         }
       >
         <figure className="mb-8">
-          <span className="block bg-white">
-            <Image
-              src="/brand/emailmagnet-one-list.webp"
-              alt="Three web pages sending their emails along dotted lines into one CSV list"
-              width={1262}
-              height={488}
-              sizes="(min-width: 1024px) 56vw, 92vw"
-              className="h-auto w-full"
-            />
-          </span>
+          <OneListAcrossTabs />
           <figcaption className="t-body text-ink mt-3">
             With PRO, the emails from every page you visit end up in one list.
           </figcaption>

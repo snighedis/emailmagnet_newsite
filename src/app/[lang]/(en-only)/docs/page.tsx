@@ -1,3 +1,4 @@
+import { ReviewAndExport } from "@/components/marketing/emailmagnet-ui";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { PageOpening, RelatedLinks, ShortAnswer, SideSection, Steps } from "@/components/marketing/editorial";
@@ -93,12 +94,7 @@ export default function DocsPage() {
           { title: "Extract", description: "Open a page you are researching and run EmailMagnet." },
           { title: "Export", description: "Download the reviewed list as CSV or TXT." },
         ]}
-        picture={{
-          src: "/brand/emailmagnet-how-it-works.webp",
-          alt: "How EmailMagnet works: the emails on a web page's contact cards fly to a magnet and end up in a CSV file",
-          width: 1299,
-          height: 417,
-        }}
+        figure={<ReviewAndExport />}
       />
 
       <SideSection

@@ -237,11 +237,14 @@ export function Steps({
   lead,
   steps,
   picture,
+  figure,
 }: {
   title: string;
   lead?: string;
   steps: readonly { title: string; description: string }[];
   picture?: Picture;
+  /** A picture built in HTML (a product fragment), set on the orange as it is. */
+  figure?: ReactNode;
 }) {
   return (
     <section className="bg-brand text-ink">
@@ -280,6 +283,11 @@ export function Steps({
                 sizes="(min-width: 1024px) 56vw, 92vw"
                 className="h-auto w-full object-contain"
               />
+            </figure>
+          ) : null}
+          {figure ? (
+            <figure data-reveal style={d(2)}>
+              {figure}
             </figure>
           ) : null}
         </div>

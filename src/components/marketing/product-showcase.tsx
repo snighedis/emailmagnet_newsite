@@ -29,7 +29,11 @@ export function ProductShowcase({
   caption: string;
   /** Empty on the overview itself, which the link would point back to. */
   overviewLink: string;
-  /** On a product page: its own href, so the grid never shows the page you are on. */
+  /**
+   * On a product page: its own href, so the grid never shows the page you are on.
+   * The other products then sit back at 40% saturation and take full colour
+   * when pointed at, wherever the device can hover.
+   */
   exclude?: string;
   /** How many products to show, in showcase order. */
   limit?: number;
@@ -59,7 +63,7 @@ export function ProductShowcase({
                       alt=""
                       fill
                       sizes="(min-width: 768px) 46vw, 92vw"
-                      className="object-cover transition-transform duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.02] motion-reduce:transition-none"
+                      className={`object-cover transition-[transform,filter] duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.02] motion-reduce:transition-none ${exclude ? "tile-muted" : ""}`}
                     />
                   ) : null}
                 </span>
