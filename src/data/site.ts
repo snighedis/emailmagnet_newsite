@@ -197,35 +197,57 @@ export const brandProfiles: string[] = [
   "https://apps.shopify.com/countdown321", // Countdown321 — Shopify App Store
 ];
 
+/** Every search guide, grouped by product: listed on /overview so each one keeps a hub link. */
+export const guideLinks: Array<{ product: string; items: NavItem[] }> = [
+  {
+    product: "EmailMagnet",
+    items: [
+      { label: "Chrome email extractor", href: "/emailmagnet/chrome-email-extractor" },
+      { label: "Free email extractor", href: "/emailmagnet/free-email-extractor" },
+      { label: "Email extractor vs scraper", href: "/emailmagnet/email-extractor-vs-scraper" },
+      { label: "Sales prospecting", href: "/use-cases/emailmagnet-sales-prospecting" },
+      { label: "Manual copying comparison", href: "/compare/manual-email-copying" },
+      { label: "Chrome integration", href: "/integrations/emailmagnet-chrome" },
+      { label: "Email extraction glossary", href: "/glossary/email-extraction" },
+      { label: "Getting started guide", href: "/docs/getting-started" },
+      { label: "Exporting emails", href: "/docs/exporting-emails" },
+      { label: "Responsible use", href: "/docs/responsible-use" },
+    ],
+  },
+  {
+    product: "ClickPilot AI",
+    items: [{ label: "AI writing assistant for Chrome", href: "/clickpilot-ai/ai-writing-assistant-chrome-extension" }],
+  },
+  {
+    product: "Volume Control PRO",
+    items: [
+      { label: "Chrome volume booster", href: "/volume-control-pro/chrome-volume-booster-600" },
+      { label: "Chrome volume control extension", href: "/volume-control-pro/chrome-volume-control-extension" },
+      { label: "Tab volume control", href: "/volume-control-pro/tab-volume-control" },
+    ],
+  },
+  {
+    product: "Countdown321",
+    items: [
+      { label: "Shopify countdown timer", href: "/countdown321/shopify-countdown-timer-app" },
+      { label: "Shopify urgency app", href: "/countdown321/shopify-urgency-app" },
+    ],
+  },
+];
+
 export const footerNav = {
   Products: productPortfolio.map((product) => ({
     label: product.name,
     href: product.href,
   })),
+  // The hubs only: the search guides are listed on /overview (guideLinks) and
+  // linked from their product pages, so the footer stays a close, not a sitemap.
   Resources: [
     { label: "Overview", href: "/overview" },
     { label: "Blog", href: "/blog" },
     { label: "Docs", href: "/docs" },
     { label: "FAQ", href: "/faq" },
-    { label: "Chrome email extractor", href: "/emailmagnet/chrome-email-extractor" },
-    { label: "Free email extractor", href: "/emailmagnet/free-email-extractor" },
-    { label: "Extractor vs scraper", href: "/emailmagnet/email-extractor-vs-scraper" },
-    { label: "Sales prospecting", href: "/use-cases/emailmagnet-sales-prospecting" },
-    { label: "Manual copy comparison", href: "/compare/manual-email-copying" },
-    { label: "Chrome integration", href: "/integrations/emailmagnet-chrome" },
-    { label: "Email extraction glossary", href: "/glossary/email-extraction" },
-    { label: "ClickPilot AI writer", href: "/clickpilot-ai/ai-writing-assistant-chrome-extension" },
-    { label: "Chrome volume booster", href: "/volume-control-pro/chrome-volume-booster-600" },
-    {
-      label: "Chrome volume control extension",
-      href: "/volume-control-pro/chrome-volume-control-extension",
-    },
-    { label: "Tab volume control", href: "/volume-control-pro/tab-volume-control" },
-    { label: "Getting started guide", href: "/docs/getting-started" },
-    { label: "Exporting emails", href: "/docs/exporting-emails" },
-    { label: "Responsible use", href: "/docs/responsible-use" },
-    { label: "Shopify countdown timer", href: "/countdown321/shopify-countdown-timer-app" },
-    { label: "Shopify urgency app", href: "/countdown321/shopify-urgency-app" },
+    { label: "Pricing", href: "/pricing" },
   ],
   Company: [
     { label: "About", href: "/about" },

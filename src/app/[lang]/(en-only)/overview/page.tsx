@@ -1,10 +1,10 @@
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
-import { PageOpening, RowTable, ShortAnswer, SideSection, d } from "@/components/marketing/editorial";
+import { PageOpening, RelatedLinks, RowTable, ShortAnswer, SideSection, d } from "@/components/marketing/editorial";
 import { ProductShowcase } from "@/components/marketing/product-showcase";
 import { ProposalClose } from "@/components/marketing/proposal-close";
 import { getCopy, getPageCopy } from "@/copy";
-import { productPortfolio, siteConfig } from "@/data/site";
+import { guideLinks, productPortfolio, siteConfig } from "@/data/site";
 import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildItemListSchema } from "@/lib/schema";
@@ -72,7 +72,20 @@ export default function OverviewPage() {
         />
       </SideSection>
 
-      <section className="bg-background">
+      <SideSection title="Guides" lead="Short guides for the searches that lead to each product.">
+        <div className="grid gap-x-12 gap-y-10 md:grid-cols-2">
+          {guideLinks.map((group) => (
+            <RelatedLinks
+              key={group.product}
+              title={group.product}
+              ariaLabel={`${group.product} guides`}
+              links={group.items}
+            />
+          ))}
+        </div>
+      </SideSection>
+
+      <section className="bg-surface-muted">
         <div className="page-x axis gap-y-10 py-20 md:py-32">
           <div className="space-y-5 lg:pr-12">
             <h2 data-reveal className="t-2 text-ink">
@@ -84,7 +97,7 @@ export default function OverviewPage() {
           </div>
           <ul className="grid gap-2 md:grid-cols-2">
             {nextSteps.map((item, i) => (
-              <li key={item.href} data-reveal style={d(i + 1)} className="bg-surface-muted text-ink">
+              <li key={item.href} data-reveal style={d(i + 1)} className="bg-background text-ink">
                 <LocaleLink href={item.href} className="group block p-6 md:p-8">
                   <span className="t-3 block underline-offset-[0.2em] group-hover:underline">{item.title}</span>
                   <span className="t-body mt-2 block">{item.description}</span>

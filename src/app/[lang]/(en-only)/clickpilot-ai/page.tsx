@@ -129,6 +129,7 @@ const faqs = [
 ];
 
 const related = [
+  { label: "AI writing assistant for Chrome", href: "/clickpilot-ai/ai-writing-assistant-chrome-extension" },
   { label: "Dentoku Dev product overview", href: "/overview" },
   { label: "Product and support FAQ", href: "/faq" },
   { label: "Browser productivity articles", href: "/blog" },

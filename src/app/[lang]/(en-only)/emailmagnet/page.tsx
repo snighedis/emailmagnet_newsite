@@ -107,6 +107,8 @@ const related = [
   { label: "Export emails as CSV or TXT", href: "/docs/exporting-emails" },
   { label: "Responsible use guide", href: "/docs/responsible-use" },
   { label: "Compare Free and PRO", href: "/pricing" },
+  { label: "Chrome email extractor", href: "/emailmagnet/chrome-email-extractor" },
+  { label: "Free email extractor", href: "/emailmagnet/free-email-extractor" },
   ...blogPosts.map((post) => ({ label: post.title, href: `/blog/${post.slug}` })),
 ];
 
