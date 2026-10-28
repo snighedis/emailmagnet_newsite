@@ -22,12 +22,20 @@ export const home = {
   heroVideo: {
     src: "/brand/studio-hero-v2-en.mp4",
     poster: "/brand/studio-hero-v2-en-poster.jpg",
+    // The same film laid out at 4:5, shown below 768px where the 2:1 film's type is too small.
+    phone: {
+      src: "/brand/studio-hero-v2-phone-en.mp4",
+      poster: "/brand/studio-hero-v2-phone-en-poster.jpg",
+      width: 720,
+      height: 900,
+    },
     // AI Act Art. 50(4): the footage of people at work is AI-generated. The film carries
-    // its own "AI-generated" label in every frame, poster included, so the page adds no
-    // second one; the label below says it for screen readers.
+    // its own "AI-generated" label in every frame, poster included; below 1024px it is too
+    // small to read, so the page shows aiDisclosure there instead.
     label:
       "37-second loop with AI-generated footage: an accountant, an agency and a farm stay lose time on emails, data copied by hand and double bookings; Dentoku Dev's method from understanding the problem to shipping, with Kallmy as an example in production, ending on the brief field",
     controls: { play: "Play video", pause: "Pause video" },
+    aiDisclosure: "AI-generated",
   },
   // One sentence under the brief: who the studio works for, and the public proof.
   // The rating is the real Chrome Web Store score (src/data/site.ts).

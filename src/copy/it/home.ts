@@ -21,9 +21,16 @@ export const home: HomeCopy = {
   heroVideo: {
     src: "/brand/studio-hero-v2-it.mp4",
     poster: "/brand/studio-hero-v2-it-poster.jpg",
+    phone: {
+      src: "/brand/studio-hero-v2-phone-it.mp4",
+      poster: "/brand/studio-hero-v2-phone-it-poster.jpg",
+      width: 720,
+      height: 900,
+    },
     label:
       "Video in loop di 37 secondi con riprese generate con l’AI: una commercialista, un’agenzia e un agriturismo perdono tempo con email, dati ricopiati a mano e doppie prenotazioni; il metodo di Dentoku Dev dall’analisi del problema al rilascio, con Kallmy come esempio in produzione, e in chiusura il campo del brief",
     controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
+    aiDisclosure: "Generato con AI",
   },
   proof: {
     audience: "Lavoriamo con agriturismi e B&B, studi professionali, negozi e artigiani.",

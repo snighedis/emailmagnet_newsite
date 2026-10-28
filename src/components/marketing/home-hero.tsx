@@ -62,6 +62,12 @@ export function HomeHero({ copy, lang }: HomeHeroProps) {
             poster={copy.heroVideo.poster}
             label={copy.heroVideo.label}
             controls={copy.heroVideo.controls}
+            aiDisclosure={copy.heroVideo.aiDisclosure}
+            // Over the film's own label (right 24 / bottom 20 of 1920x960; 28 / 24 of
+            // 1080x1350 in the phone cut), 4px further out and opaque so the small one never
+            // shows past its round corners. From 1024px the film's own label reads by itself.
+            aiDisclosureClassName="bg-ink right-[calc(2.6%-4px)] bottom-[calc(1.78%-4px)] md:right-[calc(1.25%-4px)] md:bottom-[calc(2.08%-4px)] lg:hidden"
+            phone={copy.heroVideo.phone}
             width={1728}
             height={864}
           />

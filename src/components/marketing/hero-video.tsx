@@ -25,6 +25,17 @@ type HeroVideoProps = {
    */
   aiDisclosure?: string;
   /**
+   * For a film that carries its own AI label: classes that put the HTML label
+   * exactly over the film's, where the film's is too small to read, and hide it
+   * where it is not. Replaces the default corner.
+   */
+  aiDisclosureClassName?: string;
+  /**
+   * A cut of the film for phones, shown below 768px instead of the main one: the
+   * main film's type is too small to read at phone width.
+   */
+  phone?: { src: string; poster: string; width: number; height: number };
+  /**
    * Unframed: square corners, no border or shadow, for editorial pages. The
    * film keeps its own shape either way. The default is a framed player.
    */
@@ -54,38 +65,53 @@ export function HeroVideo({
   height = 800,
   controls,
   aiDisclosure,
+  aiDisclosureClassName,
+  phone,
   band = false,
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const phoneRef = useRef<HTMLVideoElement>(null);
   const disclosureId = useId();
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
 
+  // With a phone cut, only the film on screen plays: the other is display:none.
+  const wide = () => window.matchMedia("(min-width: 48rem)").matches;
+  const active = () => (phone && !wide() ? phoneRef.current : videoRef.current);
+
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const width = window.matchMedia("(min-width: 48rem)");
     const sync = () => {
+      const current = phone && !width.matches ? phoneRef.current : videoRef.current;
+      for (const video of [videoRef.current, phoneRef.current]) {
+        if (video && video !== current) video.pause();
+      }
+      if (!current) return;
       if (reduceMotion.matches) {
-        video.pause();
+        current.pause();
       } else {
-        video.play().catch(() => {});
+        current.play().catch(() => {});
       }
     };
     sync();
     reduceMotion.addEventListener("change", sync);
-    return () => reduceMotion.removeEventListener("change", sync);
-  }, []);
+    width.addEventListener("change", sync);
+    return () => {
+      reduceMotion.removeEventListener("change", sync);
+      width.removeEventListener("change", sync);
+    };
+  }, [phone]);
 
   const togglePlay = () => {
-    const video = videoRef.current;
+    const video = active();
     if (!video) return;
     if (video.paused) video.play().catch(() => {});
     else video.pause();
   };
 
   const toggleSound = () => {
-    const video = videoRef.current;
+    const video = active();
     if (!video) return;
     video.muted = !video.muted;
     setMuted(video.muted);
@@ -99,7 +125,7 @@ export function HeroVideo({
     <div
       className={cn(
         band
-          ? "bg-ink relative overflow-hidden"
+          ? "bg-background relative overflow-hidden"
           : "shadow-soft-lg relative overflow-hidden rounded-2xl border border-black/[0.06] bg-white",
         className,
       )}
@@ -114,7 +140,7 @@ export function HeroVideo({
         width={width}
         height={height}
         style={{ aspectRatio: `${width} / ${height}` }}
-        className="h-auto w-full"
+        className={cn("block h-auto w-full", phone && "hidden md:block")}
         aria-label={label}
         aria-describedby={aiDisclosure ? disclosureId : undefined}
         onPlay={() => setPlaying(true)}
@@ -124,13 +150,33 @@ export function HeroVideo({
             SMALLER than the vp9 webm, which also hit decode errors in testing. */}
         <source src={src} type="video/mp4" />
       </video>
+      {phone ? (
+        <video
+          ref={phoneRef}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={phone.poster}
+          width={phone.width}
+          height={phone.height}
+          style={{ aspectRatio: `${phone.width} / ${phone.height}` }}
+          className="block h-auto w-full md:hidden"
+          aria-label={label}
+          aria-describedby={aiDisclosure ? disclosureId : undefined}
+          onPlay={() => setPlaying(true)}
+          onPause={() => setPlaying(false)}
+        >
+          <source src={phone.src} type="video/mp4" />
+        </video>
+      ) : null}
       {aiDisclosure ? (
         <p
           id={disclosureId}
           className={cn(
             "bg-ink/85 pointer-events-none absolute rounded-full px-3 py-1.5 text-[14px] font-medium text-white",
             // Bottom-right: the film's own logo and prompt sit at the top.
-            band ? "right-4 bottom-4" : "top-3 left-3",
+            aiDisclosureClassName ?? (band ? "right-4 bottom-4" : "top-3 left-3"),
           )}
         >
           {aiDisclosure}

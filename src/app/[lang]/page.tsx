@@ -40,8 +40,9 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
 
   return (
     <>
-      {/* The film's poster is the masthead and the LCP element. */}
-      <link rel="preload" as="image" href={copy.heroVideo.poster} fetchPriority="high" />
+      {/* The film's poster is the masthead and the LCP element: one cut per width. */}
+      <link rel="preload" as="image" href={copy.heroVideo.poster} media="(min-width: 48rem)" fetchPriority="high" />
+      <link rel="preload" as="image" href={copy.heroVideo.phone.poster} media="(max-width: 47.99rem)" fetchPriority="high" />
       <JsonLd data={buildItemListSchema(copy.itemListName, products)} />
       <HomeReveal />
 
