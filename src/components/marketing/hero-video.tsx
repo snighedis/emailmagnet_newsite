@@ -25,14 +25,16 @@ type HeroVideoProps = {
    */
   aiDisclosure?: string;
   /**
-   * For a film that carries its own AI label: classes that put the HTML label
-   * exactly over the film's, where the film's is too small to read, and hide it
-   * where it is not. Replaces the default corner.
+   * For a film that carries its own AI label and leaves no room at its foot:
+   * `overlay` places the controls over the film, on the line of the film's own
+   * label; `below` shows the controls and the HTML label in a row under the
+   * film instead, where the film's label is too small to read. Each takes the
+   * classes that say where (and at which widths) it applies.
    */
-  aiDisclosureClassName?: string;
+  layout?: { overlay: string; below: string };
   /**
-   * A cut of the film for phones, shown below 768px instead of the main one: the
-   * main film's type is too small to read at phone width.
+   * A cut of the film for phones and tablets, shown below 1024px instead of the
+   * main one: the main film's type is too small to read there.
    */
   phone?: { src: string; poster: string; width: number; height: number };
   /**
@@ -65,7 +67,7 @@ export function HeroVideo({
   height = 800,
   controls,
   aiDisclosure,
-  aiDisclosureClassName,
+  layout,
   phone,
   band = false,
 }: HeroVideoProps) {
@@ -76,12 +78,12 @@ export function HeroVideo({
   const [muted, setMuted] = useState(true);
 
   // With a phone cut, only the film on screen plays: the other is display:none.
-  const wide = () => window.matchMedia("(min-width: 48rem)").matches;
+  const wide = () => window.matchMedia("(min-width: 64rem)").matches;
   const active = () => (phone && !wide() ? phoneRef.current : videoRef.current);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const width = window.matchMedia("(min-width: 48rem)");
+    const width = window.matchMedia("(min-width: 64rem)");
     const sync = () => {
       const current = phone && !width.matches ? phoneRef.current : videoRef.current;
       for (const video of [videoRef.current, phoneRef.current]) {
@@ -121,6 +123,53 @@ export function HeroVideo({
   const buttonClass =
     "bg-ink/85 hover:bg-ink focus-visible:ring-brand flex h-11 w-11 items-center justify-center rounded-full text-white outline-none transition duration-[160ms] ease-out focus-visible:ring-2 active:scale-[0.95] motion-reduce:active:scale-100";
 
+  const buttons = controls ? (
+    <>
+      <button
+        type="button"
+        onClick={togglePlay}
+        aria-label={playing ? controls.pause : controls.play}
+        className={buttonClass}
+      >
+        <svg key={playing ? "pause" : "play"} viewBox="0 0 24 24" className="icon-swap h-5 w-5" fill="currentColor" aria-hidden>
+          {playing ? (
+            <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
+          ) : (
+            <path d="M8 5.5v13a.5.5 0 0 0 .77.42l10-6.5a.5.5 0 0 0 0-.84l-10-6.5A.5.5 0 0 0 8 5.5z" />
+          )}
+        </svg>
+      </button>
+      {controls.soundOn ? (
+      <button
+        type="button"
+        onClick={toggleSound}
+        aria-label={muted ? controls.soundOn : controls.soundOff}
+        aria-pressed={!muted}
+        className={buttonClass}
+      >
+        <svg key={muted ? "muted" : "sound"} viewBox="0 0 24 24" className="icon-swap h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+          <path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z" fill="currentColor" />
+          {muted ? (
+            <path d="M16 9.5l5 5M21 9.5l-5 5" />
+          ) : (
+            <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
+          )}
+        </svg>
+      </button>
+      ) : null}
+    </>
+  ) : null;
+
+  const disclosure = (position?: string) =>
+    aiDisclosure ? (
+      <p
+        id={disclosureId}
+        className={cn("bg-ink rounded-full px-3 py-1.5 text-[14px] font-medium text-white", position)}
+      >
+        {aiDisclosure}
+      </p>
+    ) : null;
+
   return (
     <div
       className={cn(
@@ -140,7 +189,7 @@ export function HeroVideo({
         width={width}
         height={height}
         style={{ aspectRatio: `${width} / ${height}` }}
-        className={cn("block h-auto w-full", phone && "hidden md:block")}
+        className={cn("block h-auto w-full", phone && "hidden lg:block")}
         aria-label={label}
         aria-describedby={aiDisclosure ? disclosureId : undefined}
         onPlay={() => setPlaying(true)}
@@ -161,7 +210,7 @@ export function HeroVideo({
           width={phone.width}
           height={phone.height}
           style={{ aspectRatio: `${phone.width} / ${phone.height}` }}
-          className="block h-auto w-full md:hidden"
+          className="block h-auto w-full lg:hidden"
           aria-label={label}
           aria-describedby={aiDisclosure ? disclosureId : undefined}
           onPlay={() => setPlaying(true)}
@@ -170,54 +219,22 @@ export function HeroVideo({
           <source src={phone.src} type="video/mp4" />
         </video>
       ) : null}
-      {aiDisclosure ? (
-        <p
-          id={disclosureId}
-          className={cn(
-            "bg-ink/85 pointer-events-none absolute rounded-full px-3 py-1.5 text-[14px] font-medium text-white",
-            // Bottom-right: the film's own logo and prompt sit at the top.
-            aiDisclosureClassName ?? (band ? "right-4 bottom-4" : "top-3 left-3"),
-          )}
-        >
-          {aiDisclosure}
-        </p>
-      ) : null}
-      {controls ? (
-        <div className={cn("absolute flex gap-2", band ? "bottom-4 left-4" : "right-3 bottom-3")}>
-          <button
-            type="button"
-            onClick={togglePlay}
-            aria-label={playing ? controls.pause : controls.play}
-            className={buttonClass}
-          >
-            <svg key={playing ? "pause" : "play"} viewBox="0 0 24 24" className="icon-swap h-5 w-5" fill="currentColor" aria-hidden>
-              {playing ? (
-                <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
-              ) : (
-                <path d="M8 5.5v13a.5.5 0 0 0 .77.42l10-6.5a.5.5 0 0 0 0-.84l-10-6.5A.5.5 0 0 0 8 5.5z" />
-              )}
-            </svg>
-          </button>
-          {controls.soundOn ? (
-          <button
-            type="button"
-            onClick={toggleSound}
-            aria-label={muted ? controls.soundOn : controls.soundOff}
-            aria-pressed={!muted}
-            className={buttonClass}
-          >
-            <svg key={muted ? "muted" : "sound"} viewBox="0 0 24 24" className="icon-swap h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M4 9.5v5h3.5L12 18V6L7.5 9.5z" fill="currentColor" />
-              {muted ? (
-                <path d="M16 9.5l5 5M21 9.5l-5 5" />
-              ) : (
-                <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" />
-              )}
-            </svg>
-          </button>
+      {layout ? (
+        <>
+          {buttons ? <div className={cn("absolute flex gap-2", layout.overlay)}>{buttons}</div> : null}
+          <div className={cn("flex items-center justify-between gap-3 pt-3", layout.below)}>
+            <div className="flex gap-2">{buttons}</div>
+            {disclosure()}
+          </div>
+        </>
+      ) : (
+        <>
+          {disclosure(cn("pointer-events-none absolute", band ? "right-4 bottom-4" : "top-3 left-3"))}
+          {buttons ? (
+            <div className={cn("absolute flex gap-2", band ? "bottom-4 left-4" : "right-3 bottom-3")}>{buttons}</div>
           ) : null}
-        </div>
-      ) : null}
+        </>
+      )}
     </div>
   );
 }

@@ -24,8 +24,8 @@ export const home: HomeCopy = {
     phone: {
       src: "/brand/studio-hero-v2-phone-it.mp4",
       poster: "/brand/studio-hero-v2-phone-it-poster.jpg",
-      width: 720,
-      height: 900,
+      width: 1080,
+      height: 1350,
     },
     label:
       "Video in loop di 37 secondi con riprese generate con l’AI: una commercialista, un’agenzia e un agriturismo perdono tempo con email, dati ricopiati a mano e doppie prenotazioni; il metodo di Dentoku Dev dall’analisi del problema al rilascio, con Kallmy come esempio in produzione, e in chiusura il campo del brief",

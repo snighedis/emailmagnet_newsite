@@ -22,12 +22,12 @@ export const home = {
   heroVideo: {
     src: "/brand/studio-hero-v2-en.mp4",
     poster: "/brand/studio-hero-v2-en-poster.jpg",
-    // The same film laid out at 4:5, shown below 768px where the 2:1 film's type is too small.
+    // The same film laid out at 4:5, shown below 1024px where the 2:1 film's type is too small.
     phone: {
       src: "/brand/studio-hero-v2-phone-en.mp4",
       poster: "/brand/studio-hero-v2-phone-en-poster.jpg",
-      width: 720,
-      height: 900,
+      width: 1080,
+      height: 1350,
     },
     // AI Act Art. 50(4): the footage of people at work is AI-generated. The film carries
     // its own "AI-generated" label in every frame, poster included; below 1024px it is too
