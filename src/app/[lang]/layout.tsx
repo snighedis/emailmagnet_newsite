@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: siteConfig.socialImage,
+        url: siteConfig.socialImage.en,
         width: 1200,
         height: 630,
         alt: "Dentoku Dev software studio preview",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dentoku Dev: Custom Software, Chrome Extensions and Shopify Apps",
     description: siteConfig.description,
-    images: [siteConfig.socialImage],
+    images: [siteConfig.socialImage.en],
   },
 };
 

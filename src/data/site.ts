@@ -40,7 +40,11 @@ export const siteConfig = {
   companyName: "Dentoku Dev",
   url: "https://www.dentokudev.com",
   logo: "/brand/dentoku-dev-logo-256.png",
-  socialImage: "/brand/dentoku-social-preview.png",
+  // The link preview, one per language: made by scripts/social-preview/make.mjs.
+  socialImage: {
+    en: "/brand/dentoku-social-preview-en.png",
+    it: "/brand/dentoku-social-preview-it.png",
+  },
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",
   description:

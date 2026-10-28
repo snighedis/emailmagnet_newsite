@@ -38,7 +38,7 @@ export function createMetadata({
   const canonical = lang === "it" && itUrl ? itUrl : enUrl;
 
   const fullTitle = title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`;
-  const image = new URL(siteConfig.socialImage, siteConfig.url).toString();
+  const image = new URL(siteConfig.socialImage[lang ?? "en"], siteConfig.url).toString();
   const alt = imageAlt ?? defaultImageAlt[lang ?? "en"];
 
   return {
