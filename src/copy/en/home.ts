@@ -20,13 +20,14 @@ export const home = {
   itemListName: "Dentoku Dev software products",
   hero: homeHero,
   heroVideo: {
-    src: "/brand/studio-hero-en.mp4",
-    poster: "/brand/studio-hero-en-poster.jpg",
+    src: "/brand/studio-hero-v2-en.mp4",
+    poster: "/brand/studio-hero-v2-en-poster.jpg",
+    // AI Act Art. 50(4): the footage of people at work is AI-generated. The film carries
+    // its own "AI-generated" label in every frame, poster included, so the page adds no
+    // second one; the label below says it for screen readers.
     label:
-      "29-second loop: a farm-stay owner asks to answer guests while busy with something else; Dentoku Dev plans it, connects WhatsApp and AI, and shows a sneak peek of Kallmy",
+      "37-second loop with AI-generated footage: an accountant, an agency and a farm stay lose time on emails, data copied by hand and double bookings; Dentoku Dev's method from understanding the problem to shipping, with Kallmy as an example in production, ending on the brief field",
     controls: { play: "Play video", pause: "Pause video" },
-    // AI Act Art. 50(4): the opening footage (the farm-stay owner) is AI-generated.
-    aiDisclosure: "AI-generated footage",
   },
   // One sentence under the brief: who the studio works for, and the public proof.
   // The rating is the real Chrome Web Store score (src/data/site.ts).

@@ -62,7 +62,6 @@ export function HomeHero({ copy, lang }: HomeHeroProps) {
             poster={copy.heroVideo.poster}
             label={copy.heroVideo.label}
             controls={copy.heroVideo.controls}
-            aiDisclosure={copy.heroVideo.aiDisclosure}
             width={1728}
             height={864}
           />

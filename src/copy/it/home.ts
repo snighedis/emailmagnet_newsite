@@ -19,12 +19,11 @@ export const home: HomeCopy = {
     secondaryCta: { label: "Scrivici", href: "/contact" },
   },
   heroVideo: {
-    src: "/brand/studio-hero-it.mp4",
-    poster: "/brand/studio-hero-it-poster.jpg",
+    src: "/brand/studio-hero-v2-it.mp4",
+    poster: "/brand/studio-hero-v2-it-poster.jpg",
     label:
-      "Video in loop di 29 secondi: il titolare di un agriturismo chiede di rispondere agli ospiti mentre fa altro; Dentoku Dev lo progetta, collega WhatsApp e l’AI e mostra Kallmy in anteprima",
+      "Video in loop di 37 secondi con riprese generate con l’AI: una commercialista, un’agenzia e un agriturismo perdono tempo con email, dati ricopiati a mano e doppie prenotazioni; il metodo di Dentoku Dev dall’analisi del problema al rilascio, con Kallmy come esempio in produzione, e in chiusura il campo del brief",
     controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
-    aiDisclosure: "Riprese generate con l’AI",
   },
   proof: {
     audience: "Lavoriamo con agriturismi e B&B, studi professionali, negozi e artigiani.",
