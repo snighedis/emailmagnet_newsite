@@ -3,7 +3,6 @@ import {
   contentHubs,
   homeHero,
   howWeWork,
-  siteConfig,
 } from "@/data/site";
 
 /**
@@ -13,9 +12,11 @@ import {
  */
 export const home = {
   meta: {
-    // The layout's default title, kept verbatim so the home <title> does not change.
-    title: "Dentoku Dev: Custom Software, Chrome Extensions and Shopify Apps",
-    description: siteConfig.description,
+    // The home speaks to small businesses first; the products have their own pages.
+    // Also the title and text of the link preview.
+    title: "Dentoku Dev: custom software for small businesses",
+    description:
+      "A Milan software studio. We automate the emails, quotes, retyped data and bookings of small businesses, and count with you the hours you save.",
   },
   itemListName: "Dentoku Dev software products",
   hero: homeHero,

@@ -7,7 +7,7 @@ import "../globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Dentoku Dev: Custom Software, Chrome Extensions and Shopify Apps",
+    default: "Dentoku Dev: custom software for small businesses",
     template: "%s | Dentoku",
   },
   description: siteConfig.description,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Dentoku Dev: Custom Software, Chrome Extensions and Shopify Apps",
+    title: "Dentoku Dev: custom software for small businesses",
     description: siteConfig.description,
     url: siteConfig.url,
     siteName: siteConfig.name,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dentoku Dev: Custom Software, Chrome Extensions and Shopify Apps",
+    title: "Dentoku Dev: custom software for small businesses",
     description: siteConfig.description,
     images: [siteConfig.socialImage.en],
   },

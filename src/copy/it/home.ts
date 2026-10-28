@@ -1,5 +1,4 @@
 import type { HomeCopy } from "@/copy/en/home";
-import { site } from "@/copy/it/site";
 
 /**
  * Italian homepage. Same structure and the same claims as the English
@@ -7,8 +6,9 @@ import { site } from "@/copy/it/site";
  */
 export const home: HomeCopy = {
   meta: {
-    title: "Dentoku Dev: software su misura, estensioni Chrome e app Shopify",
-    description: site.description,
+    title: "Dentoku Dev: software su misura per piccole imprese",
+    description:
+      "Studio software di Milano. Automatizziamo email, preventivi, dati ricopiati e prenotazioni delle piccole imprese, e contiamo con te le ore che risparmi.",
   },
   itemListName: "Prodotti software di Dentoku Dev",
   hero: {
