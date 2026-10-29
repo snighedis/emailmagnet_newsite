@@ -48,7 +48,7 @@ export const siteConfig = {
   googleAnalyticsId: "G-WKYOX8TLY9",
   googleAdsId: "AW-16653473127",
   description:
-    "Dentoku Dev is a Milan software studio that ships four browser and ecommerce products and builds custom, AI-ready software for small and mid-sized businesses.",
+    "Dentoku Dev is a Milan software studio. We build custom software that automates the repetitive work of small businesses (emails, quotes, retyped data, bookings) and count with you the hours it saves. We also make four products of our own: three Chrome extensions and a Shopify app.",
   // Footer-only positioning line. Kept separate from the SEO `description` so the
   // meta keeps its product keywords while the footer speaks to the studio's range.
   footerTagline:
@@ -86,10 +86,10 @@ export const founderConfig = {
     { from: 2012, to: 2013, role: "Product Assistant, Design Lab", company: "iGuzzini", place: { en: "Recanati", it: "Recanati" } },
   ],
   focusAreas: [
-    "Chrome extension workflows",
-    "Shopify storefront tools",
-    "AI-assisted browser productivity",
-    "Small SaaS and indie software products",
+    "Custom software for small businesses",
+    "Automation of repetitive business work",
+    "AI-assisted workflows",
+    "Chrome extensions and Shopify apps",
   ],
 };
 

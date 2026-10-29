@@ -42,7 +42,7 @@ export function SiteShell({ lang, children }: { lang: Locale; children: React.Re
         {/* Marks the document as scripted before first paint, so scroll reveals can
             start hidden (.js [data-reveal]) and nothing stays hidden without JS. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
-        <JsonLd data={buildOrganizationSchema()} />
+        <JsonLd data={buildOrganizationSchema(copy.site.description)} />
         <JsonLd data={buildWebsiteSchema(lang, copy.site.description)} />
         <LocaleProvider lang={lang} copy={copy}>
           <SiteHeader />

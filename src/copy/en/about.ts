@@ -1,4 +1,3 @@
-import { siteConfig } from "@/data/site";
 
 export const about = {
   meta: {
@@ -10,7 +9,8 @@ export const about = {
   itemListName: "Dentoku Dev product portfolio",
   // Two authored lines: the headline rises line by line.
   title: ["Focused software,", "built in Milan."],
-  standfirst: siteConfig.description,
+  standfirst:
+    "Dentoku Dev is a Milan software studio that ships four browser and ecommerce products and builds custom, AI-ready software for small and mid-sized businesses.",
   primaryCta: { label: "Start your project", href: "/contact" },
   founderLink: "Meet the founder",
   // The short answer, set large as one statement.

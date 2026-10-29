@@ -126,6 +126,14 @@ describe("Dentoku Dev structured data", () => {
     });
   });
 
+  it("describes the studio by its services and its registered address", () => {
+    const organization = buildOrganizationSchema();
+    expect(organization.description).toContain("custom software");
+    expect(organization.knowsAbout[0]).toBe("Custom software for small businesses");
+    expect(organization.address).toMatchObject({ streetAddress: "Via Bullona 8", postalCode: "20154" });
+    expect(organization.founder.name).toBe(founderConfig.name);
+  });
+
   it("generates a founder page schema without exposing a personal name", () => {
     expect(buildFounderSchema()).toMatchObject({
       "@type": "AboutPage",

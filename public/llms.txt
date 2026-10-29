@@ -1,16 +1,32 @@
 # Dentoku Dev
 
-## Site description
-Dentoku Dev is a software development studio based in Milan, Italy. It builds focused Chrome extensions, Shopify apps, and lightweight productivity software for practical browser, ecommerce, and business workflows.
+> Dentoku Dev is a software studio in Milan, Italy. It builds custom software that automates the repetitive work of small businesses: answering customer email, preparing quotes, retyping data between tools, and handling bookings and orders. Every project starts from how many hours a month the problem costs today, and after release the hours are counted again with the client. The studio also makes four products of its own: three Chrome extensions and a Shopify app.
 
-## Key pages
-- Home: https://www.dentokudev.com/
-- Overview: https://www.dentokudev.com/overview
-- About: https://www.dentokudev.com/about
-- Contact and support: https://www.dentokudev.com/contact
-- Blog: https://www.dentokudev.com/blog
+The studio works with online shops, professional practices, vacation rentals, and agencies and studios, remotely, in Italian and English. The site is bilingual: English at the root, Italian under /it.
 
-## Product pages
+## Custom software for small businesses
+- Home (English): https://www.dentokudev.com/
+  What the studio automates, how a project works, and a one-minute brief to count the hours repetitive work costs today.
+- Home (Italian): https://www.dentokudev.com/it
+  The same, in Italian, for Italian businesses.
+- About: https://www.dentokudev.com/about (Italian: https://www.dentokudev.com/it/chi-siamo)
+- Founder, Nicola Orlandi: https://www.dentokudev.com/founder (Italian: https://www.dentokudev.com/it/fondatore)
+- Contact: https://www.dentokudev.com/contact (Italian: https://www.dentokudev.com/it/contatti)
+- FAQ: https://www.dentokudev.com/faq (Italian: https://www.dentokudev.com/it/domande-frequenti)
+
+## What the studio automates
+- Answering customer email: the software reads incoming requests and drafts a reply in the business's tone; a person reads it and presses Send.
+- Preparing quotes: the request is matched against the price list and the quote is filled in the business's own format, ready to check.
+- Retyping data between tools: data moves between the tools already in use (email, spreadsheets, management software, Shopify) without anyone retyping it.
+- Handling bookings and orders: requests and confirmations are collected, the calendar is updated and reminders are sent.
+
+## How a project works
+1. A short call and a written proposal: what is built, what it costs, when it ships, and how many hours a month the problem costs today. No obligation until the client approves it.
+2. Design and build in short cycles, with working software to try from the first weeks.
+3. After launch, a direct line to the people who wrote the code.
+4. After release, the monthly hours are counted again, together.
+
+## Products
 - EmailMagnet: https://www.dentokudev.com/emailmagnet
   Chrome extension for finding and extracting emails from websites while browsing.
 - ClickPilot AI: https://www.dentokudev.com/clickpilot-ai
@@ -19,6 +35,8 @@ Dentoku Dev is a software development studio based in Milan, Italy. It builds fo
   Chrome extension for boosting tab audio up to 600% and managing browser volume by site.
 - Countdown321: https://www.dentokudev.com/countdown321
   Shopify app for countdown timers and time-based storefront urgency messages.
+- All products: https://www.dentokudev.com/overview
+- EmailMagnet pricing: https://www.dentokudev.com/pricing
 
 ## EmailMagnet documentation
 - Docs hub: https://www.dentokudev.com/docs
@@ -26,13 +44,7 @@ Dentoku Dev is a software development studio based in Milan, Italy. It builds fo
 - Exporting emails: https://www.dentokudev.com/docs/exporting-emails
 - Responsible use: https://www.dentokudev.com/docs/responsible-use
 
-## FAQ and help
-- FAQ: https://www.dentokudev.com/faq
-- Pricing: https://www.dentokudev.com/pricing
-- AI-readable overview: https://www.dentokudev.com/overview
-- Responsible email extraction guide: https://www.dentokudev.com/docs/responsible-use
-- Chrome email extractor page: https://www.dentokudev.com/emailmagnet/chrome-email-extractor
-
-## Support contact
-- Email: support@dentokudev.com
-- Use the same email for product support, billing questions, documentation requests, and general business inquiries.
+## Optional
+- Blog: https://www.dentokudev.com/blog
+- Privacy policy: https://www.dentokudev.com/privacy
+- Terms: https://www.dentokudev.com/terms

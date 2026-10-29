@@ -77,5 +77,5 @@ export const site: SiteCopy = {
     "Studio software di Milano. Automatizziamo con l’AI il lavoro ripetitivo delle piccole imprese, e misuriamo quanto ti fa risparmiare.",
   location: "Milano, Italia",
   description:
-    "Dentoku Dev è uno studio software di Milano che pubblica quattro prodotti per browser ed ecommerce e realizza software su misura, pronto per l'AI, per piccole e medie imprese.",
+    "Dentoku Dev è uno studio software di Milano. Realizziamo software su misura che automatizza il lavoro ripetitivo delle piccole imprese (email, preventivi, dati ricopiati, prenotazioni) e contiamo con te le ore che fa risparmiare. Pubblichiamo anche quattro prodotti nostri: tre estensioni Chrome e un’app Shopify.",
 };

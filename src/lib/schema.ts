@@ -19,18 +19,43 @@ const base = siteConfig.url;
 // pass "it" to get `inLanguage` and `/it/...` URLs.
 const supportLanguages = ["en", "it"];
 
-export function buildOrganizationSchema() {
+// What the studio does, for Google and AI assistants. Services first: they are what
+// small businesses search for; the products follow.
+const organizationTopics = [
+  "Custom software for small businesses",
+  "Business process automation",
+  "AI automation",
+  "Email automation",
+  "Quote automation",
+  "Booking management",
+  "Chrome extensions",
+  "Shopify apps",
+];
+
+export function buildOrganizationSchema(description = siteConfig.description) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.companyName,
     url: base,
     logo: `${base}${siteConfig.logo}`,
+    description,
     email: siteConfig.supportEmail,
+    // The registered address and VAT number, already public in the privacy policy.
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Via Bullona 8",
+      postalCode: "20154",
       addressLocality: "Milan",
       addressCountry: "IT",
+    },
+    vatID: "IT13625480960",
+    areaServed: { "@type": "Country", name: "Italy" },
+    knowsAbout: organizationTopics,
+    founder: {
+      "@type": "Person",
+      name: founderConfig.name,
+      url: `${base}${founderConfig.href}`,
     },
     contactPoint: {
       "@type": "ContactPoint",
