@@ -20,7 +20,8 @@ const buttonVariants = cva(
         secondary:
           "bg-ink text-white hover:bg-ink-soft aria-expanded:bg-ink aria-expanded:text-white",
         ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
+          // No fill on hover: an icon in a grey square reads as a tile (hamburger, menu close).
+          "hover:text-foreground aria-expanded:text-foreground",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-ink underline decoration-brand decoration-2 underline-offset-4 hover:decoration-ink",

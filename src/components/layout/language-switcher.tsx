@@ -32,7 +32,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       }}
       aria-label={languageSwitcher.ariaLabel}
       className={cn(
-        "focus-visible:ring-brand inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-stone-700 outline-none transition hover:bg-stone-100 hover:text-stone-950 focus-visible:ring-2",
+        "focus-visible:ring-brand inline-flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-stone-700 outline-none transition hover:text-stone-950 focus-visible:ring-2",
         className,
       )}
     >

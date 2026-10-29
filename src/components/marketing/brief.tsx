@@ -47,7 +47,8 @@ function Choice({ name, legend, options, value, onChange }: ChoiceProps) {
             key={option.value}
             className={cn(
               "inline-flex min-h-11 cursor-pointer items-center border px-4 text-base font-medium transition select-none active:scale-[0.97] motion-reduce:active:scale-100",
-              "border-stone-300 bg-white text-ink hover:border-ink",
+              // With the pointer dot on, the growing dot is the hover; the border is left for the choice.
+              "border-stone-300 bg-white text-ink [html:not(.has-dot)_&]:hover:border-ink",
               "has-checked:border-ink has-checked:bg-ink has-checked:text-white",
               "has-focus-visible:ring-brand has-focus-visible:ring-2 has-focus-visible:ring-offset-2",
               "active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100",

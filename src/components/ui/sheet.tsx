@@ -5,7 +5,7 @@ import { Dialog as SheetPrimitive } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { XIcon } from "@/components/ui/icons"
+import { MenuClose } from "@/components/ui/icons"
 
 function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />
@@ -74,10 +74,11 @@ function SheetContent({
           <SheetPrimitive.Close data-slot="sheet-close" asChild>
             <Button
               variant="ghost"
-              className="absolute top-2 right-4 size-12 rounded-md"
+              // Exactly where the header's hamburger sits (page margin, -mr-2), so the icon swaps in place
+              className="absolute top-2 right-[calc(var(--margin)-0.5rem)] size-12 rounded-md"
               size="icon"
             >
-              <XIcon className="size-6" />
+              <MenuClose className="size-6" />
               <span className="sr-only">{closeLabel}</span>
             </Button>
           </SheetPrimitive.Close>

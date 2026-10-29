@@ -4,7 +4,9 @@ import { useEffect, useRef } from "react";
 
 // Mouse or trackpad, wider than a phone: the same threshold klioh.com uses.
 const ENABLED = "(hover: hover) and (pointer: fine) and (min-width: 768px)";
-const EXPANDS = "a, button";
+// Everything you click: links, buttons, the FAQ rows, and the brief's choices
+// (a label around a hidden radio or checkbox).
+const EXPANDS = "a, button, summary, label:has(input[type=\"radio\"], input[type=\"checkbox\"])";
 // Fields you type in keep the text cursor, and the dot steps aside there.
 const TYPED =
   'textarea, [contenteditable="true"], input:not([type]), input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="search"], input[type="number"], input[type="password"]';

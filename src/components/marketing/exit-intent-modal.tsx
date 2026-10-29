@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Dialog } from "radix-ui";
-import { Download, X } from "@/components/ui/icons";
+import { Download, MenuClose } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -117,10 +117,10 @@ export function ExitIntentModal() {
           )}
         >
           <Dialog.Close
-            className="text-ink hover:bg-surface-muted absolute top-3 right-3 flex h-10 w-10 items-center justify-center transition-colors"
+            className="text-ink hover:text-ink-soft absolute top-3 right-3 flex h-10 w-10 items-center justify-center transition-colors"
             aria-label={copy.closeAria}
           >
-            <X className="h-4 w-4" />
+            <MenuClose className="size-5" />
           </Dialog.Close>
 
           {state === "success" ? (

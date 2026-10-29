@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { X } from "@/components/ui/icons";
+import { MenuClose } from "@/components/ui/icons";
 import { Button } from "@/components/ui/button";
 import { useCopy } from "@/i18n/locale-context";
 import { LocaleLink } from "@/i18n/locale-link";
@@ -162,10 +162,10 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={rejectAll}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-stone-500 hover:bg-stone-100 hover:text-stone-700"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-stone-500 hover:text-stone-950"
             aria-label={copy.closeAria}
           >
-            <X className="h-4 w-4" />
+            <MenuClose className="size-5" />
           </button>
         </div>
 
