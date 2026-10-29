@@ -26,7 +26,7 @@ export function CookiesBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-stone-600">
-        Ultimo aggiornamento: 9 ottobre 2026. La presente Cookie Policy spiega quali cookie e
+        Ultimo aggiornamento: 29 ottobre 2026. La presente Cookie Policy spiega quali cookie e
         tecnologie simili sono utilizzati su dentokudev.com, perché li utilizziamo e come puoi
         gestirli. È redatta ai sensi della Direttiva ePrivacy (2002/58/CE, come modificata dalla
         2009/136/CE), della normativa italiana di attuazione (D.Lgs. 69/2012 e Linee guida del
@@ -83,6 +83,14 @@ export function CookiesBody() {
                 ogni caricamento di pagina e possiamo dimostrare il consenso espresso.
               </td>
               <td className="py-3">6 mesi, poi ti chiediamo di nuovo</td>
+            </tr>
+            <tr>
+              <td className={`${td} font-mono text-xs`}>lang</td>
+              <td className={td}>
+                Viene impostato solo quando cambi lingua con il link EN/IT, così la home si apre
+                nella lingua che hai scelto. Contiene &quot;en&quot; o &quot;it&quot; e nient’altro.
+              </td>
+              <td className="py-3">1 anno</td>
             </tr>
           </tbody>
         </table>

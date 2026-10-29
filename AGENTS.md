@@ -48,6 +48,12 @@ drives the proxy, `createMetadata` (hreflang), the sitemap, the language switche
 in the same commit, move its directory out of `src/app/[lang]/(en-only)/` and give it an
 Italian copy module. Pages left in `(en-only)` are a 404 under `/it` by construction.
 
+- **Only the bare home "/" guesses the language.** A browser whose first served language is
+  Italian gets a 307 to `/it`, unless the reader picked a language with the switcher (the
+  `lang` cookie, which wins). Every other URL already names its language and is never
+  redirected; crawlers send no Italian Accept-Language and always see English at "/". The
+  logic is in `src/i18n/preference.ts` and `src/proxy.ts`; the `lang` cookie is declared in
+  both Cookie Policies.
 - **English is the form of truth.** Each Italian copy module is typed from the English one
   (`src/copy/en/*` exports `typeof`), so a missing or extra key fails `tsc`.
 - **Claims are identical in every language** (see the product-claims rule above and

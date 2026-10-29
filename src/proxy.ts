@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { browserLocale, chosenLocale, LANG_COOKIE } from "@/i18n/preference";
 import { englishToItalianPath, italianToEnglishPath } from "@/i18n/slugs";
 
 /**
@@ -13,9 +14,15 @@ import { englishToItalianPath, italianToEnglishPath } from "@/i18n/slugs";
  *   /it/blog          -> pass     (en-only) layout -> 404
  *   /en/about         -> 308      /about           (/en is never public)
  *   /fr/x             -> rewrite  /en/fr/x         -> no route -> global 404
+ *   /  (Italian)      -> 307      /it
  *
- * No Accept-Language redirect on purpose: crawlers and English readers are
- * never bounced; the language is only ever chosen through the URL.
+ * The bare home is the one URL that guesses the language, because most of
+ * the studio's clients are Italian and arrive by typing the domain. A reader
+ * who picked a language with the switcher (the `lang` cookie) gets that one;
+ * otherwise a browser whose first served language is Italian goes to /it.
+ * The redirect is temporary, so "/" stays the English home for search
+ * engines, and crawlers, which send no Italian Accept-Language, never see it.
+ * Every other URL already names its language and is never redirected.
  */
 export function proxy(request: NextRequest) {
   const url = request.nextUrl.clone();
@@ -39,6 +46,19 @@ export function proxy(request: NextRequest) {
       return NextResponse.redirect(url, 308);
     }
     return NextResponse.next();
+  }
+
+  if (pathname === "/") {
+    const lang =
+      chosenLocale(request.cookies.get(LANG_COOKIE)?.value) ??
+      browserLocale(request.headers.get("accept-language"));
+    if (lang === "it") {
+      url.pathname = "/it";
+      const response = NextResponse.redirect(url, 307);
+      // The same URL answers differently per reader: no cache may hand this redirect to all.
+      response.headers.set("Vary", "Accept-Language, Cookie");
+      return response;
+    }
   }
 
   url.pathname = pathname === "/" ? "/en" : `/en${pathname}`;
