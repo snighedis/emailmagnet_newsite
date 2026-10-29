@@ -1291,3 +1291,73 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
 .footer-mail {
   font-size: min(clamp(42px, 6vw, 96px), calc((100vw - 40px) / 7.8));
 }
+
+/* The pointer dot (components/layout/pointer-dot.tsx), after klioh.com: the film's
+   orange dot follows the mouse and grows from 10 to 40px on links and buttons.
+   Klioh's white dot blends with `difference`; here that would turn the orange
+   cyan, so it multiplies on light grounds and screens on dark ones: orange either
+   way, and the text under it stays readable. Only on with a mouse above 768px,
+   where the script adds html.has-dot. */
+.pointer-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0;
+}
+.pointer-dot[data-visible="true"] {
+  opacity: 1;
+}
+.pointer-dot[data-ground="dark"] {
+  mix-blend-mode: screen;
+}
+.pointer-dot > span {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brand);
+  transform: scale(0.25);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pointer-dot[data-expanded="true"] > span {
+  transform: scale(1);
+}
+html.has-dot,
+html.has-dot * {
+  cursor: none;
+}
+html.has-dot textarea,
+html.has-dot [contenteditable="true"],
+html.has-dot input[type="text"],
+html.has-dot input[type="email"],
+html.has-dot input[type="tel"],
+html.has-dot input[type="url"],
+html.has-dot input[type="search"],
+html.has-dot input[type="number"],
+html.has-dot input[type="password"],
+html.has-dot input:not([type]) {
+  cursor: text;
+}
+.pointer-dot[data-typing="true"] {
+  opacity: 0;
+}
+html:not(.has-dot) .pointer-dot {
+  display: none;
+}
+/* Navigation links underline only on hover, which the growing dot already
+   says: while it is on, they keep just the dot. The open menu's trigger keeps
+   its underline (a state, not a hover), and links in running text keep theirs
+   at rest, so they never rely on colour alone. */
+html.has-dot .text-link.link-quiet:not([aria-expanded="true"]) {
+  text-decoration-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pointer-dot > span {
+    transition: none;
+  }
+}

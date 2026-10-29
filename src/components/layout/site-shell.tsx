@@ -1,4 +1,5 @@
 import { AnalyticsGate } from "@/components/analytics/analytics-gate";
+import { PointerDot } from "@/components/layout/pointer-dot";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ExitIntentModal } from "@/components/marketing/exit-intent-modal";
@@ -50,6 +51,7 @@ export function SiteShell({ lang, children }: { lang: Locale; children: React.Re
           <SiteFooter copy={copy} />
           <CookieBanner />
           <ExitIntentModal />
+          <PointerDot />
         </LocaleProvider>
         <AnalyticsGate gaId={siteConfig.googleAnalyticsId} adsId={siteConfig.googleAdsId} />
       </body>
