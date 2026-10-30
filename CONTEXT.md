@@ -121,8 +121,8 @@ precise term.
   FAQ, docs, chrome, legal), because those audiences are global.
 - **Transcreation** — Italian text that keeps the claims but rewrites the argument for the
   Italian market. Allowed only on the consulting funnel: homepage, contact page, the
-  "Working with us" FAQ, the About page and the Founder page (the last two since October
-  2026: in Italian they present the studio and the founder to a consulting client, while in
-  English they stay oriented to the products' global audience). The consulting reader in
+  "Working with us" FAQ, the About page and the Founder page. Since 30 October 2026 the
+  English About and Founder pages present the studio and the founder to a consulting client
+  too, with the same argument as the Italian ones. The consulting reader in
   Italy is a small-business owner exploring AI, not the North American buyer the English
   argument was written for.

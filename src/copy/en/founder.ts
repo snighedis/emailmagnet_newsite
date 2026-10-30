@@ -2,40 +2,40 @@ import { founderConfig } from "@/data/site";
 
 export const founder = {
   meta: {
-    title: "Dentoku Dev Founder Led Studio",
+    title: "Nicola Orlandi, founder of Dentoku Dev",
     description:
-      "Learn about the founder-led Dentoku Dev studio behind EmailMagnet, ClickPilot AI, Countdown321, and focused software tools.",
+      "Nicola Orlandi, founder of Dentoku Dev in Milan: custom software that takes the repetitive work off small businesses, with the saving measured.",
   },
   breadcrumb: "Founder",
   role: founderConfig.role,
   location: founderConfig.location,
   description: founderConfig.description,
-  primaryCta: { label: "Start your project", href: "/contact" },
+  primaryCta: { label: "Tell us the problem", href: "/contact" },
   studioLink: "About the studio",
   shortAnswer: {
     title: "Short answer",
     /** `{location}`, `{name}` and `{role}` are replaced by the page; the role is
      *  already shown beside the name, so the statement leaves it out. */
-    body: "Run by {name} in {location}: he designs, builds, ships and supports every product, with collaborators engaged per project when needed.",
+    body: "Run by {name} in {location}: he follows every project himself, from the problem to the release, with collaborators brought in when the work needs them.",
   },
   // Each point opens with a bold run-in; set as reading text in two columns.
   proofPoints: {
-    heading: "How the studio works",
+    heading: "How he works",
     items: [
       {
-        title: "Product ownership.",
+        title: "From the problem to the release.",
         description:
-          "Dentoku Dev product pages, docs, pricing, and support paths are maintained under one studio entity rather than anonymous single-purpose pages.",
+          "The first call, the written proposal, the build and the release all go through the same person. You explain your work once, and nothing gets lost in handoffs.",
       },
       {
-        title: "Browser workflow focus.",
+        title: "The saving, counted.",
         description:
-          "EmailMagnet, ClickPilot AI, and Volume Control PRO all start from the same operating idea: reduce repetitive browser work with narrow, understandable tools.",
+          "Every proposal starts from the hours a month the repetitive work costs you today, and after release you count them again together. No promised percentages: your own number, before and after.",
       },
       {
-        title: "Responsible product content.",
+        title: "Remote, by video call.",
         description:
-          "Documentation and blog content cover practical use, export workflows, privacy considerations, and responsible contact handling.",
+          "The studio is in Milan and works with clients by video call. You try the software yourself, in your browser or in your own tools, from the first weeks.",
       },
     ],
   },
@@ -49,7 +49,7 @@ export const founder = {
   products: {
     title: "The products he built",
     description:
-      "The portfolio is intentionally made of small, specific products. Each tool has a dedicated product page, support route, and documentation path so users can understand what the product does before installing or buying.",
+      "Besides client projects, he publishes and maintains four products of his own on public stores: simple, specific tools with public users and reviews.",
     overviewLink: "See all products",
   },
 };

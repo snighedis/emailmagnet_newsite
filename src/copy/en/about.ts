@@ -1,54 +1,54 @@
 
 export const about = {
   meta: {
-    title: "About Dentoku Dev Products",
+    title: "About Dentoku Dev, a software studio in Milan",
     description:
-      "Learn about Dentoku Dev, the product studio behind EmailMagnet, ClickPilot AI, Volume Control PRO, and focused software for browser workflows.",
+      "Dentoku Dev is a Milan software studio: custom software that takes the repetitive work off small businesses, with the saving measured.",
   },
   breadcrumb: "About",
   itemListName: "Dentoku Dev product portfolio",
   // Two authored lines: the headline rises line by line.
-  title: ["Focused software,", "built in Milan."],
+  title: ["One studio,", "one founder."],
   standfirst:
-    "Dentoku Dev is a Milan software studio that ships four browser and ecommerce products and builds custom, AI-ready software for small and mid-sized businesses.",
-  primaryCta: { label: "Start your project", href: "/contact" },
+    "We are in Milan and build custom software for small businesses: we take the repetitive work off your hands and count with you the hours it saves.",
+  primaryCta: { label: "Tell us the problem", href: "/contact" },
   founderLink: "Meet the founder",
   // The short answer, set large as one statement.
   statement: {
     heading: "Short answer",
-    body: "Dentoku Dev is the product studio behind EmailMagnet, ClickPilot AI, Volume Control PRO and Countdown321.",
+    body: "The founder follows every project from the problem to the release, with collaborators brought in when the work needs them: no account managers, no handoffs.",
     founder: {
-      before: "The studio is founded and maintained by",
-      link: "the Dentoku Dev founder",
-      after: ", with product support handled through Dentoku Dev.",
+      before: "Read who is behind the studio on the",
+      link: "founder's page",
+      after: ".",
     },
   },
   // One reading column, each paragraph opening with a bold run-in.
   principles: {
-    heading: "What the studio is",
+    heading: "How we work",
     items: [
       {
-        lead: "A product studio in Milan.",
-        body: "Dentoku Dev owns and maintains a portfolio of focused software products rather than a single broad SaaS platform.",
+        lead: "First, a written proposal.",
+        body: "We put in writing what we build, what it costs, when it ships and how many hours a month the problem costs you today. Then working software to try from the first weeks, and a direct line after release.",
       },
       {
-        lead: "Browser, ecommerce, business.",
-        body: "The portfolio includes Chrome extensions for browser workflows, Shopify apps for ecommerce stores, and lightweight utilities for practical business tasks.",
+        lead: "The saving is counted, not promised.",
+        body: "We do not promise percentages. We count the hours with you before we start and count them again after release: it is the number the proposal starts from and the one we check it against.",
       },
       {
-        lead: "One page per product.",
-        body: "Each product has a dedicated page, support path, metadata, and structured content so users can quickly understand what the product does and who it is for.",
+        lead: "The code is yours.",
+        body: "On final payment the code written for your project becomes yours, with the documentation for any developer to carry it on. For our reusable components you get a perpetual licence to use them.",
       },
       {
-        lead: "Built for people who want focused tools.",
-        body: "Dentoku Dev products are built for operators, founders, merchants, researchers, and teams that want focused tools without unnecessary platform complexity.",
+        lead: "Our software is live.",
+        body: "Besides client projects we build, publish and maintain four products of our own, with users and reviews on public stores: proof that what we ship stays online and works.",
       },
     ],
   },
   portfolio: {
-    title: "The product portfolio",
+    title: "The software we publish",
     description:
-      "The portfolio is intentionally split into clear product entities. This makes support, documentation, pricing, and product discovery easier to understand.",
+      "Four products of our own, on public stores. Simple, specific tools: not a showcase of what we can build for you, but proof that what we ship stays online.",
     overviewLink: "See all products",
   },
 };
