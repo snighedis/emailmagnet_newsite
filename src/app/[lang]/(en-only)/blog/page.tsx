@@ -1,11 +1,13 @@
 import { ContactMailtoForm } from "@/components/marketing/contact-mailto-form";
 import { HomeReveal } from "@/components/marketing/home-reveal";
+import { JsonLd } from "@/components/marketing/json-ld";
 import { FramedPhoto, PageOpening, RelatedLinks, SideSection, d } from "@/components/marketing/editorial";
 import { siteConfig } from "@/data/site";
 import { defaultAuthor } from "@/data/authors";
 import { blogPosts, type BlogPost } from "@/content/blog";
 import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
+import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/schema";
 import { formatDate } from "@/lib/dates";
 
 export const metadata = createMetadata({
@@ -40,6 +42,15 @@ export default function BlogPage() {
 
   return (
     <>
+      <JsonLd data={buildBreadcrumbSchema([{ name: "Home", href: "/" }, { name: "Blog", href: "/blog" }])} />
+      <JsonLd
+        data={buildWebPageSchema({
+          type: "CollectionPage",
+          name: "EmailMagnet Blog and Guides",
+          description: "Practical articles on EmailMagnet, email extraction workflows, responsible use and browser productivity.",
+          href: "/blog",
+        })}
+      />
       <HomeReveal />
 
       <PageOpening

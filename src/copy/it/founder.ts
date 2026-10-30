@@ -10,7 +10,7 @@ export const founder: FounderCopy = {
   meta: {
     title: "Nicola Orlandi, fondatore di Dentoku Dev",
     description:
-      "Nicola Orlandi, fondatore di Dentoku Dev a Milano: progetta e costruisce software su misura che toglie il lavoro ripetitivo alle piccole imprese, e misura il risparmio.",
+      "Nicola Orlandi, fondatore di Dentoku Dev a Milano: software su misura che toglie il lavoro ripetitivo alle piccole imprese, con il risparmio misurato.",
   },
   breadcrumb: "Fondatore",
   role: "Founder & AI Automation Specialist",

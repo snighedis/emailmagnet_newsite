@@ -15,8 +15,8 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
   const lang = await resolveLang(params);
   const { meta } = getPageCopy(lang).home;
   const metadata = createMetadata({ title: meta.title, description: meta.description, path: "/", lang });
-  // The home keeps the layout's default title verbatim, outside the "%s | Dentoku" template.
-  return { ...metadata, title: { absolute: meta.title } };
+  // The home title already carries the brand, so createMetadata keeps it verbatim.
+  return metadata;
 }
 
 type HomeCopy = ReturnType<typeof getPageCopy>["home"];

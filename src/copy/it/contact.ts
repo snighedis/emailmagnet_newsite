@@ -6,9 +6,9 @@ import type { ContactCopy } from "@/copy/en/contact";
  */
 export const contact: ContactCopy = {
   meta: {
-    title: "Contatta Dentoku Dev",
+    title: "Contatta Dentoku Dev, studio software a Milano",
     description:
-      "Parla con Dentoku Dev per supporto sui prodotti, un nuovo sviluppo o un progetto software. Progettiamo, costruiamo e rilasciamo prodotti digitali e portiamo la stessa cura nel tuo team.",
+      "Raccontaci il lavoro che ti ruba tempo: ti risponde chi scrive il codice. Prima call gratuita, poi una proposta scritta con costi e tempi.",
   },
   breadcrumb: "Contatti",
   contactPointName: "Contatta il supporto Dentoku Dev",

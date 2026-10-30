@@ -12,7 +12,7 @@ import { buildBreadcrumbSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "EmailMagnet Pricing Plans",
   description:
-    "EmailMagnet pricing: a Free plan with local autosave and export up to 100 addresses per file, and a $19 lifetime PRO with one list across pages, bulk URL extraction, no export cap and priority support.",
+    "EmailMagnet pricing: Free with local autosave and export up to 100 addresses per file, or a $19 lifetime PRO with bulk URL extraction and no export cap.",
   path: "/pricing",
 });
 

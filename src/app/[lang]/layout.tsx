@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: "Dentoku Dev: custom software for small businesses",
-    template: "%s | Dentoku",
+    template: "%s | Dentoku Dev",
   },
   description: siteConfig.description,
   alternates: {

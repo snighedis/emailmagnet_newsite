@@ -9,11 +9,13 @@ import {
   type Action,
 } from "@/components/marketing/editorial";
 import { HomeReveal } from "@/components/marketing/home-reveal";
+import { JsonLd } from "@/components/marketing/json-ld";
 import { ProductShowcase } from "@/components/marketing/product-showcase";
 import { ProposalClose } from "@/components/marketing/proposal-close";
 import { getCopy, getPageCopy } from "@/copy";
 import { relatedResourceLinks } from "@/data/site";
 import { LocaleLink } from "@/i18n/locale-link";
+import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/schema";
 
 /** The product a guide is about, its page and its store picture. */
 type Product = { name: string; href: string; picture: { src: string; alt: string; width: number; height: number } };
@@ -103,6 +105,26 @@ export function GuidePage({ product, title, standfirst, answer, list, table, sec
 
   return (
     <>
+      {/* Every guide says where it sits (Home > product > guide) and what it is about */}
+      {currentHref ? (
+        <>
+          <JsonLd
+            data={buildBreadcrumbSchema([
+              { name: "Home", href: "/" },
+              { name: product.name, href: product.href },
+              { name: title, href: currentHref },
+            ])}
+          />
+          <JsonLd
+            data={buildWebPageSchema({
+              name: title,
+              description: standfirst ?? answer,
+              href: currentHref,
+              about: { name: product.name, href: product.href },
+            })}
+          />
+        </>
+      ) : null}
       <HomeReveal />
 
       <section className="bg-background">

@@ -18,6 +18,7 @@ import {
   buildItemListSchema,
   buildOrganizationSchema,
   buildServicesSchema,
+  buildWebPageSchema,
   buildPersonSchema,
   buildProductSoftwareSchema,
   buildSoftwareSchema,
@@ -124,6 +125,17 @@ describe("Dentoku Dev structured data", () => {
       "@type": "Organization",
       name: "Dentoku Dev",
       url: "https://www.dentokudev.com",
+    });
+  });
+
+  it("names a guide as a page of the site about its product", () => {
+    expect(
+      buildWebPageSchema({ name: "Tab Volume Control", href: "/volume-control-pro/tab-volume-control", about: { name: "Volume Control PRO", href: "/volume-control-pro" } }),
+    ).toMatchObject({
+      "@type": "WebPage",
+      url: "https://www.dentokudev.com/volume-control-pro/tab-volume-control",
+      isPartOf: { name: "Dentoku Dev" },
+      about: { "@type": "SoftwareApplication", name: "Volume Control PRO" },
     });
   });
 

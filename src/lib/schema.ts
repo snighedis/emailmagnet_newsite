@@ -288,6 +288,34 @@ export function buildBreadcrumbSchema(
   };
 }
 
+/**
+ * A page that is neither an article nor a product: the search guides and the blog
+ * index. It names the page and ties it to the site and to what it is about, so a
+ * guide is more than a body of text under the site-wide Organization.
+ */
+export function buildWebPageSchema(input: {
+  name: string;
+  description?: string;
+  href: string;
+  type?: "WebPage" | "CollectionPage";
+  about?: { name: string; href: string };
+  lang?: Locale;
+}) {
+  const lang = input.lang ?? "en";
+  return {
+    "@context": "https://schema.org",
+    "@type": input.type ?? "WebPage",
+    name: input.name,
+    ...(input.description ? { description: input.description } : {}),
+    url: `${base}${localizedHref(lang, input.href)}`,
+    inLanguage: lang,
+    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: base },
+    ...(input.about
+      ? { about: { "@type": "SoftwareApplication", name: input.about.name, url: `${base}${input.about.href}` } }
+      : {}),
+  };
+}
+
 export function buildArticleSchema(post: BlogPost) {
   const publishedTime = new Date(post.date);
   const modifiedTime = new Date(post.updated);

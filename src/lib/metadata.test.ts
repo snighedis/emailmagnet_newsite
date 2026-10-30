@@ -9,6 +9,15 @@ type OpenGraph = { url?: string; locale?: string; alternateLocale?: string[] };
 const alternates = (m: ReturnType<typeof createMetadata>) => m.alternates as Alternates;
 const og = (m: ReturnType<typeof createMetadata>) => m.openGraph as OpenGraph;
 
+describe("createMetadata titles", () => {
+  it("appends the full brand once, and never twice", () => {
+    expect(createMetadata({ title: "Blog", description: "d" }).title).toEqual({ absolute: "Blog | Dentoku Dev" });
+    expect(createMetadata({ title: "Privacy Policy – Dentoku Dev", description: "d" }).title).toEqual({
+      absolute: "Privacy Policy – Dentoku Dev",
+    });
+  });
+});
+
 describe("createMetadata without lang (legacy single-locale shape)", () => {
   const m = createMetadata({ title: "Blog", description: "d", path: "/blog" });
 

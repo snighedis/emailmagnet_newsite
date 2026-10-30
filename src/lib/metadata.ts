@@ -37,12 +37,14 @@ export function createMetadata({
   const itUrl = localised ? new URL(italianUrlPath(path), siteConfig.url).toString() : null;
   const canonical = lang === "it" && itUrl ? itUrl : enUrl;
 
+  // The brand once, in full: appended only when the title does not already carry it
+  // ("Privacy Policy – Dentoku Dev" stays as it is), the same in <title>, og and twitter.
   const fullTitle = title.includes(siteConfig.name) ? title : `${title} | ${siteConfig.name}`;
   const image = new URL(siteConfig.socialImage[lang ?? "en"], siteConfig.url).toString();
   const alt = imageAlt ?? defaultImageAlt[lang ?? "en"];
 
   return {
-    title,
+    title: { absolute: fullTitle },
     description,
     alternates: {
       canonical,

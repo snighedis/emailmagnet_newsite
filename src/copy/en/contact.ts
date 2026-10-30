@@ -1,6 +1,6 @@
 export const contact = {
   meta: {
-    title: "Contact Dentoku Dev",
+    title: "Contact Dentoku Dev, custom software studio in Milan",
     description:
       "Talk to Dentoku Dev about product support, a new build, or a software project. We design, build, and ship digital products and bring the same craft to your team.",
   },
