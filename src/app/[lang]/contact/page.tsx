@@ -58,6 +58,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
               <span key={line} className="line">
                 <span data-line style={{ "--i": i } as CSSProperties}>
                   {line}
+                  {i < copy.title.length - 1 ? " " : null}
                 </span>
               </span>
             ))}

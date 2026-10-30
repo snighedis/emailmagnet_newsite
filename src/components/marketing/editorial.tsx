@@ -87,6 +87,7 @@ export function PageOpening({
             <span key={line} className="line">
               <span data-line style={{ "--i": i } as CSSProperties}>
                 {line}
+                {i < title.length - 1 ? " " : null}
               </span>
             </span>
           ))}

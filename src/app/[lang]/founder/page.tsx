@@ -61,6 +61,7 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
               <span key={line} className="line">
                 <span data-line style={{ "--i": i } as CSSProperties}>
                   {line}
+                  {i < nameLines.length - 1 ? " " : null}
                 </span>
               </span>
             ))}

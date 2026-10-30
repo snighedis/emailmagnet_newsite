@@ -31,6 +31,8 @@ export function HomeHero({ copy, lang }: HomeHeroProps) {
               <span key={line} className="line">
                 <span data-line style={{ "--i": i } as React.CSSProperties}>
                   {line}
+                  {/* A space between the lines, so text extraction (search, AI) reads two words, not one */}
+                  {i < copy.hero.title.length - 1 ? " " : null}
                 </span>
               </span>
             ))}

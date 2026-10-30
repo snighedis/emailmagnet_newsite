@@ -17,6 +17,7 @@ import {
   buildHowToSchema,
   buildItemListSchema,
   buildOrganizationSchema,
+  buildServicesSchema,
   buildPersonSchema,
   buildProductSoftwareSchema,
   buildSoftwareSchema,
@@ -123,6 +124,16 @@ describe("Dentoku Dev structured data", () => {
       "@type": "Organization",
       name: "Dentoku Dev",
       url: "https://www.dentokudev.com",
+    });
+  });
+
+  it("declares each automated job as a Service of the studio", () => {
+    const services = buildServicesSchema([{ title: "Preparing quotes.", does: "Fills in the quote." }], "it");
+    expect(services["@graph"][0]).toMatchObject({
+      "@type": "Service",
+      name: "Preparing quotes",
+      url: "https://www.dentokudev.com/it#services",
+      provider: { name: "Dentoku Dev" },
     });
   });
 

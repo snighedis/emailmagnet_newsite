@@ -9,7 +9,7 @@ import { getCopy, getPageCopy } from "@/copy";
 import { LocaleLink } from "@/i18n/locale-link";
 import { resolveLang } from "@/i18n/params";
 import { createMetadata } from "@/lib/metadata";
-import { buildItemListSchema } from "@/lib/schema";
+import { buildItemListSchema, buildServicesSchema } from "@/lib/schema";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const lang = await resolveLang(params);
@@ -44,6 +44,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <link rel="preload" as="image" href={copy.heroVideo.poster} media="(min-width: 64rem)" fetchPriority="high" />
       <link rel="preload" as="image" href={copy.heroVideo.phone.poster} media="(max-width: 63.99rem)" fetchPriority="high" />
       <JsonLd data={buildItemListSchema(copy.itemListName, products)} />
+      <JsonLd data={buildServicesSchema(copy.automate.items, lang)} />
       <HomeReveal />
 
       <HomeHero copy={copy} lang={lang} />
@@ -83,9 +84,10 @@ function HomeSection({
             <div className="grid gap-x-14 gap-y-10 md:grid-cols-2 lg:col-start-2">
               {automate.items.map((item, i) => (
                 <div key={item.title} data-reveal style={d(i)} className="t-body text-ink max-w-[40ch] space-y-2">
-                  <p>
-                    <strong className="font-semibold">{item.title}</strong> {item.does}
-                  </p>
+                  {/* Each job is a heading (h3 under the section's h2) that runs into its text */}
+                  <div>
+                    <h3 className="inline font-sans font-semibold">{item.title}</h3> <p className="inline">{item.does}</p>
+                  </div>
                   <p className="text-stone-600">
                     {automate.staysLabel} {item.stays}
                   </p>
@@ -108,10 +110,13 @@ function HomeSection({
     // the last stage closes the right edge instead of leaving half the field empty.
     const indentTablet = ["md:ml-0", "md:ml-[13.33%]", "md:ml-[26.66%]", "md:ml-[40%]"];
     return (
-      <section id="process" aria-label={copy.process.heading} className="bg-brand text-ink scroll-mt-16">
+      <section id="process" aria-labelledby="process-heading" className="bg-brand text-ink scroll-mt-16">
+        {/* The section is named for readers and search; the four stages under it are h3 */}
+        <h2 id="process-heading" className="sr-only">
+          {copy.process.heading}
+        </h2>
         <ol className="page-x space-y-10 py-20 md:space-y-14 md:py-32">
           {steps.map((step, i) => {
-            const Heading = i === 0 ? "h2" : "h3";
             return (
               <li
                 key={step.title}
@@ -119,7 +124,7 @@ function HomeSection({
                 style={d(i)}
                 className={`${indentPhone[i]} ${indentTablet[i]} ${indent[i]} md:w-[60%] lg:w-auto`}
               >
-                <Heading className="t-2 whitespace-nowrap max-sm:whitespace-normal">{step.title}</Heading>
+                <h3 className="t-2 whitespace-nowrap max-sm:whitespace-normal">{step.title}</h3>
                 <p className="t-body mt-3 max-w-[38ch] md:max-w-none lg:max-w-[38ch]">{step.description}</p>
               </li>
             );

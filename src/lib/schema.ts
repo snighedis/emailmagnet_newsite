@@ -232,6 +232,30 @@ export function buildItemListSchema(
   };
 }
 
+/**
+ * The four jobs the studio automates (the home's "What we automate"), one Service
+ * each, so search and AI assistants read what is sold, not only who sells it.
+ * Names and descriptions are the visible copy of the page, in its language.
+ */
+export function buildServicesSchema(
+  items: Array<{ title: string; does: string }>,
+  lang: Locale = "en",
+) {
+  const url = `${base}${localizedHref(lang, "/")}#services`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": items.map((item) => ({
+      "@type": "Service",
+      name: item.title.replace(/\.$/, ""),
+      description: item.does,
+      serviceType: "Custom software and automation for small businesses",
+      inLanguage: lang,
+      url,
+      provider: { "@type": "Organization", name: siteConfig.companyName, url: base },
+    })),
+  };
+}
+
 export function buildFaqSchema(items: FaqItem[], lang: Locale = "en") {
   return {
     "@context": "https://schema.org",
