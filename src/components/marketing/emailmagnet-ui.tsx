@@ -1,5 +1,5 @@
 /**
- * EmailMagnet's popup and its surroundings, rebuilt in HTML from the 2.5.7
+ * EmailMagnet's popup and its surroundings, rebuilt in HTML from the 2.6.0
  * package (popup.html and styles/main.css): its colours, its confidence badges,
  * its source labels and the columns of its CSV export. These are pictures of the
  * product, so each root is one `role="img"` with a description, and it carries
@@ -66,12 +66,15 @@ function Check({ on }: { on?: boolean }) {
 function Popup({
   count,
   rows,
+  domain,
   pro,
   sort = "Confidence",
   listHeight,
 }: {
   count: number;
   rows: Row[];
+  /** The page the popup reads, printed under the count. */
+  domain: string;
   pro?: boolean;
   sort?: string;
   /** Crops the list the way the popup scrolls it. */
@@ -79,16 +82,22 @@ function Popup({
 }) {
   const selected = rows.filter((row) => row.selected).length;
   const action = selected || count;
+  // "(current tab)" only appears when the list mixes pages; on a one-page list
+  // every row is the current tab's, so every address keeps the stronger weight.
+  const mixed = rows.some((row) => row.currentTab);
   return (
     <div className="emui-popup">
       <div className="emui-head">
         <div className="emui-top">
           <span className="emui-logo">
-            <span className="emui-logo-email">Email</span>
-            <span className="emui-logo-magnet">Magnet</span>
+            {/* eslint-disable-next-line @next/next/no-img-element -- the popup's own 16px mark inside a drawn picture */}
+            <img src="/brand/emailmagnet-mark-48.png" alt="" width={17} height={17} className="emui-logo-mark" />
+            {/* eslint-disable-next-line @next/next/no-img-element -- the popup's own wordmark PNG inside a drawn picture */}
+            <img src="/brand/emailmagnet-wordmark.png" alt="" width={125} height={25} className="emui-logo-word" />
             {pro ? <span className="emui-pro">PRO</span> : null}
           </span>
           <span className="emui-icons">
+            <span className="emui-automation">Automation</span>
             <svg viewBox="0 0 24 24" className="emui-icon-toggle">
               <rect x="2.5" y="7" width="19" height="10" rx="5" />
               <circle cx="16.5" cy="12" r="3" />
@@ -102,16 +111,9 @@ function Popup({
         </div>
         <div className="emui-counter">
           <span className="emui-count">{count} emails found</span>
-          <span className="emui-status">Ready to scan</span>
+          <span className="emui-domain">{domain}</span>
         </div>
         {pro ? null : <span className="emui-banner">PRO keeps every email from every page in one list ›</span>}
-        <div className="emui-controls">
-          <span className="emui-autosave">
-            <span className="emui-switch" />
-            Autosave
-          </span>
-          <span className="emui-automation">Automation</span>
-        </div>
       </div>
       <div className="emui-toolbar">
         <span className="emui-search">Search emails or domains…</span>
@@ -131,7 +133,7 @@ function Popup({
           <div key={row.email} className={row.selected ? "emui-row emui-row-on" : "emui-row"}>
             <Check on={row.selected} />
             <span className="emui-row-body">
-              <span className={row.currentTab ? "emui-email emui-email-current" : "emui-email"}>{row.email}</span>
+              <span className={!mixed || row.currentTab ? "emui-email emui-email-current" : "emui-email"}>{row.email}</span>
               <span className="emui-meta">
                 <span className={`emui-badge emui-badge-${row.level}`}>{row.level === "high" ? "High" : "Medium"}</span>
                 <span className="emui-source">{row.source}</span>
@@ -147,20 +149,14 @@ function Popup({
             <span className="emui-button">TXT ({action})</span>
             <span className="emui-button">CSV ({action})</span>
           </span>
-          <span className="emui-button">Copy ({action})</span>
+          <span className="emui-button emui-button-primary">Copy ({action})</span>
         </div>
         <div className="emui-rate">
           <span>
-            Please rate EmailMagnet
-            <span className="emui-stars">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <svg key={i} viewBox="0 0 24 24">
-                  <path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8Z" />
-                </svg>
-              ))}
-            </span>
+            Please rate EmailMagnet <span className="emui-rate-button">Rate it</span>
           </span>
-          <span className="emui-rate-button">Rate it</span>
+          {/* eslint-disable-next-line @next/next/no-img-element -- the studio mark in the popup's corner, inside a drawn picture */}
+          <img src="/brand/dentoku-dev-mark.png" alt="" width={13} height={10} className="emui-studio" />
         </div>
       </div>
     </div>
@@ -234,7 +230,7 @@ export function ContactPageScan() {
             </p>
           </>
         }
-        popup={<Popup count={7} rows={contactPageRows} listHeight={284} />}
+        popup={<Popup count={7} rows={contactPageRows} domain={brightside} listHeight={284} />}
       />
     </div>
   );
@@ -254,7 +250,7 @@ export function ReviewAndExport() {
       className="emui emui-review"
     >
       <div className="emui-review-popup">
-        <Popup count={7} rows={reviewedRows} listHeight={262} />
+        <Popup count={7} rows={reviewedRows} domain={brightside} listHeight={262} />
       </div>
       <div className="emui-sheet">
         <div className="emui-sheet-title">emails_2026-10-27.csv</div>
@@ -337,7 +333,7 @@ export function OneListAcrossTabs() {
             <p>Want to join us? Send your portfolio to jobs@{harbor}.</p>
           </>
         }
-        popup={<Popup count={16} rows={allPagesRows} pro sort="Domain" listHeight={324} />}
+        popup={<Popup count={16} rows={allPagesRows} domain={harbor} pro sort="Domain" listHeight={324} />}
       />
     </div>
   );

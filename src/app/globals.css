@@ -775,7 +775,7 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
 }
 
 /* EmailMagnet's popup rebuilt in HTML (src/components/marketing/emailmagnet-ui.tsx).
-   Values from the 2.5.7 package's styles/main.css, set a little smaller (the real
+   Values from the 2.6.0 package's styles/main.css, set a little smaller (the real
    popup is 435px wide) so a page and the popup fit one column side by side. */
 [data-ui].emui {
   font-family: var(--font-sans);
@@ -921,23 +921,25 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
   }
 }
 
-/* The popup */
+/* The popup: the 2.6.0 restyle (one accent, the studio orange, only on PRO
+   and selection; one filled button, near black). Real sizes times 0.83. */
 [data-ui] .emui-popup {
   width: 360px;
   max-width: 100%;
   overflow: hidden;
-  border: 1px solid #d6d9de;
+  border: 1px solid #e6e4e0;
   border-radius: 8px;
   background: #fff;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+  color: #11212f;
+  box-shadow: 0 10px 28px rgba(17, 33, 47, 0.18);
 }
 [data-ui] .emui-head {
-  padding: 9px 13px 6px;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 13px 9px;
+  border-bottom: 1px solid #e6e4e0;
+  background: #fbfbfa;
 }
 [data-ui] .emui-top,
 [data-ui] .emui-counter,
-[data-ui] .emui-controls,
 [data-ui] .emui-toolbar,
 [data-ui] .emui-selectall,
 [data-ui] .emui-foot-buttons,
@@ -947,155 +949,165 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
   justify-content: space-between;
   gap: 8px;
 }
+[data-ui] .emui-top {
+  min-height: 26px;
+}
 [data-ui] .emui-logo {
-  font-size: 18px;
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
 }
-[data-ui] .emui-logo-email {
-  color: #6b7280;
+[data-ui] .emui-logo-mark {
+  flex: none;
+  width: 17px;
+  height: 17px;
 }
-[data-ui] .emui-logo-magnet {
-  color: #ef4444;
+/* The PNG carries its own air: trimmed so the word sits next to the mark. */
+[data-ui] .emui-logo-word {
+  flex: none;
+  width: auto;
+  height: 25px;
+  margin: -3px -7px -3px -10px;
 }
 [data-ui] .emui-pro {
-  margin-left: 4px;
-  padding: 1px 4px;
-  vertical-align: top;
+  margin-left: 5px;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: #fdf1eb;
+  color: #a8410f;
   font-size: 9px;
-  font-style: normal;
-  background: #ffc107;
-  color: #333;
+  font-weight: 700;
+  line-height: 13px;
 }
 [data-ui] .emui-icons {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 9px;
 }
 [data-ui] .emui-icons svg {
-  width: 21px;
-  height: 21px;
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+[data-ui] .emui-icon-toggle {
+  margin-left: 2px;
+  color: #11212f;
+}
+[data-ui] .emui-icon-toggle rect {
   fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+[data-ui] .emui-icon-toggle circle {
+  fill: currentColor;
+}
+[data-ui] .emui-icon-cog {
+  fill: none;
+  stroke: #556270;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-[data-ui] .emui-icon-toggle {
-  stroke: #0f766e;
-}
-[data-ui] .emui-icon-cog {
-  stroke: #475569;
+[data-ui] .emui-automation {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid #d3d0cb;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 10px;
+  font-weight: 600;
 }
 [data-ui] .emui-counter {
   align-items: baseline;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 [data-ui] .emui-count {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #0f172a;
+  flex: none;
+  font-size: 16.5px;
+  font-weight: 650;
+  line-height: 20px;
+  letter-spacing: -0.01em;
 }
-[data-ui] .emui-status {
+[data-ui] .emui-domain {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   font-size: 10px;
-  color: #6b7280;
+  color: #556270;
 }
 [data-ui] .emui-banner {
   display: block;
-  margin-top: 2px;
+  margin-top: 5px;
   font-size: 10px;
-  color: #b91c1c;
-}
-[data-ui] .emui-controls {
-  padding-top: 6px;
-}
-[data-ui] .emui-autosave {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 11px;
-}
-[data-ui] .emui-switch {
-  position: relative;
-  width: 38px;
-  height: 20px;
-  border-radius: 20px;
-  background: #4299e1;
-}
-[data-ui] .emui-switch::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #fff;
-}
-[data-ui] .emui-automation {
-  padding: 7px 14px;
-  border-radius: 4px;
-  background: #4299e1;
-  color: #fff;
-  font-size: 11px;
   font-weight: 500;
+  color: #a8410f;
 }
 [data-ui] .emui-toolbar {
-  gap: 6px;
-  padding: 6px 9px;
-  border-bottom: 1px solid #e5e7eb;
-  background: #fafafa;
+  gap: 7px;
+  padding: 6px 13px;
+  border-bottom: 1px solid #efedea;
 }
 [data-ui] .emui-search,
 [data-ui] .emui-sort {
-  padding: 5px 8px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 8px;
+  border: 1px solid #d3d0cb;
+  border-radius: 5px;
   background: #fff;
   font-size: 11px;
 }
 [data-ui] .emui-search {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
   color: #6b7280;
 }
 [data-ui] .emui-sort {
+  flex: none;
   padding-right: 22px;
-  color: #374151;
-  background: #fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 7px center / 11px 11px;
+  font-weight: 500;
+  background: #fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2311212f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 8px center / 10px 10px;
 }
 [data-ui] .emui-selectall {
-  padding: 6px 12px;
-  border-bottom: 1px solid #e5e7eb;
+  height: 25px;
+  padding: 0 13px;
+  border-bottom: 1px solid #efedea;
 }
 [data-ui] .emui-selectall-label {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
   font-size: 11px;
   font-weight: 600;
-  color: #374151;
 }
 [data-ui] .emui-selected {
   font-size: 10px;
-  color: #6b7280;
+  color: #556270;
 }
 [data-ui] .emui-check {
   flex: none;
   display: grid;
   place-items: center;
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid #767676;
-  border-radius: 3px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #767676;
+  border-radius: 2px;
   background: #fff;
 }
 [data-ui] .emui-check-on {
-  border-color: #ed453b;
-  background: #ed453b;
+  border-color: #f05423;
+  background: #f05423;
 }
 [data-ui] .emui-check svg {
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   fill: none;
   stroke: #fff;
   stroke-width: 2;
@@ -1108,12 +1120,12 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
 [data-ui] .emui-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-bottom: 1px solid #e0e0e0;
+  gap: 10px;
+  padding: 7px 13px;
+  border-bottom: 1px solid #efedea;
 }
 [data-ui] .emui-row-on {
-  background: #dce9fa;
+  background: #fdf1eb;
 }
 [data-ui] .emui-row-body {
   display: flex;
@@ -1121,7 +1133,8 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
   min-width: 0;
 }
 [data-ui] .emui-email {
-  font-size: 12px;
+  font-size: 11.5px;
+  line-height: 16.5px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1132,70 +1145,79 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
 [data-ui] .emui-meta {
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-top: 3px;
+  gap: 5px;
+  margin-top: 2.5px;
 }
 [data-ui] .emui-badge {
-  padding: 1px 5px;
+  padding: 0 5px;
   border-radius: 3px;
   font-size: 9px;
-  font-weight: 700;
-  color: #fff;
+  font-weight: 600;
+  line-height: 13px;
 }
 [data-ui] .emui-badge-high {
-  background: #0f766e;
+  background: #dff3e6;
+  color: #155a36;
 }
 [data-ui] .emui-badge-medium {
-  background: #b45309;
+  background: #fbf0d4;
+  color: #7a4a06;
 }
 [data-ui] .emui-source {
   font-size: 10px;
-  color: #64748b;
+  font-weight: 500;
+  color: #556270;
   white-space: nowrap;
 }
 [data-ui] .emui-current {
   margin-left: auto;
   flex: none;
   font-size: 10px;
-  color: #10b981;
+  font-weight: 500;
+  color: #556270;
 }
 [data-ui] .emui-foot {
   padding: 8px 13px 7px;
-  background: #f7f7f7;
+  border-top: 1px solid #e6e4e0;
+  background: #fbfbfa;
 }
 [data-ui] .emui-button {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 6px;
-  background: #ebebeb;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid #d3d0cb;
+  border-radius: 5px;
+  background: #fff;
   font-size: 11px;
   font-weight: 500;
 }
 [data-ui] .emui-button + .emui-button {
-  margin-left: 6px;
+  margin-left: 7px;
+}
+[data-ui] .emui-button-primary {
+  border-color: #11212f;
+  background: #11212f;
+  color: #fff;
+  font-weight: 600;
 }
 [data-ui] .emui-rate {
-  margin-top: 8px;
+  margin-top: 6px;
   font-size: 10px;
-  font-weight: 600;
-  color: #374151;
-}
-[data-ui] .emui-stars {
-  display: inline-flex;
-  gap: 1px;
-  margin-left: 4px;
-  vertical-align: -1px;
-}
-[data-ui] .emui-stars svg {
-  width: 10px;
-  height: 10px;
-  fill: #c4c9d0;
+  color: #556270;
 }
 [data-ui] .emui-rate-button {
-  padding: 3px 9px;
-  border: 1px solid #ef4444;
-  border-radius: 4px;
-  color: #ef4444;
+  margin-left: 3px;
+  font-weight: 600;
+  color: #11212f;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+[data-ui] .emui-studio {
+  flex: none;
+  width: 13px;
+  height: auto;
+  opacity: 0.6;
 }
 
 /* The popup beside the CSV it exports */
@@ -1209,7 +1231,7 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
   z-index: 1;
 }
 [data-ui] .emui-sheet {
-  margin: 196px 0 0 -72px;
+  margin: 150px 0 0 -72px;
   overflow: hidden;
   border: 1px solid #c7ccd1;
   border-radius: 8px;
