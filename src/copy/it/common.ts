@@ -42,10 +42,10 @@ export const common: CommonCopy = {
     title: "Rispettiamo la tua privacy",
     preferencesTitle: "Preferenze cookie",
     closeAria: "Rifiuta i cookie non essenziali e chiudi",
-    closeNote: "Chiudere questo banner con la X equivale a rifiutare i cookie non essenziali.",
+    closeNote: "La X rifiuta quelli non essenziali.",
     intro: {
       before:
-        "Usiamo cookie strettamente necessari per far funzionare il sito e, solo con il tuo consenso, cookie di analisi e di marketing. Puoi accettare, rifiutare o scegliere per categoria. Leggi la nostra",
+        "Usiamo cookie necessari e, solo con il tuo consenso, cookie di analisi e di marketing: leggi la",
       link: "Cookie Policy",
       after: ".",
     },

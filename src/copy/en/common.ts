@@ -46,10 +46,10 @@ export const common = {
     title: "We value your privacy",
     preferencesTitle: "Cookie preferences",
     closeAria: "Reject non-essential cookies and close",
-    closeNote: "Closing this banner with the X rejects the non-essential cookies.",
+    closeNote: "The X rejects the non-essential ones.",
     intro: {
       before:
-        "We use strictly necessary cookies to run this site, and, only with your consent, analytics and marketing cookies. You can accept, reject, or choose per category. Read our",
+        "We use necessary cookies and, only with your consent, analytics and marketing cookies: read the",
       link: "Cookie Policy",
       after: ".",
     },

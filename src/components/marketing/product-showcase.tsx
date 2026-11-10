@@ -22,6 +22,7 @@ export function ProductShowcase({
   overviewLink,
   exclude,
   limit,
+  compact,
 }: {
   products: Products;
   lang: string;
@@ -37,6 +38,12 @@ export function ProductShowcase({
   exclude?: string;
   /** How many products to show, in showcase order. */
   limit?: number;
+  /**
+   * On a phone, two whole pictures a row with name and store only, so the four
+   * fit one screen. For the homepage, where the products are proof in second
+   * row and each has its own page for the rest.
+   */
+  compact?: boolean;
 }) {
   const shown = inShowcaseOrder(products.filter((product) => product.href !== exclude)).slice(0, limit);
   return (
@@ -49,7 +56,9 @@ export function ProductShowcase({
           {caption}
         </p>
       </div>
-      <ul className="page-x mt-12 grid gap-x-8 gap-y-14 md:mt-16 md:grid-cols-2">
+      <ul
+        className={`page-x mt-12 grid md:mt-16 md:grid-cols-2 md:gap-x-8 md:gap-y-14 ${compact ? "grid-cols-2 gap-x-4 gap-y-8" : "gap-y-14"}`}
+      >
         {shown.map((product, i) => {
           const picture = productPicture(product.name, lang);
           const store = product.externalUrl?.includes("shopify.com") ? "Shopify App Store" : "Chrome Web Store";
@@ -62,17 +71,21 @@ export function ProductShowcase({
                       src={picture}
                       alt=""
                       fill
-                      sizes="(min-width: 768px) 46vw, 92vw"
+                      sizes={compact ? "46vw" : "(min-width: 768px) 46vw, 92vw"}
                       className={`object-cover transition-[transform,filter] duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.02] motion-reduce:transition-none ${exclude ? "tile-muted" : ""}`}
                     />
                   ) : null}
                 </span>
-                <span className="mt-5 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <span className="t-3 text-ink">{product.name}</span>
+                <span
+                  className={`flex items-baseline justify-between gap-x-4 gap-y-1 ${compact ? "mt-3 flex-col md:mt-5 md:flex-row md:flex-wrap" : "mt-5 flex-wrap"}`}
+                >
+                  <span className={`t-3 text-ink ${compact ? "t-3-compact" : ""}`}>{product.name}</span>
                   {/* Store names are never translated (AGENTS.md) */}
                   <span className="text-sm text-stone-600">{store}</span>
                 </span>
-                <span className="t-body text-ink mt-2 block max-w-[52ch]">{product.description}</span>
+                <span className={`t-body text-ink mt-2 max-w-[52ch] ${compact ? "hidden md:block" : "block"}`}>
+                  {product.description}
+                </span>
               </LocaleLink>
             </li>
           );

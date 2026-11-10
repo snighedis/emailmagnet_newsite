@@ -37,6 +37,8 @@ export const home = {
       "37-second loop with AI-generated footage: an accountant, an agency and a farm stay lose time on emails, data copied by hand and double bookings; Dentoku Dev's method from understanding the problem to shipping, with Kallmy as an example in production, ending on the brief field",
     controls: { play: "Play video", pause: "Pause video" },
     aiDisclosure: "AI-generated",
+    // Names the track under the film for screen readers.
+    progress: "Position in the film",
   },
   // One sentence under the brief: who the studio works for, and the public proof.
   // The rating is the real Chrome Web Store score (src/data/site.ts).
@@ -74,6 +76,46 @@ export const home = {
         stays: "the exceptions.",
       },
     ],
+    // One piece of interface per job, in the items' order (automation-fragment.tsx).
+    // Sample data: the names and amounts the home film already shows.
+    fragments: {
+      email: {
+        subject: "Quote request",
+        from: "Bianchi Srl",
+        draftLabel: "Draft reply",
+        draft: "Good morning, thank you for your request. Please find the quote for the website attached.",
+        status: "Ready in your drafts",
+      },
+      quote: {
+        title: "Quote",
+        client: "Bianchi Srl",
+        lines: [
+          ["Website", "€2,400"],
+          ["Yearly maintenance", "€480"],
+        ],
+        totalLabel: "Total",
+        total: "€2,880",
+        status: "Filled in from your price list",
+      },
+      data: {
+        from: "Quote",
+        to: "Client sheet",
+        client: "Client",
+        clientValue: "Bianchi Srl",
+        amount: "Amount",
+        amountValue: "€2,400",
+        status: "Copied from the quote",
+      },
+      bookings: {
+        day: "Saturday",
+        rows: [
+          ["Room 1", "Conti family"],
+          ["Room 2", "Greco family"],
+          ["Room 3", "Free"],
+        ],
+        status: "Reminder sent",
+      },
+    },
   },
   process: {
     heading: "How we work",

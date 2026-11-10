@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
+import { AUTOMATION_KINDS, AutomationFragment } from "@/components/marketing/automation-fragment";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { HomeReveal } from "@/components/marketing/home-reveal";
@@ -80,20 +81,26 @@ function HomeSection({
           <p data-reveal className="t-3 text-ink max-w-[52ch]">
             {automate.statement}
           </p>
-          <div className="axis mt-16 md:mt-24">
-            <div className="grid gap-x-14 gap-y-10 md:grid-cols-2 lg:col-start-2">
-              {automate.items.map((item, i) => (
-                <div key={item.title} data-reveal style={d(i)} className="t-body text-ink max-w-[40ch] space-y-2">
-                  {/* Each job is a heading (h3 under the section's h2) that runs into its text */}
-                  <div>
-                    <h3 className="inline font-sans font-semibold">{item.title}</h3> <p className="inline">{item.does}</p>
-                  </div>
-                  <p className="text-stone-600">
+          {/* One row per job: its piece of interface in the left column, up to the
+              column line, and what the software does on the line itself. */}
+          <div className="mt-12 space-y-10 md:mt-24 md:space-y-16">
+            {automate.items.map((item, i) => (
+              <div
+                key={item.title}
+                className="grid gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-[var(--axis)_minmax(0,1fr)] lg:gap-0"
+              >
+                <div data-reveal className="lg:mr-14">
+                  <AutomationFragment kind={AUTOMATION_KINDS[i]} copy={automate.fragments} />
+                </div>
+                <div data-reveal style={d(1)} className="text-ink max-w-[46ch] space-y-2 md:self-center">
+                  <h3 className="t-lead font-sans font-semibold">{item.title}</h3>
+                  <p className="t-body lg:text-[20px] lg:leading-[1.55]">{item.does}</p>
+                  <p className="t-body text-muted-foreground">
                     {automate.staysLabel} {item.stays}
                   </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -143,6 +150,7 @@ function HomeSection({
         title={p.title}
         caption={p.caption}
         overviewLink={p.overviewLink}
+        compact
       />
     );
   }

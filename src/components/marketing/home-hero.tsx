@@ -9,6 +9,13 @@ type HomeHeroProps = {
   lang: string;
 };
 
+/**
+ * Where each part of the home film begins after the first, in seconds: the method,
+ * Kallmy, "you keep the decisions", the brief field (video/studio-hero-hf, the
+ * same timeline in both cuts and both languages).
+ */
+const FILM_CHAPTERS = [7.5, 21, 27.4, 30.9];
+
 /** The real Chrome Web Store score, shown with the products line. */
 const STORE_RATING = 5.0;
 
@@ -65,11 +72,12 @@ export function HomeHero({ copy, lang }: HomeHeroProps) {
             label={copy.heroVideo.label}
             controls={copy.heroVideo.controls}
             aiDisclosure={copy.heroVideo.aiDisclosure}
-            // From 1024px the 2:1 film plays and the pause button sits over it, on the line
-            // of the film's own label (right 48 / bottom 48 of 1920x960, 36px tall).
-            // Narrower, the 4:5 cut plays: it has no label of its own and runs to its foot,
-            // so the button and the HTML label go in a row under it.
-            layout={{ overlay: "hidden lg:flex left-[2.5%] bottom-[calc(6.875%-22px)]", below: "lg:hidden" }}
+            // The pause button and the track go in a row under the film at every
+            // width: over the film the track would cross photographs and cards. The
+            // 2:1 film (from 1024px) carries its own AI label; the 4:5 cut has none,
+            // so the HTML label closes the row there.
+            layout={{ overlay: "hidden", below: "", disclosure: "lg:hidden" }}
+            progress={{ label: copy.heroVideo.progress, chapters: FILM_CHAPTERS }}
             phone={copy.heroVideo.phone}
             width={1728}
             height={864}

@@ -153,16 +153,21 @@ export function CookieBanner() {
       {/* Re-keyed when switching to the preferences, so the new content fades in. */}
       <div
         key={isPreferences ? "preferences" : "intro"}
-        className="shadow-soft-lg animate-in fade-in-0 bg-white px-4 pt-2 pb-[max(1rem,env(safe-area-inset-bottom))] duration-150 sm:p-5"
+        className="shadow-soft-lg animate-in fade-in-0 bg-white px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] duration-150 sm:p-5"
       >
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="text-base font-semibold text-stone-950">
+        {/* On a phone the first layer has no title row: the X floats in the corner
+            and the notice wraps around it, so the bar covers under a fifth of the screen. */}
+        <div className={cn("flex items-center justify-between gap-3", !isPreferences && "max-sm:contents")}>
+          <h2 className={cn("text-base font-semibold text-stone-950", !isPreferences && "max-sm:sr-only")}>
             {isPreferences ? copy.preferencesTitle : copy.title}
           </h2>
           <button
             type="button"
             onClick={rejectAll}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-stone-500 hover:text-stone-950"
+            className={cn(
+              "flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-stone-500 hover:text-stone-950",
+              !isPreferences && "max-sm:float-right max-sm:-mt-2 max-sm:-mr-3",
+            )}
             aria-label={copy.closeAria}
           >
             <MenuClose className="size-5" />
@@ -222,7 +227,7 @@ export function CookieBanner() {
         )}
 
         {/* Equal-prominence Accept / Reject (no dark patterns). */}
-        <div className="mt-3 flex flex-wrap gap-2 sm:mt-4">
+        <div className="mt-3 flex clear-both flex-wrap gap-2 sm:mt-4">
           <Button
             onClick={rejectAll}
             size="lg"

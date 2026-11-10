@@ -31,7 +31,16 @@ type HeroVideoProps = {
    * film instead, where the film's label is too small to read. Each takes the
    * classes that say where (and at which widths) it applies.
    */
-  layout?: { overlay: string; below: string };
+  layout?: { overlay: string; below: string; disclosure?: string };
+  /**
+   * A film that tells a story needs to show where it is: a track beside the
+   * pause button, with the film's orange dot travelling along it and going back
+   * to the start when the film loops. `label` names it for screen readers;
+   * `chapters` are the seconds at which each part after the first begins, cut
+   * into the track as gaps. It is a real seek control (a native range input).
+   * Needs `layout`, since the track sits in the row under the film.
+   */
+  progress?: { label: string; chapters?: number[] };
   /**
    * A cut of the film for phones and tablets, shown below 1024px instead of the
    * main one: the main film's type is too small to read there.
@@ -45,6 +54,9 @@ type HeroVideoProps = {
   width?: number;
   height?: number;
 };
+
+/** Seconds as m:ss, for the position read to screen readers (never shown). */
+const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`; // taste-skill-ignore
 
 /**
  * Looping product video with a poster fallback.
@@ -70,46 +82,110 @@ export function HeroVideo({
   layout,
   phone,
   band = false,
+  progress,
 }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const phoneRef = useRef<HTMLVideoElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const seekRef = useRef<HTMLInputElement>(null);
+  // Paused by the visitor: scrolling the film back into view must not restart it.
+  const userPaused = useRef(false);
   const disclosureId = useId();
   const [playing, setPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
   const [muted, setMuted] = useState(true);
 
   // With a phone cut, only the film on screen plays: the other is display:none.
   const wide = () => window.matchMedia("(min-width: 64rem)").matches;
   const active = () => (phone && !wide() ? phoneRef.current : videoRef.current);
 
+  // The film plays only while the visitor can see it: it starts (the first time,
+  // from its first frame) once half of it is on screen, stops when less than a
+  // third is, and picks up from there when they scroll back. A film that tells a
+  // story should not run its opening behind the fold or under the page.
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const width = window.matchMedia("(min-width: 64rem)");
+    let inView = false;
     const sync = () => {
       const current = phone && !width.matches ? phoneRef.current : videoRef.current;
       for (const video of [videoRef.current, phoneRef.current]) {
         if (video && video !== current) video.pause();
       }
       if (!current) return;
-      if (reduceMotion.matches) {
+      if (reduceMotion.matches || !inView || userPaused.current) {
         current.pause();
       } else {
         current.play().catch(() => {});
       }
     };
-    sync();
+    // The cut that is display:none never intersects, so the visible one decides.
+    const ratios = new Map<Element, number>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) ratios.set(entry.target, entry.intersectionRatio);
+        const seen = Math.max(0, ...ratios.values());
+        if (seen >= 0.5) inView = true;
+        else if (seen < 0.3) inView = false;
+        sync();
+      },
+      { threshold: [0, 0.3, 0.5] },
+    );
+    for (const video of [videoRef.current, phoneRef.current]) {
+      if (video) observer.observe(video);
+    }
     reduceMotion.addEventListener("change", sync);
     width.addEventListener("change", sync);
     return () => {
+      observer.disconnect();
       reduceMotion.removeEventListener("change", sync);
       width.removeEventListener("change", sync);
     };
   }, [phone]);
 
+  // The dot follows the film frame by frame while it plays. Written straight to
+  // the track (a custom property and the range's value), so React does not
+  // re-render sixty times a second.
+  useEffect(() => {
+    if (!progress) return;
+    let frame = 0;
+    let lastSecond = -1;
+    const paint = () => {
+      const video = phone && !wide() ? phoneRef.current : videoRef.current;
+      const total = video?.duration;
+      if (video && total && Number.isFinite(total)) {
+        // The metadata can arrive before React attaches onLoadedMetadata.
+        setDuration(total);
+        trackRef.current?.style.setProperty("--p", String(video.currentTime / total));
+        const seek = seekRef.current;
+        if (seek) {
+          seek.value = String(video.currentTime);
+          const second = Math.floor(video.currentTime);
+          if (second !== lastSecond) {
+            lastSecond = second;
+            seek.setAttribute("aria-valuetext", `${clock(video.currentTime)} / ${clock(total)}`);
+          }
+        }
+      }
+      if (playing) frame = requestAnimationFrame(paint);
+    };
+    paint();
+    return () => cancelAnimationFrame(frame);
+  }, [playing, progress, phone, duration]);
+
   const togglePlay = () => {
     const video = active();
     if (!video) return;
+    userPaused.current = !video.paused;
     if (video.paused) video.play().catch(() => {});
     else video.pause();
+  };
+
+  const seek = (seconds: number) => {
+    const video = active();
+    if (!video) return;
+    video.currentTime = seconds;
+    trackRef.current?.style.setProperty("--p", String(video.duration ? seconds / video.duration : 0));
   };
 
   const toggleSound = () => {
@@ -170,6 +246,53 @@ export function HeroVideo({
       </p>
     ) : null;
 
+  // The track: what is left in a tone of the ink, what has played in ink, the
+  // parts cut in as gaps of the ground, and the film's dot at the head. The
+  // range input over it is the control (drag, tap, arrow keys); it is 44px
+  // tall for a thumb although the track itself is 4px.
+  const track = progress ? (
+    <div
+      ref={trackRef}
+      className="has-[:focus-visible]:ring-brand relative h-11 min-w-0 flex-1 has-[:focus-visible]:ring-2"
+    >
+      <div aria-hidden="true" className="bg-ink/15 absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 overflow-hidden">
+        <div className="bg-ink h-full origin-left" style={{ transform: "scaleX(var(--p, 0))" }} />
+      </div>
+      {duration
+        ? progress.chapters?.map((start) => (
+            <span
+              key={start}
+              aria-hidden="true"
+              className="bg-background absolute top-1/2 h-1 w-1 -translate-y-1/2"
+              style={{ left: `calc(${(start / duration) * 100}% - 2px)` }}
+            />
+          ))
+        : null}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/2"
+        style={{ transform: "translateX(calc(var(--p, 0) * 100%))" }}
+      >
+        <span className="bg-brand absolute top-0 left-0 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full" />
+      </div>
+      <input
+        ref={seekRef}
+        type="range"
+        min={0}
+        max={duration || 1}
+        step={0.1}
+        defaultValue={0}
+        aria-label={progress.label}
+        onChange={(event) => seek(Number(event.target.value))}
+        className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
+      />
+    </div>
+  ) : null;
+
+  const onMetadata = (event: React.SyntheticEvent<HTMLVideoElement>) => {
+    if (event.currentTarget === active()) setDuration(event.currentTarget.duration);
+  };
+
   return (
     <div
       className={cn(
@@ -194,6 +317,8 @@ export function HeroVideo({
         aria-describedby={aiDisclosure ? disclosureId : undefined}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
+        onLoadedMetadata={onMetadata}
+        onDurationChange={onMetadata}
       >
         {/* h264 only: universally decodable, and at this bitrate it came out
             SMALLER than the vp9 webm, which also hit decode errors in testing. */}
@@ -215,6 +340,8 @@ export function HeroVideo({
           aria-describedby={aiDisclosure ? disclosureId : undefined}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
+          onLoadedMetadata={onMetadata}
+          onDurationChange={onMetadata}
         >
           <source src={phone.src} type="video/mp4" />
         </video>
@@ -222,9 +349,10 @@ export function HeroVideo({
       {layout ? (
         <>
           {buttons ? <div className={cn("absolute flex gap-2", layout.overlay)}>{buttons}</div> : null}
-          <div className={cn("flex items-center justify-between gap-3 pt-3", layout.below)}>
+          <div className={cn("flex items-center justify-between gap-4 pt-3", layout.below)}>
             <div className="flex gap-2">{buttons}</div>
-            {disclosure()}
+            {track}
+            {disclosure(layout.disclosure)}
           </div>
         </>
       ) : (

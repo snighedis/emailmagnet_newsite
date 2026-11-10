@@ -31,6 +31,8 @@ export const home: HomeCopy = {
       "Video in loop di 37 secondi con riprese generate con l’AI: una commercialista, un’agenzia e un agriturismo perdono tempo con email, dati ricopiati a mano e doppie prenotazioni; il metodo di Dentoku Dev dall’analisi del problema al rilascio, con Kallmy come esempio in produzione, e in chiusura il campo del brief",
     controls: { play: "Riproduci il video", pause: "Metti in pausa il video" },
     aiDisclosure: "Generato con AI",
+    // Names the track under the film for screen readers.
+    progress: "Posizione nel film",
   },
   proof: {
     audience: "Lavoriamo con agriturismi e B&B, studi professionali, negozi e artigiani.",
@@ -63,6 +65,44 @@ export const home: HomeCopy = {
         stays: "i casi particolari.",
       },
     ],
+    fragments: {
+      email: {
+        subject: "Richiesta preventivo",
+        from: "Bianchi Srl",
+        draftLabel: "Bozza di risposta",
+        draft: "Buongiorno, grazie per la richiesta. In allegato trova il preventivo per il sito web.",
+        status: "Pronta in bozza",
+      },
+      quote: {
+        title: "Preventivo",
+        client: "Bianchi Srl",
+        lines: [
+          ["Sito web", "€ 2.400"],
+          ["Manutenzione annuale", "€ 480"],
+        ],
+        totalLabel: "Totale",
+        total: "€ 2.880",
+        status: "Compilato dal tuo listino",
+      },
+      data: {
+        from: "Preventivo",
+        to: "Foglio clienti",
+        client: "Cliente",
+        clientValue: "Bianchi Srl",
+        amount: "Importo",
+        amountValue: "€ 2.400",
+        status: "Ricopiato dal preventivo",
+      },
+      bookings: {
+        day: "Sabato",
+        rows: [
+          ["Camera 1", "Famiglia Conti"],
+          ["Camera 2", "Famiglia Greco"],
+          ["Camera 3", "Libera"],
+        ],
+        status: "Promemoria inviato",
+      },
+    },
   },
   process: {
     heading: "Come lavoriamo",
