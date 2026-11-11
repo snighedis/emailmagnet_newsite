@@ -31,7 +31,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-stone-600">
-        Ultimo aggiornamento: 9 ottobre 2026. La presente Informativa descrive come Dentoku Dev
+        Ultimo aggiornamento: 11 novembre 2026. La presente Informativa descrive come Dentoku Dev
         (“noi”) tratta i dati personali quando visiti dentokudev.com, acquisti o usi EmailMagnet, o
         ci affidi servizi di consulenza digitale. È resa ai sensi dell’art. 13 del Regolamento (UE)
         2016/679 (“GDPR”) e del Codice in materia di protezione dei dati personali (D.Lgs.
@@ -394,8 +394,10 @@ export function PrivacyBody() {
         <p>
           <strong>Autorizzazioni.</strong> L’estensione richiede l’accesso alla scheda attiva e la
           possibilità di eseguire script, per analizzare su richiesta la pagina corrente; l’accesso
-          al dominio del nostro backend, per salvare i risultati e verificare la licenza; e, solo se
-          avvii la funzione di automazione, l’accesso facoltativo ai siti del tuo elenco.
+          al dominio del nostro backend, per verificare la licenza, completare un acquisto e
+          ricevere le statistiche d’uso anonime descritte sopra (gli indirizzi estratti non gli
+          vengono mai inviati); e, solo se avvii la funzione di automazione, l’accesso facoltativo
+          ai siti del tuo elenco.
         </p>
       </div>
 

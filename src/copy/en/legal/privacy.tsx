@@ -17,7 +17,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-stone-600">
-        Last updated: October 9, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
+        Last updated: November 11, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
         &quot;us&quot;, or &quot;our&quot;) processes personal data when you visit dentokudev.com, purchase or
         use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
         Art. 13 of Regulation (EU) 2016/679 (&quot;GDPR&quot;) and the Italian Personal Data Protection
@@ -412,9 +412,10 @@ export function PrivacyBody() {
         </p>
         <p>
           <strong>Permissions.</strong> The extension requests access to the active tab and
-          scripting to scan the current page on demand; access to our backend domain to save
-          results and validate your licence; and, only if you start the automation feature,
-          optional access to the sites in your list.
+          scripting to scan the current page on demand; access to our backend domain to
+          validate your licence, complete a purchase and receive the anonymous usage
+          statistics described above (extracted addresses are never sent to it); and, only if
+          you start the automation feature, optional access to the sites in your list.
         </p>
       </div>
 
