@@ -330,8 +330,22 @@ export function PrivacyBody() {
           <strong>What the extension accesses.</strong>{" "}
           When you click to scan a page, or run the automation feature over a list of URLs you
           provide, the extension reads that page&apos;s content solely to identify email
-          addresses. It does not read pages you do not actively scan, and it does not monitor
-          your general browsing.
+          addresses. Apart from the Contact page lookup described below, it does not read pages
+          you do not actively scan, and it does not monitor your general browsing.
+        </p>
+        <p>
+          <strong>Contact page lookup.</strong>{" "}
+          When a page you scan shows 0 to 2 email addresses, the extension reads the Contact page
+          of the same site by itself to look for more. It reads only pages on that same site, at
+          most 2 of them, requests them without cookies, and does so at most once every 24 hours
+          for the same page. Those pages are processed locally in your browser solely to identify
+          email addresses, and nothing from them is sent to us or to anyone else.
+        </p>
+        <p>
+          <strong>Whole-site search.</strong>{" "}
+          Only when you start it (with PRO, or the one free search), the extension reads up to 20
+          pages of the same site in the same way: only that site, without cookies, processed
+          locally in your browser, with nothing sent to us or to anyone else.
         </p>
         <p>
           <strong>Data collected and where it goes.</strong>
@@ -347,6 +361,13 @@ export function PrivacyBody() {
           ). They are never sent to us or to anyone else. The Autosave setting decides whether
           results from the pages you visit are kept in your browser&apos;s history or only the
           current page is kept.
+        </li>
+        <li>
+          On the free plan, the extension also stores in your browser the sites you copied or
+          exported from today, so that it can apply the daily limit, and the addresses found on a
+          Contact page that it shows masked, as a preview. It also remembers the pages it has
+          already run the Contact page lookup for, so that the lookup runs at most once every 24
+          hours. None of this is ever sent to us or to anyone else.
         </li>
         <li>
           Your PRO activation token is sent to our backend to validate your licence and to
@@ -408,7 +429,8 @@ export function PrivacyBody() {
         <p>
           <strong>Retention and deletion.</strong>{" "}
           Stored results can be cleared at any time from within the extension.
-          Uninstalling the extension removes all of them.
+          Uninstalling the extension removes all of them, together with the other data it keeps
+          in your browser.
         </p>
         <p>
           <strong>Permissions.</strong> The extension requests access to the active tab and

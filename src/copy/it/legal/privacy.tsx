@@ -317,8 +317,23 @@ export function PrivacyBody() {
         <p>
           <strong>A cosa accede l’estensione.</strong> Quando fai clic per analizzare una pagina,
           o avvii la funzione di automazione su un elenco di URL che fornisci tu, l’estensione legge
-          il contenuto di quella pagina al solo scopo di individuare indirizzi email. Non legge le
-          pagine che non analizzi attivamente e non monitora la tua navigazione in generale.
+          il contenuto di quella pagina al solo scopo di individuare indirizzi email. Salvo la
+          ricerca nella pagina Contatti descritta qui sotto, non legge le pagine che non analizzi
+          attivamente e non monitora la tua navigazione in generale.
+        </p>
+        <p>
+          <strong>Ricerca nella pagina Contatti.</strong> Quando una pagina che analizzi mostra da 0
+          a 2 indirizzi email, l’estensione legge da sola la pagina Contatti dello stesso sito per
+          cercarne altri. Legge solo pagine di quello stesso sito, al massimo 2, le richiede senza
+          cookie e lo fa al massimo una volta ogni 24 ore per la stessa pagina. Queste pagine sono
+          elaborate localmente nel tuo browser al solo scopo di individuare indirizzi email, e nulla
+          di ciò che contengono viene inviato a noi o ad altri.
+        </p>
+        <p>
+          <strong>Ricerca in tutto il sito.</strong> Solo quando la avvii tu (con il PRO, o con l’unica
+          ricerca gratuita), l’estensione legge allo stesso modo fino a 20 pagine dello stesso sito:
+          solo quel sito, senza cookie, elaborate localmente nel tuo browser, senza inviare nulla a
+          noi o ad altri.
         </p>
         <p>
           <strong>Dati raccolti e dove finiscono.</strong>
@@ -332,6 +347,13 @@ export function PrivacyBody() {
           mai inviati a noi né ad altri. L’impostazione Autosave decide se i risultati delle pagine
           che visiti restano nella cronologia del browser o se viene conservata solo la pagina
           corrente.
+        </li>
+        <li>
+          Con il piano gratuito, l’estensione salva nel tuo browser anche i siti da cui hai copiato
+          o esportato oggi, per poter applicare il limite giornaliero, e gli indirizzi trovati in
+          una pagina Contatti che mostra mascherati, in anteprima. Ricorda inoltre le pagine per cui
+          ha già fatto la ricerca nella pagina Contatti, così che la ricerca avvenga al massimo una
+          volta ogni 24 ore. Nessuno di questi dati viene mai inviato a noi né ad altri.
         </li>
         <li>
           Il tuo token di attivazione PRO viene inviato al nostro backend per verificare la licenza
@@ -389,7 +411,8 @@ export function PrivacyBody() {
         </p>
         <p>
           <strong>Conservazione e cancellazione.</strong> I risultati salvati possono essere cancellati in
-          qualsiasi momento dall’estensione. La disinstallazione dell’estensione li rimuove tutti.
+          qualsiasi momento dall’estensione. La disinstallazione dell’estensione li rimuove tutti,
+          insieme agli altri dati che conserva nel tuo browser.
         </p>
         <p>
           <strong>Autorizzazioni.</strong> L’estensione richiede l’accesso alla scheda attiva e la
