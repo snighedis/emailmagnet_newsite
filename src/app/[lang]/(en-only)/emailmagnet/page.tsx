@@ -22,6 +22,19 @@ import { LocaleLink } from "@/i18n/locale-link";
 import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildSoftwareSchema } from "@/lib/schema";
 
+/** The store rating of a review, drawn small in the ink: every quoted review is 5 out of 5. */
+function FiveStars() {
+  return (
+    <p role="img" aria-label="5 out of 5 stars" className="text-ink flex gap-0.5">
+      {[0, 1, 2, 3, 4].map((n) => (
+        <svg key={n} viewBox="0 0 20 20" aria-hidden="true" className="size-4 fill-current">
+          <path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L10 14.8l-5.2 2.8 1-5.8L1.5 7.7l5.9-.8z" />
+        </svg>
+      ))}
+    </p>
+  );
+}
+
 export const metadata = createMetadata({
   title: "EmailMagnet Chrome Email Extractor",
   description:
@@ -226,9 +239,13 @@ export default function EmailMagnetPage() {
           <div className="grid gap-x-12 gap-y-12 md:grid-cols-2">
             {emailMagnetTestimonials.map((item, i) => (
               <figure key={item.name} data-reveal style={d(i + 1)} className={i === 0 ? "md:col-span-2" : ""}>
-                <blockquote className={i === 0 ? "t-3 t-3-compact text-ink max-w-[40ch]" : "t-lead text-ink max-w-[40ch]"}>
-                  <p>“{item.quote}”</p>
+                <FiveStars />
+                <blockquote className={i === 0 ? "t-3 t-3-compact text-ink mt-4 max-w-[40ch]" : "t-lead text-ink mt-3 max-w-[40ch]"}>
+                  <p lang={"lang" in item ? item.lang : undefined}>“{item.quote}”</p>
                 </blockquote>
+                {"translation" in item ? (
+                  <p className="t-body text-muted-foreground mt-2 max-w-[48ch]">Translated from Italian: “{item.translation}”</p>
+                ) : null}
                 <figcaption className="t-body text-ink mt-4">{item.name}</figcaption>
               </figure>
             ))}

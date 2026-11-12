@@ -115,7 +115,7 @@ export const emailMagnetConfig = {
   productHuntUrl: "https://www.producthunt.com/products/emailmagnet",
 };
 
-// Verbatim Chrome Web Store reviews (5.0★). Keep these in sync with the listing
+// Verbatim Chrome Web Store reviews, all 5 out of 5 stars. Keep these in sync with the listing
 // so every quote stays verifiable per the product-claims truthfulness rule.
 export const emailMagnetTestimonials = [
   {
@@ -126,7 +126,7 @@ export const emailMagnetTestimonials = [
   {
     quote:
       "EmailMagnet has become an essential tool in my digital toolkit. The way it collects emails while I browse has saved me precious time.",
-    name: "lucia nadalin",
+    name: "Lucia Nadalin",
   },
   {
     quote: "I really like this extension, it's a very useful tool that saved me a lot of time!",
@@ -135,6 +135,13 @@ export const emailMagnetTestimonials = [
   {
     quote: "What I was looking for. Intuitive, fast, effective!",
     name: "Elena",
+  },
+  {
+    // Written in Italian on the store: quoted as written, with our translation.
+    quote: "Ottima estensione, esattamente quello che cercavo per estrarre mail in velocità e senza il minimo sforzo.",
+    lang: "it",
+    translation: "Excellent extension, exactly what I was looking for to extract emails quickly and with no effort at all.",
+    name: "Davide Noseda",
   },
 ];
 
