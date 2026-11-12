@@ -130,7 +130,7 @@ export function buildSoftwareSchema() {
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Chrome Extension",
     operatingSystem: "Windows, macOS, Linux, ChromeOS",
-    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan with local autosave and CSV or TXT export up to 100 addresses per file. PRO adds one list across pages, bulk extraction from URL lists and export with no cap, for $19 lifetime.",
+    description: "Chrome extension for extracting email addresses from websites while browsing. Free plan with local autosave, and copy and export from up to 15 sites a day, up to 100 addresses per file. PRO removes the daily limit and adds full Contact-page results, one list across pages, whole-site search, bulk extraction from URL lists and export with no cap, for $19 lifetime.",
     keywords: "email extractor, Chrome extension, email finder, lead generation, prospecting, CSV export, browser email extraction",
     url: `${base}${emailMagnetConfig.href}`,
     downloadUrl: emailMagnetConfig.secondaryCta.href,
@@ -149,7 +149,7 @@ export function buildSoftwareSchema() {
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.secondaryCta.href,
         category: "Free Plan",
-        description: "Email extraction, local autosave, CSV and TXT export up to 100 addresses per file"
+        description: "Email extraction, local autosave, copy and export from up to 15 sites a day, CSV and TXT export up to 100 addresses per file"
       },
       {
         "@type": "Offer",
@@ -159,7 +159,7 @@ export function buildSoftwareSchema() {
         availability: "https://schema.org/InStock",
         url: emailMagnetConfig.primaryCta.href,
         category: "Lifetime access",
-        description: "One list across pages, bulk extraction from URL lists, export with no cap, priority support"
+        description: "No daily limit, full Contact-page results, one list across pages, whole-site search, bulk extraction from URL lists, export with no cap, priority support"
       }
     ],
     featureList: [
@@ -168,8 +168,12 @@ export function buildSoftwareSchema() {
       "One-click email collection",
       "Company directory support",
       "Contact page email detection",
+      "Automatic Contact page reading when a page shows 0 to 2 emails",
+      "Decoding of emails protected by Cloudflare email obfuscation",
       "Local autosave you control",
+      "Full Contact page results and no daily limit (PRO)",
       "One list of emails across pages (PRO)",
+      "Whole-site search, up to 20 pages (PRO)",
       "Bulk extraction from URL lists (PRO)",
       "Export with no cap (PRO)"
     ],

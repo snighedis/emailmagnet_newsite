@@ -270,12 +270,15 @@ export const pricingPlans: PricingPlan[] = [
     name: "Free plan",
     price: "Free",
     eyebrow: "Perfect to get started",
-    description: "Extraction, local autosave and CSV or TXT export, up to 100 addresses per file.",
+    description: "Extraction and local autosave. Copy and export from up to 15 sites a day, up to 100 addresses per file.",
     features: [
       "One-click email extraction.",
+      "Copy and export from up to 15 different sites a day; sites you already used that day stay open.",
       "CSV and TXT export, up to 100 addresses per file.",
       "Local autosave you control: a history across pages, or only the page you are on.",
-      "7 days of PRO with every new install, no card.",
+      "The open page in full, plus a preview of the emails found on other pages.",
+      "A masked preview of the extra addresses on the site's Contact page, read when a page shows 0 to 2 emails.",
+      "PRO free for 7 days whenever you choose, with no card and no sign-up.",
       "Email support.",
     ],
     cta: {
@@ -290,8 +293,10 @@ export const pricingPlans: PricingPlan[] = [
     priceNote: "One-time payment. No subscription, ever.",
     description: "Pay once, keep it for life. No subscription, no seats, no renewals.",
     features: [
+      "Full Contact-page results and no daily limit.",
       "Every email from every page in one list.",
-      "Bulk extraction across a list of URLs, up to 1,000 per run.",
+      "Whole-site search, up to 20 pages.",
+      "Bulk extraction across a list of up to 1,000 URLs, scanned unattended.",
       "CSV and TXT export with no cap.",
       "Priority email support.",
     ],
@@ -317,12 +322,12 @@ export const faqItems: FaqItem[] = [
   {
     question: "What does the free version include?",
     answer:
-      "EmailMagnet Free includes one-click extraction, local autosave you control, CSV/TXT export of up to 100 addresses per file, and email support. Every new install also gets 7 days of PRO, with no card.",
+      "EmailMagnet Free includes one-click extraction, local autosave you control and email support. You can copy and export the emails of up to 15 different sites a day (a site you already used that day stays open), in CSV or TXT files of up to 100 addresses each. The list shows the page you have open, plus a preview of the emails found on other pages: the 3 most recent in full, one per site, and the rest masked. When EmailMagnet reads a site's Contact page for you, the extra addresses it finds there also appear masked, as a preview. If you were already using EmailMagnet, the extension shows you a notice and these limits apply to you 7 days after you first see it.",
   },
   {
     question: "What does the PRO version include?",
     answer:
-      "PRO ($19 once, lifetime) puts every email from every page in one list, scans a list of URLs in bulk (up to 1,000 per run), exports every result with no cap, and adds priority support. No monthly subscription.",
+      "PRO ($19 once, lifetime) shows Contact-page results in full and has no daily limit. It puts every email from every page in one list, searches a whole site (up to 20 pages), scans a list of up to 1,000 URLs unattended, exports every result with no cap, and adds priority support. No monthly subscription. You can try PRO free for 7 days whenever you choose, from the extension, with no card and no sign-up; when the trial ends, EmailMagnet keeps working on the free plan and nothing you found is lost.",
   },
   {
     question: "Is email extraction legal?",
@@ -332,7 +337,12 @@ export const faqItems: FaqItem[] = [
   {
     question: "What websites work with EmailMagnet?",
     answer:
-      "EmailMagnet works on websites that display visible email addresses, including company contact pages, team directories, about pages, business listings, partner pages, and event pages. It detects emails from visible page content, not hidden, protected, or private sources.",
+      "EmailMagnet works on websites that display visible email addresses, including company contact pages, team directories, about pages, business listings, partner pages, and event pages. It detects the emails a visitor can see on the page. That includes addresses protected by Cloudflare's email obfuscation, which it decodes only into what a visitor would see on the page. It never reads hidden or private data.",
+  },
+  {
+    question: "What if a page shows few emails or none?",
+    answer:
+      "When the open page shows 0 to 2 emails, EmailMagnet reads the Contact page of the same site by itself. It reads up to 2 pages, only on that site, without cookies and entirely in your browser, and never more than once every 24 hours for the same page. PRO shows the extra addresses it finds there in full. The free plan shows them masked, as a preview: for example m***@domain.com, or ***@domain.com for generic or short names.",
   },
   {
     question: "How do I export the emails?",

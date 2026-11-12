@@ -1,3 +1,5 @@
+import { readdirSync, readFileSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { blogPosts } from "@/content/blog";
@@ -100,14 +102,36 @@ describe("Dentoku Dev site hierarchy", () => {
   it("models the current free and pro pricing structure without invented plans", () => {
     expect(pricingPlans).toHaveLength(2);
     expect(pricingPlans.map((plan) => plan.name)).toEqual(["Free plan", "PRO plan"]);
-    // Claims as the live extension (2.5.7) and its store listing state them:
-    // 100 addresses per file on Free, autosave free and local, no cap with PRO.
+    // Claims as EmailMagnet 2.7.0 and its store listing state them (this copy goes live with
+    // 2.7.0, not before): on Free 15 sites a day and 100 addresses per file, autosave free and
+    // local, a PRO trial the user starts; with PRO no daily limit and no cap.
     expect(pricingPlans[0].features).toContain("CSV and TXT export, up to 100 addresses per file.");
+    expect(pricingPlans[0].features.join(" ")).toMatch(/up to 15 different sites a day/);
     expect(pricingPlans[0].features.join(" ")).toMatch(/Local autosave/);
+    expect(pricingPlans[0].features.join(" ")).toMatch(/PRO free for 7 days whenever you choose/);
     expect(pricingPlans[1].price).toBe("$19");
     expect(pricingPlans[1].features.join(" ")).not.toMatch(/autosave/i);
+    expect(pricingPlans[1].features).toContain("Full Contact-page results and no daily limit.");
     expect(pricingPlans[1].features).toContain("Every email from every page in one list.");
     expect(pricingPlans[1].features).toContain("CSV and TXT export with no cap.");
+  });
+
+  it("never promises PRO to every new install: since 2.7.0 the user starts the trial", () => {
+    // Every source file that holds site copy, in both languages, blog posts included.
+    const roots = ["src/data", "src/copy", "src/app", "src/components", "src/lib", "src/content"];
+    const files = roots.flatMap((root) =>
+      readdirSync(path.join(process.cwd(), root), { recursive: true, encoding: "utf8" })
+        .filter((file) => /\.(tsx?|mdx?)$/.test(file) && !/\.test\.tsx?$/.test(file))
+        .map((file) => path.join(root, file)),
+    );
+    expect(files).toContain(path.join("src/data", "site.ts"));
+    expect(files).toContain(path.join("src/copy/it", "faq.ts"));
+    expect(files).toContain(path.join("src/content/blog", "what-is-emailmagnet.mdx"));
+    for (const file of files) {
+      const text = readFileSync(path.join(process.cwd(), file), "utf8");
+      expect(text, file).not.toMatch(/every new install/i);
+      expect(text, file).not.toMatch(/ogni nuova installazione/i);
+    }
   });
 
   it("includes required FAQ answers for users and AI answer engines", () => {

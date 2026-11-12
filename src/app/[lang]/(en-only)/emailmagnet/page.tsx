@@ -40,7 +40,7 @@ const comparison = [
   },
   {
     manual: "Lose track of where an address came from once the copying gets long.",
-    withIt: "Collect only from the pages you are reviewing, so the source stays in view.",
+    withIt: "Collect only from the sites you are reviewing, so the source stays in view.",
   },
 ];
 
@@ -82,7 +82,7 @@ const steps = [
 ];
 
 const notFor = [
-  "Getting past logins, or reaching protected or private data.",
+  "Getting past logins, or reaching hidden or private data.",
   "Automatic outreach or spam campaigns.",
   "Skipping consent checks, qualification or opt-out handling.",
 ];
@@ -91,6 +91,7 @@ const proTriggers = [
   "You research directories, contact pages or partner lists every week.",
   "You want every email from every page in one list.",
   "You work from lists of URLs and want to scan them in bulk.",
+  "You copy from more than 15 sites a day.",
   "Your exports run past 100 addresses a file.",
 ];
 
@@ -147,8 +148,8 @@ export default function EmailMagnetPage() {
           height: 800,
         }}
         facts={[
-          { term: "Free", detail: "Extraction, local autosave and export, up to 100 addresses per file." },
-          { term: "PRO, $19 once", detail: "One list across pages, URL lists in bulk, no export cap. No subscription." },
+          { term: "Free", detail: "Extraction and local autosave. Copy and export from up to 15 sites a day, 100 addresses per file." },
+          { term: "PRO, $19 once", detail: "No daily limit, one list across pages, URL lists in bulk, no export cap. No subscription." },
           { term: "Rated 5.0", detail: "On the Chrome Web Store." },
         ]}
       />
@@ -239,7 +240,7 @@ export default function EmailMagnetPage() {
         id="plans"
         tone="muted"
         title="Start free, upgrade when it is weekly"
-        lead="Free covers everyday research. Every new install gets 7 days of PRO, with no card."
+        lead="Free covers everyday research, up to 15 sites a day. You can try PRO free for 7 days whenever you choose, with no card and no sign-up."
         aside={
           <div className="space-y-3">
             <h3 className="t-lead text-ink font-semibold">PRO is worth it when</h3>

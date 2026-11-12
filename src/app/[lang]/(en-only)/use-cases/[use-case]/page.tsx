@@ -22,7 +22,7 @@ const useCases = {
       },
       {
         title: "Free vs PRO fit",
-        body: "The Free plan extracts, autosaves locally and exports up to 100 addresses per file. PRO makes sense when prospecting is recurring: one list across pages, bulk extraction from URL lists and exports with no cap remove repeated manual work.",
+        body: "The Free plan extracts, autosaves locally, and copies and exports from up to 15 sites a day, up to 100 addresses per file. PRO makes sense when prospecting is recurring: no daily limit, one list across pages, bulk extraction from URL lists and exports with no cap remove repeated manual work.",
       },
       {
         title: "Responsible outreach guardrails",

@@ -1,6 +1,9 @@
 import type { FaqCopy } from "@/copy/en/faq";
 
-/** Same claims and price as src/data/site.ts faqItems: 100 addresses per file on Free, local autosave, $19 lifetime. */
+/**
+ * Same claims and price as src/data/site.ts faqItems, in the same order: on Free 15 sites a day,
+ * 100 addresses per file, local autosave and masked previews; a PRO trial the user starts; $19 lifetime.
+ */
 export const faq: FaqCopy = {
   meta: {
     title: "FAQ e supporto EmailMagnet",
@@ -14,7 +17,7 @@ export const faq: FaqCopy = {
   shortAnswer: {
     title: "In breve",
     body: "EmailMagnet è un’estensione Chrome di Dentoku Dev per trovare ed estrarre email dai siti web durante la navigazione.",
-    plans: "Il piano Free include l’autosalvataggio locale ed esporta fino a 100 indirizzi per file; PRO aggiunge un’unica lista tra le pagine, l’estrazione in blocco da elenchi di URL, export senza tetto e supporto prioritario.",
+    plans: "Il piano Free include l’autosalvataggio locale e permette di copiare ed esportare da un massimo di 15 siti al giorno, fino a 100 indirizzi per file; PRO toglie il limite giornaliero e aggiunge i risultati completi della pagina Contatti, un’unica lista tra le pagine, la ricerca in tutto un sito, l’estrazione in blocco da elenchi di URL, export senza tetto e supporto prioritario.",
   },
   questionsTitle: "Tutte le domande",
   related: {
@@ -41,12 +44,12 @@ export const faq: FaqCopy = {
     {
       question: "Cosa include la versione gratuita?",
       answer:
-        "EmailMagnet Free include estrazione con un clic, autosalvataggio locale sotto il tuo controllo, esportazione CSV/TXT fino a 100 indirizzi per file e supporto via email. Ogni nuova installazione riceve anche 7 giorni di PRO, senza carta di credito.",
+        "EmailMagnet Free include estrazione con un clic, autosalvataggio locale sotto il tuo controllo e supporto via email. Puoi copiare ed esportare le email di un massimo di 15 siti diversi al giorno (un sito già usato quel giorno resta aperto), in file CSV o TXT fino a 100 indirizzi ciascuno. La lista mostra la pagina che hai aperto, più un’anteprima delle email trovate nelle altre pagine: le 3 più recenti per intero, una per sito, e le altre mascherate. Quando EmailMagnet legge per te la pagina Contatti di un sito, anche gli indirizzi in più che trova lì compaiono mascherati, in anteprima. Se usavi già EmailMagnet, l’estensione ti mostra un avviso e questi limiti valgono per te 7 giorni dopo la prima volta che lo vedi.",
     },
     {
       question: "Cosa include la versione PRO?",
       answer:
-        "PRO (19 $ una tantum, a vita) mette tutte le email di tutte le pagine in un’unica lista, scansiona un elenco di URL in blocco (fino a 1.000 per esecuzione), esporta tutti i risultati senza tetto e aggiunge il supporto prioritario. Nessun abbonamento mensile.",
+        "PRO (19 $ una tantum, a vita) mostra per intero i risultati della pagina Contatti e non ha limiti giornalieri. Mette tutte le email di tutte le pagine in un’unica lista, cerca in tutto un sito (fino a 20 pagine), scansiona in automatico un elenco fino a 1.000 URL, esporta tutti i risultati senza tetto e aggiunge il supporto prioritario. Nessun abbonamento mensile. Puoi provare PRO gratis per 7 giorni quando vuoi, dall’estensione, senza carta e senza registrazione; alla fine della prova EmailMagnet continua a funzionare con il piano gratuito e non perdi nulla di quello che hai trovato.",
     },
     {
       question: "L’estrazione di email è legale?",
@@ -56,7 +59,12 @@ export const faq: FaqCopy = {
     {
       question: "Su quali siti funziona EmailMagnet?",
       answer:
-        "EmailMagnet funziona sui siti che mostrano indirizzi email visibili: pagine contatti aziendali, directory del team, pagine chi siamo, elenchi di attività, pagine partner e pagine di eventi. Rileva le email dal contenuto visibile della pagina, non da fonti nascoste, protette o private.",
+        "EmailMagnet funziona sui siti che mostrano indirizzi email visibili: pagine contatti aziendali, directory del team, pagine chi siamo, elenchi di attività, pagine partner e pagine di eventi. Rileva le email che un visitatore vede sulla pagina. Questo comprende gli indirizzi protetti dall’offuscamento delle email di Cloudflare, che decodifica solo in ciò che un visitatore vedrebbe sulla pagina. Non legge mai dati nascosti o privati.",
+    },
+    {
+      question: "E se una pagina mostra poche email, o nessuna?",
+      answer:
+        "Quando la pagina aperta mostra da 0 a 2 email, EmailMagnet legge da solo la pagina Contatti dello stesso sito. Legge fino a 2 pagine, solo su quel sito, senza cookie e interamente nel tuo browser, e mai più di una volta ogni 24 ore per la stessa pagina. PRO mostra per intero gli indirizzi in più che trova lì. Il piano gratuito li mostra mascherati, in anteprima: per esempio m***@domain.com, oppure ***@domain.com per i nomi generici o brevi.",
     },
     {
       question: "Come esporto le email?",

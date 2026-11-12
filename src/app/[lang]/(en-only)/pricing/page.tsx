@@ -12,7 +12,7 @@ import { buildBreadcrumbSchema } from "@/lib/schema";
 export const metadata = createMetadata({
   title: "EmailMagnet Pricing Plans",
   description:
-    "EmailMagnet pricing: Free with local autosave and export up to 100 addresses per file, or a $19 lifetime PRO with bulk URL extraction and no export cap.",
+    "EmailMagnet pricing: Free for up to 15 sites a day and 100 addresses per file, or a $19 lifetime PRO with no daily limit, bulk URL extraction and no export cap.",
   path: "/pricing",
 });
 
@@ -30,12 +30,14 @@ const comparison = [
   {
     plan: "Free",
     bestFor: "Trying EmailMagnet and occasional extraction",
-    includes: "Extraction, local autosave, CSV/TXT export up to 100 addresses per file",
+    includes:
+      "Extraction, local autosave, copy and export from up to 15 sites a day, CSV/TXT export up to 100 addresses per file, a masked preview of Contact-page results",
   },
   {
     plan: "PRO",
     bestFor: "Recurring research, prospecting and bulk extraction",
-    includes: "Everything in Free, plus one list across pages, bulk URL extraction, no export cap and priority support",
+    includes:
+      "Everything in Free with no daily limit, plus full Contact-page results, one list across pages, whole-site search, bulk URL extraction, no export cap and priority support",
   },
 ];
 
@@ -82,7 +84,7 @@ export default function PricingPage() {
 
       <PageOpening
         title={["Pay once.", "Extract for good."]}
-        standfirst="EmailMagnet's Free plan extracts, autosaves locally and exports up to 100 addresses per file. PRO adds one list across pages, bulk URL extraction and no export cap, for $19 paid once."
+        standfirst="EmailMagnet's Free plan extracts, autosaves locally, and copies and exports from up to 15 sites a day, up to 100 addresses per file. PRO removes the daily limit and adds one list across pages, bulk URL extraction and no export cap, for $19 paid once."
         primary={{ label: "Add to Chrome, free", href: emailMagnetConfig.secondaryCta.href }}
         secondary={{ label: "Get lifetime PRO", href: emailMagnetConfig.primaryCta.href }}
       />
@@ -91,7 +93,7 @@ export default function PricingPage() {
         id="plans"
         tone="muted"
         title="Two plans, no subscription"
-        lead="Every new install gets 7 days of PRO, with no card. Billing details are shown at checkout."
+        lead="You can try PRO free for 7 days whenever you choose, from the extension, with no card and no sign-up. Billing details are shown at checkout."
       >
         <PlanPanels plans={plans} onMuted />
       </SideSection>
