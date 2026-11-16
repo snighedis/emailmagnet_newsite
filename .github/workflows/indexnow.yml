@@ -1,0 +1,32 @@
+# After every production deploy on Vercel, tell IndexNow which pages changed.
+# Vercel reports each deploy to GitHub as a deployment; this runs when one of
+# them reaches "success" in the Production environment. The page hashes from
+# the previous run live in the Actions cache (see scripts/indexnow.mjs).
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/cache/restore@v4
+        with:
+          path: .indexnow-state.json
+          key: indexnow-state-${{ github.run_id }}
+          restore-keys: indexnow-state-
+      - run: node scripts/indexnow.mjs --changed --state .indexnow-state.json
+      # Only after a successful submission, so a failed one is retried next deploy.
+      - uses: actions/cache/save@v4
+        with:
+          path: .indexnow-state.json
+          key: indexnow-state-${{ github.run_id }}

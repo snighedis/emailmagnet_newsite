@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "check:i18n": "bash scripts/check-i18n.sh"
+    "check:i18n": "bash scripts/check-i18n.sh",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@next/mdx": "^16.2.6",
