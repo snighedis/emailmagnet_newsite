@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { AUTOMATION_KINDS, AutomationFragment } from "@/components/marketing/automation-fragment";
+import { PhotoCredits, type PhotoKey } from "@/components/marketing/photo";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { HomeHero } from "@/components/marketing/home-hero";
 import { HomeReveal } from "@/components/marketing/home-reveal";
@@ -54,10 +55,24 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <HomeSection key={key} id={key} copy={copy} products={products} lang={lang} />
       ))}
 
+      <PhotoCredits
+        names={AUTOMATION_PHOTOS.map((photo) => photo.name)}
+        label={copy.automate.creditLabel}
+        source={copy.automate.creditSource}
+      />
+
       <ProposalClose closing={copy.closing} />
     </>
   );
 }
+
+/** One photograph per job, in the order of AUTOMATION_KINDS, with its crop. */
+const AUTOMATION_PHOTOS: Array<{ name: PhotoKey; position: string }> = [
+  { name: "automateEmail", position: "35% 40%" },
+  { name: "automateQuote", position: "40% 35%" },
+  { name: "automateData", position: "55% 40%" },
+  { name: "automateBookings", position: "35% 40%" },
+];
 
 function HomeSection({
   id,
@@ -90,7 +105,15 @@ function HomeSection({
                 className="grid gap-5 md:grid-cols-2 md:gap-10 lg:grid-cols-[var(--axis)_minmax(0,1fr)] lg:gap-0"
               >
                 <div data-reveal className="lg:mr-14">
-                  <AutomationFragment kind={AUTOMATION_KINDS[i]} copy={automate.fragments} />
+                  <AutomationFragment
+                    kind={AUTOMATION_KINDS[i]}
+                    copy={automate.fragments}
+                    photo={{
+                      ...AUTOMATION_PHOTOS[i],
+                      alt: automate.photos[i],
+                      sizes: "(min-width: 1024px) 38vw, (min-width: 768px) 50vw, 100vw",
+                    }}
+                  />
                 </div>
                 <div data-reveal style={d(1)} className="text-ink max-w-[46ch] space-y-2 md:self-center">
                   <h3 className="t-lead font-sans font-semibold">{item.title}</h3>
@@ -98,6 +121,15 @@ function HomeSection({
                   <p className="t-body text-muted-foreground">
                     {automate.staysLabel} {item.stays}
                   </p>
+                  {automate.pages
+                    .filter((page) => page.index === i)
+                    .map((page) => (
+                      <p key={page.href} className="pt-2">
+                        <LocaleLink href={page.href} className="text-link text-ink text-base font-medium">
+                          {page.label}
+                        </LocaleLink>
+                      </p>
+                    ))}
                 </div>
               </div>
             ))}

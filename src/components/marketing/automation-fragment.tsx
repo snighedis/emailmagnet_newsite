@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { getPageCopy } from "@/copy";
+import { Photo, type PhotoKey } from "@/components/marketing/photo";
 
 type Fragments = ReturnType<typeof getPageCopy>["home"]["automate"]["fragments"];
 export type AutomationKind = keyof Fragments;
@@ -28,14 +29,76 @@ function Done({ children }: { children: ReactNode }) {
  * bookings in order. Sample data, the same names the film uses. Decorative: the
  * text beside it says what the software does, so it is hidden from screen readers.
  */
-export function AutomationFragment({ kind, copy }: { kind: AutomationKind; copy: Fragments }) {
+export function AutomationFragment({
+  kind,
+  copy,
+  photo,
+}: {
+  kind: AutomationKind;
+  copy: Fragments;
+  photo?: FragmentPhoto;
+}) {
+  const card = (
+    <>
+      {kind === "email" ? <Email copy={copy.email} /> : null}
+      {kind === "quote" ? <Quote copy={copy.quote} /> : null}
+      {kind === "data" ? <Data copy={copy.data} /> : null}
+      {kind === "bookings" ? <Bookings copy={copy.bookings} /> : null}
+    </>
+  );
+
+  if (photo) return <OnPhoto photo={photo}>{card}</OnPhoto>;
+
   return (
     <div aria-hidden="true" className="bg-surface-muted flex items-center justify-center p-4 lg:p-8">
       <div data-ui className="w-full max-w-[26rem] rounded-xl bg-white p-5">
-        {kind === "email" ? <Email copy={copy.email} /> : null}
-        {kind === "quote" ? <Quote copy={copy.quote} /> : null}
-        {kind === "data" ? <Data copy={copy.data} /> : null}
-        {kind === "bookings" ? <Bookings copy={copy.bookings} /> : null}
+        {card}
+      </div>
+    </div>
+  );
+}
+
+export type FragmentPhoto = {
+  name: PhotoKey;
+  alt: string;
+  sizes: string;
+  /** object-position for this crop: keep the subject clear of the card. */
+  position?: string;
+  priority?: boolean;
+  /** Tailwind aspect class for the crop; 16:11 by default. */
+  ratio?: string;
+  /** The side the card leans out of the picture on desktop, into the column gap (3.5rem). */
+  side?: "left" | "right";
+};
+
+/**
+ * A photograph of the reader's world with the piece of interface over its foot:
+ * the picture says where, the card says what the software did. The card follows
+ * the picture and overlaps only its foot, by a fixed 6rem on desktop (2.5rem on
+ * phones and tablets), so a tall card never covers the subject; on desktop it
+ * also leans 3.5rem out into the column gap.
+ * The picture is described; the card stays hidden from screen readers, as the
+ * text beside it says the same thing.
+ */
+export function OnPhoto({ photo, children }: { photo: FragmentPhoto; children: ReactNode }) {
+  const side = photo.side === "left" ? "lg:mr-auto lg:-ml-14" : "lg:ml-auto lg:-mr-14";
+  return (
+    <div className="relative">
+      <div className={`bg-surface-muted ${photo.ratio ?? "aspect-[16/11]"}`}>
+        <Photo
+          name={photo.name}
+          alt={photo.alt}
+          sizes={photo.sizes}
+          position={photo.position}
+          priority={photo.priority}
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        data-ui
+        className={`relative mx-4 -mt-10 max-w-[26rem] rounded-xl bg-white p-5 lg:-mt-24 lg:w-[min(26rem,85%)] ${side}`}
+      >
+        {children}
       </div>
     </div>
   );

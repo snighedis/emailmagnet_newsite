@@ -12,6 +12,7 @@ const routes = [
   "/contact",
   "/about",
   "/founder",
+  "/quote-software",
   "/privacy",
   "/terms",
   "/cookies",

@@ -260,6 +260,24 @@ export function buildServicesSchema(
   };
 }
 
+/** One service on its own page, e.g. the quote software page. */
+export function buildServicePageSchema(
+  service: { name: string; description: string; path: string },
+  lang: Locale = "en",
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.description,
+    serviceType: "Custom software and automation for small businesses",
+    areaServed: { "@type": "Country", name: "Italy" },
+    inLanguage: lang,
+    url: `${base}${localizedHref(lang, service.path)}`,
+    provider: { "@type": "Organization", name: siteConfig.companyName, url: base },
+  };
+}
+
 export function buildFaqSchema(items: FaqItem[], lang: Locale = "en") {
   return {
     "@context": "https://schema.org",

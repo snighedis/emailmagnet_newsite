@@ -264,6 +264,7 @@ export const footerNav = {
     { label: "About", href: "/about" },
     { label: "Founder", href: founderConfig.href },
     { label: "Contact", href: "/contact" },
+    { label: "Quote software", href: "/quote-software" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

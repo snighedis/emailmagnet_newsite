@@ -43,6 +43,15 @@ export const home: HomeCopy = {
     statement:
       "Il software risponde alle email, prepara i preventivi, ricopia i dati da un programma all’altro e tiene in ordine le prenotazioni. A te restano le decisioni.",
     staysLabel: "A te resta:",
+    pages: [{ index: 1, label: "Come funziona il software per preventivi", href: "/quote-software" }],
+    photos: [
+      "La titolare di un bar scrive al portatile dietro il bancone",
+      "Il titolare di una tipografia al computer, tra le macchine da stampa",
+      "Una ragazza prepara gli ordini online e scrive su un foglio, tra scatoloni e abiti appesi",
+      "La titolare di una pensione al telefono, sulla porta di casa",
+    ],
+    creditLabel: "Foto:",
+    creditSource: "su Pexels.",
     items: [
       {
         title: "Rispondere alle email.",

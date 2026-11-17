@@ -16,6 +16,7 @@ export const italianSlugs: Record<string, string> = {
   "/founder": "/fondatore",
   "/contact": "/contatti",
   "/faq": "/domande-frequenti",
+  "/quote-software": "/software-preventivi",
   "/privacy": "/privacy",
   "/terms": "/termini",
   "/cookies": "/cookie",

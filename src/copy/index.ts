@@ -9,11 +9,13 @@ import { contact as contactEn, type ContactCopy } from "./en/contact";
 import { faq as faqEn, type FaqCopy } from "./en/faq";
 import { founder as founderEn, type FounderCopy } from "./en/founder";
 import { home as homeEn, type HomeCopy } from "./en/home";
+import { quotes as quotesEn, type QuotesCopy } from "./en/quotes";
 import { about as aboutIt } from "./it/about";
 import { contact as contactIt } from "./it/contact";
 import { faq as faqIt } from "./it/faq";
 import { founder as founderIt } from "./it/founder";
 import { home as homeIt } from "./it/home";
+import { quotes as quotesIt } from "./it/quotes";
 
 /**
  * Copy for the global chrome, per locale. `server-only` makes any client
@@ -45,11 +47,12 @@ export type PageCopy = {
   founder: FounderCopy;
   contact: ContactCopy;
   faq: FaqCopy;
+  quotes: QuotesCopy;
 };
 
 const pages: Record<Locale, PageCopy> = {
-  en: { home: homeEn, about: aboutEn, founder: founderEn, contact: contactEn, faq: faqEn },
-  it: { home: homeIt, about: aboutIt, founder: founderIt, contact: contactIt, faq: faqIt },
+  en: { home: homeEn, about: aboutEn, founder: founderEn, contact: contactEn, faq: faqEn, quotes: quotesEn },
+  it: { home: homeIt, about: aboutIt, founder: founderIt, contact: contactIt, faq: faqIt, quotes: quotesIt },
 };
 
 export function getPageCopy(lang: Locale): PageCopy {

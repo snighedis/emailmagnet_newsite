@@ -62,6 +62,7 @@ export const site: SiteCopy = {
         { label: "Chi siamo", href: "/about" },
         { label: "Fondatore", href: "/founder" },
         { label: "Contatti", href: "/contact" },
+        { label: "Software per preventivi", href: "/quote-software" },
       ],
     },
     {

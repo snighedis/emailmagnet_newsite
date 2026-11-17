@@ -54,6 +54,18 @@ export const home = {
     statement:
       "The software answers email, writes quotes, moves your data and keeps bookings in order. You keep the decisions.",
     staysLabel: "Stays with you:",
+    // The jobs that have their own page, by their index in items.
+    pages: [{ index: 1, label: "How the quote software works", href: "/quote-software" }],
+    // One photograph per job, in the items' order (components/marketing/photo.tsx):
+    // the reader's world, not clients.
+    photos: [
+      "A café owner typing on a laptop behind the counter",
+      "The owner of a print shop working at his computer among the presses",
+      "A woman packing online orders writes on a sheet among boxes and a clothes rail",
+      "A guesthouse host on the phone at the front door",
+    ],
+    creditLabel: "Photos:",
+    creditSource: "on Pexels.",
     items: [
       {
         title: "Answering customer email.",
