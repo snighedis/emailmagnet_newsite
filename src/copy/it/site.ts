@@ -38,11 +38,14 @@ const products = productPortfolio.map((product) => {
 });
 
 export const site: SiteCopy = {
-  // The Italian menu leads with the consulting funnel; "Prodotti" comes last and
-  // "Risorse" (English-only pages) stays in the footer (redesign tickets 03, 09).
+  // The Italian menu is the consulting funnel only: what, how, who (18 Nov 2026).
+  // "Consulenza AI" replaced the "Come lavoriamo" anchor, whose method the page
+  // holds in full; "Prodotti" left the desktop bar (they are proof, on the home,
+  // the AI page and in the footer) and stays in the phone menu; "Risorse"
+  // (English-only pages) stays in the footer (redesign tickets 03, 09).
   mainNav: [
     { label: "Cosa automatizziamo", href: "/#services" },
-    { label: "Come lavoriamo", href: "/#process" },
+    { label: "Consulenza AI", href: "/ai-consulting" },
     { label: "Chi siamo", href: "/about" },
   ],
   resourcesNav: [

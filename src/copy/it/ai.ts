@@ -40,7 +40,7 @@ export const ai: AiCopy = {
 
   definition: {
     heading: "Cos’è la consulenza AI",
-    body: "La consulenza AI aiuta un’azienda a capire dove l’intelligenza artificiale le fa risparmiare tempo. Dentoku Dev, studio software di Milano fondato nel 2024, la misura in ore: conta con te quanto ti costa oggi un lavoro ripetitivo, costruisce l’automazione sui programmi che usi già e riconta le ore dopo il rilascio. Il parere e il codice vengono dalla stessa persona.",
+    body: "La consulenza AI aiuta un’azienda a capire dove l’intelligenza artificiale le fa risparmiare tempo. Dentoku Dev, studio software di Milano fondato nel 2024, la misura in ore: conta con te quanto ti costa oggi un lavoro ripetitivo, costruisce l’automazione sui programmi che usi già e riconta le ore dopo il rilascio. Chi ti dà il parere scrive anche il codice.",
     facts: [
       {
         term: "Prima",
@@ -56,7 +56,7 @@ export const ai: AiCopy = {
       },
       {
         term: "Sempre",
-        detail: "La stessa persona, dalla prima call gratuita di 30 minuti alla manutenzione.",
+        detail: "Lo stesso gruppo, dalla prima call gratuita di 30 minuti all’assistenza dopo il rilascio.",
       },
     ],
   },
@@ -94,23 +94,23 @@ export const ai: AiCopy = {
     ],
   },
 
-  who: {
-    heading: "Una persona, dall’inizio alla fine",
+  after: {
+    heading: "Dopo la consegna non resti solo",
     items: [
       {
-        lead: "Un fondatore che scrive il codice.",
-        body: "Dentoku Dev è guidato da Nicola Orlandi, che fa l’analisi e scrive il software, con collaboratori scelti per ogni progetto.",
-      },
-      {
-        lead: "Nessun passaggio di mano.",
-        body: "Chi ascolta il problema alla prima call è chi lo risolve, e chi ti risponde dopo il rilascio.",
+        lead: "Un gruppo su misura.",
+        body: "Per ogni progetto scegliamo i collaboratori che servono, e chi ha fatto l’analisi segue il lavoro fino alla consegna.",
       },
       {
         lead: "Una linea diretta.",
-        body: "Niente ticket e niente code: scrivi, anche su WhatsApp, e ti risponde la stessa persona.",
+        body: "Niente ticket e niente code: scrivi, anche su WhatsApp, e ti risponde chi conosce il tuo software.",
+      },
+      {
+        lead: "Assistenza a canone.",
+        body: "Dopo il rilascio puoi affidarci l’assistenza con un canone mensile, da 250 € al mese.",
       },
     ],
-    link: { label: "Chi è il fondatore", href: "/founder" },
+    link: { label: "Scrivici", href: "/contact" },
   },
 
   data: {
@@ -177,7 +177,7 @@ export const ai: AiCopy = {
       {
         question: "Siete un’agenzia AI?",
         answer:
-          "No: siamo uno studio software guidato dal fondatore, che fa l’analisi e scrive il codice, con collaboratori scelti per ogni progetto. Il lavoro è quello di un’agenzia AI, senza account manager in mezzo.",
+          "Siamo uno studio software: chi fa l’analisi scrive il codice, con collaboratori scelti per ogni progetto. Il lavoro è quello di un’agenzia AI, senza account manager in mezzo.",
       },
       {
         question: "Quanto costa?",

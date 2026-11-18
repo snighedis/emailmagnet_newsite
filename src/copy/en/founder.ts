@@ -10,7 +10,7 @@ export const founder = {
   role: founderConfig.role,
   location: founderConfig.location,
   description: founderConfig.description,
-  primaryCta: { label: "Tell us the problem", href: "/contact" },
+  primaryCta: { label: "We count your hours, free", href: "/contact" },
   studioLink: "About the studio",
   shortAnswer: {
     title: "Short answer",

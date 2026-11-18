@@ -147,8 +147,10 @@ export const emailMagnetTestimonials = [
   },
 ];
 
+// Between the Products and Resources menus (site-header.tsx). "AI consulting"
+// replaced the "Services" anchor on 18 Nov 2026: the page holds the method in full.
 export const mainNav: NavItem[] = [
-  { label: "Services", href: "/#services" },
+  { label: "AI consulting", href: "/ai-consulting" },
   { label: "About", href: "/about" },
 ];
 

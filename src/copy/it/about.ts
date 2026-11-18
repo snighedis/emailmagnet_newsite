@@ -16,7 +16,7 @@ export const about: AboutCopy = {
   title: ["Uno studio,", "un fondatore."],
   standfirst:
     "Siamo a Milano e costruiamo software su misura per le piccole imprese: togliamo il lavoro ripetitivo e contiamo con te le ore che ti fa risparmiare.",
-  primaryCta: { label: "Raccontaci il problema", href: "/contact" },
+  primaryCta: { label: "Contiamo le tue ore, gratis", href: "/contact" },
   founderLink: "Chi è il fondatore",
   statement: {
     heading: "In breve",

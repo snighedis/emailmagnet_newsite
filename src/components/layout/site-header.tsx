@@ -103,9 +103,13 @@ export function SiteHeader() {
   const { common, site } = useCopy();
   const lang = useLocale();
   // The English chrome serves the products' global audience: products first,
-  // resources, the EmailMagnet button. The Italian chrome serves the consulting
-  // funnel: the funnel links first, products last, no resources (ticket 09).
+  // then the studio, then resources. The Italian chrome serves the consulting
+  // funnel: its three links only on the desktop bar, products last in the phone
+  // menu, no resources (ticket 09; menu review of 18 Nov 2026). The bar keeps one
+  // action in both languages: EmailMagnet is first in the Products panel, and its
+  // quiet link stays under the action in the English phone menu.
   const productsFirst = lang === "en";
+  const productsInBar = lang === "en";
   const showResources = lang === "en";
   const showEmailMagnet = lang === "en";
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -198,7 +202,7 @@ export function SiteHeader() {
                 {item.label}
               </LocaleLink>
             ))}
-            {productsFirst ? null : productsTrigger}
+            {productsInBar && !productsFirst ? productsTrigger : null}
             {showResources ? (
               <button
                 type="button"
@@ -216,11 +220,6 @@ export function SiteHeader() {
         </div>
         <div className="hidden items-center gap-5 lg:flex">
           <LanguageSwitcher className={linkClass} />
-          {showEmailMagnet ? (
-            <LocaleLink href={emailMagnetConfig.href} className={linkClass}>
-              {common.header.getEmailMagnet}
-            </LocaleLink>
-          ) : null}
           {/* The one action of the bar */}
           <Button asChild size="lg">
             <LocaleLink href={siteConfig.secondaryCta.href}>{common.header.startProject}</LocaleLink>

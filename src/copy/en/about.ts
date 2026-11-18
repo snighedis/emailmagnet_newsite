@@ -11,7 +11,7 @@ export const about = {
   title: ["One studio,", "one founder."],
   standfirst:
     "We are in Milan and build custom software for small businesses: we take the repetitive work off your hands and count with you the hours it saves.",
-  primaryCta: { label: "Tell us the problem", href: "/contact" },
+  primaryCta: { label: "We count your hours, free", href: "/contact" },
   founderLink: "Meet the founder",
   // The short answer, set large as one statement.
   statement: {

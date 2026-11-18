@@ -32,8 +32,8 @@ const d = (n: number) => ({ "--d": n }) as CSSProperties;
  * pages): the title on the column line with the standfirst beside it and the
  * first call's count over an atelier; the definition, written to be quoted,
  * with the loop of the hours; AI prepares and you decide, beside the paperwork;
- * what changes compared with a consultant, by negation; one person from start
- * to finish on the orange field; where the data goes; three things to insist
+ * what changes compared with a consultant, by negation; after delivery, on the
+ * orange field; where the data goes; three things to insist
  * on; no hours, no project, on the ink field; the products as proof; the
  * questions; the proposal card.
  */
@@ -178,8 +178,8 @@ export default async function AiConsultingPage({ params }: PageProps<"/[lang]/ai
         </div>
       </section>
 
-      {/* Who is on the other side: the founder, beside the shopkeeper on the phone */}
-      <section aria-labelledby="who-heading" className="bg-brand text-ink">
+      {/* After delivery: continuity, beside the shopkeeper on the phone */}
+      <section aria-labelledby="after-heading" className="bg-brand text-ink">
         <div className="page-x axis gap-y-12 py-20 md:py-32">
           <div data-reveal className="bg-ink/10 aspect-[4/5] max-w-[30rem] lg:mr-14">
             <Photo
@@ -190,19 +190,19 @@ export default async function AiConsultingPage({ params }: PageProps<"/[lang]/ai
             />
           </div>
           <div className="space-y-10 lg:self-center">
-            <h2 id="who-heading" data-reveal className="t-2">
-              {copy.who.heading}
+            <h2 id="after-heading" data-reveal className="t-2">
+              {copy.after.heading}
             </h2>
             <div className="max-w-[40rem] space-y-6">
-              {copy.who.items.map((item, i) => (
+              {copy.after.items.map((item, i) => (
                 <p key={item.lead} data-reveal style={d(i + 1)} className="t-lead">
                   <strong className="font-semibold">{item.lead}</strong> {item.body}
                 </p>
               ))}
             </div>
             <p data-reveal style={d(4)}>
-              <LocaleLink href={copy.who.link.href} className="text-link text-base font-semibold">
-                {copy.who.link.label}
+              <LocaleLink href={copy.after.link.href} className="text-link text-base font-semibold">
+                {copy.after.link.label}
               </LocaleLink>
             </p>
           </div>

@@ -6,8 +6,10 @@
  *
  * Its argument is the studio's own, so it does not read like a competitor's
  * "AI agency" page: AI consulting measured in hours (counted before, counted
- * again after release), one person from the analysis to the code, and AI the
- * studio ships in its own products. Written declaratively (owner's request, 18
+ * again after release), whoever does the analysis writes the code, support
+ * after delivery, and AI the studio ships in its own products. The founder is
+ * left to About and Founder (owner, 18 Nov 2026): the page must not read as a
+ * one-person business. Written declaratively (owner's request, 18
  * Nov 2026, "saas-copywriter" voice), in the site's plain words.
  *
  * Claims (owner, 18 Nov 2026): the AI and tool accounts are in the client's
@@ -56,7 +58,7 @@ export const ai = {
   // The definition, written to be quoted, and the loop of the hours beside it.
   definition: {
     heading: "What AI consulting is",
-    body: "AI consulting helps a business see where artificial intelligence saves it time. Dentoku Dev, a software studio from Milan founded in 2024, measures it in hours: it counts with you what a repetitive job costs today, builds the automation on the tools you already use and counts the hours again after release. The advice and the code come from the same person.",
+    body: "AI consulting helps a business see where artificial intelligence saves it time. Dentoku Dev, a software studio from Milan founded in 2024, measures it in hours: it counts with you what a repetitive job costs today, builds the automation on the tools you already use and counts the hours again after release. Whoever gives the advice also writes the code.",
     facts: [
       {
         term: "Before",
@@ -72,7 +74,7 @@ export const ai = {
       },
       {
         term: "Always",
-        detail: "The same person, from the free 30-minute first call to maintenance.",
+        detail: "The same team, from the free 30-minute first call to support after release.",
       },
     ],
   },
@@ -112,24 +114,24 @@ export const ai = {
     ],
   },
 
-  // Who is on the other side: the founder, beside the shopkeeper on the phone.
-  who: {
-    heading: "One person, start to finish",
+  // After delivery, beside the shopkeeper on the phone: continuity, not one person.
+  after: {
+    heading: "After delivery, you are not on your own",
     items: [
       {
-        lead: "A founder who writes the code.",
-        body: "Dentoku Dev is led by Nicola Orlandi, who does the analysis and writes the software, with collaborators chosen for each project.",
-      },
-      {
-        lead: "No hand-offs.",
-        body: "Whoever hears the problem on the first call is whoever solves it, and whoever answers you after release.",
+        lead: "A team sized to the project.",
+        body: "For each project we bring in the collaborators it needs, and whoever did the analysis follows the work through to delivery.",
       },
       {
         lead: "A direct line.",
-        body: "No tickets and no queue: write, on WhatsApp too, and the same person replies.",
+        body: "No tickets and no queue: write, on WhatsApp too, and someone who knows your software replies.",
+      },
+      {
+        lead: "Support with a set fee.",
+        body: "After release you can keep us on support for a monthly fee, from €250 a month.",
       },
     ],
-    link: { label: "Meet the founder", href: "/founder" },
+    link: { label: "Write to us", href: "/contact" },
   },
 
   // Where the client's data goes (owner's statements, 18 Nov 2026).
@@ -199,7 +201,7 @@ export const ai = {
       {
         question: "Are you an AI agency?",
         answer:
-          "No: we are a software studio led by its founder, who does the analysis and writes the code, with collaborators chosen for each project. The work is an AI agency's, without account managers in between.",
+          "We are a software studio: whoever does the analysis writes the code, with collaborators chosen for each project. The work is an AI agency's, without account managers in between.",
       },
       {
         question: "How much does it cost?",

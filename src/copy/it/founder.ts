@@ -17,7 +17,7 @@ export const founder: FounderCopy = {
   location: "Milano",
   description:
     "Progetta e costruisce il software su misura che toglie il lavoro ripetitivo alle piccole imprese, e conta con i clienti quante ore fa risparmiare.",
-  primaryCta: { label: "Raccontaci il problema", href: "/contact" },
+  primaryCta: { label: "Contiamo le tue ore, gratis", href: "/contact" },
   studioLink: "Com’è fatto lo studio",
   shortAnswer: {
     title: "In breve",
