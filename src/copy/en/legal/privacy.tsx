@@ -17,7 +17,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-stone-600">
-        Last updated: November 11, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
+        Last updated: November 18, 2026. This Privacy Policy describes how Dentoku Dev (&quot;we&quot;,
         &quot;us&quot;, or &quot;our&quot;) processes personal data when you visit dentokudev.com, purchase or
         use EmailMagnet, or engage us for digital consulting services. It is issued pursuant to
         Art. 13 of Regulation (EU) 2016/679 (&quot;GDPR&quot;) and the Italian Personal Data Protection
@@ -47,8 +47,9 @@ export function PrivacyBody() {
       </p>
       <ul className="mt-4 list-disc pl-6 space-y-2 leading-8 text-stone-600">
         <li>
-          <strong>Identity and contact data</strong>: name, email address, and (for consulting
-          clients) company name, VAT number, billing address.
+          <strong>Identity and contact data</strong>: name, email address, telephone number
+          (if you write to us on WhatsApp), and (for consulting clients) company name, VAT
+          number, billing address.
         </li>
         <li>
           <strong>Transactional data</strong>: purchase records, licence keys, and invoices
@@ -164,6 +165,12 @@ export function PrivacyBody() {
         </li>
       </ul>
       <p className="mt-4 leading-8 text-stone-600">
+        If you choose to write to us on WhatsApp, your messages and telephone number travel
+        through the WhatsApp service of WhatsApp Ireland Limited, which processes them under its
+        own terms and privacy policy, including any transfers outside the EU. We use them only to
+        reply to you and, if we work together, to run the project.
+      </p>
+      <p className="mt-4 leading-8 text-stone-600">
         We may also disclose data to public authorities when required by law, court order, or
         to protect our legal rights.
       </p>
@@ -190,7 +197,7 @@ export function PrivacyBody() {
           transaction, as required by Italian fiscal law.
         </p>
         <p>
-          <strong>Support correspondence</strong>: retained until the support case is closed
+          <strong>Support correspondence</strong> (email and WhatsApp messages): retained until the support case is closed
           and for a further 2 years for quality assurance; deleted thereafter unless a legal
           claim is pending.
         </p>

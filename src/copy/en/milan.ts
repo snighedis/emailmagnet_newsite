@@ -4,24 +4,26 @@
  * cite each studio's own "software house Milano" page). The search word in the
  * title, the studio's own word ("software studio") on the page.
  *
- * Claims are the site's: the address, meetings in Milan by appointment (owner,
- * 18 Nov 2026), video calls across Italy, the written proposal, the hours
- * counted, the code handed over. No prices, no clients, no team size.
+ * Claims are the site's: a studio of Milan, a free 30-minute first video call,
+ * video calls across Italy, the written proposal, the hours counted, the code
+ * handed over. No prices, no clients, no team size. No street address and no
+ * meetings in person (owner, 18 Nov 2026: there is no studio to visit; Via
+ * Bullona 8 is a residence and appears only in the legal pages).
  */
 export const milan = {
   meta: {
     title: "Software house in Milan for small businesses",
     description:
-      "Dentoku Dev is a software studio in Milan, Via Bullona 8: AI automation and custom software for small businesses. Meetings in Milan by appointment, video calls across Italy.",
+      "Dentoku Dev is a software studio from Milan: AI automation and custom software for small businesses. It starts with a free 30-minute video call, from anywhere in Italy.",
   },
   breadcrumb: "Software house in Milan",
   title: ["Software studio in Milan."],
   standfirst:
-    "At Via Bullona 8 we build AI automation and custom software for small businesses. Meet us in Milan by appointment, or by video call from anywhere in Italy.",
+    "From Milan we build AI automation and custom software for small businesses. It starts with a free 30-minute video call, from anywhere in Italy.",
   primaryCta: { label: "Count your hours", href: "/#brief" },
   secondaryCta: { label: "Write to us", href: "/contact" },
 
-  // The page's photographs (components/marketing/photo.tsx): the studio's street, not clients.
+  // The page's photographs (components/marketing/photo.tsx): the city, not clients.
   photos: {
     hero: "A historic tram passes the Arco della Pace in Milan",
     street: "Corso Sempione in Milan in autumn, with the Arco della Pace at the end of the avenue",
@@ -35,8 +37,8 @@ export const milan = {
     title: "First call",
     tag: "Free",
     rows: [
-      ["In Milan", "Via Bullona 8, by appointment"],
-      ["Elsewhere", "Video call"],
+      ["How", "Video call"],
+      ["Length", "30 minutes"],
       ["Language", "Italian or English"],
     ] as Array<[string, string]>,
     status: "Ends with a written proposal",
@@ -92,18 +94,18 @@ export const milan = {
     note: "For an enterprise project a bigger software house is the better choice: we tell you on the first call.",
   },
 
-  // Where the studio is, and how to meet.
+  // How it starts: the first video call, set large.
   visit: {
-    heading: "Where to find us",
-    address: ["Via Bullona 8", "20154 Milano"],
+    heading: "How it starts",
+    lines: ["30 minutes,", "by video call."],
     items: [
       {
-        lead: "In Milan, by appointment.",
-        body: "Write to us and we set a day to meet at the studio.",
+        lead: "Free.",
+        body: "The first call costs nothing and ends with a written proposal.",
       },
       {
-        lead: "Everywhere else, by video call.",
-        body: "The first call, the proposal and the updates all happen there, in Italian or English. You try the software in your browser from the first weeks.",
+        lead: "From anywhere in Italy.",
+        body: "The first call, the proposal and the updates all happen by video call, in Italian or English. You try the software in your browser from the first weeks.",
       },
     ],
     contact: { label: "Write to us", href: "/contact" },
@@ -124,13 +126,13 @@ export const milan = {
           "We are a software studio: a founder who writes the code and collaborators chosen for each project, with no account managers. We do the work of a software house, on projects sized for small businesses.",
       },
       {
-        question: "Can I meet you in Milan?",
+        question: "How does the first call work?",
         answer:
-          "Yes, by appointment, at Via Bullona 8. Write to us and we set the day. If you are outside Milan we work by video call, from the first call to the updates.",
+          "It is a free 30-minute video call: you tell us about the work that takes your time and we work out together how many hours it costs you. It ends with a written proposal.",
       },
       {
         question: "Do you only work with businesses in Milan?",
-        answer: "No. We work remotely with businesses across Italy, in Italian and English.",
+        answer: "No. We work by video call with businesses across Italy, in Italian and English.",
       },
       {
         question: "How much does custom software cost?",

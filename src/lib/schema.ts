@@ -41,11 +41,10 @@ export function buildOrganizationSchema(description = siteConfig.description) {
     logo: `${base}${siteConfig.logo}`,
     description,
     email: siteConfig.supportEmail,
-    // The registered address and VAT number, already public in the privacy policy.
+    // The city only: there is no studio to visit, and the registered street (a
+    // residence) stays in the legal pages, where the law asks for it.
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Via Bullona 8",
-      postalCode: "20154",
       addressLocality: "Milan",
       addressCountry: "IT",
     },

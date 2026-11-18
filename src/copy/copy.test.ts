@@ -55,6 +55,9 @@ describe("chrome copy: Italian mirrors English", () => {
     expect(commonIt.contactForm.topics.map((topic) => topic.value)).toEqual(
       commonEn.contactForm.topics.map((topic) => topic.value),
     );
+    expect(commonIt.contactForm.timings.map((timing) => timing.value)).toEqual(
+      commonEn.contactForm.timings.map((timing) => timing.value),
+    );
   });
 });
 
@@ -79,7 +82,7 @@ describe("site copy: Italian navigation points at the same pages", () => {
     // The Italian menu leads with the consulting funnel (redesign ticket 09), so its
     // entries differ from the English ones; each must still be a home anchor or a
     // page that exists in Italian.
-    const italianPages = new Set(["/about", "/contact", "/faq", "/founder", "/quote-software", "/software-house-milan"]);
+    const italianPages = new Set(["/about", "/contact", "/faq", "/founder", "/quote-software", "/software-house-milan", "/ai-consulting"]);
     for (const item of siteIt.mainNav) {
       expect(item.href.startsWith("/#") || italianPages.has(item.href)).toBe(true);
     }

@@ -31,7 +31,7 @@ export function PrivacyBody() {
   return (
     <>
       <p className="mt-6 leading-8 text-stone-600">
-        Ultimo aggiornamento: 11 novembre 2026. La presente Informativa descrive come Dentoku Dev
+        Ultimo aggiornamento: 18 novembre 2026. La presente Informativa descrive come Dentoku Dev
         (“noi”) tratta i dati personali quando visiti dentokudev.com, acquisti o usi EmailMagnet, o
         ci affidi servizi di consulenza digitale. È resa ai sensi dell’art. 13 del Regolamento (UE)
         2016/679 (“GDPR”) e del Codice in materia di protezione dei dati personali (D.Lgs.
@@ -56,8 +56,9 @@ export function PrivacyBody() {
       </p>
       <ul className={ul}>
         <li>
-          <strong>Dati identificativi e di contatto</strong>: nome, indirizzo email e (per i
-          clienti di consulenza) ragione sociale, partita IVA, indirizzo di fatturazione.
+          <strong>Dati identificativi e di contatto</strong>: nome, indirizzo email, numero di
+          telefono (se ci scrivi su WhatsApp) e (per i clienti di consulenza) ragione sociale,
+          partita IVA, indirizzo di fatturazione.
         </li>
         <li>
           <strong>Dati relativi alle transazioni</strong>: registri degli acquisti, chiavi di
@@ -171,6 +172,12 @@ export function PrivacyBody() {
         </li>
       </ul>
       <p className={p4}>
+        Se scegli di scriverci su WhatsApp, i tuoi messaggi e il tuo numero di telefono passano
+        dal servizio WhatsApp di WhatsApp Ireland Limited, che li tratta secondo i propri termini
+        e la propria informativa, compresi eventuali trasferimenti fuori dall’UE. Li usiamo solo
+        per risponderti e, se lavoriamo insieme, per seguire il progetto.
+      </p>
+      <p className={p4}>
         Possiamo inoltre comunicare dati alle autorità pubbliche quando richiesto dalla legge o da
         un provvedimento giudiziario, o per tutelare i nostri diritti.
       </p>
@@ -191,7 +198,7 @@ export function PrivacyBody() {
           transazione, come richiesto dalla normativa fiscale italiana.
         </p>
         <p>
-          <strong>Corrispondenza di assistenza</strong>: fino alla chiusura della richiesta e per
+          <strong>Corrispondenza di assistenza</strong> (email e messaggi WhatsApp): fino alla chiusura della richiesta e per
           ulteriori 2 anni per il controllo della qualità; successivamente cancellata, salvo
           contenzioso in corso.
         </p>

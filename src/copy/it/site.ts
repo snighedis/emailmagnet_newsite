@@ -64,6 +64,7 @@ export const site: SiteCopy = {
         { label: "Contatti", href: "/contact" },
         { label: "Software per preventivi", href: "/quote-software" },
         { label: "Software house a Milano", href: "/software-house-milan" },
+        { label: "Consulenza AI", href: "/ai-consulting" },
       ],
     },
     {

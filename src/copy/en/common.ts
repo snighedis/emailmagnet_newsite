@@ -117,6 +117,17 @@ export const common = {
       { value: "A new project", label: "A new project" },
       { value: "General inquiry", label: "General inquiry" },
     ],
+    business: "Company",
+    businessPlaceholder: "Company name",
+    timing: "When do you want to start?",
+    selectTiming: "Select a timing",
+    optional: "(optional)",
+    /** `value` reaches support in English, like the topics. */
+    timings: [
+      { value: "Within 30 days", label: "Now, within 30 days" },
+      { value: "In 1-3 months", label: "In 1 to 3 months" },
+      { value: "Exploring", label: "Just exploring" },
+    ],
     consent:
       "By submitting this form, you confirm that you have read and accepted the Privacy Policy.",
     incomplete: "Fill first name, last name, a valid email, and message before sending.",

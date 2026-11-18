@@ -54,6 +54,8 @@ export const siteConfig = {
   footerTagline:
     "A Milan software studio. We automate small businesses' repetitive work with AI, and measure how much it saves you.",
   supportEmail: "support@dentokudev.com",
+  // The business WhatsApp number (owner, 18 Nov 2026): chat only, no call link.
+  whatsapp: { display: "+39 351 6810183", href: "https://wa.me/393516810183" },
   location: "Milan, Italy",
   primaryCta: {
     label: "View products",
@@ -258,7 +260,6 @@ export const footerNav = {
     { label: "Blog", href: "/blog" },
     { label: "Docs", href: "/docs" },
     { label: "FAQ", href: "/faq" },
-    { label: "Pricing", href: "/pricing" },
   ],
   Company: [
     { label: "About", href: "/about" },
@@ -266,6 +267,7 @@ export const footerNav = {
     { label: "Contact", href: "/contact" },
     { label: "Quote software", href: "/quote-software" },
     { label: "Software house in Milan", href: "/software-house-milan" },
+    { label: "AI consulting", href: "/ai-consulting" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { OnPhoto } from "@/components/marketing/automation-fragment";
+import { FaqAccordion } from "@/components/marketing/faq-accordion";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { Photo, PhotoCredits } from "@/components/marketing/photo";
 import { ProductShowcase } from "@/components/marketing/product-showcase";
 import { ProposalClose } from "@/components/marketing/proposal-close";
+import { RowsCard } from "@/components/marketing/rows-card";
 import { Button } from "@/components/ui/button";
 import { getCopy, getPageCopy } from "@/copy";
 import { localizedHref } from "@/i18n/href";
@@ -15,8 +17,6 @@ import { createMetadata } from "@/lib/metadata";
 import { buildBreadcrumbSchema, buildFaqSchema, buildServicePageSchema } from "@/lib/schema";
 
 const path = "/software-house-milan";
-
-type MilanCall = ReturnType<typeof getPageCopy>["milan"]["call"];
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/software-house-milan">): Promise<Metadata> {
   const lang = await resolveLang(params);
@@ -30,9 +30,10 @@ const d = (n: number) => ({ "--d": n }) as CSSProperties;
 /**
  * The Milan page (the home's "printed annual" system, as on the quote page):
  * the title on the column line with the standfirst beside it, as on the home
- * and About, and under the title the studio's street with the first call over it; what the studio builds; the honest
- * difference from a software house beside Corso Sempione; where to find us on
- * the orange field; the products as proof; the questions; the proposal card.
+ * and About, and under the title a Milan street with the first call over it;
+ * what the studio builds; the honest difference from a software house beside
+ * Corso Sempione; how it starts (the free video call) on the orange field; the
+ * products as proof; the questions; the proposal card.
  */
 export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[lang]/software-house-milan">) {
   const lang = await resolveLang(params);
@@ -92,7 +93,7 @@ export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[la
                 side: "left",
               }}
             >
-              <CallCard call={copy.call} />
+              <RowsCard {...copy.call} />
             </OnPhoto>
           </div>
         </div>
@@ -129,7 +130,7 @@ export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[la
         </div>
       </section>
 
-      {/* The difference from a software house, beside the avenue the studio is off */}
+      {/* The difference from a software house, beside Corso Sempione */}
       <section aria-labelledby="difference-heading" className="bg-background">
         <div className="page-x grid gap-12 py-20 md:py-32 lg:grid-cols-[minmax(0,1fr)_var(--axis)] lg:gap-0">
           <div className="max-w-[40rem] space-y-10 lg:pr-16">
@@ -156,7 +157,7 @@ export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[la
         </div>
       </section>
 
-      {/* Where to find us: the address set large on the orange field, the tram beside it */}
+      {/* How it starts: the free video call set large on the orange field, the tram beside it */}
       <section aria-labelledby="visit-heading" className="bg-brand text-ink">
         <div className="page-x axis gap-y-12 py-20 md:py-32">
           <div data-reveal className="aspect-[3/4] max-w-[30rem] bg-ink/10 lg:mr-14">
@@ -171,13 +172,13 @@ export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[la
             <h2 id="visit-heading" data-reveal className="t-3">
               {copy.visit.heading}
             </h2>
-            <address data-reveal style={d(1)} className="t-2 not-italic">
-              {copy.visit.address.map((line) => (
+            <p data-reveal style={d(1)} className="t-2">
+              {copy.visit.lines.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
               ))}
-            </address>
+            </p>
             <div className="max-w-[40rem] space-y-6">
               {copy.visit.items.map((item, i) => (
                 <p key={item.lead} data-reveal style={d(i + 2)} className="t-lead">
@@ -215,23 +216,7 @@ export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[la
             {copy.faq.title}
           </h2>
           <div data-reveal style={d(1)} className="space-y-1.5 lg:col-span-8 lg:space-y-2">
-            {copy.faq.items.map((item, i) => (
-              <details
-                key={item.question}
-                name="milan-faq"
-                open={i === 0}
-                className="faq-item bg-surface-muted open:bg-brand not-open:hover:bg-[#e7e7e4] text-ink group transition-colors duration-[240ms]"
-              >
-                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 px-5 py-4 text-[18px] leading-snug font-medium select-none md:min-h-18 md:px-6 md:text-[20px] [&::-webkit-details-marker]:hidden">
-                  {item.question}
-                  <span aria-hidden="true" className="relative h-4 w-4 shrink-0">
-                    <span className="bg-ink absolute top-1/2 left-0 h-[3px] w-4 -translate-y-1/2" />
-                    <span className="bg-ink absolute top-0 left-1/2 h-4 w-[3px] -translate-x-1/2 transition-transform duration-[240ms] ease-[var(--ease-out)] group-open:rotate-90 motion-reduce:transition-none" />
-                  </span>
-                </summary>
-                <p className="faq-answer t-body max-w-[52ch] px-5 pb-6 md:px-6">{item.answer}</p>
-              </details>
-            ))}
+            <FaqAccordion items={copy.faq.items} name="milan-faq" />
           </div>
         </div>
       </section>
@@ -243,34 +228,6 @@ export default async function SoftwareHouseMilanPage({ params }: PageProps<"/[la
       />
 
       <ProposalClose closing={closing} actionHref={localizedHref(lang, "/#brief")} />
-    </>
-  );
-}
-
-/**
- * The first call as a piece of interface: where, how, in which language, and
- * the orange dot on what it ends with. Decorative (OnPhoto hides it from screen
- * readers); the standfirst and the "Where to find us" section say the same.
- */
-function CallCard({ call }: { call: MilanCall }) {
-  return (
-    <>
-      <div className="flex items-baseline justify-between gap-3">
-        <p className="text-ink text-base font-semibold">{call.title}</p>
-        <p className="text-muted-foreground shrink-0 text-sm whitespace-nowrap">{call.tag}</p>
-      </div>
-      <div className="bg-surface-muted mt-3 space-y-2 rounded-lg p-3">
-        {call.rows.map(([label, value]) => (
-          <p key={label} className="flex items-baseline gap-4">
-            <span className="text-muted-foreground w-20 shrink-0 text-sm">{label}</span>
-            <span className="text-ink text-base">{value}</span>
-          </p>
-        ))}
-      </div>
-      <p className="text-ink mt-4 flex items-center gap-2 text-sm font-medium">
-        <span aria-hidden="true" className="bg-brand size-2.5 shrink-0 rounded-full" />
-        {call.status}
-      </p>
     </>
   );
 }

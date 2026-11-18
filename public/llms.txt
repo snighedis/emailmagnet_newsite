@@ -13,6 +13,10 @@ The studio works with online shops, professional practices, vacation rentals, an
 - Founder, Nicola Orlandi: https://www.dentokudev.com/founder (Italian: https://www.dentokudev.com/it/fondatore)
 - Contact: https://www.dentokudev.com/contact (Italian: https://www.dentokudev.com/it/contatti)
 - FAQ: https://www.dentokudev.com/faq (Italian: https://www.dentokudev.com/it/domande-frequenti)
+- AI consulting: https://www.dentokudev.com/ai-consulting (Italian: https://www.dentokudev.com/it/consulenza-ai)
+  How the studio works with AI: what AI does in its software and what stays with a person, how it differs from an AI consultant and a software house, where client data goes, and six questions to ask any AI supplier.
+- Software house in Milan: https://www.dentokudev.com/software-house-milan (Italian: https://www.dentokudev.com/it/software-house-milano)
+  The studio from Milan for small businesses, working by video call across Italy; the free 30-minute first call.
 
 ## What the studio automates
 - Answering customer email: the software reads incoming requests and drafts a reply in the business's tone; a person reads it and presses Send.

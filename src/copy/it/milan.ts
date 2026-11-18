@@ -9,12 +9,12 @@ export const milan: MilanCopy = {
   meta: {
     title: "Software house a Milano per piccole imprese",
     description:
-      "Dentoku Dev è uno studio software a Milano, in Via Bullona 8: automazioni con l’intelligenza artificiale e software su misura per piccole imprese. Incontri a Milano su appuntamento, videochiamate in tutta Italia.",
+      "Dentoku Dev è uno studio software di Milano: automazioni con l’intelligenza artificiale e software su misura per piccole imprese. Si parte con una videochiamata gratuita di 30 minuti, da tutta Italia.",
   },
   breadcrumb: "Software house a Milano",
   title: ["Studio software a Milano."],
   standfirst:
-    "In Via Bullona 8 costruiamo automazioni con l’intelligenza artificiale e software su misura per piccole imprese. Ci incontri a Milano su appuntamento, oppure in videochiamata da tutta Italia.",
+    "Da Milano costruiamo automazioni con l’intelligenza artificiale e software su misura per piccole imprese. Si comincia con una videochiamata gratuita di 30 minuti, da qualsiasi parte d’Italia.",
   primaryCta: { label: "Calcola le tue ore", href: "/#brief" },
   secondaryCta: { label: "Scrivici", href: "/contact" },
 
@@ -30,8 +30,8 @@ export const milan: MilanCopy = {
     title: "Prima call",
     tag: "Gratuita",
     rows: [
-      ["A Milano", "Via Bullona 8, su appuntamento"],
-      ["Altrove", "Videochiamata"],
+      ["Come", "Videochiamata"],
+      ["Durata", "30 minuti"],
       ["Lingua", "Italiano o inglese"],
     ],
     status: "Si chiude con una proposta scritta",
@@ -86,16 +86,16 @@ export const milan: MilanCopy = {
   },
 
   visit: {
-    heading: "Dove ci trovi",
-    address: ["Via Bullona 8", "20154 Milano"],
+    heading: "Come si comincia",
+    lines: ["30 minuti,", "in videochiamata."],
     items: [
       {
-        lead: "A Milano, su appuntamento.",
-        body: "Scrivici e fissiamo un giorno per incontrarci in studio.",
+        lead: "Gratuita.",
+        body: "La prima call non costa niente e si chiude con una proposta scritta.",
       },
       {
-        lead: "Da tutta Italia, in videochiamata.",
-        body: "La prima call, la proposta e gli aggiornamenti passano tutti da lì, in italiano o in inglese. Il software lo provi tu, nel tuo browser, dalle prime settimane.",
+        lead: "Da tutta Italia.",
+        body: "La prima call, la proposta e gli aggiornamenti passano tutti dalla videochiamata, in italiano o in inglese. Il software lo provi tu, nel tuo browser, dalle prime settimane.",
       },
     ],
     contact: { label: "Scrivici", href: "/contact" },
@@ -116,13 +116,13 @@ export const milan: MilanCopy = {
           "Siamo uno studio software: un fondatore che scrive il codice e collaboratori scelti per ogni progetto, senza account manager. Facciamo il lavoro di una software house, su progetti a misura di piccola impresa.",
       },
       {
-        question: "Posso incontrarvi a Milano?",
+        question: "Come si svolge la prima call?",
         answer:
-          "Sì, su appuntamento, in Via Bullona 8. Scrivici e fissiamo il giorno. Se sei fuori Milano lavoriamo in videochiamata, dalla prima call agli aggiornamenti.",
+          "È una videochiamata gratuita di 30 minuti: ci racconti il lavoro che ti ruba tempo e capiamo insieme quante ore ti costa. Si chiude con una proposta scritta.",
       },
       {
         question: "Lavorate solo con aziende di Milano?",
-        answer: "No. Lavoriamo a distanza con imprese in tutta Italia, in italiano e in inglese.",
+        answer: "No. Lavoriamo in videochiamata con imprese in tutta Italia, in italiano e in inglese.",
       },
       {
         question: "Quanto costa un software su misura?",

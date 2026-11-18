@@ -65,6 +65,27 @@ export const PHOTOS = {
     height: 1600,
     credit: { name: "Alisa Skripina", href: "https://www.pexels.com/photo/35596698/" },
   },
+  aiAtelier: {
+    base: "/photos/ai-atelier-laptop",
+    widths: [800, 1600],
+    width: 1600,
+    height: 900,
+    credit: { name: "Vitaly Gariev", href: "https://www.pexels.com/photo/36731166/" },
+  },
+  aiDocuments: {
+    base: "/photos/ai-documents-desk",
+    widths: [800, 1400],
+    width: 1400,
+    height: 933,
+    credit: { name: "RDNE Stock project", href: "https://www.pexels.com/photo/7821708/" },
+  },
+  aiShop: {
+    base: "/photos/ai-shop-phone-note",
+    widths: [800, 1400],
+    width: 1400,
+    height: 935,
+    credit: { name: "Kampus Production", href: "https://www.pexels.com/photo/8475194/" },
+  },
   automateBookings: {
     base: "/photos/automate-guesthouse-phone",
     widths: [800, 1400],

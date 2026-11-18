@@ -112,6 +112,16 @@ export const common: CommonCopy = {
       { value: "A new project", label: "Un nuovo progetto" },
       { value: "General inquiry", label: "Richiesta generica" },
     ],
+    business: "Azienda",
+    businessPlaceholder: "Nome dell’azienda",
+    timing: "Quando vuoi partire?",
+    selectTiming: "Seleziona",
+    optional: "(facoltativo)",
+    timings: [
+      { value: "Within 30 days", label: "Subito, entro 30 giorni" },
+      { value: "In 1-3 months", label: "Tra 1 e 3 mesi" },
+      { value: "Exploring", label: "Sto valutando" },
+    ],
     consent:
       "Inviando questo modulo confermi di aver letto e accettato l’Informativa sulla privacy.",
     incomplete: "Compila nome, cognome, un’email valida e il messaggio prima di inviare.",

@@ -18,6 +18,7 @@ export const italianSlugs: Record<string, string> = {
   "/faq": "/domande-frequenti",
   "/quote-software": "/software-preventivi",
   "/software-house-milan": "/software-house-milano",
+  "/ai-consulting": "/consulenza-ai",
   "/privacy": "/privacy",
   "/terms": "/termini",
   "/cookies": "/cookie",

@@ -67,7 +67,10 @@ export type FragmentPhoto = {
   priority?: boolean;
   /** Tailwind aspect class for the crop; 16:11 by default. */
   ratio?: string;
-  /** The side the card leans out of the picture on desktop, into the column gap (3.5rem). */
+  /**
+   * The side the card leans out of the picture on desktop, into the column gap
+   * (3.5rem). Text beside it keeps at least 4rem clear of the card's edge.
+   */
   side?: "left" | "right";
 };
 

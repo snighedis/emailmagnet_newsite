@@ -76,7 +76,9 @@ export default async function QuoteSoftwarePage({ params }: PageProps<"/[lang]/q
                 </span>
               ))}
             </h1>
-            <div data-reveal style={d(3)} className="space-y-6">
+            {/* lg:pr-18 on top of the column's pr-12: the hero card leans 3.5rem out of
+                the picture towards the standfirst, which keeps 4rem clear of it. */}
+            <div data-reveal style={d(3)} className="space-y-6 lg:pr-18">
               <p className="t-lead text-ink max-w-[38ch]">{copy.standfirst}</p>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                 <Button asChild size="xl">
@@ -142,7 +144,8 @@ export default async function QuoteSoftwarePage({ params }: PageProps<"/[lang]/q
               </OnPhoto>
             </div>
           </div>
-          <div className="max-w-[40rem] space-y-10">
+          {/* lg:pl-14 keeps the text clear of the sheet card leaning out of the picture. */}
+          <div className="max-w-[40rem] space-y-10 lg:pl-14">
             {copy.choice.items.map((item, i) => (
               <p key={item.lead} data-reveal style={d(i)} className="t-lead text-ink">
                 <strong className="font-semibold">{item.lead}</strong> {item.body}

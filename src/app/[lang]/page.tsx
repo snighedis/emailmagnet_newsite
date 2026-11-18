@@ -115,7 +115,9 @@ function HomeSection({
                     }}
                   />
                 </div>
-                <div data-reveal style={d(1)} className="text-ink max-w-[46ch] space-y-2 md:self-center">
+                {/* lg:pl-16 keeps the text 4rem clear of the card, which leans 3.5rem out of the
+                    picture up to the column line (OnPhoto). */}
+                <div data-reveal style={d(1)} className="text-ink max-w-[46ch] space-y-2 md:self-center lg:pl-16">
                   <h3 className="t-lead font-sans font-semibold">{item.title}</h3>
                   <p className="t-body lg:text-[20px] lg:leading-[1.55]">{item.does}</p>
                   <p className="t-body text-muted-foreground">

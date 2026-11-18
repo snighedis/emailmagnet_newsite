@@ -25,6 +25,8 @@ type FormState = {
   lastName: string;
   email: string;
   product: string;
+  business: string;
+  timing: string;
   message: string;
   website: string;
   company: string;
@@ -36,6 +38,8 @@ const defaultState: FormState = {
   lastName: "",
   email: "",
   product: "",
+  business: "",
+  timing: "",
   message: "",
   website: "",
   company: "",
@@ -108,10 +112,13 @@ export function ContactMailtoForm({
     // Reliable, no server/consent dependency, and keeps the full message intact.
     const product = form.product || "General inquiry";
     const subject = `[${product}] Contact from ${form.firstName} ${form.lastName}`;
+    // Company and timing are optional: their lines appear only when filled.
     const body = [
       `Name: ${form.firstName} ${form.lastName}`,
       `Email: ${form.email}`,
+      ...(form.business.trim() ? [`Company: ${form.business.trim()}`] : []),
       `Topic: ${product}`,
+      ...(form.timing ? [`Timing: ${form.timing}`] : []),
       "",
       form.message,
     ].join("\n");
@@ -153,55 +160,52 @@ export function ContactMailtoForm({
         </label>
       </div>
 
-      <label className="mt-5 grid gap-2 text-ink text-base font-semibold">
-        {copy.email}<span className="sr-only">{copy.requiredSr}</span>
-        <Input
-          required
-          name="email"
-          type="email"
-          autoComplete="email"
-          placeholder={copy.emailPlaceholder}
-          value={form.email}
-          onChange={(event) => updateField("email", event.target.value)}
-          className="h-12 rounded-none border-stone-400 bg-white px-4 text-base"
-        />
-      </label>
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <label className="grid gap-2 text-ink text-base font-semibold">
+          {copy.email}<span className="sr-only">{copy.requiredSr}</span>
+          <Input
+            required
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder={copy.emailPlaceholder}
+            value={form.email}
+            onChange={(event) => updateField("email", event.target.value)}
+            className="h-12 rounded-none border-stone-400 bg-white px-4 text-base"
+          />
+        </label>
+        <label className="grid gap-2 text-ink text-base font-semibold">
+          <span>
+            {copy.business} <span className="text-muted-foreground font-normal">{copy.optional}</span>
+          </span>
+          <Input
+            name="businessName"
+            autoComplete="organization"
+            placeholder={copy.businessPlaceholder}
+            value={form.business}
+            onChange={(event) => updateField("business", event.target.value)}
+            className="h-12 rounded-none border-stone-400 bg-white px-4 text-base"
+          />
+        </label>
+      </div>
 
-      <label className="mt-5 grid gap-2 text-ink text-base font-semibold">
-        {copy.topic}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button
-              type="button"
-              className="flex h-12 w-full items-center justify-between rounded-none border border-stone-400 bg-white px-4 text-left text-base font-medium text-stone-900 outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
-              aria-haspopup="listbox"
-            >
-              <span className={form.product ? "text-stone-900" : "text-stone-500"}>
-                {copy.topics.find((topic) => topic.value === form.product)?.label ?? copy.selectTopic}
-              </span>
-              <ChevronDown className="h-4 w-4 text-stone-500" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-[var(--radix-dropdown-menu-trigger-width)] rounded-sm border border-stone-300 bg-white p-1"
-          >
-            {copy.topics.map((option) => {
-              const isSelected = form.product === option.value;
-              return (
-                <DropdownMenuItem
-                  key={option.value}
-                  onSelect={() => updateField("product", option.value)}
-                  className="flex h-10 items-center justify-between rounded-sm px-3 text-base font-medium text-stone-900 focus:bg-stone-100"
-                >
-                  <span>{option.label}</span>
-                  {isSelected ? <Check className="h-4 w-4 text-[#244f9e]" /> : null}
-                </DropdownMenuItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </label>
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <ChoiceMenu
+          label={copy.topic}
+          placeholder={copy.selectTopic}
+          options={copy.topics}
+          value={form.product}
+          onChange={(value) => updateField("product", value)}
+        />
+        <ChoiceMenu
+          label={copy.timing}
+          optional={copy.optional}
+          placeholder={copy.selectTiming}
+          options={copy.timings}
+          value={form.timing}
+          onChange={(value) => updateField("timing", value)}
+        />
+      </div>
 
       <label className="mt-5 grid gap-2 text-ink text-base font-semibold">
         {copy.message}<span className="sr-only">{copy.requiredSr}</span>
@@ -232,7 +236,7 @@ export function ContactMailtoForm({
           id="company"
           type="text"
           name="company"
-          autoComplete="organization"
+          autoComplete="off"
           tabIndex={-1}
           value={form.company}
           onChange={(event) => updateField("company", event.target.value)}
@@ -275,5 +279,64 @@ export function ContactMailtoForm({
         </Button>
       </div>
     </form>
+  );
+}
+
+/**
+ * A choice from a short list, as the form's dropdown: the label above, the
+ * chosen option (or the placeholder) in the field. `value` is what reaches
+ * support and stays English; `label` is shown.
+ */
+function ChoiceMenu({
+  label,
+  optional,
+  placeholder,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  optional?: string;
+  placeholder: string;
+  options: ReadonlyArray<{ value: string; label: string }>;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <label className="grid gap-2 text-ink text-base font-semibold">
+      <span>
+        {label}
+        {optional ? <span className="text-muted-foreground font-normal"> {optional}</span> : null}
+      </span>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            type="button"
+            className="flex h-12 w-full items-center justify-between gap-3 rounded-none border border-stone-400 bg-white px-4 text-left text-base font-medium text-stone-900 outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+            aria-haspopup="listbox"
+          >
+            <span className={`truncate ${value ? "text-stone-900" : "text-stone-500"}`}>
+              {options.find((option) => option.value === value)?.label ?? placeholder}
+            </span>
+            <ChevronDown className="h-4 w-4 shrink-0 text-stone-500" />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          align="start"
+          className="w-[var(--radix-dropdown-menu-trigger-width)] rounded-sm border border-stone-300 bg-white p-1"
+        >
+          {options.map((option) => (
+            <DropdownMenuItem
+              key={option.value}
+              onSelect={() => onChange(option.value)}
+              className="flex h-10 items-center justify-between rounded-sm px-3 text-base font-medium text-stone-900 focus:bg-stone-100"
+            >
+              <span>{option.label}</span>
+              {value === option.value ? <Check className="h-4 w-4 text-[#244f9e]" /> : null}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </label>
   );
 }

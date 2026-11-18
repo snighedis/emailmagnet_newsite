@@ -20,13 +20,43 @@ export const contact: ContactCopy = {
   write: {
     title: "Preferisci scrivere?",
     lead: "Raccontaci il problema con parole tue, o chiedi aiuto su uno dei nostri prodotti. Il modulo apre la tua app di posta con il messaggio pronto.",
-    direct: "Oppure scrivi direttamente a",
+    whatsapp: { lead: "Preferisci WhatsApp?", label: "Scrivici al" },
+    reply: "Ti rispondiamo entro un giorno lavorativo, sul modulo e su WhatsApp.",
     nextTitle: "Cosa succede dopo",
     next: [
       { lead: "Scrivi qualche riga.", body: "Il problema, o la domanda su un prodotto." },
-      { lead: "Fissiamo una call breve.", body: "Per capire il perimetro e quante ore ti costa oggi il lavoro." },
+      { lead: "Fissiamo una videochiamata gratuita di 30 minuti.", body: "Per capire il perimetro e quante ore ti costa oggi il lavoro." },
       { lead: "Ricevi una proposta scritta.", body: "Cosa costruiamo, quanto costa, quando è pronto." },
     ],
+  },
+  before: {
+    title: "Prima di scrivere",
+    items: [
+      {
+        question: "La prima call è gratuita?",
+        answer:
+          "Sì. È una videochiamata di 30 minuti: ci racconti il lavoro che ti ruba tempo e capiamo quante ore ti costa. Si chiude con una proposta scritta.",
+      },
+      {
+        question: "Quanto ci mettete a rispondere?",
+        answer: "Entro un giorno lavorativo, che tu scriva dal modulo o su WhatsApp.",
+      },
+      {
+        question: "Devo preparare qualcosa?",
+        answer:
+          "No. Basta sapere quale lavoro ripetitivo ti ruba più tempo. Se hai una stima delle ore, anche approssimativa, ancora meglio.",
+      },
+      {
+        question: "Lavorate solo a Milano?",
+        answer: "No. Lavoriamo in videochiamata con imprese in tutta Italia, in italiano o in inglese.",
+      },
+      {
+        question: "Che fine fa quello che vi mando?",
+        answer:
+          "Il modulo apre la tua app di posta e il messaggio arriva alla nostra casella: lo usiamo solo per risponderti e, se lavoriamo insieme, per seguire il progetto. I dettagli sono nell’informativa privacy.",
+      },
+    ],
+    privacyLink: { label: "Leggi l’informativa privacy", href: "/privacy" },
   },
   products: {
     title: "Una domanda su un prodotto?",

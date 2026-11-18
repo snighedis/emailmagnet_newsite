@@ -5,6 +5,7 @@ import { site as siteEn, type SiteCopy } from "./en/site";
 import { common as commonIt } from "./it/common";
 import { site as siteIt } from "./it/site";
 import { about as aboutEn, type AboutCopy } from "./en/about";
+import { ai as aiEn, type AiCopy } from "./en/ai";
 import { contact as contactEn, type ContactCopy } from "./en/contact";
 import { faq as faqEn, type FaqCopy } from "./en/faq";
 import { founder as founderEn, type FounderCopy } from "./en/founder";
@@ -12,6 +13,7 @@ import { home as homeEn, type HomeCopy } from "./en/home";
 import { milan as milanEn, type MilanCopy } from "./en/milan";
 import { quotes as quotesEn, type QuotesCopy } from "./en/quotes";
 import { about as aboutIt } from "./it/about";
+import { ai as aiIt } from "./it/ai";
 import { contact as contactIt } from "./it/contact";
 import { faq as faqIt } from "./it/faq";
 import { founder as founderIt } from "./it/founder";
@@ -51,11 +53,12 @@ export type PageCopy = {
   faq: FaqCopy;
   quotes: QuotesCopy;
   milan: MilanCopy;
+  ai: AiCopy;
 };
 
 const pages: Record<Locale, PageCopy> = {
-  en: { home: homeEn, about: aboutEn, founder: founderEn, contact: contactEn, faq: faqEn, quotes: quotesEn, milan: milanEn },
-  it: { home: homeIt, about: aboutIt, founder: founderIt, contact: contactIt, faq: faqIt, quotes: quotesIt, milan: milanIt },
+  en: { home: homeEn, about: aboutEn, founder: founderEn, contact: contactEn, faq: faqEn, quotes: quotesEn, milan: milanEn, ai: aiEn },
+  it: { home: homeIt, about: aboutIt, founder: founderIt, contact: contactIt, faq: faqIt, quotes: quotesIt, milan: milanIt, ai: aiIt },
 };
 
 export function getPageCopy(lang: Locale): PageCopy {

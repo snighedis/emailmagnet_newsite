@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import { Brief } from "@/components/marketing/brief";
 import { ContactMailtoForm } from "@/components/marketing/contact-mailto-form";
+import { FaqAccordion } from "@/components/marketing/faq-accordion";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import { ProductShowcase } from "@/components/marketing/product-showcase";
 import { Button } from "@/components/ui/button";
 import { getCopy, getPageCopy } from "@/copy";
 import { siteConfig } from "@/data/site";
+import { LocaleLink } from "@/i18n/locale-link";
 import { resolveLang } from "@/i18n/params";
 import { createMetadata } from "@/lib/metadata";
-import { buildBreadcrumbSchema, buildContactPointSchema } from "@/lib/schema";
+import { buildBreadcrumbSchema, buildContactPointSchema, buildFaqSchema } from "@/lib/schema";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/contact">): Promise<Metadata> {
   const lang = await resolveLang(params);
@@ -27,8 +29,9 @@ const STORE_RATING = 5.0;
 /**
  * Contact (docs/adr/0002 as amended; redesign ticket 11, "two ways"): the title
  * on the column line with both ways named beside it, the homepage's brief on the
- * tone step, the free form with what happens after it, then the products for
- * support questions. No proposal card: the brief it points to is on this page.
+ * tone step, the free form with WhatsApp and what happens after it, the
+ * questions asked before writing, then the products for support questions. No
+ * proposal card: the brief it points to is on this page.
  */
 export default async function ContactPage({ params }: PageProps<"/[lang]/contact">) {
   const lang = await resolveLang(params);
@@ -40,6 +43,7 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
   return (
     <>
       <JsonLd data={buildContactPointSchema(lang, copy.contactPointName)} />
+      <JsonLd data={buildFaqSchema(copy.before.items, lang)} />
       <JsonLd
         data={buildBreadcrumbSchema(
           [
@@ -111,11 +115,19 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
               <p data-reveal style={d(1)} className="t-lead text-ink max-w-[40ch]">
                 {copy.write.lead}
               </p>
-              <p data-reveal style={d(2)} className="t-body text-ink">
-                {copy.write.direct}{" "}
-                <a href={`mailto:${siteConfig.supportEmail}`} className="text-link font-medium">
-                  {siteConfig.supportEmail}
+              <p data-reveal style={d(2)} className="t-lead text-ink max-w-[40ch]">
+                <strong className="font-semibold">{copy.write.whatsapp.lead}</strong> {copy.write.whatsapp.label}{" "}
+                <a
+                  href={siteConfig.whatsapp.href}
+                  className="text-link font-semibold whitespace-nowrap"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {siteConfig.whatsapp.display}
                 </a>
+              </p>
+              <p data-reveal style={d(2)} className="t-body text-ink max-w-[40ch]">
+                {copy.write.reply}
               </p>
             </div>
             <div data-reveal style={d(3)} className="space-y-4">
@@ -129,6 +141,25 @@ export default async function ContactPage({ params }: PageProps<"/[lang]/contact
           </div>
           <div data-reveal style={d(2)} className="max-w-[44rem]">
             <ContactMailtoForm supportEmail={siteConfig.supportEmail} className="bg-surface-muted p-6 md:p-10" />
+          </div>
+        </div>
+      </section>
+
+      {/* Before you write: the questions people ask, on the tone step */}
+      <section aria-labelledby="before-heading" className="bg-surface-muted">
+        <div className="page-x grid gap-10 py-20 md:py-32 lg:grid-cols-12 lg:gap-8">
+          <div className="space-y-6 lg:sticky lg:top-24 lg:col-span-4 lg:self-start lg:pr-8">
+            <h2 id="before-heading" data-reveal className="t-3 text-ink">
+              {copy.before.title}
+            </h2>
+            <p data-reveal style={d(1)}>
+              <LocaleLink href={copy.before.privacyLink.href} className="text-link text-ink text-base font-medium">
+                {copy.before.privacyLink.label}
+              </LocaleLink>
+            </p>
+          </div>
+          <div data-reveal style={d(1)} className="space-y-1.5 lg:col-span-8 lg:space-y-2">
+            <FaqAccordion items={copy.before.items} name="contact-faq" tile="bg-background not-open:hover:bg-white" />
           </div>
         </div>
       </section>
