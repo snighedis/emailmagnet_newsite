@@ -16,7 +16,7 @@ The studio works with online shops, professional practices, vacation rentals, an
 
 ## What the studio automates
 - Answering customer email: the software reads incoming requests and drafts a reply in the business's tone; a person reads it and presses Send.
-- Preparing quotes: the request is matched against the price list and the quote is filled in the business's own format, ready to check.
+- Preparing quotes: the request is matched against the price list and the quote is filled in the business's own format, ready to check. Page: https://www.dentokudev.com/quote-software (Italian: https://www.dentokudev.com/it/software-preventivi)
 - Retyping data between tools: data moves between the tools already in use (email, spreadsheets, management software, Shopify) without anyone retyping it.
 - Handling bookings and orders: requests and confirmations are collected, the calendar is updated and reminders are sent.
 

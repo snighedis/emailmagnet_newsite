@@ -17,7 +17,7 @@ export const quotes = {
   // The search phrase itself, two lines at most at every width; the standfirst says the rest.
   title: ["Software for your quotes."],
   standfirst:
-    "Built on your price list. The software reads the customer's request, matches it against your price list and fills in the quote in your own format. You check price and terms, then you send it.",
+    "Built on your price list. The software uses AI to read the customer's request, match it against your price list and fill in the quote in your own format. You check price and terms, then you send it.",
   primaryCta: { label: "Count your hours", href: "/#brief" },
   secondaryCta: { label: "Write to us", href: "/contact" },
 

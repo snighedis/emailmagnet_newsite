@@ -14,7 +14,7 @@ export const quotes: QuotesCopy = {
   breadcrumb: "Software per preventivi",
   title: ["Software per preventivi."],
   standfirst:
-    "Fatto sul tuo listino. Il software legge la richiesta del cliente, la confronta con il tuo listino e compila il preventivo nel tuo formato. Tu controlli prezzo e condizioni, poi lo mandi.",
+    "Fatto sul tuo listino. Con l’intelligenza artificiale il software legge la richiesta del cliente, la confronta con il tuo listino e compila il preventivo nel tuo formato. Tu controlli prezzo e condizioni, poi lo mandi.",
   primaryCta: { label: "Calcola le tue ore", href: "/#brief" },
   secondaryCta: { label: "Scrivici", href: "/contact" },
 

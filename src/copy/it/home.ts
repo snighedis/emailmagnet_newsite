@@ -6,15 +6,15 @@ import type { HomeCopy } from "@/copy/en/home";
  */
 export const home: HomeCopy = {
   meta: {
-    title: "Dentoku Dev: software su misura per piccole imprese",
+    title: "Dentoku Dev: automazioni con l’AI e software su misura per PMI",
     description:
-      "Studio software di Milano. Automatizziamo email, preventivi, dati ricopiati e prenotazioni delle piccole imprese, e contiamo con te le ore che risparmi.",
+      "Studio software di Milano. Automazioni con l’intelligenza artificiale per PMI: email, preventivi, prenotazioni e dati da spostare tra i programmi. Le ore che risparmi le contiamo con te.",
   },
   itemListName: "Prodotti software di Dentoku Dev",
   hero: {
     title: ["Il lavoro ripetitivo", "lo fa il software."],
     standfirst:
-      "Siamo uno studio software di Milano. Costruiamo software su misura per piccole imprese e contiamo con te le ore che ti fa risparmiare.",
+      "Siamo uno studio software di Milano. Costruiamo su misura automazioni con l’intelligenza artificiale per piccole imprese, e contiamo con te le ore che ti fanno risparmiare.",
     primaryCta: { label: "Calcola le tue ore", href: "#brief" },
     secondaryCta: { label: "Scrivici", href: "/contact" },
   },
@@ -39,7 +39,7 @@ export const home: HomeCopy = {
     rating: "I nostri quattro prodotti sono online su store pubblici, con {rating} su 5 su Chrome Web Store.",
   },
   automate: {
-    heading: "Cosa automatizziamo",
+    heading: "Automazioni con l’intelligenza artificiale per piccole imprese",
     statement:
       "Il software risponde alle email, prepara i preventivi, ricopia i dati da un programma all’altro e tiene in ordine le prenotazioni. A te restano le decisioni.",
     staysLabel: "A te resta:",
@@ -165,6 +165,11 @@ export const home: HomeCopy = {
         question: "Che progetti seguite?",
         answer:
           "Software su misura per piccole e medie imprese: strumenti interni, automazione del lavoro d’ufficio, estensioni per il browser, app Shopify ed ecommerce, AI dentro i processi che hai già. Se somiglia a uno dei nostri prodotti, siamo lo studio giusto.",
+      },
+      {
+        question: "Che cosa automatizzate con l’intelligenza artificiale?",
+        answer:
+          "Il lavoro ripetitivo d’ufficio delle piccole imprese: leggere le email e scrivere le bozze di risposta, preparare i preventivi dal listino, ricopiare i dati tra i programmi, gestire prenotazioni e ordini. L’intelligenza artificiale legge le richieste scritte e prepara il lavoro; tu controlli e decidi. Siamo a Milano e lavoriamo a distanza con imprese in tutta Italia.",
       },
       {
         question: "Come inizia un progetto?",

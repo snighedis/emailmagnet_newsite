@@ -14,9 +14,9 @@ export const home = {
   meta: {
     // The home speaks to small businesses first; the products have their own pages.
     // Also the title and text of the link preview.
-    title: "Dentoku Dev: custom software for small businesses",
+    title: "Dentoku Dev: AI automation and custom software for small businesses",
     description:
-      "A Milan software studio. We automate the emails, quotes, retyped data and bookings of small businesses, and count with you the hours you save.",
+      "A Milan software studio. AI automation for small businesses: emails, quotes, bookings and data moved between programs. We count the hours you save with you.",
   },
   itemListName: "Dentoku Dev software products",
   hero: homeHero,
@@ -50,7 +50,7 @@ export const home = {
   // What we automate: the four repetitive jobs the brief asks about. Capabilities,
   // not past projects: no client claims until there are measured ones (CONTEXT.md).
   automate: {
-    heading: "What we automate",
+    heading: "AI automation for small businesses",
     statement:
       "The software answers email, writes quotes, moves your data and keeps bookings in order. You keep the decisions.",
     staysLabel: "Stays with you:",

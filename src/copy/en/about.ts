@@ -3,7 +3,7 @@ export const about = {
   meta: {
     title: "About Dentoku Dev, a software studio in Milan",
     description:
-      "Dentoku Dev is a Milan software studio: custom software that takes the repetitive work off small businesses, with the saving measured.",
+      "Dentoku Dev is a Milan software studio: AI automation and custom software that take the repetitive work off small businesses, with the saving measured.",
   },
   breadcrumb: "About",
   itemListName: "Dentoku Dev product portfolio",

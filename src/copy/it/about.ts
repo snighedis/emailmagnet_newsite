@@ -9,7 +9,7 @@ export const about: AboutCopy = {
   meta: {
     title: "Chi siamo: Dentoku Dev, studio software a Milano",
     description:
-      "Dentoku Dev è uno studio software di Milano: software su misura che toglie il lavoro ripetitivo alle piccole imprese, con il risparmio misurato.",
+      "Dentoku Dev è uno studio software di Milano: automazioni con l’intelligenza artificiale e software su misura che tolgono il lavoro ripetitivo alle piccole imprese, con il risparmio misurato.",
   },
   breadcrumb: "Chi siamo",
   itemListName: "Portfolio prodotti di Dentoku Dev",

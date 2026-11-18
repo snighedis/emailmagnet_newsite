@@ -408,7 +408,7 @@ export const homeHero = {
   // Two authored lines: the headline rises line by line (masked reveal).
   title: ["Repetitive work,", "done by software."],
   standfirst:
-    "A Milan software studio. Four products you can install today, and custom software for small businesses that measures the hours it saves.",
+    "A Milan software studio. Four products you can install today, and AI automation built for small businesses that measures the hours it saves.",
   primaryCta: { label: "Count your hours", href: "#brief" },
   secondaryCta: { label: "Write to us", href: "/contact" },
 };
@@ -443,6 +443,11 @@ export const consultingFaq: FaqItem[] = [
     question: "What kind of projects do you take on?",
     answer:
       "Custom software for small and mid-sized businesses: internal tools, workflow automation, browser extensions, Shopify and ecommerce apps, and AI integration into existing processes. If it looks like one of our own products, we are a strong fit.",
+  },
+  {
+    question: "What do you automate with AI?",
+    answer:
+      "The repetitive office work of small businesses: reading emails and drafting replies, preparing quotes from the price list, moving data between programs, handling bookings and orders. AI reads the written requests and prepares the work; you check it and decide. We are in Milan and work remotely with businesses across Italy.",
   },
   {
     question: "How does a project start?",
