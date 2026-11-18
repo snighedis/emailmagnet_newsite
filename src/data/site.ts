@@ -265,6 +265,7 @@ export const footerNav = {
     { label: "Founder", href: founderConfig.href },
     { label: "Contact", href: "/contact" },
     { label: "Quote software", href: "/quote-software" },
+    { label: "Software house in Milan", href: "/software-house-milan" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

@@ -79,7 +79,7 @@ describe("site copy: Italian navigation points at the same pages", () => {
     // The Italian menu leads with the consulting funnel (redesign ticket 09), so its
     // entries differ from the English ones; each must still be a home anchor or a
     // page that exists in Italian.
-    const italianPages = new Set(["/about", "/contact", "/faq", "/founder", "/quote-software"]);
+    const italianPages = new Set(["/about", "/contact", "/faq", "/founder", "/quote-software", "/software-house-milan"]);
     for (const item of siteIt.mainNav) {
       expect(item.href.startsWith("/#") || italianPages.has(item.href)).toBe(true);
     }

@@ -44,6 +44,27 @@ export const PHOTOS = {
     height: 934,
     credit: { name: "Kampus Production", href: "https://www.pexels.com/photo/7857553/" },
   },
+  milanTram: {
+    base: "/photos/milan-tram-arco",
+    widths: [800, 1600],
+    width: 1600,
+    height: 1200,
+    credit: { name: "Francesco Costanzo", href: "https://www.pexels.com/photo/12811006/" },
+  },
+  milanStreet: {
+    base: "/photos/milan-corso-sempione",
+    widths: [700, 1200],
+    width: 1200,
+    height: 1500,
+    credit: { name: "Alejandro Canon", href: "https://www.pexels.com/photo/33647345/" },
+  },
+  milanUmbrella: {
+    base: "/photos/milan-tram-umbrella",
+    widths: [700, 1200],
+    width: 1200,
+    height: 1600,
+    credit: { name: "Alisa Skripina", href: "https://www.pexels.com/photo/35596698/" },
+  },
   automateBookings: {
     base: "/photos/automate-guesthouse-phone",
     widths: [800, 1400],
