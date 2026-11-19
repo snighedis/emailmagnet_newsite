@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/content/blog";
+import { lastModifiedFor } from "@/data/page-dates";
 import { productPortfolio, siteConfig } from "@/data/site";
 import { hasItalianTwin, italianSlugs, italianUrlPath } from "@/i18n/slugs";
 
@@ -52,18 +53,23 @@ function alternatesFor(route: string) {
   return { alternates: { languages: { en: englishUrl(path), it: italianUrl(path) } } };
 }
 
+/** `lastModified` only where a real date is known (src/data/page-dates.ts). */
+function lastModified(route: string) {
+  const date = lastModifiedFor(route);
+  return date ? { lastModified: date } : {};
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const staticRoutes = routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: now,
+    ...lastModified(route),
     changeFrequency: "weekly" as const,
     priority: route === "" ? 1 : route === "/blog" ? 0.9 : 0.8,
     ...alternatesFor(route),
   }));
   const italianRoutes = Object.keys(italianSlugs).map((path) => ({
     url: italianUrl(path),
-    lastModified: now,
+    ...lastModified(path),
     changeFrequency: "weekly" as const,
     priority: path === "/" ? 1 : 0.8,
     ...alternatesFor(path),
@@ -72,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((product) => !routes.includes(product.href))
     .map((product) => ({
       url: `${siteConfig.url}${product.href}`,
-      lastModified: now,
+      ...lastModified(product.href),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     }));

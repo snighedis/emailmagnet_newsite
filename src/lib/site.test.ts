@@ -281,6 +281,16 @@ describe("Dentoku Dev structured data", () => {
     });
   });
 
+  it("ties the founder to his own profiles, never the studio's accounts", () => {
+    const person = buildPersonSchema(undefined, "Progetta e costruisce il software su misura.");
+    expect(person.description).toBe("Progetta e costruisce il software su misura.");
+    expect(person.sameAs).toContain("https://www.linkedin.com/in/nicolaorlandi/");
+    expect(person.sameAs).not.toContain("https://www.linkedin.com/company/dentoku-dev/");
+    expect(person.description).not.toMatch(/myself/);
+    expect(buildPersonSchema().description).not.toMatch(/myself/);
+    expect(buildOrganizationSchema().foundingDate).toBe("2024");
+  });
+
   it("generates Person schema for the named author", () => {
     expect(buildPersonSchema()).toMatchObject({
       "@type": "Person",

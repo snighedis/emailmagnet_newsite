@@ -49,12 +49,14 @@ export function buildOrganizationSchema(description = siteConfig.description) {
       addressCountry: "IT",
     },
     vatID: "IT13625480960",
+    foundingDate: "2024",
     areaServed: { "@type": "Country", name: "Italy" },
     knowsAbout: organizationTopics,
     founder: {
       "@type": "Person",
       name: founderConfig.name,
       url: `${base}${founderConfig.href}`,
+      sameAs: defaultAuthor.sameAs,
     },
     contactPoint: {
       "@type": "ContactPoint",
@@ -99,13 +101,17 @@ export function buildFounderSchema(lang: Locale = "en", description = founderCon
   };
 }
 
-export function buildPersonSchema(author: Author = defaultAuthor) {
+/**
+ * The founder as a Person. `description` is the page's own copy in its
+ * language (the founder page passes it), the English bio otherwise.
+ */
+export function buildPersonSchema(author: Author = defaultAuthor, description: string = author.bio) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
     name: author.name,
     jobTitle: author.role,
-    description: author.bio,
+    description,
     url: author.url,
     ...(author.image ? { image: `${base}${author.image}` } : {}),
     sameAs: author.sameAs,

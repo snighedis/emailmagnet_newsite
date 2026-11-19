@@ -10,7 +10,7 @@ export type Author = {
   url: string;
   /** First-person, factual bio. Powers the article author-context block and E-E-A-T. */
   bio: string;
-  /** Profile links for Person.sameAs. Swap in personal LinkedIn/X when available. */
+  /** The person's own profiles for Person.sameAs, never the studio's accounts. */
   sameAs: string[];
   /** Optional headshot path under /public. Adds Person.image when set. */
   image?: string;
@@ -26,9 +26,13 @@ export const authors = {
     name: "Nicola Orlandi",
     role: "Founder & AI Automation Specialist at Dentoku Dev",
     url: `${siteConfig.url}/founder`,
-    bio: "I'm Nicola Orlandi, founder of Dentoku Dev. I design, build, ship, and support every tool in the studio myself (EmailMagnet, ClickPilot AI, Volume Control PRO, and Countdown321), so what you read here comes from actually making and maintaining these products, not from the outside looking in.",
-    // Default to the company profiles; replace with Nicola's personal LinkedIn/X when available.
-    sameAs: [siteConfig.social.linkedin, siteConfig.social.x],
+    // No "every tool myself": the studio works with collaborators chosen for each
+    // project, and must not read as a one-person business (owner, 18 Nov 2026).
+    bio: "I'm Nicola Orlandi, founder of Dentoku Dev, a software studio in Milan. I do the analysis and write the code, with collaborators chosen for each project, and the studio builds and maintains its own products (EmailMagnet, ClickPilot AI, Volume Control PRO and Countdown321), so what you read here comes from making them, not from the outside looking in.",
+    // Nicola's own profiles (the portfolio links the same LinkedIn), so AI search
+    // and Google can tie the founder entity together; the studio's accounts stay
+    // on the Organization.
+    sameAs: ["https://www.linkedin.com/in/nicolaorlandi/", "https://portfolio-nicola-orlandi.vercel.app/"],
   },
 } satisfies Record<string, Author>;
 

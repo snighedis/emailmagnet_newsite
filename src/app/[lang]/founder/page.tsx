@@ -42,7 +42,7 @@ export default async function FounderPage({ params }: PageProps<"/[lang]/founder
   return (
     <>
       <JsonLd data={buildFounderSchema(lang, copy.description)} />
-      <JsonLd data={buildPersonSchema()} />
+      <JsonLd data={buildPersonSchema(undefined, copy.description)} />
       <JsonLd
         data={buildBreadcrumbSchema(
           [
