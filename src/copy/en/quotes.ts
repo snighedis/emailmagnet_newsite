@@ -59,7 +59,7 @@ export const quotes = {
 
   // Three ways to make a quote, told honestly: the reader searched for a program.
   choice: {
-    heading: "A ready program, Excel, or custom?",
+    heading: "A ready program, Excel, or custom: which pays off?",
     items: [
       {
         lead: "A ready-made quoting program",

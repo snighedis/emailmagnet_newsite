@@ -7,9 +7,9 @@ import type { QuotesCopy } from "@/copy/en/quotes";
  */
 export const quotes: QuotesCopy = {
   meta: {
-    title: "Software per preventivi su misura per piccole imprese",
+    title: "Software per preventivi su misura per PMI",
     description:
-      "Un programma per preventivi costruito sul tuo listino: legge la richiesta, compila il preventivo nel tuo formato e lo lascia da controllare. Studio software di Milano.",
+      "Software per preventivi costruito sul tuo listino: legge la richiesta, compila il preventivo nel tuo formato e te lo lascia da controllare. Studio di Milano.",
   },
   breadcrumb: "Software per preventivi",
   title: ["Software per preventivi."],
@@ -51,7 +51,7 @@ export const quotes: QuotesCopy = {
   },
 
   choice: {
-    heading: "Programma pronto, Excel o su misura?",
+    heading: "Programma pronto, Excel o su misura: cosa conviene?",
     items: [
       {
         lead: "Un programma per preventivi già pronto",

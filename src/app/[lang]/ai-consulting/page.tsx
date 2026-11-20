@@ -35,7 +35,7 @@ const d = (n: number) => ({ "--d": n }) as CSSProperties;
  * what changes compared with a consultant, by negation; after delivery, on the
  * orange field; where the data goes; three things to insist
  * on; no hours, no project, on the ink field; the products as proof; the
- * questions; the proposal card.
+ * price ranges as a table; the questions; the proposal card.
  */
 export default async function AiConsultingPage({ params }: PageProps<"/[lang]/ai-consulting">) {
   const lang = await resolveLang(params);
@@ -164,9 +164,14 @@ export default async function AiConsultingPage({ params }: PageProps<"/[lang]/ai
       {/* The difference, defined by what the studio is not: four pairs set large */}
       <section aria-labelledby="contrast-heading" className="bg-surface-muted">
         <div className="page-x space-y-12 py-20 md:space-y-16 md:py-32">
-          <h2 id="contrast-heading" data-reveal className="t-2 text-ink max-w-[22ch]">
-            {copy.contrast.heading}
-          </h2>
+          <div className="space-y-4">
+            <h2 id="contrast-heading" data-reveal className="t-2 text-ink max-w-[22ch]">
+              {copy.contrast.heading}
+            </h2>
+            <p data-reveal style={d(1)} className="t-lead text-ink max-w-[52ch]">
+              {copy.contrast.lead}
+            </p>
+          </div>
           <ul className="grid gap-x-16 gap-y-10 md:grid-cols-2">
             {copy.contrast.items.map((item, i) => (
               <li key={item.not} data-reveal style={d(i % 2)} className="space-y-1">
@@ -274,6 +279,46 @@ export default async function AiConsultingPage({ params }: PageProps<"/[lang]/ai
           overviewLink={productsCopy.overviewLink}
         />
       </div>
+
+      {/* The price ranges as a table, next to the questions: filled tiles on the muted field */}
+      <section aria-labelledby="pricing-heading" className="bg-surface-muted">
+        <div className="page-x axis gap-y-10 py-20 md:py-32">
+          <div className="space-y-4 lg:self-start lg:pr-12">
+            <h2 id="pricing-heading" data-reveal className="t-2 text-ink">
+              {copy.pricing.heading}
+            </h2>
+            <p data-reveal style={d(1)} className="t-lead text-ink max-w-[36ch]">
+              {copy.pricing.lead}
+            </p>
+          </div>
+          <div data-reveal style={d(1)} className="max-w-[52rem]">
+            <table className="text-ink w-full border-separate border-spacing-y-2 text-left max-sm:block">
+              <caption className="sr-only">{copy.pricing.heading}</caption>
+              <thead className="sr-only">
+                <tr>
+                  {copy.pricing.columns.map((column) => (
+                    <th key={column} scope="col">
+                      {column}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="max-sm:grid max-sm:gap-2">
+                {copy.pricing.rows.map(([service, price]) => (
+                  <tr key={service} className="bg-background max-sm:flex max-sm:flex-col max-sm:py-4">
+                    <th scope="row" className="t-lead px-5 font-normal sm:py-6 md:px-7">
+                      {service}
+                    </th>
+                    <td className="t-3 px-5 tabular-nums sm:py-6 sm:text-right sm:whitespace-nowrap md:px-7">
+                      {price}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
       {/* The questions: the home's accordion of filled tiles, native <details> */}
       <section aria-labelledby="faq-heading" className="bg-background">

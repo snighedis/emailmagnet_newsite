@@ -14,7 +14,7 @@ export const home = {
   meta: {
     // The home speaks to small businesses first; the products have their own pages.
     // Also the title and text of the link preview.
-    title: "Dentoku Dev: AI automation and custom software for small businesses",
+    title: "Dentoku Dev: AI automation and custom software for SMEs",
     description:
       "A Milan software studio. AI automation for small businesses: emails, quotes, bookings and data moved between programs. We count the hours you save with you.",
   },

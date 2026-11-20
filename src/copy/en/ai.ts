@@ -22,9 +22,9 @@
  */
 export const ai = {
   meta: {
-    title: "AI consulting for small businesses, measured in hours",
+    title: "AI consulting for small businesses",
     description:
-      "AI consulting measured in hours: we count what a repetitive job costs you, automate it with AI and count again after release. The person who does the analysis writes the code.",
+      "AI consulting measured in hours: we count what a repetitive job costs you, automate it with AI and count again after release. The analyst writes the code.",
   },
   breadcrumb: "AI consulting",
   title: ["AI consulting,", "measured in hours."],
@@ -106,6 +106,9 @@ export const ai = {
   // The difference, defined by what the studio is not.
   contrast: {
     heading: "What changes compared with an AI consultant",
+    // One sentence that stands on its own, above the pairs: an AI answer quotes
+    // a line, and a "Not..." line alone says nothing (GEO analysis, 19 Nov 2026).
+    lead: "An AI consultant gives you an opinion. Dentoku Dev starts from the hours a job costs you and delivers the software that takes them away.",
     items: [
       { not: "Not advice.", is: "Software that works on your tools." },
       { not: "Not a savings estimate.", is: "The hours, counted before and after." },
@@ -174,6 +177,19 @@ export const ai = {
         lead: "Accounts and code in your name.",
         body: "The accounts are in your business's name and, on final payment, the code is yours: any developer can carry it on.",
       },
+    ],
+  },
+
+  // The FAQ's price ranges again, as a table: the easiest form to quote in a
+  // comparison. Same figures as the "How much does it cost?" answer.
+  pricing: {
+    heading: "What it costs",
+    lead: "Guide prices. The real price is written in the proposal, after the free first call and before you commit.",
+    columns: ["What we build", "Price"],
+    rows: [
+      ["Automating one process with AI", "€1,200 to €6,500"],
+      ["Custom software or a management tool", "€6,500 to €16,000"],
+      ["Support after release", "From €250 a month"],
     ],
   },
 

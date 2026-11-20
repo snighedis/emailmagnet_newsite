@@ -396,19 +396,26 @@ export function FaqTiles({
   );
 }
 
-/** Related pages: a heading and plain text links. */
+/**
+ * Related pages: a heading and plain text links. The heading is an h3 beside a
+ * section's h2; where the list comes straight after the page's h1 (the legal
+ * pages), pass level 2 so the outline does not skip a level.
+ */
 export function RelatedLinks({
   title,
   ariaLabel,
   links,
+  level = 3,
 }: {
   title: string;
   ariaLabel: string;
   links: readonly { label: string; href: string }[];
+  level?: 2 | 3;
 }) {
+  const Heading = level === 2 ? "h2" : "h3";
   return (
     <nav aria-label={ariaLabel} className="space-y-3">
-      <h3 className="t-lead text-ink font-semibold">{title}</h3>
+      <Heading className="t-lead text-ink font-semibold">{title}</Heading>
       <ul className="t-body text-ink space-y-2">
         {links.map((link) => (
           <li key={link.href}>

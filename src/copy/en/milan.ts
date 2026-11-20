@@ -14,7 +14,7 @@ export const milan = {
   meta: {
     title: "Software house in Milan for small businesses",
     description:
-      "Dentoku Dev is a software studio from Milan: AI automation and custom software for small businesses. It starts with a free 30-minute video call, from anywhere in Italy.",
+      "A Milan software studio: AI automation and custom software for small businesses. It starts with a free 30-minute video call, from anywhere in Italy.",
   },
   breadcrumb: "Software house in Milan",
   title: ["Software studio in Milan."],

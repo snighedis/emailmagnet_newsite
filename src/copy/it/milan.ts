@@ -9,7 +9,7 @@ export const milan: MilanCopy = {
   meta: {
     title: "Software house a Milano per piccole imprese",
     description:
-      "Dentoku Dev è uno studio software di Milano: automazioni con l’intelligenza artificiale e software su misura per piccole imprese. Si parte con una videochiamata gratuita di 30 minuti, da tutta Italia.",
+      "Studio software di Milano: automazioni con l’AI e software su misura per piccole imprese. Prima videochiamata gratuita di 30 minuti, da tutta Italia.",
   },
   breadcrumb: "Software house a Milano",
   title: ["Studio software a Milano."],

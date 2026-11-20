@@ -7,11 +7,11 @@ import { LocaleLink } from "@/i18n/locale-link";
  */
 export const cookies: typeof cookiesEn = {
   meta: {
-    title: "Cookie Policy – Dentoku Dev",
+    title: "Informativa sui cookie – Dentoku Dev",
     description:
-      "Cookie Policy di Dentoku Dev: quali cookie utilizziamo, per quali finalità, e come gestire o revocare il consenso in qualsiasi momento.",
+      "Informativa sui cookie di Dentoku Dev: quali cookie utilizziamo, per quali finalità, e come gestire o revocare il consenso in qualsiasi momento.",
   },
-  title: "Cookie Policy",
+  title: "Informativa sui cookie",
 };
 
 const p = "mt-3 leading-8 text-stone-600";

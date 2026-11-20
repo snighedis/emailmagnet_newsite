@@ -6,9 +6,9 @@ import type { HomeCopy } from "@/copy/en/home";
  */
 export const home: HomeCopy = {
   meta: {
-    title: "Dentoku Dev: automazioni con l’AI e software su misura per PMI",
+    title: "Dentoku Dev: automazioni AI e software su misura per PMI",
     description:
-      "Studio software di Milano. Automazioni con l’intelligenza artificiale per PMI: email, preventivi, prenotazioni e dati da spostare tra i programmi. Le ore che risparmi le contiamo con te.",
+      "Studio software di Milano: automazioni con l’AI per PMI su email, preventivi, prenotazioni e dati tra i programmi. Le ore risparmiate le contiamo con te.",
   },
   itemListName: "Prodotti software di Dentoku Dev",
   hero: {

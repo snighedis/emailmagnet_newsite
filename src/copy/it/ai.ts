@@ -7,9 +7,9 @@ import type { AiCopy } from "@/copy/en/ai";
  */
 export const ai: AiCopy = {
   meta: {
-    title: "Consulenza AI per piccole imprese, misurata in ore",
+    title: "Consulenza AI per PMI, misurata in ore",
     description:
-      "Consulenza AI che si misura in ore: contiamo quanto ti costa un lavoro ripetitivo, lo automatizziamo con l’intelligenza artificiale e ricontiamo dopo il rilascio. Chi fa l’analisi scrive il codice.",
+      "Consulenza AI misurata in ore: contiamo quanto ti costa un lavoro ripetitivo, lo automatizziamo con l’AI e ricontiamo dopo. Chi fa l’analisi scrive il codice.",
   },
   breadcrumb: "Consulenza AI",
   title: ["Consulenza AI,", "misurata in ore."],
@@ -86,6 +86,7 @@ export const ai: AiCopy = {
 
   contrast: {
     heading: "Cosa cambia rispetto a un consulente AI",
+    lead: "Un consulente AI ti dà un parere. Dentoku Dev parte dalle ore che un lavoro ti costa e consegna il software che le toglie.",
     items: [
       { not: "Non un parere.", is: "Un software che lavora sui tuoi programmi." },
       { not: "Non una stima di risparmio.", is: "Le ore, contate prima e dopo." },
@@ -151,6 +152,17 @@ export const ai: AiCopy = {
         lead: "Account e codice a nome tuo.",
         body: "Gli account sono intestati alla tua azienda e, con il saldo, il codice è tuo: qualsiasi sviluppatore può continuarlo.",
       },
+    ],
+  },
+
+  pricing: {
+    heading: "Quanto costa",
+    lead: "Prezzi indicativi. Il prezzo vero è scritto nella proposta, dopo la prima call gratuita e prima che tu ti impegni.",
+    columns: ["Cosa costruiamo", "Prezzo"],
+    rows: [
+      ["Automazione di un processo con l’AI", "Da 1.200 a 6.500 €"],
+      ["Software o gestionale su misura", "Da 6.500 a 16.000 €"],
+      ["Assistenza dopo il rilascio", "Da 250 € al mese"],
     ],
   },
 

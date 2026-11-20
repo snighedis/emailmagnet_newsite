@@ -89,7 +89,7 @@ export function LegalPage({ lang, path, title, children }: LegalPageProps) {
       <article className="bg-background">
         <div className="page-x axis gap-y-12 pb-20 md:pb-32">
           <aside className="t-body text-ink space-y-8 lg:sticky lg:top-24 lg:self-start lg:pr-12">
-            <RelatedLinks title={label.others} ariaLabel={label.othersAria} links={others} />
+            <RelatedLinks title={label.others} ariaLabel={label.othersAria} links={others} level={2} />
             <p className="max-w-[34ch]">
               {label.questions}{" "}
               <a href={`mailto:${siteConfig.supportEmail}`} className="text-link font-medium">
