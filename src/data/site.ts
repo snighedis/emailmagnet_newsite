@@ -184,7 +184,8 @@ export const productPortfolio: ProductItem[] = [
     name: "Volume Control PRO",
     href: "/volume-control-pro",
     category: "Chrome Extension",
-    description: "Audio booster for Chrome tabs with up to 600% amplification and per-site volume memory.",
+    // Per-site memory was dropped on 19 Nov 2026: the live 1.2.1 keeps one level.
+    description: "Audio booster for Chrome tabs with up to 600% amplification and free Voice and Bass modes.",
     icon: "/brand/volume-control-pro-icon.png",
   },
   {

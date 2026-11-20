@@ -8,11 +8,11 @@
  * Keep them true to the version live on the store: a label, a control or a
  * column that the store version does not have does not belong here.
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type Level = "high" | "medium";
 
-type Row = {
+export type Row = {
   email: string;
   level: Level;
   /** The source summary as the popup prints it: "Email link", "Page text"… */
@@ -23,12 +23,12 @@ type Row = {
   selected?: boolean;
 };
 
-const brightside = "brightside-dental-care.com";
+export const brightside = "brightside-dental-care.com";
 const kessler = "kessler-moll-architekten.de";
 const harbor = "harbor-pine-studio.com";
 
 /** One contact page: four addresses behind email links, three in the text. */
-const contactPageRows: Row[] = [
+export const contactPageRows: Row[] = [
   { email: `info@${brightside}`, level: "high", source: "Email link", score: 96 },
   { email: `appointments@${brightside}`, level: "high", source: "Email link", score: 95 },
   { email: `billing@${brightside}`, level: "high", source: "Email link", score: 93 },
@@ -38,7 +38,7 @@ const contactPageRows: Row[] = [
   { email: `press@${brightside}`, level: "medium", source: "Page text", score: 52 },
 ];
 
-const reviewedRows: Row[] = contactPageRows.map((row, i) => ({ ...row, selected: i < 5 }));
+export const reviewedRows: Row[] = contactPageRows.map((row, i) => ({ ...row, selected: i < 5 }));
 
 /** PRO, sorted by domain: three sites visited, sixteen addresses in one list. */
 const allPagesRows: Row[] = [
@@ -63,13 +63,29 @@ function Check({ on }: { on?: boolean }) {
   );
 }
 
-function Popup({
+/**
+ * Two values in one place, the second taking over when the film reaches its
+ * review step (globals.css, .emfilm .emui-swap). Static pictures print only
+ * the second.
+ */
+function Swap({ before, after, animated }: { before: ReactNode; after: ReactNode; animated?: boolean }) {
+  if (!animated) return <>{after}</>;
+  return (
+    <span className="emui-swap">
+      <span className="emui-swap-before">{before}</span>
+      <span className="emui-swap-after">{after}</span>
+    </span>
+  );
+}
+
+export function Popup({
   count,
   rows,
   domain,
   pro,
   sort = "Confidence",
   listHeight,
+  animated,
 }: {
   count: number;
   rows: Row[];
@@ -79,6 +95,8 @@ function Popup({
   sort?: string;
   /** Crops the list the way the popup scrolls it. */
   listHeight: number;
+  /** In the film: the counts start unselected and switch at the review step. */
+  animated?: boolean;
 }) {
   const selected = rows.filter((row) => row.selected).length;
   const action = selected || count;
@@ -125,12 +143,16 @@ function Popup({
           Select all
         </span>
         <span className="emui-selected">
-          {selected} of {count} selected
+          <Swap before={0} after={selected} animated={animated} /> of {count} selected
         </span>
       </div>
       <div className="emui-list" style={{ height: listHeight }}>
-        {rows.map((row) => (
-          <div key={row.email} className={row.selected ? "emui-row emui-row-on" : "emui-row"}>
+        {rows.map((row, i) => (
+          <div
+            key={row.email}
+            className={row.selected ? "emui-row emui-row-on" : "emui-row"}
+            style={{ "--i": i } as CSSProperties}
+          >
             <Check on={row.selected} />
             <span className="emui-row-body">
               <span className={!mixed || row.currentTab ? "emui-email emui-email-current" : "emui-email"}>{row.email}</span>
@@ -146,10 +168,16 @@ function Popup({
       <div className="emui-foot">
         <div className="emui-foot-buttons">
           <span>
-            <span className="emui-button">TXT ({action})</span>
-            <span className="emui-button">CSV ({action})</span>
+            <span className="emui-button">
+              TXT (<Swap before={count} after={action} animated={animated} />)
+            </span>
+            <span className="emui-button emui-button-csv">
+              CSV (<Swap before={count} after={action} animated={animated} />)
+            </span>
           </span>
-          <span className="emui-button emui-button-primary">Copy ({action})</span>
+          <span className="emui-button emui-button-primary">
+            Copy (<Swap before={count} after={action} animated={animated} />)
+          </span>
         </div>
         <div className="emui-rate">
           <span>
@@ -163,9 +191,9 @@ function Popup({
   );
 }
 
-type Tab = { title: string; letter: string; colour: string };
+export type Tab = { title: string; letter: string; colour: string };
 
-function Browser({ tabs, active, url, page, popup }: { tabs: Tab[]; active: number; url: string; page: ReactNode; popup: ReactNode }) {
+export function Browser({ tabs, active, url, page, popup }: { tabs: Tab[]; active: number; url: string; page: ReactNode; popup: ReactNode }) {
   return (
     <div className="emui-browser">
       <div className="emui-tabs">
@@ -191,7 +219,7 @@ function Browser({ tabs, active, url, page, popup }: { tabs: Tab[]; active: numb
   );
 }
 
-const brightsideTab: Tab = { title: "Contact | Brightside Dental Care", letter: "B", colour: "#0f766e" };
+export const brightsideTab: Tab = { title: "Contact | Brightside Dental Care", letter: "B", colour: "#0f766e" };
 
 /**
  * The comparison's picture: a practice's contact page with the popup open on it,
@@ -252,49 +280,59 @@ export function ReviewAndExport() {
       <div className="emui-review-popup">
         <Popup count={7} rows={reviewedRows} domain={brightside} listHeight={262} />
       </div>
-      <div className="emui-sheet">
-        <div className="emui-sheet-title">emails_2026-10-27.csv</div>
-        <div className="emui-sheet-scroll">
-          <table>
-            <thead>
-              <tr>
-                <th />
-                <th>A</th>
-                <th>B</th>
-                <th>C</th>
-                <th>D</th>
+      <Sheet rows={kept} />
+    </div>
+  );
+}
+
+/**
+ * The CSV the extension writes, open in a spreadsheet: its four columns and
+ * one row per kept address, then an empty row.
+ */
+export function Sheet({ rows, className = "" }: { rows: Row[]; className?: string }) {
+  return (
+    <div className={`emui-sheet ${className}`}>
+      <div className="emui-sheet-title">emails_2026-10-27.csv</div>
+      <div className="emui-sheet-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th />
+              <th>A</th>
+              <th>B</th>
+              <th>C</th>
+              <th>D</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="emui-sheet-head">
+              <th>1</th>
+              <td>Email Address</td>
+              <td>Confidence Level</td>
+              <td>Confidence Score</td>
+              <td>Sources</td>
+            </tr>
+            {rows.map((row, i) => (
+              <tr key={row.email} style={{ "--i": i } as CSSProperties}>
+                <th>{i + 2}</th>
+                <td>{row.email}</td>
+                <td>{row.level}</td>
+                <td className="emui-num">{row.score}</td>
+                <td>{row.source}</td>
               </tr>
-            </thead>
-            <tbody>
-              <tr className="emui-sheet-head">
-                <th>1</th>
-                <td>Email Address</td>
-                <td>Confidence Level</td>
-                <td>Confidence Score</td>
-                <td>Sources</td>
+            ))}
+            {[rows.length + 2].map((n) => (
+              <tr key={n}>
+                <th>{n}</th>
+                <td />
+                <td />
+                <td />
+                <td />
               </tr>
-              {kept.map((row, i) => (
-                <tr key={row.email}>
-                  <th>{i + 2}</th>
-                  <td>{row.email}</td>
-                  <td>{row.level}</td>
-                  <td className="emui-num">{row.score}</td>
-                  <td>{row.source}</td>
-                </tr>
-              ))}
-              {[7].map((n) => (
-                <tr key={n}>
-                  <th>{n}</th>
-                  <td />
-                  <td />
-                  <td />
-                  <td />
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            ))}
+          </tbody>
+        </table>
         </div>
-      </div>
     </div>
   );
 }

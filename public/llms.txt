@@ -36,7 +36,7 @@ The studio works with online shops, professional practices, vacation rentals, an
 - ClickPilot AI: https://www.dentokudev.com/clickpilot-ai
   Chrome extension for fixing, rewriting, summarizing, translating, and transforming text inside browser fields.
 - Volume Control PRO: https://www.dentokudev.com/volume-control-pro
-  Chrome extension for boosting tab audio up to 600% and managing browser volume by site.
+  Chrome extension for boosting tab audio up to 600%, with free Voice and Bass modes and an optional 10-band equalizer. Comparison with Volume Master and Volume Control for Google Chrome: https://www.dentokudev.com/volume-control-pro/chrome-volume-control-extension
 - Countdown321: https://www.dentokudev.com/countdown321
   Shopify app for countdown timers and time-based storefront urgency messages.
 - All products: https://www.dentokudev.com/overview

@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata = createMetadata({
   title: "Chrome Volume Booster up to 600%",
   description:
-    "Volume Control PRO is a Chrome volume booster for raising quiet tab audio up to 600%, adjusting browser sound, and remembering site-level volume settings.",
+    "Volume Control PRO is a Chrome volume booster for raising quiet tab audio up to 600%, with free Voice and Bass modes and no change to your system volume.",
   path: "/volume-control-pro/chrome-volume-booster-600",
 });
 
@@ -13,11 +13,11 @@ export default function ChromeVolumeBoosterPage() {
     <MoneyPage
       eyebrow="Volume Control PRO"
       title="Chrome volume booster up to 600% for quiet browser audio"
-      answer="Volume Control PRO is a Dentoku Dev Chrome extension for boosting quiet tab audio, controlling browser volume quickly, and remembering per-site volume preferences."
+      answer="Volume Control PRO is a Dentoku Dev Chrome extension for boosting quiet tab audio up to 600%, from a single slider, with free Voice and Bass modes for speech and music."
       bullets={[
         "Boost quiet videos, webinars, meetings, and streams.",
         "Control audio from the Chrome extension popup.",
-        "Use per-site memory for repeated listening sessions.",
+        "Lift dialogue with the free Voice mode when speech gets lost.",
         "Avoid changing system-wide volume for one quiet tab.",
       ]}
       table={[

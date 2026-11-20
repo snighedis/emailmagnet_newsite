@@ -1,3 +1,4 @@
+import { VolumeControlFilm } from "@/components/marketing/films/volume-control-film";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import {
@@ -23,7 +24,7 @@ const chromeStoreUrl =
 export const metadata = createMetadata({
   title: "Volume Control PRO Chrome Booster",
   description:
-    "Volume Control PRO is a Dentoku Dev Chrome extension for boosting tab audio up to 600%, with one-click amplification and per-site volume memory.",
+    "Volume Control PRO is a Dentoku Dev Chrome extension for boosting tab audio up to 600%, with free Voice and Bass modes and an optional 10-band equalizer.",
   path: "/volume-control-pro",
 });
 
@@ -37,8 +38,8 @@ const features = [
     description: "Open the extension, move the slider and hear the difference at once. No settings pages.",
   },
   {
-    title: "Remembered per site",
-    description: "Saved site settings mean the next visit starts at the level you already chose.",
+    title: "Voice and Bass modes",
+    description: "Free sound modes that lift speech or add body to music, beside the plain Default.",
   },
   {
     title: "Steady on live pages",
@@ -73,26 +74,26 @@ const useCases = [
   {
     useCase: "Video calls and meetings",
     problem: "A colleague's microphone is too quiet.",
-    fit: "Raise only the call's tab while the other tabs stay as they are.",
+    fit: "Raise the call's tab; the other open tabs keep the level they had.",
   },
   {
     useCase: "Streaming with uneven loudness",
     problem: "Volume jumps between episodes, ads and platforms.",
-    fit: "Per-site memory keeps your level for each platform.",
+    fit: "Set the level as the content changes; the icon shows where it is.",
   },
 ];
 
 const steps = [
   { title: "Open the extension", description: "Click the Volume Control PRO icon in your Chrome toolbar." },
   { title: "Set your level", description: "Move the slider to the level you need, up to 600%." },
-  { title: "Keep listening", description: "The audio changes at once, and the site keeps its level next time." },
+  { title: "Keep listening", description: "The audio changes at once, and pages you open next start from that level." },
 ];
 
 const faqs = [
   {
     question: "What is Volume Control PRO?",
     answer:
-      "Volume Control PRO is a Dentoku Dev Chrome extension for boosting tab audio, adjusting low-volume browser content, and remembering volume settings by site.",
+      "Volume Control PRO is a Dentoku Dev Chrome extension for boosting tab audio up to 600%, with Voice and Bass modes for speech and music. An optional Audio Studio PRO licence adds a 10-band equalizer.",
   },
   {
     question: "What does 600% volume boost mean?",
@@ -112,7 +113,7 @@ const faqs = [
   {
     question: "Is Volume Control PRO free?",
     answer:
-      "Installing it is free, and volume boosting up to 600% with per-site memory stays free. There are no ads and no subscription. An optional Audio Studio PRO upgrade unlocks the advanced audio tools for a one-time payment.",
+      "Installing it is free, and boosting up to 600% with the Voice and Bass modes stays free. There are no ads and no subscription. An optional Audio Studio PRO upgrade, a one-time €9.99 payment, adds a 10-band equalizer with presets, Smart Save and Night Mode.",
   },
   {
     question: "Who should use Volume Control PRO?",
@@ -123,8 +124,8 @@ const faqs = [
 
 const related = [
   { label: "Chrome volume booster 600% guide", href: "/volume-control-pro/chrome-volume-booster-600" },
-  { label: "Chrome volume control extension", href: "/volume-control-pro/chrome-volume-control-extension" },
-  { label: "Tab volume control for Chrome", href: "/volume-control-pro/tab-volume-control" },
+  { label: "Chrome volume control extensions compared", href: "/volume-control-pro/chrome-volume-control-extension" },
+  { label: "Tab volume control: what changes per tab", href: "/volume-control-pro/tab-volume-control" },
   { label: "Dentoku Dev product overview", href: "/overview" },
   { label: "Browser productivity articles", href: "/blog" },
   { label: "Contact Dentoku Dev support", href: "/contact" },
@@ -169,9 +170,10 @@ export default function VolumeControlProPage() {
 
       <PageOpening
         title={["Every tab,", "up to 600%."]}
-        standfirst="Volume Control PRO is a Chrome extension that turns quiet tabs up past 100% and remembers the level for each site. Your system volume stays where it is."
+        standfirst="Volume Control PRO is a Chrome extension that turns quiet tabs up past 100%, with Voice and Bass modes for speech and music. Your system volume stays where it is."
         primary={{ label: "Add to Chrome, free", href: chromeStoreUrl }}
         secondary={{ label: "Questions and answers", href: "#faq" }}
+        media={<VolumeControlFilm />}
         picture={{
           src: "/brand/volume-control-landscape-en.webp",
           alt: "Volume Control PRO's popup with the volume slider at 150%, beside the line Every tab, up to 600%",
@@ -179,8 +181,8 @@ export default function VolumeControlProPage() {
           height: 1000,
         }}
         facts={[
-          { term: "Free to install", detail: "Boosting and per-site memory stay free, with no ads and no subscription." },
-          { term: "Remembered per site", detail: "The next visit starts at the level you already chose." },
+          { term: "Free to install", detail: "Boosting and the sound modes stay free, with no ads and no subscription." },
+          { term: "Audio Studio PRO", detail: "A one-time €9.99 licence adds a 10-band equalizer with presets." },
           { term: "Your data stays yours", detail: "The store disclosure states the developer does not collect or use it." },
         ]}
       />
@@ -194,7 +196,10 @@ export default function VolumeControlProPage() {
         }}
       />
 
-      <SideSection title="Small extension, full control" lead="Everything here comes from the Chrome Web Store listing.">
+      <SideSection
+        title="Small extension, full control"
+        lead="Everything here comes from the Chrome Web Store listing and the published version 1.2.1."
+      >
         <FeatureList items={features} />
       </SideSection>
 

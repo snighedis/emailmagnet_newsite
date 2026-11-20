@@ -78,6 +78,19 @@ const anchor = (title: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
+/**
+ * A side-by-side comparison of this product and its alternatives, from their
+ * public store listings. The first column names the row; the product's own
+ * column comes first among the others, and the note says where and when.
+ */
+export type GuideComparison = {
+  title: string;
+  intro: string;
+  columns: readonly string[];
+  rows: readonly (readonly string[])[];
+  note: string;
+};
+
 export type GuidePageProps = {
   product: Product;
   title: string;
@@ -87,6 +100,7 @@ export type GuidePageProps = {
   list: { title: string; items: readonly string[] };
   table?: readonly { intent: string; fit: string; page: string }[];
   sections?: readonly { title: string; body: string }[];
+  comparison?: GuideComparison;
   action: Action;
   currentHref?: string;
 };
@@ -98,7 +112,18 @@ export type GuidePageProps = {
  * answer on the tone step, the list and the search table, the text with its
  * index on the left, the related resources, then the products and the proposal.
  */
-export function GuidePage({ product, title, standfirst, answer, list, table, sections = [], action, currentHref }: GuidePageProps) {
+export function GuidePage({
+  product,
+  title,
+  standfirst,
+  answer,
+  list,
+  table,
+  sections = [],
+  comparison,
+  action,
+  currentHref,
+}: GuidePageProps) {
   const { products } = getCopy("en").site;
   const { home } = getPageCopy("en");
   const related = relatedResourceLinks.filter((link) => link.href !== currentHref).slice(0, 6);
@@ -188,6 +213,8 @@ export function GuidePage({ product, title, standfirst, answer, list, table, sec
         ) : null}
       </SideSection>
 
+      {comparison ? <ComparisonSection comparison={comparison} /> : null}
+
       {sections.length ? (
         <section className={answer ? "bg-surface-muted" : "bg-background"}>
           <div className="page-x axis gap-y-10 py-20 md:py-32">
@@ -261,5 +288,63 @@ export function GuidePage({ product, title, standfirst, answer, list, table, sec
 
       <ProposalClose closing={home.closing} actionHref="/#brief" />
     </>
+  );
+}
+
+/**
+ * The comparison as a real table on the tone step: rows filled, no rules; on a
+ * phone each row stacks with its column names. The product's own column is
+ * set in the full weight so it reads first.
+ */
+function ComparisonSection({ comparison }: { comparison: GuideComparison }) {
+  const [rowHead, ...products] = comparison.columns;
+  return (
+    <section aria-labelledby="comparison-heading" className="bg-surface-muted">
+      <div className="page-x space-y-10 py-20 md:space-y-14 md:py-32">
+        <div className="space-y-5">
+          <h2 id="comparison-heading" data-reveal className="t-2 text-ink max-w-[22ch]">
+            {comparison.title}
+          </h2>
+          <p data-reveal style={d(1)} className="t-lead text-ink max-w-[60ch]">
+            {comparison.intro}
+          </p>
+        </div>
+        <div data-reveal style={d(2)}>
+          <table className="t-body text-ink w-full border-separate border-spacing-y-2 text-left">
+            <caption className="sr-only">{comparison.title}</caption>
+            <thead className="max-md:sr-only">
+              <tr>
+                <th scope="col" className="t-lead px-5 pb-2 font-semibold">
+                  {rowHead}
+                </th>
+                {products.map((name) => (
+                  <th key={name} scope="col" className="t-lead px-5 pb-2 font-semibold">
+                    {name}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.rows.map(([head, ...cells]) => (
+                <tr key={head} className="bg-background max-md:flex max-md:flex-col max-md:py-3">
+                  <th scope="row" className="px-5 py-2 align-top font-semibold md:py-5">
+                    {head}
+                  </th>
+                  {cells.map((cell, i) => (
+                    <td key={products[i]} className={`px-5 py-2 align-top md:py-5 ${i === 0 ? "font-medium" : ""}`}>
+                      <span className="text-muted-foreground block text-sm md:hidden">{products[i]}</span>
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p data-reveal className="text-muted-foreground max-w-[70ch] text-sm">
+          {comparison.note}
+        </p>
+      </div>
+    </section>
   );
 }

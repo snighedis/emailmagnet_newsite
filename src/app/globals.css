@@ -1294,6 +1294,169 @@ body:has([data-home-hero]) main > section:first-of-type > div:last-child {
   }
 }
 
+/* EmailMagnet's film (films/emailmagnet-film.tsx). The root gains one class
+   per step, s1 to s6, and keeps them: each rule below is a transition into
+   that step, so leaving it (the loop's reset) plays the same path backwards.
+   Transform and opacity only, with the site's --ease-out; the two presses are
+   one-shot keyframes, fired once each time their step begins. */
+[data-ui] .emui-swap {
+  display: inline-grid;
+}
+[data-ui] .emui-swap > span {
+  grid-area: 1 / 1;
+  transition: opacity 160ms ease;
+}
+[data-ui] .emui-swap-after {
+  opacity: 0;
+}
+[data-ui].emfilm.s4 .emui-swap-before {
+  opacity: 0;
+  transition-delay: 520ms;
+}
+[data-ui].emfilm.s4 .emui-swap-after {
+  opacity: 1;
+  transition-delay: 520ms;
+}
+
+/* s1: the addresses on the page light up one by one. A background on the
+   address itself (cloned across a line break), so a wrapped address lights up
+   on both lines and never covers the words beside it. */
+[data-ui] .emfilm-hit {
+  margin: 0 -2px;
+  padding: 0 2px;
+  border-radius: 3px;
+  background-color: rgb(253 227 214 / 0);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  transition: background-color 200ms ease;
+}
+[data-ui].emfilm.s1 .emfilm-hit {
+  background-color: rgb(253 227 214 / 1);
+  transition-delay: calc(var(--i) * 150ms);
+}
+
+/* s2: the toolbar icon is pressed and the popup opens from it */
+[data-ui].emfilm.s2 .emui-ext {
+  animation: emfilm-press 300ms var(--ease-out);
+}
+[data-ui] .emfilm-popup {
+  position: relative;
+  transform-origin: top right;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  transition:
+    opacity 240ms var(--ease-out),
+    transform 240ms var(--ease-out);
+}
+[data-ui].emfilm.s2 .emfilm-popup {
+  opacity: 1;
+  transform: none;
+}
+
+/* s3: the seven addresses arrive in the list */
+[data-ui].emfilm .emui-row {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 260ms var(--ease-out),
+    transform 260ms var(--ease-out),
+    background-color 200ms ease;
+}
+[data-ui].emfilm.s3 .emui-row {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+/* s4: five of them are kept */
+[data-ui].emfilm:not(.s4) .emui-row-on {
+  background: #fff;
+}
+[data-ui].emfilm .emui-check {
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+[data-ui].emfilm:not(.s4) .emui-check-on {
+  border-color: #767676;
+  background: #fff;
+}
+[data-ui].emfilm .emui-check-on svg {
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 160ms var(--ease-out);
+}
+[data-ui].emfilm.s4 .emui-row-on,
+[data-ui].emfilm.s4 .emui-check-on,
+[data-ui].emfilm.s4 .emui-check-on svg {
+  transition-delay: calc(var(--i) * 120ms);
+}
+[data-ui].emfilm.s4 .emui-check-on svg {
+  opacity: 1;
+  transform: none;
+}
+
+/* s5: CSV is pressed */
+[data-ui].emfilm .emui-button-csv {
+  transition: border-color 160ms ease;
+}
+[data-ui].emfilm.s5 .emui-button-csv {
+  border-color: #f05423;
+  animation: emfilm-press 300ms var(--ease-out);
+}
+
+/* s6: the exported file opens over the page */
+/* Placed against the browser's width (it is the container): from 16px inside
+   its left edge to about 110px over the popup, which sits in a 360px column
+   12px from the right. */
+[data-ui] .emfilm-sheet {
+  position: absolute;
+  top: 168px;
+  left: calc(388px - 100cqw);
+  z-index: 3;
+  width: min(560px, calc(100cqw - 278px));
+  margin: 0;
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+  transition:
+    opacity 420ms var(--ease-out),
+    transform 420ms var(--ease-out);
+}
+[data-ui].emfilm.s6 .emfilm-sheet {
+  opacity: 1;
+  transform: none;
+}
+[data-ui] .emfilm-sheet tbody tr:not(.emui-sheet-head) {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+[data-ui].emfilm.s6 .emfilm-sheet tbody tr {
+  opacity: 1;
+  transition-delay: calc(240ms + var(--i, 5) * 90ms);
+}
+@container (max-width: 40rem) {
+  [data-ui] .emfilm-sheet {
+    top: 150px;
+    left: 8px;
+    width: calc(100% - 16px);
+  }
+}
+@keyframes emfilm-press {
+  40% {
+    transform: scale(0.9);
+  }
+}
+/* Reduced motion: the film stops on its last frame (the component holds it
+   there), and nothing travels on the way. */
+@media (prefers-reduced-motion: reduce) {
+  [data-ui].emfilm * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 /* The other products at the foot of a product page (ProductShowcase with
    `exclude`): 40% saturation at rest, full colour when pointed at or focused.
    Touch screens, which cannot hover, keep the full colour. */

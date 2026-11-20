@@ -67,6 +67,7 @@ export function PageOpening({
   primary,
   secondary,
   picture,
+  media,
   facts,
   note,
 }: {
@@ -75,6 +76,8 @@ export function PageOpening({
   primary: Action;
   secondary?: Action;
   picture?: Picture;
+  /** A moving picture in place of the still one (a product film); wins over `picture`. */
+  media?: ReactNode;
   facts?: readonly { term: string; detail: string }[];
   /** A small note under the facts, such as the AI transparency notice. */
   note?: ReactNode;
@@ -100,19 +103,25 @@ export function PageOpening({
           </div>
         </div>
       </div>
-      {picture ? (
+      {picture || media ? (
         <div className="page-x axis gap-y-8 pb-20 md:pb-28">
-          <figure data-reveal style={d(4)} className="bg-surface-muted lg:col-start-2 lg:row-start-1">
-            <Image
-              src={picture.src}
-              alt={picture.alt}
-              width={picture.width}
-              height={picture.height}
-              priority
-              sizes="(min-width: 1024px) 56vw, 92vw"
-              className="h-auto w-full object-contain"
-            />
-          </figure>
+          {media ? (
+            <figure data-reveal style={d(4)} className="lg:col-start-2 lg:row-start-1">
+              {media}
+            </figure>
+          ) : picture ? (
+            <figure data-reveal style={d(4)} className="bg-surface-muted lg:col-start-2 lg:row-start-1">
+              <Image
+                src={picture.src}
+                alt={picture.alt}
+                width={picture.width}
+                height={picture.height}
+                priority
+                sizes="(min-width: 1024px) 56vw, 92vw"
+                className="h-auto w-full object-contain"
+              />
+            </figure>
+          ) : null}
           {facts ? (
             <div data-reveal style={d(5)} className="space-y-8 lg:col-start-1 lg:row-start-1 lg:self-end lg:pr-12">
               <dl className="space-y-5">

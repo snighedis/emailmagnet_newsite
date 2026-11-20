@@ -1,4 +1,5 @@
 import { ContactPageScan, OneListAcrossTabs, ReviewAndExport } from "@/components/marketing/emailmagnet-ui";
+import { EmailMagnetFilm } from "@/components/marketing/films/emailmagnet-film";
 import { HomeReveal } from "@/components/marketing/home-reveal";
 import { JsonLd } from "@/components/marketing/json-ld";
 import {
@@ -154,6 +155,7 @@ export default function EmailMagnetPage() {
         standfirst="EmailMagnet is a Chrome extension that finds the public business emails on the pages you visit. Review them, then export a clean CSV or TXT list."
         primary={{ label: "Add to Chrome, free", href: emailMagnetConfig.secondaryCta.href }}
         secondary={{ label: "See the plans", href: "#plans" }}
+        media={<EmailMagnetFilm />}
         picture={{
           src: "/brand/emailmagnet-one-click.webp",
           alt: "EmailMagnet's popup listing the business emails found on a web page, with CSV and TXT export",

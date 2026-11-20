@@ -1,0 +1,652 @@
+/* Volume Control PRO's popup and a Chrome tab, rebuilt in HTML
+   (src/components/marketing/volume-control-ui.tsx). Values from the 1.2.1
+   package's popup.html, real sizes times 0.8. The popup's own gradient frame
+   and its PRO button are the product's chrome, so they keep their gradients. */
+[data-ui].vcui {
+  font-family: var(--font-sans);
+  color: #2d3748;
+  line-height: 1.35;
+  text-align: left;
+}
+
+/* Chrome: one tab, the address bar, the extension's toolbar icon */
+[data-ui] .vcui-browser {
+  container-type: inline-size;
+  border: 1px solid #cfd3d8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+[data-ui] .vcui-tabs {
+  display: flex;
+  padding: 8px 8px 0;
+  background: #dee1e6;
+}
+[data-ui] .vcui-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 280px;
+  padding: 8px 12px;
+  border-radius: 8px 8px 0 0;
+  background: #fff;
+  font-size: 12px;
+  color: #202124;
+}
+[data-ui] .vcui-favicon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: #334155;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+[data-ui] .vcui-tab-title {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+[data-ui] .vcui-tab-audio {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  fill: #5f6368;
+  color: #5f6368;
+}
+[data-ui] .vcui-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+[data-ui] .vcui-url {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #f1f3f4;
+  font-size: 13px;
+  color: #202124;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+[data-ui] .vcui-ext {
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgb(232 234 237 / 0);
+}
+[data-ui] .vcui-ext img {
+  width: 18px;
+  height: 18px;
+}
+/* chrome.action badge: background.js sets the text and the colour */
+[data-ui] .vcui-badge {
+  position: absolute;
+  right: -2px;
+  bottom: 1px;
+  padding: 0 3px;
+  border-radius: 3px;
+  background: #f59e0b;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 12px;
+}
+[data-ui] .vcui-viewport {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 288px;
+  gap: 20px;
+  padding: 0 12px 16px 0;
+}
+[data-ui] .vcui-page {
+  min-width: 0;
+  padding: 20px 0 0 20px;
+}
+[data-ui] .vcui-anchor {
+  align-self: start;
+  min-width: 0;
+}
+
+/* The page: a lecture video */
+[data-ui] .vcui-player {
+  overflow: hidden;
+  border-radius: 8px;
+  background: #0f172a;
+}
+[data-ui] .vcui-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  aspect-ratio: 16 / 10;
+  padding: 0 8%;
+  background: #f4f1ea;
+  color: #0f172a;
+}
+[data-ui] .vcui-slide-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+}
+[data-ui] .vcui-slide-title {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  line-height: 1.15;
+}
+[data-ui] .vcui-slide-line {
+  font-size: 14px;
+  color: #334155;
+}
+[data-ui] .vcui-controls {
+  padding: 0 10px 8px;
+  color: #e2e8f0;
+}
+[data-ui] .vcui-progress {
+  display: block;
+  height: 3px;
+  margin: 0 -10px 8px;
+  background: #475569;
+}
+[data-ui] .vcui-progress::after {
+  content: "";
+  display: block;
+  height: 100%;
+  background: #e2e8f0;
+  transform-origin: left;
+  transform: scaleX(0.24);
+}
+[data-ui] .vcui-control-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+[data-ui] .vcui-control-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+[data-ui] .vcui-meter {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+[data-ui] .vcui-meter span {
+  width: 3px;
+  height: 100%;
+  border-radius: 1px;
+  background: #f8fafc;
+  transform-origin: bottom;
+  transform: scaleY(var(--q));
+}
+[data-ui] .vcui-time {
+  margin-left: 4px;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+[data-ui] .vcui-caption {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+[data-ui] .vcui-meta {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* The popup */
+[data-ui] .vcui-popup {
+  width: 288px;
+  max-width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* taste-skill-ignore: the popup's own body background */
+  box-shadow: 0 10px 28px rgb(17 24 39 / 0.22);
+}
+[data-ui] .vcui-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 13px;
+  background: rgb(255 255 255 / 0.98);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+}
+[data-ui] .vcui-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+[data-ui] .vcui-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+[data-ui] .vcui-head-icons {
+  display: flex;
+  gap: 9px;
+  padding-right: 3px;
+}
+[data-ui] .vcui-head-icons svg {
+  width: 14px;
+  height: 14px;
+  fill: #2d3748;
+}
+[data-ui] .vcui-volume {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+}
+[data-ui] .vcui-readout {
+  display: inline-grid;
+  justify-self: center;
+  margin-bottom: 2px;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -1.6px;
+  color: #667eea;
+}
+[data-ui] .vcui-readout > span {
+  grid-area: 1 / 1;
+}
+[data-ui] .vcui-volume-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #718096;
+}
+/* The slider as popup.js draws it: the fill is value / 600 of the track; the
+   thumb (13px) travels the track less its own width, like a native range. */
+[data-ui] .vcui-slider {
+  position: relative;
+  display: block;
+  height: 13px;
+  margin: 8px 0 5px;
+}
+[data-ui] .vcui-slider::before,
+[data-ui] .vcui-fill {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 4px;
+  height: 5px;
+  border-radius: 3px;
+  background: #e2e8f0;
+}
+[data-ui] .vcui-fill {
+  background: #667eea;
+  transform-origin: left;
+  transform: scaleX(var(--from));
+}
+[data-ui] .vcui-rail {
+  position: absolute;
+  inset: 0 13px 0 0;
+}
+[data-ui] .vcui-mover {
+  position: absolute;
+  inset: 0;
+  transform: translateX(calc(var(--from) * 100%));
+}
+[data-ui] .vcui-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #667eea;
+  box-shadow: 0 1px 4px rgb(102 126 234 / 0.4);
+}
+[data-ui] .vcui-marks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3px;
+  margin-bottom: 4px;
+  font-size: 7.5px;
+  font-weight: 600;
+  color: #a0aec0;
+}
+[data-ui] .vcui-modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+[data-ui] .vcui-mode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px;
+  border-radius: 6px;
+  background: #edf2f7;
+  color: #4a5568;
+  font-size: 9px;
+  font-weight: 600;
+}
+[data-ui] .vcui-mode svg {
+  width: 11px;
+  height: 11px;
+  fill: currentColor;
+}
+[data-ui] .vcui-mode-on {
+  background: #667eea;
+  color: #fff;
+  box-shadow: 0 2px 6px rgb(102 126 234 / 0.3);
+}
+/* Audio Studio PRO, locked: the Equalizer under a white veil */
+[data-ui] .vcui-pro {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 112px;
+  padding: 8px;
+  overflow: hidden;
+  border: 1px solid #edf2f7;
+  border-radius: 8px;
+  background: #f7fafc;
+}
+[data-ui] .vcui-pro-title {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #718096;
+}
+[data-ui] .vcui-pro-badge {
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%); /* taste-skill-ignore: the popup's own PRO badge */
+  color: #fff;
+  font-size: 6.5px;
+  font-weight: 800;
+}
+[data-ui] .vcui-eq {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 3px;
+}
+[data-ui] .vcui-eq > span {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  font-size: 6.5px;
+  font-weight: 600;
+  color: #718096;
+}
+[data-ui] .vcui-eq > span::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 14px;
+  left: 50%;
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: #e2e8f0;
+}
+[data-ui] .vcui-eq > span::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  margin-left: -5.5px;
+  border: 2px solid #667eea;
+  border-radius: 50%;
+  background: #fff;
+}
+[data-ui] .vcui-pro-lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: rgb(255 255 255 / 0.85);
+}
+[data-ui] .vcui-pro-message {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2d3748;
+}
+[data-ui] .vcui-pro-button {
+  padding: 6px 13px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* taste-skill-ignore: the popup's own button */
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgb(102 126 234 / 0.3);
+}
+[data-ui] .vcui-reset {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #718096;
+  font-size: 9px;
+  font-weight: 600;
+}
+[data-ui] .vcui-reset svg {
+  width: 10px;
+  height: 10px;
+  fill: currentColor;
+}
+
+/* In a narrow column (a phone) the popup hangs over the page from the toolbar
+   icon, as it does in Chrome, a little smaller; the controls with the meter
+   stay in view at its left. */
+@container (max-width: 40rem) {
+  [data-ui] .vcui-viewport {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 8px 10px;
+  }
+  [data-ui] .vcui-page,
+  [data-ui] .vcui-anchor {
+    grid-area: 1 / 1;
+  }
+  [data-ui] .vcui-page {
+    padding: 10px 0 0;
+  }
+  [data-ui] .vcui-anchor {
+    z-index: 1;
+    justify-self: end;
+    zoom: 0.74;
+  }
+  [data-ui] .vcui-caption,
+  [data-ui] .vcui-meta,
+  [data-ui] .vcui-time {
+    display: none;
+  }
+  [data-ui] .vcui-slide-title {
+    font-size: 18px;
+  }
+}
+
+/* The film (films/volume-control-film.tsx). The root gains one class per
+   step, s1 to s4, and keeps them: each rule below is a transition into that
+   step, so leaving it (the loop's reset) plays the same path backwards.
+   Transform and opacity only, with the site's --ease-out; colour changes take
+   180ms ease; the two presses are one-shot keyframes. */
+
+/* s0: the badge is not there yet (background.js shows none at 100%), the
+   popup is closed, the readout shows only its first number */
+[data-ui].vcfilm .vcui-badge {
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 200ms var(--ease-out),
+    transform 200ms var(--ease-out);
+}
+[data-ui].vcfilm .vcui-readout > span:not(:first-child) {
+  visibility: hidden;
+}
+/* On the reset, the popup closes first (240ms) and its values go back to 100%
+   and Default behind it, unseen. */
+[data-ui].vcfilm .vcui-readout > span {
+  transition: visibility 0s 260ms;
+}
+[data-ui].vcfilm .vcui-mover,
+[data-ui].vcfilm .vcui-fill {
+  transition: transform 0s 260ms;
+}
+[data-ui].vcfilm .vcui-mode {
+  transition:
+    background-color 0s 260ms,
+    color 0s 260ms,
+    box-shadow 0s 260ms;
+}
+
+/* s1: the toolbar icon is pressed, highlighted while its popup is open, and
+   the popup opens from it */
+[data-ui].vcfilm .vcui-ext {
+  transition: background-color 180ms ease;
+}
+[data-ui].vcfilm.s1 .vcui-ext {
+  background-color: rgb(232 234 237 / 1);
+  animation: vcfilm-press 300ms var(--ease-out);
+}
+[data-ui] .vcfilm-popup {
+  transform-origin: top right;
+  opacity: 0;
+  transform: translateY(-8px) scale(0.97);
+  transition:
+    opacity 240ms var(--ease-out),
+    transform 240ms var(--ease-out);
+}
+[data-ui].vcfilm.s1 .vcfilm-popup {
+  opacity: 1;
+  transform: none;
+  transition-delay: 120ms;
+}
+
+/* s2: the thumb is dragged from 100% to 300%. A hand's drag, not a UI
+   response, so a longer, softer curve; the readout swaps its number the way
+   popup.js does (textContent on every input), timed to the thumb's travel.
+   The tab gets louder as it moves. */
+[data-ui].vcfilm.s2 .vcui-mover,
+[data-ui].vcfilm.s2 .vcui-fill {
+  transition: transform 900ms cubic-bezier(0.33, 1, 0.68, 1) 150ms;
+}
+[data-ui].vcfilm.s2 .vcui-mover {
+  transform: translateX(calc(var(--to) * 100%));
+}
+[data-ui].vcfilm.s2 .vcui-fill {
+  transform: scaleX(var(--to));
+}
+[data-ui].vcfilm.s2 .vcui-readout > span:first-child {
+  visibility: hidden;
+  transition: visibility 0s 230ms;
+}
+[data-ui].vcfilm.s2 .vcui-readout > span:nth-child(2) {
+  animation: vcfilm-show 105ms 230ms;
+}
+[data-ui].vcfilm.s2 .vcui-readout > span:nth-child(3) {
+  animation: vcfilm-show 150ms 335ms;
+}
+[data-ui].vcfilm.s2 .vcui-readout > span:nth-child(4) {
+  animation: vcfilm-show 290ms 485ms;
+}
+[data-ui].vcfilm.s2 .vcui-readout > span:last-child {
+  visibility: visible;
+  transition: visibility 0s 775ms;
+}
+[data-ui].vcfilm .vcui-meter span {
+  transition: transform 420ms var(--ease-out);
+}
+[data-ui].vcfilm.s2 .vcui-meter span {
+  transform: scaleY(var(--b));
+  transition-delay: calc(200ms + var(--i) * 40ms);
+}
+
+/* s3: the toolbar badge shows the new level, on orange */
+[data-ui].vcfilm.s3 .vcui-badge {
+  opacity: 1;
+  transform: none;
+}
+
+/* s4: Voice is pressed and becomes the active mode; speech in the tab comes
+   up a little more */
+[data-ui].vcfilm.s4 .vcui-mode {
+  transition:
+    background-color 180ms ease 60ms,
+    color 180ms ease 60ms,
+    box-shadow 180ms ease 60ms;
+}
+[data-ui].vcfilm.s4 .vcui-mode-on {
+  background: #edf2f7;
+  color: #4a5568;
+  box-shadow: none;
+}
+[data-ui].vcfilm.s4 .vcui-mode[data-mode="voice"] {
+  background: #667eea;
+  color: #fff;
+  box-shadow: 0 2px 6px rgb(102 126 234 / 0.3);
+  animation: vcfilm-press 300ms var(--ease-out);
+}
+[data-ui].vcfilm.s4 .vcui-meter span {
+  transform: scaleY(var(--v));
+  transition-delay: calc(220ms + var(--i) * 40ms);
+}
+
+@keyframes vcfilm-press {
+  40% {
+    transform: scale(0.92);
+  }
+}
+/* An in-between number of the readout, shown only while the animation runs */
+@keyframes vcfilm-show {
+  from {
+    visibility: visible;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
+/* Reduced motion: the film stops on its last frame (the frame holds it
+   there), and nothing travels on the way. */
+@media (prefers-reduced-motion: reduce) {
+  [data-ui].vcfilm * {
+    transition: none !important;
+    animation: none !important;
+  }
+  /* the last frame shows only the final number; the in-between ones go */
+  [data-ui].vcfilm .vcui-readout > span:not(:last-child) {
+    display: none;
+  }
+}

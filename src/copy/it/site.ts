@@ -21,7 +21,7 @@ const productCopy: Record<string, Pick<SiteCopy["products"][number], "category" 
   "Volume Control PRO": {
     category: "Estensione Chrome",
     description:
-      "Amplificatore audio per le schede di Chrome, fino al 600% e con memoria del volume per ogni sito.",
+      "Amplificatore audio per le schede di Chrome, fino al 600%, con modalità gratuite per la voce e i bassi.",
   },
   Countdown321: {
     category: "App Shopify",
